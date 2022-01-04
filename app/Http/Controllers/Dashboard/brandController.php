@@ -26,7 +26,6 @@ use DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
 class brandController extends Controller
 {
     /**
@@ -194,12 +193,11 @@ class brandController extends Controller
                         }else{
                             $codeinput =   $request->codeinput;
                         }
-                        $image = QrCode::format('png')
+                        $image = QrCode::format('svg')
                         ->size(200)->errorCorrection('H')
                         ->generate((string)$codeinput);
                         $output_file =  time() . '.png';
-                        $file =  Storage::disk('local')->put($output_file, $image);
-                        // $file =  Storage::disk('public')->put($output_file, $image);
+                        $file =  Storage::disk('public')->put($output_file, $image);
                         $vendor->qr_code = $codeinput;
                         $vendor->is_pincode = $request->pincode;
                         $vendor->qr_image = $output_file;
@@ -294,7 +292,7 @@ class brandController extends Controller
                     }
                 } catch (\Exception $e) {
                     DB::rollback();
-                    dd($e);
+                    // dd($e);
                     return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
                 }
             } elseif (Auth::user()->hasRole('Admin')) {
