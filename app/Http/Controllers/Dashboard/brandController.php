@@ -196,7 +196,7 @@ class brandController extends Controller
                         $image = QrCode::format('svg')
                         ->size(200)->errorCorrection('H')
                         ->generate((string)$codeinput);
-                        $output_file =  time() . '.png';
+                        $output_file =  time() . '.svg';
                         $file =  Storage::disk('public')->put($output_file, $image);
                         $vendor->qr_code = $codeinput;
                         $vendor->is_pincode = $request->pincode;
