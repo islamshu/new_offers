@@ -21,7 +21,7 @@ use App\Http\Resources\VendorOfferCollection;
 use App\Http\Resources\VendorOfferDeCollection;
 use App\Http\Resources\VendorReviewResourses;
 use App\Http\Resources\VendorReviewsNewCollection;
-use App\Models\branch;
+use App\Models\Branch;
 use App\Models\City;
 use App\Models\Enterprise;
 use App\Models\Homeslider;
@@ -134,7 +134,7 @@ class HomeController extends BaseController
     }
     public function vendor_branches(Request $request)
     {
-      $stores = branch::where('vendor_id',$request->store_id)->paginate($request->paginate);
+      $stores = Branch::where('vendor_id',$request->store_id)->paginate($request->paginate);
       $res['status']= $this->sendResponse('OK'); 
       $res['data']['branches']=new VendorBranchesNewCollection($stores);
       return $res;  

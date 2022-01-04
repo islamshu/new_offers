@@ -45,7 +45,7 @@ class Vendor extends Model
         return $this->belongsToMany(Category::class, 'categories_vendors', 'vendor_id', 'category_id');
     }
     public function branches(){
-        return $this->hasMany(branch::class,'vendor_id');
+        return $this->hasMany(Branch::class,'vendor_id');
     }
     public function vendor_image(){
         return $this->hasMany(ImageVendor::class,'vendor_id');

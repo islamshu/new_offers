@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
-use App\Models\branch;
+use App\Models\Branch;
 use App\Models\City;
 use App\Models\Enterprise;
 use App\Models\enterprise_city;
@@ -71,7 +71,7 @@ class PremotionController extends Controller
     {
         $categorys = Enterprise::find(auth()->user()->ent_id)->categorys;
         $brands =   Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
-        $branchs = branch::whereHas('vendor', function ($q)  {
+        $branchs = Branch::whereHas('vendor', function ($q)  {
             $q->where('enterprise_id',auth()->user()->ent_id);
         })->get();
        if($type == 'slider'){

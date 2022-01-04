@@ -128,7 +128,7 @@ class brandController extends Controller
     public function store(Request $request)
     {
     //   $image=   \QrCode::size(500)
-    //     ->format('png')
+    //     ->
     //     ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
     //     dd($image);
         $validator = Validator::make($request->all(), [
@@ -338,10 +338,10 @@ class brandController extends Controller
                         $codeinput =   $request->codeinput;
                     }
                   
-                    $image = QrCode::format('png')
+                    $image = QrCode::format('svg')
                         ->size(200)->errorCorrection('H')
                         ->generate((string)$codeinput);
-                    $output_file =  time() . '.png';
+                    $output_file =  time() . '.svg';
                     $file =  Storage::disk('public')->put($output_file, $image);
                     $vendor->qr_code =$codeinput;
                     $vendor->is_pincode = $request->pincode;
@@ -619,10 +619,10 @@ class brandController extends Controller
                                 $codeinput =   $request->codeinput;
                             }
                         if ($vendor->qr_code != $codeinput) {
-                            $image = QrCode::format('png')
+                            $image = QrCode::format('svg')
                                 ->size(200)->errorCorrection('H')
                                 ->generate((string)$codeinput);
-                            $output_file =  time() . '.png';
+                            $output_file =  time() . '.svg';
                             $file =  Storage::disk('public')->put($output_file, $image);
                             $vendor->qr_code = $codeinput;
                             $vendor->qr_image = $output_file;
@@ -745,10 +745,10 @@ class brandController extends Controller
                         $codeinput =   $request->codeinput;
                     }
                     if ($vendor->qr_code != $codeinput ) {
-                        $image = QrCode::format('png')
+                        $image = QrCode::format('svg')
                             ->size(200)->errorCorrection('H')
                             ->generate((string)$codeinput );
-                        $output_file =  time() . '.png';
+                        $output_file =  time() . '.svg';
                         $file =  Storage::disk('public')->put($output_file, $image);
                         $vendor->qr_code =$codeinput ;
                         $vendor->qr_image = $output_file;
