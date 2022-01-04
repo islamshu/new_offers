@@ -62,7 +62,7 @@
                                                         {{ $item->name_ar }}
                                                     @endif
                                                 </td>
-                                                <td class="pr-0 text-center">{{ $item->user->email }}</td>
+                                                <td class="pr-0 text-center">{{ @$item->user->email }}</td>
                                                 {{-- <td>{{ $item->commercial_registration_number }}</td> --}}
                                                 <td class="pr-0 text-center">{{ $item->mobile }}</td>
                                                 <td class="pr-0 text-center">{{ $item->branches->count() }}</td>

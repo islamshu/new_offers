@@ -107,7 +107,7 @@
                                                     <a
                                                         class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                                         <i
-                                                            class="flaticon2-new-email mr-2 font-size-lg"></i>{{$vendor->user->email}}</a>
+                                                            class="flaticon2-new-email mr-2 font-size-lg"></i>{{@$vendor->user->email}}</a>
                                                             <a
                                                             class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                                             <i

@@ -618,9 +618,9 @@
 
 
                             </div>
-                            {{-- </div> --}}
-                     
                            
+                     
+                
                        
                             <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                 <div class="mr-2">
@@ -629,8 +629,9 @@
                                         data-wizard-type="action-prev">{{ __('Previous') }}</button>
                                 </div>
                                 <div>
-                                    {{-- <button type="button" onclick="performStore()" class="btn btn-primary mr-2">Submit</button> --}}
-                                    <input type="button"  class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"  onclick="performStore()" value="{{ __('Submit') }}">
+                                    <button type="button"
+                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
+                                        onclick="performStore()" data-wizard-type="action-submit">{{ __('Submit') }}</button>
 
                                     <button type="button"
                                         class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
@@ -888,9 +889,9 @@
 
         });
     </script>
-    <script>
+    {{-- <script>
         var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
-    </script>
+    </script> --}}
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>
         var KTAppSettings = {
