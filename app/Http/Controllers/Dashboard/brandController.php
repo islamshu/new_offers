@@ -197,7 +197,8 @@ class brandController extends Controller
                         ->size(200)->errorCorrection('H')
                         ->generate((string)$codeinput);
                         $output_file =  time() . '.svg';
-                        $file =  Storage::disk('public')->put($output_file, $image);
+                        $file =  Storage::disk('local')->put($output_file, $image);
+                        
                         $vendor->qr_code = $codeinput;
                         $vendor->is_pincode = $request->pincode;
                         $vendor->qr_image = $output_file;
@@ -292,7 +293,7 @@ class brandController extends Controller
                     }
                 } catch (\Exception $e) {
                     DB::rollback();
-                    // dd($e);
+                    dd($e);
                     return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
                 }
             } elseif (Auth::user()->hasRole('Admin')) {
@@ -342,7 +343,7 @@ class brandController extends Controller
                         ->size(200)->errorCorrection('H')
                         ->generate((string)$codeinput);
                     $output_file =  time() . '.svg';
-                    $file =  Storage::disk('public')->put($output_file, $image);
+                    $file =  Storage::disk('local')->put($output_file, $image);
                     $vendor->qr_code =$codeinput;
                     $vendor->is_pincode = $request->pincode;
                     $vendor->qr_image = $output_file;
@@ -623,7 +624,7 @@ class brandController extends Controller
                                 ->size(200)->errorCorrection('H')
                                 ->generate((string)$codeinput);
                             $output_file =  time() . '.svg';
-                            $file =  Storage::disk('public')->put($output_file, $image);
+                            $file =  Storage::disk('local')->put($output_file, $image);
                             $vendor->qr_code = $codeinput;
                             $vendor->qr_image = $output_file;
                         }
@@ -749,7 +750,7 @@ class brandController extends Controller
                             ->size(200)->errorCorrection('H')
                             ->generate((string)$codeinput );
                         $output_file =  time() . '.svg';
-                        $file =  Storage::disk('public')->put($output_file, $image);
+                        $file =  Storage::disk('local')->put($output_file, $image);
                         $vendor->qr_code =$codeinput ;
                         $vendor->qr_image = $output_file;
                     }
