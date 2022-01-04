@@ -77,7 +77,7 @@
                                     <!--begin: Pic-->
                                     <div class="flex-shrink-0 mr-7 mt-lg-0 mt-3">
                                         <div class="symbol symbol-50 symbol-lg-120">
-                                            <img src="{{URL::asset('/storage/'.$vendor->qr_image)}}" width="200" height="200" alt="image" />
+                                            <img src="{{URL::asset('/uploads/'.$vendor->qr_image)}}" width="200" height="200" alt="image" />
                                         </div>
                                         <div class="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
                                             <span class="font-size-h3 symbol-label font-weight-boldest">JM</span>
