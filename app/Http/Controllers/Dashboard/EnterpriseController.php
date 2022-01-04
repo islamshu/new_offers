@@ -27,6 +27,7 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
+        // return phpinfo();
 
         if(Auth::user()->hasRole('Admin')){
             $enterprise = Enterprise::paginate(10);

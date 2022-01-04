@@ -16,7 +16,7 @@
                         <th>{{ __('last Login Date') }}</th>
                         <th>{{ __('last Action Date') }}</th>
                         <th>{{ __('Type of Subscribe') }}</th>
-                        <th>{{ __('Action') }}</th>
+                        {{-- <th>{{ __('Action') }}</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@
                         <td>{{  date('d-m-Y', strtotime($item->last_login)) }}</td>
                         <td>{{ __('last Action Date') }}</td>
                         <th>{{ $item->type_of_subscribe }}</th>
-                        <td class="pr-0 text-left">
+                        {{-- <td class="pr-0 text-left">
 
 
 
@@ -39,7 +39,7 @@
 
 
 
-                        </td>
+                        </td> --}}
                         </tr>
                     @endforeach
 
