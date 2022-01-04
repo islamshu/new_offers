@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller as Controller;
 class BaseController extends Controller  
 {
 
-    public function sendResponse($status){
+    public function sendResponse($status){   
         $response = ['status' => true ,'HTTP_code'=>'201','HTTP_response'=>$status];
         return $response;    }
 
