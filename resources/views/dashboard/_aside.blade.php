@@ -483,7 +483,7 @@ $lang = app()->getLocale();
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
-            <span class="menu-text">{{ __('Prmotion') }}</span>
+            <span class="menu-text">{{ __('premotion') }}</span>
             <i class="menu-arrow"></i>
         </a>
      
