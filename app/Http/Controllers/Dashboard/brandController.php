@@ -188,12 +188,18 @@ class brandController extends Controller
                         $vendor->address = $request->address;
                         $vendor->vat = $request->vat;
                         $vendor->vat_type = $request->vat_type;
+                        $codeinput = '';
+                        if($request->codeinput == null){
+                            $codeinput = rand(0, 999);
+                        }else{
+                            $codeinput =   $request->codeinput;
+                        }
                         $image = QrCode::format('png')
                         ->size(200)->errorCorrection('H')
-                        ->generate((string)$request->codeinput);
+                        ->generate((string)$codeinput);
                         $output_file =  time() . '.png';
                         $file =  Storage::disk('public')->put($output_file, $image);
-                        $vendor->qr_code = $request->codeinput;
+                        $vendor->qr_code = $codeinput;
                         $vendor->is_pincode = $request->pincode;
                         $vendor->qr_image = $output_file;
                         $vendor->customer_use = $request->customer_use;
@@ -287,6 +293,7 @@ class brandController extends Controller
                     }
                 } catch (\Exception $e) {
                     DB::rollback();
+                    // dd($e);
                     return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
                 }
             } elseif (Auth::user()->hasRole('Admin')) {
@@ -325,13 +332,19 @@ class brandController extends Controller
                         $image->move('images/brand', $imageName);
                         $vendor->image = $imageName;
                     }
+                    $codeinput='';
+                    if($request->codeinput == null){
+                        $codeinput = rand(0, 999);
+                    }else{
+                        $codeinput =   $request->codeinput;
+                    }
                   
                     $image = QrCode::format('png')
                         ->size(200)->errorCorrection('H')
-                        ->generate((string)$request->codeinput);
+                        ->generate((string)$codeinput);
                     $output_file =  time() . '.png';
                     $file =  Storage::disk('public')->put($output_file, $image);
-                    $vendor->qr_code = $request->codeinput;
+                    $vendor->qr_code =$codeinput;
                     $vendor->is_pincode = $request->pincode;
                     $vendor->qr_image = $output_file;
                     $vendor->customer_use = $request->customer_use;
@@ -600,13 +613,19 @@ class brandController extends Controller
                         $vendor->address = $request->address;
                         $vendor->vat = $request->vat;
                         $vendor->vat_type = $request->vat_type;
-                        if ($vendor->qr_code != $request->codeinput) {
+                        $codeinput='';
+                            if($request->codeinput == null){
+                                $codeinput = rand(0, 999);
+                            }else{
+                                $codeinput =   $request->codeinput;
+                            }
+                        if ($vendor->qr_code != $codeinput) {
                             $image = QrCode::format('png')
                                 ->size(200)->errorCorrection('H')
-                                ->generate((string)$request->codeinput);
+                                ->generate((string)$codeinput);
                             $output_file =  time() . '.png';
                             $file =  Storage::disk('public')->put($output_file, $image);
-                            $vendor->qr_code = $request->codeinput;
+                            $vendor->qr_code = $codeinput;
                             $vendor->qr_image = $output_file;
                         }
 
@@ -720,13 +739,19 @@ class brandController extends Controller
                     $vendor->telephoone = $request->telephoone;
                     $vendor->mobile = $request->mobile;
                     $vendor->address = $request->address;
-                    if ($vendor->qr_code != $request->codeinput) {
+                    $codeinput='';
+                    if($request->codeinput == null){
+                        $codeinput = rand(0, 999);
+                    }else{
+                        $codeinput =   $request->codeinput;
+                    }
+                    if ($vendor->qr_code != $codeinput ) {
                         $image = QrCode::format('png')
                             ->size(200)->errorCorrection('H')
-                            ->generate((string)$request->codeinput);
+                            ->generate((string)$codeinput );
                         $output_file =  time() . '.png';
                         $file =  Storage::disk('public')->put($output_file, $image);
-                        $vendor->qr_code = $request->codeinput;
+                        $vendor->qr_code =$codeinput ;
                         $vendor->qr_image = $output_file;
                     }
 
