@@ -40,20 +40,23 @@
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Brands
                             Info</a>
                         @endif
-                        @if(Auth::user()->hasRole('Enterprises'))
-                        <a href="{{route('vendor.index', ['locale'=>app()->getLocale()])}}"
-                            class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Brands
-                            Info</a>
-                        @endif
+                        <a href="{{route('enterprise.edit', ['enterprise'=>$enterprise->id,'locale'=>app()->getLocale()])}}"
+                            class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Edit Profile
+                            </a>
+                            @endif
+                            <a href="{{route('currency.index', ['locale'=>app()->getLocale()])}}"
+                                class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Currency
+                                </a>
                         <a href="{{route('country.index', ['locale'=>app()->getLocale()])}}"
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Countries
-                        </a>
-                        <a href="#"
+                            </a>
+                        <a href="{{route('city.index', ['locale'=>app()->getLocale()])}}"
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Cities
-                        </a>
-                        <a href="#"
+                            </a>
+                            
+                        <a href="{{route('neighborhood.index', ['locale'=>app()->getLocale()])}}"
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Neighborhoods
-                        </a>
+                         </a>
 
                         <!--end::Nav-->
                     </div>

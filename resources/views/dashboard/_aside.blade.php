@@ -41,7 +41,7 @@ $lang = app()->getLocale();
         </li>
 
 
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
                     <i class="fa fa-bookmark" aria-hidden="true"></i>
@@ -63,7 +63,7 @@ $lang = app()->getLocale();
 
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
 
 
