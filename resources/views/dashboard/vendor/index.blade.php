@@ -38,9 +38,9 @@
                                             <tr class="fw-bold fs-6 text-gray-800">
                                                 <th class="pr-0 text-center">{{ __('image') }}</th>
                                                 <th class="pr-0 text-center">{{ __('name') }}</th>
-                                                <th class="pr-0 text-center">{{ __('Email') }}</th>
+                                                {{-- <th class="pr-0 text-center">{{ __('Email') }}</th> --}}
                                                 {{-- <th>{{ __('commercial_registration_number') }}</th> --}}
-                                                <th class="pr-0 text-center">{{ __('Phone') }}</th>
+                                                {{-- <th class="pr-0 text-center">{{ __('Phone') }}</th> --}}
                                                 <th class="pr-0 text-center">{{ __('Branch number') }}</th>
                                                 <th class="pr-0 text-center">{{ __('Category') }}</th>
                                                 <th class="pr-0 text-center">{{ __('Created at') }}</th>
@@ -62,9 +62,9 @@
                                                         {{ $item->name_ar }}
                                                     @endif
                                                 </td>
-                                                <td class="pr-0 text-center">{{ @$item->user->email }}</td>
+                                                {{-- <td class="pr-0 text-center">{{ @$item->user->email }}</td> --}}
                                                 {{-- <td>{{ $item->commercial_registration_number }}</td> --}}
-                                                <td class="pr-0 text-center">{{ $item->mobile }}</td>
+                                                {{-- <td class="pr-0 text-center">{{ $item->mobile }}</td> --}}
                                                 <td class="pr-0 text-center">{{ $item->branches->count() }}</td>
                                                 <td class="pr-0 text-center"><button data-toggle="modal"
                                                         data-target="#myModal" class="btn btn-outline-primary"
