@@ -13,6 +13,7 @@ use App\Http\Resources\CityCollection;
 use App\Http\Resources\HomeSLiderCollection;
 use App\Http\Resources\SliderCollection;
 use App\Http\Resources\StoresCollection;
+use App\Http\Resources\SupportResourses;
 use App\Http\Resources\VendorBranchesNewCollection;
 use App\Http\Resources\VendorDetiesResourses;
 use App\Http\Resources\VendorForOfferCollection;
@@ -23,10 +24,13 @@ use App\Http\Resources\VendorReviewResourses;
 use App\Http\Resources\VendorReviewsNewCollection;
 use App\Models\Branch;
 use App\Models\City;
+use App\Models\ContactUs;
 use App\Models\Enterprise;
 use App\Models\Homeslider;
 use App\Models\Offer;
 use App\Models\Slider;
+use App\Models\Support;
+use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorReview;
 
@@ -173,6 +177,59 @@ class HomeController extends BaseController
 
         
 
+    }
+    public function get_support(Request $request){
+      $suport = Support::where('user_id',auth()->id())->get();
+      $res['status']= $this->sendResponse('OK'); 
+      $res['data']=SupportResourses::collection($suport) ;
+      return $res;
+    }
+    public function post_support(Request $request){
+      $suport = new Support();
+      $suport->user_id = auth()->id();
+      $suport->title = $request->title;
+      $suport->message = $request->message;
+      $suport->type = $request->type;
+      $suport->save();
+      $res['status']= $this->sendResponse('OK'); 
+      $res['data']=[
+        ''=>''
+      ];
+      return $res;
+    }
+    public function contact_us(Request $request){
+      $contact = new ContactUs();
+      if($request->city_id == 'null'){
+        $contact->city_id = null;
+      }else{
+        $contact->city_id =$request->city_id;
+      }
+      if($request->country_id == 'null'){
+        $contact->country_id = null;
+      }else{
+        $contact->country_id =$request->country_id;
+      }
+      $contact->first_name = $request->first_name;
+      $contact->last_name = $request->last_name;
+      $contact->message = $request->message;
+      // dd($contact);
+      $contact->save();
+      $res['status']= $this->sendResponse('OK'); 
+      $res['data']=[
+        ''=>''
+      ];
+      return $res;
+    }
+    public function profile(){
+      $user = User::find(auth()->id());
+      $res['status']= $this->sendResponse('OK'); 
+      $res['data']=[
+        'name'=>$user->name,
+        'email'=>$user->email,
+        'phone'=>$user->phone,
+        'last_login'=>$user->last_login
+      ];
+      return $res;
     }
    
 }

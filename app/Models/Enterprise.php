@@ -24,8 +24,9 @@ class Enterprise extends Model
     {
         return $this->belongsToMany(Category::class, 'categories_enterprise', 'enterprise_id', 'category_id');
     }
-    public function country()
+  
+    public function counteire()
     {
-        return $this->belongsToMany(Role::class, 'enterprise_countries', 'enterprise_id', 'country_id');
+        return $this->belongsToMany(Country::class,'enterprise_countries','enterprise_id',  'country_id',);
     }
 }

@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white"
 			id="kt_login">
 			<!--begin::Aside-->
-			<div class="login-aside d-flex flex-column flex-row-auto" style="/* background-color: #F2C98A; */background-image: url(/media/login.png);">				<!--begin::Aside Top-->
+			<div class="login-aside d-flex flex-column flex-row-auto" style="/* background-color: #F2C98A; */background-image: url(/media/login.png);background-size: 489px">				<!--begin::Aside Top-->
 				<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
 					<!--begin::Aside header-->
 					<a href="#" class="text-center mb-10">
@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<!--end::Aside Top-->
 				<!--begin::Aside Bottom-->
 				<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center"
-					style="background-image: url(assets/media/login.png)"></div>
+					style="background-image: url(assets/media/login.png) ; background-size: 489px;"></div>
 				<!--end::Aside Bottom-->
 			</div>
 			<!--begin::Aside-->

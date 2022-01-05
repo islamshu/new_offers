@@ -27,7 +27,7 @@ class FavoritOfferResourses extends JsonResource
             'type'=>@$this->offer->offer_type,
             'image'=>asset('images/brand/'.@$this->offer->image),
             'membership_type'=>@$this->offer->member_type,
-            'offet_id'=>@$this->offer->vendor_id,
+            'offer_id'=>@$this->offer->vendor_id,
             'offer'=> new VendorResourses(@$this->offer->vendor)  ,
             'is_favorite'=>1,
         ];

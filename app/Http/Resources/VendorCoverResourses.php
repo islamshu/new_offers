@@ -18,7 +18,20 @@ class VendorCoverResourses extends JsonResource
             'id'=>$this->id,
             'store_id'=>$this->vendor_id,
             'cover'=>asset('images/vendor_cover/'.$this->image),
-
+            'name'=>$this->lang_name($this),
         ];
+    }
+    public function lang_name($data)
+    {
+        $lang = request()->header('lang');
+        if ($lang != null) {
+            if ($lang  == 'ar') {
+                return $data->name_ar;
+            } else {
+                return $data->name_en;
+            }
+        } else {
+            return $data->name_en;
+        }
     }
 }
