@@ -69,8 +69,8 @@ class NeighborhoodController extends Controller
         $vendors = Vendor::all();
         foreach ($vendors as $vendor) {
             $citiesVendor = new Vendor_neighborhood();
-            $citiesVendor->vendor_id = $vendor->vendor_id;
-            $citiesVendor->neighborhood_id = $new_neighborhood->neighborhood_id;
+            $citiesVendor->vendor_id = $vendor->id;
+            $citiesVendor->neighborhood_id = $new_neighborhood->id;
             // $citiesVendor->status = 'deactive';
 
             $citiesVendor->save();
@@ -82,7 +82,7 @@ class NeighborhoodController extends Controller
             $citiesVendor->enterprise_id = $Enterprise->id;
             // $citiesVendor->status = 'deactive';
 
-            $citiesVendor->neighborhood_id = $new_neighborhood->neighborhood_id;
+            $citiesVendor->neighborhood_id = $new_neighborhood->id;
             $citiesVendor->save();
         }
         if ($isSaved) {

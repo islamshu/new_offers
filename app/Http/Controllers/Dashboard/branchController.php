@@ -101,7 +101,7 @@ class branchController extends Controller
     public function vendorNeighborhoodAjax(Request $request)
     {
        
-       $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
+    //    $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
     
         $neighborhood = Vendor_neighborhood::where('vendor_id', $request->vendor_id)->with('neighborhood')->get();
         return response()->json($neighborhood);

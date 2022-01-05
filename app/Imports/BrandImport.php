@@ -27,27 +27,17 @@ class BrandImport implements ToModel, WithHeadingRow
         $vendor->commercial_registration_number = $row['commercial_registration_number'];
         $vendor->telephoone = $row['telephoone'];
         $vendor->mobile = $row['mobile'];
-        $vendor->address = $row['address'];
+        // $vendor->address = $row['address'];
         $vendor->status = $row['status'];
         $vendor->vat_type = $row['vat_type'];
         $vendor->vat = $row['vat'];
-
-        $vendor->image = $row['image'];
-        $vendor->cover_image = $row['cover_image'];
+        $vendor->vat_no = $row['vat_no'];
+        // $vendor->image = $row['image'];
+        // $vendor->cover_image = $row['cover_image'];
         $vendor->vat =Auth::user()->ent_id;
         $vendor->save();
         $vendor->categorys()->sync(json_decode($row['cateogry_id'],false));
 
-        $user = new User();
-        $user->username =$vendor->name_en;
-        $user->password =  bcrypt($row['password']);
-        $user->email = $row['email'];
-        $user->last_ip = '';
-        $user->last_login = now();
-        $user->name = $vendor->name_en;
-        $user->vendor_id =$vendor->id;
-        $user->ent_id =Auth::user()->ent_id;
-        $user->save();
         
 
         //Assign Vendor Role To New User
