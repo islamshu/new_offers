@@ -10,7 +10,7 @@ class City extends Model
     use HasFactory;
     
     public function country(){
-        return $this->belongsTo(country::class);
+        return $this->belongsTo(Country::class);
     }
     public function enterprise_city(){
         return $this->hasMany(enterprise_city::class,'city_id');

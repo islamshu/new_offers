@@ -51,15 +51,15 @@
                                     <i class="icon-pencil"></i>
                                 </label>
                             </div>
-                     
                             <select class="custom-select" id="country_id" name="country_id"
                                 @if($errors->has('country_id'))
                                 style="border: 1px solid red"
                                 @endif
                                 >
                                 <option value="">{{__('Choose_Country')}}...</option>
+
                                 @foreach($countries as $one_country)
-                                <option data-code="{{$one_country->first()->alph2code}}" value="{{$one_country->first()->id}}">
+                                <option data-code="{{$one_country->alph2code}}" value="{{$one_country->id}}">
                                     @if(app()->getLocale() == "en")
                                     {{$one_country->country_name_en}}
                                     @elseif(app()->getLocale() == "ar")
@@ -134,7 +134,6 @@
 
         $('#country_id').on('change', function () {
             var country_id = $(this).val();
-            alert(country_id);
             $.ajax({
                 url: "{{route('get_cites_by_country.ajax', 'ar')}}",
                 type: "GET",

@@ -54,7 +54,7 @@
                             </div>
                             <span class="svg-icon svg-icon-xl wizard-arrow">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <polygon points="0 0 24 0 24 24 0 24" />
@@ -66,11 +66,11 @@
                                             fill="#000000" fill-rule="nonzero"
                                             transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
                                     </g>
-                                </svg>
+                                </svg> --}}
                                 <!--end::Svg Icon-->
                             </span>
                         </div>
-                  
+
                     </div>
                 </div>
                 <!--end::Wizard Nav-->
@@ -79,7 +79,7 @@
                     <div class="col-xl-12 col-xxl-12">
                         <!--begin::Wizard Form-->
                         {{-- <form class="form" id="kt_form"> --}}
-                            <form class="form" method="post" id='kt_form' enctype="multipart/form-data">
+                        <form class="form" method="post" id='kt_form' enctype="multipart/form-data">
 
                             <!--begin::Wizard Step 1-->
                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -105,72 +105,80 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if(auth()->user()->hasRole('Admin'))
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        
-                                        <div class="form-group">
-                                            <label>{{ __('offer type') }}</label>
-                                            <select required class="form-control form-control-solid form-control-lg" id="offer_type"
-                                                name="offer_type">
-                                                <option value="" selected disabled>{{ __('choose type') }}</option>
-                                                <option value="enterprice">{{ __('Enterprice') }}</option>
-                                                <option value="brand">{{ __('brand') }}</option>
+                                @if (auth()->user()->hasRole('Admin'))
+                                    <div class="row">
+                                        <div class="col-xl-6">
+
+                                            <div class="form-group">
+                                                <label>{{ __('offer type') }}</label>
+                                                <select required class="form-control form-control-solid form-control-lg"
+                                                    id="offer_type" name="offer_type">
+                                                    <option value="" selected disabled>{{ __('choose type') }}</option>
+                                                    <option value="enterprice">{{ __('Enterprice') }}</option>
+                                                    <option value="brand">{{ __('brand') }}</option>
+                                                </select>
+                                            </div>
+                                            <!--end::Input-->
+                                        </div>
+                                        <div class="col-xl-6 enterprice " id="enterprice" style="display: none">
+                                            <!--begin::Input-->
+                                            <div class="form-group ">
+                                                <label>{{ __('Enterprice') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="enterprises_id" required name="enterprises_id">
+                                                    <option value="" selected disabled>{{ __('choose enterprises') }}
+                                                    </option>
+                                                    @foreach ($enterprise as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name_en }}
+                                                        </option>
+
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                            <!--end::Input-->
+                                        </div>
+
+                                        <div class="form-group col-md-6" id="brand_ajax" style="display: none">
+                                            <label>{{ __('brand') }}:</label>
+                                            <select class="city custom-select " id="vendor_id" name="vendor_id">
+                                                <option value="0" disabled="true" selected="true">{{ __('Brand name') }}
+                                                </option>
                                             </select>
                                         </div>
-                                        <!--end::Input-->
+
                                     </div>
-                                    <div class="col-xl-6 enterprice " id="enterprice" style="display: none">
-                                        <!--begin::Input-->
-                                        <div class="form-group ">
-                                            <label>{{ __('Enterprice') }}</label>
-                                            <select class="form-control form-control-solid form-control-lg"
-                                                id="enterprises_id" required name="enterprises_id">
-                                                <option value="" selected disabled>{{ __('choose enterprises') }}</option>
-                                                @foreach ($enterprise as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name_en }}</option>
-
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                        <!--end::Input-->
-                                    </div>
-
-                                    <div class="form-group col-md-6" id="brand_ajax" style="display: none">
-                                        <label>{{ __('brand') }}:</label>
-                                        <select class="city custom-select " id="vendor_id"  name="vendor_id">
-                                            <option value="0" disabled="true" selected="true">{{ __('Brand name') }}</option>
-                                        </select>
-                                    </div>
-
-                                </div>
                                 @endif
-                               
-                           <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>{{ __('Desc ar') }}</label>
-                                    
-                                        <textarea class="form-control" required name="desc_ar" id="desc_ar" cols="5" rows="5"></textarea>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>{{ __('Desc en') }}</label>
-                                   
-                                        <textarea class="form-control" name="desc_en" id="desc_en" cols="5" rows="5"></textarea>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>{{ __('Terms ar') }}</label>
-                                    
-                                        <textarea class="form-control" name="terms_ar" id="terms_ar" cols="5" rows="5"></textarea>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>{{ __('Terms en') }}</label>
-                                   
-                                        <textarea class="form-control" name="terms_en" id="terms_en" cols="5" rows="5"></textarea>
-                                </div>
-                            </div>
+
                                 <div class="row">
-                                    
+                                    <div class="form-group col-md-6">
+                                        <label>{{ __('Desc ar') }}</label>
+
+                                        <textarea class="form-control" required name="desc_ar" id="desc_ar" cols="5"
+                                            rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>{{ __('Desc en') }}</label>
+
+                                        <textarea class="form-control" name="desc_en" id="desc_en" cols="5"
+                                            rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>{{ __('Terms ar') }}</label>
+
+                                        <textarea class="form-control" name="terms_ar" id="terms_ar" cols="5"
+                                            rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>{{ __('Terms en') }}</label>
+
+                                        <textarea class="form-control" name="terms_en" id="terms_en" cols="5"
+                                            rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-xl-6">
                                         <!--begin::Input-->
                                         <div class="form-group">
@@ -226,14 +234,14 @@
                                     </div>
                                 </div>
                                 <!--end::Input-->
-                               
+
                                 <div class="row">
-                                   
-                                
+
+
 
                                     <div class="col-xl-6 usage_number_system" style="display: none">
                                         <!--begin::Input-->
-                                        <div class="form-group " >
+                                        <div class="form-group ">
                                             <label>{{ __('Usage number system') }}</label>
                                             <input type="number" class="form-control form-control-solid form-control-lg"
                                                 id="usage_number_system" name="usage_number_system"
@@ -258,8 +266,7 @@
                                     <div class="col-md-6 price_offer " style="display: none">
                                         <label>{{ __('Price') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="price" name="price"
-                                            placeholder="Price after discount" />
+                                            id="price" name="price" placeholder="Price after discount" />
                                     </div>
                                     <div class="col-md-6 price_befor_discount" style="display: none">
                                         <label>{{ __('Price befor discount') }}</label>
@@ -267,23 +274,22 @@
                                             id="price_befor_discount" name="price_befor_discount"
                                             placeholder="Price befor discount" />
                                     </div>
-                                    <div class="col-md-6 discont_value" style="display: none" >
+                                    <div class="col-md-6 discont_value" style="display: none">
                                         <label>{{ __('Discount value') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="discount_value" name="discount_value"
-                                            placeholder="Discount value" />
+                                            id="discount_value" name="discount_value" placeholder="Discount value" />
                                     </div>
-                                    <div class="col-md-6 discont_value" style="display: none" >
+                                    <div class="col-md-6 discont_value" style="display: none">
                                         <label>{{ __('Discount Type') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="discount_type" id="discount_type">
-                                                <option value="" selected disabled>{{ __('choese') }}</option>
-                                                <option value="value">{{ __('value') }}</option>
-                                                <option value="persantage">{{ __('persantage') }}</option>
-                                            </select>
+                                        <select name="delivery" class="form-control form-control-solid form-control-lg"
+                                            name="discount_type" id="discount_type">
+                                            <option value="" selected disabled>{{ __('choese') }}</option>
+                                            <option value="value">{{ __('value') }}</option>
+                                            <option value="persantage">{{ __('persantage') }}</option>
+                                        </select>
                                     </div>
                                 </div>
-                                    
+
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
@@ -294,19 +300,24 @@
 
                                             <div class="image-input-wrapper" style="background-image: url()"></div>
 
-                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                            <label
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                data-action="change" data-toggle="tooltip" title=""
+                                                data-original-title="Change avatar">
                                                 <i class="fa fa-pen icon-sm text-muted"></i>
-                                                <input type="file" name="primary_image" id="primary_image" accept=".png, .jpg, .jpeg" />
+                                                <input type="file" name="primary_image" id="primary_image"
+                                                    accept=".png, .jpg, .jpeg" />
                                                 <input type="hidden" name="primary_image" id="primary_image" />
                                             </label>
-                    
-                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+
+                                            <span
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                 data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
                                                 <i class="ki ki-bold-close icon-xs text-muted"></i>
                                             </span>
-                    
-                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+
+                                            <span
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                 data-action="remove" data-toggle="tooltip" title="Remove avatar">
                                                 <i class="ki ki-bold-close icon-xs text-muted"></i>
                                             </span>
@@ -321,19 +332,24 @@
 
                                             <div class="image-input-wrapper" style="background-image: url()"></div>
 
-                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                            <label
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                data-action="change" data-toggle="tooltip" title=""
+                                                data-original-title="Change avatar">
                                                 <i class="fa fa-pen icon-sm text-muted"></i>
-                                                <input type="file" multiple name="image[]" id="image" accept=".png, .jpg, .jpeg" />
+                                                <input type="file" multiple name="image[]" id="image"
+                                                    accept=".png, .jpg, .jpeg" />
                                                 <input type="hidden" name="image" id="image" />
                                             </label>
-                    
-                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+
+                                            <span
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                 data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
                                                 <i class="ki ki-bold-close icon-xs text-muted"></i>
                                             </span>
-                    
-                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+
+                                            <span
+                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                 data-action="remove" data-toggle="tooltip" title="Remove avatar">
                                                 <i class="ki ki-bold-close icon-xs text-muted"></i>
                                             </span>
@@ -351,27 +367,27 @@
                                 <div class="row">
 
 
-                                   
+
                                 </div>
                                 <!--end::Input-->
                                 <!--begin::Input-->
-                              
+
                                 <div class="form-group">
                                     <label>{{ __('Sort') }}</label>
-                                    <input type="number" class="form-control form-control-solid form-control-lg"
-                                        name="sort" id="sort" placeholder="sort"  />
+                                    <input type="number" class="form-control form-control-solid form-control-lg" name="sort"
+                                        id="sort" placeholder="sort" />
                                 </div>
                                 <div class="form-group">
                                     <label>{{ __('Start time') }}</label>
                                     <input type="datetime-local" class="form-control form-control-solid form-control-lg"
-                                        name="start_time" id="start_time" placeholder="start_time"  />
+                                        name="start_time" id="start_time" placeholder="start_time" />
                                 </div>
                                 <!--end::Input-->
                                 <!--begin::Input-->
                                 <div class="form-group">
                                     <label>{{ __('End time') }}</label>
-                                    <input type="datetime-local"" class="form-control form-control-solid form-control-lg"
-                                        name="end_time" id="end_time" placeholder="end_time"  />
+                                    <input type="datetime-local"" class=" form-control form-control-solid form-control-lg"
+                                        name="end_time" id="end_time" placeholder="end_time" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -395,7 +411,7 @@
                                 </div>
 
                                 <div class="row">
-                                   
+
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>{{ __('Exchange points') }}</label>
@@ -408,7 +424,7 @@
 
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-6 ponitex" style="display: none">
 
                                         <label>{{ __('points') }}</label>
@@ -442,7 +458,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 exchange_cash_number"  style="display: none" >
+                                    <div class="col-md-6 exchange_cash_number" style="display: none">
                                         <label>{{ __('Exchange cash number') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
                                             id="exchange_cash_number" name="exchange_cash_number"
@@ -462,9 +478,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
 
-                                
+
+
                                 </div>
 
 
@@ -497,7 +513,7 @@
                                         <input type="number" class="form-control form-control-solid form-control-lg"
                                             id="datatime_number" name="datatime_number" placeholder="Usage member number" />
                                     </div>
-                                
+
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>{{ __('specific days') }}</label>
@@ -515,98 +531,84 @@
                                     <div class="col-md-6">
                                         <label>{{ __('time form') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_0" name="from_0"
-                                            placeholder="time form" />
+                                            id="from_0" name="from_0" placeholder="time form" />
                                     </div>
                                     <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
+                                        <label>{{ __('time to') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_0" name="to_0"
-                                            placeholder="time to" />
-                                    </div>
-                                </div>   
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_1" name="from_1"
-                                            placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_1" name="to_1"
-                                            placeholder="time to" />
+                                            id="to_0" name="to_0" placeholder="time to" />
                                     </div>
                                 </div>
                                 <div class="row specific_days" style="display: none">
                                     <div class="col-md-6">
                                         <label>{{ __('time form') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_2" name="from_2"
-                                            placeholder="time form" />
+                                            id="from_1" name="from_1" placeholder="time form" />
                                     </div>
                                     <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
+                                        <label>{{ __('time to') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_2" name="to_2"
-                                            placeholder="time to" />
+                                            id="to_1" name="to_1" placeholder="time to" />
                                     </div>
                                 </div>
                                 <div class="row specific_days" style="display: none">
                                     <div class="col-md-6">
                                         <label>{{ __('time form') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_3" name="from_3"
-                                            placeholder="time form" />
+                                            id="from_2" name="from_2" placeholder="time form" />
                                     </div>
                                     <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
+                                        <label>{{ __('time to') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_3" name="to_3"
-                                            placeholder="time to" />
-                                    </div>
-                                </div>   
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_4" name="from_4"
-                                            placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_4" name="to_4"
-                                            placeholder="time to" />
+                                            id="to_2" name="to_2" placeholder="time to" />
                                     </div>
                                 </div>
                                 <div class="row specific_days" style="display: none">
                                     <div class="col-md-6">
                                         <label>{{ __('time form') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_5" name="from_5"
-                                            placeholder="time form" />
+                                            id="from_3" name="from_3" placeholder="time form" />
                                     </div>
                                     <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
+                                        <label>{{ __('time to') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_5" name="to_5"
-                                            placeholder="time to" />
+                                            id="to_3" name="to_3" placeholder="time to" />
                                     </div>
                                 </div>
                                 <div class="row specific_days" style="display: none">
                                     <div class="col-md-6">
                                         <label>{{ __('time form') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_6" name="from_6"
-                                            placeholder="time form" />
+                                            id="from_4" name="from_4" placeholder="time form" />
                                     </div>
                                     <div class="col-md-6">
-                                       <label>{{ __('time to') }}</label>
+                                        <label>{{ __('time to') }}</label>
                                         <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_6" name="to_6"
-                                            placeholder="time to" />
+                                            id="to_4" name="to_4" placeholder="time to" />
+                                    </div>
+                                </div>
+                                <div class="row specific_days" style="display: none">
+                                    <div class="col-md-6">
+                                        <label>{{ __('time form') }}</label>
+                                        <input type="time" class="form-control form-control-solid form-control-lg"
+                                            id="from_5" name="from_5" placeholder="time form" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ __('time to') }}</label>
+                                        <input type="time" class="form-control form-control-solid form-control-lg"
+                                            id="to_5" name="to_5" placeholder="time to" />
+                                    </div>
+                                </div>
+                                <div class="row specific_days" style="display: none">
+                                    <div class="col-md-6">
+                                        <label>{{ __('time form') }}</label>
+                                        <input type="time" class="form-control form-control-solid form-control-lg"
+                                            id="from_6" name="from_6" placeholder="time form" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ __('time to') }}</label>
+                                        <input type="time" class="form-control form-control-solid form-control-lg"
+                                            id="to_6" name="to_6" placeholder="time to" />
                                     </div>
                                 </div>
 
@@ -618,10 +620,10 @@
 
 
                             </div>
-                           
-                     
-                
-                       
+
+
+
+
                             <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                 <div class="mr-2">
                                     <button type="button"
@@ -631,7 +633,8 @@
                                 <div>
                                     <button type="button"
                                         class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                        onclick="performStore()" data-wizard-type="action-submit">{{ __('Submit') }}</button>
+                                        onclick="performStore()"
+                                        data-wizard-type="action-submit">{{ __('Submit') }}</button>
 
                                     <button type="button"
                                         class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
@@ -653,245 +656,83 @@
 @section('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('js/pages/custom/wizard/wizard-1.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-<script src="{{asset('crudjs/crud.js')}}"></script>
-<script>
-    var avatar4 = new KTImageInput('kt_image_4');
+<script src="{{ asset('crudjs/crud.js') }}"></script>
 
-    avatar4.on('cancel', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully canceled !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar4.on('change', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully changed !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar4.on('remove', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully removed !',
-            type: 'error',
-            buttonsStyling: false,
-            confirmButtonText: 'Got it!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-</script>
-
-<script>
-    var avatar4 = new KTImageInput('kt_image');
-
-    avatar4.on('cancel', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully canceled !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar4.on('change', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully changed !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar4.on('remove', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully removed !',
-            type: 'error',
-            buttonsStyling: false,
-            confirmButtonText: 'Got it!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-</script>
 
     <script>
-        $('#systemCoupon_use').on('change', function() {
-            let val = this.value;
-            if (val == 'active') { 
-                $('.count_systemCoupon_use').css("display", "block")
+        var avatar4 = new KTImageInput('kt_image_4');
 
-            }else{
-                $('.count_systemCoupon_use').css("display", "none")
-  
-            }
-        });
-        $('#specific_days').on('change', function() {
-            let val = this.value;
-            if (val == 'active') { 
-                $('.specific_days').css("display", "flex")
-
-            }else{
-                $('.specific_days').css("display", "none")
-  
-            }
-        });
-
-        
-        $('#datetime_use').on('change', function() {
-            let val = this.value;
-            if (val == 'active') { 
-                $('.datetime_use').css("display", "block")
-
-            }else{
-                $('.datetime_use').css("display", "none")
-  
-            }
-        });
-
-        
-        $('#exchange_cash').on('change', function() {
-            let val = this.value;
-            if (val == 'active') { 
-                $('.exchange_cash_number').css("display", "block")
-
-            }else{
-                $('.exchange_cash_number').css("display", "none")
-  
-            }
-        });
-
-        
-        $('#exchange_points').on('change', function() {
-            let val = this.value;
-            if (val == 'active') { 
-                $('.ponitex').css("display", "block")
-
-            }else{
-                $('.ponitex').css("display", "none")
-  
-            }
-        });
-        $('#usege_member').on('change', function() {
-            let val = this.value;
-            if (val == 'limit') { 
-                $('.usage_member_number').css("display", "block")
-
-            }else{
-                $('.usage_member_number').css("display", "none")
-  
-            }
-        });
-
-        
-        $('#usege_system').on('change', function() {
-            let val = this.value;
-            if (val == 'limit') { 
-                $('.usage_number_system').css("display", "block")
-
-            }else{
-                $('.usage_number_system').css("display", "none")
-  
-            }
-        });
-        $('#offer_type_2').on('change', function() {
-            let val = this.value;
-            // alert(val);
-            if (val == 'buyOneGetOne') { 
-                $('.price_offer').css("display", "block");
-                $('.price_befor_discount').css("display", "none");
-                $('.discont_value').css("display", "none");
-
-
-            }else if(val == 'special_discount'){
-                $('.price_offer').css("display", "block");
-                $('.price_befor_discount').css("display", "block");
-                $('.discont_value').css("display", "none");  
-            }else if(val == 'general_offer'){
-                $('.price_offer').css("display", "none");
-                $('.price_befor_discount').css("display", "none");
-                $('.discont_value').css("display", "block");  
-            }
-        });
-
-        
-
-        
-        $('#offer_type').on('change', function() {
-            let val = this.value;
-            if (val == 'enterprice') { 
-                enterprice
-                $('.enterprice').css("display", "block")
-                $('.brand_class').css("display", "none")
-
-            } else if (val == 'brand') {
-                $('.enterprice').css("display", "none")
-
-                $.ajax({
-                    type: "get",
-                    url: '{{ route('get_brands', app()->getLocale()) }}',
-                    data: {
-                        "enteprice_id": 'none'
-                    },
-                    success: function(data) {
-
-                        $('#brand_ajax').css("display", "block")
-
-                        $('#vendor_id').html(new Option('chose brand', '0'));
-                        for (var i = 0; i < data.length; i++) {
-                            $('#vendor_id').append(new Option(data[i].name_en,
-                                data[i].id));
-
-                        }
-                    }
-                });
-
-            }
-
-        });
-        $('#enterprises_id').on('change', function() {
-            let valenterprice = this.value;
-            $.ajax({
-                type: "get",
-                url: '{{ route('get_brands', app()->getLocale()) }}',
-                data: {
-                    "enteprice_id": valenterprice
-                },
-                success: function(data) {
-
-                    $('#brand_ajax').css("display", "block")
-
-                    $('#vendor_id').html(new Option('chose brand', '0'));
-                    for (var i = 0; i < data.length; i++) {
-                        $('#vendor_id').append(new Option(data[i].name_en,
-                            data[i].id));
-
-                    }
-                }
+        avatar4.on('cancel', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully canceled !',
+                type: 'success',
+                buttonsStyling: false,
+                confirmButtonText: 'Awesome!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
             });
+        });
 
+        avatar4.on('change', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully changed !',
+                type: 'success',
+                buttonsStyling: false,
+                confirmButtonText: 'Awesome!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
+            });
+        });
 
-
+        avatar4.on('remove', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully removed !',
+                type: 'error',
+                buttonsStyling: false,
+                confirmButtonText: 'Got it!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
+            });
         });
     </script>
-    {{-- <script>
-        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
-    </script> --}}
+
+    <script>
+        var avatar4 = new KTImageInput('kt_image');
+
+        avatar4.on('cancel', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully canceled !',
+                type: 'success',
+                buttonsStyling: false,
+                confirmButtonText: 'Awesome!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
+            });
+        });
+
+        avatar4.on('change', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully changed !',
+                type: 'success',
+                buttonsStyling: false,
+                confirmButtonText: 'Awesome!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
+            });
+        });
+
+        avatar4.on('remove', function(imageInput) {
+            swal.fire({
+                title: 'Image successfully removed !',
+                type: 'error',
+                buttonsStyling: false,
+                confirmButtonText: 'Got it!',
+                confirmButtonClass: 'btn btn-primary font-weight-bold'
+            });
+        });
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>
         var KTAppSettings = {
@@ -954,143 +795,363 @@
         };
     </script>
 
-<script>
-    function performStore() {
-        let formData = new FormData();
-        if (document.getElementById('enterprises_id') != null) {
-            formData.append('enterprises_id', document.getElementById('enterprises_id').value);
-        }
-        if (document.getElementById('offer_type') != null) {
-        formData.append('offer_type', document.getElementById('offer_type').value);
-          }
-          
-          formData.append('vendor_id', '{{ $vendor->id }}');
+    <script>
+        $('#systemCoupon_use').on('change', function() {
+            let val = this.value;
+            if (val == 'active') {
+                $('.count_systemCoupon_use').css("display", "block")
 
-        formData.append('name_ar', document.getElementById('name_ar').value);
-        formData.append('name_en', document.getElementById('name_en').value);
-        formData.append('desc_en', document.getElementById('desc_en').value);
-        formData.append('desc_ar', document.getElementById('desc_ar').value);
-        formData.append('terms_ar', document.getElementById('terms_ar').value);
-        formData.append('terms_en', document.getElementById('terms_en').value);
-        formData.append('member_type', document.getElementById('member_type').value);
-        formData.append('usege_member', document.getElementById('usege_member').value);
-        formData.append('usege_system', document.getElementById('usege_system').value);
-        // formData.append('usage_number_system', document.getElementById('usage_number_system').value);
-        formData.append('offer_type_2', document.getElementById('offer_type_2').value);
+            } else {
+                $('.count_systemCoupon_use').css("display", "none")
 
-        formData.append('specific_days', document.getElementById('specific_days').value);
-        if (document.getElementById('price') != null) {
-        formData.append('price', document.getElementById('price').value);
-          }
-          if (document.getElementById('usage_member_number') != null) {
-        formData.append('usage_member_number', document.getElementById('usage_member_number').value);
-          }
-          if (document.getElementById('discount_value') != null) {
-        formData.append('discount_value', document.getElementById('discount_value').value);
-          }
-          if (document.getElementById('discount_type') != null) {
-        formData.append('discount_type', document.getElementById('discount_type').value);
-          }
-          
-        //   if (document.getElementById('offer_type_2') != null) {
-        // formData.append('offer_type_2', document.getElementById('offer_type_2').value);
-        //   }
-        if (document.getElementById('from_0') != null) {
-        formData.append('from_0', document.getElementById('from_0').value);
-          }
-          
-        if (document.getElementById('usage_number_system') != null) {
-        formData.append('usage_number_system', document.getElementById('usage_number_system').value);
-          }
-          if (document.getElementById('to_0') != null) {
-        formData.append('to_0', document.getElementById('to_0').value);
-          }
-          if (document.getElementById('from_1') != null) {
-        formData.append('from_1', document.getElementById('from_1').value);
-          }
-          if (document.getElementById('to_1') != null) {
-        formData.append('to_1', document.getElementById('to_1').value);
-          }
-          if (document.getElementById('from_2') != null) {
-        formData.append('from_2', document.getElementById('from_2').value);
-          }
-          if (document.getElementById('to_2') != null) {
-        formData.append('to_2', document.getElementById('to_2').value);
-          }
-          if (document.getElementById('from_3') != null) {
-        formData.append('from_3', document.getElementById('from_3').value);
-          }
-          if (document.getElementById('to_3') != null) {
-        formData.append('to_3', document.getElementById('to_3').value);
-          }
-          if (document.getElementById('from_4') != null) {
-        formData.append('from_4', document.getElementById('from_4').value);
-          }
-          if (document.getElementById('to_4') != null) {
-        formData.append('to_4', document.getElementById('to_4').value);
-          }
-          if (document.getElementById('from_5') != null) {
-        formData.append('from_5', document.getElementById('from_5').value);
-          }
-          if (document.getElementById('to_5') != null) {
-        formData.append('to_5', document.getElementById('to_5').value);
-          }
-          if (document.getElementById('from_6') != null) {
-        formData.append('from_6', document.getElementById('from_6').value);
-          }
-          if (document.getElementById('to_6') != null) {
-        formData.append('to_6', document.getElementById('to_6').value);
-          }
+            }
+        });
+        $('#specific_days').on('change', function() {
+            let val = this.value;
+            if (val == 'active') {
+                $('.specific_days').css("display", "flex")
 
-        
-        formData.append('primary_image', document.getElementById('primary_image').files[0]);
+            } else {
+                $('.specific_days').css("display", "none")
 
-        let TotalImages = $('#image')[0].files.length; //Total Images
-        let images = $('#image')[0];
-        for (let i = 0; i < TotalImages; i++) {
-            formData.append('image' + i, images.files[i]);
-        }
-        formData.append('TotalImages', TotalImages);
-        formData.append('datetime_use', document.getElementById('datetime_use').value);
-        if (document.getElementById('datatime_use_type') != null) {
-        formData.append('datatime_use_type', document.getElementById('datatime_use_type').value);
-          }
-          if (document.getElementById('datatime_number') != null) {
-        formData.append('datatime_number', document.getElementById('datatime_number').value);
-          }
-        if (document.getElementById('points') != null) {
-        formData.append('points', document.getElementById('points').value);
-          }
-        formData.append('exchange_cash', document.getElementById('exchange_cash').value);
-        if (document.getElementById('count_systemCoupon_use') != null) {
-        formData.append('count_systemCoupon_use', document.getElementById('count_systemCoupon_use').value);
-          }
-          if (document.getElementById('exchange_points') != null) {
-        formData.append('exchange_points', document.getElementById('exchange_points').value);
-          }
-          if (document.getElementById('exchange_points_number') != null) {
-        formData.append('exchange_points_number', document.getElementById('exchange_points_number').value);
-          }
-          if (document.getElementById('exchange_cash_number') != null) {
-        formData.append('exchange_cash_number', document.getElementById('exchange_cash_number').value);
-          }
+            }
+        });
 
-        formData.append('payment_type', document.getElementById('payment_type').value);
-        formData.append('sort', document.getElementById('sort').value);
-        formData.append('start_time', document.getElementById('start_time').value);
-        formData.append('end_time', document.getElementById('end_time').value);
+
+        $('#datetime_use').on('change', function() {
+            let val = this.value;
+            if (val == 'active') {
+                $('.datetime_use').css("display", "block")
+
+            } else {
+                $('.datetime_use').css("display", "none")
+
+            }
+        });
+
+
+        $('#exchange_cash').on('change', function() {
+            let val = this.value;
+            if (val == 'active') {
+                $('.exchange_cash_number').css("display", "block")
+
+            } else {
+                $('.exchange_cash_number').css("display", "none")
+
+            }
+        });
+
+
+        $('#exchange_points').on('change', function() {
+            let val = this.value;
+            if (val == 'active') {
+                $('.ponitex').css("display", "block")
+
+            } else {
+                $('.ponitex').css("display", "none")
+
+            }
+        });
+        $('#usege_member').on('change', function() {
+            let val = this.value;
+            if (val == 'limit') {
+                $('.usage_member_number').css("display", "block")
+
+            } else {
+                $('.usage_member_number').css("display", "none")
+
+            }
+        });
+
+
+        $('#usege_system').on('change', function() {
+            let val = this.value;
+            if (val == 'limit') {
+                $('.usage_number_system').css("display", "block")
+
+            } else {
+                $('.usage_number_system').css("display", "none")
+
+            }
+        });
+        $('#offer_type_2').on('change', function() {
+            let val = this.value;
+            // alert(val);
+            if (val == 'buyOneGetOne') {
+                $('.price_offer').css("display", "block");
+                $('.price_befor_discount').css("display", "none");
+                $('.discont_value').css("display", "none");
+
+
+            } else if (val == 'special_discount') {
+                $('.price_offer').css("display", "block");
+                $('.price_befor_discount').css("display", "block");
+                $('.discont_value').css("display", "none");
+            } else if (val == 'general_offer') {
+                $('.price_offer').css("display", "none");
+                $('.price_befor_discount').css("display", "none");
+                $('.discont_value').css("display", "block");
+            }
+        });
 
 
 
-        
-        store("{{ route('offers.store', ['locale'=>app()->getLocale()]) }}", formData)
-    }
 
-</script>
+        $('#offer_type').on('change', function() {
+            let val = this.value;
+            if (val == 'enterprice') {
+                enterprice
+                $('.enterprice').css("display", "block")
+                $('.brand_class').css("display", "none")
+
+            } else if (val == 'brand') {
+                $('.enterprice').css("display", "none")
+
+                $.ajax({
+                    type: "get",
+                    url: '{{ route('get_brands', app()->getLocale()) }}',
+                    data: {
+                        "enteprice_id": 'none'
+                    },
+                    success: function(data) {
+
+                        $('#brand_ajax').css("display", "block")
+
+                        $('#vendor_id').html(new Option('chose brand', '0'));
+                        for (var i = 0; i < data.length; i++) {
+                            $('#vendor_id').append(new Option(data[i].name_en,
+                                data[i].id));
+
+                        }
+                    }
+                });
+
+            }
+
+        });
+        $('#enterprises_id').on('change', function() {
+            let valenterprice = this.value;
+            $.ajax({
+                type: "get",
+                url: '{{ route('get_brands', app()->getLocale()) }}',
+                data: {
+                    "enteprice_id": valenterprice
+                },
+                success: function(data) {
+
+                    $('#brand_ajax').css("display", "block")
+
+                    $('#vendor_id').html(new Option('chose brand', '0'));
+                    for (var i = 0; i < data.length; i++) {
+                        $('#vendor_id').append(new Option(data[i].name_en,
+                            data[i].id));
+
+                    }
+                }
+            });
+
+
+
+        });
+    </script>
+
+    <script>
+        var KTAppSettings = {
+            "breakpoints": {
+                "sm": 576,
+                "md": 768,
+                "lg": 992,
+                "xl": 1200,
+                "xxl": 1400
+            },
+            "colors": {
+                "theme": {
+                    "base": {
+                        "white": "#ffffff",
+                        "primary": "#3699FF",
+                        "secondary": "#E5EAEE",
+                        "success": "#1BC5BD",
+                        "info": "#8950FC",
+                        "warning": "#FFA800",
+                        "danger": "#F64E60",
+                        "light": "#E4E6EF",
+                        "dark": "#181C32"
+                    },
+                    "light": {
+                        "white": "#ffffff",
+                        "primary": "#E1F0FF",
+                        "secondary": "#EBEDF3",
+                        "success": "#C9F7F5",
+                        "info": "#EEE5FF",
+                        "warning": "#FFF4DE",
+                        "danger": "#FFE2E5",
+                        "light": "#F3F6F9",
+                        "dark": "#D6D6E0"
+                    },
+                    "inverse": {
+                        "white": "#ffffff",
+                        "primary": "#ffffff",
+                        "secondary": "#3F4254",
+                        "success": "#ffffff",
+                        "info": "#ffffff",
+                        "warning": "#ffffff",
+                        "danger": "#ffffff",
+                        "light": "#464E5F",
+                        "dark": "#ffffff"
+                    }
+                },
+                "gray": {
+                    "gray-100": "#F3F6F9",
+                    "gray-200": "#EBEDF3",
+                    "gray-300": "#E4E6EF",
+                    "gray-400": "#D1D3E0",
+                    "gray-500": "#B5B5C3",
+                    "gray-600": "#7E8299",
+                    "gray-700": "#5E6278",
+                    "gray-800": "#3F4254",
+                    "gray-900": "#181C32"
+                }
+            },
+            "font-family": "Poppins"
+        };
+    </script>
+
+   
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('js/scripts.bundle.js') }}"></script>
+    <script>
+        function performStore() {
+            let formData = new FormData();
+            if (document.getElementById('enterprises_id') != null) {
+                formData.append('enterprises_id', document.getElementById('enterprises_id').value);
+            }
+            if (document.getElementById('offer_type') != null) {
+                formData.append('offer_type', document.getElementById('offer_type').value);
+            }
+
+            formData.append('vendor_id', '{{ $vendor->id }}');
+
+            formData.append('name_ar', document.getElementById('name_ar').value);
+            formData.append('name_en', document.getElementById('name_en').value);
+            formData.append('desc_en', document.getElementById('desc_en').value);
+            formData.append('desc_ar', document.getElementById('desc_ar').value);
+            formData.append('terms_ar', document.getElementById('terms_ar').value);
+            formData.append('terms_en', document.getElementById('terms_en').value);
+            formData.append('member_type', document.getElementById('member_type').value);
+            formData.append('usege_member', document.getElementById('usege_member').value);
+            formData.append('usege_system', document.getElementById('usege_system').value);
+            // formData.append('usage_number_system', document.getElementById('usage_number_system').value);
+            formData.append('offer_type_2', document.getElementById('offer_type_2').value);
+
+            formData.append('specific_days', document.getElementById('specific_days').value);
+            if (document.getElementById('price') != null) {
+                formData.append('price', document.getElementById('price').value);
+            }
+            if (document.getElementById('usage_member_number') != null) {
+                formData.append('usage_member_number', document.getElementById('usage_member_number').value);
+            }
+            if (document.getElementById('discount_value') != null) {
+                formData.append('discount_value', document.getElementById('discount_value').value);
+            }
+            if (document.getElementById('discount_type') != null) {
+                formData.append('discount_type', document.getElementById('discount_type').value);
+            }
+
+            //   if (document.getElementById('offer_type_2') != null) {
+            // formData.append('offer_type_2', document.getElementById('offer_type_2').value);
+            //   }
+            if (document.getElementById('from_0') != null) {
+                formData.append('from_0', document.getElementById('from_0').value);
+            }
+
+            if (document.getElementById('usage_number_system') != null) {
+                formData.append('usage_number_system', document.getElementById('usage_number_system').value);
+            }
+            if (document.getElementById('to_0') != null) {
+                formData.append('to_0', document.getElementById('to_0').value);
+            }
+            if (document.getElementById('from_1') != null) {
+                formData.append('from_1', document.getElementById('from_1').value);
+            }
+            if (document.getElementById('to_1') != null) {
+                formData.append('to_1', document.getElementById('to_1').value);
+            }
+            if (document.getElementById('from_2') != null) {
+                formData.append('from_2', document.getElementById('from_2').value);
+            }
+            if (document.getElementById('to_2') != null) {
+                formData.append('to_2', document.getElementById('to_2').value);
+            }
+            if (document.getElementById('from_3') != null) {
+                formData.append('from_3', document.getElementById('from_3').value);
+            }
+            if (document.getElementById('to_3') != null) {
+                formData.append('to_3', document.getElementById('to_3').value);
+            }
+            if (document.getElementById('from_4') != null) {
+                formData.append('from_4', document.getElementById('from_4').value);
+            }
+            if (document.getElementById('to_4') != null) {
+                formData.append('to_4', document.getElementById('to_4').value);
+            }
+            if (document.getElementById('from_5') != null) {
+                formData.append('from_5', document.getElementById('from_5').value);
+            }
+            if (document.getElementById('to_5') != null) {
+                formData.append('to_5', document.getElementById('to_5').value);
+            }
+            if (document.getElementById('from_6') != null) {
+                formData.append('from_6', document.getElementById('from_6').value);
+            }
+            if (document.getElementById('to_6') != null) {
+                formData.append('to_6', document.getElementById('to_6').value);
+            }
+
+
+            formData.append('primary_image', document.getElementById('primary_image').files[0]);
+
+            let TotalImages = $('#image')[0].files.length; //Total Images
+            let images = $('#image')[0];
+            for (let i = 0; i < TotalImages; i++) {
+                formData.append('image' + i, images.files[i]);
+            }
+            formData.append('TotalImages', TotalImages);
+            formData.append('datetime_use', document.getElementById('datetime_use').value);
+            if (document.getElementById('datatime_use_type') != null) {
+                formData.append('datatime_use_type', document.getElementById('datatime_use_type').value);
+            }
+            if (document.getElementById('datatime_number') != null) {
+                formData.append('datatime_number', document.getElementById('datatime_number').value);
+            }
+            if (document.getElementById('points') != null) {
+                formData.append('points', document.getElementById('points').value);
+            }
+            formData.append('exchange_cash', document.getElementById('exchange_cash').value);
+            if (document.getElementById('count_systemCoupon_use') != null) {
+                formData.append('count_systemCoupon_use', document.getElementById('count_systemCoupon_use').value);
+            }
+            if (document.getElementById('exchange_points') != null) {
+                formData.append('exchange_points', document.getElementById('exchange_points').value);
+            }
+            if (document.getElementById('exchange_points_number') != null) {
+                formData.append('exchange_points_number', document.getElementById('exchange_points_number').value);
+            }
+            if (document.getElementById('exchange_cash_number') != null) {
+                formData.append('exchange_cash_number', document.getElementById('exchange_cash_number').value);
+            }
+
+            formData.append('payment_type', document.getElementById('payment_type').value);
+            formData.append('sort', document.getElementById('sort').value);
+            formData.append('start_time', document.getElementById('start_time').value);
+            formData.append('end_time', document.getElementById('end_time').value);
+
+
+
+
+            store("{{ route('offers.store', ['locale' => app()->getLocale()]) }}", formData)
+        }
+    </script>
     <!--end::Global Theme Bundle-->
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('js/pages/custom/wizard/wizard-1.js') }}"></script>
 @endsection

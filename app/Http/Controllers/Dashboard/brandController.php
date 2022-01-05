@@ -213,7 +213,9 @@ class brandController extends Controller
                    
                        
                         
-                        $country_ids = json_decode($request->country_ids);
+                        $country_ids = json_decode($request->country_id);
+                        // dd($request->all());
+
                         $vendor->save();
                         // dd($vendor);
                         $vendor->currencies()->sync(json_decode($request->currencies, false));

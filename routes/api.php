@@ -35,9 +35,10 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::get('store/offers','Api\HomeController@vendor_offers');
     Route::get('store/reviews','Api\HomeController@vendor_reviews');
     Route::get('nearby-partners','Api\HomeController@nearby_partners');
+    Route::get('offer','Api\OfferController@offerDetiles');
 
     
-  
+    
 
     
     

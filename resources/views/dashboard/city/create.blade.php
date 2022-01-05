@@ -93,7 +93,10 @@
 
                     <div class="form-group">
                         <label for="exampleSelectd">{{ __('Country') }}</label>
+                      
+
                         <select class="form-control" id="country_id" name='country_id'>
+
                             @foreach($country as $one_country)
                             <option data-code="{{$one_country->alph2code}}" value="{{$one_country->id}}">
                                 @if(app()->getLocale() == "en")
