@@ -71,9 +71,9 @@ class CityController extends Controller
             $vendors = Vendor::all();
             foreach ($vendors as $vendor) {
                 $citiesVendor = new Vendor_cities();
-                $citiesVendor->vendor_id = $vendor->vendor_id;
+                $citiesVendor->vendor_id = $vendor->id;
                 $citiesVendor->status = 'deactive';
-                $citiesVendor->city_id = $new_city->city_id;
+                $citiesVendor->city_id = $new_city->id;
                 $citiesVendor->save();
             }
             $Enterprises = Enterprise::all();
@@ -81,7 +81,7 @@ class CityController extends Controller
                 $citiesVendor = new enterprise_city();
                 $citiesVendor->enterprise_id = $Enterprise->id;
                 $citiesVendor->status = 'deactive';
-                $citiesVendor->city_id = $new_city->city_id;
+                $citiesVendor->city_id = $new_city->id;
                 $citiesVendor->save();
             }
             $IsSave = $new_city->save();

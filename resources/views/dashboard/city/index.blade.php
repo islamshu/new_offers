@@ -19,11 +19,13 @@ card card-docs mb-2">
             <tbody>
                 @foreach ($cities as $item)
                  <tr>
-=                     @if(Auth::user()->hasRole('Enterprises'))
+                     
+                    @if(Auth::user()->hasRole('Enterprises'))
                      
                     @php
                         $city = App\Models\City::find($item->city_id);
                     @endphp
+                    @continue($city == null)
                     <td>{{@$city->city_name}}</td>
                     <td>{{@$city->city_name_english}}</td>
                     <td>{{@$city->lat}}</td>
