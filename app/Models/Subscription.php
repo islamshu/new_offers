@@ -14,4 +14,12 @@ class Subscription extends Model
     {
         return $this->belongsToMany(Subscriptions_User::class,'subscriptions_users','sub_id','user_id');
     }
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'brands_id');
+    }
+    public function enteprice()
+    {
+        return $this->belongsTo(Enterprise::class, 'enterprises_id');
+    }
 }

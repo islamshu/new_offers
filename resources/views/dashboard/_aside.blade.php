@@ -312,9 +312,9 @@ $lang = app()->getLocale();
                 <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                             class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch/create"
+                {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch/create"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
+                            class="menu-text">{{ __('Create') }}</span></a></li> --}}
 
             </ul>
         </div>
