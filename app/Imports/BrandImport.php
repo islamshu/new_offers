@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Collection;
 use Auth;
 use File;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
 class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
@@ -34,6 +35,8 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $image = Enterprise::find(auth()->user()->ent_id)->image;
         // dd($image);
         File::copy(public_path('images/enterprise/'.$image), public_path('images/brand/'.$image));
+        File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
+
         foreach($rows as $row){
        
 
@@ -57,7 +60,20 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
-        $vendor->categorys()->sync(json_decode($row['category_id'],false));
+
+        
+        DB::table('image_vendors')->insert(
+            ['image' => $image, 'vendor_id' => $vendor->id]
+        );
+    
+        foreach(json_decode($row['category_id']) as $cat){
+            DB::table('categories_vendors')->insert(
+                ['category_id' => (int) $cat, 'vendor_id' => $vendor->id]
+            );
+        }
+
+       
+        // $vendor->categorys()->sync(json_decode($row['category_id'],false));
     }
        
     }
