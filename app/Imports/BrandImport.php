@@ -27,12 +27,15 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
     public function collection(Collection $rows)    {
         {
       
+            
           
            
        
         $image = Enterprise::find(auth()->user()->ent_id)->image;
         // dd($image);
         File::copy(public_path('images/enterprise/'.$image), public_path('images/brand/'.$image));
+        foreach($rows as $row){
+       
 
         $vendor = new Vendor();
         $vendor->name_ar = $row['name_ar'];
@@ -55,7 +58,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
         $vendor->categorys()->sync(json_decode($row['category_id'],false));
-    
+    }
        
     }
 }
