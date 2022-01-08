@@ -6,13 +6,14 @@ use App\Models\Enterprise;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Vendor;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Collection;
 use Auth;
 use File;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class BrandImport implements ToModel, WithHeadingRow, WithStartRow
+class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
 {
     /**
     * @param array $row
@@ -23,9 +24,9 @@ class BrandImport implements ToModel, WithHeadingRow, WithStartRow
     {
         return 2;
     }
-    public function model(array $row)
-    {
-        
+    public function collection(Collection $rows)    {
+        {
+      
           
            
        
@@ -56,4 +57,5 @@ class BrandImport implements ToModel, WithHeadingRow, WithStartRow
     
        
     }
+}
 }
