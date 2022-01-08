@@ -395,7 +395,7 @@
                                             <label>{{ __('System Coupon use') }}</label>
                                             <select name="delivery" class="form-control form-control-solid form-control-lg"
                                                 name="systemCoupon_use" id="systemCoupon_use">
-                                                <option value="" selected>{{ __('chose ') }}</option>
+                                                <option value="" selected disabled>{{ __('chose ') }}</option>
                                                 <option value="active">{{ __('active') }}</option>
                                                 <option value="deactive">{{ __('deactive') }}</option>
 
@@ -417,7 +417,7 @@
                                             <label>{{ __('Exchange points') }}</label>
                                             <select name="delivery" class="form-control form-control-solid form-control-lg"
                                                 name="exchange_points" id="exchange_points">
-                                                <option value="" selected>{{ __('chose ') }}</option>
+                                                <option value="" selected disabled>{{ __('chose ') }}</option>
 
                                                 <option value="active">{{ __('active') }}</option>
                                                 <option value="deactive">{{ __('deactive') }}</option>
@@ -450,7 +450,7 @@
                                             <label>{{ __('Exchange cash') }}</label>
                                             <select name="delivery" class="form-control form-control-solid form-control-lg"
                                                 name="exchange_cash" id="exchange_cash">
-                                                <option value="" selected>{{ __('chose ') }}</option>
+                                                <option value="" selected disabled>{{ __('chose ') }}</option>
 
                                                 <option value="active">{{ __('active') }}</option>
                                                 <option value="deactive">{{ __('deactive') }}</option>
@@ -519,7 +519,7 @@
                                             <label>{{ __('specific days') }}</label>
                                             <select name="delivery" class="form-control form-control-solid form-control-lg"
                                                 name="specific_days" id="specific_days">
-                                                <option value="" selected>{{ __('chose ') }}</option>
+                                                <option value="" selected disabled>{{ __('chose ') }}</option>
                                                 <option value="active">{{ __('active') }}</option>
                                                 <option value="deactive">{{ __('deactive') }}</option>
 

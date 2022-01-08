@@ -121,7 +121,7 @@ class OfferController extends Controller
             'usage_number_system' => 'required',
             'datetime_use' => 'required',
             'datatime_use_type' => 'required',
-            'datatime_number' => 'required',
+            // <option value="" selected disabled>
             // 'points' => 'required',
             // 'exchange_points' => 'required',
             // 'exchange_points_number' => 'required',
@@ -323,7 +323,7 @@ class OfferController extends Controller
             'usage_number_system' => 'required',
             'datetime_use' => 'required',
             'datatime_use_type' => 'required',
-            'datatime_number' => 'required',
+            // <option value="" selected disabled>
             // 'points' => 'required',
             // 'exchange_points' => 'required',
             // 'exchange_points_number' => 'required',
