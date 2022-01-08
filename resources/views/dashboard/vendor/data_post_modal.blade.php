@@ -2,6 +2,7 @@
     <table class="datatable table datatable-bordered datatable-head-custom">
     
         <tr>
+            {{ dd($vendor->categorys) }}
             @foreach ($vendor->categorys as $item)
                 
             

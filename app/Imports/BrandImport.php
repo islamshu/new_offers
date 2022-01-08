@@ -69,6 +69,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         );
     
         foreach(json_decode($row['category_id']) as $cat){
+            
             DB::table('categories_vendors')->insert(
                 ['category_id' => (int) $cat, 'vendor_id' => $vendor->id]
             );
