@@ -14,7 +14,9 @@
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('branch number') }}</th>
                         <th>{{ __('offer number') }}</th>
-                
+                        <th>{{ __('Active Offer') }}</th>
+                        <th>{{ __('Paid Offer') }}</th>
+                        <th>{{ __('Free Offer') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
@@ -24,6 +26,9 @@
                         <td>{{ $item->name_en }}</td>
                         <td>{{ $item->branches->count() }}</td>
                         <td>{{ $item->offers->count() }}</td>
+                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('end_time','>',\Carbon\Carbon::now())->where('start_time','<',\Carbon\Carbon::now())->count()}}</td>
+                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('member_type','paid')->count()}}</td>
+                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('member_type','free')->count()}}</td>
           
 
                         <td class="pr-0 text-left">

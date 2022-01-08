@@ -116,7 +116,7 @@ class OfferController extends Controller
             // 'brand_id' => 'required',
             'member_type' => 'required',
             'usege_member' => 'required',
-            'usage_member_number' => 'required',
+            'usage_member_number' => $request->usege_member == 'limit' ? 'required' : '',
             'usege_system' => 'required',
             'usage_number_system' => 'required',
             'datetime_use' => 'required',
@@ -177,11 +177,10 @@ class OfferController extends Controller
 
             if (auth()->user()->hasRole('Admin')) {
                 $request_all['enterprises_id'] =  $request->enterprises_id;
-                // $request_all['offer_type'] =  $request->offer_type;
             }
             if (auth()->user()->hasRole('Enterprises')) {
                 $request_all['enterprises_id'] =  auth()->user()->ent_id;
-                // $request_all['offer_type'] =  'enterprice';
+                $request_all['offer_type'] =  'brand';
             }
 
             if (auth()->user()->hasRole('Vendors')) {
@@ -312,23 +311,24 @@ class OfferController extends Controller
      */
     public function update_offer(Request $request, $locale, $id)
     {
-        $offer =   Offer::find($id);
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
+            // 'enterprises_id' => 'required',
+            // 'brand_id' => 'required',
             'member_type' => 'required',
             'usege_member' => 'required',
-            // 'usage_member_number' => 'required',
+            'usage_member_number' => $request->usege_member == 'limit' ? 'required' : '',
             'usege_system' => 'required',
-            // 'usage_number_system' => 'required',
+            'usage_number_system' => 'required',
             'datetime_use' => 'required',
             'datatime_use_type' => 'required',
             'datatime_number' => 'required',
-            'points' => 'required',
-            'exchange_points' => 'required',
-            'exchange_points_number' => 'required',
+            // 'points' => 'required',
+            // 'exchange_points' => 'required',
+            // 'exchange_points_number' => 'required',
             'exchange_cash' => 'required',
-            'exchange_cash_number' => 'required',
+            // 'exchange_cash_number' => 'required',
             'payment_type' => 'required',
             'sort' => 'required',
             'start_time' => 'required',
@@ -340,9 +340,9 @@ class OfferController extends Controller
             'terms_ar' => 'required',
             'terms_en' => 'required'
         ]);
-
         if (!$validator->fails()) {
-      
+
+
             $request_alll = ['enterprises_id',
             'primary_image',
             'image',
@@ -363,30 +363,44 @@ class OfferController extends Controller
             'to_4',
             'to_5',
             'to_6',
+            'specific_days',
+      
             'TotalImages',
-            'offer_type_2'
-        ];
+        'offer_type_2'];
+        $offer = Offer::find($id);
+        if($request->TotalImages > 0){
             for ($x = 0; $x < $request->TotalImages; $x++) 
             {
                 array_push($request_alll,'image'.$x);
   
                
             }
+        }
+            
 
             $request_all = $request->except($request_alll);
+
+
             if (auth()->user()->hasRole('Admin')) {
                 $request_all['enterprises_id'] =  $request->enterprises_id;
-                $request_all['offer_type'] =  $request->offer_type;
             }
             if (auth()->user()->hasRole('Enterprises')) {
                 $request_all['enterprises_id'] =  auth()->user()->ent_id;
-                $request_all['offer_type'] =  'enterprice';
+                $request_all['offer_type'] =  'brand';
+            }
+
+            if (auth()->user()->hasRole('Vendors')) {
+                $brand_id = auth()->user()->vendor_id;
+                $request_all['offer_type'] =  'brand';
+                // $request_all['vendor_id'] = $brand_id;
             }
             $offer->update($request_all);
+
             $image_offer =  $offer->offerimage;
+            if($request->primary_image != 'undefined' &&  $request->primary_image != null){
+
+           
             $file = $request->file('primary_image');
-            if ($request->primary_image != null && $request->primary_image != 'undefined') {
-            
             $imageName = time() . 'image.' . $file->getClientOriginalExtension();
             $file->move('images/primary_offer', $imageName);
             $image_offer->primary_image = $imageName;
@@ -411,33 +425,50 @@ class OfferController extends Controller
                 $offer_type = $offer->offertype;
 
                 $offer_type->offer_type = $request->offer_type_2;
-               
-                $offer_type->price_after_discount = $request->price_after_discount;
-                $offer_type->price_befor_discount = $request->price_befor_discount;
-                $offer_type->discount_value = $request->discount_value;
+                $offer_type->price = $request->price;
+
+                if($request->offer_type_2 == 'buyOneGetOne'){
+                    $offer_type->sale = $request->price;
+                    
+                }elseif($request->offer_type_2 == 'special_discount'){
+                    $offer_type->sale = $request->price_befor_discount - $request->price;
+                }elseif($request->offer_type_2 == 'general_offer'){
+                    $offer_type->discount_value = $request->discount_value;
+                    $offer_type->discount_type = $request->discount_type;
+
+                }
+                // $offer_type->price_after_discount = $request->price_after_discount;
+                // $offer_type->price_befor_discount = $request->price_befor_discount;
+                // $offer_type->discount_value = $request->discount_value;
                 $offer_type->save();
-                $offer_days = $offer->offerday;
-                $offer_days->offer_id = $offer->id;
-                $offer_days->to_0 = $request->to_0;
-                $offer_days->to_1 = $request->to_1;
-                $offer_days->to_2 = $request->to_2;
-                $offer_days->to_3 = $request->to_3;
-                $offer_days->to_4 = $request->to_4;
-                $offer_days->to_5 = $request->to_5;
-                $offer_days->to_6 = $request->to_6;
-                $offer_days->from_0 = $request->from_0;
-                $offer_days->from_1 = $request->from_1;
-                $offer_days->from_2 = $request->from_2;
-                $offer_days->from_3 = $request->from_3;
-                $offer_days->from_4 = $request->from_4;
-                $offer_days->from_5 = $request->from_5;
-                $offer_days->from_6 = $request->from_6;
-                $offer_days->save();
-                
+                if($request->specific_days == 'actvie'){
+                    $offer_days = $offer->offerday;
+                    $offer_days->to_0 = $request->to_0;
+                    $offer_days->to_1 = $request->to_1;
+                    $offer_days->to_2 = $request->to_2;
+                    $offer_days->to_3 = $request->to_3;
+                    $offer_days->to_4 = $request->to_4;
+                    $offer_days->to_5 = $request->to_5;
+                    $offer_days->to_6 = $request->to_6;
+                    $offer_days->from_0 = $request->from_0;
+                    $offer_days->from_1 = $request->from_1;
+                    $offer_days->from_2 = $request->from_2;
+                    $offer_days->from_3 = $request->from_3;
+                    $offer_days->from_4 = $request->from_4;
+                    $offer_days->from_5 = $request->from_5;
+                    $offer_days->from_6 = $request->from_6;
+                    $offer_days->save();
+                    
+                }
+               
            
+
+
+
 
             return response()->json(['icon' => 'success', 'title' => 'offer updated successfully'], $offer ? 200 : 400);
         } else {
+            // dd($validator->getMessageBag());
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }

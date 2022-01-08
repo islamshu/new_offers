@@ -149,7 +149,6 @@
 
                                     </div>
                                 @endif
-
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>{{ __('Desc ar') }}</label>
@@ -280,8 +279,8 @@
                                             id="discount_value" name="discount_value" placeholder="Discount value" />
                                     </div>
                                     <div class="col-md-6 discont_value" style="display: none">
-                                        <label>{{ __('Discount Type') }}</label>
-                                        <select name="delivery" class="form-control form-control-solid form-control-lg"
+                                      <label>{{ __('Discount Type') }}</label>
+                                        <select  class="form-control form-control-solid form-control-lg"
                                             name="discount_type" id="discount_type">
                                             <option value="" selected disabled>{{ __('choese') }}</option>
                                             <option value="value">{{ __('value') }}</option>
@@ -357,6 +356,7 @@
                                     </div>
 
                                 </div>
+                               
                             </div>
 
                             <!--end::Wizard Step 1-->

@@ -13,17 +13,18 @@ card card-docs mb-2">
                     <th>{{ __('Name') }}</th>
                     <th>{{ __('Active Branch') }}</th>
                     <th>{{ __('Deactive Branch') }}</th>
+      
                     <th>{{ __('Action') }}</th>
                  </tr>
             </thead>
             <tbody>
                 @foreach ($vendors as $item)
-                    
                  <tr>
                     <td>{{$item->name_ar}}</td>
                     <td>{{$item->branches->where('status','active')->count()}}</td>
                     <td>{{$item->branches->where('status','deactive')->count()}}</td>
-                 
+                  
+
                     <td class="pr-0 text-left">
                  
                       
