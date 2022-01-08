@@ -216,7 +216,7 @@
                         <option value="1" @if($vendor->is_pincode == 1) selected @endif>{{ __('active') }}</option>
                     </select>
                 </div>
-                <div class="form-group col-md-6" id="code" @if($vendor->is_pincode == 0) style="display: none" @endif>
+                <div class="form-group col-md-6" id="code" @if($vendor->is_pincode == 0) style="display: none"@else style="display: block"   @endif>
                     <label>{{__('pin code')}}:</label>
                    <input type="number" value="{{ $vendor->qr_code }}" name="code" id="codeinput" class="form-control" >
                 </div>
@@ -309,6 +309,30 @@
 @section('scripts')
 <script>
     $(document).ready(function () {
+        $('#pincode').on('change', function() {
+            let val = this.value;
+            if (val == 1) {
+                $('#code').css("display", "block")
+              
+
+            } else if (val == 0) {
+                $('#code').css("display", "none")
+
+            }
+
+        });
+        $('#customer_use').on('change', function() {
+            let val = this.value;
+            if (val == 1) {
+                $('#time_count').css("display", "block")
+              
+
+            } else if (val == 0) {
+                $('#time_count').css("display", "none")
+
+            }
+
+        });
 
         $(document).on('change', '.enterprise', function () {
             // console.log("hmm its change");
@@ -401,40 +425,7 @@
     });
 
 </script>
-<script>
-    var avatar5 = new KTImageInput('kt_image_5');
 
-    avatar5.on('cancel', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully canceled !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar5.on('change', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully changed !',
-            type: 'success',
-            buttonsStyling: false,
-            confirmButtonText: 'Awesome!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-    avatar5.on('remove', function (imageInput) {
-        swal.fire({
-            title: 'Image successfully removed !',
-            type: 'error',
-            buttonsStyling: false,
-            confirmButtonText: 'Got it!',
-            confirmButtonClass: 'btn btn-primary font-weight-bold'
-        });
-    });
-
-</script>
 <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

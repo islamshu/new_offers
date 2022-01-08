@@ -2,6 +2,7 @@
     <table class="datatable table datatable-bordered datatable-head-custom">
     
         <tr>
+
             @foreach ($vendor->categorys as $item)
                 
             

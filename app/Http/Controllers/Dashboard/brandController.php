@@ -576,7 +576,7 @@ class brandController extends Controller
             'terms_en' => 'required',
             'visitor' => 'required',
             'sales' => 'required',            'commercial_registration_number' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,' . @$user->id,
             'telephoone' => 'required|unique:vendors,telephoone,' . $vendor->id,
             'mobile' => 'required|unique:vendors,mobile,' . $vendor->id,
             'address' => 'required',
@@ -668,14 +668,27 @@ class brandController extends Controller
                                 }
                             }
                         }
-
+                        if($user == null){
+                            $user = new User();
                         $user->username = $vendor->name_en;
+                        $user->password =  bcrypt($request->password);
                         $user->email = $request->email;
-
+                        $user->last_ip = \Request::ip();
+                        $user->last_login = now();
                         $user->name = $request->name_en;
+                        $user->phone = $request->mobile;
+                        $user->vendor_id = $vendor->id;
+                        $user->ent_id = Auth::user()->ent_id;
 
                         $user->save();
+                        }else{
+                            $user->username = $vendor->name_en;
+                            $user->email = $request->email;
+                            $user->name = $request->name_en;
+                            $user->save();
+                        }
 
+                      
                         //Assign Vendor Role To New User
                         // $role = Role::where('name', 'Vendors')->first();
                         // $user->attachRole($role);
@@ -802,6 +815,21 @@ class brandController extends Controller
                             }
                         }
                     }
+                    if($user == null){
+                        $user = new User();
+                    $user->username = $vendor->name_en;
+                    $user->password =  bcrypt($request->password);
+                    $user->email = $request->email;
+                    $user->last_ip = \Request::ip();
+                    $user->last_login = now();
+                    $user->name = $request->name_en;
+                    $user->phone = $request->mobile;
+                    $user->vendor_id = $vendor->id;
+                    $user->ent_id = Auth::user()->ent_id;
+
+                    $user->save();
+                    }else{
+                     
                     $user->username = $vendor->name_en;
                     $user->email = $vendor->email;
 
@@ -812,6 +840,7 @@ class brandController extends Controller
                         $user->ent_id = null;
                     }
                     $user->save();
+                }
                     DB::commit();
                     if ($request->TotalImages > 0) {
                            

@@ -27,7 +27,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
     }
     public function collection(Collection $rows)    {
         {
-      
+    //   dd($rows);
             
           
            
