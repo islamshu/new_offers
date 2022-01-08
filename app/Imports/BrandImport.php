@@ -49,9 +49,10 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->vat = $row['vat'];
         $vendor->vat_no= $row['vat_no'];
 
+
         $vendor->image =$image;
         $vendor->cover_image = $image;
-        $vendor->vat =Auth::user()->ent_id;
+        $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
         $vendor->categorys()->sync(json_decode($row['category_id'],false));
     
