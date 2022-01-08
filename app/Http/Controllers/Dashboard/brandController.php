@@ -472,7 +472,7 @@ class brandController extends Controller
     }
     public function download()
     {
-        $file = public_path() . "/brands_new.xlsx";
+        $file = public_path() . "/brands_new_new.xlsx";
 
         $headers = ['Content-Type: image/jpeg'];
 
