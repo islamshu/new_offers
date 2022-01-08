@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Email') }}:</label>
-                    <input type="text" name="email" id="email"  value="{{ $user->email }}"  class="form-control form-control-solid"
+                    <input type="text" name="email" id="email"  value="{{ @$user->email }}"  class="form-control form-control-solid"
                         placeholder="Enter email" required />
                 </div>
                 @if(Auth::user()->hasRole('Admin'))
