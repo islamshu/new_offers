@@ -52,7 +52,7 @@ class BrandImport implements ToModel, WithHeadingRow, WithStartRow
         $vendor->cover_image = $image;
         $vendor->vat =Auth::user()->ent_id;
         $vendor->save();
-        $vendor->categorys()->sync(json_decode($row['cateogry_id'],false));
+        $vendor->categorys()->sync(json_decode($row['category_id'],false));
     
        
     }
