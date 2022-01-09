@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SoialVendor extends Model
 {
+    protected $guarded =[];
+    protected $table=['soial_vendors'];
     use HasFactory;
 }

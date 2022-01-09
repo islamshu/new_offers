@@ -69,6 +69,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
+
         $vendor->save();
         $so = new SoialVendor();
         $so->facebook = $row['facebook'];
