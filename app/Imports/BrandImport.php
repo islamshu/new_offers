@@ -46,6 +46,9 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         foreach($rows as $key=>$row){
     
     //    dd($row);
+        if($row['name_ar'] == null){
+            continue;
+        }
         $vendor = new Vendor();
         $vendor->name_ar = $row['name_ar'];
         $vendor->name_en = $row['name_en'];
