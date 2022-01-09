@@ -34,7 +34,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
     public function collection(Collection $rows)    {
         {
     //   dd($rows);
-            
+  
           
            
        
@@ -48,6 +48,9 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
     //    dd($row);
         if($row['name_ar'] == null){
             continue;
+        }
+        foreach(json_decode($row['category_id']) as $cat){
+            dd($cat);
         }
         // dd(json_decode($row['category_id']));
         $vendor = new Vendor();
