@@ -121,14 +121,12 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Vat Number') }}:</label>
-                        <small class="text-danger">*</small>
                         <input type="number" name="vat_no" id="vat_no" value="{{ $vendor->vat_no }}" class="form-control form-control-solid"
                             placeholder="Enter phone" required />
                     </div>
                     <div class="form-group col-md-6">
                         <div class="rule">
                             <label>{{ __('Vat Type') }}:</label>
-                            <small class="text-danger">*</small>
                             <select class="form-control form-control-solid restricted" name="vat_type" id="vat_type">
                                 <option value="percentage" @if($vendor->type == 'percentage') selected @endif>{{ __('percentage') }}</option>
                                 <option value="value" @if($vendor->type == 'value') selected @endif>{{ __('value') }}</option>
@@ -138,16 +136,11 @@
 
                     <div class="form-group col-md-6">
                         <label>{{ __('Vat') }}:</label>
-                        <small class="text-danger">*</small>
                         <input type="text" name="Vat" id="vat" value="{{ $vendor->vat }}" class="form-control form-control-solid"
                             placeholder="Enter phone" required />
                     </div>
                   
-                    <div class="form-group col-md-6">
-                        <label>{{ __('telephoone') }}:</label>
-                        <input type="text" name="telephoone" id="telephoone" value="{{ $vendor->telephoone }}"
-                            class="form-control form-control-solid" placeholder="Enter phone" required />
-                    </div>
+                   
                     @if (Auth::user()->hasRole('Enterprises'))
                         <div class="form-group col-md-6 country">
                             <label>{{ __('country') }}:</label>
@@ -264,12 +257,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Menu link') }}:</label>
-                    <small class="text-danger">*</small>
                     <input class="form-control" type="url" value="{{ $vendor->menu_link }}" name="menu_link" id="menu_link">
                 </div>
             </div>
             <fieldset>
                 <legend>{{ __('Social Media') }}:</legend>
+                <div class="row">
                 <div class="form-group col-md-6">
                     <label>{{ __('phone') }}:</label>
                     <input type="number" name="mobile" id="mobile" value="{{ $vendor->mobile }}" class="form-control form-control-solid"
@@ -295,6 +288,7 @@
                 <div class="form-group col-md-6">
                     <label>{{ __('Snapchat') }}:</label>
                     <input type="url" name="snapchat" id="snapchat" value="{{ @$vendor->social->snapchat }}" class="form-control">
+                </div>
                 </div>
 
             </fieldset>

@@ -132,14 +132,13 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Vat Number') }}:</label>
-                        <small class="text-danger">*</small>
+                   
                         <input type="number" name="vat_no" id="vat_no" class="form-control form-control-solid"
                             placeholder="Enter phone" required />
                     </div>
                     <div class="form-group col-md-6">
                         <div class="rule">
                             <label>{{ __('Vat Type') }}:</label>
-                            <small class="text-danger">*</small>
                             <select class="form-control form-control-solid restricted" name="vat_type" id="vat_type">
                                 <option value="percentage">{{ __('percentage') }}</option>
                                 <option value="value">{{ __('value') }}</option>
@@ -149,7 +148,6 @@
 
                     <div class="form-group col-md-6">
                         <label>{{ __('Vat') }}:</label>
-                        <small class="text-danger">*</small>
                         <input type="text" name="Vat" id="vat" class="form-control form-control-solid"
                             placeholder="Enter phone" required />
                     </div>
@@ -271,12 +269,12 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Menu link') }}:</label>
-                        <small class="text-danger">*</small>
                         <input class="form-control" type="url" name="menu_link" id="menu_link">
                     </div>
                 </div>
                 <fieldset>
                     <legend>{{ __('Social Media') }}:</legend>
+                    <div class="row">
                     <div class="form-group col-md-6">
                         <label>{{ __('phone') }}:</label>
                         <input type="number" name="mobile" id="mobile" class="form-control form-control-solid"
@@ -303,6 +301,7 @@
                         <label>{{ __('Snapchat') }}:</label>
                         <input type="url" name="snapchat" id="snapchat" class="form-control">
                     </div>
+                </div>
 
                 </fieldset>
                 <div class="row">
