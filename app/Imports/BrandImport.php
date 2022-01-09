@@ -2,7 +2,9 @@
 
 namespace App\Imports;
 
+use App\Models\City;
 use App\Models\Enterprise;
+use App\Models\Neighborhood;
 use App\Models\Role;
 use App\Models\SoialVendor;
 use App\Models\User;
@@ -76,6 +78,27 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         DB::table('image_vendors')->insert(
             ['image' => $image, 'vendor_id' => $vendor->id]
         );
+        DB::table('currencies_vendors')->insert(
+            ['currency_id' => 2, 'vendor_id' => $vendor->id]
+        );
+
+        DB::table('vendor_countries')->insert(
+            ['country_id' => 1, 'vendor_id' => $vendor->id]
+        );
+        $cities = City::where('country_id',1)->get();
+        foreach($cities as $city){
+            DB::table('vendor_cities')->insert(
+                ['city_id' => $city->id, 'vendor_id' => $vendor->id,'status'=>'active']
+            );
+            $neighborhoods = Neighborhood::where('city_id',$city->id)->get();
+            foreach($neighborhoods as $na){
+                DB::table('vendor_cities')->insert(
+                    ['cityvendor_neighberhood_id' => $na->id, 'vendor_id' => $vendor->id]
+                );
+            }
+            
+        }
+
     
         foreach(json_decode($row['category_id']) as $cat){
             

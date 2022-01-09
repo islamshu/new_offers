@@ -105,7 +105,11 @@ class brandController extends Controller
         if (Auth::user()->hasRole('Enterprises')) {
             $country = enterprise_country::where('enterprise_id', Auth::user()->ent_id)->with(['country'])->get();
             $category = Enterprise::with('categorys')->find(Auth::user()->ent_id)->categorys;
-            // dd($category);
+            $curruncy = Enterprise::with('currencies')->find(Auth::user()->ent_id)->currencies;
+           
+
+           
+            
 
             $enterprises = null;
             return response()->view('dashboard.vendor.create', compact('country', 'enterprises', 'curruncy', 'category'));

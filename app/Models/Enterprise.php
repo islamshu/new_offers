@@ -18,7 +18,7 @@ class Enterprise extends Model
      */
     public function currencies()
     {
-        return $this->belongsToMany(Role::class,'currencies_enterprise', 'enterprise_id', 'currency_id');
+        return $this->belongsToMany(Currency::class,'currencies_enterprise', 'enterprise_id', 'currency_id');
     }
     public function categorys()
     {

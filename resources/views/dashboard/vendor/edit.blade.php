@@ -99,7 +99,7 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('owner name') }}:</label>
                         <input type="text" name="owner_name" id="owner_name" value="{{ $vendor->owner_name }}"
-                            class="form-control form-control-solid" placeholder="Enter uuid" required />
+                            class="form-control form-control-solid" placeholder="Enter owner name" required />
                     </div>
 
                     <div class="form-group col-md-6">
@@ -158,7 +158,7 @@
                             <select class="form-control selectpicker category_id" data-size="7" data-live-search="true"
                                 id="category_id" multiple>
 
-                                @foreach ($category as $item)
+                                @foreach ($category->where('is_show',1) as $item)
                                     <option value="{{ $item->id }}" @foreach ($vendor->categorys as $tagp)
                                         {{ $tagp->id == $item->id ? 'selected' : '' }}
                                 @endforeach
@@ -487,7 +487,9 @@
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
       
-            formData.append('owner_name', document.getElementById('owner_name').value);
+            if (document.getElementById('owner_name') != null) {
+                formData.append('owner_name', document.getElementById('owner_name').value);
+            }
             // formData.append('telephoone', document.getElementById('telephoone').value);
             formData.append('commercial_registration_number', document.getElementById('commercial_registration_number')
                 .value);

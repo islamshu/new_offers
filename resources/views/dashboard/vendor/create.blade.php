@@ -101,9 +101,8 @@
                     @endif
                     <div class="form-group col-md-6">
                         <label>{{ __('owner name') }}:</label>
-                        <small class="text-danger">*</small>
                         <input type="text" name="owner_name" id="owner_name" class="form-control form-control-solid"
-                            placeholder="Enter uuid" required />
+                            placeholder="Enter owner name" required />
                     </div>
                     {{-- <div class="form-group col-md-6">
                     <label>{{ __('address') }}:</label>
@@ -134,7 +133,7 @@
                         <label>{{ __('Vat Number') }}:</label>
                    
                         <input type="number" name="vat_no" id="vat_no" class="form-control form-control-solid"
-                            placeholder="Enter phone" required />
+                            placeholder="Enter Vat Number" required />
                     </div>
                     <div class="form-group col-md-6">
                         <div class="rule">
@@ -149,7 +148,7 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('Vat') }}:</label>
                         <input type="text" name="Vat" id="vat" class="form-control form-control-solid"
-                            placeholder="Enter phone" required />
+                            placeholder="Enter Vat" required />
                     </div>
 
                     @if (Auth::user()->hasRole('Enterprises'))
@@ -171,7 +170,7 @@
                             <select class="form-control selectpicker category_id" data-size="7" data-live-search="true"
                                 id="category_id" multiple>
 
-                                @foreach ($category as $item)
+                                @foreach ($category->where('is_show',1) as $item)
                                     <option value="{{ $item->id }}">{{ $item->name_ar }}</option>
                                 @endforeach
                             </select>
@@ -561,7 +560,6 @@
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
 
-            formData.append('owner_name', document.getElementById('owner_name').value);
             formData.append('start_at', document.getElementById('start_at').value);
             formData.append('end_at', document.getElementById('end_at').value);
 
@@ -571,6 +569,11 @@
             if (document.getElementById('facebook') != null) {
                 formData.append('facebook', document.getElementById('facebook').value);
             }
+            if (document.getElementById('owner_name') != null) {
+                formData.append('owner_name', document.getElementById('owner_name').value);
+            }
+
+
             if (document.getElementById('twitter') != null) {
                 formData.append('twitter', document.getElementById('twitter').value);
             }
