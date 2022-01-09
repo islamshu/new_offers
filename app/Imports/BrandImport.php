@@ -92,8 +92,8 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
             );
             $neighborhoods = Neighborhood::where('city_id',$city->id)->get();
             foreach($neighborhoods as $na){
-                DB::table('vendor_cities')->insert(
-                    ['cityvendor_neighberhood_id' => $na->id, 'vendor_id' => $vendor->id]
+                DB::table('vendor_neighberhood')->insert(
+                    ['neighborhood_id' => $na->id, 'vendor_id' => $vendor->id]
                 );
             }
             
