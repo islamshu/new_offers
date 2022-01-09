@@ -78,6 +78,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $so->snapchat = $row['snapchat'];
         $so->vendor_id = $vendor->id;
         $so->save;
+        // dd($so);
         
         DB::table('image_vendors')->insert(
             ['image' => $image, 'vendor_id' => $vendor->id]
@@ -88,6 +89,9 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
 
         DB::table('vendor_countries')->insert(
             ['country_id' => 1, 'vendor_id' => $vendor->id]
+        );
+        DB::table('soial_vendors')->insert(
+            [ 'vendor_id' => $vendor->id,'facebook' => $row['facebook'],'twitter'=> $row['twitter'],'snapchat' => $row['snapchat'],'instagram'=> $row['instagram']]
         );
         $cities = City::where('country_id',1)->get();
         foreach($cities as $city){
