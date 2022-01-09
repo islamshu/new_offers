@@ -21,6 +21,11 @@ class Vendor extends Model
     {
         return $this->hasOne(User::class, 'vendor_id', 'id');
     }
+    
+    public function neighborhood()
+    {
+        return $this->belongsToMany(Neighborhood::class,'vendor_neighberhood','vendor_id',  'neighborhood_id',);
+    }
     public function social()
     {
         return $this->hasOne(SoialVendor::class, 'vendor_id');

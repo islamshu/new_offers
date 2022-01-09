@@ -502,12 +502,8 @@ class brandController extends Controller
     }
     public function neighborhoods_vendor($locale, $id)
     {
-        $vendorNeighborhood = Vendor_neighborhood::where('vendor_id', $id)->get();
-        $neighborhood_array = array();
-        foreach ($vendorNeighborhood as $count) {
-            array_push($neighborhood_array, $count->neighborhood_id);
-        }
-        $Neighborhoods  = Neighborhood::find($neighborhood_array);
+        $Neighborhoods = Vendor::with('neighborhood')->find($id)->neighborhood;
+
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
 
