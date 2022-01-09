@@ -51,7 +51,12 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         }
         
 
-        
+        foreach(json_decode($row['category_id']) as $cat){
+            
+            DB::table('categories_vendors')->insert(
+                ['category_id' => (int)$cat, 'vendor_id' =>1]
+            );
+        }
         // dd(json_decode($row['category_id']));
         $vendor = new Vendor();
         $vendor->name_ar = $row['name_ar'];
@@ -74,12 +79,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
-        foreach(json_decode($row['category_id']) as $cat){
-            
-            DB::table('categories_vendors')->insert(
-                ['category_id' => (int)$cat, 'vendor_id' => $vendor->id]
-            );
-        }
+        
         $so = new SoialVendor();
         $so->facebook = $row['facebook'];
         $so->twitter = $row['twitter'];
