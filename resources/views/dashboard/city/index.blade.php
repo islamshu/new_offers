@@ -20,29 +20,14 @@ card card-docs mb-2">
                 @foreach ($cities as $item)
                  <tr>
                      
-                    @if(Auth::user()->hasRole('Enterprises'))
                      
-                    @php
-                        $city = App\Models\City::find($item->city_id);
-                    @endphp
-                    @continue($city == null)
-                    <td>{{@$city->city_name}}</td>
-                    <td>{{@$city->city_name_english}}</td>
-                    <td>{{@$city->lat}}</td>
-                    <td>{{@$city->lng}}</td>
-                    <td>{{@$city->country->country_name_en}}</td>
-                    @else
+                   
                     <td>{{$item->city_name}}</td>
                     <td>{{$item->city_name_english}}</td>
                     <td>{{$item->lat}}</td>
                     <td>{{$item->lng}}</td>
                     <td>{{@$item->country->country_name_en}}</td>
-                    @endif
-                     {{-- <td><a href="{{route('city.edit',['city'=>1,'locale'=>'en'])}}" class="btn btn-secondary">Edit</a>
-                        <form action="">
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-                    </td> --}}
+                     
                     </tr>
                     @endforeach
 
