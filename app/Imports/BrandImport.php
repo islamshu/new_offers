@@ -49,9 +49,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         if($row['name_ar'] == null){
             continue;
         }
-        foreach(json_decode($row['category_id']) as $cat){
-            dd($cat);
-        }
+        
         // dd(json_decode($row['category_id']));
         $vendor = new Vendor();
         $vendor->name_ar = $row['name_ar'];
