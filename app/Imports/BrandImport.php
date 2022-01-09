@@ -65,7 +65,10 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
-        $vendor->categorys()->sync(json_decode($row['category_id'],false));
+        // $vendor->categorys()->sync(json_decode($row['category_id'],false));
+        foreach(json_decode($row['category_id']) as $cat){
+            dd($cat);
+        }
 
         
         $so = new SoialVendor();
