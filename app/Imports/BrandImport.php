@@ -33,19 +33,13 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
  
     public function collection(Collection $rows)    {
         {
-    //   dd($rows);
-  
-          
-           
-       
+
         $image = Enterprise::find(auth()->user()->ent_id)->image;
         // dd($image);
         File::copy(public_path('images/enterprise/'.$image), public_path('images/brand/'.$image));
         File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
 
         foreach($rows as $key=>$row){
-    
-    //    dd($row);
         if($row['name_ar'] == null){
             continue;
         }
@@ -62,24 +56,17 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->commercial_registration_number = $row['commercial_registration_number'];
         $vendor->telephoone = $row['telephoone'];
         $vendor->mobile = $row['mobile'];
-        // $vendor->address = $row['address'];
         $vendor->status = $row['status'];
         $vendor->vat_type = $row['vat_type'];
         $vendor->vat = $row['vat'];
         $vendor->vat_no= $row['vat_no'];
         $vendor->menu_link= $row['menu_link'];
-
-
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
-        foreach(($row['category_id']) as $cat){
-            dd($cat);
-            DB::table('categories_vendors')->insert(
-                ['category_id' => (int)$cat, 'vendor_id' =>$vendor->id]
-            );
-        }
+        $vendor->categorys()->sync(json_decode($row['category_id'],false));
+
         
         $so = new SoialVendor();
         $so->facebook = $row['facebook'];
@@ -121,7 +108,6 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         
 
        
-        // $vendor->categorys()->sync(json_decode($row['category_id'],false));
     }
        
     }
