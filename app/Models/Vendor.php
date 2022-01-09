@@ -21,6 +21,10 @@ class Vendor extends Model
     {
         return $this->hasOne(User::class, 'vendor_id', 'id');
     }
+    public function social()
+    {
+        return $this->hasOne(SoialVendor::class, 'vendor_id');
+    }
     public function counteire()
     {
         return $this->belongsToMany(Country::class,'vendor_countries','vendor_id',  'country_id',);

@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Enterprise;
 use App\Models\Role;
+use App\Models\SoialVendor;
 use App\Models\User;
 use App\Models\Vendor;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -13,8 +14,10 @@ use Auth;
 use File;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
+class BrandImport implements ToCollection, WithHeadingRow, WithStartRow ,WithColumnFormatting
 {
     /**
     * @param array $row
@@ -25,6 +28,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
     {
         return 2;
     }
+ 
     public function collection(Collection $rows)    {
         {
     //   dd($rows);
@@ -38,10 +42,8 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
 
         foreach($rows as $key=>$row){
-       if($key == 0){
-           continue;
-       }
-
+    
+    //    dd($row);
         $vendor = new Vendor();
         $vendor->name_ar = $row['name_ar'];
         $vendor->name_en = $row['name_en'];
@@ -56,13 +58,20 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->vat_type = $row['vat_type'];
         $vendor->vat = $row['vat'];
         $vendor->vat_no= $row['vat_no'];
+     
 
 
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->save();
-
+        $so = new SoialVendor();
+        $so->facebook = $row['facebook'];
+        $so->twitter = $row['twitter'];
+        $so->instagram = $row['instagram'];
+        $so->snapchat = $row['snapchat'];
+        $so->vendor_id = $vendor->id;
+        $so->save;
         
         DB::table('image_vendors')->insert(
             ['image' => $image, 'vendor_id' => $vendor->id]
@@ -71,7 +80,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         foreach(json_decode($row['category_id']) as $cat){
             
             DB::table('categories_vendors')->insert(
-                ['category_id' => (int) $cat, 'vendor_id' => $vendor->id]
+                ['category_id' => (int)$cat, 'vendor_id' => $vendor->id]
             );
         }
 

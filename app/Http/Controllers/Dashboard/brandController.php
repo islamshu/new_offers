@@ -13,6 +13,8 @@ use App\Models\enterprise_country;
 use App\Models\ImageVendor;
 use App\Models\Neighborhood;
 use App\Models\Role;
+use App\Models\Social;
+use App\Models\SoialVendor;
 use App\Models\User as ModelsUser;
 use App\Models\Vendor;
 use App\Models\Vendor_cities;
@@ -136,22 +138,15 @@ class brandController extends Controller
             'name_en' => 'required|string|min:3',
             'desc_en' => 'required',
             'desc_ar' => 'required',
-            'policy_en' => 'required',
-            'policy_ar' => 'required',
-            'terms_ar' => 'required',
-            'terms_en' => 'required',
             'visitor' => 'required',
             'sales' => 'required',
             'owner_name' => 'required|string|min:3',
-            // 'uuid' => 'required',
             'commercial_registration_number' => 'required',
             'email' => 'required|email|unique:users',
-            // 'telephoone' => 'required|unique:vendors',
-            // 'mobile' => 'required|unique:vendors',
-            'address' => 'required',
+            'telephoone' => 'unique:vendors',
+            'mobile' => 'unique:vendors',
             'password' => 'required|min:6',
             'image' => 'required',
-            // 'image_cover' => 'required',
         ]);
 
         if (!$validator->fails()) {
@@ -179,14 +174,16 @@ class brandController extends Controller
                         $vendor->visitor = $request->visitor;
                         $vendor->sales = $request->sales;
 
-                        $vendor->uuid = $request->uuid;
+                        // $vendor->uuid = $request->uuid;
                         $vendor->owner_name = $request->owner_name;
                         $vendor->commercial_registration_number = $request->commercial_registration_number;
                         $vendor->telephoone = $request->telephoone;
                         $vendor->mobile = $request->mobile;
-                        $vendor->address = $request->address;
                         $vendor->vat = $request->vat;
                         $vendor->vat_type = $request->vat_type;
+                        $vendor->vat_no = $request->vat_no;
+                        $vendor->start_at = $request->start_at;
+                        $vendor->end_at = $request->end_at;
                         $codeinput = '';
                         if($request->codeinput == null){
                             $codeinput = rand(0, 999);
@@ -217,7 +214,14 @@ class brandController extends Controller
                         // dd($request->all());
 
                         $vendor->save();
-                        // dd($vendor);
+                        $soial = new SoialVendor(); 
+                        $soial->facebook = $request->facebook;
+                        $soial->instagram = $request->instagram;
+                        $soial->twitter = $request->twitter;
+                        $soial->snapchat = $request->snapchat;
+                        $soial->vendor_id = $vendor->id;
+                        $soial->save();
+                    
                         $vendor->currencies()->sync(json_decode($request->currencies, false));
                         $vendor->categorys()->sync(json_decode($request->category_id, false));
 
@@ -569,17 +573,11 @@ class brandController extends Controller
             'name_en' => 'required|string|min:3',
             'desc_en' => 'required|string|min:3',
             'desc_ar' => 'required|string|min:3',
-            'policy_en'=>'required',
-            'policy_ar'=>'required',
             'owner_name' => 'required|string|min:3',
-            'terms_ar' => 'required',
-            'terms_en' => 'required',
-            'visitor' => 'required',
-            'sales' => 'required',            'commercial_registration_number' => 'required',
+            'commercial_registration_number' => 'required',
             'email' => 'required|email|unique:users,email,' . @$user->id,
-            'telephoone' => 'required|unique:vendors,telephoone,' . $vendor->id,
-            'mobile' => 'required|unique:vendors,mobile,' . $vendor->id,
-            'address' => 'required',
+            'telephoone' => 'unique:vendors,telephoone,' . $vendor->id,
+            'mobile' => 'unique:vendors,mobile,' . $vendor->id,
             'image' => 'required',
             // 'image_cover' => 'required',
         ]);
@@ -596,7 +594,6 @@ class brandController extends Controller
                 } else {
                     try {
                         DB::beginTransaction();
-                        
                         $vendor->name_ar = $request->name_ar;
                         $vendor->name_en = $request->name_en;
                         $vendor->desc_en = $request->desc_en;
@@ -615,6 +612,7 @@ class brandController extends Controller
                         $vendor->address = $request->address;
                         $vendor->vat = $request->vat;
                         $vendor->vat_type = $request->vat_type;
+                        $vendor->vat_no = $request->vat_no;
                         $codeinput='';
                             if($request->codeinput == null){
                                 $codeinput = rand(0, 999);
@@ -644,6 +642,12 @@ class brandController extends Controller
                         $vendor->cover_image = " ";
                         $vendor->type_refound = $request->type_refound;
                         $vendor->save();
+                        $soial = $vendor->social;
+                        $soial->facebook = $request->facebook;
+                        $soial->twitter = $request->twitter;
+                        $soial->instagram = $request->instagram;
+                        $soial->snapchat = $request->snapchat;
+                        $soial->save();
                         $vendor->currencies()->sync(json_decode($request->currencies, false));
                         $vendor->categorys()->sync(json_decode($request->category_id, false));
                         $country_ids = json_decode($request->country_id);
