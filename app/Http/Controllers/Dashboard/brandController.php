@@ -490,11 +490,13 @@ class brandController extends Controller
     public function country_vendor($locale, $id)
     {
         $vendorCountry = vendor_country::where('vendor_id', $id)->get();
+        $category = Vendor::with('counteire')->find(Auth::user()->ent_id)->counteire;
+        dd($category);
+
         $country_array = array();
         foreach ($vendorCountry as $count) {
             array_push($country_array, $count->country_id);
         }
-        $country = Country::find($country_array);
         return response()->view('dashboard.country.index', compact('country'));
     }
     public function city_vendor($locale, $id)
