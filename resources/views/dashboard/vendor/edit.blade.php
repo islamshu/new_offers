@@ -142,11 +142,7 @@
                         <input type="text" name="Vat" id="vat" value="{{ $vendor->vat }}" class="form-control form-control-solid"
                             placeholder="Enter phone" required />
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('phone') }}:</label>
-                        <input type="text" name="mobile" id="mobile" value="{{ $vendor->mobile }}"
-                            class="form-control form-control-solid" placeholder="Enter phone" required />
-                    </div>
+                  
                     <div class="form-group col-md-6">
                         <label>{{ __('telephoone') }}:</label>
                         <input type="text" name="telephoone" id="telephoone" value="{{ $vendor->telephoone }}"
@@ -266,6 +262,11 @@
                     <small class="text-danger">*</small>
                     <input class="form-control" type="time" value="{{ $vendor->end_at }}" name="end_at" id="end_at">
                 </div>
+                <div class="form-group col-md-6">
+                    <label>{{ __('Menu link') }}:</label>
+                    <small class="text-danger">*</small>
+                    <input class="form-control" type="url" value="{{ $vendor->menu_link }}" name="menu_link" id="menu_link">
+                </div>
             </div>
             <fieldset>
                 <legend>{{ __('Social Media') }}:</legend>
@@ -281,19 +282,19 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Facebook') }}:</label>
-                    <input type="url" name="facebook" id="facebook" value="{{ $vendor->social->facebook }}" class="form-control">
+                    <input type="url" name="facebook" id="facebook" value="{{ @$vendor->social->facebook }}" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Twitter') }}:</label>
-                    <input type="url" name="twitter" id="twitter" value="{{ $vendor->social->twitter }}" class="form-control">
+                    <input type="url" name="twitter" id="twitter" value="{{ @$vendor->social->twitter }}" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Instagram') }}:</label>
-                    <input type="url" name="instagram" id="instagram" value="{{ $vendor->social->instagram }}" class="form-control">
+                    <input type="url" name="instagram" id="instagram" value="{{ @$vendor->social->instagram }}" class="form-control">
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Snapchat') }}:</label>
-                    <input type="url" name="snapchat" id="snapchat" value="{{ $vendor->social->snapchat }}" class="form-control">
+                    <input type="url" name="snapchat" id="snapchat" value="{{ @$vendor->social->snapchat }}" class="form-control">
                 </div>
 
             </fieldset>
@@ -523,6 +524,9 @@
             }
             if (document.getElementById('policy_ar') != null) {
                 formData.append('policy_ar', document.getElementById('policy_ar').value);
+            }
+            if (document.getElementById('menu_link') != null) {
+                formData.append('menu_link', document.getElementById('menu_link').value);
             }
             if (document.getElementById('terms_ar') != null) {
                 formData.append('terms_ar', document.getElementById('terms_ar').value);

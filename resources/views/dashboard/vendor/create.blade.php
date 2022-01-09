@@ -269,6 +269,11 @@
                         <small class="text-danger">*</small>
                         <input class="form-control" type="time" name="end_at" id="end_at">
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Menu link') }}:</label>
+                        <small class="text-danger">*</small>
+                        <input class="form-control" type="url" name="menu_link" id="menu_link">
+                    </div>
                 </div>
                 <fieldset>
                     <legend>{{ __('Social Media') }}:</legend>
@@ -630,9 +635,12 @@
             if (document.getElementById('vat_type') != null) {
                 formData.append('vat_type', document.getElementById('vat_type').value);
             }
-            if (document.getElementById('vat_no') != null) {
-                formData.append('vat_no', document.getElementById('vat_no').value);
+         
+            if (document.getElementById('menu_link') != null) {
+                formData.append('menu_link', document.getElementById('menu_link').value);
             }
+
+
             if (document.getElementById('enterprise_id') != null) {
                 formData.append('enterprise_id', document.getElementById('enterprise_id').value);
             }

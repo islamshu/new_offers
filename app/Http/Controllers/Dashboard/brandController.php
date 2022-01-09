@@ -173,6 +173,7 @@ class brandController extends Controller
                         $vendor->terms_en = $request->terms_en;
                         $vendor->visitor = $request->visitor;
                         $vendor->sales = $request->sales;
+                        $vendor->menu_link = $request->menu_link;
 
                         // $vendor->uuid = $request->uuid;
                         $vendor->owner_name = $request->owner_name;
@@ -613,6 +614,9 @@ class brandController extends Controller
                         $vendor->vat = $request->vat;
                         $vendor->vat_type = $request->vat_type;
                         $vendor->vat_no = $request->vat_no;
+                        $vendor->menu_link = $request->menu_link;
+
+                        
                         $codeinput='';
                             if($request->codeinput == null){
                                 $codeinput = rand(0, 999);

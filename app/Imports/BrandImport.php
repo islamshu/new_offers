@@ -58,7 +58,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->vat_type = $row['vat_type'];
         $vendor->vat = $row['vat'];
         $vendor->vat_no= $row['vat_no'];
-     
+        $vendor->menu_link= $row['menu_link'];
 
 
         $vendor->image =$image;
