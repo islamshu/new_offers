@@ -17,7 +17,7 @@ use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class BrandImport implements ToCollection, WithHeadingRow, WithStartRow ,WithColumnFormatting
+class BrandImport implements ToCollection, WithHeadingRow, WithStartRow 
 {
     /**
     * @param array $row
