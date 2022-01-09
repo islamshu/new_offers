@@ -19,7 +19,6 @@ card card-docs mb-2">
             </thead>
             <tbody>
                 @foreach ($Neighborhoods as $item)
-                @if(Auth::user()->hasRole('Admin'))
                 <tr>
                     <td>{{@$item->neighborhood_name}}</td>
                     <td>{{@$item->neighborhood_name_english}}</td>
@@ -28,19 +27,7 @@ card card-docs mb-2">
                     <td>{{@$item->city->city_name_english}}</td>
 
                     </tr>
-                    @else
-                    @php
-                        $Neighborhood = App\Models\Neighborhood::find($item->neighborhood_id);
-                    @endphp
-                 <tr>
-                    <td>{{@$Neighborhood->neighborhood_name}}</td>
-                    <td>{{@$Neighborhood->neighborhood_name_english}}</td>
-                    <td>{{@$Neighborhood->lat}}</td>
-                    <td>{{@$Neighborhood->lng}}</td>
-                    <td>{{@$Neighborhood->city->city_name_english}}</td>
-
-                    </tr>
-                    @endif
+                    
                     @endforeach
 
 
