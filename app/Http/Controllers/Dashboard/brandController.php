@@ -490,7 +490,7 @@ class brandController extends Controller
     public function country_vendor($locale, $id)
     {
         $vendorCountry = vendor_country::where('vendor_id', $id)->get();
-        $category = Vendor::with('counteire')->find(Auth::user()->ent_id)->counteire;
+        $category = Vendor::with('counteire')->find($id)->counteire;
         dd($category);
 
         $country_array = array();
