@@ -10,7 +10,7 @@ class Vendor extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
-    protected $table = "vendors";
+    // protected $table = "vendors";
  
     /**
      * Get the user that owns the Vendor
