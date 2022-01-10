@@ -583,7 +583,7 @@
                 var value = $('#country_ids').val();
                 formData.append('country_ids', JSON.stringify(value))
             }
-            update("{{ route('update-brand', ['locale' => app()->getLocale(), $vendor->id]) }}", formData)
+            update("{{ route('update-brand', ['locale' => app()->getLocale(), (int)$vendor->id]) }}", formData)
 
         }
     </script>
