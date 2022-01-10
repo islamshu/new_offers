@@ -192,6 +192,8 @@
                                         </div>
                                         <!--end::Input-->
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xl-6">
                                         <!--begin::Input-->
                                         <div class="form-group">
@@ -205,7 +207,7 @@
                                             </select>
                                         </div>
                                         <!--end::Input-->
-                                    </div>
+                                  
                                     <div class="col-xl-6 usage_member_number" @if($offer->usege_member == 'unlimit') style="display: none" @else style="display: block"  @endif>
                                         <!--begin::Input-->
                                         <div class="form-group">
@@ -216,6 +218,8 @@
                                         </div>
                                         <!--end::Input-->
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xl-6">
                                         <!--begin::Select-->
                                         <div class="form-group">
@@ -230,6 +234,7 @@
 
                                             </select>
                                         </div>
+                                    </div>
                                         <div class="col-xl-6 usage_number_system" @if($offer->usege_system == 'unlimit') style="display: none" @else style="display: block" @endif >
                                             <!--begin::Input-->
                                             <div class="form-group ">
@@ -242,7 +247,7 @@
                                         </div>
                                         <!--end::Select-->
                                     </div>
-                                </div>
+                                
                                 <!--end::Input-->
 
                                 <div class="row">
