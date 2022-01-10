@@ -220,14 +220,13 @@ class brandController extends Controller
                         $country_ids = json_decode($request->country_id);
 
                         $vendor->save();
-                   
-                        $so = new SoialVendor();
-                        $so->facebook = $request->facebook;
-                        $so->twitter = $request->twitter;
-                        $so->instagram = $request->instagram;
-                        $so->snapchat = $request->snapchat;
-                        $so->vendor_id = $vendor->id;
-                        $so->save();
+                        DB::table('soial_vendors')->insert([
+                            'facebook' => $request->facebook,
+                            'twitter' =>  $request->twitter,
+                            'instagram' => $request->instagram,
+                            'snapchat' =>  $request->snapchat,
+                            'vendor_id' =>  $vendor->id,
+                        ]);
                         // $soial->save();
                     
                         $vendor->currencies()->sync(json_decode($request->currencies, false));
