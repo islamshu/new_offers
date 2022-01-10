@@ -437,6 +437,10 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                       
+                                    
+                                    <div class="row">
                                         <div class="col-md-6 ponitex" style="display: none">
 
                                             <label>{{ __('points') }}</label>
@@ -445,8 +449,6 @@
 
 
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6 ponitex" style="display: none">
                                             <label>{{ __('Exchange points number') }}</label>
                                             <input type="number" class="form-control form-control-solid form-control-lg"
@@ -511,6 +513,8 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-6 datetime_use" style="display: none">
                                             <div class="form-group ">
                                                 <label>{{ __('Datatime use type') }}</label>
