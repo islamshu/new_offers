@@ -397,7 +397,7 @@
                                         name="end_time" id="end_time" placeholder="end_time" />
                                 </div>
                                 </div>
-                               
+                                </div>
 
                                 <div class="row">
 
