@@ -644,7 +644,8 @@ class brandController extends Controller
                         $vendor->cover_image = " ";
                         $vendor->type_refound = $request->type_refound;
                         $vendor->save();
-                        $soial = $vendor->social;
+                        $soial = new SoialVendor();
+                        
                         $soial->facebook = $request->facebook;
                         $soial->twitter = $request->twitter;
                         $soial->instagram = $request->instagram;
