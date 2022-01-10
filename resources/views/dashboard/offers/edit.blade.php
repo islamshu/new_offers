@@ -207,7 +207,7 @@
                                             </select>
                                         </div>
                                         <!--end::Input-->
-                                  
+                                    </div>
                                     <div class="col-xl-6 usage_member_number" @if($offer->usege_member == 'unlimit') style="display: none" @else style="display: block"  @endif>
                                         <!--begin::Input-->
                                         <div class="form-group">
@@ -220,6 +220,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
+
                                     <div class="col-xl-6">
                                         <!--begin::Select-->
                                         <div class="form-group">
@@ -235,16 +236,17 @@
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="col-xl-6 usage_number_system" @if($offer->usege_system == 'unlimit') style="display: none" @else style="display: block" @endif >
-                                            <!--begin::Input-->
-                                            <div class="form-group ">
-                                                <label>{{ __('Usage number system') }}</label>
-                                                <input type="number" class="form-control form-control-solid form-control-lg"
-                                                    id="usage_number_system" name="usage_number_system" value="{{ $offer->usage_number_system}}"
-                                                    placeholder="Usage member number" />
-                                            </div>
-                                            <!--end::Input-->
+                                    <div class="col-xl-6 usage_number_system" @if($offer->usege_system == 'unlimit') style="display: none" @else style="display: block" @endif >
+                                        <!--begin::Input-->
+                                        <div class="form-group ">
+                                            <label>{{ __('Usage number system') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="usage_number_system" name="usage_number_system" value="{{ $offer->usage_number_system}}"
+                                                placeholder="Usage member number" />
                                         </div>
+                                        <!--end::Input-->
+                                    </div>
+                                       
                                         <!--end::Select-->
                                     </div>
                                 
