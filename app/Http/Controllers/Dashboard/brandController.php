@@ -505,6 +505,7 @@ class brandController extends Controller
     public function neighborhoods_vendor($locale, $id)
     {
         $Neighborhoods = Vendor::with('neighborhood')->find($id)->neighborhood;
+        dd($Neighborhoods);
 
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
