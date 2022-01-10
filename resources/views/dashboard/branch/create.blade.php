@@ -37,19 +37,19 @@
                         placeholder="Enter Name" required />
                 </div>
 
-                <div class="form-group col-md-6">
+                {{-- <div class="form-group col-md-6">
                     <label>{{ __('Email') }}:</label>
                     <input type="text" name="email" id="email" class="form-control form-control-solid"
                         placeholder="Enter email" required />
-                </div>
-                <div class="form-group col-md-6">
+                </div> --}}
+                {{-- <div class="form-group col-md-6">
                     <label>{{ __('Password') }}:</label>
                     <input type="password" name="password" id="password" class="form-control form-control-solid"
                         placeholder="Enter password" required />
-                </div>
+                </div> --}}
                 <div class="form-group col-md-6">
-                    <label>{{ __('address') }}:</label>
-                    <input type="text" name="address" id="address" class="form-control form-control-solid"
+                    <label>{{ __('street') }}:</label>
+                    <input type="text" name="street" id="street" class="form-control form-control-solid"
                         placeholder="Enter uuid" required />
                 </div>
                 <div class="form-group col-md-6">
@@ -293,9 +293,11 @@
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
         formData.append('kt_select2_1', '{{ $vendor->id }}');
-        formData.append('address', document.getElementById('address').value);
+        if (document.getElementById('street') != null) {
+                formData.append('street', document.getElementById('street').value);
+        }
         formData.append('phone', document.getElementById('phone').value);
-        formData.append('email', document.getElementById('email').value);
+        // formData.append('email', document.getElementById('email').value);
         formData.append('password', document.getElementById('password').value);
         formData.append('longitude', document.getElementById('longitude').value);
         formData.append('latitude', document.getElementById('latitude').value);

@@ -132,7 +132,7 @@ class branchController extends Controller
             'name_en' => 'required|string|min:3',
             // 'email' => 'required|email|unique:users',
             'phone' => 'required|unique:branches',
-            'address' => 'required',
+            // 'street' => 'required',
             // 'password' => 'required|min:6',
             'latitude' => 'required',
             'longitude' => 'required',
@@ -155,7 +155,7 @@ class branchController extends Controller
             $new_branch->latitude = $request->latitude;
             $new_branch->longitude = $request->longitude;
             $new_branch->phone = $request->phone;
-            $new_branch->address = $request->address;
+            $new_branch->street = $request->street;
             $new_branch->status = 'active';
             $new_branch->save();
 
@@ -237,7 +237,7 @@ class branchController extends Controller
             'name_en' => 'required|string|min:3',
             // 'email'=>'required|email|unique:users,email,'.$user->id,
             'phone' => 'required|unique:branches,phone,'.$branch->id,
-            'address' => 'required',
+            // 'address' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
         ]);
@@ -252,7 +252,7 @@ class branchController extends Controller
              $branch->latitude = $request->latitude;
              $branch->longitude = $request->longitude;
              $branch->phone = $request->phone;
-             $branch->address = $request->address;
+             $branch->street = $request->street;
              $branch->status = 'active';
              $branch->save();
             //Create New User

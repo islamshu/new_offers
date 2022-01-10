@@ -24,8 +24,21 @@ card card-docs mb-2">
                 @foreach ($branches as $item)
                     
                  <tr>
-                    <td>{{$item->name_ar}}</td>
-                    <td>{{$item->name_en}}</td>
+
+                    <td>
+                        @php
+                        $lang = app()->getLocale();
+                        @endphp
+
+                    </td>
+                    <td>
+                        @if($lang =='ar')
+                        {{$item->name_ar}}
+                        @else
+                        {{$item->name_en}}
+                        @endif
+
+                    </td>
                     <td>{{$item->latitude}}</td>
                     <td>{{$item->longitude}}</td>
                     <td>

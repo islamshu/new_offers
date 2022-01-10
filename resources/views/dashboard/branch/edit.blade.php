@@ -44,8 +44,8 @@
                 </div> --}}
                
                 <div class="form-group col-md-6">
-                    <label>address:</label>
-                    <input type="text" name="address" id="address"  value="{{ $branch->address }}" class="form-control form-control-solid"
+                    <label>street:</label>
+                    <input type="text" name="street" id="street"  value="{{ $branch->street }}" class="form-control form-control-solid"
                         placeholder="Enter uuid" required />
                 </div>
                 <div class="form-group col-md-6">
@@ -288,9 +288,10 @@
         let formData = new FormData();
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
-        formData.append('kt_select2_1', document.getElementById('address').value);
-        formData.append('address', document.getElementById('address').value);
-        formData.append('phone', document.getElementById('phone').value);
+        if (document.getElementById('street') != null) {
+                formData.append('street', document.getElementById('street').value);
+        }      
+          formData.append('phone', document.getElementById('phone').value);
         // formData.append('email', document.getElementById('email').value);
         formData.append('longitude', document.getElementById('longitude').value);
         formData.append('latitude', document.getElementById('latitude').value);
