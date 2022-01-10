@@ -567,8 +567,8 @@ class brandController extends Controller
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
-            'desc_en' => 'required|string|min:3',
-            'desc_ar' => 'required|string|min:3',
+            'desc_en' => 'required',
+            'desc_ar' =>  'required',
             // 'owner_name' => 'required|string|min:3',
             'commercial_registration_number' => 'required',
             'email' => 'required|email|unique:users,email,' . @$user->id,
