@@ -137,6 +137,8 @@ class brandController extends Controller
     //     ->
     //     ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
     //     dd($image);
+    dd($request->all());
+
         $validator = Validator::make($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
@@ -216,7 +218,6 @@ class brandController extends Controller
                        
                         
                         $country_ids = json_decode($request->country_id);
-                        dd($request->all());
 
                         $vendor->save();
                         $soial = new SoialVendor(); 
