@@ -531,7 +531,7 @@
                 formData.append('terms_en', document.getElementById('terms_en').value);
             }
             if (document.getElementById('telephoone') != null) {
-                formData.append('telephoone', document.getElementById('terms_en').value);
+                formData.append('telephoone', document.getElementById('telephoone').value);
             }
 
 
