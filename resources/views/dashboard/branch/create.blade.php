@@ -312,7 +312,7 @@
         formData.append('latitude', document.getElementById('latitude').value);
         formData.append('city_id', document.getElementById('city_id').value);
         formData.append('neighborhood_id', document.getElementById('neighborhood_id').value);
-        store("{{ route('branch.store', ['locale'=>app()->getLocale()]) }}", formData)
+        store("{{ route('branch.store', [app()->getLocale()]) }}", formData)
     }
 
 </script>
