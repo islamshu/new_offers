@@ -719,6 +719,7 @@ class brandController extends Controller
 
                         return response()->json(['icon' => 'success', 'title' => 'Vendor updated successfully']);
                     } catch (\Exception $e) {
+                        dd($e);
                         DB::rollback();
 
 
