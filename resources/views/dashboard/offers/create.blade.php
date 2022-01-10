@@ -192,6 +192,8 @@
                                         </div>
                                         <!--end::Input-->
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xl-6">
                                         <!--begin::Input-->
                                         <div class="form-group">
