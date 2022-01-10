@@ -103,7 +103,11 @@ class branchController extends Controller
        
     //    $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
     
-        $neighborhood = Vendor_neighborhood::where('vendor_id', $request->vendor_id)->with('neighborhood')->get();
+        $neighborhood = Vendor_neighborhood::where('vendor_id', $request->vendor_id)->with('neighborhood')
+        ->whereHas('neighborhood', function ($q) use ($request) {
+            $q->where('city_id', $request->city_id);
+          })->get();
+    
         dd($neighborhood);
 
         return response()->json($neighborhood);
