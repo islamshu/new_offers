@@ -79,7 +79,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $so->instagram = $row['instagram'];
         $so->snapchat = $row['snapchat'];
         $so->vendor_id = $vendor->id;
-        $so->save;
+        $so->save();
         // dd($so);
         
         DB::table('image_vendors')->insert(
