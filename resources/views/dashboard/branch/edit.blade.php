@@ -238,8 +238,7 @@
                 success: function (data) {
                     $('#neighborhood_id').html(new Option('chose city', '0'));
                     for (var i = 0; i < data.length; i++) {
-                        $('#neighborhood_id').append(new Option(data[i].neighborhood
-                            .neighborhood_name_english, data[i].neighborhood.id));
+                        $('#neighborhood_id').append(new Option(data[i].neighborhood_name_english, data[i].id));
 
                     }
                 },
