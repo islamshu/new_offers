@@ -279,6 +279,8 @@
                                             id="price_befor_discount" name="price_befor_discount"
                                             placeholder="Price befor discount" />
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6 discont_value" style="display: none">
                                         <label>{{ __('Discount value') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
