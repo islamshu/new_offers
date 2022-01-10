@@ -25,12 +25,9 @@ card card-docs mb-2">
                     
                  <tr>
 
-                    <td>
-                        @php
-                        $lang = app()->getLocale();
-                        @endphp
-
-                    </td>
+                    @php
+                    $lang = app()->getLocale();
+                    @endphp
                     <td>
                         @if($lang =='ar')
                         {{$item->name_ar}}
