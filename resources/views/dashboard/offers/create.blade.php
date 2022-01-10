@@ -218,6 +218,8 @@
                                         </div>
                                         <!--end::Input-->
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xl-6">
                                         <!--begin::Select-->
                                         <div class="form-group">
