@@ -281,11 +281,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 discont_value" style="display: none">
-                                        <label>{{ __('Discount value') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="discount_value" name="discount_value" placeholder="Discount value" />
-                                    </div>
+                                    
                                     <div class="col-md-6 discont_value" style="display: none">
                                       <label>{{ __('Discount Type') }}</label>
                                         <select  class="form-control form-control-solid form-control-lg"
@@ -294,6 +290,11 @@
                                             <option value="value">{{ __('value') }}</option>
                                             <option value="persantage">{{ __('persantage') }}</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-6 discont_value" style="display: none">
+                                        <label>{{ __('Discount value') }}</label>
+                                        <input type="number" class="form-control form-control-solid form-control-lg"
+                                            id="discount_value" name="discount_value" placeholder="Discount value" />
                                     </div>
                                 </div>
 
