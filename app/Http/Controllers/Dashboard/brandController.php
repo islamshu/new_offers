@@ -562,7 +562,7 @@ class brandController extends Controller
     {
         $user = User::where('vendor_id', $id)->first();
         $vendor = Vendor::find($id);
-        dd($user,$vendor);
+        dd($user,$id);
        
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
