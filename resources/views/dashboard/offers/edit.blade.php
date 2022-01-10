@@ -376,26 +376,26 @@
 
 
 
-                                </div>
                                 <!--end::Input-->
                                 <!--begin::Input-->
+                                
+                                <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label>{{ __('Sort') }}</label>
-                                    <input type="number" value="{{ $offer->sort }}" class="form-control form-control-solid form-control-lg" name="sort"
-                                        id="sort" placeholder="sort" />
-                                </div>
                                 <div class="form-group">
                                     <label>{{ __('Start time') }}</label>
                                     <input type="datetime" value="{{ $offer->start_time }}" class="form-control form-control-solid form-control-lg"
                                         name="start_time" id="start_time" placeholder="start_time" />
                                 </div>
+                                </div>
+                                <div class="col-md-6">
+
                                 <!--end::Input-->
                                 <!--begin::Input-->
                                 <div class="form-group">
                                     <label>{{ __('End time') }}</label>
                                     <input type="datetime" value="{{ $offer->end_time }}" class=" form-control form-control-solid form-control-lg"
                                         name="end_time" id="end_time" placeholder="end_time" />
+                                </div>
                                 </div>
                                
 
@@ -414,6 +414,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6 ponitex" @if($offer->exchange_points == 'active')  style="display: block" @else style="display: none" @endif >
 
                                         <label>{{ __('points') }}</label>
@@ -423,7 +425,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
+                               
                                     <div class="col-md-6 ponitex" @if($offer->exchange_points == 'active')  style="display: block" @else style="display: none" @endif >
                                         <label>{{ __('Exchange points number') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
@@ -502,7 +504,13 @@
                                         <input type="number" class="form-control form-control-solid form-control-lg"
                                             id="datatime_number" name="datatime_number" value="{{ $offer->datatime_number }}" placeholder="Usage member number"  />
                                     </div>
-
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ __('Sort') }}</label>
+                                            <input type="number" value="{{ $offer->sort }}" class="form-control form-control-solid form-control-lg" name="sort"
+                                                id="sort" placeholder="sort" />
+                                        </div>
+                                        </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>{{ __('specific days') }}</label>
