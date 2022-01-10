@@ -247,7 +247,7 @@ class brandController extends Controller
                                     $citiesVendor->vendor_id = $vendor->id;
                                     $citiesVendor->city_id = $city->id;
                                     $citiesVendor->save();
-                                    $Neighborhoods = Neighborhood::where('city_id', $city)->get();
+                                    $Neighborhoods = Neighborhood::where('city_id', $city->id)->get();
                                     foreach ($Neighborhoods as $Neighborhood) {
                                         $citiesVendor = new Vendor_neighborhood();
                                         $citiesVendor->vendor_id = $vendor->id;
@@ -505,7 +505,6 @@ class brandController extends Controller
     public function neighborhoods_vendor($locale, $id)
     {
         $Neighborhoods = Vendor::with('neighborhood')->find($id)->neighborhood;
-        dd($Neighborhoods);
 
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
