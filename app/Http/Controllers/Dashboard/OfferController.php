@@ -320,7 +320,7 @@ class OfferController extends Controller
             'usege_member' => 'required',
             'usage_member_number' => $request->usege_member == 'limit' ? 'required' : '',
             'usege_system' => 'required',
-            'usage_number_system' => 'required',
+            'usage_number_system' => $request->usege_member == 'limit' ? 'required' : '',
             'datetime_use' => 'required',
             'datatime_use_type' => 'required',
             // <option value="" selected disabled>
@@ -397,6 +397,7 @@ class OfferController extends Controller
             $offer->update($request_all);
 
             $image_offer =  $offer->offerimage;
+            
             if($request->primary_image != 'undefined' &&  $request->primary_image != null){
 
            
