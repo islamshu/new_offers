@@ -118,7 +118,7 @@ class OfferController extends Controller
             'usege_member' => 'required',
             'usage_member_number' => $request->usege_member == 'limit' ? 'required' : '',
             'usege_system' => 'required',
-            'usage_number_system' => 'required',
+            'usage_number_system' =>$request->usege_system == 'limit' ? 'required' : '',
             'datetime_use' => 'required',
             'datatime_use_type' => 'required',
             // <option value="" selected disabled>
