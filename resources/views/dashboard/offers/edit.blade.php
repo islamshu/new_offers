@@ -424,7 +424,6 @@
 
 
                                     </div>
-                                </div>
                                
                                     <div class="col-md-6 ponitex" @if($offer->exchange_points == 'active')  style="display: block" @else style="display: none" @endif >
                                         <label>{{ __('Exchange points number') }}</label>
