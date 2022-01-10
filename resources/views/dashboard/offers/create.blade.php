@@ -234,18 +234,18 @@
                                             </select>
                                         </div>
                                     </div>
-                                        <div class="col-xl-6 usage_number_system" style="display: none">
-                                            <!--begin::Input-->
-                                            <div class="form-group ">
-                                                <label>{{ __('Usage number system') }}</label>
-                                                <input type="number" class="form-control form-control-solid form-control-lg"
-                                                    id="usage_number_system" name="usage_number_system"
-                                                    placeholder="Usage member number" />
-                                            </div>
-                                            <!--end::Input-->
+                                    <div class="col-xl-6 usage_number_system" style="display: none">
+                                        <!--begin::Input-->
+                                        <div class="form-group ">
+                                            <label>{{ __('Usage number system') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="usage_number_system" name="usage_number_system"
+                                                placeholder="Usage member number" />
                                         </div>
-                                        <!--end::Select-->
-                                    
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Select-->
+
                                 </div>
                                 <!--end::Input-->
 
@@ -253,7 +253,7 @@
 
 
 
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>{{ __('Model Of Offer') }}</label>
@@ -283,11 +283,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    
+
                                     <div class="col-md-6 discont_value" style="display: none">
-                                      <label>{{ __('Discount Type') }}</label>
-                                        <select  class="form-control form-control-solid form-control-lg"
-                                            name="discount_type" id="discount_type">
+                                        <label>{{ __('Discount Type') }}</label>
+                                        <select class="form-control form-control-solid form-control-lg" name="discount_type"
+                                            id="discount_type">
                                             <option value="" selected disabled>{{ __('choese') }}</option>
                                             <option value="value">{{ __('value') }}</option>
                                             <option value="persantage">{{ __('persantage') }}</option>
@@ -367,7 +367,7 @@
                                     </div>
 
                                 </div>
-                               
+
                             </div>
 
                             <!--end::Wizard Step 1-->
@@ -375,284 +375,295 @@
                             <div class="pb-5" data-wizard-type="step-content">
                                 <h4 class="mb-10 font-weight-bold text-dark">{{ __('DataTime info') }}</h4>
                                 <!--begin::Input-->
-                                <div class="row">
 
-
-
-                                </div>
                                 <!--end::Input-->
                                 <!--begin::Input-->
-
-                                <div class="form-group">
-                                    <label>{{ __('Sort') }}</label>
-                                    <input type="number" class="form-control form-control-solid form-control-lg" name="sort"
-                                        id="sort" placeholder="sort" />
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ __('Start time') }}</label>
-                                    <input type="datetime-local" class="form-control form-control-solid form-control-lg"
-                                        name="start_time" id="start_time" placeholder="start_time" />
-                                </div>
-                                <!--end::Input-->
-                                <!--begin::Input-->
-                                <div class="form-group">
-                                    <label>{{ __('End time') }}</label>
-                                    <input type="datetime-local"" class=" form-control form-control-solid form-control-lg"
-                                        name="end_time" id="end_time" placeholder="end_time" />
-                                </div>
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label>{{ __('System Coupon use') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="systemCoupon_use" id="systemCoupon_use">
-                                                <option value="" selected disabled>{{ __('chose ') }}</option>
-                                                <option value="active">{{ __('active') }}</option>
-                                                <option value="deactive">{{ __('deactive') }}</option>
+                                    <div class="form-group">
+                                        <label>{{ __('Start time') }}</label>
+                                        <input type="datetime-local"
+                                            class="form-control form-control-solid form-control-lg" name="start_time"
+                                            id="start_time" placeholder="start_time" />
+                                    </div>
+                                    </div>
+                                    <!--end::Input-->
+                                    <!--begin::Input-->
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ __('End time') }}</label>
+                                        <input type="datetime-local"" class="
+                                             form-control form-control-solid form-control-lg" name="end_time" id="end_time"
+                                            placeholder="end_time" />
+                                    </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label>{{ __('System Coupon use') }}</label>
+                                                <select name="delivery"
+                                                    class="form-control form-control-solid form-control-lg"
+                                                    name="systemCoupon_use" id="systemCoupon_use">
+                                                    <option value="" selected disabled>{{ __('chose ') }}</option>
+                                                    <option value="active">{{ __('active') }}</option>
+                                                    <option value="deactive">{{ __('deactive') }}</option>
 
-                                            </select>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 count_systemCoupon_use " style="display: none">
-                                        <label>{{ __('Count system Coupon use') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="count_systemCoupon_use" name="count_systemCoupon_use"
-                                            placeholder="Usage member number" />
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label>{{ __('Exchange points') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="exchange_points" id="exchange_points">
-                                                <option value="" selected disabled>{{ __('chose ') }}</option>
-
-                                                <option value="active">{{ __('active') }}</option>
-                                                <option value="deactive">{{ __('deactive') }}</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 ponitex" style="display: none">
-
-                                        <label>{{ __('points') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="points" name="points" placeholder="Usage member number" />
-
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 ponitex" style="display: none">
-                                        <label>{{ __('Exchange points number') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="exchange_points_number" name="exchange_points_number"
-                                            placeholder="Usage member number" />
-                                    </div>
-
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label>{{ __('Exchange cash') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="exchange_cash" id="exchange_cash">
-                                                <option value="" selected disabled>{{ __('chose ') }}</option>
-
-                                                <option value="active">{{ __('active') }}</option>
-                                                <option value="deactive">{{ __('deactive') }}</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 exchange_cash_number" style="display: none">
-                                        <label>{{ __('Exchange cash number') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="exchange_cash_number" name="exchange_cash_number"
-                                            placeholder="Usage member number" />
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label>{{ __('Payment type') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="payment_type" id="payment_type">
-                                                <option value="cash">{{ __('cash') }}</option>
-                                                <option value="visa">{{ __('visa') }}</option>
-
-                                            </select>
+                                        <div class="col-md-6 count_systemCoupon_use " style="display: none">
+                                            <label>{{ __('Count system Coupon use') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="count_systemCoupon_use" name="count_systemCoupon_use"
+                                                placeholder="Usage member number" />
                                         </div>
                                     </div>
 
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label>{{ __('Exchange points') }}</label>
+                                                <select name="delivery"
+                                                    class="form-control form-control-solid form-control-lg"
+                                                    name="exchange_points" id="exchange_points">
+                                                    <option value="" selected disabled>{{ __('chose ') }}</option>
+
+                                                    <option value="active">{{ __('active') }}</option>
+                                                    <option value="deactive">{{ __('deactive') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ponitex" style="display: none">
+
+                                            <label>{{ __('points') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="points" name="points" placeholder="Usage member number" />
 
 
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>{{ __('Datetime use') }}</label>
-                                            <select class="form-control form-control-solid form-control-lg"
-                                                id="datetime_use" name="datetime_use">
-                                                <option value="">{{ __('chose') }}</option>
-                                                <option value="active">{{ __('active') }}</option>
-                                                <option value="deactive">{{ __('deactive') }}</option>
-
-                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 datetime_use" style="display: none">
-                                        <div class="form-group ">
-                                            <label>{{ __('Datatime use type') }}</label>
-                                            <select class="form-control form-control-solid form-control-lg"
-                                                id="datatime_use_type" name="datatime_use_type">
-                                                <option value="days">{{ __('days') }}</option>
-                                                <option value="hours">{{ __('hours') }}</option>
+                                    <div class="row">
+                                        <div class="col-md-6 ponitex" style="display: none">
+                                            <label>{{ __('Exchange points number') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="exchange_points_number" name="exchange_points_number"
+                                                placeholder="Usage member number" />
+                                        </div>
 
-                                            </select>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label>{{ __('Exchange cash') }}</label>
+                                                <select name="delivery"
+                                                    class="form-control form-control-solid form-control-lg"
+                                                    name="exchange_cash" id="exchange_cash">
+                                                    <option value="" selected disabled>{{ __('chose ') }}</option>
+
+                                                    <option value="active">{{ __('active') }}</option>
+                                                    <option value="deactive">{{ __('deactive') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 exchange_cash_number" style="display: none">
+                                            <label>{{ __('Exchange cash number') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="exchange_cash_number" name="exchange_cash_number"
+                                                placeholder="Usage member number" />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label>{{ __('Payment type') }}</label>
+                                                <select name="delivery"
+                                                    class="form-control form-control-solid form-control-lg"
+                                                    name="payment_type" id="payment_type">
+                                                    <option value="cash">{{ __('cash') }}</option>
+                                                    <option value="visa">{{ __('visa') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ __('Datetime use') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="datetime_use" name="datetime_use">
+                                                    <option value="">{{ __('chose') }}</option>
+                                                    <option value="active">{{ __('active') }}</option>
+                                                    <option value="deactive">{{ __('deactive') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 datetime_use" style="display: none">
+                                            <div class="form-group ">
+                                                <label>{{ __('Datatime use type') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="datatime_use_type" name="datatime_use_type">
+                                                    <option value="days">{{ __('days') }}</option>
+                                                    <option value="hours">{{ __('hours') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6 datetime_use" style="display: none">
+                                            <label>{{ __('Datatime number ') }}</label>
+                                            <input type="number" class="form-control form-control-solid form-control-lg"
+                                                id="datatime_number" name="datatime_number"
+                                                placeholder="Usage member number" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ __('Sort') }}</label>
+                                                <input type="number" class="form-control form-control-solid form-control-lg"
+                                                    name="sort" id="sort" placeholder="sort" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label>{{ __('specific days') }}</label>
+                                                <select name="delivery"
+                                                    class="form-control form-control-solid form-control-lg"
+                                                    name="specific_days" id="specific_days">
+                                                    <option value="" selected disabled>{{ __('chose ') }}</option>
+                                                    <option value="active">{{ __('active') }}</option>
+                                                    <option value="deactive">{{ __('deactive') }}</option>
+
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6 datetime_use" style="display: none">
-                                        <label>{{ __('Datatime number ') }}</label>
-                                        <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="datatime_number" name="datatime_number" placeholder="Usage member number" />
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group ">
-                                            <label>{{ __('specific days') }}</label>
-                                            <select name="delivery" class="form-control form-control-solid form-control-lg"
-                                                name="specific_days" id="specific_days">
-                                                <option value="" selected disabled>{{ __('chose ') }}</option>
-                                                <option value="active">{{ __('active') }}</option>
-                                                <option value="deactive">{{ __('deactive') }}</option>
-
-                                            </select>
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_0" name="from_0" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_0" name="to_0" placeholder="time to" />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_0" name="from_0" placeholder="time form" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_1" name="from_1" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_1" name="to_1" placeholder="time to" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_0" name="to_0" placeholder="time to" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_2" name="from_2" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_2" name="to_2" placeholder="time to" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_1" name="from_1" placeholder="time form" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_3" name="from_3" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_3" name="to_3" placeholder="time to" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_1" name="to_1" placeholder="time to" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_4" name="from_4" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_4" name="to_4" placeholder="time to" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_2" name="from_2" placeholder="time form" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_5" name="from_5" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_5" name="to_5" placeholder="time to" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_2" name="to_2" placeholder="time to" />
+                                    <div class="row specific_days" style="display: none">
+                                        <div class="col-md-6">
+                                            <label>{{ __('time form') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="from_6" name="from_6" placeholder="time form" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>{{ __('time to') }}</label>
+                                            <input type="time" class="form-control form-control-solid form-control-lg"
+                                                id="to_6" name="to_6" placeholder="time to" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_3" name="from_3" placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_3" name="to_3" placeholder="time to" />
-                                    </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_4" name="from_4" placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_4" name="to_4" placeholder="time to" />
-                                    </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_5" name="from_5" placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_5" name="to_5" placeholder="time to" />
-                                    </div>
-                                </div>
-                                <div class="row specific_days" style="display: none">
-                                    <div class="col-md-6">
-                                        <label>{{ __('time form') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="from_6" name="from_6" placeholder="time form" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>{{ __('time to') }}</label>
-                                        <input type="time" class="form-control form-control-solid form-control-lg"
-                                            id="to_6" name="to_6" placeholder="time to" />
-                                    </div>
+
+
+
+
+
+
+
+
                                 </div>
 
 
 
 
+                                <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                    <div class="mr-2">
+                                        <button type="button"
+                                            class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
+                                            data-wizard-type="action-prev">{{ __('Previous') }}</button>
+                                    </div>
+                                    <div>
+                                        <button type="button"
+                                            class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
+                                            onclick="performStore()"
+                                            data-wizard-type="action-submit">{{ __('Submit') }}</button>
 
-
-
-
-                            </div>
-
-
-
-
-                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
-                                <div class="mr-2">
-                                    <button type="button"
-                                        class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
-                                        data-wizard-type="action-prev">{{ __('Previous') }}</button>
+                                        <button type="button"
+                                            class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                            data-wizard-type="action-next">{{ __('Next') }}</button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <button type="button"
-                                        class="btn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                        onclick="performStore()"
-                                        data-wizard-type="action-submit">{{ __('Submit') }}</button>
-
-                                    <button type="button"
-                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
-                                        data-wizard-type="action-next">{{ __('Next') }}</button>
-                                </div>
-                            </div>
-                            <!--end::Wizard Actions-->
+                                <!--end::Wizard Actions-->
                         </form>
                         <!--end::Wizard Form-->
                     </div>
@@ -665,16 +676,16 @@
     </div>
 @endsection
 @section('scripts')
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/pages/custom/wizard/wizard-1.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('js/pages/custom/wizard/wizard-1.js') }}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-<script src="{{ asset('crudjs/crud.js') }}"></script>
+    <script src="{{ asset('crudjs/crud.js') }}"></script>
 
 
     <script>
@@ -1027,7 +1038,7 @@
         };
     </script>
 
-   
+
     <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
     <script src="{{ asset('js/scripts.bundle.js') }}"></script>
@@ -1065,7 +1076,7 @@
                 formData.append('terms_en', document.getElementById('terms_en').value);
             }
 
-            
+
             if (document.getElementById('usage_member_number') != null) {
                 formData.append('usage_member_number', document.getElementById('usage_member_number').value);
             }
