@@ -268,6 +268,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6 price_offer " style="display: none">
                                         <label>{{ __('Price') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
