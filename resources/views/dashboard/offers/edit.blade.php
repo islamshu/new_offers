@@ -487,6 +487,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6 datetime_use" @if($offer->datetime_use =='active')  style="display: block" @else style="display: none" @endif>
                                         <div class="form-group ">
                                             <label>{{ __('Datatime use type') }}</label>
@@ -503,6 +505,8 @@
                                         <input type="number" class="form-control form-control-solid form-control-lg"
                                             id="datatime_number" name="datatime_number" value="{{ $offer->datatime_number }}" placeholder="Usage member number"  />
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{ __('Sort') }}</label>
