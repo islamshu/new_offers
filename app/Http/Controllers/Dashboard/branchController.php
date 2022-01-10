@@ -108,7 +108,7 @@ class branchController extends Controller
             $q->where('city_id', $request->city_id);
           })->get();
     
-        dd($neighborhood);
+        // dd($neighborhood);
 
         return response()->json($neighborhood);
     }    
