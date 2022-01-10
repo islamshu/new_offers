@@ -224,7 +224,7 @@
 
             var city_id = $(this).val();
             // console.log(cat_id);
-            var vendor_id  = $('.vendor').val();
+            var vendor_id  ="{{ $branch->vendor_id }}"
         
             var div = $(this).parent();
 
