@@ -47,7 +47,9 @@
                     <input type="password" name="password" id="password" class="form-control form-control-solid"
                         placeholder="Enter password" required />
                 </div> --}}
-               
+                @php
+                $lang = app()->getLocale();
+                @endphp
                 <div class="form-group col-md-6">
                     <label>{{ __('phone') }}:</label>
                     <input type="text" name="phone" id="phone" class="form-control form-control-solid"
@@ -62,7 +64,7 @@
                         @foreach ($city as $item)
                             
                         
-                        <option value="{{ $item->city->id }}"  >{{ $item->city->city_name_english }}</option>
+                        <option value="{{ $item->city->id }}"  >@if($lang =='en') {{ $item->city->city_name_english }} @else {{ $item->city->city_name }} @endif </option>
                         @endforeach
                     </select>
                 </div>
@@ -231,6 +233,7 @@
             var div = $(this).parent();
 
             var op = " ";
+            var lang = "{{ $lang }}"
 
             $.ajax({
                 type: 'get',
@@ -242,8 +245,13 @@
                 success: function (data) {
                     $('#neighborhood_id').html(new Option('chose city', '0'));
                     for (var i = 0; i < data.length; i++) {
+                        if(lang == 'en')
                         $('#neighborhood_id').append(new Option(data[i].neighborhood
                             .neighborhood_name_english, data[i].neighborhood.id));
+                            else{
+                                $('#neighborhood_id').append(new Option(data[i].neighborhood
+                            .neighborhood_name, data[i].neighborhood.id));
+                            }
 
                     }
                 },
@@ -299,7 +307,7 @@
         }
         formData.append('phone', document.getElementById('phone').value);
         // formData.append('email', document.getElementById('email').value);
-        formData.append('password', document.getElementById('password').value);
+        // formData.append('password', document.getElementById('password').value);
         formData.append('longitude', document.getElementById('longitude').value);
         formData.append('latitude', document.getElementById('latitude').value);
         formData.append('city_id', document.getElementById('city_id').value);
