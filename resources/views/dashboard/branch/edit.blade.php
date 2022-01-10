@@ -43,11 +43,7 @@
                         placeholder="Enter email" required />
                 </div> --}}
                
-                <div class="form-group col-md-6">
-                    <label>street:</label>
-                    <input type="text" name="street" id="street"  value="{{ $branch->street }}" class="form-control form-control-solid"
-                        placeholder="Enter uuid" required />
-                </div>
+               
                 <div class="form-group col-md-6">
                     <label>phone:</label>
                     <input type="text" name="phone" id="phone"  value="{{ $branch->phone }}" class="form-control form-control-solid"
@@ -72,6 +68,11 @@
                     @endforeach
 
                     </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>street:</label>
+                    <input type="text" name="street" id="street"  value="{{ $branch->street }}" class="form-control form-control-solid"
+                        placeholder="Enter uuid" required />
                 </div>
 
                 <div class="form-group col-md-6">

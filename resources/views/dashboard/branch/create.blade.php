@@ -47,11 +47,7 @@
                     <input type="password" name="password" id="password" class="form-control form-control-solid"
                         placeholder="Enter password" required />
                 </div> --}}
-                <div class="form-group col-md-6">
-                    <label>{{ __('street') }}:</label>
-                    <input type="text" name="street" id="street" class="form-control form-control-solid"
-                        placeholder="Enter uuid" required />
-                </div>
+               
                 <div class="form-group col-md-6">
                     <label>{{ __('phone') }}:</label>
                     <input type="text" name="phone" id="phone" class="form-control form-control-solid"
@@ -76,6 +72,11 @@
                     <select class="neighborhood custom-select" id="neighborhood_id" name="neighborhood_id">
                         <option value="0" disabled="true" selected="true">Neighborhood Name</option>
                     </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>{{ __('street') }}:</label>
+                    <input type="text" name="street" id="street" class="form-control form-control-solid"
+                        placeholder="Enter uuid" required />
                 </div>
 
                 <div class="form-group col-md-6">
