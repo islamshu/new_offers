@@ -137,7 +137,7 @@ class brandController extends Controller
     //     ->
     //     ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
     //     dd($image);
-    dd($request->all());
+    // dd($request->all());
 
         $validator = Validator::make($request->all(), [
             'name_ar' => 'required|string|min:3',
