@@ -265,8 +265,8 @@
                                                 <option value="" disabled selected>{{ __('chose') }}</option>
 
                                                 <option value="buyOneGetOne" @if($offer->offertype->offer_type == 'buyOneGetOne') selected @endif>{{ __('buyOneGetOne') }}</option>
-                                                <option value="special_discount" @if($offer->offertype == 'special_discount') selected @endif>{{ __('special discount') }}</option>
-                                                <option value="general_offer" @if($offer->offertype == 'general_offer') selected @endif>{{ __('general discount') }}</option>
+                                                <option value="special_discount" @if($offer->offertype->offer_type == 'special_discount') selected @endif>{{ __('special discount') }}</option>
+                                                <option value="general_offer" @if($offer->offertype->offer_type== 'general_offer') selected @endif>{{ __('general discount') }}</option>
 
                                             </select>
                                         </div>
@@ -274,7 +274,7 @@
                                     <div class="col-md-6 price_offer " @if($offer->offertype->offer_type == 'buyOneGetOne' || $offer->offertype->offer_type == 'special_discount' ) style="display: block" @else style="display: none" @endif >
                                         <label>{{ __('Price') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="price" name="price" value="{{ $offer->price }}" placeholder="Price after discount" />
+                                            id="price" name="price" value="{{ $offer->offertype->price }}" placeholder="Price after discount" />
                                     </div>
                                     <div class="col-md-6 price_befor_discount" @if($offer->offertype->offer_type == 'special_discount') style="display: block" @else style="display: none"@endif >
                                         <label>{{ __('Price befor discount') }}</label>
