@@ -264,36 +264,36 @@
                                                 name="offer_type_2" id="offer_type_2">
                                                 <option value="" disabled selected>{{ __('chose') }}</option>
 
-                                                <option value="buyOneGetOne" @if($offer->offertype->offer_type == 'buyOneGetOne') selected @endif>{{ __('buyOneGetOne') }}</option>
-                                                <option value="special_discount" @if($offer->offertype->offer_type == 'special_discount') selected @endif>{{ __('special discount') }}</option>
-                                                <option value="general_offer" @if($offer->offertype->offer_type== 'general_offer') selected @endif>{{ __('general discount') }}</option>
+                                                <option value="buyOneGetOne" @if(@$offer->offertype->offer_type == 'buyOneGetOne') selected @endif>{{ __('buyOneGetOne') }}</option>
+                                                <option value="special_discount" @if(@$offer->offertype->offer_type == 'special_discount') selected @endif>{{ __('special discount') }}</option>
+                                                <option value="general_offer" @if(@$offer->offertype->offer_type== 'general_offer') selected @endif>{{ __('general discount') }}</option>
 
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 price_offer " @if($offer->offertype->offer_type == 'buyOneGetOne' || $offer->offertype->offer_type == 'special_discount' ) style="display: block" @else style="display: none" @endif >
+                                    <div class="col-md-6 price_offer " @if(@$offer->offertype->offer_type == 'buyOneGetOne' || @$offer->offertype->offer_type == 'special_discount' ) style="display: block" @else style="display: none" @endif >
                                         <label>{{ __('Price') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="price" name="price" value="{{ $offer->offertype->price }}" placeholder="Price after discount" />
+                                            id="price" name="price" value="{{ @$offer->offertype->price }}" placeholder="Price after discount" />
                                     </div>
-                                    <div class="col-md-6 price_befor_discount" @if($offer->offertype->offer_type == 'special_discount') style="display: block" @else style="display: none"@endif >
+                                    <div class="col-md-6 price_befor_discount" @if(@$offer->offertype->offer_type == 'special_discount') style="display: block" @else style="display: none"@endif >
                                         <label>{{ __('Price befor discount') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="price_befor_discount" name="price_befor_discount" value="{{ $offer->offertype->price_befor_discount }}"
+                                            id="price_befor_discount" name="price_befor_discount" value="{{ @$offer->offertype->price_befor_discount }}"
                                             placeholder="Price befor discount" />
                                     </div>
-                                    <div class="col-md-6 discont_value"  @if($offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
+                                    <div class="col-md-6 discont_value"  @if(@$offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
                                         <label>{{ __('Discount value') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="discount_value" name="discount_value" placeholder="Discount value" value="{{ $offer->offertype->discount_value }} " />
+                                            id="discount_value" name="discount_value" placeholder="Discount value" value="{{ @$offer->offertype->discount_value }} " />
                                     </div>
-                                    <div class="col-md-6 discont_value"  @if($offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
+                                    <div class="col-md-6 discont_value"  @if(@$offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
                                       <label>{{ __('Discount Type') }}</label>
                                         <select  class="form-control form-control-solid form-control-lg"
                                             name="discount_type" id="discount_type">
                                             <option value="" selected disabled>{{ __('choese') }}</option>
-                                            <option value="value" @if($offer->offertype->discount_type == 'value') selected @endif >{{ __('value') }}</option>
-                                            <option value="persantage" @if($offer->offertype->discount_type == 'persantage') selected @endif>{{ __('persantage') }}</option>
+                                            <option value="value" @if(@$offer->offertype->discount_type == 'value') selected @endif >{{ __('value') }}</option>
+                                            <option value="persantage" @if(@$offer->offertype->discount_type == 'persantage') selected @endif>{{ __('persantage') }}</option>
                                         </select>
                                     </div>
                                 </div>
