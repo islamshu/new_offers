@@ -399,27 +399,7 @@
                                     </div>
                                     </div>
                                 </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ">
-                                                <label>{{ __('System Coupon use') }}</label>
-                                                <select name="delivery"
-                                                    class="form-control form-control-solid form-control-lg"
-                                                    name="systemCoupon_use" id="systemCoupon_use">
-                                                    <option value="" selected disabled>{{ __('chose ') }}</option>
-                                                    <option value="active">{{ __('active') }}</option>
-                                                    <option value="deactive">{{ __('deactive') }}</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 count_systemCoupon_use " style="display: none">
-                                            <label>{{ __('Count system Coupon use') }}</label>
-                                            <input type="number" class="form-control form-control-solid form-control-lg"
-                                                id="count_systemCoupon_use" name="count_systemCoupon_use"
-                                                placeholder="Usage member number" />
-                                        </div>
-                                    </div>
+                                   
 
                                     <div class="row">
 
@@ -1161,9 +1141,9 @@
                 formData.append('points', document.getElementById('points').value);
             }
             formData.append('exchange_cash', document.getElementById('exchange_cash').value);
-            if (document.getElementById('count_systemCoupon_use') != null) {
-                formData.append('count_systemCoupon_use', document.getElementById('count_systemCoupon_use').value);
-            }
+            // if (document.getElementById('count_systemCoupon_use') != null) {
+            //     formData.append('count_systemCoupon_use', document.getElementById('count_systemCoupon_use').value);
+            // }
             if (document.getElementById('exchange_points') != null) {
                 formData.append('exchange_points', document.getElementById('exchange_points').value);
             }
