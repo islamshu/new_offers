@@ -561,7 +561,7 @@ class brandController extends Controller
     public function update_brand(Request $request, $locale, $id)
     {
         $user = User::where('vendor_id', $id)->first();
-        $vendor = Vendor::find($id);
+        $vendor = Vendor::where('id',$id)->first();
         dd($user,$id);
        
         $validator = Validator($request->all(), [
