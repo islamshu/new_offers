@@ -306,7 +306,7 @@
                                             style="background-image: url(assets/media/>users/blank.png)">
                                             <label>{{ __('Primary image') }}</label>
 
-                                            <div class="image-input-wrapper" style="background-image: url({{ asset('images/primary_offer/'.$offer->offerimage->primary_image) }})"></div>
+                                            <div class="image-input-wrapper" style="background-image: url({{ asset('images/primary_offer/'.@$offer->offerimage->primary_image) }})"></div>
 
                                             <label
                                                 class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -337,7 +337,7 @@
                                         <div class="image-input image-input-outline" id="kt_image"
                                             style="background-image: url()">
                                             <label> {{ __('images') }}</label>
-                                            <div class="image-input-wrapper" style="background-image: url({{ asset('images/primary_offer/'.$offer->offerimage->image[0]) }})"></div>
+                                            <div class="image-input-wrapper" style="background-image: url({{ asset('images/primary_offer/'.@$offer->offerimage->image[0]) }})"></div>
 
                                             <label
                                                 class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
