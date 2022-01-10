@@ -245,10 +245,10 @@
                 success: function (data) {
                     $('#neighborhood_id').html(new Option('chose city', '0'));
                     for (var i = 0; i < data.length; i++) {
-                        if(lang == 'en')
+                        if(lang == 'en'){
                         $('#neighborhood_id').append(new Option(data[i].neighborhood
                             .neighborhood_name_english, data[i].neighborhood.id));
-                            else{
+                            }else{
                                 $('#neighborhood_id').append(new Option(data[i].neighborhood
                             .neighborhood_name, data[i].neighborhood.id));
                             }

@@ -43,7 +43,9 @@
                         placeholder="Enter email" required />
                 </div> --}}
                
-               
+                @php
+                $lang = app()->getLocale();
+                @endphp
                 <div class="form-group col-md-6">
                     <label>phone:</label>
                     <input type="text" name="phone" id="phone"  value="{{ $branch->phone }}" class="form-control form-control-solid"
@@ -54,7 +56,7 @@
                     <select class="city custom-select " id="city_id" name="city_id">
                         <option value="0" disabled="true" selected="true">City Name</option>
                         @foreach (\App\Models\Vendor_cities::where('vendor_id',$branch->vendor_id)->with('city')->get() as $item)
-                            <option value="{{ $item->city->id }} " @if($branch->city_id == $item->city->id ) selected @endif>{{ $item->city->city_name_english }}</option>
+                            <option value="{{ $item->city->id }} " @if($branch->city_id == $item->city->id ) selected @endif>{{ @if($lang =='en') {{ $item->city->city_name_english }} @else {{ $item->city->city_name }} @endif  }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -227,6 +229,7 @@
             var div = $(this).parent();
 
             var op = " ";
+            var lang = "{{ $lang }}"
 
             $.ajax({
                 type: 'get',
@@ -238,8 +241,13 @@
                 success: function (data) {
                     $('#neighborhood_id').html(new Option('chose city', '0'));
                     for (var i = 0; i < data.length; i++) {
+                        if(lang == 'en'){
                         $('#neighborhood_id').append(new Option(data[i].neighborhood
                             .neighborhood_name_english, data[i].neighborhood.id));
+                            }else{
+                                $('#neighborhood_id').append(new Option(data[i].neighborhood
+                            .neighborhood_name, data[i].neighborhood.id));
+                            }
 
                     }
                 },
