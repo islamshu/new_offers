@@ -1036,8 +1036,7 @@
             formData.append('name_en', document.getElementById('name_en').value);
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
-            formData.append('terms_ar', document.getElementById('terms_ar').value);
-            formData.append('terms_en', document.getElementById('terms_en').value);
+
             formData.append('member_type', document.getElementById('member_type').value);
             formData.append('usege_member', document.getElementById('usege_member').value);
             formData.append('usege_system', document.getElementById('usege_system').value);
@@ -1047,6 +1046,12 @@
             formData.append('specific_days', document.getElementById('specific_days').value);
             if (document.getElementById('price') != null) {
                 formData.append('price', document.getElementById('price').value);
+            }
+            if (document.getElementById('terms_ar') != null) {
+                formData.append('terms_ar', document.getElementById('terms_ar').value);
+            }
+            if (document.getElementById('terms_en') != null) {
+                formData.append('terms_en', document.getElementById('terms_en').value);
             }
             if (document.getElementById('usage_member_number') != null) {
                 formData.append('usage_member_number', document.getElementById('usage_member_number').value);

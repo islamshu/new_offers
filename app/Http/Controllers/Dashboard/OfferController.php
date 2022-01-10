@@ -135,8 +135,8 @@ class OfferController extends Controller
             'desc_en' => 'required',
             'desc_ar' => 'required',
             'start_time' => 'required',
-            'terms_ar' => 'required',
-            'terms_en' => 'required'
+            // 'terms_ar' => 'required',
+            // 'terms_en' => 'required'
         ]);
         if (!$validator->fails()) {
 
@@ -337,8 +337,8 @@ class OfferController extends Controller
             'desc_en' => 'required',
             'desc_ar' => 'required',
             'start_time' => 'required',
-            'terms_ar' => 'required',
-            'terms_en' => 'required'
+            // 'terms_ar' => 'required',
+            // 'terms_en' => 'required'
         ]);
         if (!$validator->fails()) {
 
