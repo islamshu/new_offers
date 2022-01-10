@@ -219,13 +219,13 @@ class brandController extends Controller
                         // dd($request->all());
 
                         $vendor->save();
-                        $soial = new SoialVendor(); 
-                        $soial->facebook = $request->facebook;
-                        $soial->instagram = $request->instagram;
-                        $soial->twitter = $request->twitter;
-                        $soial->snapchat = $request->snapchat;
-                        $soial->vendor_id = $vendor->id;
-                        $soial->save();
+                        // $soial = new SoialVendor(); 
+                        // $soial->facebook = $request->facebook;
+                        // $soial->instagram = $request->instagram;
+                        // $soial->twitter = $request->twitter;
+                        // $soial->snapchat = $request->snapchat;
+                        // $soial->vendor_id = $vendor->id;
+                        // $soial->save();
                     
                         $vendor->currencies()->sync(json_decode($request->currencies, false));
                         $vendor->categorys()->sync(json_decode($request->category_id, false));
