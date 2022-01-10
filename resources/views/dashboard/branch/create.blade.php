@@ -73,7 +73,7 @@
                         <option value="0" disabled="true" selected="true">Neighborhood Name</option>
                     </select>
                 </div>
-                <div class="form-group col-md-6">
+                 <div class="form-group col-md-6">
                     <label>{{ __('street') }}:</label>
                     <input type="text" name="street" id="street" class="form-control form-control-solid"
                         placeholder="Enter uuid" required />
@@ -242,7 +242,8 @@
                 success: function (data) {
                     $('#neighborhood_id').html(new Option('chose city', '0'));
                     for (var i = 0; i < data.length; i++) {
-                        $('#neighborhood_id').append(new Option(data[i].neighborhood_name_english, data[i].id));
+                        $('#neighborhood_id').append(new Option(data[i].neighborhood
+                            .neighborhood_name_english, data[i].neighborhood.id));
 
                     }
                 },
