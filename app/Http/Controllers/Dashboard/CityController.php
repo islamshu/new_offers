@@ -28,6 +28,7 @@ class CityController extends Controller
           $cities = City::with('city_enterprice')->whereHas('city_enterprice', function ($q)  {
             $q->where('enterprise_id', auth()->user()->ent_id);
           })->get();
+          dd($cities);
           $enterprise = Enterprise::find(auth()->user()->ent_id);
 
         //   dd($cities);
