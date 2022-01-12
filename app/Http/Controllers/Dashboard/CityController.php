@@ -30,7 +30,7 @@ class CityController extends Controller
           })->get();
         
           $enterprise = Enterprise::with('citis')->find(auth()->user()->ent_id);
-          dd($enterprise);
+          dd($enterprise,$cities);
 
         //   dd($cities);
             
