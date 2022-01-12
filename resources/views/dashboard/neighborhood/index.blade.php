@@ -19,6 +19,15 @@ card card-docs mb-2">
             </thead>
             <tbody>
                 @foreach ($Neighborhoods as $item)
+                @if(auth()->user()->hasRole('Enterprises'))
+                <td>{{@$item->neighborhood->neighborhood_name}}</td>
+                <td>{{@$item->neighborhood->neighborhood_name_english}}</td>
+                <td>{{@$item->neighborhood->lat}}</td>
+                <td>{{@$item->neighborhood->lng}}</td>
+                <td>{{@$item->neighborhood->city->city_name_english}}</td>
+
+                </tr>
+                @else
                 <tr>
                     <td>{{@$item->neighborhood_name}}</td>
                     <td>{{@$item->neighborhood_name_english}}</td>
@@ -27,6 +36,7 @@ card card-docs mb-2">
                     <td>{{@$item->city->city_name_english}}</td>
 
                     </tr>
+                    @endif
                     
                     @endforeach
 
