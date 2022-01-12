@@ -32,6 +32,15 @@ class NeighborhoodController extends Controller
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
     }
+    public function updateStatus(Request $request)
+    {
+    
+        $user = Neighborhood::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'Neighborhood status updated successfully.']);
+    }
 
     /**
      * Show the form for creating a new resource.

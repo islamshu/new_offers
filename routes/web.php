@@ -162,6 +162,7 @@ Route::group([
         Route::get('index_sub/{value}','Dashboard\SubscriptionController@index_sub')->name('index_sub.subscribe');
         Route::get('currency_update/update_status','Dashboard\CurrencyController@updateStatus')->name('currency.update_status');
         Route::get('city_update/update_status','Dashboard\CityController@updateStatus')->name('city.update_status');
+        Route::get('neighborhood_update/update_status','Dashboard\NeighborhoodController@updateStatus')->name('neighborhood.update_status');
 
         
     });

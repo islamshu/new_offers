@@ -15,6 +15,7 @@ card card-docs mb-2">
                     <th>{{ __('Latitude') }}</th>
                     <th>{{ __('Longitude') }}</th>
                     <th>{{ __('City') }}</th>
+                    <th>{{ __('status') }}</th>
                  </tr>
             </thead>
             <tbody>
@@ -25,6 +26,9 @@ card card-docs mb-2">
                 <td>{{@$item->neighborhood->lat}}</td>
                 <td>{{@$item->neighborhood->lng}}</td>
                 <td>{{@$item->neighborhood->city->city_name_english}}</td>
+                <td>
+                    <input type="checkbox" data-id="{{ $item->neighborhood->id }}" name="status" class="js-switch" {{ $item->neighborhood->status == 1 ? 'checked' : '' }}>
+                    </td>
 
                 </tr>
                 @else
@@ -34,6 +38,9 @@ card card-docs mb-2">
                     <td>{{@$item->lat}}</td>
                     <td>{{@$item->lng}}</td>
                     <td>{{@$item->city->city_name_english}}</td>
+                    <td>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->city->status == 1 ? 'checked' : '' }}>
+                        </td>
 
                     </tr>
                     @endif
@@ -59,6 +66,20 @@ card card-docs mb-2">
 @section('scripts')
 <script src="{{ asset('/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 <script>
-    
+    $(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('neighborhood.update_status',app()->getLocale()) }}',
+            data: {'status': status, 'id': id},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
 </script>
 @endsection
