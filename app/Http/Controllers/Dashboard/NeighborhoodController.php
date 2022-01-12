@@ -26,6 +26,7 @@ class NeighborhoodController extends Controller
         $Neighborhoods = Neighborhood::with('city')->get();
         return response()->view('dashboard.neighborhood.index',compact('Neighborhoods'));
     }elseif(Auth::user()->hasRole('Enterprises')){
+
         $Neighborhoods = enterprise_neighborhood::where('enterprise_id', Auth::user()->ent_id)->get();
       
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
