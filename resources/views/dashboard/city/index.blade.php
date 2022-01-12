@@ -22,9 +22,20 @@ card card-docs mb-2">
                 
                 
                  <tr>
-                     
+                     {{-- {{ dd($item) }} --}}
+                     @if(auth()->user()->hasRole('Enterprises'))
                      
                    
+                    <td>{{$item->city->city_name}}</td>
+                    <td>{{$item->city->city_name_english}}</td>
+                    <td>{{$item->city->lat}}</td>
+                    <td>{{$item->city->lng}}</td>
+                    <td>{{@$item->city->country->country_name_en}}</td>
+                    <td>
+                        <input type="checkbox" data-id="{{ $item->city->id }}" name="status" class="js-switch" {{ $item->city->status == 1 ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    @else
                     <td>{{$item->city_name}}</td>
                     <td>{{$item->city_name_english}}</td>
                     <td>{{$item->lat}}</td>
@@ -34,6 +45,7 @@ card card-docs mb-2">
                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
 
 
