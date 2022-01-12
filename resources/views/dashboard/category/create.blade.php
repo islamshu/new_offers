@@ -101,6 +101,11 @@
                         <input type="text" name="name_en" class="form-control" id="name_en">
                      
                     </div>
+                    <div class="form-group">
+                        <label for="exampleSelectd">{{ __('Order') }}</label>
+                        <input type="number"name="order" class="form-control" id="order">
+                     
+                    </div>
                     <div class="form-group col-md-6">
                         <div class="image-input image-input-outline" id="kt_image_4"
                             style="background-image: url(assets/media/>users/blank.png)">
@@ -185,6 +190,7 @@
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
         formData.append('image', document.getElementById('image').files[0]);
+        formData.append('order', document.getElementById('order').value);
 
       
         store("{{ route('category.store', ['locale'=>app()->getLocale()]) }}", formData)

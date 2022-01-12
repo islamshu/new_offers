@@ -214,7 +214,7 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
@@ -236,7 +236,7 @@ $lang = app()->getLocale();
 
             </ul>
         </div>
-    </li>
+    </li> --}}
 
     @if (auth()->user()->hasPermission(['read-category']))
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">

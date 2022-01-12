@@ -46,7 +46,8 @@ class CategoryController extends Controller
         $validator = Validator($request->all(), [
             'name_ar' => 'required',
             'name_en' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'order'=>'required'
         ]);
         if (!$validator->fails()) {
             $request_all = $request->except(['image']);
@@ -107,6 +108,7 @@ class CategoryController extends Controller
         $validator = Validator($request->all(), [
             'name_ar' => 'required',
             'name_en' => 'required',
+            'order'=>'required'
         ]);
         $request_all = $request->except(['image']);
 

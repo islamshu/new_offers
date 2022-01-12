@@ -38,11 +38,11 @@
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Brands
                             Info</a>
                         @endif
-                          @if(Auth::user()->hasRole('Enterprises'))
+                          {{-- @if(Auth::user()->hasRole('Enterprises'))
                           <a href="{{route('enterprise.edit', ['enterprise'=>$enterprise->id,'locale'=>app()->getLocale()])}}"
                             class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Edit Profile
                             </a>
-                            @endif
+                            @endif --}}
                             <a href="{{route('currency.index', ['locale'=>app()->getLocale()])}}"
                                 class="btn btn-hover-light-primary font-weight-bold py-3 px-6 mb-2 text-center btn-block">Currency
                                 </a>
