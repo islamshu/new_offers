@@ -37,7 +37,6 @@ class CityController extends Controller
     {
     
         $user = City::find($request->id);
-        dd($user);
         $user->status = $request->status;
         $user->save();
     
