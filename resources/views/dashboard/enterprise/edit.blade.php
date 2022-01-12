@@ -67,13 +67,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('country') }}:</label>
-                    {{ dd($enterprise->country) }}
                     <select class="form-control selectpicker country_id" data-size="7" data-live-search="true"
                         id="country_id" multiple>
 
                         @foreach ($country as $item)
                         <option value="{{$item->id}}"
-                            @foreach ($enterprise->country as $tagp)
+                            @foreach ($enterprise->counteire as $tagp)
                             {{$tagp->id == $item->id ? "selected" : "" }}
                         @endforeach  
                             

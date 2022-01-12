@@ -173,7 +173,8 @@ class EnterpriseController extends Controller
     public function edit($locale,$id)
     {
         $country = Country::all();
-        $enterprise = Enterprise::find($id);
+        $enterprise = Enterprise::with('counteire')->find($id);
+        dd($enterprise);
         $curruncy= Currency::get();
         $categorys= Category::get();
 
