@@ -174,7 +174,6 @@ class EnterpriseController extends Controller
     {
         $country = Country::all();
         $enterprise = Enterprise::with('counteire')->find($id);
-        dd($enterprise);
         $curruncy= Currency::get();
         $categorys= Category::get();
 
