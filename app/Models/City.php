@@ -15,4 +15,8 @@ class City extends Model
     public function enterprise_city(){
         return $this->hasMany(enterprise_city::class,'city_id');
     }
+    public function city_enterprice(){
+        return $this->belongsToMany(City::class,'enterprise_cities','city_id','enterprise_id'  );
+    }
+   
 }

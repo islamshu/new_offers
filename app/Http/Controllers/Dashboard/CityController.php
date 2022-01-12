@@ -25,12 +25,27 @@ class CityController extends Controller
         $cities = City::with('country')->get();
         return response()->view('dashboard.city.index',compact('cities'));
         }elseif(Auth::user()->hasRole('Enterprises')){
-            $enterprise = Enterprise::find(Auth::user()->ent_id);
-            $cities = enterprise_city::where('enterprise_id', Auth::user()->ent_id)->get();
+          $cities = City::with('city_enterprice')->whereHas('city_enterprice', function ($q)  {
+            $q->where('enterprise_id', auth()->user()->ent_id);
+          })->get();
+          $enterprise = Enterprise::find(auth()->user()->ent_id);
+
+        //   dd($cities);
+            
+        
           
             return response()->view('dashboard.city.index', compact('enterprise', 'cities'));
         }
 
+    }
+    public function updateStatus(Request $request)
+    {
+    
+        $user = City::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'city status updated successfully.']);
     }
 
     /**

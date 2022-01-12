@@ -160,6 +160,8 @@ Route::group([
         Route::post('update-coupun/{id}', 'Dashboard\CouponController@update_coupun')->name('update-coupun.coupun');
         Route::get('export-category','Dashboard\CategoryController@export')->name('export.category');
         Route::get('index_sub/{value}','Dashboard\SubscriptionController@index_sub')->name('index_sub.subscribe');
+        Route::get('currency_update/update_status','Dashboard\CurrencyController@updateStatus')->name('currency.update_status');
+        Route::get('city_update/update_status','Dashboard\CityController@updateStatus')->name('city.update_status');
 
         
     });

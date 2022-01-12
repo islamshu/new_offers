@@ -29,4 +29,9 @@ class Enterprise extends Model
     {
         return $this->belongsToMany(Country::class,'enterprise_countries','enterprise_id',  'country_id',);
     }
+    public function citis()
+    {
+        return $this->belongsToMany(City::class,'enterprise_cities','enterprise_id',  'city_id',);
+    }
+
 }

@@ -21,6 +21,14 @@ class CurrencyController extends Controller
         return response()->view('dashboard.currency.index', compact('currencies'));
     
     }
+    public function updateStatus(Request $request)
+    {
+        $user = Currency::findOrFail($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'Curruncy status updated successfully.']);
+    }
 
     /**
      * Show the form for creating a new resource.

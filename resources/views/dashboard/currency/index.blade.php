@@ -11,6 +11,7 @@ card card-docs mb-2">
                     <th>{{ __('Name ar') }}</th>
                     <th>{{ __('Name en') }}</th>
                     <th>{{ __('code') }}</th>
+                    <td>{{ __('status') }}</td>
                     
               
                     <th>{{ __('Actions') }}</th>
@@ -22,6 +23,9 @@ card card-docs mb-2">
                     <td>{{$item->name_ar}}</td>
                     <td>{{$item->name_en}}</td>
                     <td>{{$item->code}}</td>
+                    <td>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                        </td>
                     <td class="pr-0 text-left">
                  
                     
@@ -78,5 +82,22 @@ card card-docs mb-2">
 
         confirmDestroy(url)
     }
+</script>
+<script>
+    $(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('currency.update_status',app()->getLocale()) }}',
+            data: {'status': status, 'id': id},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
 </script>
 @endsection
