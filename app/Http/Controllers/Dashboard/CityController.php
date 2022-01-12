@@ -21,6 +21,7 @@ class CityController extends Controller
      */
     public function index()
     {
+        dd( auth()->user()->ent_id);
         if (Auth::user()->hasRole('Admin')) {
         $cities = City::with('country')->get();
         return response()->view('dashboard.city.index',compact('cities'));
@@ -30,7 +31,6 @@ class CityController extends Controller
           })->get();
         
           $enterprise = Enterprise::with('citis')->find(auth()->user()->ent_id);
-          dd($enterprise,$cities);
 
         //   dd($cities);
             
