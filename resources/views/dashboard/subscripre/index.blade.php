@@ -12,9 +12,7 @@
                     <th>{{ __('logo') }}</th>
                     <th>{{ __('Name') }}</th>
                     
-                    @if (request()->routeIs('index_sub.subscribe.paid','paid')))
-                    <th>{{ __('Price') }}</th>
-                    @endif
+                    <th>{{ __('Status') }}</th>
                     <th>{{ __('Action') }}</th>
                  </tr>
             </thead>
@@ -26,10 +24,9 @@
                     <td><img src="{{ asset('images/subscribe/'.$item->image)}}" width="50" height="50" alt=""></td>
   
                     <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
-                    @if (request()->routeIs('index_sub.subscribe.paid')))
-
-                    <td>{{$item->price}}</td>
-                    @endif
+                    <td>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                        </td>
                     <td class="pr-0 text-left">
                         @if (auth()->user()->hasPermission(['update-subscription']))
 
@@ -109,5 +106,21 @@
         confirmDestroy(url)
     }
 </script>
+<script>
+    $(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 0 : 2;
+        let id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('subscipe.update_status',app()->getLocale()) }}',
+            data: {'status': status, 'id': id},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
 </script>
 @endsection

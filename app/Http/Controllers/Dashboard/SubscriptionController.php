@@ -36,6 +36,15 @@ class SubscriptionController extends Controller
            
 
     }
+    public function updateStatus(Request $request)
+    {
+    
+        $user = Subscription::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'Subscription status updated successfully.']);
+    }
 
     /**
      * Show the form for creating a new resource.

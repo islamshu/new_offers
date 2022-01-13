@@ -42,7 +42,7 @@ card card-docs mb-2">
                     <td>{{$item->lng}}</td>
                     <td>{{@$item->country->country_name_en}}</td>
                     <td>
-                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                         </td>
                     </tr>
                     @endif
