@@ -140,7 +140,13 @@ class SubscriptionController extends Controller
         $enterprises = Enterprise::get();
         $brands= Vendor::whereNull('enterprise_id')->get();
         $sub = Subscription::find($id);
-        return view('dashboard.subscripre.edit', compact('enterprises','brands','sub'));
+        if($sub->type_paid == 'paid'){
+            return view('dashboard.subscripre.edit_paid', compact('enterprises','brands','sub'));
+        }else{
+            return view('dashboard.subscripre.edit_trial', compact('enterprises','brands','sub'));
+    
+        }
+        
     }
 
     /**
@@ -157,21 +163,21 @@ class SubscriptionController extends Controller
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
-            'desc_ar' => 'required',
-            'desc_en' => 'required',
-            'terms_ar'=>'required',
-            'terms_en'=>'required',
-            'price'=>'required',
-            'balance' => 'required',
-            'expire_date_type' => 'required',
-            'add_members'=>'required',
-            'number_of_members'=>'required',
-            'type_paid' => 'required',
-            // 'sub_type'=>'required',
-            'number_of_dayes'=>'required',
-
+            'desc_ar' =>$request->type_paid == 'paid'?'required' : '',
+            'desc_en' => $request->type_paid == 'paid'?'required' : '',
+            'price'=>$request->type_paid == 'paid'?'required' : '',
+            'balance' => $request->type_balance == 'Limit'?'required' : '' ,
+            'expire_date_type' =>$request->type_paid == 'paid'?'required' : '',
+            'image' => 'required',
+            'add_members'=>$request->type_paid == 'paid'?'required' : '',
+            'number_of_members'=>$request->add_members == 'active'?'required' : '',
+            'number_of_dayes'=>$request->type_paid == 'paid'?'required' : '',
+            'start_date' =>$request->type_paid == 'trial'?'required' : '',
+            'start_date' =>$request->type_paid == 'trial'?'required' : '',
+            'sub_type'=>auth()->user()->hasRole('Admin') ? 'required' : '',
             'brands_id' =>$request->sub_type == 'Vendor' ? 'required' : '',
-            'enterprises_id'=>$request->sub_type == 'Enterprise' ? 'required' : '',          
+ 
+            'enterprises_id'=>$request->sub_type == 'Enterprise' ? 'required' : '',       
         ]);
         if (!$validator->fails()) {
             $request_all = $request->except('image');
@@ -194,7 +200,7 @@ class SubscriptionController extends Controller
             $request['enterprises_id'] = auth()->user()->ent_id;
             $sub->update($request_all);
             
-            return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $sub ? 200 : 400);
+            return response()->json(['icon' => 'success', 'title' => 'offer Updated successfully'], $sub ? 200 : 400);
 
          } else {
              dd($validator->getMessageBag());
