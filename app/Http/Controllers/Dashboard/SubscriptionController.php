@@ -170,7 +170,8 @@ class SubscriptionController extends Controller
             if($request->sub_type == 'Vendor' ){
                 $request_all['enterprises_id'] =  null;
                 $request_all['brands_id'] =$request->brands_id;
-            }
+            } 
+            $request['enterprises_id'] = auth()->user()->ent_id;
             $sub->update($request_all);
             
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $sub ? 200 : 400);
