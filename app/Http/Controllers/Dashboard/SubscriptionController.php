@@ -70,7 +70,7 @@ class SubscriptionController extends Controller
             'expire_date_type' => 'required',
             'image' => 'required',
             'add_members'=>'required',
-            'number_of_members'=>'required',
+            'number_of_members'=>$request->add_members == 'active'?'required' : '',
             'number_of_dayes'=>'required',
 
             'type_paid' => 'required',

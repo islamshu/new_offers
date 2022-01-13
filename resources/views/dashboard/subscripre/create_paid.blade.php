@@ -84,16 +84,14 @@
                     <textarea class="form-control" id="terms_en" rows="3"></textarea>
                 </div>
               
-                <div class="form-group col-md-6 trial_class"  >
-                    <label>{{ __('Days of trial') }}:</label>
-                    <input type="number" name="days_of_trial" id="days_of_trial" class="form-control form-control-solid"
-                        placeholder="Enter Days of trial" required />
-                </div>
+               
                 <div class="form-group col-md-6">
                     <label>{{ __('Price') }}:</label>
                     <input type="text" name="price" id="price" class="form-control form-control-solid"
                         placeholder="Enter price" required />
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group col-md-6">
                     <label>{{ __('Balance Type') }}:</label>
                     <select name="type_balance" class="form-control" id="type_balance">
@@ -109,6 +107,8 @@
                     <input type="number" name="balance" id="balance" class="form-control form-control-solid"
                         placeholder="Enter balance" required />
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group col-md-6">
                     <label>{{ __('Expire date type') }}:</label>
                     <select class="form-control form-control-solid restricted" name="expire_date_type" id="expire_date_type">
@@ -171,7 +171,7 @@
                 </div>
               
             </div>
-        </div>
+        
 
 
 
@@ -353,7 +353,10 @@
         formData.append('price', document.getElementById('price').value);
         formData.append('expire_date_type', document.getElementById('expire_date_type').value);
          formData.append('add_members', document.getElementById('add_members').value);
-        formData.append('number_of_members', document.getElementById('number_of_members').value);
+        
+        if (document.getElementById('number_of_members') != null) {
+            formData.append('number_of_members', document.getElementById('number_of_members').value);
+        }
         formData.append('type_balance', document.getElementById('type_balance').value);
         if (document.getElementById('balance') != null) {
             formData.append('balance', document.getElementById('balance').value);
@@ -364,9 +367,9 @@
         if (document.getElementById('number_of_dayes') != null) {
             formData.append('number_of_dayes', document.getElementById('number_of_dayes').value);
         }
-        if (document.getElementById('days_of_trial') != null) {
-            formData.append('days_of_trial', document.getElementById('days_of_trial').value);
-        }
+        // if (document.getElementById('days_of_trial') != null) {
+        //     formData.append('days_of_trial', document.getElementById('days_of_trial').value);
+        // }
         if (document.getElementById('type') != null) {
             formData.append('type', document.getElementById('type').value);
         }
