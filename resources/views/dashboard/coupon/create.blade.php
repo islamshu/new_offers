@@ -58,7 +58,7 @@
                     <div class="form-group col-md-6 trial_class">
                         <label>{{ __('Promocode') }}:</label>
                         <input type="text" name="promocode" id="promocode" class="form-control form-control-solid"
-                            placeholder="value" required />
+                            placeholder="{{ __('Promocode') }}" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('type') }}:</label>
