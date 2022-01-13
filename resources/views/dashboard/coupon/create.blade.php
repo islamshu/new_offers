@@ -18,55 +18,7 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    @if (Auth::user()->hasRole('Admin'))
-                        <div class="form-group col-md-12 customer_type">
-                            <div class="rule">
-                                <label>{{ __('Custome Type') }}:</label>
-                                <select class="form-control form-control-solid visibility" name="model_type"
-                                    id="model_type">
-                                    <option value="" selected disabled>{{ __('chose') }}</option>
-
-                                    <option value="enterprice">{{ __('Enterprise') }}</option>
-                                    <option value="brands">{{ __('Brand') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6 Enterprise" style="display: none">
-                            <div class="Enterprise">
-                                <label>{{ __('Enterprise') }}:</label>
-                                <select class="form-control form-control-solid enterprise" name="enterprise_id"
-                                    id="enterprise_id">
-                                    <option value="" selected disabled>{{ __('Chose enterprise') }}</option>
-
-                                    @foreach ($enterprises as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name_en }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-12" id="brand_ajax" style="display: none">
-                            <label>{{ __('brand') }}:</label>
-                            <select class="city custom-select vendor_id " id="vendor_id" name="vendor_ids">
-                                <option value="0" disabled="true" selected="true">{{ __('Brand name') }}</option>
-                            </select>
-                        </div>
-                    @endif
-
-                    @if (Auth::user()->hasRole('Enterprises'))
-
-
-
-                        <div class="form-group col-md-12" id="brand_ajax">
-                            <label>{{ __('brand') }}:</label>
-                            <select class="city custom-select vendor_id " id="vendor_id" name="vendor_id">
-                                <option value="0" disabled="true" selected="true">{{ __('Brand name') }}</option>
-                                @foreach ($brands as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name_en }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
+                  
 
                     <div class="form-group col-md-6">
                         <label>{{ __('Name ar') }}:</label>
@@ -454,12 +406,9 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('value', document.getElementById('value').value);
             formData.append('image', document.getElementById('image').files[0]);
-            formData.append('vendor_id', document.getElementById('vendor_id').value);
+            formData.append('vendor_id', '{{ $vendor->id }}');
 
-            if (document.getElementById('vendor_id') != null) {
-
-                formData.append('vendor_id', document.getElementById('vendor_id').value);
-            }
+            
             if (document.getElementById('days') != null) {
                 var value = $('#days').val();
                 formData.append('days', JSON.stringify(value));

@@ -39,6 +39,12 @@ class CouponController extends Controller
         $coupons = Coupon::where('vendor_id',$id)->get();
         return view('dashboard.coupon.index', compact('coupons'));
     }
+    public function create_coupon($locale,$id)
+    {
+        $vendor = Vendor::find($id);
+        // $brands = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
+        return view('dashboard.coupon.create', compact('vendor'));
+    }
 
     /**
      * Show the form for creating a new resource.
