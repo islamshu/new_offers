@@ -64,7 +64,7 @@ class SubscriptionController extends Controller
     
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
