@@ -24,10 +24,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($coupons as $item)
                     @php
                     $lang = app()->getLocale();
                     @endphp
+                    @foreach ($coupons as $item)
+                
                         <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
                         <td>{{ $item->member_type }}</td>
                         <td>{{ $item->promocode }}</td>

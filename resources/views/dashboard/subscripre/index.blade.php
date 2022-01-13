@@ -18,6 +18,9 @@
                  </tr>
             </thead>
             <tbody>
+                @php
+                $lang = app()->getLocale();
+                @endphp
                     @foreach ($subs as $item) 
                     <td><img src="{{ asset('images/subscribe/'.$item->image)}}" width="50" height="50" alt=""></td>
   
