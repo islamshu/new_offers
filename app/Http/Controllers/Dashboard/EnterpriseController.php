@@ -106,21 +106,21 @@ class EnterpriseController extends Controller
            
             $country_ids = json_decode($request->country_id);
             
-             dd(count($country_ids));
+             
             for ($i = 0; $i < count($country_ids); $i++) {
                 
                 $enterpriseCountry = new enterprise_country();
                 $enterpriseCountry->enterprise_id = $new_enterprise->id;
                 $enterpriseCountry->country_id = $country_ids[$i];
                 $enterpriseCountry->save();
-                $cities = City::where('country_id', $country_ids)->get();
+                $cities = City::where('country_id',$country_ids[$i])->get();
                 
                 foreach ($cities as $city) {
                     $citiesVendor = new enterprise_city();
                     $citiesVendor->enterprise_id = $new_enterprise->id;
                     $citiesVendor->city_id = $city->id;
                     $citiesVendor->save();
-                    $Neighborhoods = Neighborhood::where('city_id', $city)->get();
+                    $Neighborhoods = Neighborhood::where('city_id', $city->id)->get();
                     foreach ($Neighborhoods as $Neighborhood) {
                         $citiesVendor = new enterprise_neighborhood();
                         $citiesVendor->enterprise_id = $new_enterprise->id;
