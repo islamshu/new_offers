@@ -110,7 +110,7 @@ class branchController extends Controller
     
 
     
-        $neighborhood = enterprise_neighborhood::where('enterprice_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
+        $neighborhood = enterprise_neighborhood::where('enterprise_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
         ->whereHas('neighborhood', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           })->get();
