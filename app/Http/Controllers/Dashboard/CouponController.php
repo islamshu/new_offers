@@ -119,7 +119,6 @@ class CouponController extends Controller
             if(auth()->user()->hasRole('Admin')){
                 $request_all['enterprise_id'] = $request->enterprise_id;
                 $request['vendor_id']= $request->vendor_id;
-
             }
             if(auth()->user()->hasRole('Enterprises')){
                 $request_all['enterprise_id'] = auth()->user()->ent_id;

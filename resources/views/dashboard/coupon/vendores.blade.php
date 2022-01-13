@@ -26,9 +26,9 @@
                         <td>{{ $item->name_en }}</td>
                         <td>{{ $item->branches->count() }}</td>
                         <td>{{ $item->offers->count() }}</td>
-                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('end_time','>',\Carbon\Carbon::now())->where('start_time','<',\Carbon\Carbon::now())->count()}}</td>
-                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('member_type','paid')->count()}}</td>
-                        <td>{{App\Models\Offer::where('vendor_id',$item->id)->where('member_type','free')->count()}}</td>
+                        <td>{{App\Models\Coupon::where('vendor_id',$item->id)->where('end_at','>',\Carbon\Carbon::now())->where('start_at','<',\Carbon\Carbon::now())->count()}}</td>
+                        <td>{{App\Models\Coupon::where('vendor_id',$item->id)->where('member_type','paid')->count()}}</td>
+                        <td>{{App\Models\Coupon::where('vendor_id',$item->id)->where('member_type','free')->count()}}</td>
           
 
                         <td class="pr-0 text-left">
