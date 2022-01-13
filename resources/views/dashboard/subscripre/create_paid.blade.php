@@ -135,7 +135,7 @@
                         <select class="form-control form-control-solid restricted" name="add_members" id="add_members">
                             <option value="" selected disabled>{{ __('chose option') }}</option>
                             <option value="active">{{ __('active') }}</option>
-                            <option value="active">{{ __('deactive') }}</option>
+                            <option value="deactive">{{ __('deactive') }}</option>
                         </select>
                     </div>
                 </div>
@@ -145,6 +145,8 @@
                     <input type="number" name="number_of_members" id="number_of_members" class="form-control form-control-solid"
                         placeholder="Enter phone" required />
                 </div>
+            </div>
+            <div class="row">
              
               
                 <div class="form-group col-md-6">
