@@ -2,6 +2,15 @@
 @section('content')
 <div class="card card-docs mb-2">
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+        <div class="row" style="float: right">
+            @if($value =='paid')
+            <a class="btn btn-info" href="{{ route('create_paid_subsrcibe.subscribe',[app()->getLocale()]) }}">{{ __('Create Subsribe') }}</a>
+            @else
+            <a class="btn btn-info" href="{{ route('create_trial_subsrcibe.subscribe',[app()->getLocale()]) }}">{{ __('Create Subsribe') }}</a>
+
+            @endif
+        </div>
+        <br>
         <h2 class="mb-3">{{ __('Subscribes') }}</h2>
 
 
