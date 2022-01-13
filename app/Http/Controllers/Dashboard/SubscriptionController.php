@@ -32,7 +32,7 @@ class SubscriptionController extends Controller
         }elseif($value == 'trial'){
             $subs = Subscription::where('type_paid','trial')->get();
         } 
-        return response()->view('dashboard.subscripre.index',compact('subs'));
+        return response()->view('dashboard.subscripre.index',compact('subs','value'));
            
 
     }

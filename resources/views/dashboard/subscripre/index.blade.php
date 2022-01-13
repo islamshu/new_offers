@@ -11,6 +11,10 @@
                 <tr class="fw-bold fs-6 text-gray-800">
                     <th>{{ __('logo') }}</th>
                     <th>{{ __('Name') }}</th>
+                    @if($value == 'paid')
+                    <th>{{ __('Price') }}</th>
+
+                    @endif
                     
                     <th>{{ __('Status') }}</th>
                     <th>{{ __('Action') }}</th>
@@ -24,6 +28,9 @@
                     <td><img src="{{ asset('images/subscribe/'.$item->image)}}" width="50" height="50" alt=""></td>
   
                     <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
+                    @if($value == 'paid')
+                    <td>{{ $item->price }}</td>
+                    @endif
                     <td>
                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
                         </td>
