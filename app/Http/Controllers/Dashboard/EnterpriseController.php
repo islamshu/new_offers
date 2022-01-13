@@ -105,9 +105,10 @@ class EnterpriseController extends Controller
 
            
             $country_ids = json_decode($request->country_id);
-            dd($country_ids);
-             
+            
+             dd(count($country_ids));
             for ($i = 0; $i < count($country_ids); $i++) {
+                
                 $enterpriseCountry = new enterprise_country();
                 $enterpriseCountry->enterprise_id = $new_enterprise->id;
                 $enterpriseCountry->country_id = $country_ids[$i];
