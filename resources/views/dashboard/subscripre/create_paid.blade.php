@@ -102,7 +102,7 @@
                     </select>
                     
                 </div>
-                <div class="form-group col-md-6 type_balance">
+                <div class="form-group col-md-6 type_balance" style="display: none">
                     <label>{{ __('Balance') }}:</label>
                     <input type="number" name="balance" id="balance" class="form-control form-control-solid"
                         placeholder="Enter balance" required />
@@ -133,13 +133,14 @@
                     <div class="rule">
                         <label>{{ __('Add members') }}:</label>
                         <select class="form-control form-control-solid restricted" name="add_members" id="add_members">
+                            <option value="" selected disabled>{{ __('chose option') }}</option>
                             <option value="active">{{ __('active') }}</option>
                             <option value="active">{{ __('deactive') }}</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 add_members" style="display: none">
                     <label>{{ __('Number of members') }}:</label>
                     <input type="number" name="number_of_members" id="number_of_members" class="form-control form-control-solid"
                         placeholder="Enter phone" required />
@@ -249,7 +250,20 @@
               }
   
           });
+          $('#add_members').on('change', function() {
+              let val = this.value;
+              if (val == 'active') {
+                  $('.add_members').css("display", "block")
   
+              } else  {
+                  $('.add_members').css("display", "none")
+  
+              }
+  
+          });
+  
+
+          
   </script>
 
 

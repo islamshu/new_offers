@@ -605,7 +605,7 @@
     "member_id": "member id",
     "min_order": "Min Order",
     "mobile_number": "Mobile Number",
-    "months": "months",
+    "months": "Months",
     "name": "Name",
     "new_visitors": "New Visitors",
     "non_paid": "NO PAID",
@@ -671,5 +671,5 @@
     "view_roles": "View roles",
     "visa": "visa",
     "waitinglist": "Waiting List",
-    "years": "years"
+    "years": "Years"
 }
