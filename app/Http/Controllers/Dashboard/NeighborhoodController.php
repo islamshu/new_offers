@@ -35,6 +35,7 @@ class NeighborhoodController extends Controller
     public function update_enterprice_Status(Request $request)
     {
         $user = enterprise_neighborhood::find($request->id);
+        dd($user);
         $user->status = $request->status;
         $user->save();
     
