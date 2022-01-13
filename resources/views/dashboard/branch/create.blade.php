@@ -57,7 +57,9 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('city') }}:</label>
-                    {{ dd($city) }}
+                    @foreach ($city as $item)
+                    {{ dd($item) }}
+                    @endforeach
                     
                     <select class="city custom-select " id="city_id" name="city_id">
                         <option value="" required  >{{ __('choose city') }}</option>
