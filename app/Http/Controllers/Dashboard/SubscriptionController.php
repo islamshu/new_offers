@@ -86,7 +86,7 @@ class SubscriptionController extends Controller
             'expire_date_type' =>$request->type_paid == 'paid'?'required' : '',
             'image' => 'required',
             'add_members'=>$request->type_paid == 'paid'?'required' : '',
-            'number_of_members'=>$request->type_paid == 'paid'?'required' : '',$request->add_members == 'active'?'required' : '',
+            'number_of_members'=>$request->add_members == 'active'?'required' : '',
             'number_of_dayes'=>$request->type_paid == 'paid'?'required' : '',
             'start_date' =>$request->type_paid == 'trial'?'required' : '',
             'start_date' =>$request->type_paid == 'trial'?'required' : '',
