@@ -363,12 +363,12 @@ $lang = app()->getLocale();
                     <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
                                 class="menu-text">{{ __('Subscribes') }}</span></span>
                     </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription"
+                    {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('List') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription/create"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Create') }}</span></a></li>
+                                class="menu-text">{{ __('Create') }}</span></a></li> --}}
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/paid"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('paid Subscribes') }}</span></a></li>
