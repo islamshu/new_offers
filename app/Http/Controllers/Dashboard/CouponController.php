@@ -9,6 +9,7 @@ use App\Models\CouponTime;
 use App\Models\Enterprise;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CouponController extends Controller
 {
@@ -19,15 +20,19 @@ class CouponController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->hasRole('Admin')){
-            $coupons= Coupon::get();
-        }elseif(auth()->user()->hasRole('Enterprises')){
-            $coupons = Coupon::where('enterprise_id',auth()->user()->ent_id)->get();
-        }
-        elseif(auth()->user()->hasRole('Vendors')){
-            $coupons = Coupon::where('vendor_id',auth()->user()->vendor_id)->get();
-        }
-        return view('dashboard.coupon.index', compact('coupons'));
+        // if(auth()->user()->hasRole('Admin')){
+        //     $coupons= Coupon::get();
+        // }elseif(auth()->user()->hasRole('Enterprises')){
+        //     $coupons = Coupon::where('enterprise_id',auth()->user()->ent_id)->get();
+        // }
+        // elseif(auth()->user()->hasRole('Vendors')){
+        //     $coupons = Coupon::where('vendor_id',auth()->user()->vendor_id)->get();
+        // }
+        // return view('dashboard.coupon.index', compact('coupons'));
+        $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->get();
+        return view('dashboard.coupon.vendores', compact('vendors'));
+
+
     }
 
     /**
