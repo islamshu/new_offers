@@ -36,6 +36,7 @@ class CouponController extends Controller
     }
     public function vednor_promocode($id)
     {
+        dd($id);
         $coupons = Coupon::where('vendor_id',$id)->get();
         return view('dashboard.coupon.index', compact('coupons'));
     }
