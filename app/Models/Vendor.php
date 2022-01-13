@@ -66,6 +66,9 @@ class Vendor extends Model
     public function branches(){
         return $this->hasMany(Branch::class,'vendor_id');
     }
+    public function promocode(){
+        return $this->hasMany(Coupon::class,'vendor_id');
+    }
     public function vendor_image(){
         return $this->hasMany(ImageVendor::class,'vendor_id');
     }

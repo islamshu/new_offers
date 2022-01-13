@@ -9,4 +9,10 @@ class Coupon extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    /**
+     * Get the user that owns the Coupon
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+   
 }

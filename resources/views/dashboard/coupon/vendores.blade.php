@@ -11,8 +11,7 @@ card card-docs mb-2">
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
                     <th>{{ __('Name') }}</th>
-                    <th>{{ __('Active Branch') }}</th>
-                    <th>{{ __('Deactive Branch') }}</th>
+                    <th>{{ __('PromoCode') }}</th>
       
                     <th>{{ __('Action') }}</th>
                  </tr>
@@ -21,8 +20,8 @@ card card-docs mb-2">
                 @foreach ($vendors as $item)
                  <tr>
                     <td>{{$item->name_ar}}</td>
-                    <td>{{$item->branches->where('status','active')->count()}}</td>
-                    <td>{{$item->branches->where('status','deactive')->count()}}</td>
+                    <td>{{$item->promocode->count()}}</td>
+                    {{-- <td>{{$item->branches->where('status','deactive')->count()}}</td> --}}
                   
 
                     <td class="pr-0 text-left">
