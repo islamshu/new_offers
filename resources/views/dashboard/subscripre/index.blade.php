@@ -12,7 +12,7 @@
                     <th>{{ __('logo') }}</th>
                     <th>{{ __('Name') }}</th>
                     
-                    @if (request()->routeIs('index_sub.subscribe.paid')))
+                    @if (request()->routeIs('index_sub.subscribe.paid','paid')))
                     <th>{{ __('Price') }}</th>
                     @endif
                     <th>{{ __('Action') }}</th>
