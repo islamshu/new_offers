@@ -60,7 +60,7 @@
                 
                     
                     <select class="city custom-select " id="city_id" name="city_id">
-                        <option value="" required  >{{ __('choose city') }}</option>
+                        <option value="" required disabled  >{{ __('choose city') }}</option>
 
                         @foreach ($city as $item)
                             
