@@ -82,7 +82,7 @@ class SubscriptionController extends Controller
             
             'desc_en' => $request->type_paid == 'paid'?'required' : '',
             'price'=>$request->type_paid == 'paid'?'required' : '',
-            'balance' => $request->type_paid == 'paid'?'required' : '', $request->type_balance == 'Limit'?'required' : '' ,
+            'balance' => $request->type_balance == 'Limit'?'required' : '' ,
             'expire_date_type' =>$request->type_paid == 'paid'?'required' : '',
             'image' => 'required',
             'add_members'=>$request->type_paid == 'paid'?'required' : '',
