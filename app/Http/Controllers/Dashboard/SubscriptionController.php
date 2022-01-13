@@ -67,19 +67,23 @@ class SubscriptionController extends Controller
         $validator = Validator($request->all(), [
             'name_ar' => 'required|string|min:3',
             'name_en' => 'required|string|min:3',
-            'desc_ar' => 'required',
-            'desc_en' => 'required',
-            'price'=>'required',
-            'balance' => $request->type_balance == 'Limit'?'required' : '',
-            'expire_date_type' => 'required',
-            'image' => 'required',
-            'add_members'=>'required',
-            'number_of_members'=>$request->add_members == 'active'?'required' : '',
-            'number_of_dayes'=>'required',
+            'desc_ar' =>$request->type_paid == 'paid'?'required' : '',
 
+            
+            'desc_en' => $request->type_paid == 'paid'?'required' : '',
+            'price'=>$request->type_paid == 'paid'?'required' : '',
+            'balance' => $request->type_paid == 'paid'?'required' : '', $request->type_balance == 'Limit'?'required' : '' ,
+            'expire_date_type' =>$request->type_paid == 'paid'?'required' : '',
+            'image' => 'required',
+            'add_members'=>$request->type_paid == 'paid'?'required' : '',
+            'number_of_members'=>$request->type_paid == 'paid'?'required' : '',$request->add_members == 'active'?'required' : '',
+            'number_of_dayes'=>'required',
+            'start_date' =>$request->type_paid == 'trial'?'required' : '',
+            'start_date' =>$request->type_paid == 'trial'?'required' : '',
             'type_paid' => 'required',
             'sub_type'=>auth()->user()->hasRole('Admin') ? 'required' : '',
             'brands_id' =>$request->sub_type == 'Vendor' ? 'required' : '',
+ 
             'enterprises_id'=>$request->sub_type == 'Enterprise' ? 'required' : '',          
         ]);
         if (!$validator->fails()) {
@@ -92,7 +96,8 @@ class SubscriptionController extends Controller
                 $image->move('images/subscribe', $imageName);
                $request_all['image'] = $imageName;
             }
-             
+            $request_all['enterprises_id'] = auth()->user()->ent_id;
+
                 $sub=   Subscription::create($request_all);
             
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $sub ? 200 : 400);

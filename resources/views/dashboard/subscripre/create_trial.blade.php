@@ -80,6 +80,17 @@
                     <input type="number" name="balance" id="balance" class="form-control form-control-solid"
                         placeholder="Enter balance" required />
                 </div>
+                <div class="form-group col-md-6 trial_class"  >
+                    <label>{{ __('Start Day') }}:</label>
+                    <input type="date" name="start_date" id="start_date" class="form-control form-control-solid"
+                        placeholder="{{ __('Start Day') }}" required />
+                </div>
+        
+                <div class="form-group col-md-6 trial_class"  >
+                    <label>{{ __('End Day') }}:</label>
+                    <input type="date" name="end_date" id="end_date" class="form-control form-control-solid"
+                        placeholder="{{ __('End Day') }}" required />
+                </div>
       
               
                 <div class="form-group col-md-6">
