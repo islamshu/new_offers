@@ -277,7 +277,7 @@
         formData.append('name_en', document.getElementById('name_en').value);
     
         formData.append('balance', document.getElementById('balance').value);
-        formData.append('expire_date_type', document.getElementById('expire_date_type').value);
+        // formData.append('expire_date_type', document.getElementById('expire_date_type').value);
 
         formData.append('start_date', document.getElementById('start_date').value);
 
