@@ -275,41 +275,22 @@
         let formData = new FormData();
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
-        // formData.append('desc_en', document.getElementById('desc_en').value);
-        // formData.append('desc_ar', document.getElementById('desc_ar').value);
     
-        // formData.append('terms_ar', document.getElementById('terms_ar').value);
-        // formData.append('terms_en', document.getElementById('terms_en').value);
-        // formData.append('price', document.getElementById('price').value);
         formData.append('balance', document.getElementById('balance').value);
         formData.append('expire_date_type', document.getElementById('expire_date_type').value);
-        //  formData.append('add_members', document.getElementById('add_members').value);
-        // formData.append('number_of_members', document.getElementById('number_of_members').value);
+
         formData.append('start_date', document.getElementById('start_date').value);
 
         formData.append('end_date', document.getElementById('end_date').value);
+        formData.append('days_of_trial', document.getElementById('days_of_trial').value);
 
         formData.append('type_paid', 'trial');
         formData.append('image', document.getElementById('image').files[0]);
         if (document.getElementById('number_of_dayes') != null) {
             formData.append('number_of_dayes', document.getElementById('number_of_dayes').value);
         }
-        if (document.getElementById('days_of_trial') != null) {
-            formData.append('days_of_trial', document.getElementById('days_of_trial').value);
-        }
-        if (document.getElementById('type') != null) {
-            formData.append('type', document.getElementById('type').value);
-        }
         
-        if (document.getElementById('sub_type') != null) {
-            formData.append('sub_type', document.getElementById('sub_type').value);
-        }
-        if (document.getElementById('enterprises_id') != null) {
-            formData.append('enterprises_id', document.getElementById('enterprises_id').value);
-        }
-        if (document.getElementById('brands_id') != null) {
-            formData.append('brands_id', document.getElementById('brands_id').value);
-        }
+
 
 
 
