@@ -26,7 +26,7 @@
                     <td><img src="{{ asset('images/subscribe/'.$item->image)}}" width="50" height="50" alt=""></td>
   
                     <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
-                    @if (Request::is('index_sub','paid'))
+                    @if (request()->routeIs('index_sub.subscribe', 'paid')))
 
                     <td>{{$item->price}}</td>
                     @endif
