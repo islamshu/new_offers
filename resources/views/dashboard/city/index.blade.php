@@ -32,7 +32,7 @@ card card-docs mb-2">
                     <td>{{$item->city->lng}}</td>
                     <td>{{@$item->city->country->country_name_en}}</td>
                     <td>
-                        <input type="checkbox" data-id="{{ $item->city->id }}" name="status" class="js-switch" {{ $item->city->status == 1 ? 'checked' : '' }}>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                         </td>
                     </tr>
                     @else
@@ -69,12 +69,12 @@ card card-docs mb-2">
 <script>
     $(document).ready(function(){
     $('.js-switch').change(function () {
-        let status = $(this).prop('checked') === true ? 1 : 0;
+        let status = $(this).prop('checked') === true ? 'active' : 'deactive';
         let id = $(this).data('id');
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: '{{ route('city.update_status',app()->getLocale()) }}',
+            url: '{{ route('enter_pricecity.update_status',app()->getLocale()) }}',
             data: {'status': status, 'id': id},
             success: function (data) {
                 console.log(data.message);

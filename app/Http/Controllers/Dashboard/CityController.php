@@ -42,6 +42,15 @@ class CityController extends Controller
     
         return response()->json(['message' => 'city status updated successfully.']);
     }
+    public function update_enterprice_Status(Request $request)
+    {
+    
+        $user = enterprise_city::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'city status updated successfully.']);
+    }
 
     /**
      * Show the form for creating a new resource.

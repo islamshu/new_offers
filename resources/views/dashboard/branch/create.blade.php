@@ -61,7 +61,7 @@
                     <select class="city custom-select " id="city_id" name="city_id">
                         <option value="" required  >{{ __('choose city') }}</option>
 
-                        @foreach ($city->where('status',1)->get() as $item)
+                        @foreach ($city->where('status',1) as $item)
                             
                         
                         <option value="{{ $item->city->id }}"  >@if($lang =='en') {{ $item->city->city_name_english }} @else {{ $item->city->city_name }} @endif </option>
