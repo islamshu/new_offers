@@ -57,11 +57,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('city') }}:</label>
+                    {{ dd($city) }}
                     
                     <select class="city custom-select " id="city_id" name="city_id">
                         <option value="" required  >{{ __('choose city') }}</option>
 
-                        @foreach ($city->where('status',1) as $item)
+                        @foreach ($city as $item)
                             
                         
                         <option value="{{ $item->city->id }}"  >@if($lang =='en') {{ $item->city->city_name_english }} @else {{ $item->city->city_name }} @endif </option>
