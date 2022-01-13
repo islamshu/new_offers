@@ -10,9 +10,10 @@
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
                     <th>{{ __('logo') }}</th>
-                    <th>{{ __('Name ar') }}</th>
-                    <th>{{ __('Name en') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    @if (Request::is('index_sub','paid'))
                     <th>{{ __('Price') }}</th>
+                    @endif
                     <th>{{ __('Action') }}</th>
                  </tr>
             </thead>
@@ -20,9 +21,11 @@
                     @foreach ($subs as $item) 
                     <td><img src="{{ asset('images/subscribe/'.$item->image)}}" width="50" height="50" alt=""></td>
   
-                    <td>{{$item->name_ar}}</td>
-                    <td>{{$item->name_en}}</td>
+                    <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
+                    @if (Request::is('index_sub','paid'))
+
                     <td>{{$item->price}}</td>
+                    @endif
                     <td class="pr-0 text-left">
                         @if (auth()->user()->hasPermission(['update-subscription']))
 
