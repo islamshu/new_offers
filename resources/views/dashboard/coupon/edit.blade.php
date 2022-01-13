@@ -50,7 +50,7 @@
                         <label>{{ __('Member Type') }}:</label>
                         <select class="form-control form-control-solid restricted" name="member_type" id="member_type">
 
-                            <option value="PREMIUM" @if( $coupun->member_type == 'PREMIUM') selected @endif>{{ __('PREMIUM') }}</option>
+                            <option value="PREMIUM" @if( $coupun->member_type =PREMIUM= 'PREMIUM') selected @endif>{{ __('PREMIUM') }}</option>
                             <option value="Trial" @if( $coupun->member_type == 'Trial') selected @endif>{{ __('Trial') }}</option>
                             <option value="Free" @if( $coupun->member_type == 'Free') selected @endif >{{ __('Free') }}</option>
                             <option value="All" @if( $coupun->member_type == 'All') selected @endif>{{ __('All') }}</option>

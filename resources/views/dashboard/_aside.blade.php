@@ -371,10 +371,10 @@ $lang = app()->getLocale();
                                 class="menu-text">{{ __('Create') }}</span></a></li> --}}
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/paid"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('paid Subscribes') }}</span></a></li>
+                                class="menu-text">{{ __('PREMIUM Subscribes') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/trial"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('trial Subscribes') }}</span></a></li>
+                                class="menu-text">{{ __('Trial Subscribes') }}</span></a></li>
 
 
                 </ul>
