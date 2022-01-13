@@ -18,57 +18,7 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    @if (Auth::user()->hasRole('Admin'))
-                        <div class="form-group col-md-12 customer_type">
-                            <div class="rule">
-                                <label>{{ __('Custome Type') }}:</label>
-                                <select class="form-control form-control-solid visibility" name="model_type"
-                                    id="model_type">
-                                    <option value="" selected disabled>{{ __('chose') }}</option>
-
-                                    <option value="enterprice" @if($coupun->model_type == 'enterprice') selected @endif>{{ __('Enterprise') }}</option>
-                                    <option value="brands" @if($coupun->model_type == 'brands') selected @endif>{{ __('Brand') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6 Enterprise"  @if($coupun->model_type == 'enterprice') style="display: none" @endif >
-                            <div class="Enterprise">
-                                <label>{{ __('Enterprise') }}:</label>
-                                <select class="form-control form-control-solid enterprise" name="enterprise_id"
-                                    id="enterprise_id">
-                                    <option value="" selected disabled>{{ __('Chose enterprise') }}</option>
-
-                                    @foreach ($enterprises as $item)
-                                        <option value="{{ $item->id }}" @if($coupun->enterprise_id == $item->id) selected @endif>{{ $item->name_en }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-12" id="brand_ajax"  >
-                            <label>{{ __('brand') }}:</label>
-                            <select class="city custom-select vendor_id " id="vendor_id" name="vendor_id">
-                                @foreach (\App\Models\Vendor::where('enterprise_id',$coupun->enterprise_id)->get() as $item)
-                                    <option value="{{ $item->id }}" @if($item->id ==$coupun->vendor_id ) selected @endif>{{ $item->name_en }}</option>
-                                @endforeach
-                                
-                            </select>
-                        </div>
-                    @endif
-
-                    @if (Auth::user()->hasRole('Enterprises'))
-
-
-
-                        <div class="form-group col-md-12" id="brand_ajax">
-                            <label>{{ __('brand') }}:</label>
-                            <select class="city custom-select vendor_id " id="vendor_id" name="vendor_id">
-                                <option value="0" disabled="true" selected="true">{{ __('Brand name') }}</option>
-                                @foreach ($brands as $item)
-                                    <option value="{{ $item->id }}" @if($coupun->vendor_id == $item->id) selected @endif>{{ $item->name_en }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
+               
 
                     <div class="form-group col-md-6">
                         <label>{{ __('Name ar') }}:</label>
@@ -424,12 +374,9 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('value', document.getElementById('value').value);
             formData.append('image', document.getElementById('image').files[0]);
-            formData.append('vendor_id', document.getElementById('vendor_id').value);
+            formData.append('vendor_id', '{{ $coupun->vendor_id }}');
 
-            if (document.getElementById('vendor_id') != null) {
-
-                formData.append('vendor_id', document.getElementById('vendor_id').value);
-            }
+          
             if (document.getElementById('days') != null) {
                 var value = $('#days').val();
                 formData.append('days', JSON.stringify(value));
