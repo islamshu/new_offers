@@ -47,6 +47,20 @@
                         <textarea class="form-control" id="tearm_en" rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-6">
+                        <label>{{ __('Member Type') }}:</label>
+                        <select class="form-control form-control-solid restricted" name="member_type" id="member_type">
+                            <option value="paid">{{ __('paid') }}</option>
+                            <option value="trial">{{ __('Trial') }}</option>
+                            <option value="free">{{ __('Free') }}</option>
+                            <option value="all">{{ __('All') }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 trial_class">
+                        <label>{{ __('Promocode') }}:</label>
+                        <input type="text" name="promocode" id="promocode" class="form-control form-control-solid"
+                            placeholder="value" required />
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>{{ __('type') }}:</label>
                         <select class="form-control form-control-solid restricted" name="type" id="type">
                             <option value="amount">{{ __('amount') }}</option>
@@ -70,6 +84,13 @@
                         <input type="datetime-local" class="form-control form-control-solid form-control-lg" name="end_at"
                             id="end_at" placeholder="end_at" />
                     </div>
+                    <div class="form-group col-md-6 form-group">
+                        <label>{{ __('Store Link') }}</label>
+                        <input type="url" class="form-control form-control-solid form-control-lg" name="store_link"
+                            id="store_link" placeholder="{{ __('Store Link') }}" />
+                    </div>
+
+                    
 
                     <div class="form-group col-md-6">
                         <div class="rule">
@@ -406,6 +427,10 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('value', document.getElementById('value').value);
             formData.append('image', document.getElementById('image').files[0]);
+            formData.append('member_type', document.getElementById('member_type').value);
+            formData.append('promocode', document.getElementById('promocode').value);
+
+            
             formData.append('vendor_id', '{{ $vendor->id }}');
 
             
@@ -416,6 +441,11 @@
             if (document.getElementById('start_at') != null) {
                 formData.append('start_at', document.getElementById('start_at').value);
             }
+            if (document.getElementById('store_link') != null) {
+                formData.append('store_link', document.getElementById('store_link').value);
+            }
+
+            
             if (document.getElementById('end_at') != null) {
                 formData.append('end_at', document.getElementById('end_at').value);
             }

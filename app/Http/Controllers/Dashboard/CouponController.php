@@ -97,6 +97,8 @@ class CouponController extends Controller
             'days'=>'required_if:special_days,==,active',
             'special_time'=>'required',
             'image' => 'required',
+            'member_type' => 'required',
+            'promocode' => 'required',
             'from_0'=>'required_if:special_time,==,active',
             'from_1'=>'required_if:special_time,==,active',
             'from_2'=>'required_if:special_time,==,active',
@@ -113,7 +115,7 @@ class CouponController extends Controller
             'to_6'=>'required_if:special_time,==,active',
         ]);
         if (!$validator->fails()) {
-            $request_all = $request->except('from_0','from_1','from_2','from_3','from_4','from_5','from_6',
+            $request_all = $request->except('from_0','from_1','from_2','from_3','from_4','from_5','from_6','store_link',
             'to_0','to_1','to_2','to_3','to_4','to_5','to_6','enterprise_id');
             
             if(auth()->user()->hasRole('Admin')){
