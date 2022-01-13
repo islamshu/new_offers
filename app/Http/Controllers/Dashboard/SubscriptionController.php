@@ -27,6 +27,7 @@ class SubscriptionController extends Controller
 
     }
     public function index_sub($locale,$value){
+        dd(}
         if($value == 'paid'){
             $subs = Subscription::where('type_paid','paid')->get();
         }elseif($value == 'trial'){
