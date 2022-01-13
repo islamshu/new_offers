@@ -21,6 +21,15 @@ class Vendor extends Model
     {
         return $this->hasOne(User::class, 'vendor_id', 'id');
     }
+    /**
+     * Get the user that owns the Vendor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function enterprise()
+    {
+        return $this->belongsTo(Enterprise::class, 'enterprise_id');
+    }
     
     public function neighborhood()
     {
@@ -34,6 +43,7 @@ class Vendor extends Model
     {
         return $this->belongsToMany(Country::class,'vendor_countries','vendor_id',  'country_id',);
     }
+
     /**
      * The roles that belong to the Vendor
      *
