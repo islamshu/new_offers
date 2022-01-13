@@ -67,80 +67,20 @@
                     <input type="text" name="name_en" id="name_en" class="form-control form-control-solid"
                         placeholder="Enter Name" required />
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="exampleTextarea">{{ __('Desc ar') }} <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="desc_ar" rows="3"></textarea>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="exampleTextarea">{{ __('Desc en') }} <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="desc_en" rows="3"></textarea>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="exampleTextarea">{{ __('Terms ar') }} <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="terms_ar" rows="3"></textarea>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="exampleTextarea">{{ __('Terms en') }} <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="terms_en" rows="3"></textarea>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>{{ __('type_paid') }}:</label>
-                    <select class="form-control form-control-solid restricted" name="type_paid" id="type_paid">
-                        <option value="trial">{{ __('trial') }}</option>
-                        <option value="paid">{{ __('paid') }}</option>
-                    </select>
-                </div>
+
+             
                 <div class="form-group col-md-6 trial_class"  >
                     <label>{{ __('Days of trial') }}:</label>
                     <input type="number" name="days_of_trial" id="days_of_trial" class="form-control form-control-solid"
                         placeholder="Enter Days of trial" required />
                 </div>
-                <div class="form-group col-md-6">
-                    <label>{{ __('Price') }}:</label>
-                    <input type="number" name="price" id="price" class="form-control form-control-solid"
-                        placeholder="Enter price" required />
-                </div>
+        
                 <div class="form-group col-md-6">
                     <label>{{ __('Balance') }}:</label>
                     <input type="number" name="balance" id="balance" class="form-control form-control-solid"
                         placeholder="Enter balance" required />
                 </div>
-                <div class="form-group col-md-6">
-                    <label>{{ __('Expire date type') }}:</label>
-                    <select class="form-control form-control-solid restricted" name="expire_date_type" id="expire_date_type">
-                        <option value="days">{{ __('days') }}</option>
-                        <option value="months">{{ __('months') }}</option>
-                        <option value="years">{{ __('years') }}</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>{{ __('Number of Date') }}:</label>
-                    <input type="number" name="number_of_dayes" id="number_of_dayes" class="form-control form-control-solid"
-                        placeholder="Number of Date" required />
-                </div>
-                {{-- <div class="form-group col-md-6">
-                    <label>{{ __('Type of subscription') }}:</label>
-                    <select class="form-control form-control-solid restricted" name="type" id="type">
-                        <option value="coupons">{{ __('coupons') }}</option>
-                        <option value="points">{{ __('points') }}</option>
-                    </select>
-                </div> --}}
-                <div class="form-group col-md-6">
-                    <div class="rule">
-                        <label>{{ __('Add members') }}:</label>
-                        <select class="form-control form-control-solid restricted" name="add_members" id="add_members">
-                            <option value="active">{{ __('active') }}</option>
-                            <option value="active">{{ __('deactive') }}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label>{{ __('Number of members') }}:</label>
-                    <input type="number" name="number_of_members" id="number_of_members" class="form-control form-control-solid"
-                        placeholder="Enter phone" required />
-                </div>
-             
+      
               
                 <div class="form-group col-md-6">
                     <div class="image-input image-input-outline" id="kt_image_4"
@@ -325,17 +265,17 @@
         let formData = new FormData();
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
-        formData.append('desc_en', document.getElementById('desc_en').value);
-        formData.append('desc_ar', document.getElementById('desc_ar').value);
+        // formData.append('desc_en', document.getElementById('desc_en').value);
+        // formData.append('desc_ar', document.getElementById('desc_ar').value);
     
-        formData.append('terms_ar', document.getElementById('terms_ar').value);
-        formData.append('terms_en', document.getElementById('terms_en').value);
-        formData.append('price', document.getElementById('price').value);
+        // formData.append('terms_ar', document.getElementById('terms_ar').value);
+        // formData.append('terms_en', document.getElementById('terms_en').value);
+        // formData.append('price', document.getElementById('price').value);
         formData.append('balance', document.getElementById('balance').value);
         formData.append('expire_date_type', document.getElementById('expire_date_type').value);
-         formData.append('add_members', document.getElementById('add_members').value);
-        formData.append('number_of_members', document.getElementById('number_of_members').value);
-        formData.append('type_paid', document.getElementById('type_paid').value);
+        //  formData.append('add_members', document.getElementById('add_members').value);
+        // formData.append('number_of_members', document.getElementById('number_of_members').value);
+        formData.append('type_paid', 'trial');
         formData.append('image', document.getElementById('image').files[0]);
         if (document.getElementById('number_of_dayes') != null) {
             formData.append('number_of_dayes', document.getElementById('number_of_dayes').value);
