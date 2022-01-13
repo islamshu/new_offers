@@ -106,7 +106,7 @@ class branchController extends Controller
     //    dd($request->all());
     //    $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
     $vednor = Vendor::find($request->vendor_id);
-    dd($vednor);
+    // dd($vednor);
     
 
     
