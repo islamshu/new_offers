@@ -55,6 +55,9 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function create_paid_subsrcibe(){
+        return view('dashboard.subscripre.create_paid');
+    }
     public function store(Request $request)
     {
         $validator = Validator($request->all(), [
@@ -62,10 +65,8 @@ class SubscriptionController extends Controller
             'name_en' => 'required|string|min:3',
             'desc_ar' => 'required',
             'desc_en' => 'required',
-            'terms_ar'=>'required',
-            'terms_en'=>'required',
             'price'=>'required',
-            'balance' => 'required',
+            'balance' => $request->type_balance == 'Limit'?'required' : '',
             'expire_date_type' => 'required',
             'image' => 'required',
             'add_members'=>'required',

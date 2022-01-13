@@ -169,7 +169,7 @@ Route::group([
         Route::get('neighborhood_update/update_status','Dashboard\NeighborhoodController@updateStatus')->name('neighborhood.update_status');
         Route::get('neighborhood_enterprice_update/update_status','Dashboard\NeighborhoodController@update_enterprice_Status')->name('neighborhood_enterprice.update_status');
         Route::get('coipoun/update_status','Dashboard\CouponController@updateStatus')->name('coupon.update_status');
-
+        Route::get('create_paid_subsrcibe','Dashboard\SubscriptionController@create_paid_subsrcibe')->name('create_paid_subsrcibe.subscribe');
         
         
     });
