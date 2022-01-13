@@ -58,6 +58,10 @@ class SubscriptionController extends Controller
     public function create_paid_subsrcibe(){
         return view('dashboard.subscripre.create_paid');
     }
+    public function create_trial_subsrcibe(){
+        return view('dashboard.subscripre.create_trial');
+    }
+    
     public function store(Request $request)
     {
         $validator = Validator($request->all(), [
