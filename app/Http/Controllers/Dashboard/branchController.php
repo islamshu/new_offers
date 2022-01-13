@@ -86,7 +86,7 @@ class branchController extends Controller
        
         $vendor =Vendor::find($id);
         
-        $city = Vendor_cities::where('vendor_id',$id)->get();
+        $city = Vendor_cities::where('vendor_id',$id)->where('status','active')->get();
        
         return response()->view('dashboard.branch.create', compact('vendor','city'));
     }
@@ -205,7 +205,7 @@ class branchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function edit($locale,$id)
     {
