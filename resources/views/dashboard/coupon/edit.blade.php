@@ -47,6 +47,20 @@
                         <textarea class="form-control" id="tearm_en" rows="3">{{ $coupun->tearm_en }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
+                        <label>{{ __('Member Type') }}:</label>
+                        <select class="form-control form-control-solid restricted" name="member_type" id="member_type">
+                            <option value="paid" @if( $coupun->member_type == 'paid') selected @endif>{{ __('paid') }}</option>
+                            <option value="trial"  @if( $coupun->member_type == 'trial') selected @endif>{{ __('Trial') }}</option>
+                            <option value="free"  @if( $coupun->member_type == 'free') selected @endif>{{ __('Free') }}</option>
+                            <option value="all"  @if( $coupun->member_type == 'all') selected @endif>{{ __('All') }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 trial_class">
+                        <label>{{ __('Promocode') }}:</label>
+                        <input type="text" name="promocode" id="promocode" value="{{ $coupun->promocode }}" class="form-control form-control-solid"
+                            placeholder="{{ __('Promocode') }}" required />
+                    </div>
+                    <div class="form-group col-md-6">
                         <label>{{ __('type') }}:</label>
                         <select class="form-control form-control-solid restricted" name="type" id="type">
                             <option value="amount" @if($coupun->type == 'amount') selected @endif>{{ __('amount') }}</option>
@@ -69,6 +83,11 @@
                         <label>{{ __('End time') }}</label>
                         <input type="datetime" value="{{ $coupun->end_at }}" class="form-control form-control-solid form-control-lg" name="end_at"
                             id="end_at" placeholder="end_at" />
+                    </div>
+                    <div class="form-group col-md-6 form-group">
+                        <label>{{ __('Store Link') }}</label>
+                        <input type="url" value="{{ $coupun->store_link }}" class="form-control form-control-solid form-control-lg" name="store_link"
+                            id="store_link" placeholder="{{ __('Store Link') }}" />
                     </div>
                    
                     <div class="form-group col-md-6">
@@ -371,6 +390,9 @@
             formData.append('tearm_en', document.getElementById('tearm_en').value);
             formData.append('special_days', document.getElementById('special_days').value);
             formData.append('special_time', document.getElementById('special_time').value);
+            formData.append('member_type', document.getElementById('member_type').value);
+            formData.append('promocode', document.getElementById('promocode').value);
+
             formData.append('type', document.getElementById('type').value);
             formData.append('value', document.getElementById('value').value);
             formData.append('image', document.getElementById('image').files[0]);
@@ -383,6 +405,9 @@
             }
             if (document.getElementById('start_at') != null) {
                 formData.append('start_at', document.getElementById('start_at').value);
+            }
+            if (document.getElementById('store_link') != null) {
+                formData.append('store_link', document.getElementById('store_link').value);
             }
             if (document.getElementById('end_at') != null) {
                 formData.append('end_at', document.getElementById('end_at').value);

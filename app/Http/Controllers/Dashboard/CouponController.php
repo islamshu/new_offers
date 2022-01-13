@@ -235,6 +235,8 @@ class CouponController extends Controller
             'value'=>'required',
             'start_at'=>'required',
             'end_at'=>'required',
+            'member_type'=>'required',
+            'promocode'=>'required',
             'special_days'=>'required',
             'days'=>'required_if:special_days,==,active',
             'special_time'=>'required',
