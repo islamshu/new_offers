@@ -40,6 +40,15 @@ class CouponController extends Controller
         $vendor = Vendor::find($id);
         return view('dashboard.coupon.index', compact('coupons','vendor'));
     }
+    public function updateStatus(Request $request)
+    {
+    
+        $user = Coupon::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'coupoun status updated successfully.']);
+    }
     public function create_coupon($locale,$id)
     {
         $vendor = Vendor::find($id);

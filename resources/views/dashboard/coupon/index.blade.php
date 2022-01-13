@@ -19,6 +19,7 @@
                         <th>{{ __('Promocode') }}</th>
                         <th>{{ __('start at') }}</th>
                         <th>{{ __('end at') }}</th>
+                        <th>{{ __('Stauts') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
@@ -27,11 +28,14 @@
                     @php
                     $lang = app()->getLocale();
                     @endphp
-                        <td>@if($lang == 'ar') >{{ $item->name_ar }} @else >{{ $item->name_en }} @endif</td>
+                        <td>@if($lang == 'ar') {{ $item->name_ar }} @else >{{ $item->name_en }} @endif</td>
                         <td>{{ $item->member_type }}</td>
                         <td>{{ $item->promocode }}</td>
                         <td>{{ $item->start_at }}</td>
                         <td>{{ $item->end_at }}</td>
+                        <td>
+                            <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                            </td>
                         <td class="pr-0 text-left">
 
 
@@ -115,5 +119,22 @@
 
             confirmDestroy(url)
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+        $('.js-switch').change(function () {
+            let status = $(this).prop('checked') === true ? 'active' : 'deactive';
+            let id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('coupon.update_status',app()->getLocale()) }}',
+                data: {'status': status, 'id': id},
+                success: function (data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
     </script>
 @endsection
