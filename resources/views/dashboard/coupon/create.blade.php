@@ -39,11 +39,11 @@
                         <textarea class="form-control" id="desc_en" rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('Terms ar') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Terms ar') }}</label>
                         <textarea class="form-control" id="tearm_ar" rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('Terms en') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Terms en') }} </label>
                         <textarea class="form-control" id="tearm_en" rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-6">
@@ -420,8 +420,7 @@
             formData.append('name_en', document.getElementById('name_en').value);
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
-            formData.append('tearm_ar', document.getElementById('tearm_ar').value);
-            formData.append('tearm_en', document.getElementById('tearm_en').value);
+
             formData.append('special_days', document.getElementById('special_days').value);
             formData.append('special_time', document.getElementById('special_time').value);
             formData.append('type', document.getElementById('type').value);
@@ -444,7 +443,12 @@
             if (document.getElementById('store_link') != null) {
                 formData.append('store_link', document.getElementById('store_link').value);
             }
-
+            if (document.getElementById('tearm_ar') != null) {
+                formData.append('tearm_ar', document.getElementById('tearm_ar').value);
+            }
+            if (document.getElementById('tearm_en') != null) {
+                formData.append('tearm_en', document.getElementById('tearm_en').value);
+            }
             
             if (document.getElementById('end_at') != null) {
                 formData.append('end_at', document.getElementById('end_at').value);

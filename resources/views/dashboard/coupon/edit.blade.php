@@ -39,11 +39,11 @@
                         <textarea class="form-control" id="desc_en" rows="3">{{ $coupun->desc_en }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('Terms ar') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Terms ar') }} </label>
                         <textarea class="form-control" id="tearm_ar" rows="3">{{ $coupun->tearm_ar }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('Terms en') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Terms en') }}</label>
                         <textarea class="form-control" id="tearm_en" rows="3">{{ $coupun->tearm_en }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
@@ -387,8 +387,7 @@
             formData.append('name_en', document.getElementById('name_en').value);
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
-            formData.append('tearm_ar', document.getElementById('tearm_ar').value);
-            formData.append('tearm_en', document.getElementById('tearm_en').value);
+       
             formData.append('special_days', document.getElementById('special_days').value);
             formData.append('special_time', document.getElementById('special_time').value);
             formData.append('member_type', document.getElementById('member_type').value);
@@ -398,7 +397,12 @@
             formData.append('value', document.getElementById('value').value);
             formData.append('image', document.getElementById('image').files[0]);
             formData.append('vendor_id', '{{ $coupun->vendor_id }}');
-
+            if (document.getElementById('tearm_ar') != null) {
+                formData.append('tearm_ar', document.getElementById('tearm_ar').value);
+            }
+            if (document.getElementById('tearm_en') != null) {
+                formData.append('tearm_en', document.getElementById('tearm_en').value);
+            }
           
             if (document.getElementById('days') != null) {
                 var value = $('#days').val();
