@@ -401,9 +401,7 @@ $lang = app()->getLocale();
                 <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/coupun"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                             class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/coupun/create"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
+          
 
             </ul>
         </div>
