@@ -14,8 +14,9 @@
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
 
-                        <th>{{ __('Name ar') }}</th>
-                        <th>{{ __('Name en') }}</th>
+                        <th>{{ __('Name') }}</th>
+                        <th>{{ __('Member Type') }}</th>
+                        <th>{{ __('Promocode') }}</th>
                         <th>{{ __('start at') }}</th>
                         <th>{{ __('end at') }}</th>
                         <th>{{ __('Action') }}</th>
@@ -23,8 +24,12 @@
                 </thead>
                 <tbody>
                     @foreach ($coupons as $item)
-                        <td>{{ $item->name_ar }}</td>
-                        <td>{{ $item->name_en }}</td>
+                    @php
+                    $lang = app()->getLocale();
+                    @endphp
+                        <td>@if($lang == 'ar') >{{ $item->name_ar }} @else >{{ $item->name_en }} @endif</td>
+                        <td>{{ $item->member_type }}</td>
+                        <td>{{ $item->promocode }}</td>
                         <td>{{ $item->start_at }}</td>
                         <td>{{ $item->end_at }}</td>
                         <td class="pr-0 text-left">
