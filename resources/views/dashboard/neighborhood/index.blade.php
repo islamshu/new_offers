@@ -27,7 +27,7 @@ card card-docs mb-2">
                 <td>{{@$item->neighborhood->lng}}</td>
                 <td>{{@$item->neighborhood->city->city_name_english}}</td>
                 <td>
-                    <input type="checkbox" data-id="{{ $item->neighborhood->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                    <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
                     </td>
 
                 </tr>
