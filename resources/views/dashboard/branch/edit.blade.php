@@ -55,7 +55,7 @@
                     <label>city:</label>
                     <select class="city custom-select " id="city_id" name="city_id">
                         <option value="0" disabled="true" selected="true">City Name</option>
-                        @foreach (\App\Models\Vendor_cities::where('vendor_id',$branch->vendor_id)->with('city')->get() as $item)
+                        @foreach (\App\Models\Vendor_cities::where('vendor_id',$branch->vendor_id)->where('status','active')->with('city')->get() as $item)
                             <option value="{{ $item->city->id }} " @if($branch->city_id == $item->city->id ) selected @endif> @if($lang =='en') {{ $item->city->city_name_english }} @else {{ $item->city->city_name }} @endif  </option>
                         @endforeach
                     </select>

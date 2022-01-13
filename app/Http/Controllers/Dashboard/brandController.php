@@ -508,6 +508,7 @@ class brandController extends Controller
 
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
+    
 
 
 
