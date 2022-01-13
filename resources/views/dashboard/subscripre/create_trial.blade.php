@@ -286,6 +286,10 @@
         formData.append('expire_date_type', document.getElementById('expire_date_type').value);
         //  formData.append('add_members', document.getElementById('add_members').value);
         // formData.append('number_of_members', document.getElementById('number_of_members').value);
+        formData.append('start_date', document.getElementById('start_date').value);
+
+        formData.append('end_date', document.getElementById('end_date').value);
+
         formData.append('type_paid', 'trial');
         formData.append('image', document.getElementById('image').files[0]);
         if (document.getElementById('number_of_dayes') != null) {
