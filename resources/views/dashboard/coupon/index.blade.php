@@ -28,7 +28,7 @@
                     @php
                     $lang = app()->getLocale();
                     @endphp
-                        <td>@if($lang == 'ar') {{ $item->name_ar }} @else >{{ $item->name_en }} @endif</td>
+                        <td>@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif</td>
                         <td>{{ $item->member_type }}</td>
                         <td>{{ $item->promocode }}</td>
                         <td>{{ $item->start_at }}</td>

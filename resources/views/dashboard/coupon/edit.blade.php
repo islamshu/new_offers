@@ -49,10 +49,11 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('Member Type') }}:</label>
                         <select class="form-control form-control-solid restricted" name="member_type" id="member_type">
-                            <option value="paid" @if( $coupun->member_type == 'paid') selected @endif>{{ __('paid') }}</option>
-                            <option value="trial"  @if( $coupun->member_type == 'trial') selected @endif>{{ __('Trial') }}</option>
-                            <option value="free"  @if( $coupun->member_type == 'free') selected @endif>{{ __('Free') }}</option>
-                            <option value="all"  @if( $coupun->member_type == 'all') selected @endif>{{ __('All') }}</option>
+
+                            <option value="PREMIUM" @if( $coupun->member_type == 'PREMIUM') selected @endif>{{ __('PREMIUM') }}</option>
+                            <option value="Trial" @if( $coupun->member_type == 'Trial') selected @endif>{{ __('Trial') }}</option>
+                            <option value="Free" @if( $coupun->member_type == 'Free') selected @endif >{{ __('Free') }}</option>
+                            <option value="All" @if( $coupun->member_type == 'All') selected @endif>{{ __('All') }}</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6 trial_class">

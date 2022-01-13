@@ -49,10 +49,10 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('Member Type') }}:</label>
                         <select class="form-control form-control-solid restricted" name="member_type" id="member_type">
-                            <option value="paid">{{ __('paid') }}</option>
-                            <option value="trial">{{ __('Trial') }}</option>
-                            <option value="free">{{ __('Free') }}</option>
-                            <option value="all">{{ __('All') }}</option>
+                            <option value="PREMIUM">{{ __('PREMIUM') }}</option>
+                            <option value="Trial">{{ __('Trial') }}</option>
+                            <option value="Free">{{ __('Free') }}</option>
+                            <option value="All">{{ __('All') }}</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6 trial_class">
