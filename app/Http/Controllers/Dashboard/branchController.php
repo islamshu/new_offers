@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\City;
+use App\Models\enterprise_neighborhood;
 use App\Models\Neighborhood;
 use App\Models\Role;
 use App\Models\User;
@@ -104,8 +105,10 @@ class branchController extends Controller
     {
        
     //    $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
+    $vednor = Vendor::fine(auth()->user()->vendor_id);
+
     
-        $neighborhood = Vendor_neighborhood::where('vendor_id', $request->vendor_id)->with('neighborhood')
+        $neighborhood = enterprise_neighborhood::where('enterprice_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
         ->whereHas('neighborhood', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           })->get();
