@@ -164,7 +164,9 @@ Route::group([
         Route::get('city_update/update_status','Dashboard\CityController@updateStatus')->name('city.update_status');
         Route::get('city_update/update_status','Dashboard\CityController@update_enterprice_Status')->name('enter_pricecity.update_status');
         Route::get('neighborhood_update/update_status','Dashboard\NeighborhoodController@updateStatus')->name('neighborhood.update_status');
+        Route::get('neighborhood_enterprice_update/update_status','Dashboard\NeighborhoodController@update_enterprice_Status')->name('neighborhood_enterprice.update_status');
 
+        
         
     });
 });

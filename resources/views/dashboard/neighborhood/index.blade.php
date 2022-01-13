@@ -27,7 +27,7 @@ card card-docs mb-2">
                 <td>{{@$item->neighborhood->lng}}</td>
                 <td>{{@$item->neighborhood->city->city_name_english}}</td>
                 <td>
-                    <input type="checkbox" data-id="{{ $item->neighborhood->id }}" name="status" class="js-switch" {{ $item->neighborhood->status == 1 ? 'checked' : '' }}>
+                    <input type="checkbox" data-id="{{ $item->neighborhood->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
                     </td>
 
                 </tr>
@@ -73,7 +73,7 @@ card card-docs mb-2">
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: '{{ route('neighborhood.update_status',app()->getLocale()) }}',
+            url: '{{ route('neighborhood_enterprice.update_status',app()->getLocale()) }}',
             data: {'status': status, 'id': id},
             success: function (data) {
                 console.log(data.message);

@@ -32,10 +32,9 @@ class NeighborhoodController extends Controller
         return response()->view('dashboard.neighborhood.index', compact('Neighborhoods'));
     }
     }
-    public function updateStatus(Request $request)
+    public function update_enterprice_Status(Request $request)
     {
-    
-        $user = Neighborhood::find($request->id);
+        $user = enterprise_neighborhood::find($request->id);
         $user->status = $request->status;
         $user->save();
     
