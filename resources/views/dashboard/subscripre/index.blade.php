@@ -11,7 +11,8 @@
                 <tr class="fw-bold fs-6 text-gray-800">
                     <th>{{ __('logo') }}</th>
                     <th>{{ __('Name') }}</th>
-                    @if (Request::is('index_sub','paid'))
+                    
+                    @if (Request::is('index_sub.subscribe', 'paid')))
                     <th>{{ __('Price') }}</th>
                     @endif
                     <th>{{ __('Action') }}</th>
