@@ -105,7 +105,7 @@ class branchController extends Controller
     {
        
     //    $v= Vendor_neighborhood::where('vendor_id', $request->vendor_id)->get();
-    $vednor = Vendor::fine(auth()->user()->vendor_id);
+    $vednor = Vendor::find(auth()->user()->vendor_id);
 
     
         $neighborhood = enterprise_neighborhood::where('enterprice_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
