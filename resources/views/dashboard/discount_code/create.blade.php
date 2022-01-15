@@ -5,7 +5,7 @@
 
         <div class="card-header">
             <h3 class="card-title">
-                {{ __('Create Code') }}
+                {{ __('Create Discount Code') }}
             </h3>
             <div class="card-toolbar">
                 <div class="example-tools justify-content-center">
@@ -228,7 +228,7 @@
                 formData.append('end_at', document.getElementById('end_at').value);
             }
        
-                store("{{ route('code.store', ['locale' => app()->getLocale()]) }}", formData);
+                store("{{ route('discount_code.store', ['locale' => app()->getLocale()]) }}", formData);
 
             }
     </script>

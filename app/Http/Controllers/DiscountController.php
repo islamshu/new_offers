@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CodeSubscription;
 use App\Models\Discount;
+use App\Models\DiscountSubscription;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
@@ -47,7 +49,7 @@ class DiscountController extends Controller
             'price'=>'required'
         ]);
         if (!$validator->fails()) {
-        $code = new Code();
+        $code = new Discount();
         $code->name_ar = $request->name_ar;
         $code->name_en = $request->name_en;
         $code->type = $request->type;
@@ -70,7 +72,7 @@ class DiscountController extends Controller
         $code->sub_id = $request->sub_id;
         $code->save();
         if($request->type_code == 'manual'){
-            $codesub = new CodeSubscription();
+            $codesub = new DiscountSubscription();
             $codesub->code = $request->code;
             $codesub->sub_id = $request->sub_id;
             $codesub->save();
@@ -78,7 +80,7 @@ class DiscountController extends Controller
         }else{
             $code_num = $request->number_of_code;
             for($i= 0;$i < $code_num  ;$i++  ){
-                $codesub = new CodeSubscription();
+                $codesub = new DiscountSubscription();
                 $codesub->code = mt_rand(100000000,999999999);
                 $codesub->sub_id = $request->sub_id;
                 $codesub->save();
