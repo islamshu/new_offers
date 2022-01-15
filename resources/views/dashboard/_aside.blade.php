@@ -458,6 +458,29 @@ $lang = app()->getLocale();
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
+            <span class="menu-text">{{ __('Discount Code') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Discount Code') }}</span></span>
+                </li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('List') }}</span></a></li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code/create"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Create') }}</span></a></li>
+
+            </ul>
+        </div>
+    </li>
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
             <span class="menu-text">{{ __('Reference codes') }}</span>
             <i class="menu-arrow"></i>
         </a>
