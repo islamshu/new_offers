@@ -53,6 +53,8 @@
                             </select>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="form-group col-md-6 typecode" >
                         <div class="Enterprise">
                             <label>{{ __('type of code') }}:</label>
@@ -76,6 +78,8 @@
                         <input type="integer" class="form-control form-control-solid form-control-lg"
                             name="number_of_code" id="number_of_code" placeholder="number_of_code"  />
                     </div>
+                </div>
+                <div class="row">
                     <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Typeof limit') }}:</label>
