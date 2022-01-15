@@ -101,6 +101,7 @@
                     </div>
                     <div class="form-group col-md-6 limit_value" style="display: none">
                         <label>{{ __('Value') }}</label>
+                        <br>
                         <input type="number" class="form-control form-control-solid form-control-lg"
                             name="value" id="value" placeholder="value"  />
                     </div>
