@@ -126,9 +126,6 @@ class CodeController extends Controller
 
 }
 
-
-    }
-
     /**
      * Display the specified resource.
      *
