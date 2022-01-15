@@ -46,6 +46,8 @@
                         <input type="text" name="price" id="price" class="form-control form-control-solid"
                             placeholder="Price" required />
                     </div>
+                </div>
+                    <div class="row">
                     <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Type') }}:</label>
@@ -58,8 +60,8 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+             
+              
                     <div class="form-group col-md-6 typecode" >
                         <div class="Enterprise">
                             <label>{{ __('type of code') }}:</label>
