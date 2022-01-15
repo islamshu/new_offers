@@ -121,7 +121,7 @@ class DiscountController extends Controller
     {
         $code = Discount::find($id);
         $subs = Subscription::where('type_paid','paid')->get();
-        return response()->view('dashboard.discount_code.create',compact('subs','code'));
+        return response()->view('dashboard.discount_code.edit',compact('subs','code'));
     }
 
     /**
