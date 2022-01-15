@@ -103,54 +103,28 @@ class CodeController extends Controller
 
     public function update_code(Request $request,$locale,$id)
     {
-        $code = Code::find($id);
+        
         $validator = Validator($request->all(), [
-            'name_ar'=>'required',
-            'name_en'=>'required',
-            'type'=>'required',
-            'type_code'=>'required',
-            'type_of_limit'=>'required',
+ 
+            'start_time'=>'required',
+            'start_time'=>'required'
+            
         ]);
         if (!$validator->fails()) {
-        
-        $code->name_ar = $request->name_ar;
-        $code->name_en = $request->name_en;
-        $code->type = $request->type;
-        $code->sub_id = $request->sub_id;
-        if($code->type == 'single'){
-            $code->number_of_code = 1;
-            $code->total_remain = 1;
-        }else{
-            $code->number_of_code = $request->number_of_code;
-
-        }
-        $code->type_of_limit = $request->type_of_limit;
-        if($request->type_of_limit == 'unlimit'){
-            $code->start_at = $request->start_at;
-            $code->end_at = $request->end_at;
-        }
-        
-        $code->sub_id = $request->sub_id;
+        $code = Code::find($id);
+    
+   
+            $code->start_at = $request->start_time;
+            $code->end_at = $request->end_time;
+    
         $code->save();
-        if($request->type_code == 'manual'){
-            $codesub = new CodeSubscription();
-            $codesub->code = $request->code;
-            $codesub->sub_id = $request->sub_id;
-            $codesub->save();
-
-        }else{
-            $code_num = $request->number_of_code;
-            for($i= 0;$i < $code_num  ;$i++  ){
-                $codesub = new CodeSubscription();
-                $codesub->code = mt_rand(100000000,999999999);
-                $codesub->sub_id = $request->sub_id;
-                $codesub->save();
-            }
-        }
+     
         return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
     } else {
         return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
     }
+
+}
 
 
     }
