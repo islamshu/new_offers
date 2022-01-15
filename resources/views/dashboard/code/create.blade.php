@@ -119,7 +119,7 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('End date') }}</label>
                         <input type="date" class="form-control form-control-solid form-control-lg"
-                            name="end_at" id="end_time" placeholder="end_time"  />
+                            name="end_time" id="end_time" placeholder="end_time"  />
                     </div>
                 </div>
 
@@ -218,8 +218,8 @@
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
             formData.append('price', document.getElementById('price').value);
-            formData.append('start_at', document.getElementById('start_at').value);
-            formData.append('end_at', document.getElementById('end_at').value);
+            formData.append('start_time', document.getElementById('start_time').value);
+            formData.append('end_time', document.getElementById('end_time').value);
 
 
             

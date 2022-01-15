@@ -72,8 +72,8 @@ class CodeController extends Controller
         }
         $code->type_of_limit = $request->type_of_limit;
    
-            $code->start_at = $request->start_at;
-            $code->end_at = $request->end_at;
+            $code->start_at = $request->start_time;
+            $code->end_at = $request->end_time;
        
             $code->value = $request->value;
         $code->sub_id = $request->sub_id;
