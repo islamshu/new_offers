@@ -238,7 +238,7 @@
            
           
        
-                store("{{ route('update-code.code', ['locale' => app()->getLocale()]) }}", formData);
+                store("{{ route('update-code.code', ['locale' => app()->getLocale(),$code->id]) }}", formData);
 
             }
     </script>
