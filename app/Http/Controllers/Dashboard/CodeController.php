@@ -177,7 +177,7 @@ class CodeController extends Controller
         
         $subs = Subscription::where('type_paid','paid')->get();
         $code = Code::find($id);
-        dd($id);
+        // dd($id);
         return response()->view('dashboard.code.edit',compact('subs','code'));
     }
 
