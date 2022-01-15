@@ -13,6 +13,7 @@
                         <th>{{ __('name') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
+                        <td>{{ __('Status') }}</td>
                         <th>{{ __('Action') }}</th>
 
                     </tr>
@@ -22,6 +23,9 @@
                         <td>{{ $code->name_en }}</td>
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
+                        <td>
+                            <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status ==  1 ? 'checked' : '' }}>
+                            </td>
                         <td class="pr-0 text-left">
 
 
@@ -105,5 +109,22 @@
 
             confirmDestroy(url)
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+        $('.js-switch').change(function () {
+            let status = $(this).prop('checked') === true ? 'active' : 'deactive';
+            let id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('discount.update_status',app()->getLocale()) }}',
+                data: {'status': status, 'id': id},
+                success: function (data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
     </script>
 @endsection

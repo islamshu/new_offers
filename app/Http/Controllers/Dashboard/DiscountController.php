@@ -20,7 +20,7 @@ class DiscountController extends Controller
     public function index()
     {
         $codes = Discount::get();
-        return response()->view('dashboard.discount_code.index',compact('codes'));
+        return response()->view('dashboard.discount_code.index', compact('codes'));
     }
 
     /**
@@ -30,8 +30,8 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        $subs = Subscription::where('type_paid','paid')->get();
-        return response()->view('dashboard.discount_code.create',compact('subs'));
+        $subs = Subscription::where('type_paid', 'paid')->get();
+        return response()->view('dashboard.discount_code.create', compact('subs'));
     }
 
     /**
@@ -43,61 +43,57 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         $validator = Validator($request->all(), [
-            'name_ar'=>'required',
-            'name_en'=>'required',
-            'type'=>'required',
-            'type_code'=>'required',
-            'type_of_limit'=>'required',
-            'price'=>'required',
-            'value'=>$request->type_of_limit == 'limit' ? 'required':'',
-            'start_time'=>'required',
-            'start_time'=>'required'
-            
+            'name_ar' => 'required',
+            'name_en' => 'required',
+            'type' => 'required',
+            'type_code' => 'required',
+            'type_of_limit' => 'required',
+            'price' => 'required',
+            'value' => $request->type_of_limit == 'limit' ? 'required' : '',
+            'start_time' => 'required',
+            'start_time' => 'required'
+
         ]);
         if (!$validator->fails()) {
-        $code = new Discount();
-        $code->name_ar = $request->name_ar;
-        $code->name_en = $request->name_en;
-        $code->type = $request->type;
-        $code->sub_id = $request->sub_id;
-        $code->price = $request->price;
-        if($code->type == 'single'){
-            $code->number_of_code = 1;
-            $code->total_remain = 1;
-        }else{
-            $code->number_of_code = $request->number_of_code;
-            $code->total_remain = $request->number_of_code;
+            $code = new Discount();
+            $code->name_ar = $request->name_ar;
+            $code->name_en = $request->name_en;
+            $code->type = $request->type;
+            $code->sub_id = $request->sub_id;
+            $code->price = $request->price;
+            if ($code->type == 'single') {
+                $code->number_of_code = 1;
+                $code->total_remain = 1;
+            } else {
+                $code->number_of_code = $request->number_of_code;
+                $code->total_remain = $request->number_of_code;
+            }
+            $code->type_of_limit = $request->type_of_limit;
 
-        }
-        $code->type_of_limit = $request->type_of_limit;
-   
             $code->start_at = $request->start_time;
             $code->end_at = $request->end_time;
-       
-            $code->value = $request->value;
-        $code->sub_id = $request->sub_id;
-        $code->save();
-        if($request->type_code == 'manual'){
-            $codesub = new DiscountSubscription();
-            $codesub->code = $request->code;
-            $codesub->sub_id = $request->sub_id;
-            $codesub->save();
 
-        }else{
-            $code_num = $request->number_of_code;
-            for($i= 0;$i < $code_num  ;$i++  ){
+            $code->value = $request->value;
+            $code->sub_id = $request->sub_id;
+            $code->save();
+            if ($request->type_code == 'manual') {
                 $codesub = new DiscountSubscription();
-                $codesub->code = mt_rand(100000000,999999999);
+                $codesub->code = $request->code;
                 $codesub->sub_id = $request->sub_id;
                 $codesub->save();
+            } else {
+                $code_num = $request->number_of_code;
+                for ($i = 0; $i < $code_num; $i++) {
+                    $codesub = new DiscountSubscription();
+                    $codesub->code = mt_rand(100000000, 999999999);
+                    $codesub->sub_id = $request->sub_id;
+                    $codesub->save();
+                }
             }
+            return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
-        return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
-    } else {
-        return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
-    }
-
-
     }
 
     /**
@@ -117,11 +113,18 @@ class DiscountController extends Controller
      * @param  \App\Models\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function edit($locale,$id)
+    public function edit($locale, $id)
     {
         $code = Discount::find($id);
-        $subs = Subscription::where('type_paid','paid')->get();
-        return response()->view('dashboard.discount_code.edit',compact('subs','code'));
+        $subs = Subscription::where('type_paid', 'paid')->get();
+        return response()->view('dashboard.discount_code.edit', compact('subs', 'code'));
+    }
+    public function updateStatus(Request $request)
+    {
+
+        $user = Discount::find($request->id);
+        $user->status = $request->status;
+        $user->save();
     }
 
     /**
@@ -132,53 +135,51 @@ class DiscountController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update_code(Request $request,$locale,$id)
+    public function update_code(Request $request, $locale, $id)
     {
-        
+
         $validator = Validator($request->all(), [
- 
-            'start_time'=>'required',
-            'start_time'=>'required'
-            
+
+            'start_time' => 'required',
+            'start_time' => 'required'
+
         ]);
         if (!$validator->fails()) {
-        $code = Discount::find($id);
-    
-   
+            $code = Discount::find($id);
+
+
             $code->start_at = $request->start_time;
             $code->end_at = $request->end_time;
-    
-        $code->save();
-     
-        return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
-    } else {
-        return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
-    }
 
-}
-    public function update(Request $request,$id)
-    {
-        
-            $validator = Validator($request->all(), [
-     
-                'start_time'=>'required',
-                'start_time'=>'required'
-                
-            ]);
-            if (!$validator->fails()) {
-            $code = Discount::find($id);
-        
-       
-                $code->start_at = $request->start_time;
-                $code->end_at = $request->end_time;
-        
             $code->save();
-         
+
             return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
         } else {
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
-    
+    }
+    public function update(Request $request, $id)
+    {
+
+        $validator = Validator($request->all(), [
+
+            'start_time' => 'required',
+            'start_time' => 'required'
+
+        ]);
+        if (!$validator->fails()) {
+            $code = Discount::find($id);
+
+
+            $code->start_at = $request->start_time;
+            $code->end_at = $request->end_time;
+
+            $code->save();
+
+            return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
     }
 
     /**

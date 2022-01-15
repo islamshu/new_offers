@@ -177,6 +177,8 @@ Route::group([
         Route::get('create_paid_subsrcibe','Dashboard\SubscriptionController@create_paid_subsrcibe')->name('create_paid_subsrcibe.subscribe');
         Route::get('create_trial_subsrcibe','Dashboard\SubscriptionController@create_trial_subsrcibe')->name('create_trial_subsrcibe.subscribe');
         Route::get('subscibe_update/update_status','Dashboard\SubscriptionController@updateStatus')->name('subscipe.update_status');
+        Route::get('code_update/update_status','Dashboard\CodeController@updateStatus')->name('code.update_status');
+        Route::get('discount_update/update_status','Dashboard\DiscountController@updateStatus')->name('discount.update_status');
 
         
     });
