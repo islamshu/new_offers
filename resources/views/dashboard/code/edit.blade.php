@@ -20,12 +20,12 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>{{ __('Name ar') }}:</label>
-                        <input type="text" name="name_ar" id="name_ar" disabled class="form-control form-control-solid"
+                        <input type="text" name="name_ar" value="{{ $code->name_ar }}" id="name_ar" disabled class="form-control form-control-solid"
                             placeholder="Enter Name" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Name en') }}:</label>
-                        <input type="text" name="name_en" id="name_en" disabled class="form-control form-control-solid"
+                        <input type="text" name="name_en"  value="{{ $code->name_en }}"  id="name_en" disabled class="form-control form-control-solid"
                             placeholder="Enter Name" required />
                     </div>
                     <div class="form-group col-md-6 Enterprise" >
@@ -36,14 +36,14 @@
                                 @foreach ($subs as $item)
                                     
                               
-                                <option value="{{ $item->id }}" >{{$item->name_en }}</option>
+                                <option value="{{ $item->id }}" @if($item->id == $code->sud_id) selected disable @endif >{{$item->name_en }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Price') }}:</label>
-                        <input type="text" name="price" id="price" disabled class="form-control form-control-solid"
+                        <input type="text" name="price" value="{{ $code->price }}" id="price" disabled class="form-control form-control-solid"
                             placeholder="Price" required />
                     </div>
                 </div>
@@ -55,14 +55,14 @@
                                 id="type">
                                 <option value="" selected disabled >{{ __('chose option') }}</option>
 
-                                <option value="single" >{{ __('single') }}</option>
-                                <option value="multi" >{{ __('multi') }}</option>
+                                <option value="single" @if($code->type == 'single') selected disable @endif >{{ __('single') }}</option>
+                                <option value="multi" @if($code->type == 'multi') selected disable @endif  >{{ __('multi') }}</option>
                             </select>
                         </div>
                     </div>
              
               
-                    <div class="form-group col-md-6 typecode" >
+                    <div class="form-group col-md-6 typecode" style="display: none" >
                         <div class="Enterprise">
                             <label>{{ __('type of code') }}:</label>
                             <select class="form-control form-control-solid enterprise" disabled name="type_code"
@@ -94,8 +94,8 @@
                                 id="type_of_limit">
                                 <option value=""  selected disabled >{{ __('chose option') }}</option>
 
-                                <option value="limit" >{{ __('limit') }}</option>
-                                <option value="unlimit" >{{ __('unlimit') }}</option>
+                                <option value="limit" @if($code->type_of_limit == 'limit') selected disable @endif >{{ __('limit') }}</option>
+                                <option value="unlimit" @if($code->type_of_limit == 'unlimit') selected disable @endif >{{ __('unlimit') }}</option>
                             </select>
                         </div>
                     </div>
@@ -104,22 +104,22 @@
                         <label>{{ __('Value') }}</label>
                         <br>
                         <input type="number" disabled class="form-control form-control-solid form-control-lg"
-                            name="value" id="value" placeholder="value"  />
+                            name="value" value="{{ $code->value }}" id="value" placeholder="value"  />
                         </div>
                     </div>
                 </div>
                     <div class="row timelimit">
                     <div class="form-group col-md-6">
                         <label>{{ __('Start date') }}</label>
-                        <input type="date" disabled class="form-control form-control-solid form-control-lg"
-                            name="start_at" id="start_time" placeholder="start_time"  />
+                        <input type="date"  class="form-control form-control-solid form-control-lg"
+                            name="start_at" value="{{ $code->start_at }}" id="start_time" placeholder="start_time"  />
                     </div>
                     <!--end::Input-->
                     <!--begin::Input-->
                     <div class="form-group col-md-6">
                         <label>{{ __('End date') }}</label>
-                        <input type="date" disabled class="form-control form-control-solid form-control-lg"
-                            name="end_time" id="end_time" placeholder="end_time"  />
+                        <input type="date"  class="form-control form-control-solid form-control-lg"
+                            name="end_time" value="{{ $code->end_at }}" id="end_time" placeholder="end_time"  />
                     </div>
                 </div>
 
@@ -238,7 +238,7 @@
            
           
        
-                store("{{ route('discount_code.store', ['locale' => app()->getLocale()]) }}", formData);
+                store("{{ route('update-code.store', ['locale' => app()->getLocale()]) }}", formData);
 
             }
     </script>
