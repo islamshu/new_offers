@@ -49,6 +49,7 @@ class CodeController extends Controller
             'type'=>'required',
             'type_code'=>'required',
             'type_of_limit'=>'required',
+            'price'=>'required'
         ]);
         if (!$validator->fails()) {
         $code = new Code();
@@ -56,6 +57,7 @@ class CodeController extends Controller
         $code->name_en = $request->name_en;
         $code->type = $request->type;
         $code->sub_id = $request->sub_id;
+        $code->price = $request->price;
         if($code->type == 'single'){
             $code->number_of_code = 1;
             $code->total_remain = 1;

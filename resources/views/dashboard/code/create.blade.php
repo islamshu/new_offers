@@ -41,6 +41,11 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Price') }}:</label>
+                        <input type="text" name="price" id="price" class="form-control form-control-solid"
+                            placeholder="Price" required />
+                    </div>
                     <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Type') }}:</label>
@@ -202,6 +207,7 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
+            formData.append('price', document.getElementById('price').value);
 
 
             if (document.getElementById('number_of_code') != null) {
