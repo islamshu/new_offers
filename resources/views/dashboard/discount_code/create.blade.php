@@ -99,13 +99,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-6 limit_value" style="display: none">
-                        <label>{{ __('Value') }}</label>
-                        <input type="number" class="form-control form-control-solid form-control-lg"
-                            name="value" id="value" placeholder="value"  />
-                    </div>
                 </div>
-                    <div class="row timelimit">
+                    <div class="row timelimit"style="display: none">
                     <div class="form-group col-md-6">
                         <label>{{ __('Start date') }}</label>
                         <input type="date" class="form-control form-control-solid form-control-lg"
@@ -179,10 +174,10 @@
             var type = $('#type_of_limit').val();
 
             if(type == 'limit'){
-            $('.limit_value').css("display", "flex")
+            $('.timelimit').css("display", "flex")
 
             }else{
-            $('.limit_value').css("display", "none")
+            $('.timelimit').css("display", "none")
 
             }
 
@@ -215,14 +210,8 @@
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
             formData.append('price', document.getElementById('price').value);
-            formData.append('start_at', document.getElementById('start_at').value);
-            formData.append('end_at', document.getElementById('end_at').value);
 
 
-            
-            if (document.getElementById('value') != null) {
-            formData.append('value', document.getElementById('value').value);
-            }
             if (document.getElementById('number_of_code') != null) {
 
                 formData.append('number_of_code', document.getElementById('number_of_code').value);
@@ -232,8 +221,12 @@
             formData.append('code', document.getElementById('code').value);
             }
            
-           
-          
+            if (document.getElementById('start_at') != null) {
+                formData.append('start_at', document.getElementById('start_at').value);
+            }
+            if (document.getElementById('end_at') != null) {
+                formData.append('end_at', document.getElementById('end_at').value);
+            }
        
                 store("{{ route('code.store', ['locale' => app()->getLocale()]) }}", formData);
 
