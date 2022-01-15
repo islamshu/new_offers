@@ -48,7 +48,11 @@ class DiscountController extends Controller
             'type'=>'required',
             'type_code'=>'required',
             'type_of_limit'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'value'=>$request->type_of_limit == 'limit' ? 'required':'',
+            'start_time'=>'required',
+            'start_time'=>'required'
+            
         ]);
         if (!$validator->fails()) {
         $code = new Discount();
@@ -66,11 +70,11 @@ class DiscountController extends Controller
 
         }
         $code->type_of_limit = $request->type_of_limit;
-        if($request->type_of_limit == 'unlimit'){
-            $code->start_at = $request->start_at;
-            $code->end_at = $request->end_at;
-        }
-        
+   
+            $code->start_at = $request->start_time;
+            $code->end_at = $request->end_time;
+       
+            $code->value = $request->value;
         $code->sub_id = $request->sub_id;
         $code->save();
         if($request->type_code == 'manual'){
@@ -92,6 +96,8 @@ class DiscountController extends Controller
     } else {
         return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
     }
+
+
     }
 
     /**
