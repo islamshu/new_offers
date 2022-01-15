@@ -117,9 +117,11 @@ class DiscountController extends Controller
      * @param  \App\Models\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function edit(Discount $discount)
+    public function edit($locale,$id)
     {
-        //
+        $code = Discount::find($id);
+        $subs = Subscription::where('type_paid','paid')->get();
+        return response()->view('dashboard.discount_code.create',compact('subs','code'));
     }
 
     /**
@@ -129,9 +131,29 @@ class DiscountController extends Controller
      * @param  \App\Models\Discount  $discount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Discount $discount)
+    public function update(Request $request,$id)
     {
-        //
+        
+            $validator = Validator($request->all(), [
+     
+                'start_time'=>'required',
+                'start_time'=>'required'
+                
+            ]);
+            if (!$validator->fails()) {
+            $code = Discount::find($id);
+        
+       
+                $code->start_at = $request->start_time;
+                $code->end_at = $request->end_time;
+        
+            $code->save();
+         
+            return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
+        } else {
+            return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+        }
+    
     }
 
     /**

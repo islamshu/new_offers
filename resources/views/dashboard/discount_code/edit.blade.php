@@ -5,7 +5,7 @@
 
         <div class="card-header">
             <h3 class="card-title">
-                {{ __('Edit Code') }}
+                {{ __('Create Discount Code') }}
             </h3>
             <div class="card-toolbar">
                 <div class="example-tools justify-content-center">
@@ -20,87 +20,106 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>{{ __('Name ar') }}:</label>
-                        <input type="text" name="name_ar" value="{{ $code->name_ar }}" id="name_ar" class="form-control form-control-solid"
+                        <input type="text" name="name_ar" id="name_ar" disabled class="form-control form-control-solid"
                             placeholder="Enter Name" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Name en') }}:</label>
-                        <input type="text" name="name_en" value="{{ $code->name_en }}"  id="name_en" class="form-control form-control-solid"
+                        <input type="text" name="name_en" id="name_en" disabled class="form-control form-control-solid"
                             placeholder="Enter Name" required />
                     </div>
                     <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Choose the package') }}:</label>
-                            <select class="form-control form-control-solid enterprise" name="sub_id"
+                            <select class="form-control form-control-solid enterprise" disabled name="sub_id"
                                 id="sub_id">
                                 @foreach ($subs as $item)
                                     
                               
-                                <option value="{{ $item->id }}" @if($code->sub_id == $item->id) selected @endif >{{$item->name_en }}</option>
+                                <option value="{{ $item->id }}" >{{$item->name_en }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-6 Enterprise" @if($code->type != 'multi') style="display : none"  @endif  > 
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Price') }}:</label>
+                        <input type="text" name="price" id="price" disabled class="form-control form-control-solid"
+                            placeholder="Price" required />
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Type') }}:</label>
-                            <select class="form-control form-control-solid enterprise" name="type"
+                            <select class="form-control form-control-solid enterprise" disabled name="type"
                                 id="type">
                                 <option value="" selected disabled >{{ __('chose option') }}</option>
 
-                                <option value="single" @if($code->type == 'single') selected @endif >{{ __('single') }}</option>
-                                <option value="multi" @if($code->type == 'multi') selected @endif >{{ __('multi') }}</option>
+                                <option value="single" >{{ __('single') }}</option>
+                                <option value="multi" >{{ __('multi') }}</option>
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-6 typecode" @if($code->type == 'multi') style="display:none"  @endif >
+             
+              
+                    <div class="form-group col-md-6 typecode" >
                         <div class="Enterprise">
                             <label>{{ __('type of code') }}:</label>
-                            <select class="form-control form-control-solid enterprise" name="type_code"
+                            <select class="form-control form-control-solid enterprise" disabled name="type_code"
                                 id="type_code">
                                 <option value="" selected disabled >{{ __('chose option') }}</option>
 
-                                <option value="auto" @if($code->type_code == 'auto') selected @endif >{{ __('auto') }}</option>
-                                <option value="manual" @if($code->type_code == 'manual') selected @endif >{{ __('manual') }}</option>
+                                <option value="auto" >{{ __('auto') }}</option>
+                                <option value="manual" >{{ __('manual') }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group col-md-6 code" style="display: none">
                         <div class="code">
                             <label>{{ __('code') }}:</label>
-                          <input type="text" value="{{ $code->code }}" name="code" class="form-control" id="code">
+                          <input type="text" name="code" disabled class="form-control" id="code">
                         </div>
                     </div>
-                    <div class="form-group col-md-6 codenumber" @if($code->type != 'multi') style="display : none"  @endif >
+                    <div class="form-group col-md-6 codenumber" style="display: none">
                         <label>{{ __('number of code') }}</label>
-                        <input type="integer" value="{{ $code->number_of_code }}" class="form-control form-control-solid form-control-lg"
-                            name="number_of_code" id="number_of_code" placeholder="number_of_code"  />
+                        <input type="integer" class="form-control form-control-solid form-control-lg"
+                            name="number_of_code" disabled id="number_of_code" placeholder="number_of_code"  />
                     </div>
+                </div>
+                <div class="row">
                     <div class="form-group col-md-6 Enterprise" >
                         <div class="Enterprise">
                             <label>{{ __('Typeof limit') }}:</label>
-                            <select class="form-control form-control-solid enterprise" name="type_of_limit"
+                            <select class="form-control form-control-solid enterprise" disabled name="type_of_limit"
                                 id="type_of_limit">
-                                <option value="" selected disabled >{{ __('chose option') }}</option>
+                                <option value=""  selected disabled >{{ __('chose option') }}</option>
 
-                                <option value="limit" @if($code->type_of_limit == 'limit') selected @endif >{{ __('limit') }}</option>
-                                <option value="unlimit" @if($code->type_of_limit == 'unlimit') selected @endif >{{ __('unlimit') }}</option>
+                                <option value="limit" >{{ __('limit') }}</option>
+                                <option value="unlimit" >{{ __('unlimit') }}</option>
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-md-6 limit_value" style="display: none">
+                        <div class="value">
+                        <label>{{ __('Value') }}</label>
+                        <br>
+                        <input type="number" disabled class="form-control form-control-solid form-control-lg"
+                            name="value" id="value" placeholder="value"  />
+                        </div>
+                    </div>
                 </div>
-                    <div class="row timelimit" @if($code->type_of_limit != 'limit') style="display: none" @endif>
+                    <div class="row timelimit">
                     <div class="form-group col-md-6">
                         <label>{{ __('Start date') }}</label>
-                        <input type="date" class="form-control form-control-solid form-control-lg"
-                            name="start_at" value="{{ $code->start_at }}" id="start_at" placeholder="start_at"  />
+                        <input type="date" disabled class="form-control form-control-solid form-control-lg"
+                            name="start_at" id="start_time" placeholder="start_time"  />
                     </div>
                     <!--end::Input-->
                     <!--begin::Input-->
                     <div class="form-group col-md-6">
                         <label>{{ __('End date') }}</label>
-                        <input type="date" class="form-control form-control-solid form-control-lg"
-                            name="end_at" value="{{ $code->end_at }}" id="end_at" placeholder="end_at"  />
+                        <input type="date" disabled class="form-control form-control-solid form-control-lg"
+                            name="end_time" id="end_time" placeholder="end_time"  />
                     </div>
                 </div>
 
@@ -163,10 +182,10 @@
             var type = $('#type_of_limit').val();
 
             if(type == 'limit'){
-            $('.timelimit').css("display", "inline")
+            $('.limit_value').css("display", "flex")
 
             }else{
-            $('.timelimit').css("display", "none")
+            $('.limit_value').css("display", "none")
 
             }
 
@@ -198,8 +217,15 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
+            formData.append('price', document.getElementById('price').value);
+            formData.append('start_time', document.getElementById('start_time').value);
+            formData.append('end_time', document.getElementById('end_time').value);
 
 
+            
+            if (document.getElementById('value') != null) {
+            formData.append('value', document.getElementById('value').value);
+            }
             if (document.getElementById('number_of_code') != null) {
 
                 formData.append('number_of_code', document.getElementById('number_of_code').value);
@@ -209,14 +235,10 @@
             formData.append('code', document.getElementById('code').value);
             }
            
-            if (document.getElementById('start_at') != null) {
-                formData.append('start_at', document.getElementById('start_at').value);
-            }
-            if (document.getElementById('end_at') != null) {
-                formData.append('end_at', document.getElementById('end_at').value);
-            }
+           
+          
        
-                store("{{ route('update-code.code', ['locale' => app()->getLocale() , $code->id]) }}", formData);
+                store("{{ route('discount_code.store', ['locale' => app()->getLocale()]) }}", formData);
 
             }
     </script>
