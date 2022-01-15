@@ -158,7 +158,9 @@ Route::group([
         
 
         Route::resource('code', 'Dashboard\CodeController');
-        Route::resource('discount_code', 'Dashboard\DiscountController');        
+        Route::resource('discount_code', 'Dashboard\DiscountController');   
+        Route::post('update-discount/{id}', 'Dashboard\CodeController@update_code')->name('update-code.discountcode');
+     
         Route::post('update-code/{id}', 'Dashboard\CodeController@update_code')->name('update-code.code');
 
         Route::post('update-coupun/{id}', 'Dashboard\CouponController@update_coupun')->name('update-coupun.coupun');

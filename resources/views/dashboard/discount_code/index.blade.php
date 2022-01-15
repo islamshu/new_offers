@@ -25,7 +25,7 @@
                         <td class="pr-0 text-left">
 
 
-                                <a href="{{ route('code.edit', [ $code->id, 'locale' => app()->getLocale()]) }}"
+                                <a href="{{ route('discount_code.edit', [ $code->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                     <span class="svg-icon svg-icon-md svg-icon-primary">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -99,7 +99,7 @@
         });
 
         function performdelete(id) {
-            var url = '{{ route('code.destroy', [':id', 'locale' => app()->getLocale()]) }}';
+            var url = '{{ route('discount_code.destroy', [':id', 'locale' => app()->getLocale()]) }}';
             url = url.replace(':id', id);
 
 

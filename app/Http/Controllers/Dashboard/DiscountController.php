@@ -131,6 +131,31 @@ class DiscountController extends Controller
      * @param  \App\Models\Discount  $discount
      * @return \Illuminate\Http\Response
      */
+
+    public function update_code(Request $request,$locale,$id)
+    {
+        
+        $validator = Validator($request->all(), [
+ 
+            'start_time'=>'required',
+            'start_time'=>'required'
+            
+        ]);
+        if (!$validator->fails()) {
+        $code = Discount::find($id);
+    
+   
+            $code->start_at = $request->start_time;
+            $code->end_at = $request->end_time;
+    
+        $code->save();
+     
+        return response()->json(['icon' => 'success', 'title' => 'code created successfully'], $code ? 200 : 400);
+    } else {
+        return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
+    }
+
+}
     public function update(Request $request,$id)
     {
         
