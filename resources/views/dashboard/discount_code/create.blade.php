@@ -99,8 +99,16 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group col-md-6 limit_value" style="display: none">
+                        <div class="value">
+                        <label>{{ __('Value') }}</label>
+                        <br>
+                        <input type="number" class="form-control form-control-solid form-control-lg"
+                            name="value" id="value" placeholder="value"  />
+                        </div>
+                    </div>
                 </div>
-                    <div class="row timelimit"style="display: none">
+                    <div class="row timelimit">
                     <div class="form-group col-md-6">
                         <label>{{ __('Start date') }}</label>
                         <input type="date" class="form-control form-control-solid form-control-lg"
@@ -111,7 +119,7 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('End date') }}</label>
                         <input type="date" class="form-control form-control-solid form-control-lg"
-                            name="end_at" id="end_time" placeholder="end_time"  />
+                            name="end_time" id="end_time" placeholder="end_time"  />
                     </div>
                 </div>
 
@@ -174,10 +182,10 @@
             var type = $('#type_of_limit').val();
 
             if(type == 'limit'){
-            $('.timelimit').css("display", "flex")
+            $('.limit_value').css("display", "flex")
 
             }else{
-            $('.timelimit').css("display", "none")
+            $('.limit_value').css("display", "none")
 
             }
 
@@ -210,8 +218,14 @@
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
             formData.append('price', document.getElementById('price').value);
+            formData.append('start_time', document.getElementById('start_time').value);
+            formData.append('end_time', document.getElementById('end_time').value);
 
 
+            
+            if (document.getElementById('value') != null) {
+            formData.append('value', document.getElementById('value').value);
+            }
             if (document.getElementById('number_of_code') != null) {
 
                 formData.append('number_of_code', document.getElementById('number_of_code').value);
@@ -221,12 +235,8 @@
             formData.append('code', document.getElementById('code').value);
             }
            
-            if (document.getElementById('start_at') != null) {
-                formData.append('start_at', document.getElementById('start_at').value);
-            }
-            if (document.getElementById('end_at') != null) {
-                formData.append('end_at', document.getElementById('end_at').value);
-            }
+           
+          
        
                 store("{{ route('discount_code.store', ['locale' => app()->getLocale()]) }}", formData);
 
