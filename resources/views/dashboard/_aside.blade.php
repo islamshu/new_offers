@@ -435,7 +435,7 @@ $lang = app()->getLocale();
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
-            <span class="menu-text">{{ __('Code') }}</span>
+            <span class="menu-text">{{ __('Activation Code') }}</span>
             <i class="menu-arrow"></i>
         </a>
         <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
