@@ -163,7 +163,7 @@
             var type = $('#type_of_limit').val();
 
             if(type == 'limit'){
-            $('.timelimit').css("display", "inline")
+            $('.timelimit').css("display", "block")
 
             }else{
             $('.timelimit').css("display", "none")
