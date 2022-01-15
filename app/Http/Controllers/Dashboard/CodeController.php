@@ -51,8 +51,8 @@ class CodeController extends Controller
             'type_of_limit'=>'required',
             'price'=>'required',
             'value'=>$request->type_of_limit == 'limit' ? 'required':'',
-            'start_at'=>'required',
-            'end_at'=>'required'
+            'start_time'=>'required',
+            'start_time'=>'required'
             
         ]);
         if (!$validator->fails()) {
