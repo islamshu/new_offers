@@ -24,7 +24,7 @@ id="kt_datatable">
           <td>
           @foreach ($neighborhoods as $key => $value) 
           
-            {{ 'name : ' }}  {{ $value->neighborhood->neighborhood_name }} {{ '  Id: ' }} {{ $value->neighborhood->id }} <br>
+            {{ 'name : ' }}  {{ $value->neighborhood->neighborhood_name }} {{ '  '  }}{{ '  Id: ' }} {{ $value->neighborhood->id }} <br>
           
           @endforeach
         </td>
