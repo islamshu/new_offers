@@ -11,6 +11,7 @@ use App\Models\Performed;
 use App\Models\Vendor;
 use App\User;
 use Session;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -61,8 +62,8 @@ class OfferImport implements ToCollection
             $offer->usege_system =  $row[9];
             $offer->usage_number_system =  $row[10];
             $offer->price =  $row[11];
-            $offer->start_time =  $row[12];
-            $offer->end_time =  $row[13];
+            $offer->start_time =  Carbon::now();
+            $offer->end_time =   Carbon::now();
             $offer->datetime_use = 'deactive';
             $offer->systemCoupon_use= 'deactive';
             $offer->exchange_cash = 'deactive';
