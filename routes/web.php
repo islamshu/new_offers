@@ -182,6 +182,8 @@ Route::group([
         Route::get('discount_update/update_status','Dashboard\DiscountController@updateStatus')->name('discount.update_status');
         Route::post('import_branch/{id}','Dashboard\branchController@import')->name('importBranch');
         Route::get('download/branches','Dashboard\branchController@download')->name('download.branches');
+        Route::post('import_offer/{id}','Dashboard\OfferController@import')->name('importOffer');
+        Route::post('/get_modal/offer', 'Dashboard\OfferController@get_modal')->name('showpostModalOffer');
 
         
 

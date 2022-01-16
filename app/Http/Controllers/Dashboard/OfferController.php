@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Imports\OfferImport;
 use App\Models\Enterprise;
 use App\Models\Offerdays;
 use App\Models\Offerimage;
 use App\Models\Offertype;
 use App\Models\Vendor;
 use Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OfferController extends Controller
 {
@@ -490,5 +492,19 @@ class OfferController extends Controller
         } else {
             return response()->json(['icon' => 'error', 'title' => 'error when delete'], 400);
         }
+    }
+    public function import(Request $request, $locale,$id)
+    {
+        // dd($id);
+        $vendor = Vendor::find($id);
+        // Session::put('vendor_id', $id);
+        // dd($request);
+        Excel::import(new OfferImport($id), request()->file('file'));
+        return redirect()->back()->with(['success' => 'Branch Uploded successfully']);
+    }
+    public function get_modal(Request $request){
+        $vendor = Vendor::find($request->id);
+        // dd($vendor);
+        return view('dashboard.offers.modal')->with('vendor',$vendor);
     }
 }

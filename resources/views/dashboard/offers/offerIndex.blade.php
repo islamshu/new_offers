@@ -79,11 +79,45 @@
                                     </button>
                                 </form>
                             @endif
+                            <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
+                            onclick="make('{{ $item->id }}')">
+                            {{ __('upload') }}
+                        </a>
 
                         </td>
                         </tr>
                     @endforeach
+                    <div class="modal fase" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 123%;">
+                            <div class="modal-header">
 
+                                <h5 class="modal-title" id="staticBackdropLabel">
+                                    {{ __('Upload Offer') }}</h5>
+                               
+
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div>
+
+                            </div>
+
+                            <div id="addToCart-modal-body">
+                                <div class="c-preloader text-center p-3">
+                                    <i class="las la-spinner la-spin la-3x"></i>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 </tbody>
 
@@ -105,6 +139,31 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
+        function make(id) {
+            $("#myModal").show();
+
+            // $('#staticBackdrop').modal();
+            $('.c-preloader').show();
+
+            $.ajax({
+                type: 'post',
+                url: "{{ route('showpostModalOffer', app()->getLocale()) }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'id': id
+                },
+
+                success: function(data) {
+
+                    $('#addToCart-modal-body').html(data);
+
+
+                }
+            });
+
+        }
+    </script>
+    <script>
         $(function() {
             
         });
@@ -116,6 +175,5 @@
 
             confirmDestroy(url)
         }
-    </script>
     </script>
 @endsection
