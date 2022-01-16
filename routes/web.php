@@ -181,6 +181,9 @@ Route::group([
         Route::get('code_update/update_status','Dashboard\CodeController@updateStatus')->name('code.update_status');
         Route::get('discount_update/update_status','Dashboard\DiscountController@updateStatus')->name('discount.update_status');
         Route::post('import_branch/{id}','Dashboard\branchController@import')->name('importBranch');
+        Route::get('download/branches','Dashboard\branchController@download')->name('download.branches');
+
+        
 
         
     });

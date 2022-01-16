@@ -144,6 +144,14 @@ class branchController extends Controller
     //    dd($cities);
        return response()->view('dashboard.city.index', compact('cities'));
     }
+    public function download()
+    {
+        $file = public_path() . "/branches.xlsx";
+
+        $headers = ['Content-Type: image/jpeg'];
+
+        return \Response::download($file, 'branches.xlsx', $headers);
+    }
     public function neighborhoods_branch($locale,$id){
         $branch = Branch::find($id)->neighborhood_id;
         $Neighborhoods  = Neighborhood::where('id',$branch)->get();
