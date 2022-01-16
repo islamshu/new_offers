@@ -54,9 +54,9 @@ card card-docs mb-2">
                         <div class="modal-content" style="width: 123%;">
                             <div class="modal-header">
                                 
-                                <h5 class="modal-title" id="staticBackdropLabel">
+                                <h5 class="modal-title" id="staticBackdropLabel" >
                                     {{ __('Upload Branch') }}</h5>
-                                    <a href="{{ route('download.branches',app()->getLocale()) }}" class="btn btn-info">{{ __('Dawnlod Sample') }}</a>
+                                    <a style="    margin-right: -234px;" href="{{ route('download.branches',app()->getLocale()) }}" class="btn btn-info">{{ __('Dawnlod Sample') }}</a>
 
 
                                 <button type="button" class="close" data-dismiss="modal"
@@ -72,6 +72,10 @@ card card-docs mb-2">
                                 <div class="c-preloader text-center p-3">
                                     <i class="las la-spinner la-spin la-3x"></i>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light"
+                                    data-dismiss="modal">Close</button>
                             </div>
                           
                         </div>
