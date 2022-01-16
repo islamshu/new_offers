@@ -1,3 +1,22 @@
+@php
+
+    $cities = App\Models\Vendor_cities::where('vendor_id',$id)->where('status','active')->with('city')->get();
+@endphp
+<table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
+id="kt_datatable">
+<thead>
+    <tr class="fw-bold fs-6 text-gray-800">
+        <th>{{ __('city name') }}</th>
+        <th>{{ __('city id') }}</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach ($collection as $item)
+         <td>{{ $item->$item->city->id }}</td>
+        <td>{{ $item->city->city_name }}</td>
+    @endforeach
+</tbody>
+</table>
 <form class="form" method="post" action="{{ route('importBranch',[app()->getLocale(),$vendor->id]) }}" enctype="multipart/form-data">
     @csrf
     <div class="card-body">
