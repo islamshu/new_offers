@@ -37,7 +37,7 @@ class OfferImport implements ToCollection
         // dd( $this->id);
         // $per->total_codes = 
        
-        $image = Vendor::find($id)->image;
+        $image = Vendor::find($this->id)->image;
         // dd($image);
         File::copy(public_path('images/brand/'.$image), public_path('images/primary_offer/'.$image));
         foreach($rows as $key =>$row){
