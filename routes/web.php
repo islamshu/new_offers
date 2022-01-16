@@ -107,6 +107,7 @@ Route::group([
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
+        Route::post('/get_modal/branch', 'Dashboard\branchController@get_modal')->name('showpostModalBranch');
 
         
 
@@ -179,6 +180,7 @@ Route::group([
         Route::get('subscibe_update/update_status','Dashboard\SubscriptionController@updateStatus')->name('subscipe.update_status');
         Route::get('code_update/update_status','Dashboard\CodeController@updateStatus')->name('code.update_status');
         Route::get('discount_update/update_status','Dashboard\DiscountController@updateStatus')->name('discount.update_status');
+        Route::post('import_branch/{id}','Dashboard\branchController@import')->name('importBranch');
 
         
     });

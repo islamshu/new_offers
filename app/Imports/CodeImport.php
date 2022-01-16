@@ -22,7 +22,6 @@ class CodeImport implements ToCollection, WithValidation ,WithEvents
     public function collection(Collection $rows)
     {
         // $per->total_codes = 
-       
         $code = Session::get('CodePermfomed');
         foreach($rows as $key =>$row){
          

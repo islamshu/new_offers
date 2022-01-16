@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Imports\Branchimport;
+use App\Imports\BrandImport;
+use App\Imports\CodeImport;
 use App\Models\Branch;
 use App\Models\City;
 use App\Models\enterprise_neighborhood;
@@ -15,6 +18,8 @@ use App\Models\Vendor_neighborhood;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class branchController extends Controller
 {
@@ -63,6 +68,20 @@ class branchController extends Controller
             // }
         }
         return view('dashboard.branch.index', compact('vendors'));
+    }
+    public function get_modal(Request $request){
+        $vendor = Vendor::find($request->id);
+        // dd($vendor);
+        return view('dashboard.branch.modal')->with('vendor',$vendor);
+    }
+    public function import(Request $request, $locale,$id)
+    {
+        // dd($id);
+        $vendor = Vendor::find($id);
+        // Session::put('vendor_id', $id);
+        // dd($request);
+        Excel::import(new Branchimport($id), request()->file('file'));
+        return redirect()->back()->with(['success' => 'Branch Uploded successfully']);
     }
 
     /**
