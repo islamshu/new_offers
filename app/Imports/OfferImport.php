@@ -67,6 +67,7 @@ class OfferImport implements ToCollection
             $offer->systemCoupon_use= 'deactive';
             $offer->exchange_cash = 'deactive';
             $offer->payment_type = $row[14];
+            $offer->sort =  (int)$this->id;
             $offer->save();
             $offertype = new Offertype();
             $offertype->offer_id = $offer->id;
