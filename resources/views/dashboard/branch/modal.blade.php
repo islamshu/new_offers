@@ -12,7 +12,7 @@ id="kt_datatable">
 </thead>
 <tbody>
     @foreach ($cities as $item)
-         <td>{{ $item->$item->city->id }}</td>
+         <td>{{ $item->city->id }}</td>
         <td>{{ $item->city->city_name }}</td>
     @endforeach
 </tbody>
