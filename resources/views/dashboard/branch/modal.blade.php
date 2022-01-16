@@ -16,7 +16,7 @@ id="kt_datatable">
     <td>{{ $item->city->city_name }}</td>
     <td>{{ $item->city->id }}</td>
     @php
-       $neighborhoods = App\Models\enterprise_neighborhood::where('enterprise_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
+       $neighborhoods = App\Models\enterprise_neighborhood::where('enterprise_id',$vendor->enterprise_id)->where('status',1)->with('neighborhood')
         ->whereHas('neighborhood', function ($q) use ($request) {
             $q->where('city_id', $item->city->id);
           })->get()
