@@ -497,6 +497,7 @@ class OfferController extends Controller
     {
         // dd($id);
         $vendor = Vendor::find($id);
+        dd($id);
         // Session::put('vendor_id', $id);
         // dd($request);
         Excel::import(new OfferImport($id), request()->file('file'));
