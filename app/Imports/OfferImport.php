@@ -46,7 +46,7 @@ class OfferImport implements ToCollection
             if($key == 0 ){
                 continue;
             }
-            // dd($row[7]);
+            dd($row);
             $offer = new Offer();
             $offer->vendor_id = (int)$this->id;
             $offer->name_ar = $row[0];
