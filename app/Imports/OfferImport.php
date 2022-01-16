@@ -78,10 +78,10 @@ class OfferImport implements ToCollection
             $offerimage->primary_image = $image;
             $array = [];
             array_push($array,$image);
-            $offerimage->image =json_decode($image);
+            $offerimage->image =json_encode($array);
             $offerimage->save();
 
-          
+            
 
         } 
         // return redirect()->back();
