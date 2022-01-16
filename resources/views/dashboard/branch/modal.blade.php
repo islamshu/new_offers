@@ -1,6 +1,6 @@
 @php
 
-    $cities = App\Models\Vendor_cities::where('vendor_id',$id)->where('status','active')->with('city')->get();
+    $cities = App\Models\Vendor_cities::where('vendor_id',$vendor->id)->where('status','active')->with('city')->get();
 @endphp
 <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
 id="kt_datatable">
