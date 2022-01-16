@@ -8,12 +8,30 @@ id="kt_datatable">
     <tr class="fw-bold fs-6 text-gray-800">
         <th>{{ __('city name') }}</th>
         <th>{{ __('city id') }}</th>
+        <th>{{ __('Neighborhood') }}</th>
     </tr>
 </thead>
 <tbody>
     @foreach ($cities as $item)
-         <td>{{ $item->city->id }}</td>
-        <td>{{ $item->city->city_name }}</td>
+    <td>{{ $item->city->city_name }}</td>
+    <td>{{ $item->city->id }}</td>
+    @php
+       $neighborhoods = App\Models\enterprise_neighborhood::where('enterprise_id',$vednor->enterprise_id)->where('status',1)->with('neighborhood')
+        ->whereHas('neighborhood', function ($q) use ($request) {
+            $q->where('city_id', $item->city->id);
+          })->get()
+          @endphp
+          <td>
+          @foreach ($neighborhoods as $key => $value) 
+          
+            {{ 'name : ' }}  {{ $value->neighborhood->neighborhood_name }} {{ '  Id: ' }} {{ $value->neighborhood->id }}
+          
+          @endforeach
+        </td>
+            
+          
+    
+        
     @endforeach
 </tbody>
 </table>
