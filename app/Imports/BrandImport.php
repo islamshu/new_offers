@@ -73,7 +73,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
             ->size(200)->errorCorrection('H')
             ->generate((string)$vendor->qr_code);
         $output_file =  time() . '.svg';
-        $file =  Storage::disk('local')->put($output_file, $image);
+        $file =  Storage::disk('local')->put($output_file, $Qrimage);
         $vendor->qr_image = $output_file;
         }
         $vendor->save();
