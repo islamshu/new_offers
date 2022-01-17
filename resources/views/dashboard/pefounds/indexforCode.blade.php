@@ -16,7 +16,7 @@
                 </button>
                 <form action="{{ route('download.code',app()->getLocale()) }}" style="    display: contents;" method="get">
                
-                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModalupload">
+                <button type="submit" class="btn btn-primary" >
                     {{ __('Download Excel') }}
                 </button>
             </form>
