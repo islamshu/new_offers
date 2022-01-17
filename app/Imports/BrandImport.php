@@ -13,8 +13,10 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Collection;
 use Auth;
+use BaconQrCode\Encoder\QrCode;
 use File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
@@ -61,9 +63,19 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->vat = $row['vat'];
         $vendor->vat_no= $row['vat_no'];
         $vendor->menu_link= $row['menu_link'];
+        $vendor->is_pincode= $row['is_pincode'];
+        $vendor->qr_code= $row['qr_code'];
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
+        if($vendor->qr_code != null){
+        $Qrimage = QrCode::format('svg')
+            ->size(200)->errorCorrection('H')
+            ->generate((string)$vendor->qr_code);
+        $output_file =  time() . '.svg';
+        $file =  Storage::disk('local')->put($output_file, $image);
+        $vendor->qr_image = $output_file;
+        }
         $vendor->save();
         // $vendor->categorys()->sync(json_decode($row['category_id'],false));
         foreach(json_decode($row['category_id']) as $cat){
