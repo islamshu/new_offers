@@ -15,9 +15,17 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeImport;
-class CodeImport implements ToCollection, WithValidation ,WithEvents 
+use Maatwebsite\Excel\Concerns\WithStartRow;
+
+class CodeImport implements ToCollection, WithValidation ,WithEvents , WithStartRow 
 {
     use Importable;
+
+    private $id ;
+    public function __construct( $id) 
+    {
+        $this->id = $id;
+    }
 
     public function collection(Collection $rows)
     {
@@ -27,12 +35,17 @@ class CodeImport implements ToCollection, WithValidation ,WithEvents
          
             $codeis = new Performed();
             $codeis->code = $row[0];
-            $codeis->peformed_id = $code->id;
+            $codeis->peformed_id =$code->id;
             $codeis->save();
         } 
         // return redirect()->back();
         
     }
+    public function startRow(): int
+    {
+        return 2;
+    }
+ 
     public function rules(): array
     {
         return [
@@ -51,7 +64,7 @@ class CodeImport implements ToCollection, WithValidation ,WithEvents
                     $per = new CodePermfomed();
                     // dd($totalRows);
                     $per->total_codes = $totalRows['Sheet1'] ;
-                    $per-> vendor_id=Session::get('vendor_id');
+                    $per-> vendor_id=$this->id;
                     $per->save();
                     Session::put('CodePermfomed', $per);
                 }

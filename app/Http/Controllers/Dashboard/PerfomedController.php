@@ -74,9 +74,8 @@ class PerfomedController extends Controller
    
     public function Codeimport(Request $request)
     {
-        Session::put('vendor_id', $request->vendor_id);
 
-        Excel::import(new CodeImport, request()->file('file'));
+        Excel::import(new CodeImport($request->vendor_id), request()->file('file'));
         // return back()->with(['success' => 'vendors Uploded successfully']);
     }
 }
