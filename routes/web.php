@@ -184,6 +184,7 @@ Route::group([
         Route::get('download/branches','Dashboard\branchController@download')->name('download.branches');
         Route::post('import_offer/{id}','Dashboard\OfferController@import')->name('importOffer');
         Route::post('/get_modal/offer', 'Dashboard\OfferController@get_modal')->name('showpostModalOffer');
+        Route::get('download/codes','Dashboard\PerfomedController@download')->name('download.code');
 
         
 

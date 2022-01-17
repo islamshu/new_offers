@@ -14,6 +14,12 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalupload">
                     {{ __('upload excel') }}
                 </button>
+                <form action="{{ route('download.code') }}" method="get">
+               
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModalupload">
+                    {{ __('Download Excel') }}
+                </button>
+            </form>
             </div>
 
 

@@ -78,4 +78,14 @@ class PerfomedController extends Controller
         Excel::import(new CodeImport($request->vendor_id), request()->file('file'));
         // return back()->with(['success' => 'vendors Uploded successfully']);
     }
+    public function download()
+    {
+        $file = public_path() . "/codes_new.xlsx";
+
+        $headers = ['Content-Type: image/jpeg'];
+
+        return \Response::download($file, 'brand.xlsx', $headers);
+    }
+
+    
 }
