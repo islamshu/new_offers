@@ -76,7 +76,7 @@ class PerfomedController extends Controller
     {
 
         Excel::import(new CodeImport($request->vendor_id), request()->file('file'));
-        // return back()->with(['success' => 'vendors Uploded successfully']);
+        return back()->with(['success' => 'vendors Uploded successfully']);
     }
     public function download()
     {
