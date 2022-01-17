@@ -51,7 +51,9 @@ class DiscountController extends Controller
             'price' => 'required',
             'value' => $request->type_of_limit == 'limit' ? 'required' : '',
             'start_time' => 'required',
-            'start_time' => 'required'
+            'start_time' => 'required',
+            'type_discount'=>'required',
+            'value_discount'=>'required'
 
         ]);
         if (!$validator->fails()) {
@@ -61,6 +63,8 @@ class DiscountController extends Controller
             $code->type = $request->type;
             $code->sub_id = $request->sub_id;
             $code->price = $request->price;
+            $code->type_discount = $request->type_discount;
+            $code->value_discount = $request->value_discount;
             if ($code->type == 'single') {
                 $code->number_of_code = 1;
                 $code->total_remain = 1;

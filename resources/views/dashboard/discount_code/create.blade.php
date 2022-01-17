@@ -108,6 +108,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-6 Enterprise" >
+                        <div class="Enterprise">
+                            <label>{{ __('Discount Type') }}:</label>
+                            <select class="form-control form-control-solid enterprise" name="type_discount"
+                                id="type_discount">
+                                <option value="" selected disabled >{{ __('chose option') }}</option>
+
+                                <option value="percentage" >{{ __('percentage') }}</option>
+                                <option value="fixed" >{{ __('fixed') }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 " >
+                        <div class="value">
+                        <label>{{ __('Discount Value') }}</label>
+                        <br>
+                        <input type="number" class="form-control form-control-solid form-control-lg"
+                            name="value_discount" id="value_discount" placeholder="value"  />
+                        </div>
+                    </div>
+                </div>
                     <div class="row timelimit">
                     <div class="form-group col-md-6">
                         <label>{{ __('Start date') }}</label>
@@ -220,6 +242,8 @@
             formData.append('price', document.getElementById('price').value);
             formData.append('start_time', document.getElementById('start_time').value);
             formData.append('end_time', document.getElementById('end_time').value);
+            formData.append('type_discount', document.getElementById('type_discount').value);
+            formData.append('value_discount', document.getElementById('value_discount').value);
 
 
             
