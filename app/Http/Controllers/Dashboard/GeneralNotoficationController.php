@@ -31,10 +31,9 @@ class GeneralNotoficationController extends Controller
         $not->title_ar = $request->title_ar;
         $not->body_en = $request->body_en;
         $not->body_ar = $request->body_ar;
-        $not->type = $request->type;
-        $not->mobile_type = $request->mobile_type;
         $not->vendor_id = $request->vendor_id;
         $not->offer_id = $request->offer_id;
+
         $not->save();
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
     }
