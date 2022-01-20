@@ -25,8 +25,8 @@ card card-docs mb-2">
                         <tr>
                             <td>{{ @$item->title_en }}</td>
                             <td>{{ @$item->body_en }}</td>
-                            <td>{{ @$item->vendor->name_en == null ? @$item->vendor->name_en : '-'  }}</td>
-                            <td>{{ @$item->offer->name_en == null ? @$item->offer->name_en : '-'  }}</td>                        </tr>
+                            <td>{{ @$item->vendor->name_en != null ? @$item->vendor->name_en : '-'  }}</td>
+                            <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>                        </tr>
                     @endforeach
 
 
