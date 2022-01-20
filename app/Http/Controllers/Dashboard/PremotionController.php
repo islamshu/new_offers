@@ -183,7 +183,7 @@ class PremotionController extends Controller
     public function get_offer_ajax(Request $request,$locale )
     {
 
-       $offers = Offer::where('vendor_id',$request->venodr_id)->where('status',1)->get();
+       $offers = Offer::where('vendor_id',$request->venodr_id)->get();
        return response()->json($offers);
 
     }
