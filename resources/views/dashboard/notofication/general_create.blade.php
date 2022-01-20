@@ -53,10 +53,7 @@
                         <label>{{ __('Choose Offer') }}:</label>
                         <select name="type" id="offer_id" class="form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
-                            @foreach ($offers as $item)
-                            <option value="{{ $item->id }}" >{{ $item->name_en }}</option>
-
-                            @endforeach
+                         
                            
                         </select>
 
