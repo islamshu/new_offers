@@ -17,7 +17,7 @@ class GeneralNotoficationController extends Controller
         return view('dashboard.notofication.general')->with('notofications',GeneralNotofication::with(['vendor','offer'])->get());
     }
     public function create(){
-        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status',1)->get();
        
         $notofications=GeneralNotofication::get();
         return view('dashboard.notofication.general_create',compact('vendors','notofications'));
