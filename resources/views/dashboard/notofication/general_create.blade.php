@@ -36,19 +36,10 @@
                         <label>{{ __('body en') }}:</label>
                         <textarea name="body_en" class="form-control form-control-solid" id="body_en"  rows="3"></textarea>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('Type') }}:</label>
-                        <select name="type" id="type" class="form-control">
-                            <option value="" selected disabled>{{ __('Choose') }}</option>
-                            <option value="brand" >{{ __('brand') }}</option>
-                            <option value="offer" >{{ __('offer') }}</option>
-                            <option value="nothing" >{{ __('nothing') }}</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group col-md-6 vendor"style="display: none">
+                   
+                    <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
-                        <select name="type" id="type" class="form-control">
+                        <select name="type" id="vendor_id" class="form-control">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
                             <option value="{{ $item->id }}" >{{ $item->name_en }}</option>
@@ -58,9 +49,9 @@
                         </select>
 
                     </div>
-                    <div class="form-group col-md-6 offer" style="display: none">
+                    <div class="form-group col-md-6 offer" >
                         <label>{{ __('Choose Offer') }}:</label>
-                        <select name="type" id="type" class="form-control">
+                        <select name="type" id="offer_id" class="form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
                             @foreach ($offers as $item)
                             <option value="{{ $item->id }}" >{{ $item->name_en }}</option>
@@ -70,16 +61,7 @@
                         </select>
 
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('Mobile Type') }}:</label>
-                        <select name="mobile_type" id="mobile_type" class="form-control">
-                            <option value="" selected disabled>{{ __('Choose') }}</option>
-                            <option value="ios" >{{ __('ios') }}</option>
-                            <option value="android" >{{ __('android') }}</option>
-                            <option value="all" >{{ __('all') }}</option>
-                        </select>
-
-                    </div>
+                    
                 </div>
                     
                
@@ -98,6 +80,38 @@
 
 @section('scripts')
     <script>
+         $(document).ready(function() {
+
+$('#vendor_id').on('change', function() {
+    // console.log("hmm its change");
+    var cat_id = $(this).val();
+    // console.log(cat_id);
+    var div = $(this).parent();
+
+    var op = " ";
+
+    $.ajax({
+        type: 'get',
+        url: "{{ route('get_offer_ajax', ['locale' => app()->getLocale()]) }}",
+        data: {
+            'venodr_id': cat_id
+        },
+        success: function(data) {
+            $('#offer_id').html(new Option('choose', '', 'disabled', 'selected'));
+            for (var i = 0; i < data.length; i++) {
+
+                $('#offer_id').append(new Option(data[i].name_en,
+                    data[i].id));
+
+            }
+        },
+        error: function() {
+
+        }
+    });
+
+});
+});
         $('#type').on('change', function() {
 
             var type = $('#type').val();

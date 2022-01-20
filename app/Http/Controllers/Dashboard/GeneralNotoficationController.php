@@ -18,11 +18,12 @@ class GeneralNotoficationController extends Controller
     }
     public function create(){
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
-        $offers = Offer::with('vendor')->whereHas('vendor', function ($q)  {
-            $q->where('enterprise_id', auth()->user()->ent_id);
-        })->get();
+       
         $notofications=GeneralNotofication::get();
         return view('dashboard.notofication.general_create',compact('vendors','offers','notofications'));
+    }
+    public function get_offer($locale,$id){
+        $offers = Offer::with('vendor')->where('vendor_id',$id)->get();
     }
     public function store(Request $request ,$locale){
         $not = new GeneralNotofication();
