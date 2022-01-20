@@ -147,8 +147,7 @@ $('#vendor_id').on('change', function() {
             formData.append('title_ar', document.getElementById('title_ar').value);
             formData.append('body_en', document.getElementById('body_en').value);
             formData.append('body_ar', document.getElementById('body_ar').value);
-            formData.append('type', document.getElementById('type').value);
-            formData.append('mobile_type', document.getElementById('mobile_type').value);
+           
 
 
             if (document.getElementById('vendor_id') != null) {
