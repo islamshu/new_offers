@@ -10,9 +10,11 @@ use App\Models\Vendor;
 use Notification;
 use App\Notifications\UserNotification;
 use Illuminate\Http\Request;
+use App\Http\Traits\SendNotification;
 
 class GeneralNotoficationController extends Controller
 {
+    use SendNotification;
     public function index(){
         return view('dashboard.notofication.general')->with('notofications',GeneralNotofication::with(['vendor','offer'])->get());
     }
@@ -35,6 +37,12 @@ class GeneralNotoficationController extends Controller
         $not->offer_id = $request->offer_id;
 
         $not->save();
+        $users = User::where('fcm_token','!=',null)->get();
+        foreach($users as $user){
+            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
+
+        }
+
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
     }
     public function create_user_notofication(){
