@@ -16,7 +16,6 @@ card card-docs mb-2">
                         <th>{{ __('Body') }}</th>
                         <th>{{ __('vendor') }}</th>
                         <th>{{ __('offer') }}</th>
-                        <td>{{ __('Device') }}</td>
 
 
                     </tr>
