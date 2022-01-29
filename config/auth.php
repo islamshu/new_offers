@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'client_api' => [
+            'driver' => 'passport',
+            'provider' => 'clients',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -71,10 +76,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Clinet::class,
+        ],
     ],
 
     /*

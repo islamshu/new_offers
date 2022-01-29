@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Code extends Model
+class Transaction extends Model
 {
     use HasFactory;
-    protected $guarded =[];
-    public function codes()
-    {
-        return $this->hasMany(CodeSubscription::class);
-    }
-
+    protected $guarded=[];
 }

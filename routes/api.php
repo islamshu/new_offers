@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::group(['middleware' => ['is_login']], function () {
 
-Route::Post('login-request/{ent_id}','Api\UserController@login');
+Route::Post('login-request','Api\UserController@login');
 Route::get('country','Api\HomeController@country');
 Route::post('city','Api\HomeController@city');
 Route::post('verification-code/check','Api\UserController@verification_code');
@@ -23,7 +23,7 @@ Route::get('home','Api\HomeController@home');
 
 // verification-code/check
 
-Route::group(['middleware'=>'auth:api'], function(){
+Route::group(['middleware'=>'auth:client_api'], function(){
     Route::get('client/info','Api\UserController@user_info');
     Route::post('store-favorite-add-or-delete','Api\FavoritController@AddOrRemoveStoreFavorit');
     Route::get('store-favorite','Api\FavoritController@store_favorite');
@@ -45,6 +45,9 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::get('profile','Api\HomeController@profile');
     Route::get('suggestion-offer','Api\OfferController@suggetstd_offer');
     Route::get('offers-map','Api\OfferController@offer_map');
+    Route::post('package/activation','Api\CodeController@sub_by_activiton');
+    Route::post('apply-promo-code','Api\CodeController@apply_promo_code');
+    Route::post('redeem','Api\CodeController@redeem');
 
     
     

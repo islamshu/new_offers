@@ -82,6 +82,7 @@ class DiscountController extends Controller
             $code->save();
             if ($request->type_code == 'manual') {
                 $codesub = new DiscountSubscription();
+                $codesub->discount_id = $code->id;
                 $codesub->code = $request->code;
                 $codesub->sub_id = $request->sub_id;
                 $codesub->save();
@@ -90,6 +91,7 @@ class DiscountController extends Controller
                 for ($i = 0; $i < $code_num; $i++) {
                     $codesub = new DiscountSubscription();
                     $codesub->code = mt_rand(100000000, 999999999);
+                    $codesub->discount_id = $code->id;
                     $codesub->sub_id = $request->sub_id;
                     $codesub->save();
                 }

@@ -149,8 +149,11 @@ Route::group([
         Route::resource('coupun', 'Dashboard\CouponController');
         Route::get('get_vendor_promocode/{id}', 'Dashboard\CouponController@vednor_promocode')->name('vendor.get_copoun');
 
-        
-        Route::resource('clinets', 'Dashboard\ClinetController');
+        Route::get('all_clients', 'Dashboard\ClinetController@first_index');
+
+        Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
+
+        Route::resource('clinets', 'Dashboard\ClinetController')->except('index');
         Route::resource('general_notofication', 'Dashboard\GeneralNotoficationController');
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
         Route::post('store_user_notofication', 'Dashboard\GeneralNotoficationController@store_user_notofication')->name('store_user_notofication');

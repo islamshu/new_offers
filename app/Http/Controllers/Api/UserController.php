@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\ClientResoures;
 use App\Http\Resources\UserResoures;
+use App\Models\Clinet;
+use App\Models\Enterprise;
+use App\Models\Offer;
 use App\Models\User;
+use Carbon\Carbon;
 
 class UserController extends BaseController
 {
-    public  function login(Request $request,$ent_id)
+    public  function login(Request $request)
     {
-        $user = User::where('phone',$request->phone)->first();
+        $user = Clinet::where('phone',$request->phone)->first();
         if($user){
             $res['status']= $this->sendResponse('Old');
             // $res['data']['client'] = new UserResoures($user);
@@ -26,15 +31,35 @@ class UserController extends BaseController
 
 
         }else{
-            $user = new User();
+            $user = new Clinet();
             $user->phone = $request->phone;
             $user->code = 1991;
             $user->image = 'default.jpeg';
             $user->country_id = $request->country_id;
+            $uuid = $request->header('uuid');
+            $enter = Enterprise::where('uuid',$uuid)->first();
+            if($enter){
+            $user->uuid_type =  'enterprise';
+            $user->enterprise_id = $enter->id;
+            }
+            if(!$enter){
+                $ee = Offer::where('uuid',$uuid)->first();
+                if($ee){
+                    $user->uuid_type =  'offer';
+                    $user->offer_id = $ee->id;  
+                }
+            }else{
+                $user->uuid_type =  'null';
+            }
+            // dd($uuid);
+
+            
             $user->save();
             $res['status']= $this->sendResponse('Created');
-            // $res['data']['client'] = new UserResoures($user);
-            // $res['token'] = $user->createToken('Personal Access Token')->token;
+
+            $res['data']['client'] = new ClientResoures($user);
+
+            $res['token'] = $user->createToken('Personal Access Token')->token;
             $res['data'][""]="";
             $res['other']['exist_status']= 'NEW';
             $res['other']['for']= 'signup';
@@ -42,12 +67,15 @@ class UserController extends BaseController
         return $res;
     }
     public function verification_code(Request $request){
-        $user = User::where('phone',$request->phone)->where('code',$request->verification_code)->first();
+        $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
+        // dd($user);
         if($user){
+            $user->last_login = Carbon::now();
+            $user->save();
             $res['status']= $this->sendResponse('OK');
             // $res['data']['client'] = new UserResoures($user);
             $res['token'] = $user->createToken('Personal Access Token')->accessToken;
-            $res['data']['client'] = new UserResoures($user);
+            $res['data']['client'] = new ClientResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
             $res['other']['is_trial_subscriber']= '';
@@ -59,9 +87,10 @@ class UserController extends BaseController
     }
     public function user_info()
     {
-        $user = auth()->user();
+        $user = auth('client_api')->user();
+       
         $res['status']= $this->sendResponse('OK');
-        $res['data']['client'] = new UserResoures($user);
+        $res['data']['client'] = new ClientResoures($user);
         return $res;
     }
 }

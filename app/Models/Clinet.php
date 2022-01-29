@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes; 
+use Laravel\Passport\HasApiTokens;
 
-class Clinet extends Model
+
+class Clinet extends Authenticatable
 {
-    use HasFactory;
+    use LaratrustUserTrait, Notifiable,SoftDeletes , HasApiTokens;
     /**
      * Get the user that owns the Clinet
      *
@@ -17,4 +22,19 @@ class Clinet extends Model
     {
         return $this->belongsTo(City::class);
     }
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+    /**
+     * Get the user that owns the Clinet
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function subs()
+    {
+        return $this->hasMany(Subscriptions_User::class);
+    }
+
+    
 }

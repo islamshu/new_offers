@@ -9,4 +9,5 @@ class CodeSubscription extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    
 }

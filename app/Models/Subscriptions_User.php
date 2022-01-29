@@ -17,10 +17,14 @@ class Subscriptions_User extends Model
      */
     public function user()
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->belongsTo(User::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Clinet::class);
     }
     public function subscripe()
     {
-        return $this->hasMany(Subscription::class, 'sub_id');
+        return $this->belongsTo(Subscription::class, 'sub_id');
     }
 }

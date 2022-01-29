@@ -22,4 +22,12 @@ class Subscription extends Model
     {
         return $this->belongsTo(Enterprise::class, 'enterprises_id');
     }
+    public function codes()
+    {
+        return $this->hasMany(CodeSubscription::class, 'sub_id');
+    }
+    public function promo()
+    {
+        return $this->hasMany(DiscountSubscription::class, 'sub_id');
+    }
 }
