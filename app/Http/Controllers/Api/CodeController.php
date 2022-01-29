@@ -64,6 +64,11 @@ class CodeController extends BaseController
         }
         $type_paid_user = $user->subs->last()->subscripe->type_paid;
         $offer = Offer::find($request->offer_id);
+        if(!$offer){
+            $res['status']= $this->SendError();
+            $res['message']= 'the is no offer here';
+            return $res;
+        }
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
       
        
@@ -100,7 +105,13 @@ class CodeController extends BaseController
             $ofe->client_id = auth('client_api')->id();
             $ofe->branch_id = $request->branch_id;
             if($type_of_offer != 'free' ){
+                if($user->remain > 0){
                 $user->remain = $user->remain - 1;
+            }else{
+                $res['status']= $this->SendError();
+                $res['message']= 'no balance in uer account';
+                return $res;
+            }
             }
             if($offer->type_refound == 'auto'){
                 $ofe->referance_no = rand(00000,99999); 
