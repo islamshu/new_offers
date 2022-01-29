@@ -41,16 +41,20 @@ class UserController extends BaseController
             if($enter){
             $user->uuid_type =  'enterprise';
             $user->enterprise_id = $enter->id;
-            }
-            if(!$enter){
-                $ee = Offer::where('uuid',$uuid)->first();
-                if($ee){
-                    $user->uuid_type =  'offer';
-                    $user->offer_id = $ee->id;  
-                }
             }else{
-                $user->uuid_type =  'null';
+                $res['status']=$this->sendError();
+                $res['meessage'] = 'not found enterprise unkonw uuid';
+                return  $res;
             }
+            // if(!$enter){
+            //     $ee = Offer::where('uuid',$uuid)->first();
+            //     if($ee){
+            //         $user->uuid_type =  'offer';
+            //         $user->offer_id = $ee->id;  
+            //     }
+            // }else{
+            //     $user->uuid_type =  'null';
+            // }
             // dd($uuid);
 
             
