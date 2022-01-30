@@ -4,11 +4,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-
+use App\Imports\ClientImport;
 use App\Models\Clinet;
 use App\Models\Country;
 use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClinetController extends Controller
 {
@@ -30,6 +31,15 @@ class ClinetController extends Controller
         $non_sub = Clinet::where('uuid_type','null')->count();
         
         return view('dashboard.clinets.first-index',compact('all','trial','paid','non_sub'));
+    }
+    public function get_import()
+    {
+        return view('dashboard.clinets.get_import');
+    }
+    public function post_import()
+    {
+        Excel::import(new ClientImport, request()->file('file'));
+        return redirect()->back()->with(['success' => 'client Uploded successfully']);
     }
     public function index($locale,$type)
     {

@@ -152,6 +152,8 @@ Route::group([
         Route::get('all_clients', 'Dashboard\ClinetController@first_index');
 
         Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
+        Route::get('import_client','Dashboard\ClinetController@get_import')->name('get_import');
+        Route::post('import_client','Dashboard\ClinetController@post_import')->name('client.import');
 
         Route::resource('clinets', 'Dashboard\ClinetController')->except('index');
         Route::resource('general_notofication', 'Dashboard\GeneralNotoficationController');
