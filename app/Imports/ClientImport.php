@@ -21,7 +21,7 @@ class ClientImport implements ToCollection, WithHeadingRow, WithStartRow
      */
     public function startRow(): int
     {
-        return 4;
+        return 3;
     }
     public function collection(Collection $rows)
     {
