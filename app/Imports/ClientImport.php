@@ -5,9 +5,10 @@ namespace App\Imports;
 use App\Models\Clinet;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-
-class ClientImport implements ToCollection     
+class ClientImport implements ToCollection, WithHeadingRow, WithStartRow
 {
    
     public function startRow(): int
@@ -20,7 +21,7 @@ class ClientImport implements ToCollection
     
       
         foreach($rows as $key =>$row){
-            dd($rows);
+            
             if($row[0]  == null || $row[1] == null ){
                 continue;
             }
