@@ -32,7 +32,7 @@ class ClientImport implements ToCollection
             $client->register_time =  $row[5];
             $client->type_of_subscribe = $row[6];
             $client->number_of_operations =  $row[7];
-            $client->last_transaction =  $row[8];
+            $client->last_transaction =   Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[8]));
             $client->register_date =   Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[9]));
             $client->mobile_type =  $row[10];
             $client->expire_date =   Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11]));
