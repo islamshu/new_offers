@@ -20,7 +20,7 @@ class ClientImport implements ToCollection
     
       
         foreach($rows as $key =>$row){
- 
+            dd($rows);
             if($row[0]  == null || $row[1] == null ){
                 continue;
             }
