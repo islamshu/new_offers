@@ -61,12 +61,9 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->telephoone = $row['telephoone'];
         $vendor->mobile = $row['mobile'];
         $vendor->status = $row['status'];
-        $vendor->vat_type = $row['vat_type'];
-        $vendor->vat = $row['vat'];
-        $vendor->vat_no= $row['vat_no'];
         $vendor->menu_link= $row['menu_link'];
-        $vendor->is_pincode= (string)$row['is_pincode'];
-        $vendor->qr_code= $row['qr_code'];
+        $vendor->is_pincode= '1';
+        $vendor->qr_code= 4444;
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
