@@ -12,6 +12,6 @@ class CategoryExport implements FromCollection
     */
     public function collection()
     {
-        return Category::get(['id','name_ar','name_en']);
+        return Category::where('id','!=',1)->get(['id','name_ar','name_en']);
     }
 }

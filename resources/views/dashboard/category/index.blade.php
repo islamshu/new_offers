@@ -23,7 +23,10 @@ card card-docs mb-2">
             </thead>
             <tbody>
                 @foreach ($categorys as $item)
+              
+                @continue($item->id == 1)
                  <tr>
+                     
                      <td><img src="{{ asset('images/category/'.$item->image) }}" width="50" height="50" alt=""></td>
                     <td>{{$item->title}}</td>
                     <td>

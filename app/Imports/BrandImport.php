@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Enterprise;
 use App\Models\Neighborhood;
@@ -68,6 +69,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->image =$image;
         $vendor->cover_image = $image;
         $vendor->enterprise_id=Auth::user()->ent_id;
+        $vendor->type_refound = 'auto';
         if($vendor->qr_code != null){
         $Qrimage = QrCode::format('svg')
             ->size(200)->errorCorrection('H')
@@ -78,9 +80,13 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         }
         $vendor->save();
         // $vendor->categorys()->sync(json_decode($row['category_id'],false));
+        DB::table('categories_vendors')->insert(
+            ['category_id' => 1, 'vendor_id' => $vendor->id]
+        );
         foreach(json_decode($row['category_id']) as $cat){
+            $cate =Category::where('title_ar','like','%'.$cat.'%')->first()->id;
             DB::table('categories_vendors')->insert(
-                ['category_id' => (int)$cat, 'vendor_id' => $vendor->id]
+                ['category_id' => $cate, 'vendor_id' => $vendor->id]
             );
         }
 
