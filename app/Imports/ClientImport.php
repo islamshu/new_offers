@@ -8,21 +8,9 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class ClientImport implements ToCollection, WithHeadingRow, WithStartRow
-{
-   
-    public function headingRow(): int
-    {
-        return 3;
-    }
+class ClientImport implements ToCollection
+   {
     
-    /**
-     * @return int
-     */
-    public function startRow(): int
-    {
-        return 3;
-    }
     public function collection(Collection $rows)
     {
     
