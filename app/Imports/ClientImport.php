@@ -21,8 +21,8 @@ class ClientImport implements ToCollection
             if($row[0]  == null || $row[1] == null || $key == 0 || $key == 1 ){
                 continue;
             }
-            Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[9]));
-            dd($row);
+$ss=            Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[9]));
+            dd($ss);
             $client = new Clinet();
             $client->name = $row[0];
             $client->phone = $row[1];
