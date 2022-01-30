@@ -35,6 +35,9 @@ class OfferController extends BaseController
     }
     public function package(Request $request){
         $pakege = Subscription::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+            $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+                $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
+              });
            
                  $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
                     $q->where('country_id', $request->country_id);
@@ -59,6 +62,9 @@ class OfferController extends BaseController
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+            $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+                $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
+              });
             $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                    $q->where('city_id', $request->city_id);
                  }); 
@@ -77,6 +83,9 @@ class OfferController extends BaseController
     public function suggetstd_offer(Request $request)
     {
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+            $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+                $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
+              });
             $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                    $q->where('city_id', $request->city_id);
                  }); 
@@ -88,6 +97,9 @@ class OfferController extends BaseController
     public function offer_map(Request $request)
     {
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+            $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+                $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
+              });
             $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                    $q->where('city_id', $request->city_id);
                  }); 

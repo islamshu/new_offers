@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\ClientResoures;
 use App\Http\Resources\UserResoures;
+use App\Models\City;
 use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\Offer;
@@ -70,6 +71,19 @@ class UserController extends BaseController
         }
         return $res;
     }
+    public function update(Request $request){
+        $user = auth('client_api')->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->nationality = $request->nationality;
+        $user->gender = $request->gender;
+        $user->birth_date = $request->birth_date;
+        $user->save();
+        $res['status']= $this->sendResponse('OK');
+        $res['data'][""] = "";
+
+        return $res;
+    }
     public function verification_code(Request $request){
         $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         // dd($user);
@@ -78,7 +92,7 @@ class UserController extends BaseController
             $user->save();
             $res['status']= $this->sendResponse('OK');
             // $res['data']['client'] = new UserResoures($user);
-            $res['token'] = $user->createToken('Personal Access Token')->accessToken;
+            $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
             $res['data']['client'] = new ClientResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
@@ -95,6 +109,28 @@ class UserController extends BaseController
        
         $res['status']= $this->sendResponse('OK');
         $res['data']['client'] = new ClientResoures($user);
+        return $res;
+    }
+    public function update_image(Request $request){
+        $user = auth('client_api')->user();
+        $user->image = $request->image->store('client/image');
+        $user->save();
+        $res['status']= $this->sendResponse('OK');
+        $res['data'][""] = "";
+        return $res;
+    }
+    public function update_city(Request $request){
+        $user = auth('client_api')->user();
+        $city = City::find($request->city_id);
+        if(!$city){
+            $res['status']=$this->sendError();
+            $res['message']= 'city not found';
+            return  $res;
+        }
+        $user->city_id = $request->city_id;
+        $user->save();
+        $res['status']= $this->sendResponse('OK');
+        $res['data'][""] = "";
         return $res;
     }
 }

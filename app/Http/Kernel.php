@@ -2,7 +2,6 @@
 
 namespace App\Http;
 use App\Http\Middleware\Is_login;
-
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,6 +68,7 @@ class Kernel extends HttpKernel
         'checkrole' => \App\Http\Middleware\CheckRole::class,
         'checkauth' => \App\Http\Middleware\CheckAuth::class,
         'is_login' =>Is_login::class,
+        'devide'=> \App\Http\Middleware\Device::class,
 
     ];
     protected $middlewarePriority = [

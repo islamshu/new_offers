@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Enterprise;
+
 function openJSONFile($code){
     $jsonString = [];
     if(File::exists(base_path('resources/lang/'.$code.'.json'))){
@@ -29,4 +32,12 @@ function get_sort($data)
    $sorted->values()->all();
 dd($sorted);
  return ; 
+}
+function get_enterprose_uuid($uuid){
+    $enterprise = Enterprise::where('uuid',$uuid)->first();
+    if($enterprise){
+        return $enterprise->id;
+    }else{
+        return false;
+    }
 }

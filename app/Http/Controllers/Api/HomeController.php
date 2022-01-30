@@ -44,13 +44,18 @@ class HomeController extends BaseController
     public function city(Request $request){
         // dd($request);
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new CityCollection(City::where('country_id',$request->country_id)->get());
+        $res['data'] = new CityCollection(City::where('country_id',$request->country_id)->where('status',1)->get());
         return $res;
     }
     public function home(Request $request){
         // dd($request->uuid);
-        $enterprice= Enterprise::with('categorys')->where('uuid',$request->uuid)->first();
+        $enterprice= Enterprise::with('categorys')->where('uuid',request()->header('uuid'))->first();
         // dd($enterprice);
+        if(!$enterprice){
+          $res['status']=$this->sendError();
+          $res['meessage'] = 'Enterprise not found';
+          return  $res;
+        }
         $res['status']= $this->sendResponse('OK');
         $res['data']['slider']= new SliderCollection(Slider::where('city_id',$request->city_id)->get());
         $res['data']['categories'] = new CategoryCollection(@$enterprice->categorys);
@@ -65,8 +70,12 @@ class HomeController extends BaseController
     {
 
         $filtter = $request->filter;
+        
         if($filtter == 'offer'){
             $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+              $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+                $q->where('enterprise',get_enterprose_uuid($request()->header('uuid')));
+              });
                 $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                        $q->where('city_id', $request->city_id);
                      });
