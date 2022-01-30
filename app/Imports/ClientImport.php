@@ -10,7 +10,10 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 class ClientImport implements ToCollection     
 {
    
-   
+    public function startRow(): int
+    {
+        return 3;
+    }
 
     public function collection(Collection $rows)
     {
