@@ -155,7 +155,7 @@ Route::group([
         Route::get('import_client','Dashboard\ClinetController@get_import')->name('get_import');
         Route::post('import_client','Dashboard\ClinetController@post_import')->name('client.import');
 
-        Route::resource('clinets', 'Dashboard\ClinetController')->except('index');
+        Route::resource('clinets', 'Dashboard\ClinetController');
         Route::resource('general_notofication', 'Dashboard\GeneralNotoficationController');
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
         Route::post('store_user_notofication', 'Dashboard\GeneralNotoficationController@store_user_notofication')->name('store_user_notofication');
