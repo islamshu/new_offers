@@ -21,7 +21,7 @@ class ClientImport implements ToCollection, WithHeadingRow, WithStartRow
     
       
         foreach($rows as $key =>$row){
-            
+            dd($row[0]);
             if($row[0]  == null || $row[1] == null ){
                 continue;
             }
