@@ -11,11 +11,18 @@ use Maatwebsite\Excel\Concerns\WithStartRow;
 class ClientImport implements ToCollection, WithHeadingRow, WithStartRow
 {
    
-    public function startRow(): int
+    public function headingRow(): int
     {
         return 3;
     }
-
+    
+    /**
+     * @return int
+     */
+    public function startRow(): int
+    {
+        return 4;
+    }
     public function collection(Collection $rows)
     {
     
