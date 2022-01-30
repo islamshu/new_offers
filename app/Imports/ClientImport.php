@@ -27,7 +27,7 @@ class ClientImport implements ToCollection
             $client->name = $row[0];
             $client->phone = $row[1];
             $client->email =  $row[2];
-            $client->birth_date = is_date( Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[3])));
+            $client->birth_date = is_date($row[3] );
             $client->nationality =  $row[4];
             $client->register_time =  $row[5];
             $client->type_of_subscribe = $row[6];
