@@ -43,7 +43,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
          
         foreach($rows as $key=>$row){
-            dd($row);
+            // dd($row);
         if($row['name_ar'] == null){
             continue;
         }
