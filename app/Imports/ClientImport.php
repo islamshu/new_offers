@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Clinet;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -20,6 +21,7 @@ class ClientImport implements ToCollection
             if($row[0]  == null || $row[1] == null || $key == 0 || $key == 1 ){
                 continue;
             }
+            Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[9]));
             dd($row);
             $client = new Clinet();
             $client->name = $row[0];
