@@ -91,9 +91,9 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         foreach($categorys as $cat){
             $cat_rep = str_replace(' ','',$cat);
             // dd($cat_rep);
-            
+
             $cate =Category::where('name_ar','like','%'.$cat_rep.'%')->first()->id;
-            dd($cate);
+            // dd($cate);
             DB::table('categories_vendors')->insert(
                 ['category_id' => $cate, 'vendor_id' => $vendor->id]
             );
