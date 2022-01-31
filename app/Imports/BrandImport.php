@@ -36,14 +36,16 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
  
     public function collection(Collection $rows)    {
         {
-
-        $image = Enterprise::find(auth()->user()->ent_id)->image;
-        // dd($image);
-        File::copy(public_path('images/enterprise/'.$image), public_path('images/brand/'.$image));
-        File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
+         
+        // $image = Enterprise::find(auth()->user()->ent_id)->image;
+        // // dd($image);
+        // File::copy(public_path('images/enterprise/'.$image), public_path('images/brand/'.$image));
+        // File::copy(public_path('images/enterprise/'.$image), public_path('images/vendor_cover/'.$image));
          
         foreach($rows as $key=>$row){
-            // dd($row);
+           
+          
+      
         if($row['name_ar'] == null){
             continue;
         }
@@ -55,6 +57,8 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->name_ar = $row['name_ar'];
         $vendor->name_en = $row['name_en'];
         $vendor->desc_en = $row['desc_en'];
+        $vendor->email = $row['email'];
+        $vendor->telephoone = $row['telephoone'];
         $vendor->desc_ar = $row['desc_ar'];
         $vendor->owner_name = $row['owner_name'];
         $vendor->commercial_registration_number = $row['commercial_registration_number'];
@@ -62,10 +66,12 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         $vendor->mobile = $row['mobile'];
         $vendor->status = $row['status'];
         $vendor->menu_link= $row['menu_link'];
+        $vendor->start_at= $row['start_at'].':00';
+        $vendor->end_at= $row['end_at'].':00';
         $vendor->is_pincode= '1';
         $vendor->qr_code= 4444;
-        $vendor->image =$image;
-        $vendor->cover_image = $image;
+        $vendor->image =$row['image'];
+        $vendor->cover_image = $row['image'];
         $vendor->enterprise_id=Auth::user()->ent_id;
         $vendor->type_refound = 'auto';
         if($vendor->qr_code != null){
@@ -81,8 +87,10 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         DB::table('categories_vendors')->insert(
             ['category_id' => 1, 'vendor_id' => $vendor->id]
         );
-        foreach(json_decode($row['category']) as $cat){
-            $cate =Category::where('name_ar','like','%'.$cat.'%')->first()->id;
+        $categorys = explode(",", $row['category']);
+        foreach($categorys as $cat){
+            $cat_rep = str_replace(' ','',$cat);
+            $cate =Category::where('name_ar','like','%'.$cat_rep.'%')->first()->id;
             DB::table('categories_vendors')->insert(
                 ['category_id' => $cate, 'vendor_id' => $vendor->id]
             );
@@ -101,7 +109,7 @@ class BrandImport implements ToCollection, WithHeadingRow, WithStartRow
         // dd($so);
         
         DB::table('image_vendors')->insert(
-            ['image' => $image, 'vendor_id' => $vendor->id]
+            ['image' =>  $row['image'], 'vendor_id' => $vendor->id]
         );
         DB::table('currencies_vendors')->insert(
             ['currency_id' => 2, 'vendor_id' => $vendor->id]
