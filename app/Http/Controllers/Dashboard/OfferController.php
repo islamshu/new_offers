@@ -12,6 +12,7 @@ use App\Models\Offerimage;
 use App\Models\Offertype;
 use App\Models\Vendor;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OfferController extends Controller
@@ -496,7 +497,7 @@ class OfferController extends Controller
     public function import(Request $request, $locale,$id)
     {
         // dd($id);
-        dd(Offer::truncate());
+        dd(DB::table('offers')->truncate());
         $vendor = Vendor::find($id);
         
         // Session::put('vendor_id', $id);
