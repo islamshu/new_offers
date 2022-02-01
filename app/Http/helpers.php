@@ -48,3 +48,12 @@ function get_enterprose_uuid($uuid){
           return null;
       }
 }
+function offer_type($type){
+    if($type == 'buyOneGetOne'){
+        return 'Buy 1 Get 1';
+    }elseif($type =='general_offer'){
+        return 'General Discount';
+    }elseif($type =='special_discount'){
+        return 'Special Discount';
+    }
+}

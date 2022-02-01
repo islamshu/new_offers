@@ -28,7 +28,7 @@
                     @foreach ($offers as $item)
                         <td>{{ $item->name_ar }}</td>
                         <td>{{ $item->name_en }}</td>
-                        <td>{{ $item->offertype->offer_type }}</td>
+                        <td>{{ offer_type($item->offertype->offer_type) }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
                         <td class="pr-0 text-left">
