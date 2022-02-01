@@ -79,6 +79,7 @@ class OfferImport implements ToCollection
             if ($row[13 == 'General Discount']) {
                 $offertype->offer_type = 'general_offer';
             } elseif ($row[13 == 'Buy 1 Get 1']) {
+                dd('fd');
                 $offertype->offer_type = 'buyOneGetOne';
             } elseif ($row[13 == 'Special Discount']) {
                 $offertype->offer_type = 'special_discount';
