@@ -37,7 +37,7 @@ class UserController extends BaseController
             $user->code = 1991;
             $user->image = 'default.jpeg';
             $user->country_id = $request->country_id;
-            $uuid = $request->header('uuid');
+            $uuid = 'jooy';
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
             $user->uuid_type =  'enterprise';
