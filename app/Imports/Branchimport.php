@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Branch;
+use App\Models\City;
 use App\Models\CodePermfomed;
 use App\Models\Performed;
 use App\User;
@@ -41,15 +42,17 @@ class Branchimport implements ToCollection
             }
             // dd($row[7]);
             $new_branch = new Branch();
-            $new_branch->vendor_id = (int)$this->id;
+            $new_branch->vendor_id = (int)$row[9];
             $new_branch->name_ar = $row[0];
             $new_branch->name_en = $row[1];
-            $new_branch->city_id =  $row[2];
+            $city = City::where('city_name','like','%'.$row[2].'%')->first()->id;
+            $new_branch->city_id =  $city;
             $new_branch->neighborhood_id = $row[3];
             $new_branch->latitude =  $row[4];
             $new_branch->longitude =  $row[5];
             $new_branch->phone = $row[6];
-            $new_branch->street =  $row[7];
+            $new_branch->street=  $row[7];
+            $new_branch->street_en =  $row[8];
             $new_branch->status =  'active';
             $new_branch->save();
 
