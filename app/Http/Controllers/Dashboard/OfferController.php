@@ -496,10 +496,7 @@ class OfferController extends Controller
     }
     public function import(Request $request, $locale,$id)
     {
-        foreach(Offer::get() as $of){
-            $of->delete();
-        }
-        dd('d');
+     
         $vendor = Vendor::find($id);
         
         // Session::put('vendor_id', $id);
