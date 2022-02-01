@@ -496,6 +496,7 @@ class OfferController extends Controller
     public function import(Request $request, $locale,$id)
     {
         // dd($id);
+        dd(Offer::truncate());
         $vendor = Vendor::find($id);
         
         // Session::put('vendor_id', $id);
