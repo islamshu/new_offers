@@ -18,6 +18,7 @@
 
                         <th>{{ __('Name ar') }}</th>
                         <th>{{ __('Name en') }}</th>
+                        <th>{{ __('Type') }}</th>
                         <th>{{ __('start at') }}</th>
                         <th>{{ __('end at') }}</th>
                         <th>{{ __('Action') }}</th>
@@ -27,6 +28,7 @@
                     @foreach ($offers as $item)
                         <td>{{ $item->name_ar }}</td>
                         <td>{{ $item->name_en }}</td>
+                        <td>{{ $item->offertype->offer_type }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
                         <td class="pr-0 text-left">
