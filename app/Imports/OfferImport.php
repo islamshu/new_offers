@@ -51,7 +51,7 @@ class OfferImport implements ToCollection
             // dd()
             $offer = new Offer();
             $offer->vendor_id = (int)$row[20];
-            $offer->name_ar = str_replace(' _',' ',$row[0]);
+            $offer->name_ar = str_replace('_',' ',$row[0]);
             $offer->name_en = $row[1];
             $offer->desc_ar =  $row[2];
             $offer->desc_en = $row[3];
