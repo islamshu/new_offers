@@ -66,8 +66,8 @@ class OfferImport implements ToCollection
             $offer->store_point = $row[19];
 
             // $offer->price =  $row[11];
-            $offer->start_time =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11])->format('d/m/Y H:i:s');
-            $offer->end_time =   \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[12])->format('d/m/Y H:i:s');
+            $offer->start_time =  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11])->format('d-m-Y H:i:s');
+            $offer->end_time =   \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[12])->format('d-m-Y H:i:s');
             $offer->datetime_use = 'deactive';
             $offer->systemCoupon_use = 'deactive';
             $offer->exchange_cash = 'deactive';
