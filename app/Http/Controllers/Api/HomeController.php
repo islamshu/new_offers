@@ -59,7 +59,7 @@ class HomeController extends BaseController
           $res['meessage'] = 'Enterprise not found';
           return  $res;
         }
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data']['slider']= new SliderCollection(Slider::where('city_id',$request->city_id)->get());
         $res['data']['categories'] = new CategoryCollection(@$enterprice->categorys);
         $res['data']['recent_offers']['metadata']['max_no']=15;
