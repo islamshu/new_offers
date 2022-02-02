@@ -21,6 +21,7 @@ class CityResourses extends JsonResource
     }
     public function lang_name($data){
         $lang = request()->header('Lang');
+        dd($lang);
         if($lang != null){
             if($lang  =='ar'){
                 return $data->city_name;
