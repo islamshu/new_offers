@@ -53,7 +53,14 @@ class HomeController extends BaseController
     public function home(Request $request){
         // dd($request->uuid);
         $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
-        $city_id = $request->city_id ? $request->city_id : 15;
+
+        // $city_id = $request->city_id ? $request->city_id : 15;
+        $citynew = City::find($request->city_id);
+        if($citynew){
+           $city_id = $citynew->id;
+        }else{
+          $city_id = 15;
+        }
         // $country_id = Enterprise::with('categorys')->where('uuid',$uuid)->first()->counteire->first()->id;
         $enterprice= Enterprise::with('categorys')->where('uuid',$uuid)->first();
         // dd($enterprice);
