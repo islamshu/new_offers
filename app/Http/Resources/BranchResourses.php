@@ -32,7 +32,7 @@ class BranchResourses extends JsonResource
     }
     public function address($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'en') {
                 return [
@@ -65,7 +65,7 @@ class BranchResourses extends JsonResource
     }
     public function get_lang($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->name_ar;

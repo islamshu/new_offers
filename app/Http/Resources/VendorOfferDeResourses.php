@@ -71,7 +71,7 @@ class VendorOfferDeResourses extends JsonResource
     }
     public function lang_name($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->name_ar;
@@ -84,7 +84,7 @@ class VendorOfferDeResourses extends JsonResource
     }
     public function lang_details($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->desc_ar;
@@ -97,7 +97,7 @@ class VendorOfferDeResourses extends JsonResource
     }
     public function lang_terms($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->terms_ar;

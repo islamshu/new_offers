@@ -24,7 +24,7 @@ class FavoritResourses extends JsonResource
     }
     public function lang_name($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->vendor->name_ar;

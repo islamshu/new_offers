@@ -68,7 +68,7 @@ class VendorDetiesResourses extends JsonResource
     }
     public function lang_name($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->name_ar;
@@ -81,7 +81,7 @@ class VendorDetiesResourses extends JsonResource
     }
     public function lang_details($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->desc_ar;
@@ -94,7 +94,7 @@ class VendorDetiesResourses extends JsonResource
     }
     public function lang_policy($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return $data->policy_ar;

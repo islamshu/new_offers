@@ -59,7 +59,7 @@ class StoresCollection extends ResourceCollection
 
     public function lang_name($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                
@@ -73,7 +73,7 @@ class StoresCollection extends ResourceCollection
     }
     public function lang_name_dec($data)
     {
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
                 return strip_tags($data->desc_ar);

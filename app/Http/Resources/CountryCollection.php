@@ -27,7 +27,7 @@ class CountryCollection extends ResourceCollection
         ];
     }
     public function lang_name($data){
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if($lang != null){
             if($lang  =='ar'){
                 return $data->country_name_ar;

@@ -20,7 +20,7 @@ class PageResoures extends JsonResource
         ];
     }
     public function lang_name($data){
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if($lang != null){
             if($lang  =='ar'){
                 return $data->title_ar;
@@ -33,7 +33,7 @@ class PageResoures extends JsonResource
         }
     }
     public function lang_body($data){
-        $lang = request()->header('lang');
+        $lang = request()->header('Lang');
         if($lang != null){
             if($lang  =='ar'){
                 return $data->body_ar;
