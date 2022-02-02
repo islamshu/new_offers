@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\ClientResoures;
+use App\Http\Resources\SubResoures;
 use App\Http\Resources\UserResoures;
 use App\Models\City;
 use App\Models\Clinet;
@@ -103,6 +104,7 @@ class UserController extends BaseController
             // $res['data']['client'] = new UserResoures($user);
             $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
             $res['data']['client'] = new ClientResoures($user);
+           
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
             $res['other']['is_trial_subscriber']= '';
