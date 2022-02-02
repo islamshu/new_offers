@@ -23,7 +23,8 @@ class SliderResourses extends JsonResource
             'order_no'=>1 ,
             'city_id'=>$this->city_id,
             'store_id'=>$this->vendor_id,
-            'image'=>asset('images/slider/'.$this->image) ,
+            // 'image'=>asset('images/slider/'.$this->image) ,
+            'image'=>'https://foryougo.net/images/slider/'.$this->image,
             'city'=>new CityResourses(City::select('id')->find($this->city_id)),
             'store'=>new VendorResourses($this->venndor)
         ];
