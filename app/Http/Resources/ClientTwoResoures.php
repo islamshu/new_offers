@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -33,7 +34,9 @@ class ClientTwoResoures extends JsonResource
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no,
             'country'=>new CountryResoures(Country::find($this->country_id)),
-            'city' => @$this->city->neglish_name,
+            'city' => new CityResoures(City::find($this->city)),
+            
+            @$this->city->neglish_name,
             'subscription'=>new SubResoures(@$this),
         ];
     }
