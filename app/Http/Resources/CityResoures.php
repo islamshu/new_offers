@@ -23,13 +23,13 @@ class CityResoures extends JsonResource
         $lang = request()->header('lang');
         if($lang != null){
             if($lang  =='ar'){
-                return $this->country_name_ar;
+                return $this->city_name;
             }else{
-                return $this->country_name_en;
+                return $this->city_name_english;
   
             }
         }else{
-            return $this->country_name_en;
+            return $this->city_name_english;
 
         }
     }
