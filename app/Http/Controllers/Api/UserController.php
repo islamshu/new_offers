@@ -25,9 +25,17 @@ class UserController extends BaseController
             // $res['token'] = $user->createToken('Personal Access Token')->accessToken;
                 // $res['data']['client'] = new UserResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->token;
+            if($user->is_verify == 1){
+
+            
             $res['data'][""]="";
             $res['other']['exist_status']= 'old';
             $res['other']['for']= 'login';
+            }else{
+                $res['data'][""]="";
+                $res['other']['exist_status']= 'NON-VERIFIED';
+                $res['other']['for']= 'signup';  
+            }
 
 
 
@@ -89,6 +97,7 @@ class UserController extends BaseController
         // dd($user);
         if($user){
             $user->last_login = Carbon::now();
+            $user->is_verify = 1;
             $user->save();
             $res['status']= $this->sendResponse('OK');
             // $res['data']['client'] = new UserResoures($user);
