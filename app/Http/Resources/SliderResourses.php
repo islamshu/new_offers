@@ -19,11 +19,12 @@ class SliderResourses extends JsonResource
             'id'=>$this->id,
             'is_city_related'=>1,
             'is_store_related'=>$this->type =='vendor' ? 1 : 0,
-            'order_no'=>$this->sort,
-            'city'=>new CityResourses(City::select('id')->find($this->city_id)),
+            // 'order_no'=>$this->sort ,
+            'order_no'=>1 ,
             'city_id'=>$this->city_id,
             'store_id'=>$this->vendor_id,
             'image'=>asset('images/slider/'.$this->image) ,
+            'city'=>new CityResourses(City::select('id')->find($this->city_id)),
             'store'=>new VendorResourses($this->venndor)
         ];
     }
