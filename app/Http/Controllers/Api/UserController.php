@@ -29,7 +29,7 @@ class UserController extends BaseController
 
             
             $res['data'][""]="";
-            $res['other']['exist_status']= 'old';
+            $res['other']['exist_status']= 'EXIST';
             $res['other']['for']= 'login';
             }else{
                 $res['data'][""]="";
