@@ -46,7 +46,7 @@ class UserController extends BaseController
             $user->phone = $request->phone;
             $user->code = 1991;
             $user->image = 'default.jpeg';
-            $user->country_id = $request->country_id;
+            $user->country_id = 1;
             $uuid = 'jooy';
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
