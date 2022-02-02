@@ -5,7 +5,8 @@
 
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <div class="row" style="float: right">
-                <a class="btn btn-info" href="{{ route('vendor.create_offer',[app()->getLocale(),$vendor->id]) }}">{{ __('create offer') }}</a>
+                <a class="btn btn-info"
+                    href="{{ route('vendor.create_offer', [app()->getLocale(), $vendor->id]) }}">{{ __('create offer') }}</a>
 
             </div>
             <br>
@@ -25,18 +26,19 @@
                 </thead>
                 <tbody>
                     @php
-$lang = app()->getLocale();
-@endphp
+                        $lang = app()->getLocale();
+                    @endphp
                     @foreach ($offers as $item)
-                        <td><img src="{{ asset('images/primary_offer/'.@$item->offerimage->primary_image) }}" width="150" height="100" alt=""></td>
-                      
-                        @if($lang =='ar')
-                      
-                        <td>{{ $item->name_ar }}</td>
+                        <td><img src="{{ asset('images/primary_offer/' . @$item->offerimage->primary_image) }}" width="150"
+                                height="100" alt=""></td>
+
+                        @if ($lang == 'ar')
+
+                            <td>{{ $item->name_ar }}</td>
                         @else
-                        <td>{{ $item->name_ar }}</td>
+                            <td>{{ $item->name_ar }}</td>
                         @endif
-                       
+
                         <td>{{ offer_type($item->offertype->offer_type) }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
@@ -90,12 +92,12 @@ $lang = app()->getLocale();
                                     </button>
                                 </form>
                             @endif
-                          
+
 
                         </td>
                         </tr>
                     @endforeach
-                    
+
 
                 </tbody>
 
@@ -116,10 +118,10 @@ $lang = app()->getLocale();
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
-    
+
     <script>
         $(function() {
-            
+
         });
 
         function performdelete(id) {
