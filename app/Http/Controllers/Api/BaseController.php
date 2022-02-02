@@ -9,7 +9,7 @@ class BaseController extends Controller
 {
 
     public function sendResponse($status){   
-        $response = ['status' => true ,'HTTP_code'=>'201','HTTP_response'=>$status];
+        $response = ['status' => true ,'HTTP_code'=>201,'HTTP_response'=>$status];
         return $response;    }
 
         public function SendError( $code = 404){
