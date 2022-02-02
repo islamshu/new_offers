@@ -37,7 +37,7 @@ use App\Models\VendorReview;
 class HomeController extends BaseController
 {
     public function country(){
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data'] = new CountryCollection(Country::get());
         return $res;
     }

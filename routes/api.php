@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::Post('login-request', 'Api\UserController@login');
 Route::get('country', 'Api\HomeController@country');
-Route::post('city', 'Api\HomeController@city');
+Route::get('city', 'Api\HomeController@city');
 Route::post('verification-code/check', 'Api\UserController@verification_code');
 Route::get('home', 'Api\HomeController@home');
 Route::get('privacy-policy', 'Api\PageController@privacy');
