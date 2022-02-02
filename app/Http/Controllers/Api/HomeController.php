@@ -44,7 +44,7 @@ class HomeController extends BaseController
     public function city(Request $request){
         // dd($request);
         $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
-        $country_id = Enterprise::where('uuid',$uuid)->counteire->first();
+        $country_id = Enterprise::where('uuid',$uuid)->first()->counteire->first();
         dd($country_id);
         $res['status']= $this->sendResponse('OK');
         $res['data'] = new CityCollection(City::where('country_id',$request->country_id)->where('status',1)->get());
