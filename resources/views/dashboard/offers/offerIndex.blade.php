@@ -15,7 +15,7 @@
                 id="kt_datatable">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
-
+                        <th>{{ __('Image') }}</th>
                         <th>{{ __('Name ar') }}</th>
                         <th>{{ __('Name en') }}</th>
                         <th>{{ __('Type') }}</th>
@@ -26,6 +26,7 @@
                 </thead>
                 <tbody>
                     @foreach ($offers as $item)
+                        <td><img src="{{ asset('images/primary_offer/'.@$item->offerimage->primary_image) }}" width="150" height="100" alt=""></td>
                         <td>{{ $item->name_ar }}</td>
                         <td>{{ $item->name_en }}</td>
                         <td>{{ offer_type($item->offertype->offer_type) }}</td>
