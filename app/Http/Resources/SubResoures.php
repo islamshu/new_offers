@@ -21,7 +21,6 @@ class SubResoures extends JsonResource
             'store_points_no'=>$this->store_points_no,
             'offers_saving'=>$this->offers_saving,
             'coupons_saving'=>$this->coupon_saving,
-            'image'=>asset($this->image),
             'used_offers_no'=>$this->used_offers_no,
             'purchases_no'=>$this->purchases_no,
             'remaining_credit'=>$this->remain,

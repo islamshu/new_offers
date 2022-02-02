@@ -34,7 +34,8 @@ class ClientResoures extends JsonResource
             'actual_accounts_no'=>$this->actual_accounts_no,
             'country'=>new CountryResoures(Country::find($this->country_id)),
             'city' => @$this->city->neglish_name,
-            'subscription'=>new SubResoures(@$this)
+            'subscription'=>new SubResoures(@$this),
+            'token' =>$this->createToken('Personal Access Token')->accessToken,
         ];
     }
 }
