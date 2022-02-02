@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\ClientResoures;
+use App\Http\Resources\ClientTwoResoures;
 use App\Http\Resources\SubResoures;
 use App\Http\Resources\UserResoures;
 use App\Models\City;
@@ -119,7 +120,7 @@ class UserController extends BaseController
         $user = auth('client_api')->user();
        
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientResoures($user);
+        $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
     public function update_image(Request $request){
