@@ -118,7 +118,7 @@ class UserController extends BaseController
     {
         $user = auth('client_api')->user();
        
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data']['client'] = new ClientResoures($user);
         return $res;
     }
