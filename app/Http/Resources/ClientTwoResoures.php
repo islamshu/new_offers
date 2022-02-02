@@ -34,7 +34,7 @@ class ClientTwoResoures extends JsonResource
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no,
             'country'=>new CountryResoures(Country::find($this->country_id)),
-            'city' => new CityResoures(City::find($this->city)),
+            'city' => new CityResoures(City::find($this->city_id)),
         
             'subscription'=>new SubResoures(@$this),
         ];
