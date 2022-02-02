@@ -52,7 +52,10 @@ class HomeController extends BaseController
     }
     public function home(Request $request){
         // dd($request->uuid);
-        $enterprice= Enterprise::with('categorys')->where('uuid',request()->header('uuid'))->first();
+        $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
+        $city_id = $request->city_id ? $request->city_id : 1;
+        // $country_id = Enterprise::with('categorys')->where('uuid',$uuid)->first()->counteire->first()->id;
+        $enterprice= Enterprise::with('categorys')->where('uuid',$uuid)->first();
         // dd($enterprice);
         if(!$enterprice){
           $res['status']=$this->sendError();
@@ -60,12 +63,12 @@ class HomeController extends BaseController
           return  $res;
         }
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['slider']= new SliderCollection(Slider::where('city_id',$request->city_id)->get());
+        $res['data']['slider']= new SliderCollection(Slider::where('city_id',$city_id)->get());
         $res['data']['categories'] = new CategoryCollection(@$enterprice->categorys);
         $res['data']['recent_offers']['metadata']['max_no']=15;
         $res['data']['recent_offers']['metadata']['color']='#bcbcbc';
         $res['data']['recent_offers']['data']=[];
-        $res['data']['home_sliders'] = new HomeSLiderCollection(HomeSlider::where('city_id',$request->city_id)->get());
+        $res['data']['home_sliders'] = new HomeSLiderCollection(HomeSlider::where('city_id',$city_id)->get());
         return $res;
         
     }
