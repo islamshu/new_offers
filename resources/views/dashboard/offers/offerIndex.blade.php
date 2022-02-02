@@ -16,8 +16,7 @@
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('Image') }}</th>
-                        <th>{{ __('Name ar') }}</th>
-                        <th>{{ __('Name en') }}</th>
+                        <th>{{ __('Name') }}</th>
                         <th>{{ __('Type') }}</th>
                         <th>{{ __('start at') }}</th>
                         <th>{{ __('end at') }}</th>
@@ -25,10 +24,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+$lang = app()->getLocale();
+@endphp
                     @foreach ($offers as $item)
                         <td><img src="{{ asset('images/primary_offer/'.@$item->offerimage->primary_image) }}" width="150" height="100" alt=""></td>
+                      
+                        @if($lang =='ar')
+                      
                         <td>{{ $item->name_ar }}</td>
-                        <td>{{ $item->name_en }}</td>
+                        @else
+                        <td>{{ $item->name_ar }}</td>
+                        @endif
+                       
                         <td>{{ offer_type($item->offertype->offer_type) }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
