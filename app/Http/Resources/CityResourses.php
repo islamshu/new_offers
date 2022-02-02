@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\City;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CityResourses extends JsonResource
@@ -21,12 +22,12 @@ class CityResourses extends JsonResource
     }
     public function lang_name($data){
         $lang = request()->header('Lang');
-        dd($data);
+        $city = City::find($data->id);
         if($lang != null){
             if($lang  =='ar'){
-                return $data->city_name;
+                return $city->city_name;
             }else{
-                return $data->city_name_english;
+                return $city->city_name_english;
   
             }
         }else{
