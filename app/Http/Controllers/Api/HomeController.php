@@ -44,10 +44,10 @@ class HomeController extends BaseController
     public function city(Request $request){
         // dd($request);
         $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
-        $country_id = Enterprise::where('uuid',$uuid)->first()->counteire->first();
-        dd($country_id);
+        $country_id = Enterprise::where('uuid',$uuid)->first()->counteire->first()->id;
+      
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new CityCollection(City::where('country_id',$request->country_id)->where('status',1)->get());
+        $res['data'] = new CityCollection(City::where('country_id',$country_id)->where('status',1)->get());
         return $res;
     }
     public function home(Request $request){
