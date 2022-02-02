@@ -100,7 +100,7 @@ class UserController extends BaseController
             $user->last_login = Carbon::now();
             $user->is_verify = 1;
             $user->save();
-            $res['status']= $this->sendResponse('OK');
+            $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
             $res['data']['client'] = new ClientResoures($user);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
