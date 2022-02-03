@@ -19,7 +19,7 @@ class ClientTwoResoures extends JsonResource
         return [
             'name'=>$this->username,
             'email'=>$this->email,
-            'phone'=>$this->phone,
+            'phone'=>(int)$this->phone,
             'gender'=>$this->gender,
             'birth_date'=>$this->birth_date,
             'image'=>asset($this->image),

@@ -80,7 +80,7 @@
 
             });
             function color(id){
-                var color = $('input_color')->val();
+                var color = $('input_color').val();
                 var id = id;
                 $.ajax({
                         type: 'get',
