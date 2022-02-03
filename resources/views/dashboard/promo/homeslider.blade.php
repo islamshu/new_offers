@@ -76,9 +76,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="{{ asset('crudjs/crud.js') }}"></script>
         <script>
-            $(function() {
-
-            });
+          
             function color(id){
                 var color = $('#input_color').val();
                 var id = id;
