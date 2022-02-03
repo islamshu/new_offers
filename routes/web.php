@@ -197,6 +197,7 @@ Route::group([
         Route::post('/get_modal/offer', 'Dashboard\OfferController@get_modal')->name('showpostModalOffer');
         Route::get('download/codes','Dashboard\PerfomedController@download')->name('download.code');
 
+        Route::resource('transaction','Dashboard\TransactionController');   
         
 
         
