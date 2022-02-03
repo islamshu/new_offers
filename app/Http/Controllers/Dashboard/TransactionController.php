@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        dd(auth()->user());
+        dd(auth()->user()->ent_id);
         $transactions =Transaction::where('enterprise_id',auth()->user()->int_id)->orderBy('id','desc')->get(); 
         return view('dashboard.transaction.index')->with('transactions',$transactions);
     }
