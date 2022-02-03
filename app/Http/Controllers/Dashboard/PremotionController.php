@@ -67,9 +67,9 @@ class PremotionController extends Controller
        
 
     }
-    public function homeslider_delete($locale ,$id){
+    public function homeslider_delete($locale ,$id,$offer_id){
         $premotions = Homeslider::where('id',$id)->get();
-        dd($premotions);
+        dd($premotions,$offer_id);
         return response()->json(['icon' => 'success', 'title' => 'homeslider deleted successfully'], 200);
 
     }
