@@ -117,6 +117,8 @@ Route::group([
 
         
         Route::delete('/vendor_cover/{id}', 'Dashboard\brandController@vendor_cover_delete')->name('vendor_cover.destroy');
+
+        
         Route::resource('perfomeds', 'Dashboard\PerfomedController');
         Route::get('perfomeds_code/{vendor}', 'Dashboard\PerfomedController@get_perfomed_vendor')->name('vendor.get_perfomed_vendor');
         Route::get('perfomeds_code/{vendor}/{status}', 'Dashboard\PerfomedController@get_perfomed_vendor_code_status')->name('vendor.get_perfomed_vendor_status');
@@ -137,7 +139,8 @@ Route::group([
         
         
         Route::resource('promotion', 'Dashboard\PremotionController');
-        
+        Route::delete('/home_slider/{id}', 'Dashboard\PremotionController@homeslider_delete')->name('homeslider.destroy');
+
         Route::get('get_city_for_country/{type}/{id}', 'Dashboard\PremotionController@get_city_for_country')->name('get_city_for_country');
         Route::get('get_country_promotion/{type}', 'Dashboard\PremotionController@get_country_promotion')->name('get_country_promotion');
         Route::get('get_elemet_by_type/{type}/{city_id}', 'Dashboard\PremotionController@get_elemet_by_type')->name('get_elemet_by_type');
