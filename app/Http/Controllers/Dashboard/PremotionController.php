@@ -68,7 +68,7 @@ class PremotionController extends Controller
 
     }
     public function homeslider_delete($locale ,$id){
-        $premotions = HomesliderOffer::where('id',$id)->get();
+        $premotions = HomesliderOffer::where('id',$id)->first();
         $offer = Offer::find($premotions->offer_id);
         $offer->is_slider = 0;
         $offer->save();
