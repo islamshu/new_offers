@@ -44,7 +44,7 @@ class brandController extends Controller
         } elseif (Auth::user()->hasRole('Enterprises')) {
 
             $enterprise = Enterprise::find(Auth::user()->ent_id);
-            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->get();
+            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->get();
             return response()->view('dashboard.vendor.index', compact('vendors', 'enterprise'));
         } elseif (Auth::user()->hasRole('Vendor')) {
             $Vendor = Vendor::find(Auth::user()->vendor_id);
