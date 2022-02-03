@@ -29,7 +29,7 @@
 
                     <td>{{ $item->title_ar }}</td>
                     <td>{{ $item->title_en }}</td>
-                    <td><input type="color" ondblclick="this.disabled=false;" disabled  value="{{ $item->color }}"></td>
+                    <td><input type="color" readonly="true" ondblclick="this.readOnly='';"  value="{{ $item->color }}"></td>
                     {{-- <td ><button style="background: {{ $item->color  }}">{{ $item->color }}</button></td>   --}}
                     <td>{{ $item->city->city_name_english }}</td>
                     <td>{{ $item->sort }}</td>
