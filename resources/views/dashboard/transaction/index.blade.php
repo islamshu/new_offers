@@ -12,7 +12,10 @@ card card-docs mb-2">
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('Reference Number') }}</th>
                         <th>{{ __('Offer Name') }}</th>
-                        <th>{{ __('Offer type') }}</th>
+                        <th>{{ __('Offer Type') }}</th>
+                        <th>{{ __('Price After Discount') }}</th>
+                        <th>{{ __('General Discountt') }}</th>
+
                         <th>{{ __('Client Name') }}</th>
                       
                         <th>{{ __('Branch Name') }}</th>
@@ -26,6 +29,8 @@ card card-docs mb-2">
                             <td>{{ $item->refreance_number }}</td>
                             <td>{{ $item->offer->name_ar }}</td>
                             <td>{{ offer_type(@$item->offer->offertype->offer_type) }}</td>
+                            <td>{{ @$item->offer->offertype->price_after_discount }}</td>
+                            <td>{{ @$item->offer->offertype->discount_value }}</td>
 
                             <td><a href="{{ route('clinets.show',[app()->getLocale(),$item->client_id]) }}" target="_blank">{{ $item->client->name }}</a></td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
