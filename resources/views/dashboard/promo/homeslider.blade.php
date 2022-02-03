@@ -29,7 +29,7 @@
 
                     <td>{{ $item->title_ar }}</td>
                     <td>{{ $item->title_en }}</td>
-                    <td><input type="color" readonly="true" ondblclick="this.readOnly='';"  value="{{ $item->color }}"></td>
+                    <td><input type="color" readonly="true" id="input_color" name="color" onchange="color({{ $item->id }})" ondblclick="this.readOnly='';"  value="{{ $item->color }}"></td>
                     {{-- <td ><button style="background: {{ $item->color  }}">{{ $item->color }}</button></td>   --}}
                     <td>{{ $item->city->city_name_english }}</td>
                     <td>{{ $item->sort }}</td>
@@ -79,6 +79,25 @@
             $(function() {
 
             });
+            function color(id){
+                var color = $('input_color')->val();
+                var id = id;
+                $.ajax({
+                        type: 'get',
+                        url: "{{ route('change_color', ['locale' => app()->getLocale()]) }}",
+                        data: {
+                            'color': color,
+                            'id': id,
+                        },
+                        success: function(data) {
+                         alert('change succffuly')
+                        },
+                        error: function() {
+
+                        }
+                    });
+
+            }
 
             function performdelete(id) {
                 var url = '{{ route('code.destroy', [':id', 'locale' => app()->getLocale()]) }}';

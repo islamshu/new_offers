@@ -67,6 +67,13 @@ class PremotionController extends Controller
        
 
     }
+    public function change_color(Request $request){
+        $premotions = Homeslider::find($request->id);
+        $premotions->color = $request->color;
+        $premotions->save();
+        return true;
+
+    }
     public function homeslider_delete($locale ,$id){
         $premotions = HomesliderOffer::where('id',$id)->first();
         $offer = Offer::find($premotions->offer_id);

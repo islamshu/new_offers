@@ -148,6 +148,7 @@ Route::group([
         Route::post('store_item/{type}/{city_id}', 'Dashboard\PremotionController@store_item')->name('store_item');
         Route::get('offer_slider/{id}/{city_id}', 'Dashboard\PremotionController@offer_slider')->name('offer_slider');
         Route::post('create_offer', 'Dashboard\PremotionController@create_offer')->name('create_offer');
+        Route::post('change_color', 'Dashboard\PremotionController@change_color')->name('change_color');
 
         
         
