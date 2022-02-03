@@ -75,10 +75,11 @@
 
                                                 <td class="pr-0 text-center">{{ $item->created_at->format('M d Y') }}
                                                 </td>
-                                                <td>{{ $item->status }}</td>
                                                 <td>
-                                                    <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
-                                                    </td>
+                                                    <td>{{ $item->status }}</td>
+
+                                                    {{-- <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}> --}}
+                                                </td>
                                                 <td class="pr-0 text-center">
                                                     <a href="{{ route('vendor.edit', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
