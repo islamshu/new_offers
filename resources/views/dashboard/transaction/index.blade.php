@@ -25,7 +25,7 @@ card card-docs mb-2">
                         <tr>
                             <td>{{ $item->refreance_number }}</td>
                             <td>{{ $item->offer->name_ar }}</td>
-                            <td>{{ offer_type(@$item->offer->offer_type->offer_type) }}</td>
+                            <td>{{ offer_type(@$item->offer->offer_type) }}</td>
 
                             <td><a href="{{ route('clinets.show',[app()->getLocale(),$item->client_id]) }}" target="_blank">{{ $item->client->name }}</a></td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
