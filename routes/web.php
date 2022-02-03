@@ -139,7 +139,7 @@ Route::group([
         
         
         Route::resource('promotion', 'Dashboard\PremotionController');
-        Route::delete('/home_slider/{id}/{offer_id}', 'Dashboard\PremotionController@homeslider_delete')->name('homeslider.destroy');
+        Route::delete('/home_slider/{id}', 'Dashboard\PremotionController@homeslider_delete')->name('homeslider.destroy');
 
         Route::get('get_city_for_country/{type}/{id}', 'Dashboard\PremotionController@get_city_for_country')->name('get_city_for_country');
         Route::get('get_country_promotion/{type}', 'Dashboard\PremotionController@get_country_promotion')->name('get_country_promotion');

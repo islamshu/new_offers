@@ -68,7 +68,7 @@
                                     <i class="fa fa-plus"></i>
                                 </a> --}}
                                 <form method="post" style="display: inline">
-                                    <button type="button" onclick="performdelete('{{ $item->id }}',{{ $$item->offer->id }})"
+                                    <button type="button" onclick="performdelete('{{ $item->id }}')"
                                         class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
                                             class="svg-icon svg-icon-md svg-icon-primary">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -138,10 +138,10 @@
                 });
             });
 
-            function performdelete(id,offer_id) {
-                var url = '{{ route('homeslider.destroy', [':id',':offer', 'locale' => app()->getLocale()]) }}';
+            function performdelete(id) {
+                var url = '{{ route('homeslider.destroy', [':id', 'locale' => app()->getLocale()]) }}';
                 url = url.replace(':id', id);
-                url = url.replace(':offer', offer_id);
+
 
                 confirmDestroy(url)
             }
