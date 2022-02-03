@@ -21,7 +21,7 @@ card card-docs mb-2">
                     @foreach ($transactions as $item)
                         <tr>
                             <td><a href="{{ route('clinets.show',[app()->getLocale(),$item->client_id]) }}" target="_blank">{{ $item->client->name }}</a></td>
-                            <td><a href="{{ route('offers.show',[app()->getLocale(),$item->offer_id]) }}" target="_blank">{{ $item->offer->name_ar }}</a></td>
+                            <td>{{ $item->offer->name_ar }}</td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
                             <td> <a href="{{ route('vendor.show',[app()->getLocale(),$item->vendor_id]) }}" target="_blank">{{ $item->vendor->name_ar }}</a></td>
 
