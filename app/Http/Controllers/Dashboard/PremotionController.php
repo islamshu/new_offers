@@ -162,9 +162,11 @@ class PremotionController extends Controller
         
     }
     
-    public function offer_slider($locale,$id){
+    public function offer_slider($locale,$id,$city_id){
       $homeslider =   Homeslider::find($id);
-      $brands =   Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
+      $brands =   Vendor::with('cities')->whereHas('cities', function ($q) use ($city_id) {
+          $q->where('city_id',$city_id);
+      })->where('enterprise_id',auth()->user()->ent_id)->where('')->get();
       $slider_offer = HomesliderOffer::where('homeslider_id',$id)->get();
       return view('dashboard.promo.get_offer', compact('homeslider','brands','slider_offer'));
        

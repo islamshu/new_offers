@@ -34,7 +34,7 @@
                     <td>{{ $item->sort }}</td>
 
                         <td class="pr-0 text-left">
-                            <a href="{{ route('offer_slider', [app()->getLocale(),$item->id]) }}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                            <a href="{{ route('offer_slider', [app()->getLocale(),$item->id,$city_id]) }}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <i class="fa fa-plus"></i>
                             </a>
                             <form method="post" style="display: inline">
