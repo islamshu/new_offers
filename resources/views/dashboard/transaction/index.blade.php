@@ -14,7 +14,7 @@ card card-docs mb-2">
                         <th>{{ __('Offer Name') }}</th>
                         <th>{{ __('Branch Name') }}</th>
                         <th>{{ __('Vendor Name') }}</th>
-                        <th>{{ __('Action') }}</th>
+                        <th>{{ __('Enterprise Name') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,22 +24,9 @@ card card-docs mb-2">
                             <td>{{ $item->offer->name_ar }}</td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
                             <td> <a href="{{ route('vendor.show',[app()->getLocale(),$item->vendor_id]) }}" target="_blank">{{ $item->vendor->name_ar }}</a></td>
+                            <td> {{ $item->enterprise->name_ar }}</td>
 
-                            <td class="pr-0 text-left">
-
-
-                                <a href="{{ route('vendor.get_branch', [app()->getLocale(), $item->id]) }}"
-                                    class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                                    <span class="svg-icon svg-icon-md svg-icon-primary">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
-                                        <i class="fa fa-eye"></i>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                </a>
-                              
-
-
-                            </td>
+                           
 
                         </tr>
                     @endforeach
