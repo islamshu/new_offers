@@ -186,7 +186,8 @@ class PremotionController extends Controller
         $offer->vendor_id = $request->vendor_id;
         $offer->offer_id = $request->offer_id;
         $offer->sort = $request->sort;
-        $offer->is_slider = 1;
+        $off = Offer::find($request->offer_id);
+        $off->is_slider = 1;
 
         $offer->save();
         return redirect()->back()->with(['success'=>'تم الاضافة بنجاح']);
