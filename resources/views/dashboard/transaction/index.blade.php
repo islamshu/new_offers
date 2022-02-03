@@ -10,21 +10,23 @@ card card-docs mb-2">
                 id="kt_datatable">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
+                        <th>{{ __('Reference Number') }}</th>
                         <th>{{ __('Client Name') }}</th>
                         <th>{{ __('Offer Name') }}</th>
                         <th>{{ __('Branch Name') }}</th>
                         <th>{{ __('Vendor Name') }}</th>
-                        <th>{{ __('Enterprise Name') }}</th>
+                        <th>{{ __('Created') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($transactions as $item)
                         <tr>
+                            <td>{{ $item->refreance_number }}</td>
                             <td><a href="{{ route('clinets.show',[app()->getLocale(),$item->client_id]) }}" target="_blank">{{ $item->client->name }}</a></td>
                             <td>{{ $item->offer->name_ar }}</td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
                             <td> <a href="{{ route('vendor.show',[app()->getLocale(),$item->vendor_id]) }}" target="_blank">{{ $item->vendor->name_ar }}</a></td>
-                            <td> {{ $item->enterprise->name_ar }}</td>
+                            <td> {{ $item->created_at }}</td>
 
                            
 
