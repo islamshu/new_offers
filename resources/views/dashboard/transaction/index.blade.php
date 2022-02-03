@@ -29,8 +29,8 @@ card card-docs mb-2">
                             <td>{{ $item->refreance_number }}</td>
                             <td>{{ $item->offer->name_ar }}</td>
                             <td>{{ offer_type(@$item->offer->offertype->offer_type) }}</td>
-                            <td>{{ @$item->offer->offertype->price_after_discount }}</td>
-                            <td>{{ @$item->offer->offertype->discount_value }}</td>
+                            <td>{{ @$item->offer->offertype->price_after_discount ? @$item->offer->offertype->price_after_discount : '_' }}</td>
+                            <td>{{ @$item->offer->offertype->discount_value ? @$item->offer->offertype->discount_value : '_' }}</td>
 
                             <td><a href="{{ route('clinets.show',[app()->getLocale(),$item->client_id]) }}" target="_blank">{{ $item->client->name }}</a></td>
                             <td> <a href="{{ route('branch.show',[app()->getLocale(),$item->branch_id]) }}" target="_blank">{{ $item->branch->name_ar }}</a></td>
