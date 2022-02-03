@@ -24,9 +24,7 @@ class ClinetController extends Controller
         $trial = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
             $q->where('type_paid','trial');
         })->count();
-        $paid = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
-            $q->where('type_paid','paid');
-        })->count();
+        $paid = Clinet::where('type_of_subscribe','PREMIUM')->count();
        
         $non_sub = Clinet::where('uuid_type','null')->count();
         
