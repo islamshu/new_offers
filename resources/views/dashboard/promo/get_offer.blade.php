@@ -117,7 +117,7 @@
 
                     $.ajax({
                         type: 'get',
-                        url: "{{ route('get_offer_ajax', ['locale' => app()->getLocale()]) }}",
+                        url: "{{ route('get_offer_ajax_not_slider', ['locale' => app()->getLocale()]) }}",
                         data: {
                             'venodr_id': cat_id
                         },

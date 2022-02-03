@@ -177,6 +177,7 @@ class PremotionController extends Controller
         $offer->vendor_id = $request->vendor_id;
         $offer->offer_id = $request->offer_id;
         $offer->sort = $request->sort;
+        $offer->is_slider = 1;
 
         $offer->save();
         return redirect()->back()->with(['success'=>'تم الاضافة بنجاح']);
@@ -186,6 +187,13 @@ class PremotionController extends Controller
     {
 
        $offers = Offer::where('vendor_id',$request->venodr_id)->get();
+       return response()->json($offers);
+
+    }
+    public function get_offer_ajax_not_slider(Request $request,$locale )
+    {
+
+       $offers = Offer::where('vendor_id',$request->venodr_id)->where('is_slider',0)->get();
        return response()->json($offers);
 
     }

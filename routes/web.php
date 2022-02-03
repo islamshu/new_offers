@@ -107,6 +107,9 @@ Route::group([
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
+        Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
+
+        
         Route::post('/get_modal/branch', 'Dashboard\branchController@get_modal')->name('showpostModalBranch');
 
         
