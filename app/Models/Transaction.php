@@ -28,7 +28,7 @@ class Transaction extends Model
     }
     public function enterprise()
     {
-        return $this->belongsTo(Enterprise::class,'enterpise_id');
+        return $this->belongsTo(Enterprise::class,'enterprise_id');
     }
     public function branch()
     {
