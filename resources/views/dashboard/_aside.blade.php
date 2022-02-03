@@ -512,6 +512,18 @@ $lang = app()->getLocale();
        
     </li>
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="/{{ $lang }}/transaction" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Transaction') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+        
+
+       
+    </li>
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
