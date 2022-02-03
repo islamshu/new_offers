@@ -140,7 +140,7 @@ Route::group([
         Route::get('get_elemet_by_type/{type}/{city_id}', 'Dashboard\PremotionController@get_elemet_by_type')->name('get_elemet_by_type');
         Route::get('create_item/{type}/{city_id}', 'Dashboard\PremotionController@create_item')->name('create_item');
         Route::post('store_item/{type}/{city_id}', 'Dashboard\PremotionController@store_item')->name('store_item');
-        Route::get('offer_slider/{id}', 'Dashboard\PremotionController@offer_slider')->name('offer_slider');
+        Route::get('offer_slider/{id}/{city_id}', 'Dashboard\PremotionController@offer_slider')->name('offer_slider');
         Route::post('create_offer', 'Dashboard\PremotionController@create_offer')->name('create_offer');
 
         
