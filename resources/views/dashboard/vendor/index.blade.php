@@ -203,6 +203,7 @@
         <script>
             $(document).ready(function(){
             $('.js-switch').change(function () {
+                alert($(this).prop('checked'));
                 let status = $(this).prop('checked') === true ? 'active' : 'deactive';
                 let userId = $(this).data('id');
                 $.ajax({
