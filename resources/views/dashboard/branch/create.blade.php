@@ -73,7 +73,7 @@
 
                     <label>{{ __('Neighborhood') }}:</label>
                     <select class="neighborhood custom-select" id="neighborhood_id" name="neighborhood_id">
-                        <option value="0" disabled="true" selected="true">Neighborhood Name</option>
+                        <option value="" disabled="true" selected="true">Neighborhood Name</option>
                     </select>
                 </div>
                  <div class="form-group col-md-6">
