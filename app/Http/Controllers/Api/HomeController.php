@@ -43,7 +43,7 @@ class HomeController extends BaseController
     }
     public function city(Request $request){
         // dd($request);
-        $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
+        $uuid = userdefult() ? userdefult(): 'jooy';
         $country_id = Enterprise::where('uuid',$uuid)->first()->counteire->first()->id;
       
         $res['status']= $this->sendResponse('OK');
@@ -52,7 +52,7 @@ class HomeController extends BaseController
     }
     public function home(Request $request){
         // dd($request->uuid);
-        $uuid = request()->header('uuid') ? request()->header('uuid'): 'jooy';
+        $uuid = userdefult() ? userdefult(): 'jooy';
 
         // $city_id = $request->city_id ? $request->city_id : 15;
         $citynew = City::find($request->city_id);
@@ -83,11 +83,11 @@ class HomeController extends BaseController
     {
 
         $filtter = $request->filter;
-       dd(userdefult());
+      //  dd(userdefult());
         if($filtter == 'offer'){
             $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
               $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
-                $q->where('enterprise', get_enterprose_uuid(request()->header('uuid')));
+                $q->where('enterprise', get_enterprose_uuid(userdefult()));
               });
                 $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                        $q->where('city_id', $request->city_id);

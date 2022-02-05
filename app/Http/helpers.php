@@ -42,7 +42,11 @@ function get_enterprose_uuid($uuid){
     }
 }
 function userdefult(){
-    dd(request()->header('uuid'));
+    if(request()->header('uuid') == null){
+        return 'jooy';
+    }else{
+        return request()->header('uuid');
+    }
 }
  function is_date($date){
     if (DateTime::createFromFormat('Y-m-d', $date) !== false) {
