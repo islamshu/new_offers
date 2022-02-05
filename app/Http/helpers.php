@@ -35,7 +35,7 @@ dd($sorted);
 }
 function get_enterprose_uuid($uuid){
     $enterprise = Enterprise::where('uuid',$uuid)->first();
-    dd($enterprise->id);
+ 
     if($enterprise){
        
         return $enterprise->id;
