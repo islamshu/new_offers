@@ -83,7 +83,7 @@ class HomeController extends BaseController
     {
 
         $filtter = $request->filter;
-        dd(request()->header('uuid'));
+       dd(userdefult());
         if($filtter == 'offer'){
             $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
               $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {

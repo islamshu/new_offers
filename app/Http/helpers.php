@@ -41,6 +41,9 @@ function get_enterprose_uuid($uuid){
         return false;
     }
 }
+function userdefult(){
+    dd(request()->header('jooy'));
+}
  function is_date($date){
     if (DateTime::createFromFormat('Y-m-d', $date) !== false) {
        return $date;
