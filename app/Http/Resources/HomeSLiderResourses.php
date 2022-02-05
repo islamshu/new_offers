@@ -35,15 +35,16 @@ class HomeSLiderResourses extends JsonResource
     }
     public function lang_name($data)
     {
+        
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
-                return $data->name_ar;
+                return @$data->homslider->title_ar;
             } else {
-                return $data->name_en;
+                return @$data->homslider->title_en;
             }
         } else {
-            return $data->name_en;
+            return @$data->homslider->title_en;
         }
     }
 }

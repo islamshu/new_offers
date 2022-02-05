@@ -22,4 +22,8 @@ class HomesliderOffer extends Model
     {
         return $this->belongsTo(Offer::class, 'offer_id');
     }
+    public function homslider()
+    {
+        return $this->belongsTo(Homeslider::class, 'homeslider_id');
+    }
 }
