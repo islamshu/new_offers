@@ -21,7 +21,9 @@ class VendorOfferResourses extends JsonResource
             
             'name'=>$this->lang_name($this),
             'details'=>$this->lang_details($this),
-            'terms'=>$this->lang_terms($this),
+            'terms'=>strip_tags($this->lang_terms($this)),
+            
+            
             'image'=>asset('images/primary_offer/'.@$this->offerimage->primary_image),
             'type'=>$this->offer_type,
             'membership_type'=>$this->member_type,
