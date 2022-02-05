@@ -20,7 +20,7 @@ class VendorForOfferCollection extends ResourceCollection
             'count' => $this->count(),
             'total' => $this->total(),
             'prev'  => $this->previousPageUrl(),
-            'next'  => $this->nextPageUrl(), 
+            'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'stores' =>VendorForOfferResourses::collection($this->collection),
             'category_slider_images' => new SliderCollection($sliders),
         ];

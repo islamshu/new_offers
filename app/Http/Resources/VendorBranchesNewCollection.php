@@ -19,7 +19,7 @@ class VendorBranchesNewCollection extends ResourceCollection
             'count' => $this->count(),
             'total' => $this->total(),
             'prev'  => $this->previousPageUrl(),
-            'next'  => $this->nextPageUrl(), 
+            'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'offers' =>BranchResourses::collection($this->collection),
         ];
     }
