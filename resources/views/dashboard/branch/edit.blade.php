@@ -67,7 +67,7 @@
 
                     <label>Neighborhood:</label>
                     <select class="neighborhood custom-select" id="neighborhood_id"  name="neighborhood_id">
-                        <option value="0" disabled="true" selected="true">Neighborhood Name</option>
+                        <option  disabled="true" selected="true">Neighborhood Name</option>
                         @foreach (\App\Models\enterprise_neighborhood::where('enterprise_id',@$branch->vendor->enterprise->id)->where('status',1)->with('neighborhood')->get(); as $item) 
                         <option value="{{ $item->neighborhood->id }} " @if($branch->neighborhood_id ==  $item->neighborhood->id ) selected @endif> @if($lang =='en')   {{ $item->neighborhood->neighborhood_name_english }} @else {{$item->neighborhood->neighborhood_name }} @endif</option>
                     @endforeach
@@ -242,7 +242,7 @@
                     'vendor_id':vendor_id
                 },
                 success: function (data) {
-                    $('#neighborhood_id').html(new Option('chose city', '0'));
+                    $('#neighborhood_id').html(new Option('chose neighborhood', '0'));
                     for (var i = 0; i < data.length; i++) {
                         if(lang == 'en'){
                         $('#neighborhood_id').append(new Option(data[i].neighborhood
