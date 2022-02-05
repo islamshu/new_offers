@@ -21,7 +21,7 @@ class VendorOfferDeResourses extends JsonResource
             
             'name'=>$this->lang_name($this),
             'details'=>$this->lang_details($this),
-            'terms'=>preg_replace($this->lang_terms($this)),
+            'terms'=>$this->lang_terms($this),
             'image'=>asset('images/primary_offer/'.@$this->offerimage->primary_image),
             'type'=>$this->offer_type,
             'membership_type'=>$this->member_type,
@@ -97,17 +97,15 @@ class VendorOfferDeResourses extends JsonResource
     }
     public function lang_terms($data)
     {
-        
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
-                return ($data->terms_ar);
-                
+                return $data->terms_ar;
             } else {
-                return ($data->terms_en);
+                return $data->terms_en;
             }
         } else {
-            return ($data->terms_en);
+            return $data->terms_en;
         }
     }
 }
