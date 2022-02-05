@@ -51,7 +51,12 @@ function userdefult(){
     }
 }
 function add_space($text){
-    return preg_replace("/\r|\n/", "<br>", $text);
+    $text = preg_replace("/\r|\n/", "", $text);
+    $text = str_replace("<br />","**",$text );
+    $text = str_replace("**","\\n",$text );
+    dd($text);
+    return $text
+
 }
  function is_date($date){
     if (DateTime::createFromFormat('Y-m-d', $date) !== false) {
