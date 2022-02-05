@@ -26,6 +26,7 @@ Route::get('about-us', 'Api\PageController@abouts');
 Route::get('FAQs','Api\PageController@faqs');
 Route::get('how-it-work', 'Api\PageController@works');
 Route::get('vendor-list', 'Api\HomeController@vendor_list');
+Route::get('vendor', 'Api\HomeController@vendor_detels');
 
 // verification-code/check
 
