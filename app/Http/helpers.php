@@ -50,6 +50,9 @@ function userdefult(){
         return request()->header('uuid');
     }
 }
+function add_space($text){
+   return str_replace('.\n-','<br>',$text);
+}
  function is_date($date){
     if (DateTime::createFromFormat('Y-m-d', $date) !== false) {
        return $date;
