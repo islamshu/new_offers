@@ -46,7 +46,7 @@ class HomeController extends BaseController
         $uuid = userdefult() ? userdefult(): 'jooy';
         $country_id = Enterprise::where('uuid',$uuid)->first()->counteire->first()->id;
       
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data'] = new CityCollection(City::where('country_id',$country_id)->where('status',1)->get());
         return $res;
     }
@@ -99,7 +99,7 @@ class HomeController extends BaseController
                         $q->where('category_id', $request->category_id);
                       });
             })->paginate($request->paginate);
-            $res['status']= $this->sendResponse('OK'); 
+            $res['status']= $this->sendResponse200('OK'); 
             $res['data']=new VendorOfferCollection($offer);
             return $res;
             
@@ -117,7 +117,7 @@ class HomeController extends BaseController
                         $q->where('category_id', $request->category_id);
                       });
             })->Where('is_flashdeal',1)->paginate($request->paginate);
-            $res['status']= $this->sendResponse('OK'); 
+            $res['status']= $this->sendResponse200('OK'); 
             $res['data']=new VendorOfferCollection($offer);
             return $res;
         }elseif($filtter == 'voucher'){
@@ -132,7 +132,7 @@ class HomeController extends BaseController
                         $q->where('category_id', $request->category_id);
                       });
             })->Where('is_voucher',1)->paginate($request->paginate);
-            $res['status']= $this->sendResponse('OK'); 
+            $res['status']= $this->sendResponse200('OK'); 
             $res['data']=new VendorOfferCollection($offer);
             return $res;
         }elseif($filtter == 'vendor'){
@@ -141,7 +141,7 @@ class HomeController extends BaseController
               })->with('cities')->whereHas('cities', function ($q) use ($request) {
                 $q->where('city_id', $request->city_id);
               })->paginate($request->paginate);
-              $res['status']= $this->sendResponse('OK'); 
+              $res['status']= $this->sendResponse200('OK'); 
 
               $res['data']=new VendorForOfferCollection($vendors);
               return $res;
@@ -152,7 +152,7 @@ class HomeController extends BaseController
     {
       $vendor = Vendor::find($request->store_id);
       if($vendor){
-        $res['status']= $this->sendResponse('OK'); 
+        $res['status']= $this->sendResponse200('OK'); 
 
         $res['data']['store']=new VendorDetiesResourses($vendor);
         return $res;
@@ -161,20 +161,20 @@ class HomeController extends BaseController
     public function vendor_branches(Request $request)
     {
       $stores = Branch::where('vendor_id',$request->store_id)->paginate($request->paginate);
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']['branches']=new VendorBranchesNewCollection($stores);
       return $res;  
     }
     public function vendor_offers(Request $request)
     {
       $stores = Offer::where('vendor_id',$request->store_id)->paginate($request->paginate);
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=new VendorOfferDeCollection($stores);
       return $res;  
     }
     public function vendor_reviews(Request $request){
       $reive =VendorReview::where('vendor_id',$request->store_id)->paginate($request->paginate);
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=new VendorReviewsNewCollection($reive);
       return $res;  
     }
@@ -192,7 +192,7 @@ class HomeController extends BaseController
       array_push($datad,$data);
      }
      
-     $res['status']= $this->sendResponse('OK'); 
+     $res['status']= $this->sendResponse200('OK'); 
      $res['data']['stores']=$datad ;
 
         return $res;
@@ -202,7 +202,7 @@ class HomeController extends BaseController
     }
     public function get_support(Request $request){
       $suport = Support::where('user_id',auth()->id())->get();
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=SupportResourses::collection($suport) ;
       return $res;
     }
@@ -213,7 +213,7 @@ class HomeController extends BaseController
       $suport->message = $request->message;
       $suport->type = $request->type;
       $suport->save();
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=[
         ''=>''
       ];
@@ -236,7 +236,7 @@ class HomeController extends BaseController
       $contact->message = $request->message;
       // dd($contact);
       $contact->save();
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=[
         ''=>''
       ];
@@ -244,7 +244,7 @@ class HomeController extends BaseController
     }
     public function profile(){
       $user = User::find(auth()->id());
-      $res['status']= $this->sendResponse('OK'); 
+      $res['status']= $this->sendResponse200('OK'); 
       $res['data']=[
         'name'=>$user->name,
         'email'=>$user->email,
