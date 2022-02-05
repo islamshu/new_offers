@@ -87,7 +87,7 @@ class HomeController extends BaseController
         if($filtter == 'offer'){
             $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
               $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
-                $q->where('enterprise', get_enterprose_uuid(userdefult()));
+                $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
               });
                 $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                        $q->where('city_id', $request->city_id);
