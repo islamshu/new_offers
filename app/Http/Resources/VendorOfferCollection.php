@@ -18,7 +18,7 @@ class VendorOfferCollection extends ResourceCollection
             'count' => $this->count(),
             'total' => $this->total(),
             'prev'  => $this->previousPageUrl(),
-            'next'  => $this->nextPageUrl(), 
+            'next'  => $this->appends(request()->input())->nextPageUrl(), 
             'offers' =>VendorOfferResourses::collection($this->collection),
         ];
     }
