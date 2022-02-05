@@ -306,7 +306,7 @@ class branchController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            // dd($e);
+            dd($e);
 
             return response()->json(['icon' => 'error', 'title' =>'error when insert data'], 400);
 
