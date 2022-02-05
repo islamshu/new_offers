@@ -18,7 +18,7 @@ class FavoritOfferCollection extends ResourceCollection
             'count' => $this->count(),
             'total' => $this->total(),
             'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends($request)->nextPageUrl(),  
+            'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'offers' =>FavoritOfferResourses::collection($this->collection),
         ];
     }
