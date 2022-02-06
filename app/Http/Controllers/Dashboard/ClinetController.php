@@ -46,9 +46,9 @@ class ClinetController extends Controller
             $clinets = Clinet::get();
             $type ='client';
 
-        }elseif($type == 'paid'){
+        }elseif($type == 'PREMIUM'){
             $clinets = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
-                $q->where('type_paid','paid');
+                $q->where('type_paid','PREMIUM');
             })->get();
             $type ='subs';
 
