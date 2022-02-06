@@ -20,6 +20,7 @@ class VendorOfferCollection extends ResourceCollection
             'prev'  => $this->appends(request()->input())->previousPageUrl(), 
             'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'offers' =>VendorOfferResourses::collection($this->collection),
+            'category_slider_images'=>[],
         ];
     }
 }
