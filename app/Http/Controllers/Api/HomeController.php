@@ -259,7 +259,6 @@ class HomeController extends BaseController
   }
   public function popup_ad(Request $request)
   {
-dd('d');
     $poition = $request->position;
     if ($poition == 'home') {
       $pop = Popup::where('show_as', 'home');
