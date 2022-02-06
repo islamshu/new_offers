@@ -109,10 +109,20 @@ class VendorOfferResourses extends JsonResource
                return $array;
 
             } else {
-                return nl2br($data->terms_en);
+                $array = [];
+                $items = explode('-',$data->terms_en);
+             foreach($items as $key=>$i){
+                array_push($array,$items[$key]);
+              }
+                return $array;
             }
         } else {
-            return nl2br($data->terms_en);
+            $array = [];
+            $items = explode('-',$data->terms_en);
+         foreach($items as $key=>$i){
+            array_push($array,$items[$key]);
+          }
+            return $array;
         }
     }
 }
