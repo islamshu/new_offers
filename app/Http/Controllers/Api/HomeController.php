@@ -11,7 +11,6 @@ use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResourses;
 use App\Http\Resources\CityCollection;
 use App\Http\Resources\HomeSLiderCollection;
-use App\Http\Resources\PopupCollection;
 use App\Http\Resources\PopupResoures;
 use App\Http\Resources\SliderCollection;
 use App\Http\Resources\StoresCollection;
@@ -297,7 +296,7 @@ class HomeController extends BaseController
     }
     
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['popup_ads'] =  PopupCollection::collection($data_show);
+    $res['data']['popup_ads'] = new PopupResoures($data_show);
      
     return $res;
   }
