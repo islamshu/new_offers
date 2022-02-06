@@ -114,7 +114,6 @@ class VendorOfferResourses extends JsonResource
              foreach($items as $key=>$i){
                 array_push($array,$items[$key]);
               }
-              dd($array);
                 return $array;
             }
         } else {
