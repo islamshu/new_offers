@@ -19,6 +19,7 @@ class BranchResourses extends JsonResource
             'name' => $this->get_lang($this),
             'phone' => $this->phone,
             'distance' => @$this->get_dinstance($this, $request),
+            'address_id'=>$this->id,
             'address' => $this->address($this),
             'lang_lat'=>$this->lang_lat($this)
         ];

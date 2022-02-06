@@ -28,6 +28,7 @@ Route::get('how-it-work', 'Api\PageController@works');
 Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
+Route::get('store/branches', 'Api\HomeController@vendor_branches');
 
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
@@ -37,7 +38,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('offer-favorite-add-or-delete', 'Api\FavoritController@AddOrRemoveOfferFavorit');
         Route::get('offer-favorite', 'Api\FavoritController@offer_favorite');
         // Route::get('vendor', 'Api\HomeController@vendor_detels');
-        Route::get('store/branches', 'Api\HomeController@vendor_branches');
         Route::get('store/offers', 'Api\HomeController@vendor_offers');
         Route::get('store/reviews', 'Api\HomeController@vendor_reviews');
         Route::get('nearby-partners', 'Api\HomeController@nearby_partners');
