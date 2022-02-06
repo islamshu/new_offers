@@ -100,12 +100,12 @@ class VendorOfferResourses extends JsonResource
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
-                return $data->terms_ar;
+                return nl2br($data->terms_ar);
             } else {
-                return $data->terms_en;
+                return nl2br($data->terms_en);
             }
         } else {
-            return $data->terms_en;
+            return nl2br($data->terms_en);
         }
     }
 }
