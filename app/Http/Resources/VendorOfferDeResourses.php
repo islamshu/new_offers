@@ -19,7 +19,6 @@ class VendorOfferDeResourses extends JsonResource
     {
         return[
             'id'=>$this->id,
-            
             'name'=>$this->lang_name($this),
             'details'=>$this->lang_details($this),
             'terms'=>$this->lang_terms($this),
@@ -47,6 +46,10 @@ class VendorOfferDeResourses extends JsonResource
             'flash_deal'=> $this->is_flashdeal,
             'voucher'=> $this->is_voucher,
             'store_id'=> $this->vendor_id ,
+            'is_limited_period_between_redeems'=> 0,
+            'period_limit_between_redeems'=> null,
+            'last_use'=> $this->Timetofferuse($this),
+            'uses_no'=>  $this->Counttofferuse($this),
             'distance'=>@$this->get_dinstance($this,$request),
             'store'=> new VendorForOfferResourses($this->vendor)  ,
         ];
@@ -58,6 +61,23 @@ class VendorOfferDeResourses extends JsonResource
         }else{
             return null;
         }
+    }
+    public function Counttofferuse($data)
+    {
+        if (auth('client_api')->check()) {
+            $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->count();
+            return $trans;
+              }else{
+                  return null;
+              } 
+    }
+    public function Timetofferuse($data){
+        if (auth('client_api')->check()) {
+            $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->orderBy('id','desc')->first();
+            return $trans->created_at;
+              }else{
+                  return null;
+              }
     }
     public function get_dinstance($data,$request)
     {
