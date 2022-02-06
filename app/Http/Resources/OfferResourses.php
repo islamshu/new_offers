@@ -19,15 +19,24 @@ class OfferResourses extends JsonResource
        'id'=>$this->id,
        'name'=>$this->lang_name($this),
        'image'=>asset('images/primary_offer/'.@$this->offerimage->primary_image),
-       'type'=>$this->offertype->offer_type,
+       'type'=>$this->typeoffer($this),
        'before_price'=>$this->offertype->price_befor_discount,
        'price'=> $this->offertype->price != null ? $this->offertype->price : 0 ,
-       'percentage'=>$this->offertype->offer_type != null ? $this->offertype->discount_value : 0,
+       'percentage'=>$this->offertype->discount_value != null ? $this->offertype->discount_value : 0,
        'flash_deal'=> (int)$this->is_flashdeal,
        'voucher'=> (int)$this->is_voucher,
        'store_id'=> $this->vendor_id ,
        'store'=> new VendorResourses($this->vendor)  ,
         ];
+    }
+    public function typeoffer($data){
+        if($data->offertype->offer_type =='buyOneGetOne'){
+            return 'buy_1_get_1';
+        }elseif($data->offertype->offer_type =='special_discount'){
+            return 'special_discount';
+        }elseif($data->offertype->offer_type =='general_offer'){
+            return 'general_discount';
+        }
     }
     public function lang_name($data)
     {
