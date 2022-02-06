@@ -273,7 +273,7 @@ class HomeController extends BaseController
         
         if ($data_show->num_show == 'once') {
           $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
-          dd('d', $show);
+          dd('d');
           if (!$show) {
             $poop = new PopupUser();
             $poop->client_id = auth('client_api')->id();
