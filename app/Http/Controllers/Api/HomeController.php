@@ -261,15 +261,13 @@ class HomeController extends BaseController
   {
     $poition = $request->position;
     if ($poition == 'home') {
-      $pop = Popup::where('show_as', 'home');
+      $data_show = Popup::where('show_as', 'home')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first;
     } elseif ($poition == 'store') {
-      $pop = Popup::where('show_as', 'brand');
+      $data_show = Popup::where('show_as', 'brand')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
     } elseif ($poition == 'category') {
-      $pop = Popup::where('show_as', 'category');
+      $data_show = Popup::where('show_as', 'category')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
     }
-    $pop->where('end_date', '<', Carbon::now()->format('Y-m-d'));
-    $data_show = $pop->first();
-
+    dd($data_show);
     if (auth('client_api')->check()) {
       if ($data_show->num_show != 'every_time') {
         if ($data_show->num_show == 'once') {
@@ -295,6 +293,7 @@ class HomeController extends BaseController
         }
       }
     }
+    
     $res['status'] = $this->sendResponse200('OK');
     $res['data']['data'] = new PopupResoures($data_show);
      
