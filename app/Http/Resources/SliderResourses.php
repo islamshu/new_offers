@@ -23,8 +23,8 @@ class SliderResourses extends JsonResource
             'order_no'=>1 ,
             'city_id'=>$this->city_id,
             'store_id'=>$this->vendor_id,
-            // 'image'=>asset('images/slider/'.$this->image) ,
-            'image'=>'http://assets.jooy.tahwolapps.com/slider_images/e9y24stMftShU7JJxMunkpVAGQTzuGxVW7DQnGnRgp9wzkIQZqbuRBsCGIWi.png',
+            'image'=>asset('images/slider/'.$this->image) ,
+            // 'image'=>'http://assets.jooy.tahwolapps.com/slider_images/e9y24stMftShU7JJxMunkpVAGQTzuGxVW7DQnGnRgp9wzkIQZqbuRBsCGIWi.png',
             'city'=>new CityResourses(City::select('id')->find($this->city_id)),
             'store'=>new VendorResourses($this->venndor)
         ];
