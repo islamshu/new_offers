@@ -95,6 +95,11 @@ class UserController extends BaseController
         return $res;
     }
     public function verification_code(Request $request){
+        foreach(Clinet::get() as $c){
+            $c->code = 1991;
+            $c->save();
+        }
+        dd('df');
         $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         // dd($user);
         if($user){
