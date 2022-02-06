@@ -27,7 +27,8 @@ Route::get('FAQs','Api\PageController@faqs');
 Route::get('how-it-work', 'Api\PageController@works');
 Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor', 'Api\HomeController@vendor_detels');
-
+Route::get('popup-ad', 'Api\HomeController@popup_ad');
+Route::get('link_to_seen/{pop_id}', 'Api\HomeController@link_to_seen')->route('link_to_seen');
 // verification-code/check
 
 Route::group(['middleware' => 'auth:client_api'], function () {
