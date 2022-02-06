@@ -22,7 +22,7 @@ class VendorForOfferResourses extends JsonResource
             'logo' => asset('images/brand/' . @$this->image),
             'cover' => asset('images/brand/' . @$this->cover_image),
             'is_favorite' => @$this->is_fav($this),
-            'is_top'=>@$this->is_top,
+            'is_top'=>0,
             'distance'=>@$this->get_dinstance($this,$request) ? @$this->get_dinstance($this,$request) : 0,
         ];
     }
