@@ -96,7 +96,8 @@ class VendorOfferResourses extends JsonResource
     }
     public function lang_terms($data)
     {
-        dd($data->terms_ar);
+        $datass = explode('-',$data->terms_ar);
+        dd($datass);
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
