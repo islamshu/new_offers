@@ -107,6 +107,7 @@ class HomeController extends BaseController
       })->paginate($request->paginate);
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
+      $res['data']['category_slider_images'] = [];
       return $res;
     } elseif ($filtter == 'flash_deal') {
       $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
