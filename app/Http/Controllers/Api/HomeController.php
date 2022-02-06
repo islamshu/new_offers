@@ -268,35 +268,35 @@ class HomeController extends BaseController
       $pop = Popup::where('show_as', 'category');
     }
     $pop->where('end_date', '<', Carbon::now()->format('Y-m-d'));
-    dd($pop,$pop->first());
+    $data_show = $pop->first();
 
     if (auth('client_api')->check()) {
-      if ($pop->num_show != 'every_time') {
-        if ($pop->num_show == 'once') {
-          $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $this->id)->first();
+      if ($data_show->num_show != 'every_time') {
+        if ($data_show->num_show == 'once') {
+          $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
           if (!$show) {
             $poop = new PopupUser();
             $poop->client_id = auth('client_api')->id();
-            $poop->popup_id = $pop->id;
+            $poop->popup_id = $data_show->id;
             $poop->save();
           }
-        } elseif ($pop->num_show == 'hour') {
+        } elseif ($data_show->num_show == 'hour') {
           $show = PopupUser::where(
             'created_at',
             '>',
-            Carbon::now()->subHours($pop->number_of_hour)->toDateTimeString()
+            Carbon::now()->subHours($data_show->number_of_hour)->toDateTimeString()
           )->first();
           if (!$show) {
             $poop = new PopupUser();
             $poop->client_id = auth('client_api')->id();
-            $poop->popup_id = $pop->id;
+            $poop->popup_id = $data_show->id;
             $poop->save();
           }
         }
       }
     }
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['data'] = new PopupResoures($pop);
+    $res['data']['data'] = new PopupResoures($data_show);
      
     return $res;
   }
