@@ -261,7 +261,7 @@ class HomeController extends BaseController
   {
     $poition = $request->position;
     if ($poition == 'home') {
-      $data_show = Popup::where('show_as', 'home')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first;
+      $data_show = Popup::where('show_as', 'home')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
     } elseif ($poition == 'store') {
       $data_show = Popup::where('show_as', 'brand')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
     } elseif ($poition == 'category') {
