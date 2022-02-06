@@ -72,6 +72,7 @@ class VendorOfferDeResourses extends JsonResource
               } 
     }
     public function Timetofferuse($data){
+        dd($data);
         if (auth('client_api')->check()) {
             $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->orderBy('id','desc')->first();
            dd($trans);
