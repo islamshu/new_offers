@@ -15,8 +15,8 @@ class VendorBranchesNewCollection extends ResourceCollection
     public function toArray($request)
     {
     
-        return[
-           BranchResourses::collection($this->collection),
-        ];
+        return
+           BranchResourses::collection($this->collection);
+        
     }
 }
