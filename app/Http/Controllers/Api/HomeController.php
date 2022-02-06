@@ -73,7 +73,6 @@ class HomeController extends BaseController
     // dd($enterprice);
     if (!$enterprice) {
       $res['status'] = $this->sendError();
-      $res['meessage'] = 'Enterprise not found';
       return  $res;
     }
     $res['status'] = $this->sendResponse200('OK');
@@ -164,7 +163,6 @@ class HomeController extends BaseController
       return $res;
     }else{
       $res['status']=$this->sendError();
-      $res['meessage'] = 'vendor not fount';
       return  $res;
     }
   }
@@ -311,7 +309,6 @@ class HomeController extends BaseController
        
     }else{
       $res['status'] = $this->SendError('OK');
-      $res['meessage'] = 'not found';
      
     }
    
