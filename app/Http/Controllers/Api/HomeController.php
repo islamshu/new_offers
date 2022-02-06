@@ -259,13 +259,13 @@ class HomeController extends BaseController
   }
   public function popup_ad(Request $request)
   {
-    $poition = $request->position;
-    if ($poition == 'home') {
-      $data_show = Popup::where('show_as', 'home')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
-    } elseif ($poition == 'store') {
-      $data_show = Popup::where('show_as', 'brand')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
-    } elseif ($poition == 'category') {
-      $data_show = Popup::where('show_as', 'category')->where('end_date', '<', Carbon::now()->format('Y-m-d'))->first();
+    $position = $request->position;
+    if ($position == 'home') {
+      $data_show = Popup::where('show_as', 'home')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
+    } elseif ($position == 'store') {
+      $data_show = Popup::where('show_as', 'brand')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
+    } elseif ($position == 'category') {
+      $data_show = Popup::where('show_as', 'category')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     }
     dd($data_show);
     if (auth('client_api')->check()) {
