@@ -96,13 +96,17 @@ class VendorOfferResourses extends JsonResource
     }
     public function lang_terms($data)
     {
-        $datass = explode('-',$data->terms_ar);
-        dd($datass);
+        
+    
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
-                $text =  nl2br($data->terms_ar);
-                str_replace("<br />","**",$text );
+                $array = [];
+                $datass = explode('-',$data->terms_ar);
+                foreach($datass as $d){
+                    dd($d);
+                }
+
             } else {
                 return nl2br($data->terms_en);
             }
