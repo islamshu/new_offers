@@ -104,8 +104,8 @@ class VendorOfferResourses extends JsonResource
                 $array = [];
                $items = explode('-',$data->terms_ar);
             foreach($items as $key=>$i){
-                dd($items[0]);
-            }
+               array_push($array,$items[$key]);
+             }
                return $array;
 
             } else {
