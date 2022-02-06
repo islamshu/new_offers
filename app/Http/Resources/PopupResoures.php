@@ -36,7 +36,7 @@ class PopupResoures extends JsonResource
             'expire_date' => $this->end_date,
             'seen' => $this->seen($this),
             'store' => new VendorResourses(Vendor::find($this->vendor_id)),
-            'category' => new CategoryResourses(Category::find($this->category_id)),
+            'category' => new CategoryResourses(Category::find($this->categoty_id)),
         ];
     }
     public function seen($data)
