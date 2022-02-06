@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\FavoritOffer;
+use App\Models\Transaction;
 use App\Models\Vendor;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -29,8 +30,8 @@ class VendorOfferResourses extends JsonResource
             'before_price'=>$this->offertype->price_befor_discount,
             'price'=> $this->offertype->price != null ? $this->offertype->price : 0 ,
             'percentage'=>$this->offertype->discount_value != null ? $this->offertype->discount_value : 0,
-            'client_usage_times'=>$this->check($this->usege_member) ,
-            'total_usage_times'=> $this->check($this->usege_system),
+            'client_usage_times'=>$this->usege_member ,
+            'total_usage_times'=> $this->check($this),
             'limit_period_duration'=>null,
             'limit_period_duration'=>null,
             'limit_period_unit'=>null,
@@ -49,7 +50,8 @@ class VendorOfferResourses extends JsonResource
     }
     public function check($data){
         if (auth('client_api')->check()) {
-            return $data;
+      $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->count();
+      return $trans;
         }else{
             return null;
         }
