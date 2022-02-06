@@ -270,8 +270,7 @@ class HomeController extends BaseController
     if (auth('client_api')->check()) {
     
       if ($data_show->num_show != 'every_time') {
-        dd($data_show->num_show);
-        if ($data_show->num_show == 'once') {
+        if ($data_show->num_show == 'ones') {
           $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
           
           if (!$show) {
