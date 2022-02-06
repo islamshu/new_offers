@@ -24,7 +24,7 @@ class VendorOfferResourses extends JsonResource
             'terms'=>$this->lang_terms($this),
             'image'=>asset('images/primary_offer/'.@$this->offerimage->primary_image),
             'type'=>$this->typeoffer($this),
-            'membership_type'=>ucwords($this->member_type),
+            'membership_type'=>strtoupper($this->member_type),
             'start_date'=>$this->start_time,
             'expire_date'=>$this->end_time,
             'before_price'=>$this->offertype->price_befor_discount,
@@ -49,7 +49,7 @@ class VendorOfferResourses extends JsonResource
         ];
     }
     public function check($data){
-        dd(ucwords('as'));
+        dd(strtoupper('as'));
         if (auth('client_api')->check()) {
       $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->count();
       return $trans;
