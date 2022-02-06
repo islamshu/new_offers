@@ -20,15 +20,18 @@ class BranchResourses extends JsonResource
             'phone' => $this->phone,
             'distance' => @$this->get_dinstance($this, $request),
             'address_id'=>$this->id,
+            'coordinate_id'=>$this->id,
             'address' => $this->address($this),
-            'lang_lat'=>$this->lang_lat($this)
+            'coordinate'=>$this->lang_lat($this)
+         
         ];
     }
     public function lang_lat($data)
     {
        return[
-           'latitude'=>$data->latitude,
-           'longitude'=>$data->longitude,
+           'id'=>$this->id,
+           'latitude'=>floatval($data->latitude),
+           'longitude'=>floatval($data->longitude),
        ];
     }
     public function address($data)
@@ -39,13 +42,18 @@ class BranchResourses extends JsonResource
                 return [
                     'country' => @$this->city->country->country_name_en,
                     'city' => @$this->city->city_name_english,
-                    'neighborhood' => @$this->neighborhood->neighborhood_name_english,
+                    'district' => @$this->neighborhood->neighborhood_name_english,
+                    'street'=>$this->street_en,
+                    'details'=>null
                 ];
             } else {
                 return [
                     'country' => @$this->city->country->country_name_ar,
                     'city' => @$this->city->city_name,
                     'neighborhood' => @$this->neighborhood->neighborhood_name,
+                    'street'=>$this->street,
+                    'details'=>null
+
                 ];
             }
         } else {
