@@ -268,8 +268,9 @@ class HomeController extends BaseController
       $data_show = Popup::where('show_as', 'category')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     }
     if (auth('client_api')->check()) {
-      dd('d');
+    
       if ($data_show->num_show != 'every_time') {
+        dd('d');
         if ($data_show->num_show == 'once') {
           $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
           
