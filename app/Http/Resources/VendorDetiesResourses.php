@@ -30,7 +30,7 @@ class VendorDetiesResourses extends JsonResource
             'facebook'=>@$this->additinal->facebook,
             'twitter'=>@$this->additinal->twitter,
             'instagram'=>@$this->additinal->instagram,
-            'is_pin_required'=>$this->is_pincode,
+            'is_pin_required'=>(int)$this->is_pincode,
             'open_from'=>@$this->additinal->open,
             'close_from'=>@$this->additinal->close,
             'is_favorite'=>$this->is_fav($this),
