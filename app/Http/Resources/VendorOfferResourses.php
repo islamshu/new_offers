@@ -102,8 +102,8 @@ class VendorOfferResourses extends JsonResource
         if ($lang != null) {
             if ($lang  == 'ar') {
                 $array = [];
-                array_push($array,$data->terms_ar);
-                dd($array);
+               $items = explode('\n',$data->terms_ar);
+               dd($items);
                return $array;
 
             } else {
