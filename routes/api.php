@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('store-favorite', 'Api\FavoritController@store_favorite');
         Route::post('offer-favorite-add-or-delete', 'Api\FavoritController@AddOrRemoveOfferFavorit');
         Route::get('offer-favorite', 'Api\FavoritController@offer_favorite');
-        Route::get('vendor', 'Api\HomeController@vendor_detels');
+        // Route::get('vendor', 'Api\HomeController@vendor_detels');
         Route::get('store/branches', 'Api\HomeController@vendor_branches');
         Route::get('store/offers', 'Api\HomeController@vendor_offers');
         Route::get('store/reviews', 'Api\HomeController@vendor_reviews');
