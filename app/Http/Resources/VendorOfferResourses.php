@@ -30,7 +30,7 @@ class VendorOfferResourses extends JsonResource
             'before_price'=>$this->offertype->price_befor_discount,
             'price'=> $this->offertype->price != null ? $this->offertype->price : 0 ,
             'percentage'=>$this->offertype->discount_value != null ? $this->offertype->discount_value : 0,
-            'client_usage_times'=>$this->usege_member  == 'unlimt' ? null : (int)$this->usage_member_number ,
+            'client_usage_times'=>$this->usege_member  == 'unlimit' ? null : (int)$this->usage_member_number ,
             'total_usage_times'=> $this->check($this),
             'limit_period_duration'=>null,
             'limit_period_duration'=>null,
@@ -49,6 +49,7 @@ class VendorOfferResourses extends JsonResource
         ];
     }
     public function check($data){
+        dd(ucwords('as'));
         if (auth('client_api')->check()) {
       $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->count();
       return $trans;
