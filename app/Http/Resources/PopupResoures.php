@@ -45,7 +45,7 @@ class PopupResoures extends JsonResource
             if($data->num_show =='every_time'){
                 return 0;
             }else{
-                if($data->num_show == 'ones'){
+                if($data->num_show == 'once'){
                     $show = PopupUser::where('client_id',auth('client_api')->id())->where('popup_id',$this->id)->first();
                     if($show){
                         return 1;

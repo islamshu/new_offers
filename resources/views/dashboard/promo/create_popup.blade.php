@@ -105,7 +105,7 @@
                     <select class="form-control form-control-solid restricted" name="num_show" id="num_show">
                         <option value="" selected disabled>{{'chose'}}</option>
 
-                        <option value="ones">{{ __('ones') }}</option>
+                        <option value="once">{{ __('once') }}</option>
                         <option value="every_time">{{ __('every_time') }}</option>
                         <option value="hour">{{ __('hour') }}</option>
 
