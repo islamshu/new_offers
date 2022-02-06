@@ -49,7 +49,6 @@ class VendorOfferResourses extends JsonResource
         ];
     }
     public function check($data){
-        dd(strtoupper('as'));
         if (auth('client_api')->check()) {
       $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->count();
       return $trans;
