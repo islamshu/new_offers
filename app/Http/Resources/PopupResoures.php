@@ -7,9 +7,9 @@ use App\Models\Popup;
 use App\Models\PopupUser;
 use App\Models\Vendor;
 use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class PopupResoures extends JsonResource
+class PopupResoures extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
