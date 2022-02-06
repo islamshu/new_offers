@@ -23,7 +23,7 @@ class VendorDetiesResourses extends JsonResource
             'description'=>$this->lang_details($this),
             'policy'=>$this->lang_policy($this),
             'logo'=> asset('images/brand/'.$this->image),
-            'cover'=>asset('images/vendor_cover/'.@$this->vendor_image->first()->image),
+            // 'cover'=>asset('images/vendor_cover/'.@$this->vendor_image->first()->image),
             'email'=>@$this->user->email,
             'phone'=>@$this->user->phone,
             'website'=>@$this->additinal->website,
