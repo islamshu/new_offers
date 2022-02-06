@@ -18,7 +18,6 @@ class VendorOfferResourses extends JsonResource
     {
         return[
             'id'=>$this->id,
-            
             'name'=>$this->lang_name($this),
             'details'=>$this->lang_details($this),
             'terms'=>$this->lang_terms($this),
