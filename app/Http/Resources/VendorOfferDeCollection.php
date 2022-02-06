@@ -15,10 +15,10 @@ class VendorOfferDeCollection extends ResourceCollection
     public function toArray($request)
     {
         return[
-            'count' => $this->count(),
-            'total' => $this->total(),
-            'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends(request()->input())->nextPageUrl(),  
+            // 'count' => $this->count(),
+            // 'total' => $this->total(),
+            // 'prev'  => $this->appends(request()->input())->previousPageUrl(), 
+            // 'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'offers' =>VendorOfferDeResourses::collection($this->collection),
         ];
     }
