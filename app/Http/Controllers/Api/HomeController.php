@@ -154,9 +154,10 @@ class HomeController extends BaseController
   }
   public  function vendor_detels(Request $request)
   {
-    dd('ff');
+
     $vendor = Vendor::find($request->store_id);
     if ($vendor) {
+      dd($vendor);
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
