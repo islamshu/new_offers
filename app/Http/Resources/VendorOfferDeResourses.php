@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\FavoritOffer;
+use App\Models\Transaction;
 use App\Models\Vendor;
 use Illuminate\Http\Resources\Json\JsonResource;
 
