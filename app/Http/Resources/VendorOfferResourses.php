@@ -97,11 +97,11 @@ class VendorOfferResourses extends JsonResource
     public function lang_terms($data)
     {
         
-    
+        $array = [];
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
-                $array = [];
+             
                $items = explode('-',$data->terms_ar);
             foreach($items as $key=>$i){
                array_push($array,$items[$key]);
@@ -109,7 +109,7 @@ class VendorOfferResourses extends JsonResource
                return $array;
 
             } else {
-                $array = [];
+               
                 $items = explode('-',$data->terms_en);
              foreach($items as $key=>$i){
                 array_push($array,$items[$key]);
@@ -118,7 +118,7 @@ class VendorOfferResourses extends JsonResource
                 return $array;
             }
         } else {
-            $array = [];
+          
             $items = explode('-',$data->terms_en);
          foreach($items as $key=>$i){
             array_push($array,$items[$key]);
