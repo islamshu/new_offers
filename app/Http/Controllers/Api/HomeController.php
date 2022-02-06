@@ -296,7 +296,7 @@ class HomeController extends BaseController
     }
     
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['data'] = new PopupResoures($data_show);
+    $res['data']['popup_ads'] =  PopupResoures::collection($data_show);
      
     return $res;
   }
