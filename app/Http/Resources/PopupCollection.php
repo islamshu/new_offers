@@ -14,7 +14,7 @@ class PopupCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return PopupResoures::collection($this->collection);
+        return CategoryResourses::collection($this->collection);
 
     }
 }
