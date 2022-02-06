@@ -29,8 +29,8 @@ class VendorOfferResourses extends JsonResource
             'before_price'=>$this->offertype->price_befor_discount,
             'price'=> $this->offertype->price != null ? $this->offertype->price : 0 ,
             'percentage'=>$this->offertype->discount_value != null ? $this->offertype->discount_value : 0,
-            'client_usage_times'=> $this->usege_member,
-            'total_usage_times'=> $this->usege_system,
+            'client_usage_times'=>$this->check($this->usege_member) ,
+            'total_usage_times'=> $this->check($this->usege_system),
             'limit_period_duration'=>null,
             'limit_period_duration'=>null,
             'limit_period_unit'=>null,
@@ -46,6 +46,13 @@ class VendorOfferResourses extends JsonResource
             'distance'=>@$this->get_dinstance($this,$request),
             'store'=> new VendorForOfferResourses($this->vendor)  ,
         ];
+    }
+    public function check($data){
+        if (auth('client_api')->check()) {
+            return $data;
+        }else{
+            return null;
+        }
     }
     public function get_dinstance($data,$request)
     {
