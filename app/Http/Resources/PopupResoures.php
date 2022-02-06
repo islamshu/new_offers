@@ -27,7 +27,7 @@ class PopupResoures extends JsonResource
             'content_type' => $this->type_show,
             'content_text' => $this->text,
             'content_image' => asset('images/popup/' . $this->image),
-            'show_in' => $this->show_for($this),
+            'show_in' => 'store',
             'go_to' => null,
             'subscription_status' => $this->show_as($this),
             'show_for' => $this->num_show,
