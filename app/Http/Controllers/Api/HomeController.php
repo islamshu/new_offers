@@ -157,11 +157,15 @@ class HomeController extends BaseController
 
     $vendor = Vendor::find($request->store_id);
     if ($vendor) {
-      dd($vendor);
+      
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
       return $res;
+    }else{
+      $res['status']=$this->sendError();
+      $res['meessage'] = 'not found Store';
+      return  $res;
     }
   }
   public function vendor_branches(Request $request)
