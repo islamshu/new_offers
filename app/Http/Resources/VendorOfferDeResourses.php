@@ -74,11 +74,10 @@ class VendorOfferDeResourses extends JsonResource
     public function Timetofferuse($data){
         if (auth('client_api')->check()) {
             $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->orderBy('id','desc')->first();
-            dd($trans);
             if($trans){
                 return $trans->created_at;
             }else{
-                return $trans->created_at;
+                return null;
             }
               }else{
                   return null;
