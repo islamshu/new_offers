@@ -164,7 +164,7 @@ class HomeController extends BaseController
       return $res;
     }else{
       $res['status']=$this->sendError();
-      $res['meessage'] = 'not found Store';
+      $res['meessage'] = 'vendor not fount';
       return  $res;
     }
   }
@@ -275,49 +275,50 @@ class HomeController extends BaseController
     } elseif ($position == 'category') {
       $data_show = Popup::where('show_as', 'category')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     }
-    if (auth('client_api')->check()) {
-    dd(auth('client_api')->id());
-      if ($data_show->num_show != 'every_time') {
-        if ($data_show->num_show == 'once') {
-          $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
-          
-          if (!$show) {
-            $poop = new PopupUser();
-            $poop->client_id = auth('client_api')->id();
-            $poop->popup_id = $data_show->id;
-            $poop->save();
-          }
-        } elseif ($data_show->num_show == 'hour') {
-          $show = PopupUser::where(
-            'created_at',
-            '>',
-            Carbon::now()->subHours($data_show->number_of_hour)->toDateTimeString()
-          )->first();
-          if (!$show) {
-            $poop = new PopupUser();
-            $poop->client_id = auth('client_api')->id();
-            $poop->popup_id = $data_show->id;
-            $poop->save();
+    if($data_show){
+      if (auth('client_api')->check()) {
+    
+        if ($data_show->num_show != 'every_time') {
+          if ($data_show->num_show == 'once') {
+            $show = PopupUser::where('client_id', auth('client_api')->id())->where('popup_id', $data_show->id)->first();
+            
+            if (!$show) {
+              $poop = new PopupUser();
+              $poop->client_id = auth('client_api')->id();
+              $poop->popup_id = $data_show->id;
+              $poop->save();
+            }
+          } elseif ($data_show->num_show == 'hour') {
+            $show = PopupUser::where(
+              'created_at',
+              '>',
+              Carbon::now()->subHours($data_show->number_of_hour)->toDateTimeString()
+            )->first();
+            if (!$show) {
+              $poop = new PopupUser();
+              $poop->client_id = auth('client_api')->id();
+              $poop->popup_id = $data_show->id;
+              $poop->save();
+            }
           }
         }
+      
       }
-    }
-    
-
-   if($data_show){
-    $res['status'] = $this->sendResponse200('OK');
-    $array = [];
-  
-    array_push($array, new PopupResoures($data_show));
-    $res['data']['popup_ads'] = $array;
+      $res['status'] = $this->sendResponse200('OK');
+      $array = [];
+      array_push($array, new PopupResoures($data_show));
+      $res['data']['popup_ads'] = $array;
+       
+    }else{
+      $res['status'] = $this->SendError('OK');
+      $res['meessage'] = 'not found';
      
- 
-  }else{
-    $res['status']=$this->sendError();
-    $res['meessage'] = 'not found popup';
-  
+    }
+   
+    
+   
+    return $res;
   }
-  return  $res;
 
-}
+
 }
