@@ -5,24 +5,28 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\PageCollection;
 use App\Http\Resources\PageResoures;
+use App\Models\About;
+use App\Models\Privacy;
 use App\Models\SystemInfo;
+use App\Models\Termis;
 
 class PageController extends BaseController
 {
     public function privacy(){
-        $res['status']= $this->sendResponse('OK');
-        $res['data']['privacy_policy'] = new PageResoures(SystemInfo::find(1));
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['privacy_policy'] = new PageCollection(Privacy::get());
         return $res;  
     }
     public function terms(){
-        $res['status']= $this->sendResponse('OK');
-        $res['data']['term_and_condition'] = new PageResoures(SystemInfo::find(2));
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['term_and_condition'] = new PageCollection(Termis::get());
         return $res;  
     }
     public function abouts(){
-        $res['status']= $this->sendResponse('OK');
-        $res['data']['about_us'] = new PageResoures(SystemInfo::find(3));
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['about_us'] = new PageCollection(About::get());
         return $res;  
     }
     public function faqs(){
