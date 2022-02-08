@@ -15,8 +15,9 @@ class PageResoures extends JsonResource
     public function toArray($request)
     {
         return[
-            'name'=> $this->lang_name($this),
-            'description'=> $this->lang_body($this),
+            'id'=>$this->id,
+            'title'=> $this->lang_name($this),
+            'content'=> $this->lang_body($this),
         ];
     }
     public function lang_name($data){

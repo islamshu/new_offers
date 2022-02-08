@@ -12,22 +12,22 @@ class PageController extends BaseController
 {
     public function privacy(){
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new PageResoures(SystemInfo::find(1));
+        $res['data']['privacy_policy'] = new PageResoures(SystemInfo::find(1));
         return $res;  
     }
     public function terms(){
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new PageResoures(SystemInfo::find(2));
+        $res['data']['term_and_condition'] = new PageResoures(SystemInfo::find(2));
         return $res;  
     }
     public function abouts(){
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new PageResoures(SystemInfo::find(3));
+        $res['data']['about_us'] = new PageResoures(SystemInfo::find(3));
         return $res;  
     }
     public function faqs(){
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new PageResoures(SystemInfo::find(4));
+        $res['data']['FAQS'] = new PageResoures(SystemInfo::find(4));
         return $res;  
     }
     public function works(){
