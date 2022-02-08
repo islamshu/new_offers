@@ -14,7 +14,7 @@ class HowItWorkController extends Controller
      */
     public function index()
     {
-        $works = HowItWork::fisrt();
+        $works = HowItWork::first();
         return view('dashboard.pages.how_works')->with('work',$works);
     }
 
