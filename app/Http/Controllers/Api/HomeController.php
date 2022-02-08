@@ -139,17 +139,18 @@ class HomeController extends BaseController
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
       return $res;
-    } elseif ($filtter == 'vendor') {
-      $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
-        $q->where('country_id', $request->country_id);
-      })->with('cities')->whereHas('cities', function ($q) use ($request) {
-        $q->where('city_id', $request->city_id);
-      })->paginate($request->paginate);
-      $res['status'] = $this->sendResponse200('OK');
+    } 
+  }
+  public function vendor_store_list(Request $request){
+    $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
+      $q->where('country_id', $request->country_id);
+    })->with('cities')->whereHas('cities', function ($q) use ($request) {
+      $q->where('city_id', $request->city_id);
+    })->paginate($request->paginate);
+    $res['status'] = $this->sendResponse200('OK');
 
-      $res['data'] = new VendorForOfferCollection($vendors);
-      return $res;
-    }
+    $res['data'] = new VendorForOfferCollection($vendors);
+    return $res;
   }
   public  function vendor_detels(Request $request)
   {
