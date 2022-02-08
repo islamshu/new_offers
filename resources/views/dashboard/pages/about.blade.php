@@ -27,7 +27,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($privacy as $item)
+        @foreach ($about as $item)
         
         
          <tr>
