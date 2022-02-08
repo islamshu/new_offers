@@ -17,7 +17,7 @@ class WorkResoures extends JsonResource
         return[
             'id'=>$this->id,
             'title'=> $this->lang_name($this),
-            'video'=> $this->lang_body($this),
+            'video'=> $this->link,
         ];
     }
     public function lang_name($data){
