@@ -5,7 +5,7 @@
 
     <div class="card-header">
         <h3 class="card-title">
-            Create Privacy
+            Privacy 
         </h3>
         <div class="card-toolbar">
             <div class="example-tools justify-content-center">
@@ -14,6 +14,7 @@
             </div>
         </div>
     </div>
+    <div>
     <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
     id="kt_datatable">
     <thead>
@@ -45,6 +46,7 @@
     </tbody>
  
 </table>
+</div>
     <form class="form" method="post" method="{{ route('privacy.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
