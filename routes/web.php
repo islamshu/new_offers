@@ -151,6 +151,7 @@ Route::group([
         Route::get('change_color', 'Dashboard\PremotionController@change_color')->name('change_color');
         Route::resource('privacy', 'PrivacyController');
         Route::resource('about_us', 'AboutController');
+        Route::resource('termis', 'TermisController');
 
         
         
