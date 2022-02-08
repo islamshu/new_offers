@@ -23,17 +23,17 @@
               
                 <div class="form-group col-md-6">
                     <label> {{ __('title ar') }} :</label>
-                    <input type="text" name="title_ar" id="name_ar" class="form-control form-control-solid"
+                    <input type="text" value="{{ @$work->title_ar }}" name="title_ar" id="name_ar" class="form-control form-control-solid"
                         placeholder="Enter Title" required />
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('title en') }} :</label>
-                    <input type="text" name="title_en" id="name_en" class="form-control form-control-solid"
+                    <input type="text" value="{{ @$work->title_en }}" name="title_en" id="name_en" class="form-control form-control-solid"
                         placeholder="Enter Title" required />
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Video') }} :</label>
-                    <input type="text" name="link" id="link" class="form-control form-control-solid"
+                    <input type="text" value="{{ @$work->link }}" name="link" id="link" class="form-control form-control-solid"
                     placeholder="Enter Title" required />
                 </div>
                
