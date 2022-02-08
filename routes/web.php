@@ -152,6 +152,7 @@ Route::group([
         Route::resource('privacy', 'PrivacyController');
         Route::resource('about_us', 'AboutController');
         Route::resource('termis', 'TermisController');
+        Route::resource('How-it-work', 'HowItWorkController');
 
         
         
