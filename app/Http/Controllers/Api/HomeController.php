@@ -91,6 +91,10 @@ class HomeController extends BaseController
   {
 
     $filtter = $request->filter;
+    
+    $page = $request->has('page') ? $request->get('page') : 1;
+    $limit = $request->has('limit') ? $request->get('limit') : 10;
+
     //  dd(userdefult());
     if ($filtter == 'offer') {
       $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
@@ -106,10 +110,11 @@ class HomeController extends BaseController
         $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->paginate($request->paginate);
+      })->limit($limit)->offset(($page - 1) * $limit)->get()->toArray();
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
    
+      
       // $res['data']['category_slider_images'] = ;
       return $res;
     } elseif ($filtter == 'flash_deal') {
