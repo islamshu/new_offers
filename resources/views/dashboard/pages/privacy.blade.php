@@ -14,6 +14,37 @@
             </div>
         </div>
     </div>
+    <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
+    id="kt_datatable">
+    <thead>
+        <tr class="fw-bold fs-6 text-gray-800">
+            <th>{{ __('sort') }}</th>
+            <th>{{ __('title') }}</th>
+            <th>{{ __('content') }}</th>
+          
+            {{-- <th>Actions</th> --}}
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($privacy as $item)
+        
+        
+         <tr>
+             {{-- {{ dd($item) }} --}}
+             
+             
+           
+            <td>{{$item->sort}}</td>
+            <td>{{$item->title_ar}}</td>
+            <td>{!! $item->content_ar !!}</td>
+           
+       
+            @endforeach
+
+
+    </tbody>
+ 
+</table>
     <form class="form" method="post" method="{{ route('privacy.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
