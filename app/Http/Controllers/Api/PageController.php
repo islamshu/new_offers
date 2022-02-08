@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\PageCollection;
 use App\Http\Resources\PageResoures;
+use App\Http\Resources\WorkResoures;
 use App\Models\About;
+use App\Models\HowItWork;
 use App\Models\Privacy;
 use App\Models\SystemInfo;
 use App\Models\Termis;
@@ -36,7 +38,7 @@ class PageController extends BaseController
     }
     public function works(){
         $res['status']= $this->sendResponse('OK');
-        $res['data'] = new PageResoures(SystemInfo::find(5));
+        $res['data']['how_it_work'] = new WorkResoures(HowItWork::first());
         return $res;  
     }
 }
