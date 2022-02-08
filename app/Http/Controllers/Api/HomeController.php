@@ -168,7 +168,7 @@ class HomeController extends BaseController
       $res['data']['branches'] = new BranchCollection($vendor->branches) ;
       $res['data']['store_reviews'] = new VendorReviewCollection($vendor->review) ;
       $res['data']['cart'] = null;
-      $res['other']['server_current_time'] = Carbon::now()->format('Y/m/d H:i:s');
+      $res['other']['server_current_time'] = Carbon::now()->format('Y-m-d H:i:s');
 
       return $res;
     }else{
