@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <form class="form" method="post" method="{{ route('privacy.store') }}" enctype="multipart/form-data">
+    <form class="form" method="post" method="{{ route('privacy.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="row">
