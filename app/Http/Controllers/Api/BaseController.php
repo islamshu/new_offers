@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller as Controller;
 class BaseController extends Controller  
 {
 
+    public function SendDeleteRquest($status)
+    {
+        $response = ['status' => true ,'HTTP_code'=>410,'HTTP_response'=>'Gone'];
+        return $response;   
+    }
     public function sendResponse($status){   
         $response = ['status' => true ,'HTTP_code'=>201,'HTTP_response'=>$status];
         return $response;    

@@ -36,7 +36,9 @@ Route::get('store/branches', 'Api\HomeController@vendor_branches');
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
         Route::get('client/info', 'Api\UserController@user_info');
-        Route::post('store-favorite-add-or-delete', 'Api\FavoritController@AddOrRemoveStoreFavorit');
+        Route::post('store-favorite/create', 'Api\FavoritController@store_to_favorate');
+        Route::delete('store-favorite/delete', 'Api\FavoritController@AddOrRemoveStoreFavorit');
+
         Route::get('store-favorite', 'Api\FavoritController@store_favorite');
         Route::post('offer-favorite-add-or-delete', 'Api\FavoritController@AddOrRemoveOfferFavorit');
         Route::get('offer-favorite', 'Api\FavoritController@offer_favorite');

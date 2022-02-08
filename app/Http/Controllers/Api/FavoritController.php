@@ -14,28 +14,33 @@ use App\Models\Vendor;
 
 class FavoritController extends BaseController
 {
-    public function AddOrRemoveStoreFavorit(Request $request)
+    public function store_to_favorate(Request $request)
     {
         $vendor = Vendor::find($request->vendor_id);
         if ($vendor) {
-            $fav =  FavoritVendor::where('user_id', auth()->id())->where('vendor_id', $request->vendor_id)->first();
-            if ($fav) {
-                $fav->delete();
-                $res['status'] = $this->sendResponse('Deleted');
-                $res['data'][''] = "";
-            } else {
+          
                 $fav = new FavoritVendor();
-                $fav->user_id = auth()->id();
-                $fav->vendor_id = $request->vendor_id;
+                $fav->user_id = auth('client_api')->id();
+                $fav->vendor_id = $request->store_id;
                 $fav->save();
                 $res['status'] = $this->sendResponse('Created');
                 $res['data'][''] = "";
-            }
-            return $res;
+            
+        
         } else {
             $res['status'] = $this->SendError();
-            return $res;
+            
         }
+        return $res;
+    }
+    
+    public function delete_from_favorate(Request $request)
+    {
+        $vendor = Vendor::find($request->vendor_id);
+
+        FavoritVendor::where('user_id',auth('client_api')->id())->where('vendor_id',$request->store_id)->first()->delete();
+        $res['status'] = $this->SendDeleteRquest();
+        return $res;
     }
     public function store_favorite(Request $request)
     {
