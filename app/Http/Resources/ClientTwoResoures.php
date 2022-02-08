@@ -21,7 +21,7 @@ class ClientTwoResoures extends JsonResource
             'email'=>$this->email,
             'phone'=>(int)$this->phone,
             'gender'=>(int)$this->gender,
-            'birth_date'=>(string)$this->birth_date,
+            'birth_date'=>(string)$this->birth_date->format('Y-m-d'),
             'image'=>asset($this->image),
             'nationality'=>$this->nationality,
             'is_complete'=>(int)$this->is_complete,
