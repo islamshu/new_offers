@@ -14,7 +14,7 @@ class PrivacyController extends Controller
     public function index()
     {
 
-        return view('dashboard.pages.privacy',compact('privacy',Privacy::get()));
+        return view('dashboard.pages.privacy')->with('privacy',Privacy::get());
     }
 
     /**
