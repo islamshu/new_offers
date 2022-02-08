@@ -22,6 +22,7 @@ use App\Http\Resources\VendorForOfferCollection;
 use App\Http\Resources\VendorForOfferResourses;
 use App\Http\Resources\VendorOfferCollection;
 use App\Http\Resources\VendorOfferDeCollection;
+use App\Http\Resources\VendorOfferDenewCollection;
 use App\Http\Resources\VendorReviewCollection;
 use App\Http\Resources\VendorReviewResourses;
 use App\Http\Resources\VendorReviewsNewCollection;
@@ -163,7 +164,7 @@ class HomeController extends BaseController
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
-      $res['data']['offer'] = new VendorOfferDeCollection($vendor->offers) ;
+      $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers) ;
       $res['data']['branches'] = new BranchCollection($vendor->branches) ;
       $res['data']['store_reviews'] = new VendorReviewCollection($vendor->review) ;
       $res['data']['cart'] = null;
