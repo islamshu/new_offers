@@ -39,11 +39,8 @@ class VendorDetiesResourses extends JsonResource
             'store_covers'=>new VendorCoverCollection($this->vendor_image),
             'store_seen'=>$this->store_seen($this),
             'store_total_review'=>@$this->store_total_review($this),
-            'offers'=>new VendorOfferDeCollection($this->offers)  ,
             'branches'=> new BranchCollection($this->branches),
             'store_reviews'=>new  VendorReviewCollection($this->review)
-            
-
         ];
     }
     public function store_total_review($data)

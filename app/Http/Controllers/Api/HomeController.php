@@ -7,6 +7,7 @@ use App\Http\Resources\CountryCollection;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\BranchCollection;
 use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResourses;
 use App\Http\Resources\CityCollection;
@@ -21,6 +22,7 @@ use App\Http\Resources\VendorForOfferCollection;
 use App\Http\Resources\VendorForOfferResourses;
 use App\Http\Resources\VendorOfferCollection;
 use App\Http\Resources\VendorOfferDeCollection;
+use App\Http\Resources\VendorReviewCollection;
 use App\Http\Resources\VendorReviewResourses;
 use App\Http\Resources\VendorReviewsNewCollection;
 use App\Models\Branch;
@@ -161,6 +163,12 @@ class HomeController extends BaseController
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
+      $res['data']['offer'] = new VendorOfferDeCollection($vendor->offers) ;
+      $res['data']['branches'] = new BranchCollection($vendor->branches) ;
+      $res['data']['store_reviews'] = new VendorReviewCollection($vendor->review) ;
+      $res['data']['cart'] = null;
+      $res['other']['server_current_time'] = Carbon::now();
+
       return $res;
     }else{
       $res['status']=$this->sendError();

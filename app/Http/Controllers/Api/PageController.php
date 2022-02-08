@@ -23,7 +23,7 @@ class PageController extends BaseController
     }
     public function terms(){
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['term_and_condition'] = new PageCollection(Termis::get());
+        $res['data']['term_and_conditions'] = new PageCollection(Termis::get());
         return $res;  
     }
     public function abouts(){
