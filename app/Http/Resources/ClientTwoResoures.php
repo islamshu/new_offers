@@ -17,7 +17,7 @@ class ClientTwoResoures extends JsonResource
     public function toArray($request)
     {
         return [
-            'name'=>$this->username,
+            'name'=>$this->name,
             'email'=>$this->email,
             'phone'=>(int)$this->phone,
             'gender'=>(int)$this->gender,
