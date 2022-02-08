@@ -89,7 +89,7 @@ class UserController extends BaseController
         $user->gender = $request->gender;
         $user->birth_date = $request->birth_date;
         $user->save();
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data']['client'] = new ClientTwoResoures($user);
 
 
