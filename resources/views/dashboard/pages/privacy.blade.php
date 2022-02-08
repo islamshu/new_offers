@@ -36,8 +36,14 @@
              
            
             <td>{{$item->sort}}</td>
+            @if(app()->getLocale() == 'ar')
+
             <td>{{$item->title_ar}}</td>
             <td>{!! $item->content_ar !!}</td>
+            @else 
+            <td>{{$item->title_en}}</td>
+            <td>{!! $item->content_en !!}</td>
+            @endif
            
        
             @endforeach
