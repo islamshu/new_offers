@@ -90,7 +90,9 @@ class UserController extends BaseController
         $user->birth_date = $request->birth_date;
         $user->save();
         $res['status']= $this->sendResponse('OK');
-        $res['data'][""] = "";
+        $res['data']['client'] = new ClientTwoResoures($user);
+
+
 
         return $res;
     }
