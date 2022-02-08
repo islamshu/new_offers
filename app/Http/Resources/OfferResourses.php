@@ -18,6 +18,8 @@ class OfferResourses extends JsonResource
         return[
        'id'=>$this->id,
        'name'=>$this->lang_name($this),
+       'details'=>$this->details($this),
+       'terms'=>$this->lang_terms($this),
        'image'=>asset('images/primary_offer/'.@$this->offerimage->primary_image),
        'type'=>$this->typeoffer($this),
        'before_price'=>$this->offertype->price_befor_discount,
@@ -28,6 +30,49 @@ class OfferResourses extends JsonResource
        'store_id'=> $this->vendor_id ,
        'store'=> new VendorResourses($this->vendor)  ,
         ];
+    }
+    public function details($data){
+        $lang = request()->header('Lang');
+        if ($lang != null) {
+            if ($lang  == 'ar') {
+                return $data->desc_ar;
+            } else {
+                return $data->desc_en;
+            }
+        } else {
+            return $data->desc_en;
+        } 
+    }
+    public function lang_terms($data)
+    {
+        
+        $array = [];
+        $lang = request()->header('Lang');
+        if ($lang != null) {
+            if ($lang  == 'ar') {
+             
+               $items = explode('-',$data->terms_ar);
+            foreach($items as $key=>$i){
+               array_push($array,$items[$key]);
+             }
+               return $array;
+
+            } else {
+               
+                $items = explode('-',$data->terms_en);
+             foreach($items as $key=>$i){
+                array_push($array,$items[$key]);
+              }
+                return $array;
+            }
+        } else {
+          
+            $items = explode('-',$data->terms_en);
+         foreach($items as $key=>$i){
+            array_push($array,$items[$key]);
+          }
+            return $array;
+        }
     }
     public function typeoffer($data){
         if($data->offertype->offer_type =='buyOneGetOne'){
