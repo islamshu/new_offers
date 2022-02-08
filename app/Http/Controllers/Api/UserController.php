@@ -130,8 +130,8 @@ class UserController extends BaseController
         $user = auth('client_api')->user();
         $user->image = $request->image->store('client/image');
         $user->save();
-        $res['status']= $this->sendResponse('OK');
-        $res['data'][""] = "";
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
     public function update_city(Request $request){
@@ -144,8 +144,8 @@ class UserController extends BaseController
         }
         $user->city_id = $request->city_id;
         $user->save();
-        $res['status']= $this->sendResponse('OK');
-        $res['data'][""] = "";
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
 }
