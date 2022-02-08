@@ -150,6 +150,7 @@ Route::group([
         Route::post('create_offer', 'Dashboard\PremotionController@create_offer')->name('create_offer');
         Route::get('change_color', 'Dashboard\PremotionController@change_color')->name('change_color');
         Route::resource('privacy', 'PrivacyController');
+        Route::resource('about_us', 'AboutController');
 
         
         
