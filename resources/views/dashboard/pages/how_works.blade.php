@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Video') }} :</label>
-                    <input type="text" link="link" id="link" class="form-control form-control-solid"
+                    <input type="text" name="link" id="link" class="form-control form-control-solid"
                     placeholder="Enter Title" required />
                 </div>
                
