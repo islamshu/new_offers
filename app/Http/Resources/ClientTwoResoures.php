@@ -33,7 +33,7 @@ class ClientTwoResoures extends JsonResource
             'is_family'=>(int)$this->is_family,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no,
-            // 'status'=>$this->status == 'active' ? 1 : 0 ,
+            'status'=>$this->status == 'active' ? 1 : 0 ,
             'country'=>new CountryResoures(Country::find($this->country_id)),
             'city' => new CityResoures(City::find($this->city_id)),
         

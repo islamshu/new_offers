@@ -120,6 +120,11 @@ class UserController extends BaseController
     }
     public function user_info()
     {
+        foreach(Clinet::get() as $c){
+            $c->country_id = 1;
+            $c->save();
+        }
+
         $user = auth('client_api')->user();
        
         $res['status']= $this->sendResponse200('OK');
