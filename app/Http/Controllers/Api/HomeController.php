@@ -93,7 +93,7 @@ class HomeController extends BaseController
     $filtter = $request->filter;
     
     $page = $request->has('page') ? $request->get('page') : 1;
-    $limit = $request->has('limit') ? $request->get('limit') : 10;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
 
     //  dd(userdefult());
     if ($filtter == 'offer') {
