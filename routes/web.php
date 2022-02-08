@@ -149,7 +149,7 @@ Route::group([
         Route::get('offer_slider/{id}/{city_id}', 'Dashboard\PremotionController@offer_slider')->name('offer_slider');
         Route::post('create_offer', 'Dashboard\PremotionController@create_offer')->name('create_offer');
         Route::get('change_color', 'Dashboard\PremotionController@change_color')->name('change_color');
-        Route::resource('privacy', 'PrivacyController@privacy');
+        Route::resource('privacy', 'PrivacyController');
 
         
         
