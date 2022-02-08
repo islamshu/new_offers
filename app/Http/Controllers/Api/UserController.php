@@ -123,7 +123,6 @@ class UserController extends BaseController
       
 
         $user = auth('client_api')->user();
-        dd($user);
        
         $res['status']= $this->sendResponse200('OK');
         $res['data']['client'] = new ClientTwoResoures($user);
