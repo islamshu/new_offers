@@ -15,10 +15,6 @@ class VendorOfferCollection extends ResourceCollection
     public function toArray($request)
     {
         return[
-            'count' => $this->count(),
-            'total' => $this->total(),
-            'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'offers' =>VendorOfferResourses::collection($this->collection),
             'category_slider_images'=>[],
         ];
