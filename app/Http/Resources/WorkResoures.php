@@ -15,8 +15,7 @@ class WorkResoures extends JsonResource
     public function toArray($request)
     {
         return[
-            'id'=>$this->id,
-            'title'=> $this->lang_name($this),
+            'description'=> $this->lang_name($this),
             'video'=> $this->link,
         ];
     }
