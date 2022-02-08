@@ -38,11 +38,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Content ar') }} :</label>
-                    <textarea name="content_ar" class="form-control" required id="" cols="30" rows="10"></textarea>
+                    <textarea name="content_ar" class="form-control" required id="" cols="30" rows="5"></textarea>
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Content en') }} :</label>
-                    <textarea name="content_en" class="form-control" required id="" cols="30" rows="10"></textarea>
+                    <textarea name="content_en" class="form-control" required id="" cols="30" rows="5"></textarea>
                 </div>
                 <div class="form-group col-md-3">
                     <label>{{ __('sort') }} :</label>
