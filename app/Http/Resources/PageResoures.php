@@ -37,13 +37,13 @@ class PageResoures extends JsonResource
         $lang = request()->header('Lang');
         if($lang != null){
             if($lang  =='ar'){
-                return $data->body_ar;
+                return $data->content_ar;
             }else{
-                return $data->body_en;
+                return $data->content_en;
   
             }
         }else{
-            return $data->body_ar;
+            return $data->content_ar;
         }
     }
 }
