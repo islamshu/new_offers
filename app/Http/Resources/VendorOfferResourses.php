@@ -46,7 +46,7 @@ class VendorOfferResourses extends JsonResource
             'is_limited_period_between_redeems'=> 0,
             'period_limit_between_redeems'=> null,
             // 'last_use'=> $this->Timetofferuse($this),
-            'uses_no'=>  $this->Counttofferuse($this),
+            // 'uses_no'=>  $this->Counttofferuse($this),
             'distance'=>@$this->get_dinstance($this,$request),
             'store'=> new VendorForOfferResourses($this->vendor)  ,
         ];
