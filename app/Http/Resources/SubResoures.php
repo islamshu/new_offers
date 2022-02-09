@@ -16,7 +16,7 @@ class SubResoures extends JsonResource
     public function toArray($request)
     {
         return [
-            'type'=>$this->type_of_subscribe,
+            'type'=>$this->type_of_subscribe != null ? $this->type_of_subscribe : 'FREE',
             'points_no'=>$this->points_no,
             'store_points_no'=>$this->store_points_no,
             'offers_saving'=>$this->offers_saving,
@@ -28,8 +28,8 @@ class SubResoures extends JsonResource
             'expire_date'=>$this->expire_date,
             'start_date'=>$this->start_date,
             'is_unlimited'=>$this->is_unlimited,
-            'is_trial'=>$this->is_trial,
-            'is_family'=>$this->is_family,
+            'is_trial'=>$this->is_trial != null ? $this->is_trial : 0,
+            'is_family'=>$this->is_family != null ? $this->is_family : 0,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no,
         
