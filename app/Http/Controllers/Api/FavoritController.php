@@ -16,7 +16,7 @@ class FavoritController extends BaseController
 {
     public function store_to_favorate(Request $request)
     {
-        $vendor = Vendor::find($request->vendor_id);
+        $vendor = Vendor::find($request->store_id);
         if ($vendor) {
           
                 $fav = new FavoritVendor();
@@ -29,7 +29,6 @@ class FavoritController extends BaseController
         
         } else {
             $res['status'] = $this->SendError();
-            
         }
         return $res;
     }
