@@ -49,6 +49,7 @@ class UserController extends BaseController
             $user->code = 1991;
             $user->image = 'default.jpeg';
             $user->country_id = 1;
+            $user->type_of_subscribe = 'FREE';
             $uuid = 'jooy';
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
