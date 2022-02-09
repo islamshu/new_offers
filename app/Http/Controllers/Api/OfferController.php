@@ -54,7 +54,7 @@ class OfferController extends BaseController
     }
     public function contact(){
         $socials = Social::get();
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data'] = new SocialCollection($socials);
         return $res;
     }
