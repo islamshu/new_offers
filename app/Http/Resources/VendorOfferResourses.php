@@ -19,11 +19,11 @@ class VendorOfferResourses extends JsonResource
     {
         return[
             'id'=>$this->offer->id,
-            'name'=>$this->offer->lang_name($this->offer),
-            'details'=>$this->offer->lang_details($this->offer),
-            'terms'=>$this->offer->lang_terms($this->offer),
+            'name'=>$this->lang_name($this->offer),
+            'details'=>$this->lang_details($this->offer),
+            'terms'=>$this->lang_terms($this->offer),
             'image'=>asset('images/primary_offer/'.@$this->offer->offerimage->primary_image),
-            'type'=>$this->offer->typeoffer($this->offer),
+            'type'=>$this->typeoffer($this->offer),
             'membership_type'=>strtoupper($this->offer->member_type),
             'start_date'=>$this->offer->start_time,
             'expire_date'=>$this->offer->end_time,
@@ -31,7 +31,7 @@ class VendorOfferResourses extends JsonResource
             'price'=> $this->offer->offertype->price != null ? $this->offer->offertype->price : 0 ,
             'percentage'=>$this->offer->offertype->discount_value != null ? $this->offer->offertype->discount_value : 0,
             'client_usage_times'=>$this->offer->usege_member  == 'unlimit' ? null : (int)$this->offer->usage_member_number ,
-            'total_usage_times'=> $this->offer->check($this->offer),
+            'total_usage_times'=> $this->check($this->offer),
             'limit_period_duration'=>null,
             'limit_period_duration'=>null,
             'limit_period_unit'=>null,
@@ -39,7 +39,7 @@ class VendorOfferResourses extends JsonResource
             'store_points_no'=>$this->offer->store_point,
             'is_general'=>0,
             'estimated_saving'=>0,
-            'is_favorite'=>$this->offer->is_fav($this->offer),
+            'is_favorite'=>$this->is_fav($this->offer),
             'flash_deal'=> (int)$this->offer->is_flashdeal,
             'voucher'=> (int)$this->offer->is_voucher,
             'store_id'=> $this->offer->vendor_id ,
@@ -47,7 +47,7 @@ class VendorOfferResourses extends JsonResource
             'period_limit_between_redeems'=> null,
             // 'last_use'=> $this->offer->Timetofferuse($this->offer),
             // 'uses_no'=>  $this->offer->Counttofferuse($this->offer),
-            'distance'=>@$this->offer->get_dinstance($this->offer,$request),
+            'distance'=>@$this->get_dinstance($this->offer,$request),
             'store'=> new VendorForOfferResourses($this->offer->vendor)  ,
         ];
     }
