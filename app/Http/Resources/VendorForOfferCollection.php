@@ -17,10 +17,6 @@ class VendorForOfferCollection extends ResourceCollection
     {
         $sliders = Slider::where('categoty_id',$request->category_id)->where('country_id',$request->country_id)->where('city_id',$request->city_id)->get();
         return [
-            'count' => $this->count(),
-            'total' => $this->total(),
-            'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends(request()->input())->nextPageUrl(),  
             'stores' =>VendorForOfferResourses::collection($this->collection),
             'category_slider_images' => new SliderCollection($sliders),
         ];
