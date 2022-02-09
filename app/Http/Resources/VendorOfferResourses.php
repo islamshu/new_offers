@@ -83,6 +83,7 @@ class VendorOfferResourses extends JsonResource
     }
     public function lang_name($data)
     {
+        dd($data->offer);
         $lang = request()->header('Lang');
         if ($lang != null) {
             if ($lang  == 'ar') {
