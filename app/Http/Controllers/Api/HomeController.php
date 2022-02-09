@@ -143,17 +143,22 @@ class HomeController extends BaseController
         $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->Where('is_voucher', 1)->paginate($request->paginate);
+        
+      })->Where('is_voucher', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
       return $res;
     } 
   }
   public function vendor_store_list(Request $request){
+    $page = $request->has('page') ? $request->get('page') : 1;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
     })->with('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
+    })->with('categorys')->whereHas('categorys', function ($q) use ($request) {
+      $q->where('category_id', $request->category_id);
     })->paginate($request->paginate);
     $res['status'] = $this->sendResponse200('OK');
 
