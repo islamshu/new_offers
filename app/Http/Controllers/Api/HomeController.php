@@ -157,8 +157,6 @@ class HomeController extends BaseController
       $q->where('category_id', $request->category_id);
     })->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
-    })->whereHas('cities', function ($q) use ($request) {
-      $q->where('city_id', $request->city_id);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     dd($vendors);
