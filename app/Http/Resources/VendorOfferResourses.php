@@ -139,6 +139,7 @@ class VendorOfferResourses extends JsonResource
         }
     }
     public function typeoffer($data){
+        dd($data);
         if($data->offertype->offer_type =='buyOneGetOne'){
             return 'buy_1_get_1';
         }elseif($data->offertype->offer_type =='special_discount'){
