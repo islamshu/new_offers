@@ -154,18 +154,17 @@ class HomeController extends BaseController
     $page = $request->has('page') ? $request->get('page') : 1;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::with(['categorys','counteire','cities'])
-    // ->whereHas('categorys', function ($q) use ($request) {
-    //   $q->where('category_id', $request->category_id);
-    // })
-    // ->whereHas('counteire', function ($q) use ($request) {
-    //   $q->where('country_id', $request->country_id);
-    // })
+    ->whereHas('categorys', function ($q) use ($request) {
+      $q->where('category_id', $request->category_id);
+    })
+    ->whereHas('counteire', function ($q) use ($request) {
+      $q->where('country_id', $request->country_id);
+    })
     ->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
     })
     ->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
-    dd($vendors);
 
     $res['data'] = new VendorForOfferCollection($vendors);
     return $res;
