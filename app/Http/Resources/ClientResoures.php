@@ -31,7 +31,8 @@ class ClientResoures extends JsonResource
             'is_employee'=>(int)$this->is_unlimited,
             'is_family'=>(int)$this->is_family,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
-            'actual_accounts_no'=>$this->actual_accounts_no != 0 ? $this->actual_accounts_no : null,
+                        'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no  
+ ,
             'status'=>$this->status == 'active' ? 1 : 0 ,
             'country'=>new CountryResoures(Country::find($this->country_id)),
             'city' => @$this->city->neglish_name,

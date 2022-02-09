@@ -31,7 +31,8 @@ class UserResoures extends JsonResource
             'is_employee'=>$this->is_unlimited,
             'is_family'=>$this->is_family,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
-            'actual_accounts_no'=>$this->actual_accounts_no != 0 ? $this->actual_accounts_no : null,
+            'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no  
+,
             'country'=>new CountryResoures(Country::find($this->country_id)),
             'city' => @$this->city->neglish_name,
             'subscription'=>new UserSubscription(@$this->sub->id)
