@@ -53,24 +53,31 @@ class FavoritController extends BaseController
     {
         $vendor = Offer::find($request->offer_id);
         if ($vendor) {
-            $fav =  FavoritOffer::where('user_id', auth()->id())->where('offer_id', $request->offer_id)->first();
-            if ($fav) {
-                $fav->delete();
-                $res['status'] = $this->sendResponse('Deleted');
-                $res['data'][''] = "";
-            } else {
-                $fav = new FavoritOffer();
-                $fav->user_id = auth()->id();
-                $fav->offer_id = $request->offer_id;
-                $fav->save();
-                $res['status'] = $this->sendResponse('Created');
-                $res['data'][''] = "";
-            }
-            return $res;
+            $fav = new FavoritOffer();
+            $fav->user_id = auth()->id();
+            $fav->offer_id = $request->offer_id;
+            $fav->save();
+            $res['status'] = $this->sendResponse('Created');
+            $res['data'][''] = "";
         } else {
+
             $res['status'] = $this->SendError();
             return $res;
         }
+    }
+    
+    public function OfferDeleteFovarit(Request $request)
+    {
+        $vendor = Offer::find($request->offer_id);
+      
+            $fav =  FavoritOffer::where('user_id', auth()->id())->where('offer_id', $request->offer_id)->first();
+        
+                $fav->delete();
+                $res['status'] = $this->sendResponse('Deleted');
+                $res['data'][''] = "";
+          
+            return $res;
+        
     }
     public function offer_favorite(Request $request)
     {
