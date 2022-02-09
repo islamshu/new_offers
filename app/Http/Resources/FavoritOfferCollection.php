@@ -15,11 +15,7 @@ class FavoritOfferCollection extends ResourceCollection
     public function toArray($request)
     {
         return[
-            'count' => $this->count(),
-            'total' => $this->total(),
-            'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends(request()->input())->nextPageUrl(),  
-            'offers' =>FavoritOfferResourses::collection($this->collection),
+            'offers' =>VendorOfferResourses::collection($this->collection),
         ];
     }
 }
