@@ -51,7 +51,6 @@ class FavoritController extends BaseController
     public function AddOrRemoveOfferFavorit(Request $request)
     {
         $vendor = Offer::find($request->offer_id);
-        dd(auth('client_api')->id());
         if ($vendor) {
             $fav = new FavoritOffer();
             $fav->user_id = auth('client_api')->id();
