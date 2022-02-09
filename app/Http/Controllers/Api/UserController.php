@@ -144,7 +144,7 @@ class UserController extends BaseController
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
         $trans = Transaction::where('client_id',auth('')->id())->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new TransactionCollection($trans);
+        $res['data']['transactions'] = new TransactionCollection($trans);
         return $res;
     }
     public function update_city(Request $request){
