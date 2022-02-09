@@ -42,14 +42,7 @@ class Vendor extends Model
     public function counteire()
     {
         return $this->belongsToMany(Country::class,'vendor_countries','vendor_id',  'country_id',);
-    }
-
-    /**
-     * The roles that belong to the Vendor
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-   
+    } 
     public function cities()
     {
         return $this->belongsToMany(City::class, 'vendor_cities','vendor_id', 'city_id');
@@ -58,7 +51,6 @@ class Vendor extends Model
     {
         return $this->belongsToMany(Currency::class, 'currencies_vendors', 'vendor_id', 'currency_id');
     }
- 
     public function categorys()
     {
         return $this->belongsToMany(Category::class, 'categories_vendors', 'vendor_id', 'category_id');
