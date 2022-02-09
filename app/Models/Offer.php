@@ -15,6 +15,10 @@ class Offer extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
+    public function offerfav()
+    {
+        return $this->hasMany(FavoritOffer::class, 'offer_id');
+    }
     public function offerday()
     {
         return $this->hasOne(Offerdays::class, 'offer_id');
