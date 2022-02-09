@@ -86,7 +86,6 @@ class FavoritController extends BaseController
         $fav = Offer::with('offerfav')->whereHas('offerfav', function ($q) use ($request) {
             $q->where('user_id',  auth('client_api')->id());
           })->limit($limit)->offset(($page - 1) * $limit)->get();
-          dd($fav);
         $res['status'] = $this->sendResponse('Ok');
         $res['data'] = new FavoritOfferCollection($fav);
         return $res;
