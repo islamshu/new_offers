@@ -43,7 +43,7 @@ class FavoritController extends BaseController
     }
     public function store_favorite(Request $request)
     {
-        $fav = FavoritVendor::where('user_id', auth()->id())->paginate($request->paginate);
+        $fav = FavoritVendor::where('user_id', auth('client_api')->id())->paginate($request->paginate);
         $res['status'] = $this->sendResponse('Ok');
         $res['data'] = new FavoritCollection($fav);
         return $res;
@@ -53,7 +53,7 @@ class FavoritController extends BaseController
         $vendor = Offer::find($request->offer_id);
         if ($vendor) {
             $fav = new FavoritOffer();
-            $fav->user_id = auth()->id();
+            $fav->user_id = auth('client_api')->id();
             $fav->offer_id = $request->offer_id;
             $fav->save();
             $res['status'] = $this->sendResponse('Created');
@@ -69,7 +69,7 @@ class FavoritController extends BaseController
     {
         $vendor = Offer::find($request->offer_id);
       
-            $fav =  FavoritOffer::where('user_id', auth()->id())->where('offer_id', $request->offer_id)->first();
+            $fav =  FavoritOffer::where('user_id', auth('client_api')->id())->where('offer_id', $request->offer_id)->first();
         
                 $fav->delete();
                 $res['status'] = $this->sendResponse('Deleted');
@@ -80,7 +80,7 @@ class FavoritController extends BaseController
     }
     public function offer_favorite(Request $request)
     {
-        $fav = FavoritOffer::where('user_id', auth()->id())->paginate($request->paginate);
+        $fav = FavoritOffer::where('user_id', auth('client_api')->id())->paginate($request->paginate);
         $res['status'] = $this->sendResponse('Ok');
         $res['data'] = new FavoritOfferCollection($fav);
         return $res;
