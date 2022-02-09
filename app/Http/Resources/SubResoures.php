@@ -28,8 +28,8 @@ class SubResoures extends JsonResource
             'expire_date'=>$this->expire_date,
             'start_date'=>$this->start_date,
             'is_unlimited'=>$this->is_unlimited,
-            'is_trial'=>$this->is_trial != null ? $this->is_trial : 0,
-            'is_family'=>$this->is_family != null ? $this->is_family : 0,
+            'is_trial'=>$this->is_trial != 0 ? $this->is_trial : null,
+            'is_family'=>$this->is_family != 0 ? $this->is_family : null,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no,
         
