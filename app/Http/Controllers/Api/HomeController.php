@@ -161,6 +161,7 @@ class HomeController extends BaseController
       $q->where('category_id', $request->category_id);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
+    dd($vendors);
 
     $res['data'] = new VendorForOfferCollection($vendors);
     return $res;
