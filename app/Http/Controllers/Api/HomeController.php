@@ -155,6 +155,8 @@ class HomeController extends BaseController
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
+    })->with('cities')->whereHas('cities', function ($q) use ($request) {
+      $q->where('city_id', $request->city_id);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     dd($vendors);
