@@ -8,11 +8,13 @@ use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\ClientResoures;
 use App\Http\Resources\ClientTwoResoures;
 use App\Http\Resources\SubResoures;
+use App\Http\Resources\TransactionCollection;
 use App\Http\Resources\UserResoures;
 use App\Models\City;
 use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\Offer;
+use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -134,6 +136,15 @@ class UserController extends BaseController
         $user->save();
         $res['status']= $this->sendResponse200('OK');
         $res['data']['client'] = new ClientTwoResoures($user);
+        return $res;
+    }
+    public function transactions(Request $request)
+    {
+        $page = $request->has('page') ? $request->get('page') : 1;
+        $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+        $trans = Transaction::where('client_id',auth('')->id())->limit($limit)->offset(($page - 1) * $limit)->get();
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['client'] = new TransactionCollection($trans);
         return $res;
     }
     public function update_city(Request $request){
