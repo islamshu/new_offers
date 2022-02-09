@@ -61,8 +61,9 @@ class FavoritController extends BaseController
         } else {
 
             $res['status'] = $this->SendError();
-            return $res;
+            
         }
+        return $res;
     }
     
     public function OfferDeleteFovarit(Request $request)
