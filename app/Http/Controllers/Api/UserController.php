@@ -161,4 +161,7 @@ class UserController extends BaseController
         $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
+    public function current_subscription(Request $request){
+        
+    }
 }
