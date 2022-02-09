@@ -153,8 +153,8 @@ class HomeController extends BaseController
   public function vendor_store_list(Request $request){
     $page = $request->has('page') ? $request->get('page') : 1;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $vendors = Vendor::with('categorys')->whereHas('categorys', function ($q) use ($request) {
-      $q->where('category_id', $request->category_id);
+    $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
+      $q->where('country_id', $request->country_id);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     dd($vendors);
