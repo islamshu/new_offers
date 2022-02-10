@@ -3,17 +3,16 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Code') }}</h2>
+            <a href="{{ route('export_code',['used', $code_id,  app()->getLocale()]) }}" class="btn btn-primary">{{ __('Export') }}</a>
+
 
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
                 id="kt_datatable">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
-
                         <th>{{ __('code') }}</th>
                         <th>{{ __('is used') }}</th>
-                     
-
                     </tr>
                 </thead>
                 <tbody>

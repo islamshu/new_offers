@@ -178,6 +178,7 @@ Route::group([
         Route::resource('code', 'Dashboard\CodeController');
         Route::get('used_code/{id}', 'Dashboard\CodeController@used_code')->name('used_code');
         Route::get('not_used_code/{id}', 'Dashboard\CodeController@not_used_code')->name('not_used_code');
+        Route::get('export_code/{type_used}/{id}', 'Dashboard\CodeController@export_code')->name('export_code');
 
         Route::resource('discount_code', 'Dashboard\DiscountController');   
         Route::post('update-discount/{id}', 'Dashboard\DiscountController@update_code')->name('update-code.discountcode');

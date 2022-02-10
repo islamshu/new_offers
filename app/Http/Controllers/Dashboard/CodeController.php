@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Exports\NotUsedCodeExport;
+use App\Exports\UsedCodeExport;
 use App\Http\Controllers\Controller;
 
 
@@ -9,6 +11,7 @@ use App\Models\Code;
 use App\Models\CodeSubscription;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CodeController extends Controller
 {
@@ -150,8 +153,18 @@ class CodeController extends Controller
     {
         $code = Code::find($id);
         $codes=  CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->get();
-        return view('dashboard.code.show_code',compact('codes'));
+        $code_id = $code->sub_id;
+        return view('dashboard.code.show_code',compact('codes','code_id'));
     }
+    public function export_code($locale,$type_used,$sub_id)
+    {
+        if($type_used == 'used'){
+            return Excel::download(new UsedCodeExport($sub_id), 'used_code.xlsx');
+        }else{
+            return Excel::download(new NotUsedCodeExport($sub_id), 'not_used_code.xlsx');
+        }
+    }
+   
 
     /**
      * Show the form for editing the specified resource.
