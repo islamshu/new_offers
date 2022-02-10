@@ -137,7 +137,8 @@ class CodeController extends Controller
      */
     public function show($locale,Code $code)
     {
-        dd($code);
+      $codes=  CodeSubscription::where('sub_id',$code->sub_id)->get();
+      return view('dashboard.code.show_code',compact($codes));
     }
 
     /**
