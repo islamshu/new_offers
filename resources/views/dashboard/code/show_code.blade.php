@@ -10,6 +10,7 @@
             <a href="{{ route('export_code',[app()->getLocale(),'not', $code_id]) }}" class="btn btn-primary">{{ __('Export') }}</a>
 
             @endif
+            @endif
 
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
