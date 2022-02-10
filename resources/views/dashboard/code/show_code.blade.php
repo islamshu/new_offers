@@ -4,16 +4,12 @@
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Code') }}</h2>
             @if(Route::currentRouteName() == 'used_code' || Route::currentRouteName() == 'not_used_code' )
-            @php
-                if(Route::currentRouteName() == 'used_code'){
-                    $used = 'used';
-                }else{
-                    $used == 'not';
-                }
-            @endphp
-          
+            @if(Route::currentRouteName() == 'used_code')
             <a href="{{ route('export_code',[app()->getLocale(),'used', $code_id]) }}" class="btn btn-primary">{{ __('Export') }}</a>
-                @endif
+            @else
+            <a href="{{ route('export_code',[app()->getLocale(),'not', $code_id]) }}" class="btn btn-primary">{{ __('Export') }}</a>
+
+            @endif
 
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
