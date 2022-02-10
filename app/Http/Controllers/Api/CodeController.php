@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\PakegeResourses;
 use App\Models\Code;
 use App\Models\CodePermfomed;
 use App\Models\CodeSubscription;
@@ -32,6 +33,7 @@ class CodeController extends BaseController
         
         if(!$code){
             $res['status']= $this->SendError();
+            
             return $res;
         }
         $count = Subscriptions_User::where('clinet_id',auth('client_api')->id())->where('sub_id',$code->id)->count();
@@ -62,7 +64,10 @@ class CodeController extends BaseController
         $codesub->is_used = 1;
         $codesub->save();
         $res['status']= $this->sendResponse('OK');
-        $res['data'][""] = "";
+        $res['status']['title']= "";
+        $res['status']['message']= "";
+
+        $res['data']["package"] =new PakegeResourses($code);
         return $res;
     }
     public function redeem(Request $request){
