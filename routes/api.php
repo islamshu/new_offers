@@ -28,6 +28,7 @@ Route::get('how-it-work', 'Api\PageController@works');
 Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor-store-list', 'Api\HomeController@vendor_store_list');
 Route::get('store/offers', 'Api\HomeController@vendor_offers');
+Route::get('search', 'Api\OfferController@search');
 
 
 Route::get('vendor', 'Api\HomeController@vendor_detels');
@@ -55,7 +56,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('offer', 'Api\OfferController@offerDetiles');
         Route::get('package', 'Api\OfferController@package');
         Route::get('contact', 'Api\OfferController@contact');
-        Route::get('search', 'Api\OfferController@search');
         Route::post('contact-us-support-message', 'Api\HomeController@post_support');
         Route::get('contact-us-support-message', 'Api\HomeController@get_support');
         Route::post('contact/create', 'Api\HomeController@contact_us');
