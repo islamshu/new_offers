@@ -24,7 +24,7 @@ class PakegeCollection extends ResourceCollection
                 'unit'=>$this->expire_date_type($data),
                 'duration'=>$this->duration($data),
                 'is_unlimited'=>$data->number_of_dayes == null ? 1 : 0,
-                'coupons_no'=> null,
+                'coupons_no'=> $data->balance,
                 'stc_payment_link'=> null,
                 'payfort_payment_link'=> null,
                 
