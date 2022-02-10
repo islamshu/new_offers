@@ -3,7 +3,7 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Code') }}</h2>
-            <a href="{{ route('export_code',['used', $code_id,  app()->getLocale()]) }}" class="btn btn-primary">{{ __('Export') }}</a>
+            <a href="{{ route('export_code',[app()->getLocale(),'used', $code_id]) }}" class="btn btn-primary">{{ __('Export') }}</a>
 
 
 
