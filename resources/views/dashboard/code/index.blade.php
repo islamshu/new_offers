@@ -12,7 +12,8 @@
 
                         <th>{{ __('name') }}</th>
                         <th>{{ __('number of codes') }}</th>
-                        <th>{{ __('number of remain') }}</th>
+                        <th>{{ __('Used Code') }}</th>
+                        <th>{{ __('Not Used Code') }}</th>
                         <th>{{ __('Status') }}</th>
                         <th>{{ __('Action') }}</th>
 
@@ -21,10 +22,14 @@
                 <tbody>
                     @foreach ($codes as $code)
                         <td>{{ $code->name_en }}</td>
-                        <td>{{ $code->number_of_code }}</td>
+                        <td>  <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}">{{ $code->number_of_code }}</a> </td>
+                        
                         @php
+                            $user = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->count()
+
                             $remain = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->count()
                         @endphp
+                        <td>{{ $used }}</td>
                         <td>{{ $remain }}</td>
                         <td>
                             <input type="checkbox" data-id="{{ $code->id }}" name="status" class="js-switch" {{ $code->status ==  1 ? 'checked' : '' }}>
@@ -36,10 +41,7 @@
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                  <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}"
-                                    class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                                 <i class="fa fa-eye"></i>
-                                </a>
+                               
 
                                 <form method="post" style="display: inline">
                                     <button type="button" onclick="performdelete('{{ $code->id }}')"
