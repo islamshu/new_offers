@@ -140,13 +140,15 @@ class CodeController extends Controller
       $codes=  CodeSubscription::where('sub_id',$code->sub_id)->get();
       return view('dashboard.code.show_code',compact('codes'));
     }
-    public function not_used_code($locale,Code $code)
+    public function not_used_code($locale,$id)
     {
+        $code = Code::find($id);
         $codes=  CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->get();
         return view('dashboard.code.show_code',compact('codes'));
     }
-    public function used_code($locale,Code $code)
+    public function used_code($locale,$id)
     {
+        $code = Code::find($id);
         $codes=  CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->get();
         return view('dashboard.code.show_code',compact('codes'));
     }
