@@ -17,9 +17,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($codes as $code)
-                        <td>{{ $code->name_en }}</td>
-                        <td>{{ $code->is_used == '0' ? 'Not Used' : 'Used' }}</td>
+                    @foreach ($codes as $item)
+                        <td>{{ $item->code }}</td>
+                        <td>{{ $item->is_used == '0' ? 'Not Used' : 'Used' }}</td>
                         </tr>
                     @endforeach
 
