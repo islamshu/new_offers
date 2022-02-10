@@ -27,6 +27,7 @@ Route::get('FAQs','Api\PageController@faqs');
 Route::get('how-it-work', 'Api\PageController@works');
 Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor-store-list', 'Api\HomeController@vendor_store_list');
+Route::get('store/offers', 'Api\HomeController@vendor_offers');
 
 
 Route::get('vendor', 'Api\HomeController@vendor_detels');
@@ -49,7 +50,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('current-subscription','Api\UserController@current_subscription');
         
         // Route::get('vendor', 'Api\HomeController@vendor_detels');
-        Route::get('store/offers', 'Api\HomeController@vendor_offers');
         Route::get('store/reviews', 'Api\HomeController@vendor_reviews');
         Route::get('nearby-partners', 'Api\HomeController@nearby_partners');
         Route::get('offer', 'Api\OfferController@offerDetiles');
