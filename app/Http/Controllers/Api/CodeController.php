@@ -21,11 +21,15 @@ class CodeController extends BaseController
 {
     public function sub_by_activiton(Request $request){
         // dd(auth('client_api')->id());
-
+        $codesub = CodeSubscription::where('code',$request->activation_code)->first();
+        if($codesub->is_used == 1){
+            $res['status']= $this->SendError();
+            return $res;
+        }
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
             $q->where('code',$request->activation_code);
         })->first();
-        dd($code);
+        
         if(!$code){
             $res['status']= $this->SendError();
             return $res;
@@ -55,7 +59,6 @@ class CodeController extends BaseController
         $user->sub_id  = $code->id;
         $user->clinet_id  = auth('client_api')->id();
         $user->save();
-        $codesub = CodeSubscription::where('code',$request->activation_code)->first();
         $codesub->is_used = 1;
         $codesub->save();
         $res['status']= $this->sendResponse('OK');
