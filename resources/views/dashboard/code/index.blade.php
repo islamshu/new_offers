@@ -25,9 +25,9 @@
                         <td>  <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}">{{ $code->number_of_code }}</a> </td>
                         
                         @php
-                            $user = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->count()
+                            $user = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->count();
 
-                            $remain = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->count()
+                            $remain = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->count();
                         @endphp
                         <td>{{ $used }}</td>
                         <td>{{ $remain }}</td>
