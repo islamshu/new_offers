@@ -37,7 +37,8 @@ class CodeController extends BaseController
         $client = auth('client_api')->user();
         $client->type_of_subscribe = $code->type_paid;
         $client->credit= $code->balance;
-        $client->start_date = 
+        $client->start_date = $code->start_date;
+        $client->expire_date = $code->end_date;
         $client->save();
         $data_type = $code->expire_date_type;
         $data_type_number = $code->number_of_dayes;
