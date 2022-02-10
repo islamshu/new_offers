@@ -284,7 +284,7 @@
         formData.append('end_date', document.getElementById('end_date').value);
         formData.append('days_of_trial', document.getElementById('days_of_trial').value);
 
-        formData.append('type_paid', 'trial');
+        formData.append('type_paid', 'TRIAL');
         formData.append('image', document.getElementById('image').files[0]);
         // if (document.getElementById('number_of_dayes') != null) {
         //     formData.append('number_of_dayes', document.getElementById('number_of_dayes').value);

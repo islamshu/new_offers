@@ -378,7 +378,7 @@
             formData.append('balance', document.getElementById('balance').value);
         }
         
-        formData.append('type_paid', 'paid');
+        formData.append('type_paid', 'PREMIUM');
         formData.append('image', document.getElementById('image').files[0]);
         if (document.getElementById('number_of_dayes') != null) {
             formData.append('number_of_dayes', document.getElementById('number_of_dayes').value);
