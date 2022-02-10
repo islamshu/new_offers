@@ -135,9 +135,9 @@ class CodeController extends Controller
      * @param  \App\Models\Code  $code
      * @return \Illuminate\Http\Response
      */
-    public function show(Code $code,$locale)
+    public function show($id,$locale)
     {
-        dd($code);
+        dd($id);
     }
 
     /**
