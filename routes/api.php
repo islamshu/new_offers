@@ -29,6 +29,7 @@ Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor-store-list', 'Api\HomeController@vendor_store_list');
 Route::get('store/offers', 'Api\HomeController@vendor_offers');
 Route::get('search', 'Api\OfferController@search');
+Route::get('offers-map', 'Api\OfferController@offer_map');
 
 
 Route::get('vendor', 'Api\HomeController@vendor_detels');
@@ -61,7 +62,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('contact/create', 'Api\HomeController@contact_us');
         Route::get('profile', 'Api\HomeController@profile');
         Route::get('suggestion-offer', 'Api\OfferController@suggetstd_offer');
-        Route::get('offers-map', 'Api\OfferController@offer_map');
         Route::post('package/activation', 'Api\CodeController@sub_by_activiton');
         Route::post('apply-promo-code', 'Api\CodeController@apply_promo_code');
         Route::post('redeem', 'Api\CodeController@redeem');
