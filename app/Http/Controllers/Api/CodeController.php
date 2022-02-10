@@ -25,7 +25,7 @@ class CodeController extends BaseController
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
             $q->where('code',$request->activation_code);
         })->first();
-        // dd($code);
+        dd($code);
         if(!$code){
             $res['status']= $this->SendError();
             return $res;
@@ -37,6 +37,7 @@ class CodeController extends BaseController
         $client = auth('client_api')->user();
         $client->type_of_subscribe = $code->type_paid;
         $client->credit= $code->balance;
+        $client->start_date = 
         $client->save();
         $data_type = $code->expire_date_type;
         $data_type_number = $code->number_of_dayes;
