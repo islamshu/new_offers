@@ -23,7 +23,7 @@ class CodeController extends BaseController
         // dd(auth('client_api')->id());
 
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
-            $q->where('code',$request->code);
+            $q->where('code',$request->activation_code);
         })->first();
         // dd($code);
         if(!$code){
