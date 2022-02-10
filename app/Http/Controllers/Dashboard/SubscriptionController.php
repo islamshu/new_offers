@@ -28,9 +28,9 @@ class SubscriptionController extends Controller
     }
     public function index_sub($locale,$value){
         if($value == 'paid'){
-            $subs = Subscription::where('type_paid','paid')->get();
+            $subs = Subscription::where('type_paid','PREMIUM')->get();
         }elseif($value == 'trial'){
-            $subs = Subscription::where('type_paid','trial')->get();
+            $subs = Subscription::where('type_paid','TRIAL')->get();
         } 
         return response()->view('dashboard.subscripre.index',compact('subs','value'));
            
