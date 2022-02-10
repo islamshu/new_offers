@@ -29,8 +29,8 @@
 
                             $remain = App\Models\CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->count();
                         @endphp
-                        <td>{{ $used }}</td>
-                        <td>{{ $remain }}</td>
+                        <td> <a href="{{ route('used_code', [ $code->id, 'locale' => app()->getLocale()]) }}"> {{ $used }} </a></td>
+                        <td> <a href="{{ route('not_used_code', [ $code->id, 'locale' => app()->getLocale()]) }}"> {{ $remain }}</a></td>
                         <td>
                             <input type="checkbox" data-id="{{ $code->id }}" name="status" class="js-switch" {{ $code->status ==  1 ? 'checked' : '' }}>
                             </td>
