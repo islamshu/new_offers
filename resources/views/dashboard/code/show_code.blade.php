@@ -6,7 +6,7 @@
             @if(Route::currentRouteName() == 'used_code' || Route::currentRouteName() == 'not_used_code' )
             @php
                 if(Route::currentRouteName() == 'used_code'){
-                    $used = 'used'
+                    $used = 'used';
                 }else{
                     $used == 'not';
                 }
