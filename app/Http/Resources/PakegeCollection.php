@@ -67,7 +67,7 @@ class PakegeCollection extends ResourceCollection
             return[
                 'name' =>$data->number_of_dayes.' Years',
                 'period'=>$data->number_of_dayes,
-                'unit'=>'MM'
+                'unit'=>'YY'
             ] ;
         }
         
