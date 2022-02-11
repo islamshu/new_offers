@@ -505,7 +505,42 @@
                                         <input type="number" class="form-control form-control-solid form-control-lg"
                                             id="datatime_number" name="datatime_number" value="{{ $offer->datatime_number }}" placeholder="Usage member number"  />
                                     </div>
+                                    <div class="col-md-6 " >
+                                        <div class="form-group ">
+                                            <label>{{ __('Is Offer') }}</label>
+                                            <select class="form-control form-control-solid form-control-lg"
+                                                id="is_offer" name="datatime_use_type">
+                                                <option value="1" @if($offer->is_offer == 1) selected @endif >{{ __('yes') }}</option>
+                                                <option value="0" @if($offer->is_offer == 0) selected @endif>{{ __('no') }}</option>
+    
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 " >
+                                        <div class="form-group ">
+                                            <label>{{ __('is Voucher') }}</label>
+                                            <select class="form-control form-control-solid form-control-lg"
+                                                id="is_voucher" >
+                                                <option value="1" @if($offer->is_voucher == 1) selected @endif >{{ __('yes') }}</option>
+                                                <option value="0" @if($offer->is_voucher == 0) selected @endif>{{ __('no') }}</option>
+    
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 " >
+                                        <div class="form-group ">
+                                            <label>{{ __('is Flash Deal') }}</label>
+                                            <select class="form-control form-control-solid form-control-lg"
+                                                id="is_flashdeal" name="datatime_use_type">
+                                                <option value="1" @if($offer->is_flashdeal == 1) selected @endif >{{ __('yes') }}</option>
+                                                <option value="0" @if($offer->is_flashdeal == 0) selected @endif>{{ __('no') }}</option>
+    
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                                
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -657,7 +692,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/pages/custom/wizard0/wizard-1.js') }}"></script>
+<script src="{{ asset('js/pages/custom/wizard/wizard-1.js') }}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -1036,6 +1071,9 @@
             formData.append('name_en', document.getElementById('name_en').value);
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
+            formData.append('is_offer', document.getElementById('is_offer').value);
+            formData.append('is_flashdeal', document.getElementById('is_flashdeal').value);
+            formData.append('is_voucher', document.getElementById('is_voucher').value);
 
             formData.append('member_type', document.getElementById('member_type').value);
             formData.append('usege_member', document.getElementById('usege_member').value);

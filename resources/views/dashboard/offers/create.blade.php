@@ -512,6 +512,40 @@
                                                 id="datatime_number" name="datatime_number"
                                                 placeholder="Usage member number" />
                                         </div>
+
+                                        <div class="col-md-6 " >
+                                            <div class="form-group ">
+                                                <label>{{ __('Is Offer') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="is_offer" name="datatime_use_type">
+                                                    <option value="1" >{{ __('yes') }}</option>
+                                                    <option value="0" selected>{{ __('no') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " >
+                                            <div class="form-group ">
+                                                <label>{{ __('is Voucher') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="is_voucher" >
+                                                    <option value="1" >{{ __('yes') }}</option>
+                                                    <option value="0" selected>{{ __('no') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " >
+                                            <div class="form-group ">
+                                                <label>{{ __('is Flash Deal') }}</label>
+                                                <select class="form-control form-control-solid form-control-lg"
+                                                    id="is_flashdeal" name="datatime_use_type">
+                                                    <option value="1" >{{ __('yes') }}</option>
+                                                    <option value="0" selected>{{ __('no') }}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{ __('Sort') }}</label>
@@ -1049,6 +1083,11 @@
             formData.append('usege_system', document.getElementById('usege_system').value);
             // formData.append('usage_number_system', document.getElementById('usage_number_system').value);
             formData.append('offer_type_2', document.getElementById('offer_type_2').value);
+            formData.append('is_offer', document.getElementById('is_offer').value);
+            formData.append('is_flashdeal', document.getElementById('is_flashdeal').value);
+            formData.append('is_voucher', document.getElementById('is_voucher').value);
+
+            
 
             formData.append('specific_days', document.getElementById('specific_days').value);
             if (document.getElementById('price') != null) {
