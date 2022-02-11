@@ -162,7 +162,12 @@ class UserController extends BaseController
         $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
-    public function current_subscription(Request $request){
-        
+    public function logout() {
+       auth('client_api')->user()->tokens->each(function($token, $key) {
+           dd($token);
+            $token->delete();
+        });
+    
+        return response()->json('Successfully logged out');
     }
 }

@@ -28,17 +28,17 @@ class MapOfferResourses extends JsonResource
     }
     public function get_latitude($data){
 
-        $branches = Branch::where('vendor_id',$data->vendor_id)->get();
+        $branches = Branch::where('status','active')->where('vendor_id',$data->vendor_id)->get();
         return $branches->min('latitude');
     }
     public function get_longitude($data){
 
-        $branches = Branch::where('vendor_id',$data->vendor_id)->get();
+        $branches = Branch::where('status','active')->where('vendor_id',$data->vendor_id)->get();
         return $branches->min('longitude');
     }
     public function get_distance($data,$request){
         $array =[];
-        $branches = Branch::where('vendor_id',$data->vendor_id)->get();
+        $branches = Branch::where('status','active')->where('vendor_id',$data->vendor_id)->get();
         foreach($branches as $branch){
            $value =  get_dinstance($request->latitude,$request->longitude,$branch->latitude,$branch->longitude);
             $di = $value  * 1.609344 ;
