@@ -153,7 +153,7 @@ class HomeController extends BaseController
   public function vendor_store_list(Request $request){
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $vendors = Vendor::with(['categorys','counteire','cities'])
+    $vendors = Vendor::with(['categorys','counteire','cities'])->where('status','active')
     ->whereHas('categorys', function ($q) use ($request) {
       $q->where('category_id', $request->category_id);
     })
@@ -221,7 +221,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
+    $vendors = Vendor::where('status','active')->with('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
     })->with('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
