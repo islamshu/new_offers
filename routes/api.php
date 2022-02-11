@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::put('client/update/city', 'Api\UserController@update_city');
         Route::post('client/image/update', 'Api\UserController@update_image');
         Route::post('logout','Api\UserController@logout');
+        Route::post('registration-id/refresh','Api\UserController@register_token');
+
 
     });
 });

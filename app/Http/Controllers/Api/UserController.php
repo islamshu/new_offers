@@ -131,6 +131,17 @@ class UserController extends BaseController
         $res['data']['client'] = new ClientTwoResoures($user);
         return $res;
     }
+    public function register_token(Request $request)
+    {
+      
+
+        $user = auth('client_api')->user();
+        $user->token = $request->registration_id;
+       
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['client'] = new ClientTwoResoures($user);
+        return $res;
+    }
     public function update_image(Request $request){
         $user = auth('client_api')->user();
         $user->image = $request->image->store('client/image');
