@@ -98,9 +98,9 @@ class HomeController extends BaseController
     //  dd(userdefult());
     if ($filtter == 'offer') {
       $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
-        $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
-          $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
-        });
+        // $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+        //   $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
+        // });
         $q->with('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
@@ -110,7 +110,7 @@ class HomeController extends BaseController
         $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      })->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
    
