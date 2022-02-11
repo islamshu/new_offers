@@ -62,6 +62,7 @@ class OfferController extends BaseController
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+          $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
@@ -83,6 +84,7 @@ class OfferController extends BaseController
     public function suggetstd_offer(Request $request)
     {
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+          $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
@@ -97,6 +99,7 @@ class OfferController extends BaseController
     public function offer_map(Request $request)
     {
         $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+          $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
