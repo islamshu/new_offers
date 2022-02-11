@@ -163,11 +163,19 @@ class UserController extends BaseController
         return $res;
     }
     public function logout() {
-       auth('client_api')->user()->tokens->each(function($token, $key) {
-           dd($token);
+        // dd
+       $user = auth('client_api')->user();
+       $user->tokens->each(function($token, $key) {
+      
             $token->delete();
         });
+        $user->token = null;
+        $user->save();
+        $res['status']= $this->sendResponse200('OK');
+        $res['data']['']="";
+
+
     
-        return response()->json('Successfully logged out');
+        return $res;
     }
 }
