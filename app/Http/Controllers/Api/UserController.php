@@ -165,7 +165,6 @@ class UserController extends BaseController
     public function logout() {
         // dd
        $user = auth('client_api')->user();
-       dd($user);
        $user->tokens->each(function($token, $key) {
       
             $token->delete();
