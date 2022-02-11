@@ -92,7 +92,7 @@ class HomeController extends BaseController
 
     $filtter = $request->filter;
     
-    $page = $request->has('page') ? $request->get('page') : 1;
+    $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
 
     //  dd(userdefult());
@@ -128,7 +128,7 @@ class HomeController extends BaseController
         $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->Where('is_flashdeal', 1)->paginate($request->paginate);
+      })->Where('is_flashdeal', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
       return $res;
@@ -192,14 +192,16 @@ class HomeController extends BaseController
   }
   public function vendor_branches(Request $request)
   {
-    $stores = Branch::where('vendor_id', $request->store_id)->paginate($request->paginate);
+    $page = $request->last_index +2;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+    $stores = Branch::where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data']['branches'] = new VendorBranchesNewCollection($stores);
     return $res;
   }
   public function vendor_offers(Request $request)
   {
-    $page = $request->has('page') ? $request->get('page') : 1;
+    $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $stores = Offer::where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
@@ -208,18 +210,22 @@ class HomeController extends BaseController
   }
   public function vendor_reviews(Request $request)
   {
-    $reive = VendorReview::where('vendor_id', $request->store_id)->paginate($request->paginate);
+    $page = $request->last_index +2;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+    $reive = VendorReview::where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = new VendorReviewsNewCollection($reive);
     return $res;
   }
   public function nearby_partners(Request $request)
   {
+    $page = $request->last_index +2;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::with('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
     })->with('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
-    })->paginate($request->paginate);
+    })->limit($limit)->offset(($page - 1) * $limit)->get();
     //  $collction = get_sort(new StoresCollection($vendors));
     $collection =  VendorForOfferResourses::collection($vendors);
     $datad = [];

@@ -43,7 +43,9 @@ class FavoritController extends BaseController
     }
     public function store_favorite(Request $request)
     {
-        $fav = FavoritVendor::where('user_id', auth('client_api')->id())->paginate($request->paginate);
+        $page = $request->last_index +2;
+    $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+        $fav = FavoritVendor::where('user_id', auth('client_api')->id())->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status'] = $this->sendResponse('Ok');
         $res['data'] = new FavoritCollection($fav);
         return $res;
