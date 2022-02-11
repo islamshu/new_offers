@@ -112,6 +112,7 @@ class HomeController extends BaseController
         // });
       })->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
+      dd($offer);
       $res['data'] = new VendorOfferCollection($offer);
    
       
