@@ -97,7 +97,7 @@ class HomeController extends BaseController
 
     //  dd(userdefult());
     if ($filtter == 'offer') {
-      $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::where('is_offer', 1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
         // $q->where('status','active');
         $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
           $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
@@ -111,7 +111,7 @@ class HomeController extends BaseController
         $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->Where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      })->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = new VendorOfferCollection($offer);
    
