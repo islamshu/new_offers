@@ -120,6 +120,7 @@ class HomeController extends BaseController
       return $res;
     } elseif ($filtter == 'flash_deal') {
       $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $q->where('status','active');
         $q->with('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
@@ -135,6 +136,7 @@ class HomeController extends BaseController
       return $res;
     } elseif ($filtter == 'voucher') {
       $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $q->where('status','active');
         $q->with('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
