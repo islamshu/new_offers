@@ -53,11 +53,11 @@ class CodeController extends BaseController
         $data_type = $code->expire_date_type;
         $data_type_number = $code->number_of_dayes;
         if($data_type == 'days'){
-            $$client->expire_date = Carbon::now()->addDays($data_type_number);
+            $client->expire_date = Carbon::now()->addDays($data_type_number);
         }elseif($data_type == 'months'){
-            $$client->expire_date = Carbon::now()->addMonths($data_type_number);
+            $client->expire_date = Carbon::now()->addMonths($data_type_number);
         }elseif($data_type == 'years'){
-            $$client->expire_date = Carbon::now()->addYears($data_type_number);
+            $client->expire_date = Carbon::now()->addYears($data_type_number);
         }
         $client->save();
        
