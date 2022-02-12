@@ -28,7 +28,7 @@ class ClientPaidResourse extends JsonResource
             'is_subscriber'=>(int)$this->is_subscriber,
             'is_new_version'=>1,
             'is_subscriber_in_city'=>0,
-            'is_unlimited'=>$this->is_unlimited,
+            'is_unlimited'=>$this->is_unlimited == null ? 0 : $this->is_unlimited ,
             'is_employee'=>(int)$this->is_unlimited,
             'is_family'=>$this->is_family,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
