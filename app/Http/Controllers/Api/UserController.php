@@ -94,7 +94,11 @@ class UserController extends BaseController
         $user->birth_date = $request->birth_date;
         $user->save();
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientTwoResoures($user);
+        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+            $res['data']['client'] =  new ClientResoures($user);
+
+        }
+        $res['data']['client'] = new ClientPaidResourse($user);
 
 
 
@@ -130,7 +134,7 @@ class UserController extends BaseController
        
        
         $res['status']= $this->sendResponse200('OK');
-        if($user->type == 'null'){
+        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
             $res['data']['client'] =  new ClientResoures($user);
             $res['other']['is_trial_subscriber']= false;
 
@@ -155,7 +159,10 @@ class UserController extends BaseController
         $user->image = $request->image->store('client/image');
         $user->save();
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientTwoResoures($user);
+        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+            $res['data']['client'] =  new ClientResoures($user);
+        }
+        $res['data']['client'] = new ClientPaidResourse($user);
         return $res;
     }
     public function transactions(Request $request)
@@ -178,7 +185,11 @@ class UserController extends BaseController
         $user->city_id = $request->city_id;
         $user->save();
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientTwoResoures($user);
+        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+            $res['data']['client'] =  new ClientResoures($user);
+
+        }
+        $res['data']['client'] = new ClientPaidResourse($user);
         return $res;
     }
     public function logout() {

@@ -42,12 +42,15 @@ class CodeController extends BaseController
         // dd(auth('client_api')->id());
         $client = auth('client_api')->user();
         $client->type_of_subscribe = $code->type_paid;
-        $client->credit= $code->balance;
-        $client->remain= $code->balance;
+       
         if($code->type_balance == 'Limit'){
             $client->is_unlimited = 0;
+            $client->credit= $code->balance;
+            $client->remain= $code->balance;
         }elseif($code->type_balance == 'UnLimit'){
             $client->is_unlimited = 1;
+            $client->credit=null;
+            $client->remain= null;
         }
         $client->start_date = Carbon::now();
         $data_type = $code->expire_date_type;
