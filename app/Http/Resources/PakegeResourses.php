@@ -24,6 +24,7 @@ class PakegeResourses extends JsonResource
             'is_family'=>0,
             'multible_accounts_no'=>0,
             'duration'=>$this->duration($this),
+            'image'=>asset('images/coupun/'.$this->image),
 
 
         ];
