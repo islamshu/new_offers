@@ -17,8 +17,8 @@ class UserSubscription extends JsonResource
     {
         $client = auth('client_api')->user();
         return [
-            'start_date'=>$client->start_date,
-            'expire_date'=>$client->expire_date,
+            'start_date'=>date('Y-m-d',strtotime($client->start_date)),
+            'expire_date'=>date('Y-m-d',strtotime($client->expire_date)),
             'offers_saving'=>$client->offers_saving,
             'coupons_saving'=>$client->coupon_saving,
             'coupons_no'=> $client->balance,
