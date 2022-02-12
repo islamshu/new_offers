@@ -11,6 +11,7 @@ use App\Http\Resources\ClientTwoResoures;
 use App\Http\Resources\SubResoures;
 use App\Http\Resources\TransactionCollection;
 use App\Http\Resources\UserResoures;
+use App\Http\Resources\UserSubscription;
 use App\Models\City;
 use App\Models\Clinet;
 use App\Models\Enterprise;
@@ -151,6 +152,16 @@ class UserController extends BaseController
        
         $res['status']= $this->sendResponse('Created');
         $res['data']['data'][''] ="" ;
+
+        return $res;
+    }
+    public function current_subscription(){
+        $user = auth('client_api')->user();
+        
+       
+        $res['status']= $this->sendResponse200('ok');
+        $sub = UserSubscription::where('client_id',$user->id)->orderBy('id','desc')->first();
+        dd($sub);
 
         return $res;
     }
