@@ -24,7 +24,7 @@ class SubResouresPaid extends JsonResource
             'used_offers_no'=>$this->used_offers_no,
             'purchases_no'=>$this->purchases_no,
             'credit'=>$this->credit == null ? null : (int)$this->credit,
-            'remaining_credit'=>$this->remain == null ? null : (int)$this->remain,
+            'remaining_credit'=>$this->remain == null ? null : (string)$this->remain,
             'expire_date'=>$this->expire_date,
             'start_date'=>$this->start_date,
             'is_unlimited'=>$this->is_unlimited == null ? 0 : $this->is_unlimited,
