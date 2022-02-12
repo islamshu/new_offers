@@ -169,6 +169,7 @@ class CodeController extends BaseController
             $res['data']["coupon"]['offer_id'] =$request->offer_id;
             $res['data']["coupon"]['branch_id'] =$offer->vendor_id;
             $res['data']["coupon"]['store_id'] =$request->branch_id;
+            $res['data']["coupon"]['saving']=0;
             $res['data']["coupon"]['referance_no'] = $codes->code;
             return $res;
         }else{
