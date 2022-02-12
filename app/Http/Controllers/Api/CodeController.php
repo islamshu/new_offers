@@ -79,7 +79,7 @@ class CodeController extends BaseController
         $user->save();
         $codesub->is_used = 1;
         $codesub->save();
-        $res['status']= $this->sendResponse('Created');
+        $res['status']= $this->sendResponse('OK');
         $res['status']['title']= "";
         $res['status']['message']= "";
 
