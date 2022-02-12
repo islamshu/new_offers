@@ -45,9 +45,9 @@ class CodeController extends BaseController
         $client->credit= $code->balance;
         $client->remain= $code->balance;
         if($code->type_balance == 'Limit'){
-            $client->is_limited = 0;
+            $client->is_unlimited = 0;
         }elseif($code->type_balance == 'UnLimit'){
-            $client->is_limited = 1;
+            $client->is_unlimited = 1;
         }
         $client->start_date = Carbon::now();
         $data_type = $code->expire_date_type;
