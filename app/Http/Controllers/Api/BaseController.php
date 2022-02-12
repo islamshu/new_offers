@@ -21,6 +21,10 @@ class BaseController extends Controller
         $response = ['status' => true ,'HTTP_code'=>200,'HTTP_response'=>$status];
         return $response;    
     }
+    public function sendNewErorr(){   
+        $response = ['status' => true ,'HTTP_code'=>502,'HTTP_response'=>'Bad Gateway','title'=>'Failed to Subscribe','message'=>'Activition Code is not Found or Used'];
+        return $response;    
+    }
     
 
         public function SendError( $code = 404){

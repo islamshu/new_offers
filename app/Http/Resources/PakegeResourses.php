@@ -19,7 +19,7 @@ class PakegeResourses extends JsonResource
             'name'=> $this->lang_name($this),
             'description'=>$this->lang_dec($this),
             'is_unlimited'=>$this->number_of_dayes == null ? 1 : 0,
-            'coupons_no'=> $this->balance,
+            'coupons_no'=> $this->number_of_dayes == null ? null : $this->balance,
             'duration_id'=>$this->id,
             'is_family'=>0,
             'multible_accounts_no'=>0,

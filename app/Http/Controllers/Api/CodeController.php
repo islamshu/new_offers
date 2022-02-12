@@ -24,7 +24,7 @@ class CodeController extends BaseController
         // dd(auth('client_api')->id());
         $codesub = CodeSubscription::where('code',$request->activation_code)->first();
         if($codesub->is_used == 1){
-            $res['status']= $this->SendError();
+            $res['status']= $this->sendNewErorr();
             return $res;
         }
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
@@ -32,7 +32,7 @@ class CodeController extends BaseController
         })->first();
         
         if(!$code){
-            $res['status']= $this->SendError();
+            $res['status']= $this->sendNewErorr();
             
             return $res;
         }
@@ -79,7 +79,7 @@ class CodeController extends BaseController
         $user->save();
         $codesub->is_used = 1;
         $codesub->save();
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse('Created');
         $res['status']['title']= "";
         $res['status']['message']= "";
 
@@ -102,7 +102,6 @@ class CodeController extends BaseController
       
        
         $numer_time = OfferUser::where('client_id',$user->id)->count();
-        $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
         // dd($codes);
         $system_uses = $offer->usege_system;
         $client_uses = $offer->usege_member;
@@ -145,6 +144,7 @@ class CodeController extends BaseController
             if($offer->type_refound == 'auto'){
                 $ofe->referance_no = rand(00000,99999); 
             }else{
+                $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
                 $ofe->referance_no = $codes->code;
                 $f = Performed::where('code',$codes->code)->first();
                 $f->is_used = 1;
