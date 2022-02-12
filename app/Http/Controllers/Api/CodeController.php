@@ -126,7 +126,7 @@ class CodeController extends BaseController
         }
         if(($type_of_offer == 'paid' && $type_paid_user =='trial') || $type_of_offer == 'all' || ($type_of_offer == 'free' && $type_paid_user =='trial'  )){
             
-
+            dd( $offer->usege_member , $offer->usage_member_number , $numer_time );
         if( $offer->usege_member == 'unlimit' || $offer->usage_member_number > $numer_time){
             $ofe = new OfferUser();
             $ofe->offer_id = $request->offer_id;
