@@ -161,7 +161,7 @@ class UserController extends BaseController
         
        
         $res['status']= $this->sendResponse200('ok');
-        $sub = Subscriptions_User::where('client_id',$user->id)->orderBy('id','desc')->first();
+        $sub = Subscriptions_User::where('clinet_id',$user->id)->orderBy('id','desc')->first();
         
         $res['data']['client_subscription'] =new UserSubscription($sub);
 
