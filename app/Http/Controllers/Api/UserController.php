@@ -16,6 +16,7 @@ use App\Models\City;
 use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\Offer;
+use App\Models\Subscriptions_User;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
@@ -160,7 +161,7 @@ class UserController extends BaseController
         
        
         $res['status']= $this->sendResponse200('ok');
-        $sub = UserSubscription::where('client_id',$user->id)->orderBy('id','desc')->first();
+        $sub = Subscriptions_User::where('client_id',$user->id)->orderBy('id','desc')->first();
         dd($sub);
 
         return $res;
