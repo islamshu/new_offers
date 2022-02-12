@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\ClientPaidResourse;
 use App\Http\Resources\ClientResoures;
 use App\Http\Resources\ClientTwoResoures;
 use App\Http\Resources\SubResoures;
@@ -127,8 +128,14 @@ class UserController extends BaseController
 
         $user = auth('client_api')->user();
        
+       
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientTwoResoures($user);
+        if($user->type == 'null'){
+            $res['data']['client'] =  new ClientResoures($user);
+            $res['other']['is_trial_subscriber']= false;
+
+        }
+        $res['data']['client'] = new ClientPaidResourse($user);
         return $res;
     }
     public function register_token(Request $request)
@@ -140,6 +147,7 @@ class UserController extends BaseController
        
         $res['status']= $this->sendResponse200('OK');
         $res['data']['client'] = new ClientTwoResoures($user);
+
         return $res;
     }
     public function update_image(Request $request){
