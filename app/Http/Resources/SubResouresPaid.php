@@ -23,7 +23,7 @@ class SubResouresPaid extends JsonResource
             'coupons_saving'=>$this->coupon_saving,
             'used_offers_no'=>$this->used_offers_no,
             'purchases_no'=>$this->purchases_no,
-            'credit'=>$this->credit,
+            'credit'=>(int)$this->credit,
             'remaining_credit'=>$this->remain,
             'expire_date'=>$this->expire_date,
             'start_date'=>$this->start_date,
