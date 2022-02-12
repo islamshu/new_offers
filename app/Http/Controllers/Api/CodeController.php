@@ -132,6 +132,7 @@ class CodeController extends BaseController
             $ofe->vendor_id = $offer->vendor_id;
             $ofe->client_id = auth('client_api')->id();
             $ofe->branch_id = $request->branch_id;
+            $user->purchases_no += 1;
             if($type_of_offer != 'free' ){
                 if($user->remain > 0){
                 $user->remain = $user->remain - 1;
