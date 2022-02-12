@@ -24,7 +24,7 @@ class CodeController extends BaseController
         // dd(auth('client_api')->id());
         $codesub = CodeSubscription::where('code',$request->activation_code)->first();
         if($codesub->is_used == 1){
-            $res['status']= $this->sendNewErorr();
+            $res['status']= $this->sendNewErorr('Failed to Subscribe','Activition Code is not Found or Used');
             return $res;
         }
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
@@ -32,7 +32,7 @@ class CodeController extends BaseController
         })->first();
         
         if(!$code){
-            $res['status']= $this->sendNewErorr();
+            $res['status']= $this->sendNewErorr('Failed to Subscribe','Activition Code is not Found or Used');
             
             return $res;
         }
@@ -93,9 +93,11 @@ class CodeController extends BaseController
         }
         $type_paid_user = $user->subs->last()->subscripe->type_paid;
         $offer = Offer::find($request->offer_id);
+        $vendor = Vendor::find($offer->vendor_id);
         if(!$offer){
             $res['status']= $this->SendError();
-            $res['message']= 'the is no offer here';
+            $res['status']['title']='Purchase is Fail';
+            $res['status']['message']= 'The PIN code is wrong';
             return $res;
         }
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
@@ -119,7 +121,8 @@ class CodeController extends BaseController
         if($client_uses != 'unlimit'){
             if($offer->usage_member_number <= $numer_time  ){
                 $res['status']= $this->SendError();
-                $res['message']= 'user count is full';
+                $res['status']['title']='Purchase is Fail';
+                $res['status']['message']= 'The PIN code is wrong';
                 return $res;
             }
         }
@@ -138,11 +141,12 @@ class CodeController extends BaseController
                 $user->remain = $user->remain - 1;
             }else{
                 $res['status']= $this->SendError();
-                $res['message']= 'no balance in uer account';
+                $res['status']['title']='Purchase is Fail';
+                $res['status']['message']= 'The PIN code is wrong';
                 return $res;
             }
             }
-            if($offer->type_refound == 'auto'){
+            if($vendor->type_refound == 'auto'){
                 $ofe->referance_no = rand(00000,99999); 
             }else{
                 $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
@@ -175,14 +179,16 @@ class CodeController extends BaseController
             return $res;
         }else{
             $res['status']= $this->SendError();
-            $res['message']= 'He cannot participate in the offer because the offer does not fit the account';
+            $res['status']['title']='Purchase is Fail';
+            $res['status']['message']= 'The PIN code is wrong';
             return $res;
         }
     }else{
 
-     $res['status']= $this->SendError();
-    $res['message']= 'type of supsription not allowed';
-    return $res; 
+        $res['status']= $this->SendError();
+        $res['status']['title']='Purchase is Fail';
+        $res['status']['message']= 'The PIN code is wrong';
+        return $res;
 }
 
         
