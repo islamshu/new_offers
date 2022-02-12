@@ -37,7 +37,7 @@ class ClientPaidResourse extends JsonResource
             'country'=>new CountryResoures(Country::find($this->country_id)),
             'city' => new CityResoures(City::find($this->city_id)),
         
-            'subscription'=>new SubResoures(@$this),
+            'subscription'=>new SubResouresPaid(@$this),
         ];
     }
 }
