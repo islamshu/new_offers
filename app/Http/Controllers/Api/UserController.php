@@ -109,7 +109,7 @@ class UserController extends BaseController
             $user->save();
             $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
-            $res['data']['client'] = new ClientResoures($user);
+            $res['data']['client'] = new ClientTwoResoures($user);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
