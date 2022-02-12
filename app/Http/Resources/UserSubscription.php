@@ -30,12 +30,35 @@ class UserSubscription extends JsonResource
             'duration_id'=>$this->id,
             'actual_account_no'=>$client->actual_accounts_no,
             'price'=>$this->balnce,
-            'package'=>new PakegeResourses(Subscription::find($this->sub_id))
-
-
-
-
-
+            'package'=>new PakegeResourses(Subscription::find($this->sub_id)),
+            'duration'=>$this->duration(Subscription::find($this->sub_id))
         ];
+    }
+    public function duration($data){
+        $type = $data->expire_date_type;
+        if($type == 'days'){
+            
+            return[
+                'id'=>$data->id,
+                'name' =>$data->number_of_dayes.' Days',
+                'period'=>$data->number_of_dayes,
+                'unit'=>'DD'
+            ] ;
+        }elseif($type == 'months'){
+            return[
+                'id'=>$data->id,
+                'name' =>$data->number_of_dayes.' Months',
+                'period'=>$data->number_of_dayes,
+                'unit'=>'MM'
+            ] ;
+        }elseif($type == 'years'){
+            return[
+                'id'=>$data->id,
+                'name' =>$data->number_of_dayes.' Years',
+                'period'=>$data->number_of_dayes,
+                'unit'=>'YY'
+            ] ;
+        }
+        
     }
 }
