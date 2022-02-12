@@ -102,7 +102,6 @@ class CodeController extends BaseController
       
        
         $numer_time = OfferUser::where('client_id',$user->id)->count();
-        dd(CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first());
         $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
         // dd($codes);
         $system_uses = $offer->usege_system;
