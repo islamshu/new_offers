@@ -145,8 +145,8 @@ class UserController extends BaseController
         $user = auth('client_api')->user();
         $user->token = $request->registration_id;
        
-        $res['status']= $this->sendResponse200('OK');
-        $res['data']['client'] = new ClientTwoResoures($user);
+        $res['status']= $this->sendResponse('Created');
+        $res['data']['data'][''] ="" ;
 
         return $res;
     }

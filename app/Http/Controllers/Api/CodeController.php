@@ -44,6 +44,11 @@ class CodeController extends BaseController
         $client->type_of_subscribe = $code->type_paid;
         $client->credit= $code->balance;
         $client->remain= $code->balance;
+        if($code->type_balance == 'Limit'){
+            $client->is_limited = 0;
+        }elseif($code->type_balance == 'UnLimit'){
+            $client->is_limited = 1;
+        }
         $client->start_date = $code->start_date;
         $client->expire_date = $code->end_date;
         $client->save();
