@@ -115,7 +115,7 @@ class UserController extends BaseController
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
             $res['data']['client']['token']=$user->createToken('Personal Access Token')->accessToken;
-            $res['other']['is_trial_subscriber']= false;
+            $res['otherب']['is_trial_subscriber']= false;
             return $res;
         }else{
             $res['status']=$this->sendError();
