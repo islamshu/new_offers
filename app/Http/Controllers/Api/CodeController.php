@@ -155,6 +155,7 @@ class CodeController extends BaseController
             $ofe->save();
             $user->used_offers_no = $user->used_offers_no +1;
             $user->save();
+            DD($enterprise);
             $trans = new Transaction();
             $trans -> client_id = auth('client_api')->id();
             $trans->offer_id = $request->offer_id;
