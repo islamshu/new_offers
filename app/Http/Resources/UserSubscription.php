@@ -40,22 +40,19 @@ class UserSubscription extends JsonResource
             
             return[
                 'id'=>$data->id,
-                'name' =>$data->number_of_dayes.' Days',
-                'period'=>$data->number_of_dayes,
+                'duration'=>$data->number_of_dayes,
                 'unit'=>'DD'
             ] ;
         }elseif($type == 'months'){
             return[
                 'id'=>$data->id,
-                'name' =>$data->number_of_dayes.' Months',
-                'period'=>$data->number_of_dayes,
+                'duration'=>$data->number_of_dayes,
                 'unit'=>'MM'
             ] ;
         }elseif($type == 'years'){
             return[
                 'id'=>$data->id,
-                'name' =>$data->number_of_dayes.' Years',
-                'period'=>$data->number_of_dayes,
+                'duration'=>$data->number_of_dayes,
                 'unit'=>'YY'
             ] ;
         }
