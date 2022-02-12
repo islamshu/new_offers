@@ -124,8 +124,7 @@ class CodeController extends BaseController
                 return $res;
             }
         }
-        dd($type_of_offer ,$type_paid_user ,$type_of_offer);
-        if(($type_of_offer == 'paid' && $type_paid_user =='trial') || $type_of_offer == 'all' || ($type_of_offer == 'free' && $type_paid_user =='trial'  )){
+        if(($type_of_offer == 'Premium' && $type_paid_user =='trial') || $type_of_offer == 'all' || ($type_of_offer == 'free' && $type_paid_user =='trial'  )){
             
             
         if( $offer->usege_member == 'unlimit' || $offer->usage_member_number > $numer_time){
