@@ -155,14 +155,13 @@ class CodeController extends BaseController
             $ofe->save();
             $user->used_offers_no = $user->used_offers_no +1;
             $user->save();
-            DD($enterprise);
             $trans = new Transaction();
             $trans -> client_id = auth('client_api')->id();
             $trans->offer_id = $request->offer_id;
             $trans->vendor_id = $offer->vendor_id;
             $trans->offer_id = $request->offer_id;
             $trans->branch_id = $request->branch_id;
-            $trans->enterpise_id = $enterprise;
+            $trans->enterprise_id = $enterprise;
             $trans->refreance_number = $ofe->referance_no ;
             $trans->save();
             $res['status']= $this->sendResponse('OK');
