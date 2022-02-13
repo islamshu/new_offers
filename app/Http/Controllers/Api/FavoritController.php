@@ -85,7 +85,7 @@ class FavoritController extends BaseController
     {
         $page = $request->has('page') ? $request->get('page') : 1;
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-        $fav = Offer::with('offerfav')->whereHas('offerfav', function ($q) use ($request) {
+        $fav = Offer::where('status',1)->with('offerfav')->whereHas('offerfav', function ($q) use ($request) {
             $q->where('user_id',  auth('client_api')->id());
           })->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status'] = $this->sendResponse('Ok');

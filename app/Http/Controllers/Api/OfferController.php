@@ -35,6 +35,8 @@ class OfferController extends BaseController
     }
     public function package(Request $request){
         $pakege = Subscription::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+          $q->where('status','active');
+
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
@@ -61,7 +63,7 @@ class OfferController extends BaseController
     public function search(Request $request){
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
-        $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
@@ -83,7 +85,7 @@ class OfferController extends BaseController
     }
     public function suggetstd_offer(Request $request)
     {
-        $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
@@ -98,7 +100,7 @@ class OfferController extends BaseController
     }
     public function offer_map(Request $request)
     {
-        $offers = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));

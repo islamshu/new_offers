@@ -97,18 +97,18 @@ class HomeController extends BaseController
 
     //  dd(userdefult());
     if ($filtter == 'offer') {
-      $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
         $q->where('status','active');
-        $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+        $q->has('enterprise')->whereHas('enterprise', function ($q) use ($request) {
           $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
         });
-        $q->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
-        $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
+        $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
         });
-        $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
+        $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
       })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
@@ -181,8 +181,8 @@ class HomeController extends BaseController
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
-      $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers) ;
-      $res['data']['branches'] = new BranchCollection($vendor->branches) ;
+      $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers->where('status',1)) ;
+      $res['data']['branches'] = new BranchCollection($vendor->branches->where('status','active')) ;
       $res['data']['store_reviews'] = new VendorReviewCollection($vendor->review) ;
       $res['data']['cart'] = null;
       $res['other']['server_current_time'] = Carbon::now()->format('Y-m-d H:i:s');
@@ -206,7 +206,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $stores = Offer::where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
+    $stores = Offer::where('status',1)->where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = new VendorOfferDeCollection($stores);
     return $res;
