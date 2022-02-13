@@ -208,7 +208,7 @@ class HomeController extends BaseController
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $stores = Offer::where('status',1)->where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
-    $res['data'] = new VendorOfferDeCollection($stores);
+    $res['data'] = sort_vendor(new VendorOfferDeCollection($stores));
     return $res;
   }
   public function vendor_reviews(Request $request)
