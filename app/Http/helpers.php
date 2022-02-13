@@ -19,7 +19,18 @@ function saveJSONFile($code, $data){
  {
     $datad = [];
     $data_array = collect($data);
-    foreach (collect($data)->sortBy('store.distance') as $s) {
+    foreach (collect($data)->sortBy('distance') as $s) {
+      array_push($datad, $s);
+    }
+    return $datad;
+
+ }
+ function sort_offer($data)
+ {
+    $datad = [];
+    $data_array = collect($data);
+    dd($data_array);
+    foreach (collect($data)->sortBy('distance') as $s) {
       array_push($datad, $s);
     }
     return $datad;
