@@ -230,14 +230,14 @@ class HomeController extends BaseController
       $q->where('city_id', $request->city_id);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     //  $collction = get_sort(new StoresCollection($vendors));
-    $collection =  VendorForOfferResourses::collection($vendors);
+    $collection =  sort_vendor(VendorForOfferResourses::collection($vendors));
     $datad = [];
     foreach (collect($collection)->sortBy('distance') as $data) {
       array_push($datad, $data);
     }
 
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['stores'] = VendorForOfferResourses::collection(sort_vendor($vendors));
+    $res['data']['stores'] = VendorForOfferResourses::collection(($vendors));
 
     return $res;
   }
