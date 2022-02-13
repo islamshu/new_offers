@@ -142,8 +142,9 @@ class CodeController extends Controller
     public function show($locale,Code $code)
     {
       $codes=  CodeSubscription::where('sub_id',$code->sub_id)->get();
-      $code_id = $code->sub_id;
 
+      $code_id = $code->sub_id;
+        dd($code_id);
       return view('dashboard.code.show_code',compact('codes','code_id'));
     }
     public function not_used_code($locale,$id)
