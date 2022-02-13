@@ -169,15 +169,15 @@ class CodeController extends BaseController
             $trans->enterprise_id = $enterprise;
             $trans->refreance_number = $ofe->referance_no ;
             $trans->save();
-            $res['status']= $this->sendResponse('OK');
+            $res['status']= $this->sendResponse('Created');
             $res['status']['title']='';
             $res['status']['message']= '';
             $res['data']["coupon"]['id'] = $ofe->id;
-            $res['data']["coupon"]['offer_id'] =$request->offer_id;
-            $res['data']["coupon"]['branch_id'] =$offer->vendor_id;
-            $res['data']["coupon"]['store_id'] =$request->branch_id;
+            $res['data']["coupon"]['offer_id'] =(int)$request->offer_id;
+            $res['data']["coupon"]['branch_id'] =(int)$offer->vendor_id;
+            $res['data']["coupon"]['store_id'] =(int)$request->branch_id;
             $res['data']["coupon"]['saving']=0;
-            $res['data']["coupon"]['referance_no'] = $ofe->referance_no;
+            $res['data']["coupon"]['referance_no'] = (int)$ofe->referance_no;
             return $res;
         }else{
             $res['status']= $this->SendError();
