@@ -153,10 +153,10 @@ class CodeController extends BaseController
                 $ofe->referance_no = $codes->code;
                 $f = Performed::where('code',$codes->code)->first();
                 $f->is_used = 1;
-              
+                $f->save();
 
             }
-            $f->save();
+           
             $ofe->save();
             $user->used_offers_no = $user->used_offers_no +1;
             $user->save();

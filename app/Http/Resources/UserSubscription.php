@@ -27,10 +27,10 @@ class UserSubscription extends JsonResource
             'points_no'=>$client->points_no,
             'store_points_no'=>$client->store_points_no,
             'package_id'=>$this->sub_id,
-            'duration_id'=>$this->id,
+            'duration_id'=>$this->sub_id,
             'actual_account_no'=>$client->actual_accounts_no,
             'price'=>$this->balnce,
-            'package'=>new PakegeResourses(Subscription::find($this->sub_id)),
+            'package'=>new PakegeTowResourses(Subscription::find($this->sub_id)),
             'duration'=>$this->duration(Subscription::find($this->sub_id))
         ];
     }
