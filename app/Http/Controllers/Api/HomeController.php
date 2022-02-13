@@ -108,7 +108,7 @@ class HomeController extends BaseController
         $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
         });
-        $q->haswith('categorys')->whereHas('categorys', function ($q) use ($request) {
+        $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
       })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
@@ -119,15 +119,15 @@ class HomeController extends BaseController
       // $res['data']['category_slider_images'] = ;
       return $res;
     } elseif ($filtter == 'flash_deal') {
-      $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
         $q->where('status','active');
-        $q->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
-        $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
+        $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
         });
-        $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
+        $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
       })->Where('is_flashdeal', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
@@ -135,15 +135,15 @@ class HomeController extends BaseController
       $res['data'] = new VendorOfferCollection($offer);
       return $res;
     } elseif ($filtter == 'voucher') {
-      $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
         $q->where('status','active');
-        $q->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
-        $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
+        $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
         });
-        $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
+        $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
         
@@ -156,7 +156,7 @@ class HomeController extends BaseController
   public function vendor_store_list(Request $request){
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $vendors = Vendor::with(['categorys','counteire','cities'])->where('status','active')
+    $vendors = Vendor::has(['categorys','counteire','cities'])->where('status','active')
     ->whereHas('categorys', function ($q) use ($request) {
       $q->where('category_id', $request->category_id);
     })
