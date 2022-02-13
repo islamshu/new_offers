@@ -97,18 +97,18 @@ class HomeController extends BaseController
 
     //  dd(userdefult());
     if ($filtter == 'offer') {
-      $offer = Offer::with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
         $q->where('status','active');
-        $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
+        $q->has('enterprise')->whereHas('enterprise', function ($q) use ($request) {
           $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
         });
-        $q->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
           $q->where('city_id', $request->city_id);
         });
-        $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
+        $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
         });
-        $q->with('categorys')->whereHas('categorys', function ($q) use ($request) {
+        $q->haswith('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
       })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
