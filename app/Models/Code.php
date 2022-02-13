@@ -13,5 +13,8 @@ class Code extends Model
     {
         return $this->hasMany(CodeSubscription::class);
     }
+    public function sub(){
+        return $this->belongsTo(Subscription::class); 
+    }
 
 }

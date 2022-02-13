@@ -11,6 +11,7 @@
                     <tr class="fw-bold fs-6 text-gray-800">
 
                         <th>{{ __('name') }}</th>
+                        <th>{{ __('packege name') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('Used Code') }}</th>
                         <th>{{ __('Not Used Code') }}</th>
@@ -21,7 +22,9 @@
                 </thead>
                 <tbody>
                     @foreach ($codes as $code)
+
                         <td>{{ $code->name_en }}</td>
+                        <td>{{ $code->sub }}</td>
                         <td>  <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}">{{ $code->number_of_code }}</a> </td>
                         
                         @php
