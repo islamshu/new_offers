@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\MapOfferResourses;
 use App\Http\Resources\OfferCollection;
+use App\Http\Resources\OfferResourses;
 use App\Http\Resources\PakegeCollection;
 use App\Http\Resources\SocialCollection;
 use App\Http\Resources\SuggetstedOfferResourses;
@@ -78,7 +79,7 @@ class OfferController extends BaseController
           }) 
         ->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
 
-        $res['data']['offers'] = (new OfferCollection($offers));
+        $res['data']['offers'] =  sort_offer(OfferResourses::collection($offers));
         $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
 
         return $res;
