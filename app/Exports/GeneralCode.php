@@ -18,6 +18,7 @@ class GeneralCode implements FromCollection
     
     public function collection()
     {
+        dd($this->id);
         return CodeSubscription::where('sub_id',$this->id)->get(['code','is_used']);
     }
 }
