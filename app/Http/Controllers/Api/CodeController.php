@@ -149,7 +149,6 @@ class CodeController extends BaseController
             if($vendor->type_refound == 'auto'){
                 $ofe->referance_no = rand(00000,99999); 
             }else{
-                dd($request->store_id);
                 $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
                 $ofe->referance_no = $codes->code;
                 $f = Performed::where('code',$codes->code)->first();
@@ -176,7 +175,7 @@ class CodeController extends BaseController
             $res['data']["coupon"]['branch_id'] =$offer->vendor_id;
             $res['data']["coupon"]['store_id'] =$request->branch_id;
             $res['data']["coupon"]['saving']=0;
-            $res['data']["coupon"]['referance_no'] = $codes->code;
+            $res['data']["coupon"]['referance_no'] = $ofe->referance_no;
             return $res;
         }else{
             $res['status']= $this->SendError();
