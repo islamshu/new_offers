@@ -142,7 +142,9 @@ class CodeController extends Controller
     public function show($locale,Code $code)
     {
       $codes=  CodeSubscription::where('sub_id',$code->sub_id)->get();
-      return view('dashboard.code.show_code',compact('codes'));
+      $code_id = $code->sub_id;
+
+      return view('dashboard.code.show_code',compact('codes','code_id'));
     }
     public function not_used_code($locale,$id)
     {
@@ -165,7 +167,7 @@ class CodeController extends Controller
         }elseif($type_used == 'not'){
             return Excel::download(new NotUsedCodeExport($sub_id), 'not_used_code.xlsx');
         }elseif($type_used == 'all'){
-            return Excel::download(new GeneralCode(), 'allcodes.xlsx');
+            return Excel::download(new GeneralCode($sub_id), 'allcodes.xlsx');
  
         }
     }
