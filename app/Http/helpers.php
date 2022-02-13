@@ -29,7 +29,7 @@ function saveJSONFile($code, $data){
  {
     $datad = [];
     $data_array = collect($data);
-    // dd($data_array);
+    dd($data_array->store);
     foreach (collect($data)->sortBy('distance') as $s) {
       array_push($datad, $s);
     }
