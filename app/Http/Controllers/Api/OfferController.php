@@ -78,8 +78,8 @@ class OfferController extends BaseController
           }) 
         ->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
 
-        $res['data']['offers'] = new OfferCollection($offers);
-        $res['data']['stores'] =  VednorResourse::collection($stores);
+        $res['data']['offers'] = sort_vendor(new OfferCollection($offers));
+        $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
 
         return $res;
     }
