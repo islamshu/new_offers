@@ -22,9 +22,13 @@
                 </thead>
                 <tbody>
                     @foreach ($codes as $code)
-
+                    @if(app()->getLocale() == 'ar')
+                        <td>{{ $code->name_ar }}</td>
+                        <td>{{ $code->sub->name_ar }}</td>
+                        @else
                         <td>{{ $code->name_en }}</td>
-                        <td>{{ $code->sub }}</td>
+                        <td>{{ $code->sub->name_en }}</td>
+                        @endif
                         <td>  <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}">{{ $code->number_of_code }}</a> </td>
                         
                         @php
