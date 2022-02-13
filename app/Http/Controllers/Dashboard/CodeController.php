@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Exports\GeneralCode;
 use App\Exports\NotUsedCodeExport;
 use App\Exports\UsedCodeExport;
 use App\Http\Controllers\Controller;
@@ -161,8 +162,11 @@ class CodeController extends Controller
     {
         if($type_used == 'used'){
             return Excel::download(new UsedCodeExport($sub_id), 'used_code.xlsx');
-        }else{
+        }elseif($type_used == 'not'){
             return Excel::download(new NotUsedCodeExport($sub_id), 'not_used_code.xlsx');
+        }elseif($type_used == 'all'){
+            return Excel::download(new GeneralCode(), 'allcodes.xlsx');
+ 
         }
     }
    
