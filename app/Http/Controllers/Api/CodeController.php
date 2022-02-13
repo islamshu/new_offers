@@ -149,6 +149,7 @@ class CodeController extends BaseController
             if($vendor->type_refound == 'auto'){
                 $ofe->referance_no = rand(00000,99999); 
             }else{
+                dd($request->store_id);
                 $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
                 $ofe->referance_no = $codes->code;
                 $f = Performed::where('code',$codes->code)->first();
