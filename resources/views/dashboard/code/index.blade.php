@@ -12,6 +12,7 @@
 
                         <th>{{ __('name') }}</th>
                         <th>{{ __('packege name') }}</th>
+                        <th>{{ __('Expire') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('Used Code') }}</th>
                         <th>{{ __('Not Used Code') }}</th>
@@ -29,6 +30,10 @@
                         <td>{{ $code->name_en }}</td>
                         <td>{{ $code->sub->name_en }}</td>
                         @endif
+                        <td>{{ $code->start_at }}
+                        <br>
+                        {{ $code->end_at }}
+                    </td>
                         <td>  <a href="{{ route('code.show', [ $code->id, 'locale' => app()->getLocale()]) }}">{{ $code->number_of_code }}</a> </td>
                         
                         @php
