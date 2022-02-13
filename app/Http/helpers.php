@@ -15,6 +15,15 @@ function saveJSONFile($code, $data){
     $jsonData = json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
     file_put_contents(base_path('resources/lang/'.$code.'.json'), stripslashes($jsonData));
 }
+ function sort_vendor($data)
+ {
+    $datad = [];
+    foreach (collect($data)->sortBy('distance') as $s) {
+      array_push($datad, $s);
+    }
+    return $datad;
+
+ }
  function get_dinstance($lat1,$lon1,$lat2,$lon2){
     $theta = $lon1 - $lon2; 
     $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 

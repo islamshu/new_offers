@@ -237,7 +237,7 @@ class HomeController extends BaseController
     }
 
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['stores'] = VendorForOfferResourses::collection($vendors);
+    $res['data']['stores'] = VendorForOfferResourses::collection(sort_vendor($vendors));
 
     return $res;
   }
