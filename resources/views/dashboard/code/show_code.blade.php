@@ -24,7 +24,7 @@
                 <tbody>
                     @foreach ($codes as $item)
                         <td>{{ $item->code }}</td>
-                        <td>{{ $item->is_used == '0' ? '<i class="fa fa-bookmark" aria-hidden="true"></i>' : 'Used' }}</td>
+                        <td>{{ $item->is_used == '0' ? <i class="fa fa-bookmark" aria-hidden="true"></i> : 'Used' }}</td>
                         </tr>
                     @endforeach
 
