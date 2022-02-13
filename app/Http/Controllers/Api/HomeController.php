@@ -199,7 +199,7 @@ class HomeController extends BaseController
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $stores = Branch::where('status', 'active')->where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['branches'] = new VendorBranchesNewCollection($stores);
+    $res['data']['branches'] = sort_vendor(new VendorBranchesNewCollection($stores));
     return $res;
   }
   public function vendor_offers(Request $request)
