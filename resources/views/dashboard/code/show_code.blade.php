@@ -26,7 +26,7 @@
                         <td>{{ $item->code }}</td>
                         <td>
                             @if($item->is_used == '0')
-                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            <i class="fa fa-check fa-2x " style="color: green" aria-hidden="true"></i>
                             @else
 
                             <i class="fa fa-check fa-2x " style="color: green" aria-hidden="true"></i>
