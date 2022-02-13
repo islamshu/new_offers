@@ -14,6 +14,6 @@ class OfferCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return OfferResourses::collection($this->collection);
+        return sort_offer(OfferResourses::collection($this->collection));
     }
 }
