@@ -231,13 +231,13 @@ class HomeController extends BaseController
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     //  $collction = get_sort(new StoresCollection($vendors));
     $collection =  sort_vendor(VendorForOfferResourses::collection($vendors));
-    $datad = [];
-    foreach (collect($collection)->sortBy('distance') as $data) {
-      array_push($datad, $data);
-    }
+    // $datad = [];
+    // foreach (collect($collection)->sortBy('distance') as $data) {
+    //   array_push($datad, $data);
+    // }
 
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['stores'] = VendorForOfferResourses::collection(($vendors));
+    $res['data']['stores'] = $collection;
 
     return $res;
   }
