@@ -18,6 +18,7 @@ function saveJSONFile($code, $data){
  function sort_vendor($data)
  {
     $datad = [];
+    dd(collect($data)->sortBy('distance'));
     foreach (collect($data)->sortBy('distance') as $s) {
       array_push($datad, $s);
     }
