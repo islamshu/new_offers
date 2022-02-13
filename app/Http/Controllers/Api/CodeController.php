@@ -170,6 +170,8 @@ class CodeController extends BaseController
             $trans->refreance_number = $ofe->referance_no ;
             $trans->save();
             $res['status']= $this->sendResponse('OK');
+            $res['status']['title']='';
+            $res['status']['message']= '';
             $res['data']["coupon"]['id'] = $ofe->id;
             $res['data']["coupon"]['offer_id'] =$request->offer_id;
             $res['data']["coupon"]['branch_id'] =$offer->vendor_id;
