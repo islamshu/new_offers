@@ -39,7 +39,7 @@ class VendorDetiesResourses extends JsonResource
             'store_covers'=>new VendorCoverCollection($this->vendor_image),
             'store_seen'=>$this->store_seen($this),
             'store_total_review'=>@$this->store_total_review($this),
-            'branches'=> new BranchCollection($this->branches),
+            'branches'=> new BranchCollection($this->branches->where('status','active')),
             'store_reviews'=>new  VendorReviewCollection($this->review)
         ];
     }

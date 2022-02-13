@@ -85,7 +85,7 @@ class VendorOfferDeResourses extends JsonResource
         $vendor = Vendor::find($data->vendor_id);
         
         $array =[];
-        foreach($vendor->branches as $branch){
+        foreach($vendor->branches->where('status','active') as $branch){
             $value =  get_dinstance($request->latitude,$request->longitude,$branch->latitude,$branch->longitude);
              $di = $value  * 1.609344 ;
              array_push($array,$di);

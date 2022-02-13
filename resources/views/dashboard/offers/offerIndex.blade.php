@@ -21,6 +21,7 @@
                         <th>{{ __('Type') }}</th>
                         <th>{{ __('start at') }}</th>
                         <th>{{ __('end at') }}</th>
+                        <th>{{ __('status') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
@@ -42,6 +43,9 @@
                         <td>{{ offer_type($item->offertype->offer_type) }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
+                        <td>
+                            <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                            </td>
                         <td class="pr-0 text-left">
                             @if (auth()->user()->hasPermission(['read-offer']))
 
@@ -120,9 +124,21 @@
     <script src="{{ asset('crudjs/crud.js') }}"></script>
 
     <script>
-        $(function() {
-
+          $(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let offerId = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('offerstatus.update',app()->getLocale()) }}',
+            data: {'status': status, 'offer_id': offerId},
+            success: function (data) {
+                console.log(data.message);
+            }
         });
+    });
+});
 
         function performdelete(id) {
             var url = '{{ route('offers.destroy', [':id', 'locale' => app()->getLocale()]) }}';

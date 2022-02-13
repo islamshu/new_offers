@@ -37,7 +37,7 @@ class VendorForOfferResourses extends JsonResource
     public function get_dinstance($data,$request){
         $array =[];
         
-        foreach($data->branches as $branch){
+        foreach($data->branches->where('status','active') as $branch){
            $value =  get_dinstance($request->latitude,$request->longitude,$branch->latitude,$branch->longitude);
             $di = $value  * 1.609344 ;
             array_push($array,$di);

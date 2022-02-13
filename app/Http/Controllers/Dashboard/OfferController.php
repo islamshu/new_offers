@@ -279,6 +279,14 @@ class OfferController extends Controller
     {
         //
     }
+    public function update_status(Request $request)
+    {
+        $user = Offer::find($request->offer_id);
+        $user->status = $request->status;
+        $user->save();
+    
+        return response()->json(['message' => 'Offer status updated successfully.']);
+    }
 
     /**
      * Show the form for editing the specified resource.
