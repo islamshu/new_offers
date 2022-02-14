@@ -118,7 +118,7 @@ class HomeController extends BaseController
       array_push($datad, $data);
     }
       $res['status'] = $this->sendResponse200('OK');
-      $res['data'] = $datad;
+      $res['data'] = $collction;
 
    
       
