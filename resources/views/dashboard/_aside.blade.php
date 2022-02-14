@@ -550,7 +550,7 @@ $lang = app()->getLocale();
                         class="menu-text">{{ __('termis and condition') }}</span></a></li>
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/How-it-work"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                        class="menu-text">{{ __('How-it-work') }}</span></a></li>
+                        class="menu-text">{{ __('How it work') }}</span></a></li>
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/faqs"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('FAQs') }}</span></a></li>
