@@ -112,8 +112,14 @@ class HomeController extends BaseController
           $q->where('category_id', $request->category_id);
         });
       })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      $collction = new VendorOfferCollection($offer);
+          $datad = [];
+    foreach (collect($collction)->sortBy('distance') as $data) {
+      array_push($datad, $data);
+    }
       $res['status'] = $this->sendResponse200('OK');
-      $res['data'] = new VendorOfferCollection($offer);
+      $res['data'] = $datad;
+
    
       
       // $res['data']['category_slider_images'] = ;
