@@ -14,8 +14,6 @@ $lang = app()->getLocale();
     {{-- @can('create-enterprises') --}}
 
     @if (auth()->user()->hasRole(['Admin']))
-
-
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
@@ -170,22 +168,23 @@ $lang = app()->getLocale();
 
     @if (auth()->user()->hasRole(['Enterprises']))
 
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="/{{ $lang }}/enterprise" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">
-                @if (auth()->user()->hasRole(['Enterprises']))
-                {{ __('Main Info') }} @else {{ __('Enterprises') }} @endif
-            </span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Enterprises') }}</span></span>
-                </li>
+        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+            <a href="/{{ $lang }}/enterprise" class="menu-link menu-toggle">
+                <span class="svg-icon menu-icon">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                </span>
+                <span class="menu-text">
+                    @if (auth()->user()->hasRole(['Enterprises']))
+                    {{ __('Main Info') }} @else {{ __('Enterprises') }}
+                    @endif
+                </span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+                <ul class="menu-subnav">
+                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                                class="menu-text">{{ __('Enterprises') }}</span></span>
+                    </li>
 
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
@@ -206,15 +205,15 @@ $lang = app()->getLocale();
 
 
                             </span></a></li>
-                @endif
+    @endif
 
 
 
 
-            </ul>
-        </div>
-    </li>
-    {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+</ul>
+</div>
+</li>
+{{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
@@ -238,313 +237,331 @@ $lang = app()->getLocale();
         </div>
     </li> --}}
 
-    @if (auth()->user()->hasPermission(['read-category']))
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="#" class="menu-link menu-toggle">
-                <span class="svg-icon menu-icon">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                </span>
-                <span class="menu-text">{{ __('Category') }}</span>
-                <i class="menu-arrow"></i>
-            </a>
-
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Category') }}</span></span>
-                    </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('List') }}</span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category/create"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Create') }}</span></a></li>
-
-                </ul>
-            </div>
-        </li>
-    @endif
-
-    @if (auth()->user()->hasPermission(['read-vendor']))
-
-
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="#" class="menu-link menu-toggle">
-                <span class="svg-icon menu-icon">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                </span>
-                <span class="menu-text">{{ __('Brand') }}</span>
-                <i class="menu-arrow"></i>
-            </a>
-
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Brand') }}</span></span>
-                    </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/vendor"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('List') }}</span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/vendor/create"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Create') }}</span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/upload-brands"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('upload brands') }}</span></a></li>
-                </ul>
-            </div>
-        </li>
-    @endif
+@if (auth()->user()->hasPermission(['read-category']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
-            <span class="menu-text">{{ __('Branchs') }}</span>
+            <span class="menu-text">{{ __('Category') }}</span>
             <i class="menu-arrow"></i>
         </a>
 
         <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
             <ul class="menu-subnav">
                 <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Branchs') }}</span></span>
+                            class="menu-text">{{ __('Category') }}</span></span>
                 </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch"
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                             class="menu-text">{{ __('List') }}</span></a></li>
-                {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch/create"
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category/create"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li> --}}
+                            class="menu-text">{{ __('Create') }}</span></a></li>
 
             </ul>
         </div>
     </li>
+@endif
 
-    @if (auth()->user()->hasPermission(['read-offer']))
+@if (auth()->user()->hasPermission(['read-vendor']))
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Brand') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
 
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="#" class="menu-link menu-toggle">
-                <span class="svg-icon menu-icon">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                </span>
-                <span class="menu-text">{{ __('Offers') }}</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Offers') }}</span></span>
-                    </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/offers"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('List') }}</span></a></li>
-                    {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/offers/create"
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Brand') }}</span></span>
+                </li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/vendor"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('List') }}</span></a></li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/vendor/create"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Create') }}</span></a></li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/upload-brands"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('upload brands') }}</span></a></li>
+            </ul>
+        </div>
+    </li>
+@endif
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Branchs') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('Branchs') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+            {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/branch/create"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Create') }}</span></a></li> --}}
+
+        </ul>
+    </div>
+</li>
+
+@if (auth()->user()->hasPermission(['read-offer']))
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Offers') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Offers') }}</span></span>
+                </li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/offers"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('List') }}</span></a></li>
+                {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/offers/create"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Create') }}</span></a></li> --}}
-                </ul>
-            </div>
-        </li>
-    @endif
+            </ul>
+        </div>
+    </li>
+@endif
 
-    @if (auth()->user()->hasPermission(['read-subscription']))
+@if (auth()->user()->hasPermission(['read-subscription']))
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Subscribes') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
 
-
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="#" class="menu-link menu-toggle">
-                <span class="svg-icon menu-icon">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                </span>
-                <span class="menu-text">{{ __('Subscribes') }}</span>
-                <i class="menu-arrow"></i>
-            </a>
-
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Subscribes') }}</span></span>
-                    </li>
-                    {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription"
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Subscribes') }}</span></span>
+                </li>
+                {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('List') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscription/create"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Create') }}</span></a></li> --}}
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/paid"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('PREMIUM Subscribes') }}</span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/trial"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Trial Subscribes') }}</span></a></li>
-
-
-                </ul>
-            </div>
-        </li>
-    @endif
-
-
-
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('copuon') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('copuon') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/coupun"
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/paid"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-          
+                            class="menu-text">{{ __('PREMIUM Subscribes') }}</span></a></li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/index_sub/trial"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Trial Subscribes') }}</span></a></li>
+
 
             </ul>
         </div>
     </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('User') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('User') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/user"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/user/create"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
+@endif
 
-            </ul>
-        </div>
-    </li>
 
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Activation Code') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('code') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code/create"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
 
-            </ul>
-        </div>
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Discount Code') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Discount Code') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code/create"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('copuon') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
 
-            </ul>
-        </div>
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Reference codes') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Reference codes') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/perfomeds"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-            
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('copuon') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/coupun"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
 
-            </ul>
-        </div>
 
-       
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="/{{ $lang }}/all_clients" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Clients') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        
+        </ul>
+    </div>
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('User') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('User') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/user"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/user/create"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('Create') }}</span></a></li>
 
-       
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="/{{ $lang }}/transaction" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Transaction') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        
+        </ul>
+    </div>
+</li>
 
-       
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('premotion') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-    </li>
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('premotion') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-     
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Activation Code') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('code') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code/create"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('Create') }}</span></a></li>
 
-       
-    </li>
-    
+        </ul>
+    </div>
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Discount Code') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('Discount Code') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code/create"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('Create') }}</span></a></li>
+
+        </ul>
+    </div>
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Reference codes') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('Reference codes') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/perfomeds"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+
+
+        </ul>
+    </div>
+
+
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="/{{ $lang }}/all_clients" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Clients') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+
+
+
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="/{{ $lang }}/transaction" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Transaction') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+
+
+
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('premotion') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+</li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Pages') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('Pages') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/about_us"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('About Us') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/privacy"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('Privacy') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/termis"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('termis and condition') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/How-it-work"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('How-it-work') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/faqs"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('FAQs') }}</span></a></li>
+
+
+        </ul>
+    </div>
+
+
+</li>
+
 
 
 
