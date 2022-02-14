@@ -34,7 +34,7 @@ class PageController extends BaseController
         return $res;  
     }
     public function faqs(){
-        $res['status']= $this->sendResponse('OK');
+        $res['status']= $this->sendResponse200('OK');
         $res['data']['FAQs'] = new FaqsCollection(Faqs::get());
         return $res;  
     }
