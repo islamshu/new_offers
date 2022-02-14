@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\FaqsCollection;
 use App\Http\Resources\PageCollection;
 use App\Http\Resources\PageResoures;
 use App\Http\Resources\WorkResoures;
 use App\Models\About;
+use App\Models\Faqs;
 use App\Models\HowItWork;
 use App\Models\Privacy;
 use App\Models\SystemInfo;
@@ -33,7 +35,7 @@ class PageController extends BaseController
     }
     public function faqs(){
         $res['status']= $this->sendResponse('OK');
-        $res['data']['FAQS'] = new PageResoures(SystemInfo::find(4));
+        $res['data']['FAQs'] = new FaqsCollection(Faqs::get());
         return $res;  
     }
     public function works(){
