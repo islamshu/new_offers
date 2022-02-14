@@ -14,8 +14,13 @@ class VendorOfferCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+        $Col = VendorOfferResourses::collection($this->collection);
+        $datad = [];
+        foreach (collect($Col)->sortBy('distance') as $data) {
+          array_push($datad, $data);
+        }
         return[
-            'offers' =>VendorOfferResourses::collection($this->collection),
+            'offers' =>$datad,
             'category_slider_images'=>[],
         ];
     }
