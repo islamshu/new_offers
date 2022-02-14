@@ -153,6 +153,7 @@ Route::group([
         Route::resource('about_us', 'AboutController');
         Route::resource('termis', 'TermisController');
         Route::resource('How-it-work', 'HowItWorkController');
+        Route::resource('faqs', 'FaqsController');
 
         
         
