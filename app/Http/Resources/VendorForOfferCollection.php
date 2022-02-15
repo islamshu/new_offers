@@ -15,6 +15,8 @@ class VendorForOfferCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+        $page = $request->last_index +2;
+        $limit = $request->has('paginate') ? $request->get('paginate') : 10;
         $collction = VendorForOfferResourses::collection($this->collection);
         $datad = [];
         foreach (collect($collction)->sortBy('distance') as $data) {
@@ -22,7 +24,7 @@ class VendorForOfferCollection extends ResourceCollection
         }
         $sliders = Slider::where('categoty_id',$request->category_id)->where('country_id',$request->country_id)->where('city_id',$request->city_id)->get();
         return [
-            'stores' =>paginate($datad),
+            'stores' =>paginate($datad,$limit,$page),
             'category_slider_images' => new SliderCollection($sliders),
         ];
     }
