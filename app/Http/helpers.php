@@ -95,5 +95,5 @@ function paginate($items, $limit, $page , $options = [])
     $total = count($items);
     
     
-  return  new Illuminate\Pagination\LengthAwarePaginator($items->forPage($page, $limit), $total, $limit, $page);
+  return new LengthAwarePaginator($items->forPage($page, $limit), $total, $limit, $page);
 }
