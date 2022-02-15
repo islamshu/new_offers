@@ -1,6 +1,6 @@
 
 
-<form class="form" method="post" action="{{ route('importBranch',[app()->getLocale(),$client->id]) }}" enctype="multipart/form-data">
+<form class="form" method="post" action="{{ route('send_client_notofication',[app()->getLocale(),$client->id]) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="client_id" value="{{ $client->id }}">
     <div class="card-body">

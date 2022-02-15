@@ -111,6 +111,7 @@ Route::group([
         Route::get('offer_status','Dashboard\OfferController@update_status')->name('offerstatus.update');
         
         Route::post('/get_modal/branch', 'Dashboard\branchController@get_modal')->name('showpostModalBranch');
+        Route::post('send_client_notofication','Dashboard\ClinetController@send_client_notofication')->name('send_client_notofication');
 
         
 

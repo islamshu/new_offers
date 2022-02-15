@@ -10,9 +10,12 @@ use App\Models\Country;
 use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Traits\SendNotification;
 
 class ClinetController extends Controller
 {
+    use SendNotification;
+
     /**
      * Display a listing of the resource.
      *
@@ -33,6 +36,13 @@ class ClinetController extends Controller
     public function send_notification(Request $request){
         $client = Clinet::find($request->id);
         return view('dashboard.clinets.send_notofication')->with('client',$client);
+    }
+    public function send_client_notofication(Request $request){
+        $client = Clinet::find($request->client_id);
+        $token = $client->token;
+        $this->notification($token,  $request->body, $request->title, 'notofication');
+        return true;
+
     }
     public function get_import()
     {

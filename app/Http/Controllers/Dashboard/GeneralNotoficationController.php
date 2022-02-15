@@ -40,7 +40,6 @@ class GeneralNotoficationController extends Controller
         $users = User::where('fcm_token','!=',null)->get();
         foreach($users as $user){
             $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
-
         }
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
