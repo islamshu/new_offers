@@ -23,8 +23,9 @@ class VendorForOfferCollection extends ResourceCollection
           array_push($datad, $data);
         }
         $sliders = Slider::where('categoty_id',$request->category_id)->where('country_id',$request->country_id)->where('city_id',$request->city_id)->get();
+        $TEST = paginate($datad,$limit,$page);
         return [
-            'stores' =>$datad,
+            'stores' =>$TEST,
             'category_slider_images' => new SliderCollection($sliders),
         ];
     }
