@@ -1,7 +1,7 @@
 @extends('layout.default')
 @section('styles')
     <style>
-        .dropdown {
+.dropdown {
   position: relative;
   display: inline-block;
 }
@@ -26,7 +26,7 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #abb9ac;}
 </style>
 @endsection
 @section('content')
