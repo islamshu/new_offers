@@ -79,9 +79,9 @@
                     <td>{{ $item->last_login }}</td>
                      <td class="pr-0 text-left">
                         <div class="dropdown">
-                            <button class="dropbtn">Dropdown</button>
+                            <button class="dropbtn">{{ __('Action') }}</button>
                             <div class="dropdown-content">
-                              <a href="#">Link 1</a>
+                              <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}">{{ __('show') }}</a>
                               <a href="#">Link 2</a>
                               <a href="#">Link 3</a>
                             </div>
