@@ -15,9 +15,11 @@ class VendorForOfferCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $collction = VendorForOfferResourses::collection($this->collection);
+        $page = $request->last_index +2;
+        $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+        $collction = VendorForOfferResourses::collection($this->collection->limit($limit)->offset(($page - 1) * $limit)->get());
         $datad = [];
-        dd($request);
+       
         foreach (collect($collction)->sortBy('distance') as $data) {
           array_push($datad, $data);
         }
