@@ -138,7 +138,13 @@ class HomeController extends BaseController
         });
       })->Where('is_flashdeal', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
-      $res['data'] = new VendorOfferCollection($offer);
+      $collction = new VendorOfferCollection($offer);
+      $datad = [];
+      foreach (collect($collction)->sortBy('distance') as $data) {
+        array_push($datad, $data);
+      }
+        $res['status'] = $this->sendResponse200('OK');
+        $res['data'] = $collction;
       return $res;
     } elseif ($filtter == 'voucher') {
       $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
@@ -155,7 +161,13 @@ class HomeController extends BaseController
         
       })->Where('is_voucher', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
       $res['status'] = $this->sendResponse200('OK');
-      $res['data'] = new VendorOfferCollection($offer);
+      $collction = new VendorOfferCollection($offer);
+      $datad = [];
+      foreach (collect($collction)->sortBy('distance') as $data) {
+        array_push($datad, $data);
+      }
+        $res['status'] = $this->sendResponse200('OK');
+        $res['data'] = $collction;
       return $res;
     } 
   }
