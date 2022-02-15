@@ -99,7 +99,7 @@
                                             onclick="make('{{ $item->id }}')">Send Notofication</a>
 
                                         <a data-toggle="modal" data-target="#addSub"
-                                            onclick="makesub('{{ $item->id }}')">Add Subscribe</a>
+                                            onclick="makenew_fun('{{ $item->id }}')">Add Subscribe</a>
 
                                     </div>
 
@@ -211,7 +211,7 @@
             });
 
         }
-        function makesub(id) {
+        function makenew_fun(id) {
             $("#addSub").show();
 
             // $('#staticBackdrop').modal();
