@@ -183,7 +183,7 @@ class HomeController extends BaseController
     })
     ->has('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
-    })->limit($limit)->offset(($page - 1) * $limit)->orderBy('id','desc')->get();
+    })->get();
     // 
     $res['status'] = $this->sendResponse200('OK');
 

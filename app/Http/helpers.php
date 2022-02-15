@@ -90,32 +90,9 @@ function offer_type($type){
         return 'Special Discount';
     }
 }
- function paginate(Collection $results, $pageSize)
+function paginate($items, $perPage = 5, $page = null, $options = [])
 {
-    $page = Paginator::resolveCurrentPage('page');
-    
-    $total = $results->count();
-
-    paginator($results->forPage($page, $pageSize), $total, $pageSize, $page, [
-        'path' => Paginator::resolveCurrentPath(),
-        'pageName' => 'page',
-    ]);
-
-}
-
-/**
- * Create a new length-aware paginator instance.
- *
- * @param  \Illuminate\Support\Collection  $items
- * @param  int  $total
- * @param  int  $perPage
- * @param  int  $currentPage
- * @param  array  $options
- * @return \Illuminate\Pagination\LengthAwarePaginator
- */
-  function paginator($items, $total, $perPage, $currentPage, $options)
-{
-    return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
-        'items', 'total', 'perPage', 'currentPage', 'options'
-    ));
+    $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
 }
