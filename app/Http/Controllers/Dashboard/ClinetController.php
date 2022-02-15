@@ -11,6 +11,7 @@ use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Traits\SendNotification;
+use App\Models\Subscription;
 use Facade\FlareClient\Http\Client;
 
 class ClinetController extends Controller
@@ -47,7 +48,9 @@ class ClinetController extends Controller
     }
     public function add_sub_to_client(Request $request){
         $client = Clinet::find($request->id);
-        dd($client);
+        $subs = Subscription::where('type_paid','PREMIUM')->get();
+        return view('dashboard.clinets.subs')->with('client',$client)->with('subs',$subs);
+
     }
     public function get_import()
     {
