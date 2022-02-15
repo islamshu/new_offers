@@ -46,7 +46,7 @@
             @endif
            <td>
             <form method="post" style="display: inline">
-                <button type="button" onclick="performdelete('{{ $item->id }}')"
+                <button type="button" onclick="performdelete({{ $item->id }})"
                     class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
                         class="svg-icon svg-icon-md svg-icon-primary">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -127,7 +127,7 @@
     <script src="{{ asset('crudjs/crud.js') }}"></script>
 
     <script>
-       \
+       
 
         function performdelete(id) {
             var url = '{{ route('about_us.destroy', [':id', 'locale' => app()->getLocale()]) }}';
