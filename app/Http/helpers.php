@@ -94,7 +94,7 @@ function paginate($items, $limit, $page , $options = [])
 {
     
     $items = $items instanceof Collection ? $items : Collection::make($items);
-    return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
+    // return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
 
     return $items->forPage($page, $limit);
 }
