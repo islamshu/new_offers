@@ -92,7 +92,7 @@ function offer_type($type){
 }
 function paginate($items, $limit, $page , $options = [])
 {
-    
+    dd($items);
     // $items =coll $items 
     // return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
 
