@@ -93,7 +93,7 @@ function offer_type($type){
 function paginate($items, $limit, $page , $options = [])
 {
     // dd($items);
-    foreach($items as $it){
+    foreach($items->forPage($page, $limit) as $it){
         dd($it);
     }
     // $items =coll $items 
