@@ -96,5 +96,5 @@ function paginate($items, $limit, $page , $options = [])
     // $items =coll $items 
     // return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
 
-    return $items->forPage($page, $limit);
+    return json_encode($items->forPage($page, $limit));
 }
