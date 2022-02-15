@@ -94,6 +94,6 @@ function paginate($items, $limit, $page , $options = [])
 {
     
     $items = $items instanceof Collection ? $items : Collection::make($items);
-    dd($items->forPage($page, $limit));
+    // dd($items->forPage($page, $limit));
     return $items->forPage($page, $limit);
 }
