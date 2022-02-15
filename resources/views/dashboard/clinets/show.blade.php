@@ -115,7 +115,7 @@
                                 <small class="text-muted">expiry date: </small>
                                 <p class="m-b-0">
                                 <p class="m-b-0">
-                                    {{ $member->expire_date}}
+                                    {{ $member->expire_date != null ?  $member->expire_date : _}}
                                 </p>
                                 <hr>
                             </div>
