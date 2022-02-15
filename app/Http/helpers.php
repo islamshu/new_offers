@@ -92,7 +92,8 @@ function offer_type($type){
 }
 function paginate($items, $limit, $page , $options = [])
 {
-    dd(count($items));
+    $total = count($items);
     
-    new Illuminate\Pagination\LengthAwarePaginator($items, $total, $perPage, $currentPage);
+    
+    new Illuminate\Pagination\LengthAwarePaginator($items, $total, $limit, $page);
 }
