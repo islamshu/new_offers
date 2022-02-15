@@ -34,7 +34,14 @@
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Users') }}</h2>
 
-
+            @if(Session::has('success'))
+            <div class="row mr-2 ml-2">
+                <button type="text" class="btn btn-lg btn-block btn-outline-success btn-success white mb-2"
+                        id="type-error">{{ Session::get('success') }}
+                </button>
+            </div>
+        @endif
+        
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
                 id="kt_datatable">
                 <thead>
