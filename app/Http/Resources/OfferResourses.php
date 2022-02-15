@@ -29,7 +29,20 @@ class OfferResourses extends JsonResource
        'voucher'=> (int)$this->is_voucher,
        'store_id'=> $this->vendor_id ,
        'store'=> new VendorResourses($this->vendor)  ,
+       'distance'=>@$this->get_dinstance($this->vendor,$request),
+
         ];
+    }
+    public function get_dinstance($data,$request){
+        $array =[];
+        foreach($data->branches->where('status','active') as $branch){
+           $value =  get_dinstance($request->latitude,$request->longitude,$branch->latitude,$branch->longitude);
+            $di = $value  * 1.609344 ;
+            array_push($array,$di);
+        }
+        if($array != null){
+            return min($array);
+        }
     }
     public function details($data){
         $lang = request()->header('Lang');
