@@ -92,8 +92,9 @@ function offer_type($type){
 }
 function paginate($items, $limit, $page , $options = [])
 {
-    $total = count($items);
     
-    
-  return new LengthAwarePaginator($items->forPage($page, $limit), $total, $limit, $page);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
+
+    return $items->forPage($page, $limit);
 }
