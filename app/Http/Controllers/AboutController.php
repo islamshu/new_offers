@@ -88,6 +88,7 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
        $about= About::find($id);
        $about->delete();
        return response()->json(['icon' => 'success', 'title' => 'about deleted successfully'], 200);
