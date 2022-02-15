@@ -23,7 +23,7 @@
             <th>{{ __('title') }}</th>
             <th>{{ __('content') }}</th>
           
-            {{-- <th>Actions</th> --}}
+            <th>{{ __('Actions') }}</th>
         </tr>
     </thead>
     <tbody>
