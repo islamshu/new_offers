@@ -11,6 +11,7 @@ use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Traits\SendNotification;
+use Facade\FlareClient\Http\Client;
 
 class ClinetController extends Controller
 {
@@ -43,6 +44,10 @@ class ClinetController extends Controller
         $this->notification($token,  $request->body, $request->title, 'notofication');
         return redirect()->back()->with(['success'=>trans('send notification succesffuly')]);
 
+    }
+    public function add_sub_to_client(Request $request){
+        $client = Clinet::find($request->id);
+        dd($client);
     }
     public function get_import()
     {

@@ -219,7 +219,7 @@
 
             $.ajax({
                 type: 'post',
-                url: "{{ route('send_notification', app()->getLocale()) }}",
+                url: "{{ route('add_sub_to_client', app()->getLocale()) }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     'id': id
