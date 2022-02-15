@@ -41,7 +41,7 @@ class ClinetController extends Controller
         $client = Clinet::find($request->client_id);
         $token = $client->token;
         $this->notification($token,  $request->body, $request->title, 'notofication');
-        return true;
+        return redirect()->back();
 
     }
     public function get_import()
