@@ -14,8 +14,8 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label> {{ __('Body') }} :</label>
-                <input type="text" name="body" id="body" class="form-control form-control-solid"
-                    placeholder="{{ __('Body') }}" required />
+         
+                    <textarea name="body" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
             </div>
         </div>
         <div class="row">
