@@ -54,6 +54,7 @@ class ClinetController extends Controller
     }
     public function add_sub_for_user(Request $request){
         $code = Subscription::find($request->sub_id);
+        dd($code);
         $client = Clinet::find($request->id);
         $price = $code->price;
         $user = new Subscriptions_User();
