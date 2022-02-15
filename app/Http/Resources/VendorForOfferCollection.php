@@ -17,6 +17,7 @@ class VendorForOfferCollection extends ResourceCollection
     {
         $collction = VendorForOfferResourses::collection($this->collection);
         $datad = [];
+        dd($request);
         foreach (collect($collction)->sortBy('distance') as $data) {
           array_push($datad, $data);
         }
