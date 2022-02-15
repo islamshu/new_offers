@@ -86,8 +86,11 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(About $about)
+    public function destroy($id)
     {
-        //
+       $about= About::find($id);
+       $about->delete();
+       return response()->json(['icon' => 'success', 'title' => 'about deleted successfully'], 200);
+
     }
 }
