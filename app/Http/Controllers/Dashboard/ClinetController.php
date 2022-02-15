@@ -100,7 +100,7 @@ class ClinetController extends Controller
         $user->clinet_id  = $client->id;
         $user->save();
         $client->save();
-        return redirect()->back()->with(['success'=>'add subscribe succesffuly'])
+        return redirect()->back()->with(['success'=>'add subscribe succesffuly']);
 
 
 
