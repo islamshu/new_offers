@@ -90,7 +90,7 @@ function offer_type($type){
         return 'Special Discount';
     }
 }
-function paginate($items, $limit = 5, $page , $options = [])
+function paginate($items, $limit, $page , $options = [])
 {
     // $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
     $items = $items instanceof Collection ? $items : Collection::make($items);
