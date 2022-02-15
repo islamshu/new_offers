@@ -86,7 +86,7 @@ class AboutController extends Controller
      * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($locale,$id)
     {
         dd($id);
        $about= About::find($id);
