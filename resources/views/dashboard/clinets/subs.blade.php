@@ -11,7 +11,7 @@
                 <select name="sub_id" class="form-control form-control-solid" id="">
                     <option value="">{{ __('select') }}</option>
                     @foreach ($subs as $sub)
-                    <option value="{{ $sub->id }}">{{ $sub->title_en }}</option>  
+                    <option value="{{ $sub->id }}">@if(app()->getLocale() == 'ar') {{ $sub->name_ar }} @else {{ $sub->name_en }} @endif </option>  
                     @endforeach
                 </select>
                 
