@@ -113,6 +113,9 @@ Route::group([
         Route::post('/get_modal/branch', 'Dashboard\branchController@get_modal')->name('showpostModalBranch');
         Route::post('send_client_notofication','Dashboard\ClinetController@send_client_notofication')->name('send_client_notofication');
         Route::post('add_sub_to_client','Dashboard\ClinetController@add_sub_to_client')->name('add_sub_to_client');
+        Route::post('add_sub_for_user','Dashboard\ClinetController@add_sub_for_user')->name('add_sub_for_user');
+
+        
 
         
 

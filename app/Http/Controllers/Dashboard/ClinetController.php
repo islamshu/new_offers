@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Traits\SendNotification;
 use App\Models\Subscription;
+use Carbon\Carbon;
 use Facade\FlareClient\Http\Client;
 
 class ClinetController extends Controller
@@ -50,6 +51,58 @@ class ClinetController extends Controller
         $client = Clinet::find($request->id);
         $subs = Subscription::where('type_paid','PREMIUM')->get();
         return view('dashboard.clinets.subs')->with('client',$client)->with('subs',$subs);
+    }
+    public function add_sub_for_user(Request $request){
+        $code = Subscription::find($request->sub_id);
+        $client = Clinet::find($request->id);
+        $price = $code->price;
+        $user = new Subscriptions_User();
+        $user->payment_type = 'admin';
+        // dd(auth('client_api')->id());
+        $count = Subscriptions_User::where('clinet_id',$client->id)->where('sub_id',$code->id)->count();
+
+        $client->type_of_subscribe = $code->type_paid;
+       
+        if($code->type_balance == 'Limit'){
+            $client->is_unlimited = 0;
+            $client->credit= $code->balance;
+            $client->remain= $code->balance;
+        }elseif($code->type_balance == 'UnLimit'){
+            $client->is_unlimited = 1;
+            $client->credit=null;
+            $client->remain= null;
+        }
+        if($request->start_date != null && $request->end_date != null){
+            $user->expire_date = $request->end_date;
+            $client->expire_date = $request->end_data;
+            $client->start_date = $request->start_date;
+        }else{
+            $data_type = $code->expire_date_type;
+            $data_type_number = $code->number_of_dayes;
+            $client->start_date = Carbon::now();
+            if($data_type == 'days'){
+                $client->expire_date = Carbon::now()->addDays($data_type_number);
+                $user->expire_date = Carbon::now()->addDays($data_type_number);
+                
+            }elseif($data_type == 'months'){
+                $client->expire_date = Carbon::now()->addMonths($data_type_number);
+                $user->expire_date = Carbon::now()->addMonths($data_type_number);
+
+            }elseif($data_type == 'years'){
+                $client->expire_date = Carbon::now()->addYears($data_type_number);
+                $user->expire_date = Carbon::now()->addYears($data_type_number);
+            }        
+        }
+        $user->status = 'active';
+        $user->balnce = $code->balance;
+        $user->purchases_no =  $count+1;
+        $user->sub_id  = $code->id;
+        $user->clinet_id  = $client->id;
+        $user->save();
+        $client->save();
+        return redirect()->back()->with(['success'=>'add subscribe succesffuly'])
+
+
 
     }
     public function get_import()

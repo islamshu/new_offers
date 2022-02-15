@@ -1,6 +1,6 @@
 
 
-<form class="form" method="post" action="{{ route('send_client_notofication',[app()->getLocale(),$client->id]) }}" enctype="multipart/form-data">
+<form class="form" method="post" action="{{ route('add_sub_for_user',[app()->getLocale(),$client->id]) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="client_id" value="{{ $client->id }}">
     
