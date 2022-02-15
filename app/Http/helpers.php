@@ -96,7 +96,7 @@ function offer_type($type){
     
     $total = $results->count();
 
-    $this->paginator($results->forPage($page, $pageSize), $total, $pageSize, $page, [
+    paginator($results->forPage($page, $pageSize), $total, $pageSize, $page, [
         'path' => Paginator::resolveCurrentPath(),
         'pageName' => 'page',
     ]);
@@ -113,7 +113,7 @@ function offer_type($type){
  * @param  array  $options
  * @return \Illuminate\Pagination\LengthAwarePaginator
  */
- function paginator($items, $total, $perPage, $currentPage, $options)
+  function paginator($items, $total, $perPage, $currentPage, $options)
 {
     return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
         'items', 'total', 'perPage', 'currentPage', 'options'
