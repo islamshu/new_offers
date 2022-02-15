@@ -83,7 +83,7 @@
                             <div class="dropdown-content">
                               <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}">{{ __('show') }}</a>
                               <a data-toggle="modal"
-                              data-target="#myModal" class="btn btn-outline-primary"
+                              data-target="#myModal"
                               onclick="make('{{ $item->id }}')">Send Notofication</a>
                             </div>
                           </div>
