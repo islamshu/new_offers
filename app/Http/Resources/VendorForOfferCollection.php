@@ -22,7 +22,7 @@ class VendorForOfferCollection extends ResourceCollection
         }
         $sliders = Slider::where('categoty_id',$request->category_id)->where('country_id',$request->country_id)->where('city_id',$request->city_id)->get();
         return [
-            'stores' =>paginate($this->collection,10),
+            'stores' =>$datad,
             'category_slider_images' => new SliderCollection($sliders),
         ];
     }
