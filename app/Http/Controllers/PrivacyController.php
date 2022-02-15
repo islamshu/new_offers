@@ -85,8 +85,11 @@ class PrivacyController extends Controller
      * @param  \App\Models\Privacy  $privacy
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Privacy $privacy)
+    public function destroy($locale,$id)
     {
-        //
+       $about= Privacy::find($id);
+       $about->delete();
+       return response()->json(['icon' => 'success', 'title' => 'privicy deleted successfully'], 200);
+
     }
 }

@@ -86,8 +86,11 @@ class TermisController extends Controller
      * @param  \App\Models\Termis  $term
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Termis $term)
+    public function destroy($locale,$id)
     {
-        //
+       $about= Termis::find($id);
+       $about->delete();
+       return response()->json(['icon' => 'success', 'title' => 'termis deleted successfully'], 200);
+
     }
 }
