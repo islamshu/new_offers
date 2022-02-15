@@ -30,6 +30,10 @@ class ClinetController extends Controller
         
         return view('dashboard.clinets.first-index',compact('all','trial','paid','non_sub'));
     }
+    public function send_notification(Request $request){
+        $client = Clinet::find($request->id);
+        return view('dashboard.clinets.send_notofication')->with('client',$client);
+    }
     public function get_import()
     {
         return view('dashboard.clinets.get_import');

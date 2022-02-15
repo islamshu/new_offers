@@ -149,6 +149,7 @@ Route::group([
         Route::get('offer_slider/{id}/{city_id}', 'Dashboard\PremotionController@offer_slider')->name('offer_slider');
         Route::post('create_offer', 'Dashboard\PremotionController@create_offer')->name('create_offer');
         Route::get('change_color', 'Dashboard\PremotionController@change_color')->name('change_color');
+        Route::post('send_notification','Dashboard\ClinetController@send_notification')->name('send_notification');
         Route::resource('privacy', 'PrivacyController');
         Route::resource('about_us', 'AboutController');
         Route::resource('termis', 'TermisController');

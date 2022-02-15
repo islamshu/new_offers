@@ -82,8 +82,9 @@
                             <button class="dropbtn">{{ __('Action') }}</button>
                             <div class="dropdown-content">
                               <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}">{{ __('show') }}</a>
-                              <a href="#">Link 2</a>
-                              <a href="#">Link 3</a>
+                              <a data-toggle="modal"
+                              data-target="#myModal" class="btn btn-outline-primary"
+                              onclick="make('{{ $item->id }}')">Send Notofication</a>
                             </div>
                           </div>
 
@@ -108,6 +109,34 @@
 
         </div>
     </div>
+    <div class="modal fase" id="myModal" data-backdrop="static"
+    data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    {{ __('Send Notofication') }}</h5>
+
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="addToCart-modal-body">
+                <div class="c-preloader text-center p-3">
+                    <i class="las la-spinner la-spin la-3x"></i>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light"
+                    data-dismiss="modal">Close</button>
+                <button type="button" class="btn ok">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -121,10 +150,29 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
-        $(function() {
+      function make(id) {
+                $("#myModal").show();
 
-        });
+                // $('#staticBackdrop').modal();
+                $('.c-preloader').show();
 
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('send_notification', app()->getLocale()) }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'id': id
+                    },
+
+                    success: function(data) {
+
+                        $('#addToCart-modal-body').html(data);
+
+
+                    }
+                });
+
+            }
         function performdelete(id) {
             var url = '{{ route('offers.destroy', [':id', 'locale' => app()->getLocale()]) }}';
             url = url.replace(':id', id);
