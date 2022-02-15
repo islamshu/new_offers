@@ -14,9 +14,13 @@ class VendorBranchesNewCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-    
+        $collction =   BranchResourses::collection($this->collection);
+        $datad = [];
+        foreach (collect($collction)->sortBy('distance') as $data) {
+          array_push($datad, $data);
+        }
         return
-           BranchResourses::collection($this->collection);
+          $datad;
         
     }
 }
