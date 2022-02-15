@@ -115,7 +115,7 @@
                                 <small class="text-muted">expiry date: </small>
                                 <p class="m-b-0">
                                 <p class="m-b-0">
-                                    {{  __(@$member->sexpire_date)}}
+                                    {{  __(@$member->expire_date)}}
                                 </p>
                                 <hr>
                             </div>
