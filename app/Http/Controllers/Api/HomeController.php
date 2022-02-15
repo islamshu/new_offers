@@ -183,8 +183,8 @@ class HomeController extends BaseController
     })
     ->has('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
-    })->get();
-    // ->limit($limit)->offset(($page - 1) * $limit)->get();
+    })->limit($limit)->offset(($page - 1) * $limit)->get();
+    // 
     $res['status'] = $this->sendResponse200('OK');
 
     $res['data'] = new VendorForOfferCollection($vendors);
