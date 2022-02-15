@@ -93,7 +93,7 @@ function offer_type($type){
 function paginate($items, $limit, $page , $options = [])
 {
     
-    $items =collect($items) ; 
+    // $items ; 
     // return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
 
     return $items->forPage($page, $limit);
