@@ -75,7 +75,7 @@ class ClinetController extends Controller
         }
         if($request->start_date != null && $request->end_date != null){
             $user->expire_date = $request->end_date;
-            $client->expire_date = $request->end_data;
+            $client->expire_date = $request->end_date;
             $client->start_date = $request->start_date;
         }else{
             $data_type = $code->expire_date_type;
