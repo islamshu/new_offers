@@ -48,13 +48,20 @@
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->last_login }}</td>
                      <td class="pr-0 text-left">
+                        <div class="dropdown">
+                            <button class="dropbtn">Dropdown</button>
+                            <div class="dropdown-content">
+                              <a href="#">Link 1</a>
+                              <a href="#">Link 2</a>
+                              <a href="#">Link 3</a>
+                            </div>
+                          </div>
 
 
-
-                        <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}"
+                        {{-- <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}"
                             class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                             <i class="fa fa-eye"> </i>
-                        </a>
+                        </a> --}}
 
 
 
