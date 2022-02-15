@@ -1,7 +1,8 @@
 
 
-<form class="form" method="post" action="{{ route('importBranch',[app()->getLocale(),$vendor->id]) }}" enctype="multipart/form-data">
+<form class="form" method="post" action="{{ route('importBranch',[app()->getLocale(),$client->id]) }}" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="client_id" value="{{ $client->id }}">
     <div class="card-body">
         <div class="row">
             <div class="form-group col-md-12">
