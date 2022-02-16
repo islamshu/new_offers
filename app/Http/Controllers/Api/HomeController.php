@@ -216,7 +216,6 @@ class HomeController extends BaseController
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $stores = Branch::where('status', 'active')->where('vendor_id', $request->store_id)->get();
-    dd($stores);
     $res['status'] = $this->sendResponse200('OK');
     $res['data']['branches'] = (new VendorBranchesNewCollection($stores));
     return $res;
