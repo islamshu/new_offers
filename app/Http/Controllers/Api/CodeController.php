@@ -97,7 +97,7 @@ class CodeController extends BaseController
         if(!$offer){
             $res['status']= $this->SendError();
             $res['status']['title']='Purchase is Fail';
-            $res['status']['message']= 'The PIN code is wrong';
+            $res['status']['message']= 'The PIN code is wrong error 1';
             return $res;
         }
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
@@ -114,7 +114,7 @@ class CodeController extends BaseController
         if($system_uses != 'unlimit'){
             if($offer->usage_number_system <= $numer_time  ){
                 $res['status']= $this->SendError();
-                $res['message']= 'System count is full';
+                $res['message']= 'System count is full error 2';
                 return $res;
             }
         } 
@@ -122,7 +122,7 @@ class CodeController extends BaseController
             if($offer->usage_member_number <= $numer_time  ){
                 $res['status']= $this->SendError();
                 $res['status']['title']='Purchase is Fail';
-                $res['status']['message']= 'The PIN code is wrong';
+                $res['status']['message']= 'The PIN code is wrong error 3';
                 return $res;
             }
         }
@@ -142,7 +142,7 @@ class CodeController extends BaseController
             }else{
                 $res['status']= $this->SendError();
                 $res['status']['title']='Purchase is Fail';
-                $res['status']['message']= 'The PIN code is wrong';
+                $res['status']['message']= 'The PIN code is wrong error 4';
                 return $res;
             }
             }
@@ -182,14 +182,14 @@ class CodeController extends BaseController
         }else{
             $res['status']= $this->SendError();
             $res['status']['title']='Purchase is Fail';
-            $res['status']['message']= 'The PIN code is wrong';
+            $res['status']['message']= 'The PIN code is wrong error 5';
             return $res;
         }
     }else{
 
         $res['status']= $this->SendError();
         $res['status']['title']='Purchase is Fail';
-        $res['status']['message']= 'The PIN code is wrong';
+        $res['status']['message']= 'The PIN code is wrong error 6';
         return $res;
 }
 
