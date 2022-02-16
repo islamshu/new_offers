@@ -136,7 +136,7 @@ class HomeController extends BaseController
         $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->Where('is_flashdeal', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      })->Where('is_flashdeal', 1)->get();
       $res['status'] = $this->sendResponse200('OK');
       $collction = new VendorOfferCollection($offer);
       $datad = [];
@@ -159,7 +159,7 @@ class HomeController extends BaseController
           $q->where('category_id', $request->category_id);
         });
         
-      })->Where('is_voucher', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      })->Where('is_voucher', 1)->get();
       $res['status'] = $this->sendResponse200('OK');
       $collction = new VendorOfferCollection($offer);
       $datad = [];
