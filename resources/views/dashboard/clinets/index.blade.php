@@ -57,7 +57,7 @@
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Phone') }}</th>
                         <th>{{ __('email') }}</th>
-                        <th>{{ __('acount status') }}</th>
+                        {{-- <th>{{ __('acount status') }}</th> --}}
 
                         <th>{{ __('last Login Date') }}</th>
                         <th>{{ __('Action') }}</th>
@@ -69,7 +69,7 @@
                             <td>{{ $item->client->name }}</td>
                             <td>{{ $item->client->phone }}</td>
                             <td>{{ $item->client->email }}</td>
-                            <td>{{ $item->client->type_of_subscribe }}</td>
+                            {{-- <td>{{ $item->client->type_of_subscribe }}</td> --}}
 
                             <td>{{ $item->client->last_login }}</td>
                             <td class="pr-0 text-left">
