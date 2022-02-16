@@ -20,199 +20,198 @@ use Carbon\Carbon;
 
 class CodeController extends BaseController
 {
-    public function sub_by_activiton(Request $request){
+    public function sub_by_activiton(Request $request)
+    {
         // dd(auth('client_api')->id());
-        $codesub = CodeSubscription::where('code',$request->activation_code)->first();
-        if($codesub->is_used == 1){
-            $res['status']= $this->sendNewErorr('Failed to Subscribe','Activition Code is not Found or Used');
+        $codesub = CodeSubscription::where('code', $request->activation_code)->first();
+        if ($codesub->is_used == 1) {
+            $res['status'] = $this->sendNewErorr('Failed to Subscribe', 'Activition Code is not Found or Used');
             return $res;
         }
         $code = Subscription::with('codes')->whereHas('codes', function ($q) use ($request) {
-            $q->where('code',$request->activation_code);
+            $q->where('code', $request->activation_code);
         })->first();
-        
-        if(!$code){
-            $res['status']= $this->sendNewErorr('Failed to Subscribe','Activition Code is not Found or Used');
-            
+
+        if (!$code) {
+            $res['status'] = $this->sendNewErorr('Failed to Subscribe', 'Activition Code is not Found or Used');
+
             return $res;
         }
-        $count = Subscriptions_User::where('clinet_id',auth('client_api')->id())->where('sub_id',$code->id)->count();
+        $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
         $user = new Subscriptions_User();
         $user->payment_type = 'activition_code';
         // dd(auth('client_api')->id());
         $client = auth('client_api')->user();
         $client->type_of_subscribe = $code->type_paid;
-       
-        if($code->type_balance == 'Limit'){
+
+        if ($code->type_balance == 'Limit') {
             $client->is_unlimited = 0;
-            $client->credit= $code->balance;
-            $client->remain= $code->balance;
-        }elseif($code->type_balance == 'UnLimit'){
+            $client->credit = $code->balance;
+            $client->remain = $code->balance;
+        } elseif ($code->type_balance == 'UnLimit') {
             $client->is_unlimited = 1;
-            $client->credit=null;
-            $client->remain= null;
+            $client->credit = null;
+            $client->remain = null;
         }
         $client->start_date = Carbon::now();
         $data_type = $code->expire_date_type;
         $data_type_number = $code->number_of_dayes;
-        if($data_type == 'days'){
+        if ($data_type == 'days') {
             $client->expire_date = Carbon::now()->addDays($data_type_number);
-        }elseif($data_type == 'months'){
+        } elseif ($data_type == 'months') {
             $client->expire_date = Carbon::now()->addMonths($data_type_number);
-        }elseif($data_type == 'years'){
+        } elseif ($data_type == 'years') {
             $client->expire_date = Carbon::now()->addYears($data_type_number);
         }
         $client->save();
-       
-        if($data_type == 'days'){
+
+        if ($data_type == 'days') {
             $user->expire_date = Carbon::now()->addDays($data_type_number);
-        }elseif($data_type == 'months'){
+        } elseif ($data_type == 'months') {
             $user->expire_date = Carbon::now()->addMonths($data_type_number);
-        }elseif($data_type == 'years'){
+        } elseif ($data_type == 'years') {
             $user->expire_date = Carbon::now()->addYears($data_type_number);
         }
         $user->status = 'active';
         $user->balnce = $code->balance;
-        $user->purchases_no =  $count+1;
+        $user->purchases_no =  $count + 1;
         $user->sub_id  = $code->id;
         $user->clinet_id  = auth('client_api')->id();
         $user->save();
         $codesub->is_used = 1;
         $codesub->save();
-        $res['status']= $this->sendResponse('Created');
-        $res['status']['title']= "";
-        $res['status']['message']= "";
+        $res['status'] = $this->sendResponse('Created');
+        $res['status']['title'] = "";
+        $res['status']['message'] = "";
 
-        $res['data']["package"] =new PakegeResourses($code);
+        $res['data']["package"] = new PakegeResourses($code);
         return $res;
     }
-    public function redeem(Request $request){
+    public function redeem(Request $request)
+    {
         $user = auth('client_api')->user();
-        if($user->status !='active'){
+        if ($user->status != 'active') {
             $user->type_paid_user == 'free';
         }
         $type_paid_user = $user->subs->last()->subscripe->type_paid;
         $offer = Offer::find($request->offer_id);
         $vendor = Vendor::find($offer->vendor_id);
-        if(!$offer){
-            $res['status']= $this->SendError();
-            $res['status']['title']='Purchase is Fail';
-            $res['status']['message']= 'The PIN code is wrong error 1';
+        if (!$offer) {
+            $res['status'] = $this->SendError();
+            $res['status']['title'] = 'Purchase is Fail';
+            $res['status']['message'] = 'The PIN code is wrong error 1';
             return $res;
         }
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
-      
-       
-        $numer_time = OfferUser::where('client_id',$user->id)->count();
+
+
+        $numer_time = OfferUser::where('client_id', $user->id)->count();
         // dd($codes);
         $system_uses = $offer->usege_system;
         $client_uses = $offer->usege_member;
 
-        
+
         $type_of_offer = $offer->member_type;
-        
-        if($system_uses != 'unlimit'){
-            if($offer->usage_number_system <= $numer_time  ){
-                $res['status']= $this->SendError();
-                $res['message']= 'System count is full error 2';
-                return $res;
-            }
-        } 
-        if($client_uses != 'unlimit'){
-            if($offer->usage_member_number <= $numer_time  ){
-                $res['status']= $this->SendError();
-                $res['status']['title']='Purchase is Fail';
-                $res['status']['message']= 'The PIN code is wrong error 3';
+
+        if ($system_uses != 'unlimit') {
+            if ($offer->usage_number_system <= $numer_time) {
+                $res['status'] = $this->SendError();
+                $res['message'] = 'System count is full error 2';
                 return $res;
             }
         }
-        if(($type_of_offer == 'Premium' && $type_paid_user =='PREMIUM') || $type_of_offer == 'all' || ($type_of_offer == 'free' && $type_paid_user =='TRIAL' || $type_paid_user =='FREE'  )){
-            
-            
-        if( $offer->usege_member == 'unlimit' || $offer->usage_member_number > $numer_time){
-            $ofe = new OfferUser();
-            $ofe->offer_id = $request->offer_id;
-            $ofe->vendor_id = $offer->vendor_id;
-            $ofe->client_id = auth('client_api')->id();
-            $ofe->branch_id = $request->branch_id;
-            $user->purchases_no += 1;
-            if($type_of_offer != 'free' ){
-                if($user->remain > 0){
-                $user->remain = $user->remain - 1;
-            }else{
-                $res['status']= $this->SendError();
-                $res['status']['title']='Purchase is Fail';
-                $res['status']['message']= 'The PIN code is wrong error 4';
+        if ($client_uses != 'unlimit') {
+            if ($offer->usage_member_number <= $numer_time) {
+                $res['status'] = $this->SendError();
+                $res['status']['title'] = 'Purchase is Fail';
+                $res['status']['message'] = 'The PIN code is wrong error 3';
                 return $res;
             }
-            }
-            if($vendor->type_refound == 'auto'){
-                $ofe->referance_no = rand(000000000,999999999); 
-            }else{
-                $codes = CodePermfomed::with('codes')->where('vendor_id',$request->store_id)->first()->codes->where('is_user',0)->first();
-                $ofe->referance_no = $codes->code;
-                $f = Performed::where('code',$codes->code)->first();
-                $f->is_used = 1;
-                $f->save();
+        }
+        dd($type_of_offer ,$type_paid_user );
+        if (($type_of_offer == 'Premium' && $type_paid_user == 'PREMIUM') || $type_of_offer == 'all' || ($type_of_offer == 'free' && $type_paid_user == 'TRIAL' || $type_paid_user == 'FREE')) {
 
+
+            if ($offer->usege_member == 'unlimit' || $offer->usage_member_number > $numer_time) {
+                $ofe = new OfferUser();
+                $ofe->offer_id = $request->offer_id;
+                $ofe->vendor_id = $offer->vendor_id;
+                $ofe->client_id = auth('client_api')->id();
+                $ofe->branch_id = $request->branch_id;
+                $user->purchases_no += 1;
+                if ($type_of_offer != 'free') {
+                    if ($user->remain > 0) {
+                        $user->remain = $user->remain - 1;
+                    } else {
+                        $res['status'] = $this->SendError();
+                        $res['status']['title'] = 'Purchase is Fail';
+                        $res['status']['message'] = 'The PIN code is wrong error 4';
+                        return $res;
+                    }
+                }
+                if ($vendor->type_refound == 'auto') {
+                    $ofe->referance_no = rand(000000000, 999999999);
+                } else {
+                    $codes = CodePermfomed::with('codes')->where('vendor_id', $request->store_id)->first()->codes->where('is_user', 0)->first();
+                    $ofe->referance_no = $codes->code;
+                    $f = Performed::where('code', $codes->code)->first();
+                    $f->is_used = 1;
+                    $f->save();
+                }
+
+                $ofe->save();
+                $user->used_offers_no = $user->used_offers_no + 1;
+                $user->save();
+                $trans = new Transaction();
+                $trans->client_id = auth('client_api')->id();
+                $trans->offer_id = $request->offer_id;
+                $trans->vendor_id = $offer->vendor_id;
+                $trans->offer_id = $request->offer_id;
+                $trans->branch_id = $request->branch_id;
+                $trans->enterprise_id = $enterprise;
+                $trans->refreance_number = $ofe->referance_no;
+                $trans->save();
+                $res['status'] = $this->sendResponse('Created');
+                $res['status']['title'] = '';
+                $res['status']['message'] = '';
+                $res['data']["coupon"]['id'] = $ofe->id;
+                $res['data']["coupon"]['offer_id'] = (string)$request->offer_id;
+                $res['data']["coupon"]['branch_id'] = (string)$request->branch_id;
+                $res['data']["coupon"]['store_id'] = (string)$offer->vendor_id;
+                $res['data']["coupon"]['saving'] = 0;
+                $res['data']["coupon"]['reference_no'] = (int)$ofe->referance_no;
+                return $res;
+            } else {
+                $res['status'] = $this->SendError();
+                $res['status']['title'] = 'Purchase is Fail';
+                $res['status']['message'] = 'The PIN code is wrong error 5';
+                return $res;
             }
-           
-            $ofe->save();
-            $user->used_offers_no = $user->used_offers_no +1;
-            $user->save();
-            $trans = new Transaction();
-            $trans -> client_id = auth('client_api')->id();
-            $trans->offer_id = $request->offer_id;
-            $trans->vendor_id = $offer->vendor_id;
-            $trans->offer_id = $request->offer_id;
-            $trans->branch_id = $request->branch_id;
-            $trans->enterprise_id = $enterprise;
-            $trans->refreance_number = $ofe->referance_no ;
-            $trans->save();
-            $res['status']= $this->sendResponse('Created');
-            $res['status']['title']='';
-            $res['status']['message']= '';
-            $res['data']["coupon"]['id'] = $ofe->id;
-            $res['data']["coupon"]['offer_id'] =(string)$request->offer_id;
-            $res['data']["coupon"]['branch_id'] =(string)$request->branch_id;
-            $res['data']["coupon"]['store_id'] =(string)$offer->vendor_id;
-            $res['data']["coupon"]['saving']=0;
-            $res['data']["coupon"]['reference_no'] = (int)$ofe->referance_no;
-            return $res;
-        }else{
-            $res['status']= $this->SendError();
-            $res['status']['title']='Purchase is Fail';
-            $res['status']['message']= 'The PIN code is wrong error 5';
+        } else {
+
+            $res['status'] = $this->SendError();
+            $res['status']['title'] = 'Purchase is Fail';
+            $res['status']['message'] = 'The PIN code is wrong error 6';
             return $res;
         }
-    }else{
-
-        $res['status']= $this->SendError();
-        $res['status']['title']='Purchase is Fail';
-        $res['status']['message']= 'The PIN code is wrong error 6';
-        return $res;
-}
-
-        
-        
-       
     }
-    public function apply_promo_code(Request $request){
+    public function apply_promo_code(Request $request)
+    {
         $code = Subscription::with('promo')->whereHas('promo', function ($q) use ($request) {
-            $q->where('code',$request->code);
+            $q->where('code', $request->code);
         })->first();
         $discout = Discount::find($code->promo->first()->discount_id);
         $discout_type = $discout->type_discount;
         $discout_value = $discout->value_discount;
         $price = $code->price;
 
-        $res['status']= $this->sendResponse('OK');
+        $res['status'] = $this->sendResponse('OK');
         $res['data']["orgin_price"] = $price;
         $res['data']["discout_type"] = $discout_type;
         $res['data']["discout_value"] = $discout_value;
-        if($discout_type == 'percentage'){
-       $total =     $price -  ($price * $discout_value / 100);
-        }else{
+        if ($discout_type == 'percentage') {
+            $total =     $price -  ($price * $discout_value / 100);
+        } else {
             $total =     $price -  $discout_value;
         }
         $res['data']["price_descount"] = $total;

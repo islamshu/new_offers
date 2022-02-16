@@ -111,7 +111,7 @@ class HomeController extends BaseController
         $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
-      })->where('is_offer', 1)->limit($limit)->offset(($page - 1) * $limit)->get();
+      })->where('is_offer', 1)->get();
       $collction = new VendorOfferCollection($offer);
           $datad = [];
     foreach (collect($collction)->sortBy('distance') as $data) {
