@@ -21,7 +21,7 @@ class VendorBranchesNewCollection extends ResourceCollection
         foreach (collect($collction)->sortBy('distance') as $data) {
           array_push($datad, $data);
         }
-        return $datad;
+        return paginate(collect($datad),$limit,$page);
       
         
     }
