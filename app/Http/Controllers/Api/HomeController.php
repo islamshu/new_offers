@@ -224,7 +224,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $stores = Offer::where('status',1)->where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
+    $stores = Offer::where('status',1)->where('vendor_id', $request->store_id)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = (new VendorOfferDeCollection($stores));
     return $res;
@@ -233,7 +233,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $reive = VendorReview::where('vendor_id', $request->store_id)->limit($limit)->offset(($page - 1) * $limit)->get();
+    $reive = VendorReview::where('vendor_id', $request->store_id)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = new VendorReviewsNewCollection($reive);
     return $res;

@@ -14,6 +14,8 @@ class VendorOfferDeCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+        $page = $request->last_index +2;
+        $limit = $request->has('paginate') ? $request->get('paginate') : 10;
         $collction =   VendorOfferDeResourses::collection($this->collection);
         $datad = [];
         foreach (collect($collction)->sortBy('distance') as $data) {
@@ -24,7 +26,7 @@ class VendorOfferDeCollection extends ResourceCollection
             // 'total' => $this->total(),
             // 'prev'  => $this->appends(request()->input())->previousPageUrl(), 
             // 'next'  => $this->appends(request()->input())->nextPageUrl(),  
-            'offers' => $datad,
+            'offers' => paginate(collect($datad),$limit,$page),
         ];
     }
 }

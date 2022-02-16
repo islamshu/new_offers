@@ -14,12 +14,15 @@ class VendorReviewsNewCollection extends ResourceCollection
      */
     public function toArray($request)
     {
+        $page = $request->last_index +2;
+      $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+        $collction =   VendorReviewResourses::collection($this->collection);
+        $datad = [];
+        foreach (collect($collction)->sortBy('distance') as $data) {
+          array_push($datad, $data);
+        }
         return[
-            'count' => $this->count(),
-            'total' => $this->total(),
-            'prev'  => $this->appends(request()->input())->previousPageUrl(), 
-            'next'  => $this->appends(request()->input())->nextPageUrl(),  
-            'offers' =>VendorReviewResourses::collection($this->collection),
+            'stores' =>paginate(collect($datad),$limit,$page),
         ];
     }
 }
