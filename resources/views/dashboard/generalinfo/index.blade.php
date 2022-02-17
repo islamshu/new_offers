@@ -32,8 +32,7 @@
                         <option value="1">yes</option>
 
                     </select>
-                    <input type="text" value="{{ get_general('sender_id') }}" name="general[sender_id]" id="sender_id" class="form-control form-control-solid"
-                        placeholder="Enter Sender Id"  />
+                   
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Sender Id sms') }}:</label>
