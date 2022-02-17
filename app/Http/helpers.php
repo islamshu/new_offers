@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Enterprise;
+use App\Models\GeneralInfo;
 use Illuminate\Container\Container;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -110,3 +111,12 @@ function send_message($phone,$message)
 
    
 }
+function get_general($key)
+    {
+       $general = GeneralInfo::where('key', $key)->first();
+       if($general){
+           return $general->value;
+       }
+
+       return '';
+    }
