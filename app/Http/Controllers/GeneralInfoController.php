@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class GeneralInfoController extends Controller
 {
+    public function firebase()
+    {
+        return view('dashboard.generalinfo.firebase');
+    }
     public function index()
     {
         return view('dashboard.generalinfo.index');
