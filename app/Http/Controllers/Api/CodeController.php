@@ -120,6 +120,7 @@ class CodeController extends BaseController
                 return $res;
             }
         }
+        dd($client_uses , $offer->usage_member_number ,$numer_time);
         if ($client_uses != 'unlimit') {
             if ($offer->usage_member_number <= $numer_time) {
                 $res['status'] = $this->SendError();
