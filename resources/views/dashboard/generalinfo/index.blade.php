@@ -33,12 +33,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Token for sms') }}:</label>
-                    <input type="text" name="general[sms_token]" id="sms_token" class="form-control form-control-solid"
+                    <input type="text" value="{{ get_general('sms_token') }}" name="general[sms_token]" id="sms_token" class="form-control form-control-solid"
                         placeholder="Token for sms"  />
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('password for sms') }}:</label>
-                    <input type="text" name="general[sms_password]" id="sms_password" class="form-control form-control-solid"
+                    <input type="text" value="{{ get_general('sms_password') }}" name="general[sms_password]" id="sms_password" class="form-control form-control-solid"
                         placeholder="Password for sms" required />
                 </div>
              
