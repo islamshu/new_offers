@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>{{ __('Active in Live') }}:</label>
-                    <select name="actvie_sms" value="{{ get_general('actvie_sms') }}" class="form-control form-control-solid" id="">
+                    <select name="general[actvie_sms]" value="{{ get_general('actvie_sms') }}" class="form-control form-control-solid" id="">
                         <option value="0">no</option>
                         <option value="1">yes</option>
 
