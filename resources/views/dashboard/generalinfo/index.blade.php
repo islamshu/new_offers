@@ -12,7 +12,7 @@
 
     <div class="card-header">
         <h3 class="card-title">
-            {{ __('Create Enterprise') }}
+            {{ __('SMS') }}
         </h3>
         <div class="card-toolbar">
             <div class="example-tools justify-content-center">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <form class="form" method="POST" action="{{ route('generalinfo.store',app()->getLocale()) }}" enctype="multipart/form-data">
+    <form class="form" method="POST" action="{{ route('sms_config.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="row">
