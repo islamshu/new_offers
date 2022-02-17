@@ -125,7 +125,7 @@ Route::group([
 
         
         Route::resource('perfomeds', 'Dashboard\PerfomedController');
-        Route::resource('generalinfo', 'Dashboard\GeneralInfoController');
+        Route::resource('generalinfo', 'GeneralInfoController');
 
         
         Route::get('perfomeds_code/{vendor}', 'Dashboard\PerfomedController@get_perfomed_vendor')->name('vendor.get_perfomed_vendor');
