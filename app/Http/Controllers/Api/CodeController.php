@@ -105,7 +105,8 @@ class CodeController extends BaseController
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
 
 
-        $numer_time = OfferUser::where('client_id', $user->id)->count();
+        $numer_time =Transaction::where('offer_id',$request->offer_id)->where('client_id',auth('client_api')->id())->count();
+        
         // dd($codes);
         $system_uses = $offer->usege_system;
         $client_uses = $offer->usege_member;
@@ -120,7 +121,6 @@ class CodeController extends BaseController
                 return $res;
             }
         }
-        dd($client_uses , $offer->usage_member_number ,$numer_time);
         if ($client_uses != 'unlimit') {
             if ($offer->usage_member_number <= $numer_time) {
                 $res['status'] = $this->SendError();
