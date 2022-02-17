@@ -50,7 +50,7 @@
 
 
         <div class="card-footer">
-            <button type="button" onclick="performStore()" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
+            <button type="submit" onclick="performStore()" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
 
 
     </form>
