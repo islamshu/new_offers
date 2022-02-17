@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Generalinfo;
+use App\Models\Generalinfo;
 use Illuminate\Http\Request;
 
 class GeneralInfoController extends Controller
