@@ -5,6 +5,7 @@ use Illuminate\Container\Container;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 function openJSONFile($code){
     $jsonString = [];
@@ -100,4 +101,12 @@ function paginate($items, $limit, $page , $options = [])
     // return new LengthAwarePaginator($items->forPage($page, $limit), $items->count(), $limit, $page, $options);
 
     return $array;
+}
+function send_message($phone,$message)
+{
+    $token = '';
+    $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=string&dests='.$phone.'&body'.$message;
+    $response = Http::get($url);
+
+   
 }
