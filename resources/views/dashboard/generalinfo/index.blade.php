@@ -25,7 +25,16 @@
         @csrf
         <div class="card-body">
             <div class="row">
+                <div class="form-group col-md-6">
+                    <label>{{ __('Active in Live') }}:</label>
+                    <select name="actvie_sms" value="{{ get_general('actvie_sms') }}" class="form-control form-control-solid" id="">
+                        <option value="0">no</option>
+                        <option value="1">yes</option>
 
+                    </select>
+                    <input type="text" value="{{ get_general('sender_id') }}" name="general[sender_id]" id="sender_id" class="form-control form-control-solid"
+                        placeholder="Enter Sender Id"  />
+                </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Sender Id sms') }}:</label>
                     <input type="text" value="{{ get_general('sender_id') }}" name="general[sender_id]" id="sender_id" class="form-control form-control-solid"
