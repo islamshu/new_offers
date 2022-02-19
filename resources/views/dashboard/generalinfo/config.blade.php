@@ -24,7 +24,7 @@
                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Firebase_Logo.png/800px-Firebase_Logo.png" height="80" alt="">
                     </span>
                     <!--end::Svg Icon-->
-                    <a href="{{ route('firebase_config.index',[app()->getLocale()]) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Home Slider</a>
+                    <a href="{{ route('firebase_config.index',[app()->getLocale()]) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Firebase Config  </a>
                 </div>
      
         
