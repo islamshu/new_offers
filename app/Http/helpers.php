@@ -121,7 +121,8 @@ function send_message($phone,$message)
    
 }
 function return_redirect($url){
-    redirect($url);
+   return Http::get($url);
+
 }
 function get_general($key)
     {
