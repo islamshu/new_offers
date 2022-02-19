@@ -7,7 +7,7 @@ use Illuminate\Container\Container;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use Http;
+use Illuminate\Support\Facades\Http;
 
 function openJSONFile($code){
     $jsonString = [];
@@ -107,12 +107,17 @@ function paginate($items, $limit, $page , $options = [])
 function send_message($phone,$message)
 {
     $token = get_general('sms_token');
-    $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
-    $client = new GuzzleHttp\Client();
+    $response = Http::post('https://api.oursms.com/api-a/msgs', [
+        'token' => $token,
+        'src' => 'jooy',
+        'dests'=>$phone,
+        'body'=>$message,
 
-    $res = $client->get($url);
 
-        dd($res->getStatusCode());
+    ]);
+    dd($response->status());
+
+ 
 
    
 }
