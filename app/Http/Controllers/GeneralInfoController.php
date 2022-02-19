@@ -18,8 +18,7 @@ class GeneralInfoController extends Controller
     public function index()
     {
         $token = get_general('sms_token');
-      $url = 'https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco';
-
+        return 'https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco';
    
     $response = Http::acceptJson()->get($url);
     dd($response);
