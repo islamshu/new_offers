@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GeneralInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class GeneralInfoController extends Controller
 {
@@ -13,6 +14,10 @@ class GeneralInfoController extends Controller
     }
     public function index()
     {
+        $token = get_general('sms_token');
+      $url = 'https://api.oursms.com/api-a/billing/credits?token='.$token;
+      dd($url);
+    $response = Http::get($url);
         return view('dashboard.generalinfo.index');
     }
 

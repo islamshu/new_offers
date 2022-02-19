@@ -90,6 +90,10 @@ class UserController extends BaseController
         }
         return $res;
     }
+    public function resend_sms(Request $request){
+        $phone = $request->phone;
+        
+    }
     public function update(Request $request){
         $user = auth('client_api')->user();
         $user->name = $request->name;
