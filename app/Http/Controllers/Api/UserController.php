@@ -76,6 +76,9 @@ class UserController extends BaseController
 
             
             $user->save();
+            if(get_general('actvie_sms') == '1'){
+                send_message($user->phone,$user->code );
+            }
             $res['status']= $this->sendResponse('Created');
 
             // $res['data']['client'] = new ClientResoures($user);

@@ -175,9 +175,9 @@ class CodeController extends BaseController
                 $res['status']['title'] = '';
                 $res['status']['message'] = '';
                 $res['data']["coupon"]['id'] = $ofe->id;
-                $res['data']["coupon"]['offer_id'] = (string)$request->offer_id;
-                $res['data']["coupon"]['branch_id'] = (string)$request->branch_id;
-                $res['data']["coupon"]['store_id'] = (string)$offer->vendor_id;
+                $res['data']["coupon"]['offer_id'] = (int)$request->offer_id;
+                $res['data']["coupon"]['branch_id'] = (int)$request->branch_id;
+                $res['data']["coupon"]['store_id'] = (int)$offer->vendor_id;
                 $res['data']["coupon"]['saving'] = 0;
                 $res['data']["coupon"]['reference_no'] = (int)$ofe->referance_no;
                 return $res;
