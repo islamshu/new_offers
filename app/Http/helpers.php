@@ -115,7 +115,6 @@ function send_message($phone,$message)
 
 
     ]);
-    dd('s');
 
  
 
