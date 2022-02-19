@@ -22,7 +22,7 @@ class GeneralInfoController extends Controller
 
    
     $response = Http::get($url);
-    dd($response);
+    dd($response->status);
         return view('dashboard.generalinfo.index');
     }
 
