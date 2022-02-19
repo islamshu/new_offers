@@ -93,6 +93,21 @@ class UserController extends BaseController
     public function resend_sms(Request $request){
         $phone = $request->phone;
         
+        $user = Clinet::where('phone',$phone)->first();
+        $user->code = 1991;
+        $user->save();
+        if(get_general('actvie_sms') == '1'){
+            send_message($user->phone,$user->code );
+        }
+        $res['status']= $this->sendResponse('Created');
+
+        // $res['data']['client'] = new ClientResoures($user);
+
+        // $res['token'] = $user->createToken('Personal Access Token')->token;
+        $res['data'][""]="";
+        return $res;
+
+
     }
     public function update(Request $request){
         $user = auth('client_api')->user();
