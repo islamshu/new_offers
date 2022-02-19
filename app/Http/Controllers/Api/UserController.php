@@ -94,6 +94,7 @@ class UserController extends BaseController
         $phone = $request->phone;
         
         $user = Clinet::where('phone',$phone)->first();
+        dd($user);
         $user->code = 1991;
         $user->save();
         if(get_general('actvie_sms') == '1'){
