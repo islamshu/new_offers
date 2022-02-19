@@ -108,7 +108,7 @@ function send_message($phone,$message)
     $token = get_general('sms_token');
     $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
     $response = Http::get($url);
-    dd($response);
+    dd($url);
     return $response;
 
    
