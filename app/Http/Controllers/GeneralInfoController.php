@@ -20,7 +20,9 @@ class GeneralInfoController extends Controller
     {
         $token = get_general('sms_token');
        $url= 'https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco';
-       
+       $data = Http::get('https://dashboard.yalago.net/api/vendor/ike/all-products')->getBody()->getContents();
+       $body = json_decode($data);
+       dd($body);
        
         return view('dashboard.generalinfo.index');
     }

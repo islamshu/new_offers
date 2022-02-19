@@ -76,7 +76,7 @@ class UserController extends BaseController
 
             
             $user->save();
-            dd('d');
+            
             if(get_general('actvie_sms') == '1'){
                 send_message($user->phone,$user->code );
             }
