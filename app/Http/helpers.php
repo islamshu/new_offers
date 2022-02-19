@@ -108,8 +108,11 @@ function send_message($phone,$message)
 {
     $token = get_general('sms_token');
     $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
-    $res =  Http::get($url)->getStatusCode();
-    dd($res,$url);
+    $client = new GuzzleHttp\Client();
+
+    $res = $client->get($url);
+
+        dd($res->getStatusCode());
 
    
 }
