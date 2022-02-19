@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Http;
 
 class GeneralInfoController extends Controller
 {
+    public function config(){
+        return view('dashboard.generalinfo.config'); 
+    }
     public function firebase()
     {
         return view('dashboard.generalinfo.firebase');
