@@ -21,9 +21,7 @@ class GeneralInfoController extends Controller
       $url = 'https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco';
 
    
-    $response = Http::withHeaders([
-        'Content-Type' => 'application/json',
-    ])->get($url);
+    $response = Http::accept('application/json')->get($url);
     dd($response);
         return view('dashboard.generalinfo.index');
     }
