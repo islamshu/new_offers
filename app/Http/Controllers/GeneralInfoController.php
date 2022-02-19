@@ -18,9 +18,10 @@ class GeneralInfoController extends Controller
     public function index()
     {
         $token = get_general('sms_token');
-        $test = return_redirect('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco') ;
-        dd($test);
-  
+       $url= urlencode('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+        $json = json_decode(file_get_contents($url), true);
+
+        dd($json);
         return view('dashboard.generalinfo.index');
     }
      
