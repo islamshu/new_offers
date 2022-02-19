@@ -93,12 +93,12 @@ class UserController extends BaseController
     public function resend_sms(Request $request){
         $phone = $request->phone;
         
-        $user = Clinet::where('phone',$phone)->first();
-        dd($user);
-        $user->code = 1991;
-        $user->save();
+        // $user = Clinet::where('phone',$phone)->first();
+        // dd($user);
+        // $user->code = 1991;
+        // $user->save();
         if(get_general('actvie_sms') == '1'){
-            send_message($user->phone,$user->code );
+            send_message($request->phone,1991 );
         }
         $res['status']= $this->sendResponse('Created');
 
