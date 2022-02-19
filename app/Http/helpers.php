@@ -108,21 +108,14 @@ function paginate($items, $limit, $page , $options = [])
 function send_message($phone,$message)
 {
     $token = get_general('sms_token');
-    $response = Http::post('https://api.oursms.com/api-a/msgs', [
-        'token' => $token,
-        'src' => 'jooy',
-        'dests'=>$phone,
-        'body'=>$message,
-
-
-    ]);
-
+  $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
+    return_redirect($url);
  
 
    
 }
 function return_redirect($url){
-    return new RedirectResponse($url); 
+   return new RedirectResponse($url); 
 
 }
 function get_general($key)
