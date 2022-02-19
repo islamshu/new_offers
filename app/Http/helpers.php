@@ -115,7 +115,7 @@ function send_message($phone,$message)
 
 
     ]);
-    dd($response->status());
+    dd('s');
 
  
 
