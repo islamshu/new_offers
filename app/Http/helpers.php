@@ -120,6 +120,9 @@ function send_message($phone,$message)
 
    
 }
+function return_redirect($url){
+    redirect($url);
+}
 function get_general($key)
     {
        $general = GeneralInfo::where('key', $key)->first();
