@@ -25,7 +25,7 @@ class GeneralInfoController extends Controller
        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
        $data = curl_exec($ch);
        curl_close($ch);
-       dd($data);
+       return ($data);
 
         dd($json);
         return view('dashboard.generalinfo.index');
