@@ -36,6 +36,7 @@ Route::get('contact', 'Api\OfferController@contact');
 Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
 Route::get('store/branches', 'Api\HomeController@vendor_branches');
+Route::post('verification-code/send','Api\UserController@resend_sms');
 
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
@@ -70,7 +71,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('client/image/update', 'Api\UserController@update_image');
         Route::post('logout','Api\UserController@logout');
         Route::post('registration-id/refresh','Api\UserController@register_token');
-        Route::post('verification-code/send','Api\UserController@resend_sms');
 
         
 
