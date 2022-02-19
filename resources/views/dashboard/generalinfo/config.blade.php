@@ -10,10 +10,10 @@
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
                             {{-- <i class=" fa-4x"></i> --}}
-                            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmobile.twitter.com%2Foursms&psig=AOvVaw19zTjXVq3l0OAdPX42CHiA&ust=1645360070049000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIjG0obii_YCFQAAAAAdAAAAABAD" width="50" height="50" alt="">
+                            <img src="https://pbs.twimg.com/profile_images/1422535875901149186/J5_LSmtJ_400x400.jpg" width="80" height="80" alt="">
                         </span>
                         <!--end::Svg Icon-->
-                        <a href="{{ route('get_country_promotion',[app()->getLocale(),'slider']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Main Slider</a>
+                        <a href="{{ route('sms_config.index',[app()->getLocale()]) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">SMS Config</a>
                     </div>
      
             
@@ -21,31 +21,14 @@
                     <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
                         {{-- <i class="fa fa-user fa-4x"></i> --}}
-                        <i class="fab fa-buysellads fa-4x"></i>
+                       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Firebase_Logo.png/800px-Firebase_Logo.png" height="80" alt="">
                     </span>
                     <!--end::Svg Icon-->
-                    <a href="{{ route('get_country_promotion',[app()->getLocale(),'homeslider']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Home Slider</a>
+                    <a href="{{ route('firebase_config.index',[app()->getLocale()]) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Home Slider</a>
                 </div>
      
         
-            <div class="col-md-3 bg-light-danger px-6 py-8 rounded-2 mb-7 mr-7 ml-7">
-                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
-                    <i class="fas fa-fire fa-4x"></i>
-                    
-                </span>
-                <!--end::Svg Icon-->
-                <a href="{{ route('get_country_promotion',[app()->getLocale(),'popup']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Pop Up</a>
-            </div>
-            <div class="col-md-3 bg-light-warning px-6 py-8 rounded-2 mb-7 mr-7 ml-7">
-                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
-                    <i class="fas fa-image fa-4x"></i>
-                    
-                </span>
-                <!--end::Svg Icon-->
-                <a href="{{ route('get_country_promotion',[app()->getLocale(),'banner']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Banner</a>
-            </div>
+        
         </div>
 
             {{-- <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
