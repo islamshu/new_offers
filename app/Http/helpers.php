@@ -106,7 +106,7 @@ function paginate($items, $limit, $page , $options = [])
 function send_message($phone,$message)
 {
     $token = get_general('sms_token');
-    $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=string&dests='.$phone.'&body'.$message;
+    $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=string&dests='.$phone.'&body='.$message;
     dd($url);
     $response = Http::get($url);
 
