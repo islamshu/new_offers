@@ -16,8 +16,9 @@ class GeneralInfoController extends Controller
     {
         $token = get_general('sms_token');
       $url = 'https://api.oursms.com/api-a/billing/credits?token='.$token;
-      dd($url);
+   
     $response = Http::get($url);
+    dd($response);
         return view('dashboard.generalinfo.index');
     }
 
