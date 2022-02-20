@@ -19,11 +19,9 @@ class GeneralInfoController extends Controller
     public function index()
     {
         $token = get_general('sms_token');
-       $url= 'https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco';
-       $client = new \GuzzleHttp\Client();
-       $res = $client->get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
-        dd($res->getStatusCode()); // 200
-       $res->getBody();
+         
+        $general_data =  Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco')->getBody()->getContents();
+        dd($general_data);
     }
      
 
