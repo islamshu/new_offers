@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\NeighborhoodController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -237,6 +238,9 @@ Route::get('/icons/fontawesome', 'PagesController@fontawesome');
 Route::get('/icons/lineawesome', 'PagesController@lineawesome');
 Route::get('/icons/socicons', 'PagesController@socicons');
 Route::get('/icons/svg', 'PagesController@svg');
-
+Route::get('test', function(){
+    $response = Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+    dump($response->json());
+})->name('get_cridit');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 Route::get('lang/{local}', 'Dashboard\HomeController@lang')->name('change.lang');
