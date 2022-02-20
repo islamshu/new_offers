@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
         if($lang == null){
             $lang = 'en';
         }   
-        $this->app['request']->server->set('HTTPS', true);
 
         $this->app->setLocale($lang);
 
