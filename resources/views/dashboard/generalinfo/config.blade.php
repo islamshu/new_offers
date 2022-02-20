@@ -30,7 +30,7 @@
                     <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
                         {{-- <i class="fa fa-user fa-4x"></i> --}}
-                       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Firebase_Logo.png/800px-Firebase_Logo.png" height="80" alt="">
+                       <img src="https://mobikul.com/wp-content/uploads/2019/03/myfatoorah-com.png" height="80" alt="">
                     </span>
                     <!--end::Svg Icon-->
                     <a href="{{ route('myfatoorah_config.index',[app()->getLocale()]) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">Myfatoorah Config  </a>
