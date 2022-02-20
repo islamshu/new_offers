@@ -20,7 +20,7 @@ class GeneralInfoController extends Controller
     {
         $token = get_general('sms_token');
          
-        $general_data =  Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco')->getBody();
+        $general_data =  Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
         dd($general_data);
     }
      
