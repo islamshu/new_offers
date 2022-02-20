@@ -238,9 +238,6 @@ Route::get('/icons/fontawesome', 'PagesController@fontawesome');
 Route::get('/icons/lineawesome', 'PagesController@lineawesome');
 Route::get('/icons/socicons', 'PagesController@socicons');
 Route::get('/icons/svg', 'PagesController@svg');
-Route::get('test', function(){
-    $response = Http::get('https://jsonplaceholder.typicode.com/todos/2');
-    dump($response->json());
-})->name('get_cridit');
+Route::get('test', 'GeneralInfoController@test');
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 Route::get('lang/{local}', 'Dashboard\HomeController@lang')->name('change.lang');
