@@ -39,7 +39,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         Schema::defaultStringLength(191);
-        dd(config('app.env'));
         if (config('app.env') === 'production') {
             URL::forceSchema('https');
         }
