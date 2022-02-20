@@ -229,6 +229,11 @@ class HomeController extends BaseController
     $res['data'] = (new VendorOfferDeCollection($stores));
     return $res;
   }
+  public function get_cridit(){
+    $response = Http::withoutVerifying()->get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+
+      dd($response);
+  }
   public function vendor_reviews(Request $request)
   {
     $page = $request->last_index +2;
