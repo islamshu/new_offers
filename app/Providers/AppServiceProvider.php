@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if($lang == null){
             $lang = 'en';
         }   
+        dd(env('APP_ENV'));
         if (env('APP_ENV') !== 'local') {
             URL::forceScheme('https');
         }
