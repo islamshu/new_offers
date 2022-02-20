@@ -20,8 +20,7 @@ class GeneralInfoController extends Controller
     {
         $token = get_general('sms_token');
          
-        $general_data = Http::get('https://dashboard.yalago.net/api/vendor/ike/all-products')->getBody()->getContents();
-        dd($general_data);
+        return redirect()->route('get_cridit');
     }
      
 

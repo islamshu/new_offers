@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
 Route::get('store/branches', 'Api\HomeController@vendor_branches');
 Route::post('verification-code/send','Api\UserController@resend_sms');
+Route::get('test', function(){
+    $response = Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+    dump($response->json());
+})->name('get_cridit');
 
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
