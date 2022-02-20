@@ -26,10 +26,9 @@ class GeneralInfoController extends Controller
     }
     public function test()
     {
-        $body =  Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+        $response = Http::withoutVerifying()->get('http://jsonplaceholder.typicode.com/todos/2');
 
-
-        dd($body);
+            dd($response->json());
     }
 
 
