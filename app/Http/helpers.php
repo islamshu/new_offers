@@ -108,6 +108,8 @@ function paginate($items, $limit, $page , $options = [])
 function send_message($phone,$message)
 {
     $token = get_general('sms_token');
+    
+    
   $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
     return_redirect($url);
  
