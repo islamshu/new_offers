@@ -27,18 +27,9 @@ class GeneralInfoController extends Controller
     public function test()
     {
         // dd('x');
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'https://reqres.in',
-        ]);
+        $body =  Http::get('https://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco')->getBody();
 
-        $response = $client->request('GET', '/api/users', [
-            'query' => [
-                'page' => '2',
-            ]
-        ]);
 
-        $body = $response->getBody();
         $arr_body = json_decode($body);
         dd($arr_body);
     }
