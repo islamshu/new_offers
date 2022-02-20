@@ -128,6 +128,7 @@ Route::group([
         Route::resource('perfomeds', 'Dashboard\PerfomedController');
         Route::resource('sms_config', 'GeneralInfoController');
         Route::get('config', 'GeneralInfoController@config')->name('config.index');
+        Route::get('myfatoorah_config', 'GeneralInfoController@myfatoorah')->name('myfatoorah_config.index');
 
         Route::get('firebase_config', 'GeneralInfoController@firebase')->name('firebase_config.index');
 
