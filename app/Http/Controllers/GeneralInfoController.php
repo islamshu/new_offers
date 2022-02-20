@@ -26,7 +26,7 @@ class GeneralInfoController extends Controller
     }
     public function test()
     {
-        dd('x');
+        // dd('x');
         $client = new Client([
             // Base URI is used with relative requests
             'base_uri' => 'https://reqres.in',
