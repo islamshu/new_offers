@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Session;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         if($lang == null){
             $lang = 'en';
         }   
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
 
         $this->app->setLocale($lang);
 
