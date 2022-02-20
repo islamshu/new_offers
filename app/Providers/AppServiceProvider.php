@@ -32,15 +32,17 @@ class AppServiceProvider extends ServiceProvider
             $lang = 'en';
         }   
         
-        if (env('APP_ENV') !== 'local') {
-            URL::forceScheme('https');
-        }
+      
 
         $this->app->setLocale($lang);
 
         Paginator::useBootstrap();
 
         Schema::defaultStringLength(191);
+        dd(config('app.env'));
+        if (config('app.env') === 'production') {
+            URL::forceSchema('https');
+        }
 
     }
 }
