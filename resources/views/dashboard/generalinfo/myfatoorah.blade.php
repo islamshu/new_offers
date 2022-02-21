@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>{{ __('Base Url') }}:</label>
-                    <input type="text" name="general[base_url]" class="form-control" value="{{ get_general('api_key') }}" id="">
+                    <input type="text" name="general[base_url]" class="form-control" value="{{ get_general('base_url') }}" id="">
                 </div>
              
              
