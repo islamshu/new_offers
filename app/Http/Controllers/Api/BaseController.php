@@ -17,6 +17,10 @@ class BaseController extends Controller
         $response = ['status' => true ,'HTTP_code'=>201,'HTTP_response'=>$status];
         return $response;    
     }
+    public function sendResponsewithMessage($status,$title,$message){   
+        $response = ['status' => true ,'HTTP_code'=>201,'HTTP_response'=>$status,'title'=>$title,'message'=>$message];
+        return $response;    
+    }
     public function sendResponse200($status){   
         $response = ['status' => true ,'HTTP_code'=>200,'HTTP_response'=>$status];
         return $response;    
