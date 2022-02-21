@@ -8,12 +8,13 @@ use App\Http\Controllers\Api\BaseController;
 use App\Models\DiscountSubscription;
 use App\Models\Subscription;
 use Carbon\Carbon;
+use Facade\FlareClient\Time\Time;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class PayemntController extends BaseController
 {
 public function myfatoorah(Request $request){
-    dd(Carbon::now()->timestamp);
+    dd(Time::now()->timestamp);
     $pakege = Subscription::find($request->package_id);
     if(!$pakege){
         $res['status'] = $this->SendError();
