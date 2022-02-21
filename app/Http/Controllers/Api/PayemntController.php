@@ -104,6 +104,10 @@ public function myfatoorah(Request $request){
     ));
 
     $response = curl_exec($curl);
+    $error = $this->handleError($response);
+    if ($error) {
+        die("Error: $error");
+    }
     $json = json_decode($response);
    dd($json->IsSuccess == true);
     
