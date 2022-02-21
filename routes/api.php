@@ -40,6 +40,7 @@ Route::get('store/branches', 'Api\HomeController@vendor_branches');
 Route::post('verification-code/send','Api\UserController@resend_sms');
 Route::get('payment/myfatoorah/credentials','Api\HomeController@my_fatoorah_credentials');
 Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
+Route::get('package', 'Api\OfferController@package');
 
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
