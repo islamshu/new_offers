@@ -43,7 +43,11 @@ class UserController extends BaseController
                 $res['other']['exist_status']= 'NON-VERIFIED';
                 $res['other']['for']= 'signup';  
             }
+            if(get_general('actvie_sms') == '1'){
+                $message = 'JOOY Offers Code: '.$user->code;
 
+                send_message($user->phone,$message );
+            }
 
 
         }else{
