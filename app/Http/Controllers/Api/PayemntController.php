@@ -65,7 +65,6 @@ class PayemntController extends BaseController
             return $res;
         }
         $json = json_decode($response);
-        dd($json->Data->InvoiceId);
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
             $user = new Subscriptions_User();
@@ -118,8 +117,15 @@ class PayemntController extends BaseController
             $res['data']['myfatoorah_payment']['payment_method']= $request->payment_method;
             $res['data']['myfatoorah_payment']['currency_iso_code']= $request->currency_iso_code;
             $res['data']['myfatoorah_payment']['mobile_country_iso_code']= $request->mobile_country_iso_code;
-            $res['data']['myfatoorah_payment']['invoice_id']= $request->mobile_country_iso_code;
+            $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
+            $res['data']['myfatoorah_payment']['payment_id']= $request->payment_id;
+            $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
+            $res['data']['myfatoorah_payment']['pay_for']='subscription';
+            $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at;
+            return $res;
 
+
+            
 
 
 
