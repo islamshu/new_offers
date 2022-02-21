@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 class PayemntController extends BaseController
 {
 public function myfatoorah(Request $request){
-    dd(Carbon::now());
+    dd(str_replace('-','',Carbon::now()));
     $pakege = Subscription::find($request->package_id);
     if(!$pakege){
         $res['status'] = $this->SendError();
