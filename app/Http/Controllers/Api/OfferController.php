@@ -35,7 +35,7 @@ class OfferController extends BaseController
         
     }
     public function package(Request $request){
-      dd('d');
+      
         $pakege = Subscription::with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
 

@@ -61,7 +61,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('store/reviews', 'Api\HomeController@vendor_reviews');
         Route::get('nearby-partners', 'Api\HomeController@nearby_partners');
         Route::get('offer', 'Api\OfferController@offerDetiles');
-        Route::get('package', 'Api\OfferController@package');
         Route::post('contact-us-support-message', 'Api\HomeController@post_support');
         Route::get('contact-us-support-message', 'Api\HomeController@get_support');
         Route::post('contact/create', 'Api\HomeController@contact_us');
