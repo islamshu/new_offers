@@ -32,11 +32,29 @@ public function myfatoorah(Request $request){
             //'InvoiceItems'       => $invoiceItems,
     ];
     
-    //Call endpoint
-    $data = sendPayment($apiURL, $apiKey, $postFields);
-    
-    //You can save payment data in database as per your needs
-    $invoiceId   = $data->InvoiceId;
-    $paymentLink = $data->InvoiceURL;
+    $curl = curl_init(get_general('base_url'));
+    curl_setopt_array($curl, array(
+        CURLOPT_CUSTOMREQUEST  => 'POST',
+        CURLOPT_POSTFIELDS     => json_encode($postFields),
+        CURLOPT_HTTPHEADER     => array("Authorization: Bearer ".get_general('api_key'), 'Content-Type: application/json'),
+        CURLOPT_RETURNTRANSFER => true,
+    ));
+
+    $response = curl_exec($curl);
+    dd($response);
+    $curlErr  = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($curlErr) {
+        //Curl is not working in your server
+        die("Curl Error: $curlErr");
+    }
+
+    // $error = handleError($response);
+    // if ($error) {
+    //     die("Error: $error");
+    // }
+
 }
 }
