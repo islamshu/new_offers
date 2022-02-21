@@ -41,7 +41,8 @@ public function myfatoorah(Request $request){
     ));
 
     $response = curl_exec($curl);
-   
+    $json = json_decode($response);
+    dd($json);
     $curlErr  = curl_error($curl);
 
     curl_close($curl);
