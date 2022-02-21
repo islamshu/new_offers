@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Models\DiscountSubscription;
 use App\Models\Subscription;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
@@ -17,7 +18,13 @@ public function myfatoorah(Request $request){
         $res['status']['message'] = 'Pakege Not Found';
         return $res;
     }
-    dd($pakege);
+    $price = $pakege->price;
+    if($request->promo_code != null){
+     $promo=   DiscountSubscription::where('code',$request->promo_code)->first();
+     if($promo){
+         
+     }
+    }
     
     $postFields = [
         //Fill required data

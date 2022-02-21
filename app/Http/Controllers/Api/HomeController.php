@@ -231,9 +231,9 @@ class HomeController extends BaseController
     return $res;
   }
   public function get_cridit(){
-    $response = Http::withoutVerifying()->get('http://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
-
-      dd($response);
+    $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
+    $response = Http::withHeaders(['User-Agent' => $userAgent])->get('http://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
+    dd($response);
   }
   public function my_fatoorah_credentials(){
     $res['status'] = $this->sendResponse200('OK');
