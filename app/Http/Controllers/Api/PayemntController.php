@@ -17,6 +17,7 @@ public function myfatoorah(Request $request){
         $res['status']['message'] = 'Pakege Not Found';
         return $res;
     }
+    dd($pakege);
     
     $postFields = [
         //Fill required data
