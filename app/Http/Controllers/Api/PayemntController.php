@@ -71,6 +71,7 @@ class PayemntController extends BaseController
             $user->payment_type = 'visa';
             // dd(auth('client_api')->id());
             $client = auth('client_api')->user();
+            dd($client);
             $client->type_of_subscribe = $code->type_paid;
 
             if ($code->type_balance == 'Limit') {
