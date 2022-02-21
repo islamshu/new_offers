@@ -17,7 +17,7 @@ public function myfatoorah(Request $request){
         'InvoiceValue'       => '50',
         'CustomerName'       => $request->customer_name,
             //Fill optional data
-            'DisplayCurrencyIso' => $request->$request->currency_iso_code != null ? $request->currency_iso_code : 'KWD',
+            'DisplayCurrencyIso' => $request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
             'MobileCountryCode'  => $request->mobile_country_iso_code,
             'CustomerMobile'     => $request->customer_phone,
             'CustomerEmail'      => $request->customer_name,
