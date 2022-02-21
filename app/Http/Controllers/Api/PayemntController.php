@@ -32,14 +32,14 @@ public function myfatoorah(Request $request){
             //'InvoiceItems'       => $invoiceItems,
     ];
     
-    $curl = curl_init(get_general('base_url'));
+    $curl = curl_init(get_general('base_url').'/v2/SendPayment');
+    dd($curl);
    $test= curl_setopt_array($curl, array(
         CURLOPT_CUSTOMREQUEST  => 'POST',
         CURLOPT_POSTFIELDS     => json_encode($postFields),
         CURLOPT_HTTPHEADER     => array("Authorization: Bearer ".get_general('api_key'), 'Content-Type: application/json'),
         CURLOPT_RETURNTRANSFER => true,
     ));
-    dd($test);
 
     $response = curl_exec($curl);
     $json = json_decode($response);
