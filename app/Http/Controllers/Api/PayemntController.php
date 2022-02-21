@@ -10,16 +10,18 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 class PayemntController extends BaseController
 {
 public function myfatoorah(Request $request){
+    
     $postFields = [
         //Fill required data
         'NotificationOption' => 'Lnk', //'SMS', 'EML', or 'ALL'
         'InvoiceValue'       => '50',
-        'CustomerName'       => 'fname lname',
+        'CustomerName'       => $request->customer_name,
             //Fill optional data
-            //'DisplayCurrencyIso' => 'KWD',
-            //'MobileCountryCode'  => '+965',
-            //'CustomerMobile'     => '1234567890',
-            //'CustomerEmail'      => 'email@example.com',
+            'DisplayCurrencyIso' => $request->$request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
+            'MobileCountryCode'  => $request->mobile_country_iso_code,
+            'CustomerMobile'     => $request->customer_phone,
+            'CustomerEmail'      => $request->customer_name,
+            'PaymentMethod'=>$request->payment_method,
             //'CallBackUrl'        => 'https://example.com/callback.php',
             //'ErrorUrl'           => 'https://example.com/callback.php', //or 'https://example.com/error.php'
             //'Language'           => 'en', //or 'ar'
