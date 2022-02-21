@@ -18,9 +18,9 @@ public function myfatoorah(Request $request){
         'CustomerName'       => $request->customer_name,
             //Fill optional data
             'DisplayCurrencyIso' => $request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
-            'MobileCountryCode'  => $request->mobile_country_iso_code,
-            'CustomerMobile'     => $request->customer_phone,
-            'CustomerEmail'      => $request->customer_name,
+            'MobileCountryCode'  => @$request->mobile_country_iso_code,
+            'CustomerMobile'     => @$request->customer_phone,
+            'CustomerEmail'      => @$request->customer_email,
             'PaymentMethod'=>$request->payment_method,
             //'CallBackUrl'        => 'https://example.com/callback.php',
             //'ErrorUrl'           => 'https://example.com/callback.php', //or 'https://example.com/error.php'
