@@ -111,7 +111,10 @@ function send_message($phone,$message)
     
     
   $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooy&dests='.$phone.'&body='.$message;
-    return_redirect($url);
+  $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
+
+  $response = Http::withHeaders(['User-Agent' => $userAgent])->get($url);
+  dd($response);
  
 
    
