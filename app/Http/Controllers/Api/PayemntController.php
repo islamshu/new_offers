@@ -33,7 +33,6 @@ public function myfatoorah(Request $request){
     ];
     
     $curl = curl_init(get_general('base_url').'/v2/SendPayment');
-    dd($curl);
    $test= curl_setopt_array($curl, array(
         CURLOPT_CUSTOMREQUEST  => 'POST',
         CURLOPT_POSTFIELDS     => json_encode($postFields),
@@ -43,6 +42,7 @@ public function myfatoorah(Request $request){
 
     $response = curl_exec($curl);
     $json = json_decode($response);
+    dd($json);
     
     $curlErr  = curl_error($curl);
 
