@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Models\Subscription;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class PayemntController extends BaseController
 {
 public function myfatoorah(Request $request){
+    $pakege = Subscription::find($request->package_id);
+    if(!$pakege){
+        $res['status'] = $this->SendError();
+        $res['status']['message'] = 'Pakege Not Found';
+        return $res;
+    }
     
     $postFields = [
         //Fill required data
