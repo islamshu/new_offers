@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\DiscountSubscription;
 use App\Models\Subscription;
+use Carbon\Carbon;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class PayemntController extends BaseController
 {
 public function myfatoorah(Request $request){
+    dd(Carbon::now()->format('Ymd'));
     $pakege = Subscription::find($request->package_id);
     if(!$pakege){
         $res['status'] = $this->SendError();
@@ -22,7 +24,7 @@ public function myfatoorah(Request $request){
     if($request->promo_code != null){
      $promo=   DiscountSubscription::where('code',$request->promo_code)->first();
      if($promo){
-         
+
      }
     }
     
