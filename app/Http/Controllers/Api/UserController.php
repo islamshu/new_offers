@@ -78,7 +78,9 @@ class UserController extends BaseController
             $user->save();
             
             if(get_general('actvie_sms') == '1'){
-                send_message($user->phone,$user->code );
+                $message = 'JOOY Offers Code: '.$user->code;
+
+                send_message($user->phone,$message );
             }
             $res['status']= $this->sendResponse('Created');
 
@@ -93,13 +95,15 @@ class UserController extends BaseController
     }
     public function resend_sms(Request $request){
         $phone = $request->phone;
+        $code = 1991;
         
         // $user = Clinet::where('phone',$phone)->first();
         // dd($user);
         // $user->code = 1991;
         // $user->save();
+        $message = 'JOOY Offers Code: '.$code;
         if(get_general('actvie_sms') == '1'){
-            send_message($request->phone,1991 );
+            send_message($request->phone,$message );
         }
         $res['status']= $this->sendResponse('Created');
 
