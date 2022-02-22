@@ -268,7 +268,11 @@ class HomeController extends BaseController
   $res['status'] = $this->sendResponse('Created');
   $res['data']['']="";
   return $res;
-  
+  }
+  public  function review_sotre()
+  {
+    $views = VendorReview::where('user_id',auth('client_api')->id())->get();
+    
 
   }
   public function vendor_reviews(Request $request)

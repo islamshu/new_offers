@@ -2,10 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Vendor;
 use Illuminate\Http\Resources\Json\JsonResource;
-use PDO;
 
-class VendorReviewResourses extends JsonResource
+class ReviewnewResourses extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,20 +15,14 @@ class VendorReviewResourses extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id'=>$this->id,
             'stars_no'=>$this->rate,
             'comment'=>$this->comment,
             'created_at'=>$this->created_at,
-            'client'=>$this->client_info($this),
-            // 'store_review_images'=>$this->store_review_images($this),
-        ];
-    }
-    public function client_info($data)
-    {
-        return[
-            'name'=>@$this->user->name,
-            'image'=>asset('images/'.@$this->user->image),
+            'store_id'=>$this->vendor_id,
+            'store'=>new VendorForOfferResourses(Vendor::find($this->vendor_id)),
+            'store_review_images'=>$this->store_review_images($this),
         ];
     }
     public function store_review_images($data)
@@ -41,13 +35,11 @@ class VendorReviewResourses extends JsonResource
               $data =  [
                     'id'=>$data->id,
                     'store_review_id'=>$data->store_id,
-                    'image'=>asset('images/review'.@$data->image)
+                    'image'=>asset('vendor_review'.@$im)
                 ];
+                array_push($array,$data);
             }
-            return[
-                'id'=>@$this->id,
-                'image'=>asset('images/review'.@$this->image),
-            ];
+            return $array;
         }else{
             return [];
         }
