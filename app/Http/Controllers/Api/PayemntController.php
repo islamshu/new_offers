@@ -49,7 +49,7 @@ class PayemntController extends BaseController
             //'InvoiceItems'       => $invoiceItems,
         ];
 
-        $curl = curl_init(get_general('base_url'));
+        $curl = curl_init(get_general('base_url') . '/v2/SendPayment');
         $test = curl_setopt_array($curl, array(
             CURLOPT_CUSTOMREQUEST  => 'POST',
             CURLOPT_POSTFIELDS     => json_encode($postFields),
