@@ -256,8 +256,13 @@ class HomeController extends BaseController
       $image->move('images/vendor_review', $imageName);
         array_push($array,$imageName);
     }
-    dd($array);
+    $review->image = $array;
   }
+  $review->save();
+  $res['status'] = $this->sendResponse('Created');
+  $res['data']['']="";
+  return $res;
+  
 
   }
   public function vendor_reviews(Request $request)
