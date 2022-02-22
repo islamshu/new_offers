@@ -243,6 +243,9 @@ class HomeController extends BaseController
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
     return $res;
   }
+  public function credentials(){
+    dd('dd');
+  }
   public function creacte_review(Request $request){
     $review = new VendorReview();
     $review->user_id = auth('client_api')->id();
