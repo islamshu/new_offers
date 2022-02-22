@@ -245,6 +245,12 @@ class HomeController extends BaseController
   public function creacte_review(Request $request){
     $review = new VendorReview();
     $review->user_id = auth('client_api')->id();
+    $vendor = Vendor::find($request->store_id);
+    if(!$vendor){
+      $res['status'] = $this->SendError();
+      $res['message'] = 'Store Not Found';
+      return $res;
+    }
     $review->vendor_id = $request->store_id;
     $review->rate= $request->stars_no;
     $review->comment = $request->comment;
