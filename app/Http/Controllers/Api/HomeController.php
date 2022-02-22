@@ -235,7 +235,7 @@ class HomeController extends BaseController
     $response = Http::withHeaders(['User-Agent' => $userAgent])->get('http://api.oursms.com/api-a/billing/credits?token=whyfA4pML1nN4w3Yj7_WpKDo29NIOWav-0EqK38KRco');
     dd($response);
   }
-  public function my_fatoorah_credentials(){
+  public function my_fatoorah_credential(){
     $res['status'] = $this->sendResponse('OK');
     $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
