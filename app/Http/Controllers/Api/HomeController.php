@@ -244,7 +244,10 @@ class HomeController extends BaseController
     return $res;
   }
   public function credentials(){
-    dd('dd');
+    $res['status'] = $this->sendResponse200('Create');
+    $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
+    $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
+    return $res;
   }
   public function creacte_review(Request $request){
     $review = new VendorReview();
