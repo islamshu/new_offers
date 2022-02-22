@@ -248,6 +248,7 @@ class HomeController extends BaseController
     $review->vendor_id = $request->store_id;
     $review->rate= $request->stars_no;
     $review->comment = $request->comment;
+    dd($request->images);
     foreach($request->images as $image){
       dd($image);
     }
