@@ -272,7 +272,10 @@ class HomeController extends BaseController
   public  function review_sotre()
   {
     $views = VendorReview::where('user_id',auth('client_api')->id())->get();
-    
+    $res['status']= $this->sendResponse200('OK');
+    $res['data']['store_reviews']= $views;
+    return $res;
+
 
   }
   public function vendor_reviews(Request $request)
