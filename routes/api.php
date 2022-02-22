@@ -38,7 +38,7 @@ Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
 Route::get('store/branches', 'Api\HomeController@vendor_branches');
 Route::post('verification-code/send','Api\UserController@resend_sms');
-Route::get('payment/myfatoorah/credential','Api\HomeController@my_fatoorah_credentials');
+Route::get('payment/myfatoorah/credential','Api\HomeController@my_fatoorah_credential');
 Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
 Route::get('package', 'Api\OfferController@package');
 
