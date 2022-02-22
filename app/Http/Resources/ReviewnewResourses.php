@@ -34,7 +34,6 @@ class ReviewnewResourses extends JsonResource
             $array = [];
             
             foreach(json_decode($image) as $im){
-                dd($im);
               $data =  [
                     'id'=>$data->id,
                     'store_review_id'=>$data->store_id,
