@@ -239,7 +239,7 @@ class HomeController extends BaseController
     $res['status'] = $this->sendResponse('OK');
     $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
-    return response()->setStatusCode()->json;
+    return response()->json(['success' => 'success'], 200);
 
     return $res;
 
