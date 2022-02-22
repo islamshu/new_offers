@@ -40,6 +40,9 @@ class OfferController extends BaseController
       $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
       return $res;
     }
+    public function credentials(){
+      dd('dd');
+    }
     public function package(Request $request){
       
         $pakege = Subscription::with('vendor')->whereHas('vendor', function ($q) use ($request) {
