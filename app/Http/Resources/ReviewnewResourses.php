@@ -34,12 +34,12 @@ class ReviewnewResourses extends JsonResource
             $array = [];
             
             foreach(json_decode($image) as $im){
-              $data =  [
+              $datac =  [
                     'id'=>$data->id,
                     'store_review_id'=>$data->store_id,
                     'image'=>asset('vendor_review'.@$im)
                 ];
-                array_push($array,$data);
+                array_push($array,$datac);
             }
             return $array;
         }else{
