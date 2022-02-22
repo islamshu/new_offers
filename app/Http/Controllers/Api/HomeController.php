@@ -236,7 +236,7 @@ class HomeController extends BaseController
     dd($response);
   }
   public function my_fatoorah_credentials(){
-    $res['status'] = $this->sendResponse200('OK');
+    $res['status'] = $this->sendResponse2('OK');
     $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
     return $res;
