@@ -28,7 +28,7 @@ class ReviewnewResourses extends JsonResource
     public function store_review_images($data)
     {
        
-        if($data->images != null){
+        if($data->image != null){
             $image = $data->image;
             $array = [];
             
