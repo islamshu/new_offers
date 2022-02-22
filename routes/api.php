@@ -38,7 +38,6 @@ Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
 Route::get('store/branches', 'Api\HomeController@vendor_branches');
 Route::post('verification-code/send','Api\UserController@resend_sms');
-Route::get('payment/myfatoorah/credential','Api\HomeController@my_fatoorah_credential');
 Route::get('package', 'Api\OfferController@package');
 
 Route::group(['middleware' => 'auth:client_api'], function () {
@@ -47,6 +46,7 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('store-favorite/create', 'Api\FavoritController@store_to_favorate');
         Route::delete('store-favorite/delete', 'Api\FavoritController@AddOrRemoveStoreFavorit');
         Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
+        Route::get('payment/myfatoorah/credentials','Api\HomeController@my_fatoorah_credential');
 
         Route::get('store-favorite', 'Api\FavoritController@store_favorite');
         Route::post('offer-favorite/create', 'Api\FavoritController@AddOrRemoveOfferFavorit');
