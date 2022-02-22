@@ -40,6 +40,7 @@ use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorReview;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends BaseController
@@ -239,9 +240,11 @@ class HomeController extends BaseController
     $res['status'] = $this->sendResponse('OK');
     $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
-    return response()->json(['success' => 'success'], 200);
-
-    return $res;
+    return Response::json([
+      'error' => false,
+      'code'  => 200,
+      'message' => 'Image was deleted!'
+  ], 200);
 
   }
   public function vendor_reviews(Request $request)
