@@ -237,14 +237,11 @@ class HomeController extends BaseController
     dd($response);
   }
   public function my_fatoorah_credential(){
-    $res['status'] = $this->sendResponse('OK');
+    $res['status'] = $this->SendError();
     $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
     $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
-    return Response::json([
-      'error' => false,
-      'code'  => 200,
-      'message' => 'Image was deleted!'
-  ], 200);
+    return $res;
+ 
 
   }
   public function vendor_reviews(Request $request)
