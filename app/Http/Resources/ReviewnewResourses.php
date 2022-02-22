@@ -30,6 +30,7 @@ class ReviewnewResourses extends JsonResource
        
         if($data->image != null){
             $image = $data->image;
+            dd($image);
             $array = [];
             
             foreach($image as $im){
