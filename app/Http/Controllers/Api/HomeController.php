@@ -239,8 +239,8 @@ class HomeController extends BaseController
   }
   public function my_fatoorah_credential(){
     $res['status'] = $this->sendResponse200('Create');
-    $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
-    $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
+    // $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
+    // $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
     return $res;
   }
   public function creacte_review(Request $request){
