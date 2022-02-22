@@ -27,11 +27,13 @@ class ReviewnewResourses extends JsonResource
     }
     public function store_review_images($data)
     {
+       
         if($data->images != null){
             $image = $data->images;
             $array = [];
             
             foreach($image as $im){
+                dd($im);
               $data =  [
                     'id'=>$data->id,
                     'store_review_id'=>$data->store_id,
