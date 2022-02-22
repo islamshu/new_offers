@@ -251,7 +251,7 @@ class HomeController extends BaseController
     if($request->images != null){
       $array = [];
     foreach($request->images as $image){
-      $image = $request->file('image');
+      // $image = $request->file('image');
       $imageName = time() . 'image.' . $image->getClientOriginalExtension();
       $image->move('images/vendor_review', $imageName);
         array_push($array,$imageName);
