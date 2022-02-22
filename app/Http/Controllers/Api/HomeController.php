@@ -248,10 +248,14 @@ class HomeController extends BaseController
     $review->vendor_id = $request->store_id;
     $review->rate= $request->stars_no;
     $review->comment = $request->comment;
-    dd('dd',$request->images);
+    if($request->images != null){
+      $array = [];
     foreach($request->images as $image){
-      dd($image);
+
+        array_push($array,$image->store('vendor_review'));
     }
+    dd($array);
+  }
 
   }
   public function vendor_reviews(Request $request)
