@@ -61,7 +61,7 @@ class PayemntController extends BaseController
         $error = $this->handleError($response);
         if ($error) {
             $res['status'] = $this->SendError();
-            $res['status']['message'] = 'Error Occer';
+            $res['status']['message'] = $error;
             return $res;
         }
         $json = json_decode($response);
