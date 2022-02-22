@@ -40,7 +40,7 @@ use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorReview;
 use Carbon\Carbon;
-use Facade\FlareClient\Http\Response;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends BaseController
