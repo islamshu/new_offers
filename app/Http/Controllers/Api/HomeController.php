@@ -370,10 +370,7 @@ class HomeController extends BaseController
   }
   public function popup_ad(Request $request)
   {
-    $res['status'] = $this->sendResponse200('Create');
-    $res['data']['myfatoorah_credentials']['api_key']=get_general('api_key') ;
-    $res['data']['myfatoorah_credentials']['base_url']=get_general('base_url') ;
-    return $res;
+    
     $position = $request->position;
     if ($position == 'home') {
       $data_show = Popup::where('show_as', 'home')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
