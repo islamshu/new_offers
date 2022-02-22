@@ -13,6 +13,7 @@ use App\Http\Resources\CategoryResourses;
 use App\Http\Resources\CityCollection;
 use App\Http\Resources\HomeSLiderCollection;
 use App\Http\Resources\PopupResoures;
+use App\Http\Resources\ReviewnewCollection;
 use App\Http\Resources\SliderCollection;
 use App\Http\Resources\StoresCollection;
 use App\Http\Resources\SupportResourses;
@@ -273,7 +274,7 @@ class HomeController extends BaseController
   {
     $views = VendorReview::where('user_id',auth('client_api')->id())->get();
     $res['status']= $this->sendResponse200('OK');
-    $res['data']['store_reviews']= $views;
+    $res['data']['store_reviews']=  new ReviewnewCollection($views);
     return $res;
 
 
