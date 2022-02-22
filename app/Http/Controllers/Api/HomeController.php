@@ -256,7 +256,7 @@ class HomeController extends BaseController
       $image->move('images/vendor_review', $imageName);
         array_push($array,$imageName);
     }
-    $review->image = $array;
+    $review->image = json_encode($array);
   }
   $review->save();
   $res['status'] = $this->sendResponse('Created');
