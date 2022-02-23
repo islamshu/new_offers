@@ -152,7 +152,7 @@ class PayemntController extends BaseController
             }
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
             $res['data']['myfatoorah_payment']['price']= $code->price;
-            $res['data']['myfatoorah_payment']['discount']= 0;
+            $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
             $res['data']['myfatoorah_payment']['amount']= $price;
             $res['data']['myfatoorah_payment']['customer_name']= $request->customer_name;
             $res['data']['myfatoorah_payment']['customer_email']= $request->customer_email;
