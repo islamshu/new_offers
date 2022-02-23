@@ -26,7 +26,7 @@ class PayemntController extends BaseController
         }
         $price = $code->price;
         if($request->promo_code != null){
-            $discout = Discount::where('code',$request->promo_code)->first();
+            $discout = DiscountSubscription::where('code',$request->promo_code)->first();
             dd($discout);
         }
 
