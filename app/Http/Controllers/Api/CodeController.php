@@ -218,7 +218,7 @@ class CodeController extends BaseController
         $discout_value = $discout->value_discount;
         $price = $code->price;
 
-        $res['status'] = $this->sendResponse('OK');
+        $res['status'] = $this->sendResponse200('OK');
         $res['data']["orgin_price"] = $price;
         $res['data']["discout_type"] = $discout_type;
         $res['data']["discout_value"] = $discout_value;
