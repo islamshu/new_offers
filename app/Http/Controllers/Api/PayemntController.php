@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Models\Discount;
 use App\Models\DiscountSubscription;
 use App\Models\Subscription;
 use App\Models\Subscriptions_User;
@@ -25,7 +26,8 @@ class PayemntController extends BaseController
         }
         $price = $code->price;
         if($request->promo_code != null){
-            dd($request->promo_code);
+            $discout = Discount::where('code',$request->promo_code)->first();
+            dd($discout);
         }
 
 
