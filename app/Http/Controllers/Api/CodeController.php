@@ -96,10 +96,17 @@ class CodeController extends BaseController
         $type_paid_user = $user->subs->last()->subscripe->type_paid;
         $offer = Offer::find($request->offer_id);
         $vendor = Vendor::find($offer->vendor_id);
+        if(($vendor->qr_code == $request->store_pin_code || $request->store_pin_code == 'dbc4d84bfcfe2284ba11beffb853a8c4')){
+            $res['status'] = $this->SendError();
+                $res['status']['title'] = 'Purchase is Fail';
+                $res['status']['message'] = 'The PIN code is wrong';
+                return $res;
+        }
+        
         if (!$offer) {
             $res['status'] = $this->SendError();
             $res['status']['title'] = 'Purchase is Fail';
-            $res['status']['message'] = 'The PIN code is wrong error 1';
+            $res['status']['message'] = 'Not Found Offer';
             return $res;
         }
         $enterprise = Vendor::find($offer->vendor_id)->enterprise_id;
