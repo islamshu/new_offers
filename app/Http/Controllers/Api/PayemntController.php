@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\Discount;
 use App\Models\DiscountSubscription;
+use App\Models\PromocodeUser;
 use App\Models\Subscription;
 use App\Models\Subscriptions_User;
 use Carbon\Carbon;
@@ -144,10 +145,14 @@ class PayemntController extends BaseController
             $user->clinet_id  = auth('client_api')->id();
             $user->save();
             if($price != $code->price){
-                
+                $promocode =new  PromocodeUser();
+                $promocode->client_id = auth('client_api')->id();
+                $promocode->promocode = $request->promo_code;
+                $promocode->save();
+
             }
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
-            $res['data']['myfatoorah_payment']['price']= $price;
+            $res['data']['myfatoorah_payment']['price']= $code->price;
             $res['data']['myfatoorah_payment']['discount']= 0;
             $res['data']['myfatoorah_payment']['amount']= $price;
             $res['data']['myfatoorah_payment']['customer_name']= $request->customer_name;
