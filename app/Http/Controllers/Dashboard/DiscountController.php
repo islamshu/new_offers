@@ -30,7 +30,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        $subs = Subscription::where('type_paid', 'paid')->get();
+        $subs = Subscription::where('type_paid', 'PREMIUM')->get();
         return response()->view('dashboard.discount_code.create', compact('subs'));
     }
 
