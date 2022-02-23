@@ -147,8 +147,8 @@ class CodeController extends BaseController
                 $ofe->branch_id = $request->branch_id;
                 $user->purchases_no += 1;
                 if ($type_of_offer != 'free') {
-                    dd($user->remain );
-                    if ($user->remain > 0) {
+                   
+                    if ($user->remain > 0 && $user->remain != null) {
                         $user->remain = $user->remain - 1;
                     } else {
                         $res['status'] = $this->SendError();
