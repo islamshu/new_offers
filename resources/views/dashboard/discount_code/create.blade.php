@@ -162,7 +162,10 @@
             var typeOfCode = $('#type_code').val();
             if (type == 'multi') {
                 $('.codenumber').css("display", "block")
-                $('.typecode').css("display", "none")
+                $('.typecode').css("display", "none");
+                $('.code').css("display", "none");
+
+                
 
             } else {
                 $('.codenumber').css("display", "none")
