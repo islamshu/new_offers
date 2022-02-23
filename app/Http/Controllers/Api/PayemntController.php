@@ -24,6 +24,9 @@ class PayemntController extends BaseController
             return $res;
         }
         $price = $code->price;
+        if($request->promo_code != null){
+            dd($request->promo_code);
+        }
 
 
         $postFields = [
