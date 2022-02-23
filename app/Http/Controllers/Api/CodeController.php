@@ -146,8 +146,11 @@ class CodeController extends BaseController
                 $ofe->client_id = auth('client_api')->id();
                 $ofe->branch_id = $request->branch_id;
                 $user->purchases_no += 1;
-                if ($type_of_offer != 'free' || $type_paid_user != 'PREMIUM' ) {
-                   dd($user->remain);
+                if($user->is_unlimited != 1){
+
+                
+                if ($type_of_offer != 'free'  ) {
+               
                     if ($user->remain > 0 && $user->remain != null) {
                         $user->remain = $user->remain - 1;
                     } else {
@@ -157,6 +160,7 @@ class CodeController extends BaseController
                         return $res;
                     }
                 }
+            }
                 if ($vendor->type_refound == 'auto') {
                     $ofe->referance_no = rand(000000000, 999999999);
                 } else {
