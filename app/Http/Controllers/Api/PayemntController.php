@@ -143,6 +143,9 @@ class PayemntController extends BaseController
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
             $user->save();
+            if($price != $code->price){
+                
+            }
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
             $res['data']['myfatoorah_payment']['price']= $price;
             $res['data']['myfatoorah_payment']['discount']= 0;
