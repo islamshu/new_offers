@@ -212,7 +212,7 @@ class CodeController extends BaseController
         $code = Subscription::with('promo')->whereHas('promo', function ($q) use ($request) {
             $q->where('code', $request->code);
         })->first();
-        dd($code);
+   
         $discout = Discount::find($code->promo->first()->discount_id);
         $discout_type = $discout->type_discount;
         $discout_value = $discout->value_discount;
