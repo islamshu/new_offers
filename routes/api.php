@@ -42,6 +42,8 @@ Route::get('package', 'Api\OfferController@package');
 Route::get('my_fatoorah','Api\HomeController@my_fatoorah_credential');
 Route::get('payment/myfatoorah/credentials','Api\OfferController@my_fatoorah_credential');
 Route::post('credentials','Api\HomeController@credentials');
+Route::post('apply-promo-code', 'Api\CodeController@apply_promo_code');
+
 Route::group(['middleware' => 'auth:client_api'], function () {
     Route::group(['middleware' => 'devide'], function () {
         Route::get('client/info', 'Api\UserController@user_info');
@@ -69,7 +71,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('profile', 'Api\HomeController@profile');
         Route::get('suggestion-offer', 'Api\OfferController@suggetstd_offer');
         Route::post('package/activation', 'Api\CodeController@sub_by_activiton');
-        Route::post('apply-promo-code', 'Api\CodeController@apply_promo_code');
         Route::post('redeem', 'Api\CodeController@redeem');
         Route::put('client/update/info', 'Api\UserController@update');
         Route::put('client/update/city', 'Api\UserController@update_city');
