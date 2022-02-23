@@ -76,7 +76,7 @@
                     <div class="form-group col-md-6 codenumber" style="display: none">
                         <label>{{ __('number of code') }}</label>
                         <input type="integer" class="form-control form-control-solid form-control-lg" name="number_of_code"
-                            id="number_of_code" placeholder="number_of_code" />
+                            id="number_of_code" placeholder="number of code" />
                     </div>
                 </div>
                 <div class="row">
