@@ -61,7 +61,6 @@ class PayemntController extends BaseController
             }
            
         }
-        dd($code->price,$price);
 
         $postFields = [
             //Fill required data
