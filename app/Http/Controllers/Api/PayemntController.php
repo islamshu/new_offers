@@ -31,7 +31,8 @@ class PayemntController extends BaseController
                 if($discout->sub_id == $request->package_id){
                    $dis= Discount::find($discout->discount_id);
                    if($dis){
-                       if(Carbon::now() >= $dis->start_at && Carbon::now() <= $dis->start_at ){
+                       dd(Carbon::now()->foramt('Y-m-d'));
+                       if(Carbon::now()->foramt('Y-m-d') >= $dis->start_at && Carbon::now() <= $dis->start_at ){
                              if($dis->type_discount == 'fixed'){
                                  $price = $price - $dis->value ;
                              }else{
