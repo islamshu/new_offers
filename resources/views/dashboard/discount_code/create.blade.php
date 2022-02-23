@@ -40,11 +40,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('Price') }}:</label>
-                        <input type="text" name="price" id="price" class="form-control form-control-solid"
-                            placeholder="Price" required />
-                    </div>
+                   
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6 Enterprise">
@@ -232,7 +228,6 @@
             formData.append('type', document.getElementById('type').value);
             formData.append('type_code', document.getElementById('type_code').value);
             formData.append('type_of_limit', document.getElementById('type_of_limit').value);
-            formData.append('price', document.getElementById('price').value);
             formData.append('start_time', document.getElementById('start_time').value);
             formData.append('end_time', document.getElementById('end_time').value);
             formData.append('type_discount', document.getElementById('type_discount').value);
