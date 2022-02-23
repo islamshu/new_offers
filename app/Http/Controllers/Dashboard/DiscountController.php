@@ -46,7 +46,7 @@ class DiscountController extends Controller
             'name_ar' => 'required',
             'name_en' => 'required',
             'type' => 'required',
-            'type_code' => 'required',
+            // 'type_code' => 'required',
             'type_of_limit' => 'required',
             'value' => $request->type_of_limit == 'limit' ? 'required' : '',
             'start_time' => 'required',
