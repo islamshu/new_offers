@@ -27,9 +27,40 @@ class PayemntController extends BaseController
         $price = $code->price;
         if($request->promo_code != null){
             $discout = DiscountSubscription::where('code',$request->promo_code)->first();
-            dd($discout);
+            if($discout){
+                if($discout->sub_id == $request->package_id){
+                   $dis= Discount::find($discout->discount_id);
+                   if($dis){
+                       if(Carbon::now() > $dis->start_at && Carbon::now() < $dis->start_at ){
+                             if($dis->type_discount == 'fixed'){
+                                 $price = $price - $dis->value ;
+                             }else{
+                                $price = ($dis->value / 100) * $price;
+                             }
+                       }else{
+                        $res['status'] = $this->SendError();
+                        $res['status']['message'] = 'The promocode has expired';
+                        return $res; 
+                       }
+                       
+                   }else{
+                    $res['status'] = $this->SendError();
+                    $res['status']['message'] = 'Not Found Promocode';
+                    return $res; 
+                   }
+                }else{
+                    $res['status'] = $this->SendError();
+                    $res['status']['message'] = 'Not Found Promocode';
+                    return $res; 
+                }
+            }else{
+                $res['status'] = $this->SendError();
+                $res['status']['message'] = 'Not Found Promocode';
+                return $res; 
+            }
+           
         }
-
+        dd($price);
 
         $postFields = [
             //Fill required data
