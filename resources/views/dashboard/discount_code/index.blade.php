@@ -28,7 +28,8 @@
                             </td>
                         <td class="pr-0 text-left">
 
-
+                            <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
+                            onclick="make('{{ $item->id }}')"><i class="fa fa-eye"></i></a>
                                 <a href="{{ route('discount_code.edit', [ $code->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                     <span class="svg-icon svg-icon-md svg-icon-primary">
