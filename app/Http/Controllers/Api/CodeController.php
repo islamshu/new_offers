@@ -227,7 +227,7 @@ class CodeController extends BaseController
         } else {
             $total =     $price -  $discout_value;
         }
-        $res['data']['discount_percentage']= 100 * ($total) / $price;
+        $res['data']['discount_percentage']= 100 * ($price - $total) / $price;
         $res['data']["price_after_discount"] = $total;
         return $res;
     }
