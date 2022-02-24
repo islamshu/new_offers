@@ -12,9 +12,11 @@ id="kt_datatable">
     @php
         $dis = App\Models\Discount::find($item->discount_id);
     @endphp
+    <tr>>
     <td>{{ $item->code }}</td>
     <td>{{ $dis->value}}</td>
     <td>{{ App\Models\PromocodeUser::where('promocode',$item->code)->count()}}</td>
+    </tr
     @endforeach
   
 </tbody>
