@@ -99,6 +99,10 @@ class DiscountController extends Controller
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
+    public function showCodes(Request $request)
+    {
+        dd($request);
+    }
 
     /**
      * Display the specified resource.
