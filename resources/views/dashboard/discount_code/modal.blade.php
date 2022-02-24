@@ -10,27 +10,11 @@ id="kt_datatable">
 <tbody>
     @foreach ($codes as $item)
     @php
-        $dis = App\Models\Discount::find($item->)
+        $dis = App\Models\Discount::find($item->discount_id);
     @endphp
     <td>{{ $item->code }}</td>
-    <td>{{ $item->city->id }}</td>
-    @php
-       $neighborhoods = App\Models\enterprise_neighborhood::where('enterprise_id',$vendor->enterprise_id)->where('status',1)->with('neighborhood')
-        ->whereHas('neighborhood', function ($q) use ($item) {
-            $q->where('city_id', $item->city->id);
-          })->get()
-          @endphp
-          <td>
-          @foreach ($neighborhoods as $key => $value) 
-          
-            {{ 'name : ' }}  {{ $value->neighborhood->neighborhood_name }} {{ '  '  }}{{ '  Id: ' }} {{ $value->neighborhood->id }} <br>
-          
-          @endforeach
-        </td>
-            
-          
-    
-        
-    @endforeach
+    <td>{{ $dis->value}}</td>
+    <td>{{ App\Models\PromocodeUser::where('promocode',$item->code)->count()}}</td>
+  
 </tbody>
 </table>
