@@ -15,6 +15,7 @@ id="kt_datatable">
     <td>{{ $item->code }}</td>
     <td>{{ $dis->value}}</td>
     <td>{{ App\Models\PromocodeUser::where('promocode',$item->code)->count()}}</td>
+    @endforeach
   
 </tbody>
 </table>
