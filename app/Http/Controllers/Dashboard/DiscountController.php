@@ -101,7 +101,9 @@ class DiscountController extends Controller
     }
     public function showCodes(Request $request)
     {
-        dd($request);
+        $codes = DiscountSubscription::where('discount_id',$request->id)->get();
+        dd($codes);
+        return view('dashboard.discount_code.modal')->with('codes',$codes);
     }
 
     /**
