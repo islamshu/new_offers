@@ -183,6 +183,8 @@ class CodeController extends BaseController
                 $trans->enterprise_id = $enterprise;
                 $trans->refreance_number = $ofe->referance_no;
                 $trans->save();
+                $vendor->sales += 1;
+                $vendor->save();
                 $res['status'] = $this->sendResponse('Created');
                 $res['status']['title'] = '';
                 $res['status']['message'] = '';

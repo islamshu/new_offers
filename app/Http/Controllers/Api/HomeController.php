@@ -198,6 +198,8 @@ class HomeController extends BaseController
 
     $vendor = Vendor::find($request->store_id);
     if ($vendor) {
+      $vendor->visitor +=1 ;
+      $vendor->save();
       
       $res['status'] = $this->sendResponse200('OK');
 
