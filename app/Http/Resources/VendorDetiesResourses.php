@@ -34,7 +34,7 @@ class VendorDetiesResourses extends JsonResource
             'open_from'=>@$this->additinal->open,
             'close_from'=>@$this->additinal->close,
             'is_favorite'=>$this->is_fav($this),
-            'transactions_no'=>0,
+            'transactions_no'=>$this->sales,
             'store_recommendations_no'=>0,
             'store_covers'=>new VendorCoverCollection($this->vendor_image),
             'store_seen'=>$this->store_seen($this),
