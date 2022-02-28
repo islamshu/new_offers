@@ -25,7 +25,8 @@ class RoleController extends Controller
             $roles = Role::all();
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Enterprises')) {
-            $roles = user_roles::where('user_id', Auth::user()->id)->with('role')->get();
+            $roles = Role::where('ent_id',auth()->user()->ent_id)->get();
+            // $roles = user_roles::where('user_id', Auth::user()->id)->with('role')->get();
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Vendors')) {
            $roles = user_roles::where('user_id', Auth::user()->id)->with('role')->get();
@@ -43,7 +44,6 @@ class RoleController extends Controller
             $key = ucwords(trim($key));
 
             $uiPermission[$key][] = $permission;
-
         }
         return view('dashboard.role.create')->with('uiPermission',$uiPermission);
     }
