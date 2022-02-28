@@ -20,6 +20,7 @@ class RoleController extends Controller
 {
     public function index()
     {
+        dd(Auth::user()->hasRole('Enterprises'));
 
         if (Auth::user()->hasRole('Admin')) {
             $roles = Role::all();
