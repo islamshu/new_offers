@@ -290,6 +290,7 @@
                         <div class=" card-header">{{ $key }}</div>
                         <ul class="list-group list-group-flush">
                             @foreach ($permissionGroup as $permission)
+                            {{ dd($permission) }}
                                 <li class="list-group-item">
                                     <div class="fancy-checkbox">
                                         <label>
