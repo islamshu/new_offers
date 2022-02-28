@@ -20,7 +20,6 @@ class RoleController extends Controller
 {
     public function index()
     {
-        dd(Auth::user()->hasRole('Enterprises'));
 
         if (Auth::user()->hasRole('Admin')) {
             $roles = Role::all();
@@ -38,6 +37,7 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
+
         $uiPermission = [];
         foreach($permission as $index => $permission)
         {
@@ -47,6 +47,7 @@ class RoleController extends Controller
 
             $uiPermission[$key][] = $permission;
         }
+        dd($uiPermission,$permission);
         return view('dashboard.role.create')->with('uiPermission',$uiPermission);
     }
 
