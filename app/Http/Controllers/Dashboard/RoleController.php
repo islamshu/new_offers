@@ -47,7 +47,6 @@ class RoleController extends Controller
 
             $uiPermission[$key][] = $permission;
         }
-        dd($uiPermission,$permission);
         return view('dashboard.role.create')->with('uiPermission',$uiPermission);
     }
 
