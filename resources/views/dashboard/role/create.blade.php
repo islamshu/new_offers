@@ -305,7 +305,7 @@
                                                 <span>{{ $permission->display_name }}</span>
                                             @endif
                                             @if (Auth::user()->hasRole('Enterprises|Vendors'))
-                                                <span>{{ $permission->Permission->display_name }}</span>
+                                                <span>{{ @$permission->Permission->display_name }}</span>
                                             @endif
                                         </label>
                                     </div>
