@@ -98,7 +98,9 @@ class UserController extends Controller
             $user->Save();
             $role = Role::where('name', $request->role)->first();
             $user->attachRole($role);
+
             foreach ($role->permissions as $one_permission) {
+                dd($one_permission);
                 $user->attachPermission($one_permission);
             }
              return response()->json(['icon' => 'success', 'title' => 'user created successfully'], $user ? 200 : 400);
