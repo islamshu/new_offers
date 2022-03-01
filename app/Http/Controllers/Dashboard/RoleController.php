@@ -35,7 +35,11 @@ class RoleController extends Controller
     }
     public function create()
     {
+        if (Auth::user()->hasRole('Admin')) {
         $permission = Permission::get();
+        }elseif (Auth::user()->hasRole('Enterprises')) {
+            $permission = Permission::where('is_admin',0)->get();
+        }
 
         $uiPermission = [];
         foreach($permission as $index => $permission)
