@@ -131,7 +131,7 @@
                         </label>
                         <div class="input-group mb-3">
                             <input type="text" name="name" value="{{ old('name') }}" class="form-control">
-                             <select class="custom-select type" id="type" name="name" @if ($errors->has('name'))
+                             {{-- <select class="custom-select type" id="type" name="name" @if ($errors->has('name'))
                                 style="border: 1px solid red"
                                 @endif
                                 >
@@ -165,7 +165,7 @@
                                 </option>
 
                             </select> 
-                            
+                             --}}
 
                         </div>
                         @if ($errors->has('name'))
