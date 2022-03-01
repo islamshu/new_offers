@@ -64,12 +64,12 @@
                                     @endif
                                      @if(Auth::user()->hasRole('Enterprises|Vendors'))
 	                                <tr>
-	                                    <td>{{$one_role->role->name}}</td>
-                                        <td>{{$one_role->role->display_name}}</td>
-	                                    <td>{{$one_role->role->description}}</td>
+	                                    <td>{{$one_role->name}}</td>
+                                        <td>{{$one_role->display_name}}</td>
+	                                    <td>{{$one_role->description}}</td>
 	                                    <td>
                                        
-                                            <a href="{{route('role.edit',[app()->getLocale(),$one_role->role->id])}}" class="btn btn-warning">
+                                            <a href="{{route('role.edit',[app()->getLocale(),$one_role->id])}}" class="btn btn-warning">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>
