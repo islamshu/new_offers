@@ -7,6 +7,7 @@ use App\Models\Enterprise;
 use App\Models\permission_role;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\user_Permission;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +104,11 @@ class UserController extends Controller
            $permissions= permission_role::where('role_id',$role->id)->get();
             
             foreach ($permissions as $one_permission) {
-                $user->attachPermission($one_permission);
+                $per = new user_Permission();
+                $per->user_id = $user->id;
+                $per->permission_id = $one_permission->id;
+                $per->save();
+                // $user->attachPermission($one_permission);
             }
              return response()->json(['icon' => 'success', 'title' => 'user created successfully'], $user ? 200 : 400);
         } else {
