@@ -12,8 +12,5 @@ class Role extends LaratrustRole
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function permissions()
-    {
-        return $this->hasMany(permission_role::class, 'role_id');
-    }
+
 }

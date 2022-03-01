@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Enterprise;
+use App\Models\permission_role;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Vendor;
@@ -97,9 +98,10 @@ class UserController extends Controller
             $user->last_ip= '';
             // $user->Save();
             $role = Role::where('name', $request->role)->first();
-            // $user->attachRole($role);
-            dd($role->permissions);
-            foreach ($role->permissions as $one_permission) {
+            $user->attachRole($role);
+           $permissions= permission_role::where('role_id',$role->is)->get();
+            
+            foreach ($permissions as $one_permission) {
                 dd($one_permission);
                 $user->attachPermission($one_permission);
             }
