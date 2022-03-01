@@ -77,11 +77,12 @@ class RoleController extends Controller
             $new_role->name = $request->name;
             $new_role->display_name = $request->display_name;
             $new_role->description = $request->description;
-            dd( auth()->user()->ent_id);
             if (Auth::user()->hasRole('Enterprises')) {
                 $new_role->ent_id = auth()->user()->ent_id;   
             }
+
             $new_role->save();
+            dd($new_role);
             $new_role->attachPermissions($request->permission_ids);
 
 
