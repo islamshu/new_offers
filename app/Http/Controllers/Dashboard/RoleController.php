@@ -82,7 +82,7 @@ class RoleController extends Controller
             }
 
             $new_role->save();
-            dd($new_role);
+            // dd($new_role);
             $new_role->attachPermissions($request->permission_ids);
 
 
