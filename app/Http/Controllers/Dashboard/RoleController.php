@@ -51,7 +51,6 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->permission_ids);
 
         $data = $request->except(array('_token'));
         $rule = array(
