@@ -106,6 +106,7 @@ class UserController extends Controller
             foreach ($permissions as $one_permission) {
                 $per = new user_Permission();
                 $per->user_id = $user->id;
+                dd($one_permission);
                 $per->permission_id = $one_permission->id;
                 $per->save();
                 dd($per);
