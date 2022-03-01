@@ -104,6 +104,7 @@ class UserController extends Controller
            $permissions= permission_role::where('role_id',$role->id)->get();
             
             foreach ($permissions as $one_permission) {
+                dd($one_permission);
                 $per = new user_Permission();
                 $per->user_id = $user->id;
                 $per->permission_id = $one_permission->id;
