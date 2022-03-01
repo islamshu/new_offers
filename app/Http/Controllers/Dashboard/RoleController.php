@@ -22,11 +22,10 @@ class RoleController extends Controller
     {
 
         if (Auth::user()->hasRole('Admin')) {
-            $roles = Role::all();
+            $roles = Role::where('ent_id',null)->get();
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Enterprises')) {
             $roles = Role::where('ent_id',auth()->user()->ent_id)->get();
-            dd($roles);
             // $roles = user_roles::where('user_id', Auth::user()->id)->with('role')->get();
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Vendors')) {
