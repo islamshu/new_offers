@@ -291,7 +291,6 @@
                         <div class=" card-header">{{ $key }}</div>
                         <ul class="list-group list-group-flush">
                             @foreach ($permissionGroup as $permission)
-                             {{ dd($permission) }}
                                 <li class="list-group-item">
                                     <div class="fancy-checkbox">
                                         <label>
@@ -301,7 +300,7 @@
                                             @endif
                                             @if (Auth::user()->hasRole('Enterprises|Vendors'))
                                                 <input type="checkbox" name="permission_ids[]"
-                                                    value="{{ $permission->permission_id }}">
+                                                    value="{{ $permission->id }}">
                                             @endif
                                             @if (Auth::user()->hasRole('Admin'))
                                                 <span>{{ $permission->display_name }}</span>
