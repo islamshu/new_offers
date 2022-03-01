@@ -26,7 +26,7 @@ class UserController extends Controller
         }elseif(Auth::user()->hasRole('Vendors')){
             $users = User::where('vendor_id',Auth::user()->vendor_id)->get();
         }
-            return response()->view('dashboard.users.index', compact('users'));
+        return response()->view('dashboard.users.index', compact('users'));
 
     }
 
@@ -47,7 +47,7 @@ class UserController extends Controller
         }elseif(Auth::user()->hasRole('Enterprises')){
             $enterprice = Enterprise::get();
             $venders = Vendor::where('enterprise_id',Auth::user()->vendor_id)->get();
-            $rols = Role::get();
+            $rols = Role::where('ent_id',auth()->user()->ent_id)->get();
             return response()->view('dashboard.users.create',compact('venders','rols')); 
         }elseif(Auth::user()->hasRole('Vendors')){
             $rols = Role::get();
