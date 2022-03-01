@@ -98,7 +98,7 @@ class UserController extends Controller
             $user->last_ip= '';
             // $user->Save();
             $role = Role::where('name', $request->role)->first();
-            dd($role);
+            
             // $user->attachRole(d$role);
            $permissions= permission_role::where('role_id',$role->is)->get();
            dd($permissions);
