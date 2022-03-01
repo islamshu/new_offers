@@ -108,7 +108,6 @@ class UserController extends Controller
                 $per->user_id = $user->id;
                 $per->permission_id = $one_permission->permission_id;
                 $per->save();
-                dd($per);
                 // $user->attachPermission($one_permission);
             }
              return response()->json(['icon' => 'success', 'title' => 'user created successfully'], $user ? 200 : 400);
