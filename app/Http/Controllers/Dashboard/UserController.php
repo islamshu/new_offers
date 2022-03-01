@@ -96,14 +96,13 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->address = $request->address;
             $user->last_ip= '';
-            // $user->Save();
+            $user->Save();
             $role = Role::where('name', $request->role)->first();
             
-            // $user->attachRole(d$role);
+            $user->attachRole($role);
            $permissions= permission_role::where('role_id',$role->id)->get();
             
             foreach ($permissions as $one_permission) {
-                dd($one_permission);
                 $user->attachPermission($one_permission);
             }
              return response()->json(['icon' => 'success', 'title' => 'user created successfully'], $user ? 200 : 400);
