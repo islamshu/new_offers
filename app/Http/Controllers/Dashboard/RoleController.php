@@ -51,6 +51,8 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->permission_ids);
+
         $data = $request->except(array('_token'));
         $rule = array(
             'display_name' => 'required|unique:roles,display_name',
