@@ -100,6 +100,7 @@ class UserController extends Controller
             $role = Role::where('name', $request->role)->first();
             // $user->attachRole(d$role);
            $permissions= permission_role::where('role_id',$role->is)->get();
+           dd($permissions);
             
             foreach ($permissions as $one_permission) {
                 dd($one_permission);
