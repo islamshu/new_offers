@@ -177,6 +177,7 @@ class RoleController extends Controller
             return Redirect::route('role.edit', ['locale' => app()->getLocale(), 'role_id' => $role_id])->withErrors($validator)->withInput();
         } else {
             $role = Role::find($role_id);
+            dd($role);
 
             if (Auth::user()->hasRole('Enterprises')) {
                 $role->name = 'Enterprises';
