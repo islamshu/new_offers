@@ -39,6 +39,7 @@ class brandController extends Controller
     public function __construct()
     {
         //create read update delete
+        dd(auth()->user()->allPermissions());
         $this->middleware(['permission:read-vender'])->only('index');
         // $this->middleware(['permission:create_users'])->only('create');
         // $this->middleware(['permission:update_users'])->only('edit');
