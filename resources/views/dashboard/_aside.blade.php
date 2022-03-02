@@ -466,6 +466,7 @@ $lang = app()->getLocale();
     </div>
 </li>
 @endif
+@if (auth()->user()->isAbleTo(['read-activition_code']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
@@ -483,13 +484,17 @@ $lang = app()->getLocale();
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('List') }}</span></a></li>
+                        @if (auth()->user()->isAbleTo(['create-activition_code']))
+
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/code/create"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('Create') }}</span></a></li>
+                        @endif
 
         </ul>
     </div>
 </li>
+@endif
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
