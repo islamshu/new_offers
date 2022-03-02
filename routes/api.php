@@ -60,7 +60,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::get('offer-favorite', 'Api\FavoritController@offer_favorite');
         Route::get('transactions','Api\UserController@transactions');
         Route::get('current-subscription','Api\UserController@current_subscription');
-        
         // Route::get('vendor', 'Api\HomeController@vendor_detels');
         Route::get('store/reviews', 'Api\HomeController@vendor_reviews');
         Route::get('nearby-partners', 'Api\HomeController@nearby_partners');
@@ -77,11 +76,6 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('client/image/update', 'Api\UserController@update_image');
         Route::post('logout','Api\UserController@logout');
         Route::post('registration-id/refresh','Api\UserController@register_token');
-
-        
-
-
-
     });
 });
 

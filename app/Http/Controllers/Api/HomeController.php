@@ -102,6 +102,7 @@ class HomeController extends BaseController
     if ($filtter == 'offer') {
       $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
         $q->where('status','active');
+        $q->where('end_time','>', Carbon::now());
         $q->has('enterprise')->whereHas('enterprise', function ($q) use ($request) {
           $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
         });
@@ -187,7 +188,6 @@ class HomeController extends BaseController
     ->has('cities')->whereHas('cities', function ($q) use ($request) {
       $q->where('city_id', $request->city_id);
     })->get();
-    // 
     $res['status'] = $this->sendResponse200('OK');
 
     $res['data'] = new VendorForOfferCollection($vendors);
