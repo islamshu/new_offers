@@ -586,6 +586,7 @@ $lang = app()->getLocale();
         <i class="menu-arrow"></i>
     </a>
 </li>
+@endif
 @if (auth()->user()->isAbleTo(['read-page']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
