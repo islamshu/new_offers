@@ -47,7 +47,7 @@ class brandController extends Controller
     }//end of constructor
     public function index()
     {
-        dd(auth()->user()->hasPermission('update-vendord'));
+        dd(auth()->user()->hasPermission('update-vendor'));
 
         if (Auth::user()->hasRole('Admin')) {
 
