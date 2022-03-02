@@ -165,8 +165,10 @@ $lang = app()->getLocale();
             </div>
         </li>
     @endif
-
+{{ dd(auth()->user()->hasRole(['Enterprises'])) }}
     @if (auth()->user()->hasRole(['Enterprises']))
+
+    
 
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="/{{ $lang }}/enterprise" class="menu-link menu-toggle">
