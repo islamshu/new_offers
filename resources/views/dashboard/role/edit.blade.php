@@ -141,7 +141,7 @@
                                                         >
                                                         @endif
                                                            @if(Auth::user()->hasRole('Enterprises|Vendors'))
-                                                        <input type="checkbox" name="permission_ids[]" value="{{$permission->permission_id}}"
+                                                        <input type="checkbox" name="permission_ids[]" value="{{$permission->id}}"
                                                         @foreach($role->permissions as $role_permession)
                                                         @if($role_permession->id == $permission->id)
                                                             checked="checked"
