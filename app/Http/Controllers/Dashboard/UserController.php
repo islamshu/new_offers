@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-user'])->only('index');
+        $this->middleware(['permission:create-user'])->only('create');
+        $this->middleware(['permission:update-user'])->only('edit');
+        $this->middleware(['permission:delete-user'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +32,7 @@ class UserController extends Controller
     {
         if(Auth::user()->hasRole('Admin')){
             $users = User::get();
-        }elseif(Auth::user()->hasRole('Enterprises')){
+        }elseif(Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-user')){
             $users = User::where('ent_id',Auth::user()->ent_id)->get();
         }elseif(Auth::user()->hasRole('Vendors')){
             $users = User::where('vendor_id',Auth::user()->vendor_id)->get();
