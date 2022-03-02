@@ -201,7 +201,6 @@ class RoleController extends Controller
 
                 $usersId = user_roles::where('role_id',$role->id)->get();
                 foreach($usersId as $users ){
-                    dd($users);
 
                     
                     $userfirst = User::find($users->user_id);
