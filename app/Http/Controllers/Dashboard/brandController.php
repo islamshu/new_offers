@@ -47,6 +47,8 @@ class brandController extends Controller
     }//end of constructor
     public function index()
     {
+        dd(auth()->user()->hasPermission('update-vendor'));
+
         if (Auth::user()->hasRole('Admin')) {
 
             $vendors = Vendor::select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->paginate(10);
