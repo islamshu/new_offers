@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 
 class CouponController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-promocode'])->only('index');
+        $this->middleware(['permission:create-promocode'])->only('create_coupon');
+        $this->middleware(['permission:update-promocode'])->only('edit');
+        $this->middleware(['permission:delete-promocode'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
