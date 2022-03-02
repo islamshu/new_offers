@@ -16,7 +16,7 @@ class CouponController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:read-promocode'])->only('index');
+        $this->middleware(['permission:read-promocode'])->only('index','vednor_promocode');
         $this->middleware(['permission:create-promocode'])->only('create_coupon');
         $this->middleware(['permission:update-promocode'])->only('edit');
         $this->middleware(['permission:delete-promocode'])->only('destroy');

@@ -412,6 +412,7 @@ $lang = app()->getLocale();
 @endif
 
 
+@if (auth()->user()->isAbleTo(['read-promocode']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
@@ -435,6 +436,7 @@ $lang = app()->getLocale();
         </ul>
     </div>
 </li>
+@endif
 @if (auth()->user()->isAbleTo(['read-user']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
