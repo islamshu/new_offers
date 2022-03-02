@@ -37,7 +37,6 @@ class SubscriptionController extends Controller
 
     }
     public function index_sub($locale,$value){
-        dd(auth()->user()->hasPermission('read-subscription'));
         if($value == 'paid'){
             $subs = Subscription::where('type_paid','PREMIUM')->get();
         }elseif($value == 'trial'){
