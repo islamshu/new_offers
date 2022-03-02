@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class HowItWorkController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-page'])->only('index');
+        $this->middleware(['permission:delete-page'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
