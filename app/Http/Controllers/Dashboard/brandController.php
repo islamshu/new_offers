@@ -111,7 +111,7 @@ class brandController extends Controller
     {
         // return phpinfo();
         $curruncy = Currency::get();
-        dd(auth()->user()->hasPermission('create-vendor'));
+        dd(auth()->user()->hasPermission('read-vendor'));
         if (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('create-vendor')) {
             $country = enterprise_country::where('enterprise_id', Auth::user()->ent_id)->with(['country'])->get();
             $category = Enterprise::with('categorys')->find(Auth::user()->ent_id)->categorys;
