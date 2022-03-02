@@ -77,7 +77,7 @@ class PayemntController extends BaseController
             //Fill optional data
             'DisplayCurrencyIso' => $request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
             'MobileCountryCode'  => @$request->mobile_country_iso_code,
-            'CustomerMobile'     => @$request->customer_phone,
+            'CustomerMobile'     => str_replace('966','',@$request->customer_phone),
             'CustomerEmail'      => @$request->customer_email,
             'PaymentMethod' => $request->payment_method,
             //'CallBackUrl'        => 'https://example.com/callback.php',
