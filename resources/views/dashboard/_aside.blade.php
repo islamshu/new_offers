@@ -64,7 +64,7 @@ $lang = app()->getLocale();
         </li> --}}
 
 
-       
+
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
@@ -165,10 +165,9 @@ $lang = app()->getLocale();
             </div>
         </li>
     @endif
-{{ dd(auth()->user()->hasRole(['Enterprises'])) }}
     @if (auth()->user()->hasRole(['Enterprises']))
 
-    
+
 
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="/{{ $lang }}/enterprise" class="menu-link menu-toggle">
@@ -177,7 +176,9 @@ $lang = app()->getLocale();
                 </span>
                 <span class="menu-text">
                     @if (auth()->user()->hasRole(['Enterprises']))
-                    {{ __('Main Info') }} @else {{ __('Enterprises') }}
+                        {{ __('Main Info') }}
+                    @else
+                        {{ __('Enterprises') }}
                     @endif
                 </span>
                 <i class="menu-arrow"></i>
@@ -192,7 +193,6 @@ $lang = app()->getLocale();
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('show') }}</span></a></li>
                 @else
-
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">
@@ -206,16 +206,19 @@ $lang = app()->getLocale();
                                 {{ __('create') }}
 
 
-                            </span></a></li>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </li>
     @endif
-  
 
 
 
 
-</ul>
-</div>
-</li>
+
+
 {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -239,30 +242,30 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li> --}}
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Roles') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Role') }}</span></span>
-                </li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role/create"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('Create') }}</span></a></li>
+<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+    <a href="#" class="menu-link menu-toggle">
+        <span class="svg-icon menu-icon">
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+        </span>
+        <span class="menu-text">{{ __('Roles') }}</span>
+        <i class="menu-arrow"></i>
+    </a>
+    <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                        class="menu-text">{{ __('Role') }}</span></span>
+            </li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('List') }}</span></a></li>
+            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role/create"
+                    class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                        class="menu-text">{{ __('Create') }}</span></a></li>
 
-            </ul>
-        </div>
-    </li>
-    {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
+        </ul>
+    </div>
+</li>
+{{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
 @if (auth()->user()->isAbleTo(['read-category']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
