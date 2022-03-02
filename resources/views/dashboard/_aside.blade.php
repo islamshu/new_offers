@@ -260,8 +260,8 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li>
-    {{-- {{ dd(auth()->user()->hasPermission(['read-category'])) }} --}}
-@if (auth()->user()->hasPermission(['read-category']))
+    {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
+@if (auth()->user()->isAbleTo(['read-category']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -287,9 +287,8 @@ $lang = app()->getLocale();
         </div>
     </li>
 @endif
-{{ dd(auth()->user()->isAbleTo('read-vendor')) }}
 
-@if (auth()->user()->hasPermission(['read-vendor']))
+@if (auth()->user()->isAbleTo(['read-vendor']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -342,7 +341,7 @@ $lang = app()->getLocale();
     </div>
 </li>
 
-@if (auth()->user()->hasPermission(['read-offer']))
+@if (auth()->user()->isAbleTo(['read-offer']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -367,7 +366,7 @@ $lang = app()->getLocale();
     </li>
 @endif
 
-@if (auth()->user()->hasPermission(['read-subscription']))
+@if (auth()->user()->isAbleTo(['read-subscription']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
