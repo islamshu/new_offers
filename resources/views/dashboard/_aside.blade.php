@@ -237,6 +237,8 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li> --}}
+    @if (auth()->user()->isAbleTo(['read-role']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -260,6 +262,7 @@ $lang = app()->getLocale();
         </ul>
     </div>
 </li>
+@endif
 {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
 @if (auth()->user()->isAbleTo(['read-category']))
 
