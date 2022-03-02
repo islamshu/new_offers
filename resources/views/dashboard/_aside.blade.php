@@ -534,6 +534,8 @@ $lang = app()->getLocale();
 
 
 </li>
+@if (auth()->user()->isAbleTo(['read-client']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="/{{ $lang }}/all_clients" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -542,10 +544,8 @@ $lang = app()->getLocale();
         <span class="menu-text">{{ __('Clients') }}</span>
         <i class="menu-arrow"></i>
     </a>
-
-
-
 </li>
+@endif
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="/{{ $lang }}/transaction" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
