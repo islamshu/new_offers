@@ -10,6 +10,13 @@ use GuzzleHttp\Client;
 
 class GeneralInfoController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:update-config'])->only(['config','firebase','index','myfatoorah']);
+    
+  
+    }//end of constructor
     public function config()
     {
         return view('dashboard.generalinfo.config');
