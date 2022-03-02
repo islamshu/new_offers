@@ -19,10 +19,10 @@ class CodeController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:read-code'])->only('index');
-        $this->middleware(['permission:create-code'])->only('create_offer');
-        $this->middleware(['permission:update-code'])->only('edit');
-        $this->middleware(['permission:delete-code'])->only('destroy');
+        $this->middleware(['permission:read-activition_code'])->only('index');
+        $this->middleware(['permission:create-activition_code'])->only('create_offer');
+        $this->middleware(['permission:update-activition_code'])->only('edit');
+        $this->middleware(['permission:delete-activition_code'])->only('destroy');
   
     }//end of constructor
     /**
