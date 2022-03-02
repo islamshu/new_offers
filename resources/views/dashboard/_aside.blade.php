@@ -575,6 +575,8 @@ $lang = app()->getLocale();
 
 
 </li>
+@if (auth()->user()->isAbleTo(['read-promotion']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -584,6 +586,8 @@ $lang = app()->getLocale();
         <i class="menu-arrow"></i>
     </a>
 </li>
+@if (auth()->user()->isAbleTo(['read-page']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -619,7 +623,7 @@ $lang = app()->getLocale();
 
 
 </li>
-
+@endif
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="/{{ $lang }}/config" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
