@@ -90,7 +90,7 @@ class OfferController extends Controller
             $enterprise = Enterprise::get();
             $brands = Vendor::whereNotNull('enterprise_id')->get();
             return response()->view('dashboard.offers.create', compact('enterprise', 'brands','vendor'));
-        } elseif (Auth::user()->hasRole('Enterprises')) {
+        } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('create-offer') ) {
             $brands = Vendor::where('enterprise_id', auth()->user()->ent_id)->get();
             // dd($brands);
             return response()->view('dashboard.offers.create', compact('brands','vendor'));
