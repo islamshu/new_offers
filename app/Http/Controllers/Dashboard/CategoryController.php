@@ -13,6 +13,15 @@ use Excel;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-category'])->only('index');
+        $this->middleware(['permission:create-category'])->only('create');
+        $this->middleware(['permission:update-category'])->only('edit');
+        $this->middleware(['permission:delete-category'])->only('destroy');
+
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
