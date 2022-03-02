@@ -547,7 +547,7 @@ class brandController extends Controller
         $user = User::where('vendor_id', $vendor->id)->first();
         // dd($vendor);
         $curruncy = Currency::get();
-
+        dd(auth()->user()->hasPermission('update-vendor'));
         if (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('update-vendor')) {
             $country = enterprise_country::where('enterprise_id', Auth::user()->ent_id)->with(['country'])->get();
             $enterprises = null;
