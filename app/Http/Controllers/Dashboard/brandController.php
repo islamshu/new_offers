@@ -47,12 +47,11 @@ class brandController extends Controller
     }//end of constructor
     public function index()
     {
-        dd(auth()->user()->hasPermission('read-vendor'));
         if (Auth::user()->hasRole('Admin')) {
 
             $vendors = Vendor::select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->paginate(10);
             return response()->view('dashboard.vendor.indexAdmin', compact('vendors'));
-        } elseif (Auth::user()->hasRole('Enterprises') ) {
+        } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-vendor') ) {
            
             $enterprise = Enterprise::find(Auth::user()->ent_id);
             $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->get();
