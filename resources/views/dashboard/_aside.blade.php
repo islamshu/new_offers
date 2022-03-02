@@ -325,6 +325,8 @@ $lang = app()->getLocale();
         </div>
     </li>
 @endif
+@if (auth()->user()->isAbleTo(['read-branch']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -349,7 +351,7 @@ $lang = app()->getLocale();
         </ul>
     </div>
 </li>
-
+@endif
 @if (auth()->user()->isAbleTo(['read-offer']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">

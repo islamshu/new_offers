@@ -23,6 +23,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class branchController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-branch'])->only('index');
+        $this->middleware(['permission:create-branch'])->only('create');
+        $this->middleware(['permission:update-branch'])->only('edit');
+        $this->middleware(['permission:delete-branch'])->only('destroy');
+
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
