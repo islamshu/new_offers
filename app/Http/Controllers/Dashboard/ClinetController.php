@@ -19,6 +19,15 @@ class ClinetController extends Controller
 {
     use SendNotification;
 
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-client'])->only('index','first_index');
+        $this->middleware(['permission:create-client'])->only('create');
+        $this->middleware(['permission:update-client'])->only('edit');
+        $this->middleware(['permission:delete-client'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
