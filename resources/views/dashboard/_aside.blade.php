@@ -260,6 +260,7 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li>
+    {{ dd(auth()->user()->hasPermission(['read-category'])) }}
 @if (auth()->user()->hasPermission(['read-category']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
