@@ -40,7 +40,7 @@ class brandController extends Controller
     {
         //create read update delete
         $this->middleware(['permission:read-vendor'])->only('index');
-        // $this->middleware(['permission:create_users'])->only('create');
+        $this->middleware(['permission:create-vendor'])->only('create');
         // $this->middleware(['permission:update_users'])->only('edit');
         // $this->middleware(['permission:delete_users'])->only('destroy');
 
@@ -112,7 +112,7 @@ class brandController extends Controller
         // return phpinfo();
         $curruncy = Currency::get();
 
-        if (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-vendor')) {
+        if (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('create-vendor')) {
             $country = enterprise_country::where('enterprise_id', Auth::user()->ent_id)->with(['country'])->get();
             $category = Enterprise::with('categorys')->find(Auth::user()->ent_id)->categorys;
             $curruncy = Enterprise::with('currencies')->find(Auth::user()->ent_id)->currencies;
