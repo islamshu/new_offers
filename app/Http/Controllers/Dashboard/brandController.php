@@ -35,6 +35,16 @@ class brandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-vender'])->only('index');
+        // $this->middleware(['permission:create_users'])->only('create');
+        // $this->middleware(['permission:update_users'])->only('edit');
+        // $this->middleware(['permission:delete_users'])->only('destroy');
+
+    }//end of constructor
     public function index()
     {
         if (Auth::user()->hasRole('Admin')) {
