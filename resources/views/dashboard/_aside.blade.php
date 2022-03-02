@@ -3,7 +3,7 @@ $lang = app()->getLocale();
 @endphp
 <ul class="menu-nav">
     <li class="menu-item">
-        <a href="/{{ $lang }}/dashbaord" class="menu-link">
+        <a href="/{{ $lang }}/home" class="menu-link">
             <span class="svg-icon menu-icon">
                 <i class="fa fa-bookmark" aria-hidden="true"></i>
             </span>
@@ -192,7 +192,7 @@ $lang = app()->getLocale();
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('show') }}</span></a></li>
-                @else
+            
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">
@@ -209,15 +209,11 @@ $lang = app()->getLocale();
                             </span>
                         </a>
                     </li>
-    @endif
-
-
-
-
-
+  
 </ul>
 </div>
 </li>
+@endif
 {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
