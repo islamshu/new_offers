@@ -16,6 +16,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CodeController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-code'])->only('index');
+        $this->middleware(['permission:create-code'])->only('create_offer');
+        $this->middleware(['permission:update-code'])->only('edit');
+        $this->middleware(['permission:delete-code'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
