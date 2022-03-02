@@ -15,11 +15,19 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Session;
 class PerfomedController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-reference'])->only(['index','get_perfomed_vendor_code','get_perfomed_vendor_code_status']);
+        $this->middleware(['permission:create-reference'])->only('create');
+    
+  
+    }//end of constructor
     //
     public function index(){
         if (Auth::user()->hasRole('Admin')) {
             $vendors = Vendor::get();
-        }elseif (Auth::user()->hasRole('Enterprises')) {
+        }elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-reference')) {
             $vendors =  Vendor::where('enterprise_id',Auth::user()->ent_id)->get();
         }
         return view('dashboard.pefounds.index')->with('vendors',$vendors );
