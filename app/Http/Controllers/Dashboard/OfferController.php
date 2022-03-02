@@ -311,7 +311,7 @@ class OfferController extends Controller
             $offer = Offer::find($id);
             return response()->view('dashboard.offers.edit', compact('enterprise', 'brands', 'offer'));
         }
-        if (auth()->user()->hasRole('Enterprises')) {
+        if (auth()->user()->hasRole('Enterprises') || auth()->user()->hasPermission('edit-offer') ) {
             $brands = Vendor::where('enterprise_id', auth()->user()->ent_id)->get();
             $offer = Offer::find($id);
             return response()->view('dashboard.offers.edit', compact('brands', 'offer'));
