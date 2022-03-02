@@ -287,7 +287,7 @@ $lang = app()->getLocale();
         </div>
     </li>
 @endif
-{{ dd(auth()->user()->isAbleTo('edit-user');) }}
+{{ dd(auth()->user()->isAbleTo('read-vendor');) }}
 
 @if (auth()->user()->hasPermission(['read-vendor']))
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
