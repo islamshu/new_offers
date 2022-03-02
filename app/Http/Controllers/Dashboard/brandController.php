@@ -39,7 +39,7 @@ class brandController extends Controller
     public function __construct()
     {
         //create read update delete
-        // $this->middleware(['permission:read-vendor'])->only('index');
+        $this->middleware(['permission:read-vendor'])->only('index');
         $this->middleware(['permission:create-vendor'])->only('create');
         $this->middleware(['permission:update-vendor'])->only('edit');
         $this->middleware(['permission:delete-vendor'])->only('destroy');
@@ -47,7 +47,7 @@ class brandController extends Controller
     }//end of constructor
     public function index()
     {
-        dd(auth()->user()->hasPermission('update-vendor'),auth()->user()->hasPermission('read-vendor'),auth()->user()->hasPermission('create-vendor'),auth()->user()->hasPermission('delete-vendor'));
+        dd(auth()->user()->hasPermission('update-vendor'));
 
         if (Auth::user()->hasRole('Admin')) {
 
