@@ -18,7 +18,7 @@ class PerfomedController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:read-reference'])->only(['index','get_perfomed_vendor_code','get_perfomed_vendor_code_status']);
+        $this->middleware(['permission:read-reference'])->only(['index','get_perfomed_vendor','get_perfomed_vendor_code','get_perfomed_vendor_code_status']);
         $this->middleware(['permission:create-reference'])->only('create');
     
   
