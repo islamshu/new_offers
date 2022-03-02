@@ -495,6 +495,8 @@ $lang = app()->getLocale();
     </div>
 </li>
 @endif
+@if (auth()->user()->isAbleTo(['read-discount']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -511,13 +513,19 @@ $lang = app()->getLocale();
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('List') }}</span></a></li>
+                        @if (auth()->user()->isAbleTo(['create-discount']))
+
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/discount_code/create"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('Create') }}</span></a></li>
+                        @endif
 
         </ul>
     </div>
 </li>
+@endif
+@if (auth()->user()->isAbleTo(['read-reference']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="#" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -541,6 +549,8 @@ $lang = app()->getLocale();
 
 
 </li>
+@endif
+
 @if (auth()->user()->isAbleTo(['read-client']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
