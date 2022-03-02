@@ -23,15 +23,7 @@ use App\Models\Vendor;
 class OfferController extends BaseController
 {
 
-  public function __construct()
-  {
-      //create read update delete
-      $this->middleware(['permission:read-offer'])->only('index','offers');
-      $this->middleware(['permission:create-offer'])->only('create_offer');
-      $this->middleware(['permission:update-offer'])->only('edit');
-      $this->middleware(['permission:delete-offer'])->only('destroy');
-
-  }//end of constructor
+ 
     public function offerDetiles(Request $request){
         $offer= Offer::find($request->offer_id);
         if($offer){

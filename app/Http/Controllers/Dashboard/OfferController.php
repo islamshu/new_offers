@@ -17,6 +17,15 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class OfferController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-offer'])->only('index','offers');
+        $this->middleware(['permission:create-offer'])->only('create_offer');
+        $this->middleware(['permission:update-offer'])->only('edit');
+        $this->middleware(['permission:delete-offer'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +46,7 @@ class OfferController extends Controller
         if (Auth::user()->hasRole('Admin')) {
             $vendors = Vendor::get();
             
-        } elseif (Auth::user()->hasRole('Enterprises')) {
+        } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-offer')) {
             $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->get();
 
             // $offers = Offer::where('enterprises_id', auth()->user()->ent_id)->get();
