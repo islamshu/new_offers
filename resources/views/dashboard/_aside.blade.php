@@ -266,7 +266,7 @@ $lang = app()->getLocale();
 </li>
 {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
 @if (auth()->user()->isAbleTo(['read-category']))
-{{ dd('daaa') }}
+
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
