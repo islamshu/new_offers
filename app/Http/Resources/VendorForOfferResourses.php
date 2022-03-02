@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Branch;
 use App\Models\FavoritVendor;
+use App\Models\Offer;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class VendorForOfferResourses extends JsonResource
@@ -23,6 +25,8 @@ class VendorForOfferResourses extends JsonResource
             'cover' => asset('images/brand/' . @$this->cover_image),
             'is_favorite' => @$this->is_fav($this),
             'is_top'=>0,
+            'count_b' => Branch::where('vendor_id',$this->id)->count(),
+            'count_o' => Offer::where('vendor_id',$this->id)->count(),
             'distance'=>@$this->get_dinstance($this,$request) ? @$this->get_dinstance($this,$request) : 0,
         ];
     }
