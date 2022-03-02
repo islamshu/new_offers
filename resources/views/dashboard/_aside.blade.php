@@ -209,16 +209,15 @@ $lang = app()->getLocale();
                             </span>
                         </a>
                     </li>
-                </ul>
-            </div>
-            </li>
     @endif
 
 
 
 
 
-
+</ul>
+</div>
+</li>
 {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -267,6 +266,7 @@ $lang = app()->getLocale();
 </li>
 {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
 @if (auth()->user()->isAbleTo(['read-category']))
+
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
@@ -294,6 +294,7 @@ $lang = app()->getLocale();
 @endif
 
 @if (auth()->user()->isAbleTo(['read-vendor']))
+{{ dd('daaa') }}
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
             <span class="svg-icon menu-icon">
