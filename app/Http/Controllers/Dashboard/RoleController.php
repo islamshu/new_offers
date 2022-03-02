@@ -210,10 +210,10 @@ class RoleController extends Controller
                     $useper = user_Permission::where('user_id',$users->user_id)->truncate();
                    
                     foreach ($request->permission_ids as $one_permission) {
-                        dd($one_permission);
+                        // dd($one_permission);
                         $per = new user_Permission();
                         $per->user_id = $userfirst->id;
-                        $per->permission_id=$one_permission->id;
+                        $per->permission_id=$one_permission;
                         $per->user_type = $role->name;
                         $per->save();
                     }
