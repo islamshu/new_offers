@@ -30,6 +30,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         if(Auth::user()->hasRole('Admin')){
             $users = User::get();
         }elseif(Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-user')){

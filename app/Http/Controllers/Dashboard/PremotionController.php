@@ -21,6 +21,15 @@ use DB;
 
 class PremotionController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-promotion'])->only('offer_slider','index','get_country_promotion','get_city_for_country','get_elemet_by_type');
+        $this->middleware(['permission:create-promotion'])->only('create_item','create_offer');
+        $this->middleware(['permission:update-promotion'])->only('edit');
+        $this->middleware(['permission:delete-promotion'])->only('homeslider_delete');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
