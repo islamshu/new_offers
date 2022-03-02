@@ -40,7 +40,7 @@ class brandController extends Controller
     {
         //create read update delete
         $this->middleware(['permission:read-vendor'])->only('index');
-        $this->middleware(['permission:read-vendor'])->only('create');
+        $this->middleware(['permission:create-vendor'])->only('create');
         $this->middleware(['permission:update-vendor'])->only('edit');
         $this->middleware(['permission:delete-vendor'])->only('destroy');
 
