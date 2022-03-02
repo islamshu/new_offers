@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 
 class DiscountController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-discount'])->only('index');
+        $this->middleware(['permission:create-discount'])->only('create');
+        $this->middleware(['permission:update-discount'])->only('edit');
+        $this->middleware(['permission:delete-discount'])->only('destroy');
+  
+    }//end of constructor
     /**
      * Display a listing of the resource.
      *
