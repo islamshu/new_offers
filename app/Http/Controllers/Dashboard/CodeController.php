@@ -20,7 +20,7 @@ class CodeController extends Controller
     {
         //create read update delete
         $this->middleware(['permission:read-activition_code'])->only('index');
-        $this->middleware(['permission:create-activition_code'])->only('create_offer');
+        $this->middleware(['permission:create-activition_code'])->only('create');
         $this->middleware(['permission:update-activition_code'])->only('edit');
         $this->middleware(['permission:delete-activition_code'])->only('destroy');
   
