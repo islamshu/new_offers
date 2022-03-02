@@ -180,7 +180,6 @@ class RoleController extends Controller
             $role->name = $request->name;
             $role->display_name = $request->display_name;
             $role->description = $request->description;
-            dd($request);
             $role->save();
             if ($request->permission_ids != null) {
                 //delete role_permission
