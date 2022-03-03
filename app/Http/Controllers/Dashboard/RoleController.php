@@ -99,7 +99,7 @@ class RoleController extends Controller
 
                 $role->save();
             }
-            Artisan::call('optimize', ['--quiet' => true, '--force' => true]);
+            Artisan::call('optimize', ['--quiet' => true]);
 
             return Redirect::route('role.index', ['locale' => app()->getLocale()]);
         }
