@@ -4,9 +4,11 @@
 card card-docs mb-2">
 
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+        @if (auth()->user()->isAbleTo(['create-branch']))
         <div style="float: right">
             <a class="btn btn-info" href="{{ route('vendor.create_branch',[app()->getLocale(),$vendor->id]) }}"> {{ __('Create Branch') }} </a>
-        </div> <br>
+        </div>
+        @endif <br>
         <h2 class="mb-3">All Branches</h2>
         
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
@@ -42,7 +44,8 @@ card card-docs mb-2">
                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                         </td>
                     <td class="pr-0 text-left">
-                 
+                        @if (auth()->user()->isAbleTo(['update-branch']))
+
                         <a href="{{ route('branch.edit', [app()->getLocale(),$item->id]) }}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                             <span class="svg-icon svg-icon-md svg-icon-primary">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -62,6 +65,9 @@ card card-docs mb-2">
                                 <!--end::Svg Icon-->
                             </span>
                         </a>
+                        @endif
+                        @if (auth()->user()->isAbleTo(['delete-branch']))
+
                         <form method="post" style="display: inline" >
                             <button type="button" onclick="performdelete('{{ $item->id }}')"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm"><span class="svg-icon svg-icon-md svg-icon-primary">
@@ -81,6 +87,7 @@ card card-docs mb-2">
                             <!--end::Svg Icon-->
                         </span> </button>
                         </form>
+                        @endif
                        
                     </td>
 
