@@ -94,6 +94,8 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->last_login }}</td>
                             <td class="pr-0 text-left">
+                                @if (auth()->user()->isAbleTo(['create-client']))
+
                                 <div class="dropdown">
                                     <button class="dropbtn">{{ __('Action') }}</button>
                                     <div class="dropdown-content">
@@ -101,11 +103,12 @@
                                             href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}">{{ __('show') }}</a>
                                         <a data-toggle="modal" data-target="#myModal"
                                             onclick="make('{{ $item->id }}')">Send Notofication</a>
-
+                                        
                                         <a data-toggle="modal" data-target="#addSub"
                                             onclick="makenew_fun({{ $item->id }})">Add Subscribe</a>
 
                                     </div>
+                                    @endif
 
 
                                     {{-- <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}"
