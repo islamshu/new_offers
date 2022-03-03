@@ -7,9 +7,12 @@
                 <span class="card-label font-weight-bolder text-dark"> {{ __('Code perfored') }}</span>
             </h3>
             <div class="card-toolbar">
+                @if (auth()->user()->isAbleTo(['create-reference']))
+
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                     {{ __('generate groub') }}
                 </button>
+                @endif
 
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalupload">
                     {{ __('upload excel') }}
