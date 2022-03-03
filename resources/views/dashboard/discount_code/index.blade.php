@@ -24,8 +24,11 @@
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
+                            @if (auth()->user()->isAbleTo(['update-discount']))
+
                             <input type="checkbox" data-id="{{ $code->id }}" name="status" class="js-switch"
                                 {{ $code->status == 1 ? 'checked' : '' }}>
+                                @endif
                         </td>
                         <td class="pr-0 text-left">
 
