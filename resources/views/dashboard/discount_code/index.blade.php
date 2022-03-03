@@ -31,6 +31,8 @@
 
                             <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
                                 onclick="make('{{ $code->id }}')"><i class="fa fa-eye"></i></a>
+                                @if (auth()->user()->isAbleTo(['update-discount']))
+
                             <a href="{{ route('discount_code.edit', [$code->id, 'locale' => app()->getLocale()]) }}"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -51,6 +53,8 @@
                                     <!--end::Svg Icon-->
                                 </span>
                             </a>
+                            @endif
+                            @if (auth()->user()->isAbleTo(['delete-discount']))
 
                             <form method="post" style="display: inline">
                                 <button type="button" onclick="performdelete('{{ $code->id }}')"
@@ -73,6 +77,7 @@
                                     </span>
                                 </button>
                             </form>
+                            @endif
 
                         </td>
                         </tr>
