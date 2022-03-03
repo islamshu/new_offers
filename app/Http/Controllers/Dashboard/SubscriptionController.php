@@ -14,9 +14,9 @@ class SubscriptionController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:read-subscription'])->only(['index','index_sub','updateStatus']);
+        $this->middleware(['permission:read-subscription'])->only('index','index_sub');
         $this->middleware(['permission:create-subscription'])->only(['create','create_paid_subsrcibe','create_trial_subsrcibe']);
-        $this->middleware(['permission:update-subscription'])->only('edit');
+        $this->middleware(['permission:update-subscription'])->only('edit','updateStatus');
         $this->middleware(['permission:delete-subscription'])->only('destroy');
   
     }//end of constructor
