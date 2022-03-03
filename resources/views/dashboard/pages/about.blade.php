@@ -45,6 +45,8 @@
             <td>{!! $item->content_en !!}</td>
             @endif
            <td>
+            @if (auth()->user()->isAbleTo(['delete-page']))
+
             <form method="post" style="display: inline">
                 <button type="button" onclick="performdelete({{ $item->id }})"
                     class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
@@ -67,6 +69,7 @@
                     </span>
                 </button>
             </form>
+            @endif
            </td>
        
             @endforeach
@@ -76,6 +79,8 @@
  
 </table>
 </div>
+@if (auth()->user()->isAbleTo(['create-page']))
+
     <form class="form" method="post" method="{{ route('about_us.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
@@ -117,6 +122,7 @@
                 <button type="submit" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
             </div>
     </form>
+    @endif
 </div>
 </div>
 @endsection
