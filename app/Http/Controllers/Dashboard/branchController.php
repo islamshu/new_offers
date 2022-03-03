@@ -62,7 +62,7 @@ class branchController extends Controller
                 return view('dashboard.branch.get_branches', compact('branches','vendor','city'));
 
             // }
-        } elseif (Auth::user()->hasRole('Enterprises')) {
+        } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-branch')) {
             // if (Auth::user()->isAbleTo('read-branch')) {
                 $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->get();
                 // $branches = array();
