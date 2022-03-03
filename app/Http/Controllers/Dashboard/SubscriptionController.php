@@ -147,6 +147,10 @@ class SubscriptionController extends Controller
      */
     public function edit($locale ,$id)
     {
+        if(!auth()->user()->hasPermission('update-subscription')){
+            abort(403);
+
+        }
         $enterprises = Enterprise::get();
         $brands= Vendor::whereNull('enterprise_id')->get();
         $sub = Subscription::find($id);
