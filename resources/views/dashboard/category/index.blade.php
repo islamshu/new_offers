@@ -4,9 +4,12 @@
 card card-docs mb-2">
 
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+        @if (auth()->user()->isAbleTo(['create-category']))
+
         <div  style="float: right" >
             <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
         </div>
+        @endif
         <br>
         <h2 class="mb-3">{{ __('All category') }}</h2>
        
@@ -34,7 +37,8 @@ card card-docs mb-2">
                         </td>
                         <td>{{$item->order}}</td>
                     <td class="pr-0 text-left">
-                 
+                        @if (auth()->user()->isAbleTo(['update-category']))
+
                         <a href="{{ route('category.edit', ['category'=>$item->id,'locale'=>app()->getLocale()]) }}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                             <span class="svg-icon svg-icon-md svg-icon-primary">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -54,6 +58,9 @@ card card-docs mb-2">
                                 <!--end::Svg Icon-->
                             </span>
                         </a>
+                        @endif
+                        @if (auth()->user()->isAbleTo(['delete-category']))
+
                         <form method="post" style="display: inline" >
                             <button type="button" onclick="performdelete('{{ $item->id }}')"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm"><span class="svg-icon svg-icon-md svg-icon-primary">
@@ -73,6 +80,7 @@ card card-docs mb-2">
                             <!--end::Svg Icon-->
                         </span> </button>
                         </form>
+                        @endif
                        
                     </td>
                     </tr>
