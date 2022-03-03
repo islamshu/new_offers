@@ -17,7 +17,7 @@
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label font-weight-bolder text-dark">Brands</span>
                             </h3>
-                            @if (auth()->user()->hasPermission(['create-vendor']))
+                            @if (auth()->user()->isAbleTo(['create-vendor']))
                                 <div class="card-toolbar">
                                     <a href="{{ route('vendor.create', ['locale' => app()->getLocale()]) }}"
                                         class="btn btn-info font-weight-bolder font-size-sm">New Brands</a>
