@@ -79,7 +79,7 @@
                                                     <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                                                     </td>
                                                 <td class="pr-0 text-center">
-                                                    @if (auth()->user()->isAbleTo(['edit-vendor']))
+                                                    @if (auth()->user()->isAbleTo(['update-vendor']))
 
                                                     <a href="{{ route('vendor.edit', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
