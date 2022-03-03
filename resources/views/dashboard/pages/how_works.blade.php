@@ -15,7 +15,7 @@
         </div>
     </div>
    
-
+    
     <form class="form" method="post" method="{{ route('How-it-work.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
