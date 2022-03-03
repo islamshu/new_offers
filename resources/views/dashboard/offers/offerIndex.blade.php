@@ -4,11 +4,14 @@
     <div class="card card-docs mb-2">
 
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+            @if (auth()->user()->isAbleTo(['create-offer']))
+
             <div class="row" style="float: right">
                 <a class="btn btn-info"
                     href="{{ route('vendor.create_offer', [app()->getLocale(), $vendor->id]) }}">{{ __('create offer') }}</a>
 
             </div>
+            @endif
             <br>
             <h2 class="mb-3">{{ __('All Offer') }}</h2>
 
