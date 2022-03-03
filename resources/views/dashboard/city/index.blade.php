@@ -26,11 +26,11 @@ card card-docs mb-2">
                      @if(auth()->user()->hasRole('Enterprises'))
                      {{ dd($item->city) }}
                    
-                    <td>{{$item->city->city_name}}</td>
-                    <td>{{$item->city->city_name_english}}</td>
-                    <td>{{$item->city->lat}}</td>
-                    <td>{{$item->city->lng}}</td>
-                    <td>{{@$item->city->country->country_name_en}}</td>
+                    <td>{{$item->city_name}}</td>
+                    <td>{{$item->city_name_english}}</td>
+                    <td>{{$item->lat}}</td>
+                    <td>{{$item->lng}}</td>
+                    <td>{{@$item->country->country_name_en}}</td>
                     <td>
                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                         </td>
