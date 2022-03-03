@@ -23,6 +23,7 @@
                         <td>{{ $user->address }}</td>
                         <td class="pr-0 text-left">
 
+                            @if (auth()->user()->isAbleTo(['update-user']))
 
                                 <a href="{{ route('user.edit', ['user' => $user->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
@@ -44,6 +45,8 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </a>
+                                @endif
+                                @if (auth()->user()->isAbleTo(['delete-user']))
 
                                 <form method="post" style="display: inline">
                                     <button type="button" onclick="performdelete('{{ $user->id }}')"
@@ -67,6 +70,7 @@
                                         </span>
                                     </button>
                                 </form>
+                                @endif
 
                         </td>
                         </tr>
