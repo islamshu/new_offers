@@ -291,7 +291,7 @@ $lang = app()->getLocale();
                             @endif
 
             </ul>
-        </div>f
+        </div>
     </li>
 @endif
 
@@ -625,6 +625,8 @@ $lang = app()->getLocale();
 
 </li>
 @endif
+@if (auth()->user()->isAbleTo(['update-config']))
+
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
     <a href="/{{ $lang }}/config" class="menu-link menu-toggle">
         <span class="svg-icon menu-icon">
@@ -634,6 +636,7 @@ $lang = app()->getLocale();
         <i class="menu-arrow"></i>
     </a>
 </li>
+@endif
 
 
 
