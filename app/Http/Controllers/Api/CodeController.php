@@ -214,82 +214,95 @@ class CodeController extends BaseController
     public function apply_promo_code(Request $request)
     {
 
-        // if($request->code != null){
-        //     $discout = DiscountSubscription::where('code',$request->code)->first();
-        //     if($discout){
-        //         if($discout->sub_id == $request->package_id){
-        //            $dis= Discount::find($discout->discount_id);
-        //            if($dis){
-        //                $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
-        //                if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
-        //                if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
-        //                      if($dis->type_discount == 'fixed'){
-        //                          $price = $price - $dis->value_discount ;
-        //                      }else{
-        //                         $price = ($dis->value / 100) * $price;
-        //                      }
-        //                }else{
-        //                 $res['status'] = $this->SendError();
-        //                 $res['status']['message'] = 'The promocode has expired';
-        //                 return $res; 
-        //                }
-        //             }else{
-        //                 $res['status'] = $this->SendError();
-        //                 $res['status']['message'] = 'The promocode not available';
-        //                 return $res;    
-        //             }
+        if($request->code != null){
+            $discout = DiscountSubscription::where('code',$request->code)->first();
+            if($discout){
+                if($discout->sub_id == $request->package_id){
+                    $sub = Subscription::find($discout->sub_id);
+                    $price =$sub->price;
+                   $dis= Discount::find($discout->discount_id);
+                   if($dis){
+                       $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
+                       if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
+                       if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
+                             if($dis->type_discount == 'fixed'){
+                                 $price = $price - $dis->value_discount ;
+                             }else{
+                                $price = ($dis->value / 100) * $price;
+                             }
+                       }else{
+                        $res['status'] = $this->SendError();
+                        $res['status']['message'] = 'The promocode has expired';
+                        return $res; 
+                       }
+                    }else{
+                        $res['status'] = $this->SendError();
+                        $res['status']['message'] = 'The promocode not available';
+                        return $res;    
+                    }
                        
-        //            }else{
-        //             $res['status'] = $this->SendError();
-        //             $res['status']['message'] = 'Not Found Promocode';
-        //             return $res; 
-        //            }
-        //         }else{
-        //             $res['status'] = $this->SendError();
-        //             $res['status']['message'] = 'Not Found Promocode';
-        //             return $res; 
-        //         }
-        //     }else{
-        //         $res['status'] = $this->SendError();
-        //         $res['status']['message'] = 'Not Found Promocode';
-        //         return $res; 
-        //     }
-           
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $code = Subscription::with('promo')->whereHas('promo', function ($q) use ($request) {
-            $q->where('code', $request->code);
-        })->first();
-   
-        $discout = Discount::find($code->promo->first()->discount_id);
-        $discout_type = $discout->type_discount;
-        $discout_value = $discout->value_discount;
-        $price = $code->price;
-
-        $res['status'] = $this->sendResponse200('OK');
-        $res['data']['discount']["price"] = $price;
-        $res['data']['discount']["discout_type"] = $discout_type;
-        $res['data']['discount']["discout_value"] = $discout_value;
-        if ($discout_type == 'percentage') {
-            $total =     $price -  ($price * $discout_value / 100);
-        } else {
-            $total =     $price -  $discout_value;
+                   }else{
+                    $res['status'] = $this->SendError();
+                    $res['status']['message'] = 'Not Found Promocode';
+                    return $res; 
+                   }
+                }else{
+                    $res['status'] = $this->SendError();
+                    $res['status']['message'] = 'Not Found Promocode';
+                    return $res; 
+                }
+            }else{
+                $res['status'] = $this->SendError();
+                $res['status']['message'] = 'Not Found Promocode';
+                return $res; 
+            }
+            $res['status'] = $this->sendResponse200('OK');
+            $res['data']['discount']["price"] = $price;
+            $res['data']['discount']["discout_type"] = $dis->type_discount;
+            $res['data']['discount']["discout_value"] = $dis->value;
+            if ( $dis->type_discount == 'percentage') {
+                $total =     $price -  ($price * $dis->value / 100);
+            } else {
+                $total =     $price -  $dis->value;
+            }
+            $res['data']['discount']['discount_percentage']= strval(100 * ($price - $total) / $price);
+            $res['data']['discount']["price_after_discount"] = $total;
+            return $res;
         }
-        $res['data']['discount']['discount_percentage']= strval(100 * ($price - $total) / $price);
-        $res['data']['discount']["price_after_discount"] = $total;
-        return $res;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $code = Subscription::with('promo')->whereHas('promo', function ($q) use ($request) {
+        //     $q->where('code', $request->code);
+        // })->first();
+   
+        // $discout = Discount::find($code->promo->first()->discount_id);
+        // $discout_type = $discout->type_discount;
+        // $discout_value = $discout->value_discount;
+        // $price = $code->price;
+
+        // $res['status'] = $this->sendResponse200('OK');
+        // $res['data']['discount']["price"] = $price;
+        // $res['data']['discount']["discout_type"] = $discout_type;
+        // $res['data']['discount']["discout_value"] = $discout_value;
+        // if ($discout_type == 'percentage') {
+        //     $total =     $price -  ($price * $discout_value / 100);
+        // } else {
+        //     $total =     $price -  $discout_value;
+        // }
+        // $res['data']['discount']['discount_percentage']= strval(100 * ($price - $total) / $price);
+        // $res['data']['discount']["price_after_discount"] = $total;
+        // return $res;
     }
 }
