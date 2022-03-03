@@ -8,7 +8,7 @@
             <div class="div" style="float: right">
                 <a href="{{ route('create_item', [ app()->getLocale(),'popup',$city_id]) }}" class="btn btn-info">{{ __('create Pop up') }}</a>
             </div>
-            @if (auth()->user()->isAbleTo(['create-promotion']))
+            @endif
 
             <br>
             <div class="mt-10">
