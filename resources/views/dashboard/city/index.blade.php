@@ -24,7 +24,6 @@ card card-docs mb-2">
                  <tr>
                      {{-- {{ dd($item) }} --}}
                      @if(auth()->user()->hasRole('Enterprises'))
-                     {{ dd($item->city) }}
                    
                     <td>{{$item->city_name}}</td>
                     <td>{{$item->city_name_english}}</td>
