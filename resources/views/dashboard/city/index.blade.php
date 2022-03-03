@@ -23,7 +23,7 @@ card card-docs mb-2">
                 
                  <tr>
                      {{-- {{ dd($item) }} --}}
-                     @if(auth()->user()->hasRole('Enterprises'))
+                     @if(auth()->user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-city'))
                    
                     <td>{{@$item->city->city_name}}</td>
                     <td>{{@$item->city->city_name_english}}</td>
