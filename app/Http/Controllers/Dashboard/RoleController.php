@@ -224,7 +224,7 @@ class RoleController extends Controller
 
 
             }
-            Artisan::call('optimize', ['--quiet' => true, '--force' => true]);
+            Artisan::call('optimize', ['--quiet' => true]);
 
             return Redirect::route('role.edit', [app()->getLocale(), $role_id]);
         }
