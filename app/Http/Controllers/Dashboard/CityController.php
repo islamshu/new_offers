@@ -19,12 +19,21 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-city'])->only('index');
+        $this->middleware(['permission:create-city'])->only('create');
+        $this->middleware(['permission:update-city'])->only('edit');
+        $this->middleware(['permission:delete-city'])->only('destroy');
+
+    }//end of constructor
     public function index()
     {
         if (Auth::user()->hasRole('Admin')) {
         $cities = City::with('country')->get();
         return response()->view('dashboard.city.index',compact('cities'));
-        }elseif(Auth::user()->hasRole('Enterprises')){
+        }elseif(Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-city')){
             $enterprise = Enterprise::find(Auth::user()->ent_id);
             $cities = enterprise_city::where('enterprise_id', Auth::user()->ent_id)->get();
             
