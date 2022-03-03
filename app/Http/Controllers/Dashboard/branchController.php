@@ -26,7 +26,7 @@ class branchController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:read-branch'])->only('index');
+        $this->middleware(['permission:read-branch'])->only('index','get_branches');
         $this->middleware(['permission:create-branch'])->only('create_branch');
         $this->middleware(['permission:update-branch'])->only('edit');
         $this->middleware(['permission:delete-branch'])->only('destroy');
