@@ -217,7 +217,6 @@ class CodeController extends BaseController
         if($request->code != null){
             $discout = DiscountSubscription::where('code',$request->code)->first();
             if($discout){
-                if($discout->sub_id == $request->package_id){
                     $sub = Subscription::find($discout->sub_id);
                     $price =$sub->price;
                    $dis= Discount::find($discout->discount_id);
@@ -246,10 +245,6 @@ class CodeController extends BaseController
                     $res['status']['message'] = 'Not Found Promocode';
                     return $res; 
                    }
-                }else{
-                    $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode';
-                    return $res; 
                 }
             }else{
                 $res['status'] = $this->SendError();
