@@ -15,7 +15,7 @@
         </div>
     </div>
    
-    
+
     <form class="form" method="post" method="{{ route('How-it-work.store',app()->getLocale()) }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
@@ -38,10 +38,12 @@
                 </div>
                
 
+                   @if (auth()->user()->isAbleTo(['create-page']))
 
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
             </div>
+            @endif
     </form>
 </div>
 </div>
