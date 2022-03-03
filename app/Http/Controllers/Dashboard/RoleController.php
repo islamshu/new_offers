@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\user_Permission;
 use App\Models\user_roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 
@@ -98,6 +99,8 @@ class RoleController extends Controller
 
                 $role->save();
             }
+            Artisan::call('optimize', ['--quiet' => true, '--force' => true]);
+
             return Redirect::route('role.index', ['locale' => app()->getLocale()]);
         }
     }
@@ -221,6 +224,8 @@ class RoleController extends Controller
 
 
             }
+            Artisan::call('optimize', ['--quiet' => true, '--force' => true]);
+
             return Redirect::route('role.edit', [app()->getLocale(), $role_id]);
         }
     }
