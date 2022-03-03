@@ -36,10 +36,13 @@ card card-docs mb-2">
                                         <!--end::Svg Icon-->
                                     </span>
                                 </a>
+                                @if (auth()->user()->isAbleTo(['create-branch']))
+
                                 <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
                                     onclick="make('{{ $item->id }}')">
                                     {{ __('upload') }}
                                 </a>
+                                @endif
 
 
                             </td>
