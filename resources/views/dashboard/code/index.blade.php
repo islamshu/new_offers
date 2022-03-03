@@ -44,8 +44,11 @@
                         <td> <a href="{{ route('used_code', [ $code->id, 'locale' => app()->getLocale()]) }}"> {{ $used }} </a></td>
                         <td> <a href="{{ route('not_used_code', [ $code->id, 'locale' => app()->getLocale()]) }}"> {{ $remain }}</a></td>
                         <td>
+                            @if (auth()->user()->isAbleTo(['update-activition_code']))
+
                             <input type="checkbox" data-id="{{ $code->id }}" name="status" class="js-switch" {{ $code->status ==  1 ? 'checked' : '' }}>
-                            </td>
+                            @endif
+                        </td>
                         <td class="pr-0 text-left">
                             @if (auth()->user()->isAbleTo(['update-activition_code']))
 
