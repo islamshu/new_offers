@@ -19,6 +19,15 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        //create read update delete
+        $this->middleware(['permission:read-role'])->only('index');
+        $this->middleware(['permission:create-role'])->only('create');
+        $this->middleware(['permission:update-role'])->only('edit');
+        $this->middleware(['permission:delete-role'])->only('destroy');
+
+    }//end of constructor
     public function index()
     {
 
