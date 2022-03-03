@@ -87,30 +87,7 @@ $lang = app()->getLocale();
                 </ul>
             </div>
         </li>
-
-        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="#" class="menu-link menu-toggle">
-                <span class="svg-icon menu-icon">
-                    <i class="fa fa-bookmark" aria-hidden="true"></i>
-                </span>
-                <span class="menu-text">{{ __('Cities') }}</span>
-                <i class="menu-arrow"></i>
-            </a>
-
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Cities') }}</span></span>
-                    </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/city"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('List') }}</span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/city/create"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Create') }}</span></a></li>
-                </ul>
-            </div>
-        </li>
+       
 
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
@@ -237,6 +214,35 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li> --}}
+    @if (auth()->user()->isAbleTo(['read-city']))
+
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Cities') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Cities') }}</span></span>
+                </li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/city"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('List') }}</span></a></li>
+                            @if (auth()->user()->isAbleTo(['create-city']))
+       
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/city/create"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Create') }}</span></a></li>
+                            @endif
+            </ul>
+        </div>
+    </li>
+    @endif
     @if (auth()->user()->isAbleTo(['read-role']))
 
 <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
