@@ -86,17 +86,17 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                     @endif
-                                                    @if (auth()->user()->isAbleTo(['deletde-vendor']))
 
                                                     <a href="{{ route('vendor.show', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
-                                                    @endif
+                                                  
 
 
 
 
+                                                    @if (auth()->user()->isAbleTo(['delete-vendor']))
 
                                                     <form method="post" style="display: inline">
                                                         <button type="button"
@@ -108,6 +108,7 @@
                                                                 <!--end::Svg Icon-->
                                                             </span> </button>
                                                     </form>
+                                                    @endif
                                                     <a href="{{ route('cover.show', [app()->getLocale(), $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                         <i class="fa fa-image"></i>
