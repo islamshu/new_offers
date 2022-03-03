@@ -2,9 +2,12 @@
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+            @if (auth()->user()->isAbleTo(['create-promocode']))
+
             <div style="float: right">
                 <a class="btn btn-info" href="{{ route('vendor.create_coupoun',[app()->getLocale(),$vendor->id]) }}"> {{ __('Create Branch') }} </a>
-            </div> <br>
+            </div>
+            @endif <br>
             <h2 class="mb-3">{{ __('All Copuon') }}</h2>
            
 
@@ -39,7 +42,7 @@
                             </td>
                         <td class="pr-0 text-left">
 
-
+                            @if (auth()->user()->isAbleTo(['update-promocode']))
                                 <a href="{{ route('coupun.edit', ['coupun' => $item->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                     <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -60,7 +63,8 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </a>
-
+                                @endif
+                                @if (auth()->user()->isAbleTo(['delete-promocode']))
                                 <form method="post" style="display: inline">
                                     <button type="button" onclick="performdelete('{{ $item->id }}')"
                                         class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
@@ -83,6 +87,7 @@
                                         </span>
                                     </button>
                                 </form>
+                                @endif
 
                         </td>
                         </tr>

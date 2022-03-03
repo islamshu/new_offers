@@ -47,15 +47,13 @@
                             <input type="checkbox" data-id="{{ $code->id }}" name="status" class="js-switch" {{ $code->status ==  1 ? 'checked' : '' }}>
                             </td>
                         <td class="pr-0 text-left">
-                            @if (auth()->user()->isAbleTo(['update-promocode']))
 
 
                                 <a href="{{ route('code.edit', [ $code->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                  <i class="fa fa-edit"></i>
                                 </a>
-                               @endif
-                               @if (auth()->user()->isAbleTo(['delete-promocode']))
+                               
 
                                 <form method="post" style="display: inline">
                                     <button type="button" onclick="performdelete('{{ $code->id }}')"
@@ -79,7 +77,6 @@
                                         </span>
                                     </button>
                                 </form>
-                                @endif
 
                         </td>
                         </tr>
