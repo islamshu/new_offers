@@ -232,11 +232,11 @@ class CodeController extends BaseController
                              $res['status'] = $this->sendResponse200('OK');
                         $res['data']['discount']["price"] = $price;
                         $res['data']['discount']["discout_type"] = $dis->type_discount;
-                        $res['data']['discount']["discout_value"] = $dis->value;
+                        $res['data']['discount']["discout_value"] = $dis->value_discount;
                         if ( $dis->type_discount == 'percentage') {
-                            $total =     $price -  ($price * $dis->value / 100);
+                            $total =     $price -  ($price * $dis->value_discount / 100);
                         } else {
-                            $total =     $price -  $dis->value;
+                            $total =     $price -  $dis->value_discount;
                         }
                         $res['data']['discount']['discount_percentage']= strval(100 * ($price - $total) / $price);
                         $res['data']['discount']["price_after_discount"] = $total;
