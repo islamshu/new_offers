@@ -50,7 +50,7 @@
                             <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
                             </td>
                         <td class="pr-0 text-left">
-                            @if (auth()->user()->hasPermission(['read-offer']))
+                            @if (auth()->user()->hasPermission(['update-offer']))
 
 
                                 <a href="{{ route('offers.edit', ['offer' => $item->id, 'locale' => app()->getLocale()]) }}"
