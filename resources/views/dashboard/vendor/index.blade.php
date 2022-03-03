@@ -79,14 +79,20 @@
                                                     <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                                                     </td>
                                                 <td class="pr-0 text-center">
+                                                    @if (auth()->user()->isAbleTo(['edit-brand']))
+
                                                     <a href="{{ route('vendor.edit', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
+                                                    @endif
+                                                    @if (auth()->user()->isAbleTo(['delete-brand']))
+
                                                     <a href="{{ route('vendor.show', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
+                                                    @endif
 
 
 
