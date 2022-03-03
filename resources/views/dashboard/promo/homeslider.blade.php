@@ -3,9 +3,12 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Sliders') }}</h2>
+            @if (auth()->user()->isAbleTo(['create-promotion']))
+
             <div class="div" style="float: right">
                 <a href="{{ route('create_item', [ app()->getLocale(),'homeslider',$city_id]) }}" class="btn btn-info">{{ __('create home slider') }}</a>
             </div>
+            @endif
             <br>
             <div class="mt-10">
 
@@ -38,6 +41,8 @@
                             <a href="{{ route('offer_slider', [app()->getLocale(),$item->id,$city_id]) }}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <i class="fa fa-plus"></i>
                             </a>
+                            @if (auth()->user()->isAbleTo(['delete-promotion']))
+
                             <form method="post" style="display: inline">
                                 <button type="button" onclick="performdelete('{{ $item->id }}')"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
@@ -49,6 +54,7 @@
                                 </button>
                             </form>
 
+                            @endif
                                
 
                         </td>

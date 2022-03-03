@@ -3,9 +3,13 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Popups') }}</h2>
+            @if (auth()->user()->isAbleTo(['create-promotion']))
+
             <div class="div" style="float: right">
                 <a href="{{ route('create_item', [ app()->getLocale(),'popup',$city_id]) }}" class="btn btn-info">{{ __('create Pop up') }}</a>
             </div>
+            @if (auth()->user()->isAbleTo(['create-promotion']))
+
             <br>
             <div class="mt-10">
 
@@ -34,6 +38,8 @@
                         
                     <td>{{ $item->show_for }}</td>
                         <td class="pr-0 text-left">
+                            @if (auth()->user()->isAbleTo(['delete-promotion']))
+
                             <form method="post" style="display: inline">
                                 <button type="button" onclick="performdelete('{{ $item->id }}')"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
@@ -56,6 +62,7 @@
                                     </span>
                                 </button>
                             </form>
+                            @endif
 
                                
 
