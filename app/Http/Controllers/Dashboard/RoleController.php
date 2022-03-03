@@ -99,7 +99,7 @@ class RoleController extends Controller
 
                 $role->save();
             }
-            Artisan::call('optimize', ['--quiet' => true]);
+            Artisan::call('optimize');
 
             return Redirect::route('role.index', ['locale' => app()->getLocale()]);
         }
@@ -224,7 +224,7 @@ class RoleController extends Controller
 
 
             }
-            Artisan::call('optimize', ['--quiet' => true]);
+            Artisan::call('optimize');
 
             return Redirect::route('role.edit', [app()->getLocale(), $role_id]);
         }
