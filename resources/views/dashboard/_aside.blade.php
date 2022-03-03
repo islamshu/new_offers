@@ -261,9 +261,11 @@ $lang = app()->getLocale();
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('List') }}</span></a></li>
+                        @if(auth()->user()->hasPermission('create-role'))
             <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role/create"
                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                         class="menu-text">{{ __('Create') }}</span></a></li>
+                        @endif
 
         </ul>
     </div>
