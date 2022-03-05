@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Branch;
 class Vendor extends Model
 {
     use HasFactory, SoftDeletes;
@@ -56,7 +56,7 @@ class Vendor extends Model
         return $this->belongsToMany(Category::class, 'categories_vendors', 'vendor_id', 'category_id');
     }
     public function branches(){
-        return $this->hasMany(Branch::class,'vendor_id');
+        return $this->hasMany( Branch::class,'vendor_id');
     }
     public function promocode(){
         return $this->hasMany(Coupon::class,'vendor_id');
