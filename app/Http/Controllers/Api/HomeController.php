@@ -69,6 +69,7 @@ class HomeController extends BaseController
 
     $city_id = $request->city_id ? $request->city_id : 15;
     $citynew = City::find($city_id);
+    dd($citynew);
     if ($citynew) {
       $city_id = $citynew->id;
     } else {
