@@ -102,7 +102,7 @@ class HomeController extends BaseController
     //  dd(userdefult());
     if ($filtter == 'offer') {
 
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
+      $offer = Offer::has('vendor')->where('end_time','>=',Carbon::now())->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
         $q->where('end_time','>', Carbon::now());
         $q->has('enterprise')->whereHas('enterprise', function ($q) use ($request) {
@@ -131,7 +131,7 @@ class HomeController extends BaseController
       // $res['data']['category_slider_images'] = ;
       return $res;
     } elseif ($filtter == 'flash_deal') {
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
+      $offer = Offer::has('vendor')->where('end_time','>=',Carbon::now())->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
         $q->has('cities')->whereHas('cities', function ($q) use ($city) {
           $q->where('city_id', $city);
@@ -153,7 +153,7 @@ class HomeController extends BaseController
         $res['data'] = $collction;
       return $res;
     } elseif ($filtter == 'voucher') {
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
+      $offer = Offer::has('vendor')->where('end_time','>=',Carbon::now())->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
         $q->has('cities')->whereHas('cities', function ($q) use ($request,$city) {
           $q->where('city_id', $city);
