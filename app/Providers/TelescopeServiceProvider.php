@@ -16,7 +16,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     public function register()
     {
-        $this->hideSensitiveRequestDetails();
+        // $this->hideSensitiveRequestDetails();
 
         Telescope::tag(function (IncomingEntry $entry) {
             return $entry->type == 'request' && $entry->content['response_status'] == 302 ;
