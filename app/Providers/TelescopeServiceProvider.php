@@ -67,5 +67,17 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                 'info@jooyapp.net'
             ]);
         });
+        $this->hideSensitiveRequestDetails();
+ 
+    Telescope::filter(function (IncomingEntry $entry) {
+        if ($this->app->isLocal()) {
+            return true;
+        }
+ 
+        return $entry->isReportableException() ||
+            $entry->isFailedJob() ||
+            $entry->isScheduledTask() ||
+            $entry->hasMonitoredTag();
+    });
     }
 }
