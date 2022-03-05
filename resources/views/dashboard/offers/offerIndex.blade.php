@@ -48,7 +48,7 @@
                         <td>{{ $item->end_time }}</td>
                         @if (auth()->user()->hasPermission(['update-offer']))
                         <td>
-                            <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 1 ? 'checked' : '' && check_offer($item) }}>
                             </td>
                             @endif
                         <td class="pr-0 text-left">

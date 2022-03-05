@@ -2,6 +2,8 @@
 
 use App\Models\Enterprise;
 use App\Models\GeneralInfo;
+use App\Models\Offer;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Container\Container;
 use Illuminate\Http\RedirectResponse;
@@ -17,6 +19,13 @@ function openJSONFile($code){
         $jsonString = json_decode($jsonString, true);
     }
     return $jsonString;
+}
+function check_offer($item){
+    if($item->end_date < Carbon::now()){
+        return 0;
+    }else{
+        return 1;
+    }
 }
 function saveJSONFile($code, $data){
     ksort($data);
