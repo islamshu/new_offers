@@ -81,7 +81,6 @@ class HomeController extends BaseController
       $res['status'] = $this->sendError();
       return  $res;
     }
-    dd($city_id);
     $res['status'] = $this->sendResponse200('OK');
     $res['data']['slider'] = new SliderCollection(Slider::where('city_id', $city_id)->get());
     $res['data']['categories'] = new CategoryCollection(@$enterprice->categorys);
