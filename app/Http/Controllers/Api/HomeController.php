@@ -67,8 +67,8 @@ class HomeController extends BaseController
     // dd($request->uuid);
     $uuid = userdefult() ? userdefult() : 'jooy';
 
-    // $city_id = $request->city_id ? $request->city_id : 15;
-    $citynew = City::find($request->city_id);
+    $city_id = $request->city_id ? $request->city_id : 15;
+    $citynew = City::find($city_id);
     if ($citynew) {
       $city_id = $citynew->id;
     } else {
