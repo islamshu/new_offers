@@ -97,17 +97,19 @@ class HomeController extends BaseController
     
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
+    $city = $request->has('city_id') ? $request->city_id : 15;
 
     //  dd(userdefult());
     if ($filtter == 'offer') {
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
+
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
         $q->where('end_time','>', Carbon::now());
         $q->has('enterprise')->whereHas('enterprise', function ($q) use ($request) {
           $q->where('enterprise_id', get_enterprose_uuid(userdefult()));
         });
-        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
-          $q->where('city_id', $request->city_id);
+        $q->has('cities')->whereHas('cities', function ($q) use ($city) {
+          $q->where('city_id', $city);
         });
         $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
@@ -129,10 +131,10 @@ class HomeController extends BaseController
       // $res['data']['category_slider_images'] = ;
       return $res;
     } elseif ($filtter == 'flash_deal') {
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
-        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
-          $q->where('city_id', $request->city_id);
+        $q->has('cities')->whereHas('cities', function ($q) use ($city) {
+          $q->where('city_id', $city);
         });
         $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
@@ -151,10 +153,10 @@ class HomeController extends BaseController
         $res['data'] = $collction;
       return $res;
     } elseif ($filtter == 'voucher') {
-      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request) {
+      $offer = Offer::has('vendor')->whereHas('vendor', function ($q) use ($request,$city) {
         $q->where('status','active');
-        $q->has('cities')->whereHas('cities', function ($q) use ($request) {
-          $q->where('city_id', $request->city_id);
+        $q->has('cities')->whereHas('cities', function ($q) use ($request,$city) {
+          $q->where('city_id', $city);
         });
         $q->has('counteire')->whereHas('counteire', function ($q) use ($request) {
           $q->where('country_id', $request->country_id);
@@ -180,15 +182,14 @@ class HomeController extends BaseController
     $city = $request->has('city_id') ? $request->city_id : 15;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::with(['categorys','counteire','cities'])->whereHas('branches')->whereHas('offers')->where('status','active')
-    ->has('categorys')->whereHas('categorys', function ($q) use ($request, $city) {
-      dd($city,$request);
+    ->has('categorys')->whereHas('categorys', function ($q) use ($request) {
       $q->where('category_id', $request->category_id);
     })
     ->has('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
     })
-    ->has('cities')->whereHas('cities', function ($q) use ($request) {
-      $q->where('city_id', $request->city_id);
+    ->has('cities')->whereHas('cities', function ($q) use ($request,$city) {
+      $q->where('city_id', $city);
     })->get();
     $res['status'] = $this->sendResponse200('OK');
 
@@ -303,11 +304,12 @@ class HomeController extends BaseController
   public function nearby_partners(Request $request)
   {
     $page = $request->last_index +2;
+    $city = $request->has('city_id') ? $request->city_id : 15;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
     $vendors = Vendor::where('status','active')->has('counteire')->whereHas('counteire', function ($q) use ($request) {
       $q->where('country_id', $request->country_id);
-    })->has('cities')->whereHas('cities', function ($q) use ($request) {
-      $q->where('city_id', $request->city_id);
+    })->has('cities')->whereHas('cities', function ($q) use ($city) {
+      $q->where('city_id', $city);
     })->limit($limit)->offset(($page - 1) * $limit)->get();
     //  $collction = get_sort(new StoresCollection($vendors));
     $collection =  sort_vendor(VendorForOfferResourses::collection($vendors));
