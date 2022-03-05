@@ -21,10 +21,10 @@ function openJSONFile($code){
     return $jsonString;
 }
 function check_offer($item){
-    if($item->end_date < Carbon::now()){
-        return 0;
-    }else{
+    if($item->end_date >= Carbon::now()){
         return 1;
+    }else{
+        return 0;
     }
 }
 function saveJSONFile($code, $data){
