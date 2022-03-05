@@ -18,17 +18,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     {
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filterBatch(function (Collection $entries) {
-            if ($this->app->isLocal()) {
-                return true;
-            }
-    
-            return $entries->contains(function ($entry) {
-                return $entry->isReportableException() ||
-                    $entry->isFailedJob() ||
-                    $entry->isScheduledTask() ||
-                    $entry->hasMonitoredTag();
-                });
+        Telescope::tag(function (IncomingEntry $entry) {
+            return $entry->type == 'request' && $entry->content['response_status'] == 302) ;
         });
     }
 
