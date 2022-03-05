@@ -19,7 +19,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         $this->hideSensitiveRequestDetails();
 
         Telescope::tag(function (IncomingEntry $entry) {
-            die($entry);
             return $entry->type == 'request' && $entry->content['response_status'] == 302 ;
         });
     }
@@ -31,17 +30,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->environment('local')) {
-            return;
-        }
-
-        Telescope::hideRequestParameters(['_token']);
-
-        Telescope::hideRequestHeaders([
-            'cookie',
-            'x-csrf-token',
-            'x-xsrf-token',
-        ]);
+        return true;
     }
 
     /**
