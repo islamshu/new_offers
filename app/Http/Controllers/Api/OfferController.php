@@ -19,6 +19,7 @@ use App\Http\Resources\VendorOfferDeResourses;
 use App\Models\Social;
 use App\Models\Subscription;
 use App\Models\Vendor;
+use Carbon\Carbon;
 
 class OfferController extends BaseController
 {
@@ -76,7 +77,7 @@ class OfferController extends BaseController
     public function search(Request $request){
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
-        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
@@ -98,7 +99,7 @@ class OfferController extends BaseController
     }
     public function suggetstd_offer(Request $request)
     {
-        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
@@ -113,7 +114,7 @@ class OfferController extends BaseController
     }
     public function offer_map(Request $request)
     {
-        $offers = Offer::where('status',1)->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('status',1)->where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));

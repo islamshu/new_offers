@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 use App\Models\HomesliderOffer;
 use App\Models\Offer;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class HomeSLiderResourses extends JsonResource
@@ -30,7 +31,7 @@ class HomeSLiderResourses extends JsonResource
         }
     
         
-        return new OfferCollection(Offer::whereIn('id',$array)->get());
+        return new OfferCollection(Offer::whereIn('id',$array)->where('end_time','>=',Carbon::now())->get());
         
     }
     public function lang_name($data)

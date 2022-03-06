@@ -221,7 +221,7 @@ class HomeController extends BaseController
       $res['status'] = $this->sendResponse200('OK');
 
       $res['data']['store'] = new VendorDetiesResourses($vendor);
-      $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers->where('status',1)) ;
+      $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers->where('status',1)->where('end_time','>=',Carbon::now())) ;
       $res['data']['branches'] = new BranchCollection($vendor->branches->where('status','active')) ;
       $res['data']['store_reviews'] = new VendorReviewCollection($vendor->review) ;
       $res['data']['cart'] = null;
@@ -246,7 +246,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $stores = Offer::where('status',1)->where('vendor_id', $request->store_id)->get();
+    $stores = Offer::where('status',1)->where('end_time','>=',Carbon::now())->where('vendor_id', $request->store_id)->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = (new VendorOfferDeCollection($stores));
     return $res;

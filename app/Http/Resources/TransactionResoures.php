@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TransactionResoures extends JsonResource
@@ -21,7 +22,7 @@ class TransactionResoures extends JsonResource
             'store_id' => $this->vendor_id,
             'saving' => 0,
             'created_at' => $this->created_at,
-            'offer' => new OfferResourses($this->offer),
+            'offer' => new OfferResourses($this->offer->where('end_time','>=',Carbon::now())),
             'store' => $this->store($this),
         ];
     }
