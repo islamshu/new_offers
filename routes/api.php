@@ -33,7 +33,7 @@ Route::get('search', 'Api\OfferController@search');
 Route::get('offers-map', 'Api\OfferController@offer_map');
 Route::get('get_cridit', 'Api\HomeController@get_cridit');
 Route::get('contact', 'Api\OfferController@contact');
-
+Route::get('update_vendor_offer','Api\OfferController@update_vendor_offer');
 Route::get('vendor', 'Api\HomeController@vendor_detels');
 Route::get('popup-ad', 'Api\HomeController@popup_ad');
 Route::get('store/branches', 'Api\HomeController@vendor_branches');

@@ -46,6 +46,14 @@ use Illuminate\Support\Facades\Http;
 
 class HomeController extends BaseController
 {
+  public function update_vendor_offer()
+  {
+    $vendor= Vendor::whereHas('offers')->with('offers')->get();
+   foreach($vendor as $v){
+     dd($v);
+   }
+
+  }
   public function country()
   {
     $res['status'] = $this->sendResponse200('OK');
