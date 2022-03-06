@@ -49,9 +49,15 @@ class HomeController extends BaseController
   public function update_vendor_offer()
   {
     $vendor= Vendor::whereHas('offers')->with('offers')->get();
-   foreach($vendor as $v){
-     dd($v);
+   foreach($vendor as $key=>$v){
+     if($key == 0){
+       $v->is_offer =1;
+       $v->save();
+     }else{
+       continue;
+     }
    }
+   dd('dd');
 
   }
   public function country()
