@@ -136,10 +136,7 @@ class HomeController extends BaseController
         });
       })->where('is_offer', 1)->get();
       $collction = new VendorOfferCollection($offer);
-          $datad = [];
-    foreach (collect($collction)->sortBy('distance') as $data) {
-      array_push($datad, $data);
-    }
+  
       $res['status'] = $this->sendResponse200('OK');
       $res['data'] = $collction;
 
