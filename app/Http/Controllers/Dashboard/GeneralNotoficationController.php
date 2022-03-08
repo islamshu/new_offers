@@ -69,7 +69,7 @@ class GeneralNotoficationController extends Controller
         $not->body_ar = $request->body_ar;
         $not->vendor_id = $request->vendor_id;
         $not->offer_id = $request->offer_id;
-        $not->city_id = $request->city_id;
+        // $not->city_id = $request->city_id;
         $not->save();
         $users = Clinet::where('token','!=',null)->where('city_id',$request->city_id)->get();
         foreach($users as $user){
