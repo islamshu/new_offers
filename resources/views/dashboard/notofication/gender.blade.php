@@ -6,7 +6,7 @@
             <div class="mt-10">
 
                 <div class="row">
-                    <div class="col-md-3 bg-light-info w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
+                    <div class="col-md-3 bg-light-primary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <div class=" symbol-75px mb-5 text-center">
                             <img src="https://ar.seaicons.com/wp-content/uploads/2016/05/male-icon.png" width="80" height="80" alt="">
@@ -16,7 +16,7 @@
                                                         data-target="#myModal" class="btn btn-outline-primary"
                                                         onclick="make(1)">الذكور</button>
                     </div>
-                    <div class="col-md-3 bg-light-warning w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
+                    <div class="col-md-3 bg-light-info w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <div class=" symbol-75px mb-5 text-center">
                             <img src="https://dewc.ca/wp-content/uploads/2018/08/symbol.png" width="80" height="80" alt="">
