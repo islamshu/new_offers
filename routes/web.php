@@ -184,6 +184,8 @@ Route::group([
         Route::resource('clinets', 'Dashboard\ClinetController');
         Route::resource('general_notofication', 'Dashboard\GeneralNotoficationController');
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
+        Route::get('create_city_notofication', 'Dashboard\GeneralNotoficationController@create_city_notofication')->name('create_city_notofication');
+
         Route::post('store_user_notofication', 'Dashboard\GeneralNotoficationController@store_user_notofication')->name('store_user_notofication');
 
         Route::get('create_coupun/{id}','Dashboard\CouponController@create_coupon')->name('vendor.create_coupoun');

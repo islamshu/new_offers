@@ -11,6 +11,7 @@ use Notification;
 use App\Notifications\UserNotification;
 use Illuminate\Http\Request;
 use App\Http\Traits\SendNotification;
+use App\Models\City;
 use App\Models\Clinet;
 
 class GeneralNotoficationController extends Controller
@@ -48,6 +49,10 @@ class GeneralNotoficationController extends Controller
     public function create_user_notofication(){
         $users = Clinet::get();
         return view('dashboard.notofication.user_create',compact('users'));
+    }
+    public function create_cirt_notofication(){
+        $cities = City::where('status',1)->get();
+        return view('dashboard.notofication.city',compact('cities'));
     }
     public function store_user_notofication(Request $request , $locale)
     {
