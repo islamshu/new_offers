@@ -44,7 +44,7 @@ class GeneralNotoficationController extends Controller
             $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
         }
 
-        return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
+        return redirect()->back();
     }
     public function create_user_notofication(){
         $users = Clinet::get();
@@ -75,8 +75,7 @@ class GeneralNotoficationController extends Controller
         foreach($users as $user){
             $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
         }
-
-        return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
+        return redirect()->back();
     }
     public function store_user_notofication(Request $request , $locale)
     {
