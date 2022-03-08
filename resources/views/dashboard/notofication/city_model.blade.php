@@ -35,6 +35,15 @@
             </select>
 
         </div>
+        <div class="form-group col-md-12 offer" >
+            <label>{{ __('Choose Offer') }}:</label>
+            <select name="type" id="offer_id" class="form-control">
+                <option value="" selected disabled>{{ __('Offer') }}</option>
+             
+               
+            </select>
+
+        </div>
         <div class="row">
             <div class="form-group col-md-3">
                 <input type="submit"  class="form-control btn btn-primary" value="{{ __('Submit') }}"
@@ -43,3 +52,55 @@
         </div>
     </div>
 </form>
+<script>
+    $(document).ready(function() {
+
+        $('#vendor_id').on('change', function() {
+            // console.log("hmm its change");
+            var cat_id = $(this).val();
+            // console.log(cat_id);
+            var div = $(this).parent();
+
+            var op = " ";
+
+            $.ajax({
+                type: 'get',
+                url: "{{ route('get_offer_ajax', ['locale' => app()->getLocale()]) }}",
+                data: {
+                    'venodr_id': cat_id
+                },
+                success: function(data) {
+                    $('#offer_id').html(new Option('choose', '', 'disabled', 'selected'));
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#offer_id').append(new Option(data[i].name_en,
+                            data[i].id));
+
+                    }
+                },
+                error: function() {
+
+                }
+            });
+
+        });
+    });
+    $('#type').on('change', function() {
+
+        var type = $('#type').val();
+
+        if (type == 'brand') {
+            $('.vendor').css("display", "block")
+            $('.offer').css("display", "none")
+
+        } else if (type == 'offer') {
+            $('.offer').css("display", "block")
+            $('.vendor').css("display", "none")
+        } else {
+            $('.offer').css("display", "none")
+            $('.vendor').css("display", "none")
+        }
+
+
+    });
+</script>

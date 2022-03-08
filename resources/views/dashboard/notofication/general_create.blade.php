@@ -30,38 +30,37 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('body ar') }}:</label>
-                        <textarea name="body_ar" class="form-control form-control-solid" id="body_ar"  rows="3"></textarea>
+                        <textarea name="body_ar" class="form-control form-control-solid" id="body_ar" rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('body en') }}:</label>
-                        <textarea name="body_en" class="form-control form-control-solid" id="body_en"  rows="3"></textarea>
+                        <textarea name="body_en" class="form-control form-control-solid" id="body_en" rows="3"></textarea>
                     </div>
-                   
+
                     <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
                         <select name="type" id="vendor_id" class="form-control">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
-                            <option value="{{ $item->id }}" >{{ $item->name_en }}</option>
-
+                                <option value="{{ $item->id }}">{{ $item->name_en }}</option>
                             @endforeach
-                           
+
                         </select>
 
                     </div>
-                    <div class="form-group col-md-6 offer" >
+                    <div class="form-group col-md-6 offer">
                         <label>{{ __('Choose Offer') }}:</label>
                         <select name="type" id="offer_id" class="form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
-                         
-                           
+
+
                         </select>
 
                     </div>
-                    
+
                 </div>
-                    
-               
+
+
 
 
 
@@ -77,38 +76,38 @@
 
 @section('scripts')
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
 
-$('#vendor_id').on('change', function() {
-    // console.log("hmm its change");
-    var cat_id = $(this).val();
-    // console.log(cat_id);
-    var div = $(this).parent();
+            $('#vendor_id').on('change', function() {
+                // console.log("hmm its change");
+                var cat_id = $(this).val();
+                // console.log(cat_id);
+                var div = $(this).parent();
 
-    var op = " ";
+                var op = " ";
 
-    $.ajax({
-        type: 'get',
-        url: "{{ route('get_offer_ajax', ['locale' => app()->getLocale()]) }}",
-        data: {
-            'venodr_id': cat_id
-        },
-        success: function(data) {
-            $('#offer_id').html(new Option('choose', '', 'disabled', 'selected'));
-            for (var i = 0; i < data.length; i++) {
+                $.ajax({
+                    type: 'get',
+                    url: "{{ route('get_offer_ajax', ['locale' => app()->getLocale()]) }}",
+                    data: {
+                        'venodr_id': cat_id
+                    },
+                    success: function(data) {
+                        $('#offer_id').html(new Option('choose', '', 'disabled', 'selected'));
+                        for (var i = 0; i < data.length; i++) {
 
-                $('#offer_id').append(new Option(data[i].name_en,
-                    data[i].id));
+                            $('#offer_id').append(new Option(data[i].name_en,
+                                data[i].id));
 
-            }
-        },
-        error: function() {
+                        }
+                    },
+                    error: function() {
 
-        }
-    });
+                    }
+                });
 
-});
-});
+            });
+        });
         $('#type').on('change', function() {
 
             var type = $('#type').val();
@@ -117,17 +116,16 @@ $('#vendor_id').on('change', function() {
                 $('.vendor').css("display", "block")
                 $('.offer').css("display", "none")
 
-            } else if(type == 'offer') {
+            } else if (type == 'offer') {
                 $('.offer').css("display", "block")
                 $('.vendor').css("display", "none")
-            }else{
+            } else {
                 $('.offer').css("display", "none")
                 $('.vendor').css("display", "none")
             }
 
 
         });
-      
     </script>
 
 
@@ -147,7 +145,7 @@ $('#vendor_id').on('change', function() {
             formData.append('title_ar', document.getElementById('title_ar').value);
             formData.append('body_en', document.getElementById('body_en').value);
             formData.append('body_ar', document.getElementById('body_ar').value);
-           
+
 
 
             if (document.getElementById('vendor_id') != null) {
@@ -156,7 +154,7 @@ $('#vendor_id').on('change', function() {
             if (document.getElementById('offer_id') != null) {
                 formData.append('offer_id', document.getElementById('offer_id').value);
             }
-            
+
 
             store("{{ route('general_notofication.store', ['locale' => app()->getLocale()]) }}", formData);
 
