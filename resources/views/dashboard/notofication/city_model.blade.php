@@ -4,8 +4,15 @@
     <div class="card-body">
         <div class="row">
             <div class="form-group col-md-12">
-                <label> {{ __('Title') }} :</label>
-                <input type="text" name="title" id="title" class="form-control form-control-solid"
+                <label> {{ __('Title ar') }} :</label>
+                <input type="text" name="title_ar" id="title" class="form-control form-control-solid"
+                    placeholder="{{ __('Title') }}" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label> {{ __('Title en') }} :</label>
+                <input type="text" name="title_en" id="title" class="form-control form-control-solid"
                     placeholder="{{ __('Title') }}" required />
             </div>
         </div>
