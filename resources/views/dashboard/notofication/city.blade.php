@@ -10,7 +10,7 @@
                     <div class="col-md-3 bg-light-primary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <div class=" symbol-75px mb-5 text-center">
-                            <img src="{{  $item->image  }}" style="    max-width: 150px;" alt="">
+                            <img src="{{  $item->image  }}" width="80" height="80" alt="">
                         </div>
                         <!--end::Svg Icon-->
                         <a href="" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ $item->city_name }}</a>
