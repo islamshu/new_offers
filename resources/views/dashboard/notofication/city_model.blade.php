@@ -23,6 +23,18 @@
                     <textarea name="body" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
             </div>
         </div>
+        <div class="form-group col-md-6 vendor">
+            <label>{{ __('Choose Vendor') }}:</label>
+            <select name="type" id="vendor_id" class="form-control">
+                <option value="" selected disabled>{{ __('Choose') }}</option>
+                @foreach ($vendors as $item)
+                <option value="{{ $item->id }}" >{{ $item->name_en }}</option>
+
+                @endforeach
+               
+            </select>
+
+        </div>
         <div class="row">
             <div class="form-group col-md-3">
                 <input type="submit"  class="form-control btn btn-primary" value="{{ __('Submit') }}"
