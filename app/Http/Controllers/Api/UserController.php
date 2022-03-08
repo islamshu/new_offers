@@ -182,6 +182,7 @@ class UserController extends BaseController
 
         $user = auth('client_api')->user();
         $user->token = $request->registration_id;
+        $user->save();
        
         $res['status']= $this->sendResponse('Created');
         $res['data']['data'][''] ="" ;
