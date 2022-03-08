@@ -61,6 +61,23 @@ class GeneralNotoficationController extends Controller
           })->get();
         return view('dashboard.notofication.city_model',compact('city','vendors'));
     }
+    public function store_city(Request $request ,$locale){
+        $not = new GeneralNotofication();
+        $not->title_en = $request->title_en;
+        $not->title_ar = $request->title_ar;
+        $not->body_en = $request->body_en;
+        $not->body_ar = $request->body_ar;
+        $not->vendor_id = $request->vendor_id;
+        $not->offer_id = $request->offer_id;
+        $not->city_id = $request->city_id;
+        $not->save();
+        $users = Clinet::where('token','!=',null)->where('city_id',$request->city_id)->get();
+        foreach($users as $user){
+            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
+        }
+
+        return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
+    }
     public function store_user_notofication(Request $request , $locale)
     {
         $date =[

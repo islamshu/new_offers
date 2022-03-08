@@ -1,6 +1,6 @@
 <form class="form" method="post" action="{{ route('send_client_notofication',[app()->getLocale(),$city->id]) }}" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="client_id" value="{{ $city->id }}">
+    <input type="hidden" name="city_id" value="{{ $city->id }}">
     <div class="card-body">
         <div class="row">
             <div class="form-group col-md-12">
@@ -18,9 +18,16 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <label> {{ __('Body') }} :</label>
+                <label> {{ __('Body ar') }} :</label>
          
-                    <textarea name="body" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
+                    <textarea name="body_ar" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label> {{ __('Body en') }} :</label>
+         
+                    <textarea name="body_en" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
             </div>
         </div>
         <div class="form-group col-md-12 vendor">
