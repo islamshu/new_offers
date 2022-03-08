@@ -190,6 +190,7 @@ Route::group([
         Route::resource('general_notofication', 'Dashboard\GeneralNotoficationController');
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
         Route::get('create_city_notofication', 'Dashboard\GeneralNotoficationController@create_city_notofication')->name('create_city_notofication');
+        Route::get('create_gender_notofication', 'Dashboard\GeneralNotoficationController@create_gender_notofication')->name('create_gender_notofication');
 
         
         Route::post('store_city_notofication', 'Dashboard\GeneralNotoficationController@store_city')->name('store_city_noto');
