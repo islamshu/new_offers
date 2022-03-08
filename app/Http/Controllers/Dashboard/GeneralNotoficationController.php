@@ -50,7 +50,7 @@ class GeneralNotoficationController extends Controller
         $users = Clinet::get();
         return view('dashboard.notofication.user_create',compact('users'));
     }
-    public function create_cirt_notofication(){
+    public function create_city_notofication(){
         $cities = City::where('status',1)->get();
         return view('dashboard.notofication.city',compact('cities'));
     }
