@@ -1,4 +1,4 @@
-<form class="form" method="post" action="{{ route('send_client_notofication',[app()->getLocale(),$city->id]) }}" enctype="multipart/form-data">
+<form class="form" method="post" action="{{ route('store_city_noto',[app()->getLocale(),$city->id]) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="city_id" value="{{ $city->id }}">
     <div class="card-body">

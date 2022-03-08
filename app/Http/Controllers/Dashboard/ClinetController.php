@@ -52,7 +52,7 @@ class ClinetController extends Controller
     public function send_client_notofication(Request $request){
         $client = Clinet::find($request->client_id);
         $token = $client->token;
-        $this->notification($token,  $request->body, $request->title, 'notofication');
+        $this->notification($token,  $request->body, $request->title, 'notofication',null,null);
         return redirect()->back()->with(['success'=>trans('send notification succesffuly')]);
 
     }

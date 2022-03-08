@@ -2,7 +2,7 @@
 namespace App\Http\Traits;
 trait SendNotification
 {
-    public function notification($to,$title, $body, $page)
+    public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
         $firebase_key = get_general('firebase');
         $dataArr = array(
@@ -13,6 +13,8 @@ trait SendNotification
         $notification = array(
             'title' =>$title,
             'body' => $body,
+            'vendor' =>$vendor_id,
+            'offer' => $offer_id,
             'sound' => 'default',
             'badge' => '1',
             );

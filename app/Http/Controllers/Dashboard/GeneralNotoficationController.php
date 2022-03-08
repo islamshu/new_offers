@@ -41,7 +41,7 @@ class GeneralNotoficationController extends Controller
         $not->save();
         $users = Clinet::where('token','!=',null)->get();
         foreach($users as $user){
-            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
+            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
         }
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
@@ -73,7 +73,7 @@ class GeneralNotoficationController extends Controller
         $not->save();
         $users = Clinet::where('token','!=',null)->where('city_id',$request->city_id)->get();
         foreach($users as $user){
-            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
+            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
         }
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
@@ -89,7 +89,7 @@ class GeneralNotoficationController extends Controller
         $user = Clinet::find($request->user_id);
         Notification::send($user, new UserNotification($date));
         $not = 'true';
-        $this->notification($user->token,  $date['body_ar'], $date['title_ar'], 'notofication');
+        $this->notification($user->token,  $date['body_ar'], $date['title_ar'], 'notofication',null,null);
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication send successfully'], $not ? 200 : 400);
 
