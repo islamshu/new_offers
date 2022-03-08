@@ -60,6 +60,8 @@ class GeneralNotoficationController extends Controller
         $user = Clinet::find($request->user_id);
         Notification::send($user, new UserNotification($date));
         $not = 'true';
+        $this->notification($user->token,  $date['body_ar'], $date['title_ar'], 'notofication');
+
         return response()->json(['icon' => 'success', 'title' => 'Notofication send successfully'], $not ? 200 : 400);
 
         
