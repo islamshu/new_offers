@@ -23,7 +23,7 @@
                     <textarea name="body" id="body" required class="form-control form-control-solid" cols="10" rows="5"></textarea>
             </div>
         </div>
-        <div class="form-group col-md-6 vendor">
+        <div class="form-group col-md-12 vendor">
             <label>{{ __('Choose Vendor') }}:</label>
             <select name="type" id="vendor_id" class="form-control">
                 <option value="" selected disabled>{{ __('Choose') }}</option>
