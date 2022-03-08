@@ -11,6 +11,7 @@ use Notification;
 use App\Notifications\UserNotification;
 use Illuminate\Http\Request;
 use App\Http\Traits\SendNotification;
+use App\Models\Clinet;
 
 class GeneralNotoficationController extends Controller
 {
@@ -19,13 +20,13 @@ class GeneralNotoficationController extends Controller
         return view('dashboard.notofication.general')->with('notofications',GeneralNotofication::with(['vendor','offer'])->get());
     }
     public function create(){
-        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status',1)->get();
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
        
         $notofications=GeneralNotofication::get();
         return view('dashboard.notofication.general_create',compact('vendors','notofications'));
     }
     public function get_offer($locale,$id){
-        $offers = Offer::with('vendor')->where('vendor_id',$id)->get();
+        $offers = Offer::with('vendor')->where('status',1)->where('vendor_id',$id)->get();
     }
     public function store(Request $request ,$locale){
         $not = new GeneralNotofication();
@@ -37,7 +38,7 @@ class GeneralNotoficationController extends Controller
         $not->offer_id = $request->offer_id;
 
         $not->save();
-        $users = User::where('fcm_token','!=',null)->get();
+        $users = Clinet::where('token','!=',null)->get();
         foreach($users as $user){
             $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication');
         }
@@ -45,7 +46,7 @@ class GeneralNotoficationController extends Controller
         return response()->json(['icon' => 'success', 'title' => 'Notofication created successfully'], $not ? 200 : 400);
     }
     public function create_user_notofication(){
-        $users = User::get();
+        $users = Clinet::get();
         return view('dashboard.notofication.user_create',compact('users'));
     }
     public function store_user_notofication(Request $request , $locale)
@@ -56,7 +57,7 @@ class GeneralNotoficationController extends Controller
             'body_ar' => $request->body_ar,
             'body_en' => $request->body_en,
         ];
-        $user = User::find($request->user_id);
+        $user = Clinet::find($request->user_id);
         Notification::send($user, new UserNotification($date));
         $not = 'true';
         return response()->json(['icon' => 'success', 'title' => 'Notofication send successfully'], $not ? 200 : 400);
