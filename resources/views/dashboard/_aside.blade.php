@@ -303,6 +303,32 @@ $lang = app()->getLocale();
     </li>
 @endif
 
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="#" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Notofication') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+
+        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            <ul class="menu-subnav">
+                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                            class="menu-text">{{ __('Notofication') }}</span></span>
+                </li>
+               
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/general_notofication"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('General Notofication') }}</span></a></li>
+                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/create_user_notofication"
+                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                            class="menu-text">{{ __('Custom Notofication') }}</span></a></li>
+
+            </ul>
+        </div>
+    </li>
+
 {{-- {{ dd(auth()->user()->isAbleTo(['read-vendor'])) }} --}}
 @if (auth()->user()->isAbleTo(['read-vendor']))
 
