@@ -4,7 +4,7 @@ trait SendNotification
 {
     public function notification($to,$title, $body, $page)
     {
-        $firebase_key = env('FIREBASE_KEY');
+        $firebase_key = get_general('firebase');
         $dataArr = array(
             'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
             'status'=>"done",
