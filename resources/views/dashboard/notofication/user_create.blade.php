@@ -23,7 +23,7 @@
                         <select name="user_id" id="user_id" class="form-control">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($users as $item)
-                            <option value="{{ $item->id }}" >{{ $item->username }}</option>
+                            <option value="{{ $item->id }}" >{{ $item->name }}</option>
 
                             @endforeach
                         </select>
