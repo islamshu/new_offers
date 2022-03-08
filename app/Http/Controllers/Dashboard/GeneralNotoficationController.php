@@ -56,7 +56,9 @@ class GeneralNotoficationController extends Controller
     }
     public function model_city(Request $request){
         $city = City::find($request->id);
-        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->has('cities')->whereHas('cities', function ($q) use ($request) {
+            $q->where('city_id', $request->id);
+          })->get();
         return view('dashboard.notofication.city_model',compact('city','vendors'));
     }
     public function store_user_notofication(Request $request , $locale)
