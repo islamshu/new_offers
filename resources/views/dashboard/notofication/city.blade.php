@@ -13,7 +13,7 @@
                             <img src="{{  $item->image  }}" width="80" height="80" alt="">
                         </div>
                         <!--end::Svg Icon-->
-                        <button data-toggle="modal"
+                        <button data-toggle="modal" style="margin-left: 37%;"
                                                         data-target="#myModal" class="btn btn-outline-primary"
                                                         onclick="make('{{ $item->id }}')">{{ $item->city_name }}</button>
                     </div>
