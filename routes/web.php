@@ -108,7 +108,9 @@ Route::group([
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
         Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
+        Route::post('/show/gendernotofication', 'Dashboard\GeneralNotoficationController@model_gender')->name('gendernotofication');
 
+        
         
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
         Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
@@ -191,7 +193,9 @@ Route::group([
 
         
         Route::post('store_city_notofication', 'Dashboard\GeneralNotoficationController@store_city')->name('store_city_noto');
+        Route::post('store_gender_notofication', 'Dashboard\GeneralNotoficationController@store_gender')->name('store_gender_noto');
 
+        
         Route::post('store_user_notofication', 'Dashboard\GeneralNotoficationController@store_user_notofication')->name('store_user_notofication');
 
         Route::get('create_coupun/{id}','Dashboard\CouponController@create_coupon')->name('vendor.create_coupoun');

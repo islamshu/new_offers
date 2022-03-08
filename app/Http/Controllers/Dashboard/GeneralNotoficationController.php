@@ -54,6 +54,9 @@ class GeneralNotoficationController extends Controller
         $cities = City::where('status',1)->get();
         return view('dashboard.notofication.city',compact('cities'));
     }
+    public function create_gender_notofication(){
+        return view('dashboard.notofication.gender');
+    }
     public function model_city(Request $request){
         $city = City::find($request->id);
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->has('cities')->whereHas('cities', function ($q) use ($request) {
@@ -61,6 +64,12 @@ class GeneralNotoficationController extends Controller
           })->get();
         return view('dashboard.notofication.city_model',compact('city','vendors'));
     }
+    public function model_gender(Request $request){
+        $gender = $request->id;
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+        return view('dashboard.notofication.gender_model',compact('gender','vendors'));
+    }
+    
     public function store_city(Request $request ,$locale){
         $not = new GeneralNotofication();
         $not->title_en = $request->title_en;
@@ -77,6 +86,24 @@ class GeneralNotoficationController extends Controller
         }
         return redirect()->back();
     }
+    public function store_gender(Request $request ,$locale){
+        $not = new GeneralNotofication();
+        $not->title_en = $request->title_en;
+        $not->title_ar = $request->title_ar;
+        $not->body_en = $request->body_en;
+        $not->body_ar = $request->body_ar;
+        $not->vendor_id = $request->vendor_id;
+        $not->offer_id = $request->offer_id;
+        // $not->city_id = $request->city_id;
+        $not->save();
+        $users = Clinet::where('token','!=',null)->where('gender',$request->gender)->where('city_id',$request->city_id)->get();
+        foreach($users as $user){
+            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
+        }
+        return redirect()->back();
+    }
+
+    
     public function store_user_notofication(Request $request , $locale)
     {
         $date =[
