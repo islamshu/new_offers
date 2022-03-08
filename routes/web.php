@@ -107,6 +107,9 @@ Route::group([
         Route::get('/vendor-cover/{id}', 'Dashboard\brandController@get_cover')->name('cover.show');
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
+        Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
+
+        
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
         Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
         Route::get('offer_status','Dashboard\OfferController@update_status')->name('offerstatus.update');
