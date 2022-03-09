@@ -25,10 +25,10 @@
                     @foreach ($codes as $code)
                     @if(app()->getLocale() == 'ar')
                         <td>{{ $code->name_ar }}</td>
-                        <td>{{ $code->sub->name_ar }}</td>
+                        <td>{{ @$code->sub->name_ar }}</td>
                         @else
                         <td>{{ $code->name_en }}</td>
-                        <td>{{ $code->sub->name_en }}</td>
+                        <td>{{ @$code->sub->name_en }}</td>
                         @endif
                         <td>{{ $code->start_at }}
                         <br>
