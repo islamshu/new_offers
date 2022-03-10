@@ -1,5 +1,5 @@
 <div class="post   col-sm-12  rounded">
-    <form action="{{ route('create_user_brand' ,'en') }}" method="post">
+    <form action="{{ route('create_user_brand', [ 'locale' => app()->getLocale()]) }}" method="post">
         
         <input type="hidden" name="vendor_id" value="{{ $vendor->id }}" id="">
         <div class="row">
