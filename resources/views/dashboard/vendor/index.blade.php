@@ -84,7 +84,7 @@
                                                     data-target="#myModaluser" class="btn btn-outline-primary"
                                                     onclick="makeuser('{{ $item->id }}')" 
                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                                                        <i class="fa fa-image"></i>
+                                                        <i class="fa fa-user"></i>
                                                     </a>
 
 
