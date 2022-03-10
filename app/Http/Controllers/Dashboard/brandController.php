@@ -64,6 +64,14 @@ class brandController extends Controller
         }
         //
     }
+    public function showmodeluser(Request $request){
+        $vendor = Vendor::find($request->id);
+        return view('dashboard.vendor.show_model_user')->with('vendor',$vendor);
+    }
+    public function create_user_brand(Request $request)
+    {
+       dd($request);
+    }
      public function post_cover(Request $request)
     {
         
