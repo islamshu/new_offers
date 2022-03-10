@@ -1,6 +1,6 @@
 <div class="post   col-sm-12  rounded">
     <form action="{{ route('create_user_brand', [ 'locale' => app()->getLocale()]) }}" method="post">
-        
+        @csrf
         <input type="hidden" name="vendor_id" value="{{ $vendor->id }}" id="">
         <div class="row">
             <div class="col-md-12 form-group">
