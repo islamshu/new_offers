@@ -1,5 +1,6 @@
 <div class="post   col-sm-12 col-md-6 col-lg-4 rounded">
     <form action="{{ route('create_user_brand' ,'en') }}" method="post">
+        <div class="form-group">
         <input type="hidden" name="vendor_id" value="{{ $vendor->id }}" id="">
         <div class="row">
             <div class="col-md-9">
@@ -13,5 +14,6 @@
             </div>
             <input type="submit" value="submit" class="btn btn-info">
         </div>
+    </div>
     </form>
 </div>
