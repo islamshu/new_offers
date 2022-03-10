@@ -164,14 +164,14 @@
                                                 <div class="modal-header">
                                                     
                                                     <h5 class="modal-title" id="staticBackdropLabel">
-                                                        {{ __('Categories') }}</h5>
+                                                        {{ __('create user') }}</h5>
 
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div id="addToCart-modal-body">
+                                                <div id="addToCart-modal-body-user">
                                                     <div class="c-preloader text-center p-3">
                                                         <i class="las la-spinner la-spin la-3x"></i>
                                                     </div>
@@ -259,7 +259,7 @@
 
                     success: function(data) {
 
-                        $('#addToCart-modal-body').html(data);
+                        $('#addToCart-modal-body-user').html(data);
 
 
                     }
