@@ -58,7 +58,7 @@ Route::group([
       
 
     });
-    Route::group(['middleware' => ['checkrole:Admin|Vendors|Enterprises']], function () {
+    Route::group(['middleware' => ['checkrole:|Vendors|Enterprises']], function () {
         //-----------------------Start Home Routes--------------------------
 
         Route::get('/home', [PagesController::class, 'index'])->name('home.index');

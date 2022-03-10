@@ -13,6 +13,7 @@ use App\Models\Subscriptions_User;
 use Carbon\Carbon;
 use Facade\FlareClient\Time\Time;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
+use App\Models\Transaction;
 
 class PayemntController extends BaseController
 {
@@ -155,8 +156,9 @@ class PayemntController extends BaseController
                 $promocode->client_id = auth('client_api')->id();
                 $promocode->promocode = $request->promo_code;
                 $promocode->save();
-
             }
+            
+
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
             $res['data']['myfatoorah_payment']['price']= $code->price;
             $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
