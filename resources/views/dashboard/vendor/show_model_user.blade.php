@@ -12,7 +12,9 @@
             <div class="col-md-12 form-group">
                 <input type="password" name="password" class="form-control" placeholder="Enter password" id="">
             </div>
-            <input type="button" value="submit" class="btn btn-info">
+            <div class="form-group">
+                <button type="submit" class="btn btn-info">submit</button>
+        </div>
         </div>
    
     </form>
