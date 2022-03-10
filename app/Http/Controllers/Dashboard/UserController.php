@@ -69,7 +69,19 @@ class UserController extends Controller
  
     public function create_user_brand(Request $request)
     {
-       dd($request);
+        $user = new User();
+        $user->username = $request->name;
+            $user->name = $request->name;
+            $user->password = bcrypt($request->password);
+            $user->email = $request->email;
+            $user->address = '';
+            $user->last_ip= '';
+            $user->Save();
+            $role = Role::where('name', 'Vendors')->first();
+            
+            $user->attachRole($role);
+
+  
     }
 
     /**
