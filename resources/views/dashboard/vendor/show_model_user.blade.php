@@ -1,5 +1,5 @@
 <div class="post   col-sm-12 col-md-6 col-lg-4 rounded">
-    <form action="{{ route('create_user_brand') }}" method="post">
+    <form action="{{ route('create_user_brand' ,'en') }}" method="post">
         <input type="hidden" name="vendor_id" value="{{ $vendor->id }}" id="">
         <div class="row">
             <div class="col-md-9">
