@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         //create read update delete
         $this->middleware(['permission:read-user'])->only('index');
-        $this->middleware(['permission:create-user'])->only('create');
+        $this->middleware(['permission:create-user'])->only('create','create_user_brand');
         $this->middleware(['permission:update-user'])->only('edit');
         $this->middleware(['permission:delete-user'])->only('destroy');
   
@@ -67,6 +67,10 @@ class UserController extends Controller
         }
     }
  
+    public function create_user_brand(Request $request)
+    {
+       dd($request);
+    }
 
     /**
      * Store a newly created resource in storage.

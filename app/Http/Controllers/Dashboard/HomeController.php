@@ -26,10 +26,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function create_user_brand(Request $request)
-    {
-       dd($request);
-    }
+   
     function lang($local){
 
         $url = url()->previous();
