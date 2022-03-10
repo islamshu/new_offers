@@ -89,7 +89,7 @@ class UserController extends Controller
                 
                 $user->attachRole($role);
         }
-        return redirect()->bakc();
+        return redirect()->back();
         
 
   
