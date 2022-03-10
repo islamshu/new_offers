@@ -109,7 +109,10 @@ Route::group([
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
         Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
         Route::post('/show/gendernotofication', 'Dashboard\GeneralNotoficationController@model_gender')->name('gendernotofication');
+        Route::post('/show/usermodel', 'Dashboard\UserController@showmodeluser')->name('showmodeluser');
+        Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
 
+        
         
         
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');

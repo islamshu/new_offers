@@ -66,6 +66,14 @@ class UserController extends Controller
             return response()->view('dashboard.users.create',compact('rols')) ;
         }
     }
+    public function showmodeluser(Request $request){
+        $vendor = Vendor::find($request->id);
+        return view('dashboard.vendor.show_model_user')->with('vendor',$vendor);
+    }
+    public function create_user_brand(Request $request)
+    {
+       dd($request);
+    }
 
     /**
      * Store a newly created resource in storage.

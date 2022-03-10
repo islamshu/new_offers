@@ -79,6 +79,15 @@
                                                     <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
                                                     </td>
                                                 <td class="pr-0 text-center">
+
+                                                    <a data-toggle="modal"
+                                                    data-target="#myModaluser" class="btn btn-outline-primary"
+                                                    onclick="makeuser('{{ $item->id }}')" 
+                                                        class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                                        <i class="fa fa-image"></i>
+                                                    </a>
+
+
                                                     @if (auth()->user()->isAbleTo(['update-vendor']))
 
                                                     <a href="{{ route('vendor.edit', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
@@ -147,6 +156,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fase" id="myModaluser" data-backdrop="static"
+                                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        {{ __('Categories') }}</h5>
+
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div id="addToCart-modal-body">
+                                                    <div class="c-preloader text-center p-3">
+                                                        <i class="las la-spinner la-spin la-3x"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn ok">Ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     </table>
                                 </div>
@@ -192,6 +229,29 @@
                 $.ajax({
                     type: 'post',
                     url: "{{ route('showpostModal', app()->getLocale()) }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'id': id
+                    },
+
+                    success: function(data) {
+
+                        $('#addToCart-modal-body').html(data);
+
+
+                    }
+                });
+
+            }
+            function makeuser(id) {
+                $("#myModaluser").show();
+
+                // $('#staticBackdrop').modal();
+                $('.c-preloader').show();
+
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('showmodeluser', app()->getLocale()) }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         'id': id
