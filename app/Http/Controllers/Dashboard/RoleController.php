@@ -139,7 +139,7 @@ class RoleController extends Controller
             
         } elseif (Auth::user()->hasRole('Enterprises')) {
             $role = Role::find($role_id);
-            $all_permissions = Permission::where('is_admin',0)->get();
+            $all_permissions = Permission::where('is_admin',0)->where('is_vendor',0)->get();
              
         } elseif (Auth::user()->hasRole('Vendors')) {
             $role = Role::find($role_id);
