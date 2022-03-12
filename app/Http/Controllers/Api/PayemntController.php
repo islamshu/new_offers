@@ -19,7 +19,7 @@ class PayemntController extends BaseController
 {
     public function myfatoorah(Request $request)
     {
-
+        dd($request->package_id);
         $code = Subscription::find($request->package_id);
         if (!$code) {
             $res['status'] = $this->SendError();
