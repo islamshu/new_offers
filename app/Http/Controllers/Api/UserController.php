@@ -87,9 +87,10 @@ class UserController extends BaseController
             $user->save();
             $user = new Subscriptions_User();
             $user->payment_type = 'new_user';
-            $client->is_trial = 1;
             // dd(auth('client_api')->id());
             $client = auth('client_api')->user();
+            $client->is_trial = 1;
+
             $client->type_of_subscribe = $code->type_paid;
     
             if ($code->type_balance == 'Limit') {
