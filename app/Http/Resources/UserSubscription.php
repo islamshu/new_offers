@@ -21,7 +21,7 @@ class UserSubscription extends JsonResource
             'expire_date'=>date('Y-m-d',strtotime($client->expire_date)),
             'offers_saving'=>$client->offers_saving,
             'coupons_saving'=>$client->coupon_saving,
-            'coupons_no'=> $client->balance,
+            'coupons_no'=> $this->balnce,
             'used_offers_no'=>$client->used_offers_no,
             'purchases_no'=>$client->purchases_no,
             'points_no'=>$client->points_no,
@@ -29,7 +29,7 @@ class UserSubscription extends JsonResource
             'package_id'=>$this->sub_id,
             'duration_id'=>$this->sub_id,
             'actual_account_no'=>$client->actual_accounts_no,
-            'price'=>$this->balnce,
+            'price'=>Subscription::find($this->sub_id)->price,
             'package'=>new PakegeTowResourses(Subscription::find($this->sub_id)),
             'duration'=>$this->duration(Subscription::find($this->sub_id))
         ];
