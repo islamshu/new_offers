@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\Discount;
 use App\Models\DiscountSubscription;
+use App\Models\Payment;
 use App\Models\PromocodeUser;
 use App\Models\Subscription;
 use App\Models\Subscriptions_User;
@@ -138,7 +139,7 @@ class PayemntController extends BaseController
             } elseif ($data_type == 'years') {
                 $client->expire_date = Carbon::now()->addYears($data_type_number);
             }
-            $client->save();
+            // $client->save();
 
             if ($data_type == 'days') {
                 $user->expire_date = Carbon::now()->addDays($data_type_number);
@@ -152,13 +153,25 @@ class PayemntController extends BaseController
             $user->purchases_no =  $count + 1;
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
-            $user->save();
+            // $user->save();
             if($price != $code->price){
                 $promocode =new  PromocodeUser();
                 $promocode->client_id = auth('client_api')->id();
                 $promocode->promocode = $request->promo_code;
-                $promocode->save();
+                // $promocode->save();
             }
+            $payment = new Payment();
+            $payment->order_id = Carbon::now()->timestamp;
+            $payment->price = $code->price;
+            $payment->discount=$code->price - $price;
+            $payment->amount=$price;
+            $payment->package_id=$request->package_id;
+            $payment->mobile_country_iso=$request->currency_iso_code;
+            $payment->all_request = json_encode($request->all());
+            $payment->promocode = $request->promo_code;
+            $payment->save();
+
+            
             
 
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
@@ -262,6 +275,27 @@ class PayemntController extends BaseController
             return $res;
         }
         $json = json_decode($response);
-        dd($json,$json->Data->InvoiceStatus);
+        if (isset($json->IsSuccess) && $json->IsSuccess == true) {
+            if($json->Data->InvoiceStatus == 'Paid'){
+                $res['status'] = $this->sendResponsewithMessage('Created',"","");
+                $res['data']['myfatoorah_payment']['price']= $code->price;
+                $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
+                $res['data']['myfatoorah_payment']['amount']= $price;
+                $res['data']['myfatoorah_payment']['customer_name']= $json->Data->CustomerName;
+                $res['data']['myfatoorah_payment']['customer_email']= $json->Data->CustomerEmail;
+                $res['data']['myfatoorah_payment']['customer_phone']= $json->Data->CustomerMobile;
+                $res['data']['myfatoorah_payment']['payment_method']= $json->Data->PaymentGateway->PaymentGateway;
+                $res['data']['myfatoorah_payment']['currency_iso_code']= $json->Data->PaymentGateway->PaidCurrency;
+                $res['data']['myfatoorah_payment']['mobile_country_iso_code']= '+966';
+                $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
+                $res['data']['myfatoorah_payment']['payment_id']=$json->Data->PaymentGateway->PaymentId;
+                $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
+                $res['data']['myfatoorah_payment']['pay_for']='subscription';
+                $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
+                return $res;
+    
+            }
+        }
+        dd($json,);
     }
 }
