@@ -43,7 +43,7 @@ class PayemntController extends BaseController
                                  $pricedis = $price - $dis->value_discount ;
                              }else{
                                 $pricedis = ($dis->value_discount / 100) * $price;
-                                dd($pricedis);
+                            
                              }
                              
                        }else{
@@ -74,16 +74,11 @@ class PayemntController extends BaseController
             }
            
         }
-        if($price > $pricedis){
-            $pp = $pricedis;
-        }else{
-            $pp= $price;   
-        }
 
         $postFields = [
             //Fill required data
             'NotificationOption' => 'Lnk', //'SMS', 'EML', or 'ALL'
-            'InvoiceValue'       => $pp,
+            'InvoiceValue'       => $price,
             'CustomerName'       => $request->customer_name,
             //Fill optional data
             'DisplayCurrencyIso' => $request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
@@ -163,7 +158,7 @@ class PayemntController extends BaseController
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
             // $user->save();
-            if($pp != $code->price){
+            if($price != $code->price){
                 $promocode =new  PromocodeUser();
                 $promocode->client_id = auth('client_api')->id();
                 $promocode->promocode = $request->promo_code;
@@ -172,8 +167,8 @@ class PayemntController extends BaseController
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
             $payment->price = $code->price;
-            $payment->discount=$code->price - $pp;
-            $payment->amount=$pp;
+            $payment->discount=$code->price - $price;
+            $payment->amount=$price;
             $payment->package_id=$request->package_id;
             $payment->mobile_country_iso=$request->mobile_country_iso_code;
             $payment->all_request = json_encode($request->all());
@@ -185,8 +180,8 @@ class PayemntController extends BaseController
 
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
             $res['data']['myfatoorah_payment']['price']= $code->price;
-            $res['data']['myfatoorah_payment']['discount']= $code->price - $pp;
-            $res['data']['myfatoorah_payment']['amount']= $pp;
+            $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
+            $res['data']['myfatoorah_payment']['amount']= $price;
             $res['data']['myfatoorah_payment']['customer_name']= $request->customer_name;
             $res['data']['myfatoorah_payment']['customer_email']= $request->customer_email;
             $res['data']['myfatoorah_payment']['customer_phone']= $request->customer_phone;
