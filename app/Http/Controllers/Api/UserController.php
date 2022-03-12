@@ -200,7 +200,7 @@ class UserController extends BaseController
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
-            if(Carbon::noew() > $user->expire_date ){
+            if(Carbon::now() > $user->expire_date ){
                 $user->is_trial =0;
                 $user->type_of_subscribe ='FREE';
                 $user->save();
