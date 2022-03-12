@@ -36,6 +36,11 @@ class BaseController extends Controller
      
             return $response;
         }
+        public function SendCustomError($title,$meesage){
+            $response = ['status' => false,'HTTP_code'=>404,'HTTP_response'=>'Not Found','title'=>$title,'message'=>$message];
+     
+            return $response;
+        }
     public function UnAuth( $code = 404){
         $response = ['status' => false,'HTTP_code'=>404,'HTTP_response'=>'Unauthorized', 'message' => 'Unauthorized or Signed in from another device'];
  
