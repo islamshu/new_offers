@@ -171,7 +171,7 @@ class PayemntController extends BaseController
             $res['data']['myfatoorah_payment']['payment_method']= $request->payment_method;
             $res['data']['myfatoorah_payment']['currency_iso_code']= $request->currency_iso_code;
             $res['data']['myfatoorah_payment']['mobile_country_iso_code']= $request->mobile_country_iso_code;
-            $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
+            $res['data']['myfatoorah_payment']['invoice_id']= null;
             $res['data']['myfatoorah_payment']['payment_id']= $request->payment_id;
             $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
             $res['data']['myfatoorah_payment']['pay_for']='subscription';
