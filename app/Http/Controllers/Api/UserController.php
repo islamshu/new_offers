@@ -89,7 +89,8 @@ class UserController extends BaseController
             $user->payment_type = 'new_user';
             // dd(auth('client_api')->id());
             $client = auth('client_api')->user();
-            $client->is_trial = 1;
+            $userr->is_trial = 1;
+            $userr->save();
 
             $client->type_of_subscribe = $code->type_paid;
     
