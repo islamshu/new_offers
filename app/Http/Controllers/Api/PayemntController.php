@@ -262,6 +262,6 @@ class PayemntController extends BaseController
             return $res;
         }
         $json = json_decode($response);
-        dd($json->IsSuccess);
+        dd($json,$json->IsSuccess);
     }
 }
