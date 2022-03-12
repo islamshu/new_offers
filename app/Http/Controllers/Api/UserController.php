@@ -104,7 +104,12 @@ class UserController extends BaseController
             }
             $userr->start_date = Carbon::now();
             $data_type = $code->expire_date_type;
-            $data_type_number = $code->number_of_dayes;
+            if( $code->type_paid=='TRIAL'){
+                $data_type_number = $code->days_of_trial;
+
+            }else{
+                $data_type_number = $code->days_of_trial;
+            }
             if ($data_type == 'days') {
                 $userr->expire_date = Carbon::now()->addDays($data_type_number);
             } elseif ($data_type == 'months') {
