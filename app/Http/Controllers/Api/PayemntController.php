@@ -40,11 +40,13 @@ class PayemntController extends BaseController
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
                              if($dis->type_discount == 'fixed'){
+                                dd($price,11);
                                  $price = $price - $dis->value_discount ;
                              }else{
+                                dd($price,22); 
                                 $price = ($dis->value / 100) * $price;
                              }
-                             dd($price);
+                             
                        }else{
                         $res['status'] = $this->SendError();
                         $res['status']['message'] = 'The promocode has expired';
