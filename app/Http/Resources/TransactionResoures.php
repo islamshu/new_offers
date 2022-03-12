@@ -22,7 +22,7 @@ class TransactionResoures extends JsonResource
             'store_id' => $this->vendor_id,
             'saving' => 0,
             'created_at' => $this->created_at,
-            'offer' => new OfferResourses($this->offer->where('end_time','>=',Carbon::now())),
+            'offer' => new OfferResourses($this->offer),
             'store' => $this->store($this),
         ];
     }

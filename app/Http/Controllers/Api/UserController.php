@@ -218,9 +218,7 @@ class UserController extends BaseController
         $trans = Transaction::where('client_id',auth('')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status']= $this->sendResponse200('OK');
         // $trans =
-        foreach($trans as $d){
-            dd($d);
-        }
+      
         $res['data']['transactions'] = new TransactionCollection($trans);
         return $res;
     }
