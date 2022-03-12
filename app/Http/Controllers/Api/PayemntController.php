@@ -40,12 +40,9 @@ class PayemntController extends BaseController
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
                              if($dis->type_discount == 'fixed'){
-                              dd('d');
-                                 $price = $price - $dis->value_discount ;
+                                 $pricedis = $price - $dis->value_discount ;
                              }else{
-                                 dd('dd');
-                                $price = ($dis->value / 100) * $price;
-                                dd($price);
+                                $pricedis = ($dis->value / 100) * $price;
                              }
                              
                        }else{
@@ -76,11 +73,16 @@ class PayemntController extends BaseController
             }
            
         }
+        if($price > $pricedis){
+            $pp = $pricedis;
+        }else{
+            $pp= $price;   
+        }
 
         $postFields = [
             //Fill required data
             'NotificationOption' => 'Lnk', //'SMS', 'EML', or 'ALL'
-            'InvoiceValue'       => $price,
+            'InvoiceValue'       => $pp,
             'CustomerName'       => $request->customer_name,
             //Fill optional data
             'DisplayCurrencyIso' => $request->currency_iso_code != null ? $request->currency_iso_code : 'SAR',
@@ -160,7 +162,7 @@ class PayemntController extends BaseController
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
             // $user->save();
-            if($price != $code->price){
+            if($pp != $code->price){
                 $promocode =new  PromocodeUser();
                 $promocode->client_id = auth('client_api')->id();
                 $promocode->promocode = $request->promo_code;
@@ -169,8 +171,8 @@ class PayemntController extends BaseController
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
             $payment->price = $code->price;
-            $payment->discount=$code->price - $price;
-            $payment->amount=$price;
+            $payment->discount=$code->price - $pp;
+            $payment->amount=$pp;
             $payment->package_id=$request->package_id;
             $payment->mobile_country_iso=$request->mobile_country_iso_code;
             $payment->all_request = json_encode($request->all());
@@ -182,8 +184,8 @@ class PayemntController extends BaseController
 
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
             $res['data']['myfatoorah_payment']['price']= $code->price;
-            $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
-            $res['data']['myfatoorah_payment']['amount']= $price;
+            $res['data']['myfatoorah_payment']['discount']= $code->price - $pp;
+            $res['data']['myfatoorah_payment']['amount']= $pp;
             $res['data']['myfatoorah_payment']['customer_name']= $request->customer_name;
             $res['data']['myfatoorah_payment']['customer_email']= $request->customer_email;
             $res['data']['myfatoorah_payment']['customer_phone']= $request->customer_phone;
