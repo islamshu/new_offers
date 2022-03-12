@@ -31,9 +31,9 @@ class PayemntController extends BaseController
         $price = $code->price;
         if($request->promo_code != null){
             $discout = DiscountSubscription::where('code',$request->promo_code)->first();
-            dd($discout);
             if($discout){
                 if($discout->sub_id == $request->package_id){
+                    dd('dd');
                    $dis= Discount::find($discout->discount_id);
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
