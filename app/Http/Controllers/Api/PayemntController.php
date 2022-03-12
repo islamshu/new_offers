@@ -73,6 +73,7 @@ class PayemntController extends BaseController
             }
            
         }
+        dd($pricedis);
         if($price > $pricedis){
             $pp = $pricedis;
         }else{
