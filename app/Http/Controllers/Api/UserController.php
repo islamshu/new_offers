@@ -190,6 +190,7 @@ class UserController extends BaseController
         $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         // dd($user);
         if($user){
+           
             $user->last_login = Carbon::now();
             $user->is_verify = 1;
             $user->save();
@@ -200,6 +201,7 @@ class UserController extends BaseController
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
+            dd( $user->expire_date);
             if(Carbon::now() > $user->expire_date ){
                 $user->is_trial =0;
                 $user->type_of_subscribe ='FREE';
