@@ -253,49 +253,49 @@ class PayemntController extends BaseController
 
         return $error;
     }
-    public  function active(Request $request)
-    {
-        $postFields = [
-            'Key'     => $request->invoice_id,
-            'KeyType' => 'InvoiceId'
-        ];
-        $curl = curl_init(get_general('base_url') . '/v2/getPaymentStatus');
-        $test = curl_setopt_array($curl, array(
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => json_encode($postFields),
-            CURLOPT_HTTPHEADER     => array("Authorization: Bearer " . get_general('api_key'), 'Content-Type: application/json'),
-            CURLOPT_RETURNTRANSFER => true,
-        ));
+    // public  function active(Request $request)
+    // {
+    //     $postFields = [
+    //         'Key'     => $request->invoice_id,
+    //         'KeyType' => 'InvoiceId'
+    //     ];
+    //     $curl = curl_init(get_general('base_url') . '/v2/getPaymentStatus');
+    //     $test = curl_setopt_array($curl, array(
+    //         CURLOPT_CUSTOMREQUEST  => 'POST',
+    //         CURLOPT_POSTFIELDS     => json_encode($postFields),
+    //         CURLOPT_HTTPHEADER     => array("Authorization: Bearer " . get_general('api_key'), 'Content-Type: application/json'),
+    //         CURLOPT_RETURNTRANSFER => true,
+    //     ));
 
-        $response = curl_exec($curl);
-        $error = $this->handleError($response);
-        if ($error) {
-            $res['status'] = $this->SendError();
-            $res['status']['message'] = $error;
-            return $res;
-        }
-        $json = json_decode($response);
-        if (isset($json->IsSuccess) && $json->IsSuccess == true) {
-            if($json->Data->InvoiceStatus == 'Paid'){
-                $res['status'] = $this->sendResponsewithMessage('Created',"","");
-                $res['data']['myfatoorah_payment']['price']= $code->price;
-                $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
-                $res['data']['myfatoorah_payment']['amount']= $price;
-                $res['data']['myfatoorah_payment']['customer_name']= $json->Data->CustomerName;
-                $res['data']['myfatoorah_payment']['customer_email']= $json->Data->CustomerEmail;
-                $res['data']['myfatoorah_payment']['customer_phone']= $json->Data->CustomerMobile;
-                $res['data']['myfatoorah_payment']['payment_method']= $json->Data->PaymentGateway->PaymentGateway;
-                $res['data']['myfatoorah_payment']['currency_iso_code']= $json->Data->PaymentGateway->PaidCurrency;
-                $res['data']['myfatoorah_payment']['mobile_country_iso_code']= '+966';
-                $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
-                $res['data']['myfatoorah_payment']['payment_id']=$json->Data->PaymentGateway->PaymentId;
-                $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
-                $res['data']['myfatoorah_payment']['pay_for']='subscription';
-                $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
-                return $res;
+    //     $response = curl_exec($curl);
+    //     $error = $this->handleError($response);
+    //     if ($error) {
+    //         $res['status'] = $this->SendError();
+    //         $res['status']['message'] = $error;
+    //         return $res;
+    //     }
+    //     $json = json_decode($response);
+    //     if (isset($json->IsSuccess) && $json->IsSuccess == true) {
+    //         if($json->Data->InvoiceStatus == 'Paid'){
+    //             $res['status'] = $this->sendResponsewithMessage('Created',"","");
+    //             $res['data']['myfatoorah_payment']['price']= $code->price;
+    //             $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
+    //             $res['data']['myfatoorah_payment']['amount']= $price;
+    //             $res['data']['myfatoorah_payment']['customer_name']= $json->Data->CustomerName;
+    //             $res['data']['myfatoorah_payment']['customer_email']= $json->Data->CustomerEmail;
+    //             $res['data']['myfatoorah_payment']['customer_phone']= $json->Data->CustomerMobile;
+    //             $res['data']['myfatoorah_payment']['payment_method']= $json->Data->PaymentGateway->PaymentGateway;
+    //             $res['data']['myfatoorah_payment']['currency_iso_code']= $json->Data->PaymentGateway->PaidCurrency;
+    //             $res['data']['myfatoorah_payment']['mobile_country_iso_code']= '+966';
+    //             $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
+    //             $res['data']['myfatoorah_payment']['payment_id']=$json->Data->PaymentGateway->PaymentId;
+    //             $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
+    //             $res['data']['myfatoorah_payment']['pay_for']='subscription';
+    //             $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
+    //             return $res;
     
-            }
-        }
-        dd($json,);
-    }
+    //         }
+    //     }
+    //     dd($json,);
+    // }
 }
