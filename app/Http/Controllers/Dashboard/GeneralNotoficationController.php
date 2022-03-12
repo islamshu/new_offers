@@ -41,7 +41,7 @@ class GeneralNotoficationController extends Controller
         $not->save();
         $users = Clinet::where('token','!=',null)->get();
         foreach($users as $user){
-            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
+            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
         }
 
         return redirect()->back();
@@ -82,7 +82,7 @@ class GeneralNotoficationController extends Controller
         $not->save();
         $users = Clinet::where('token','!=',null)->where('city_id',$request->city_id)->get();
         foreach($users as $user){
-            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
+            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
         }
         return redirect()->back();
     }
@@ -98,7 +98,7 @@ class GeneralNotoficationController extends Controller
         $not->save();
         $users = Clinet::where('token','!=',null)->where('gender',$request->gender)->where('city_id',$request->city_id)->get();
         foreach($users as $user){
-            $this->notification($user->token,  $not->body_ar, $not->title_ar, 'notofication',$not->vendor_id,$not->offer_id);
+            $this->notification($user->token,$not->title_ar,  $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
         }
         return redirect()->back();
     }
@@ -115,7 +115,7 @@ class GeneralNotoficationController extends Controller
         $user = Clinet::find($request->user_id);
         Notification::send($user, new UserNotification($date));
         $not = 'true';
-        $this->notification($user->token,  $date['body_ar'], $date['title_ar'], 'notofication',null,null);
+        $this->notification($user->token,  $date['title_ar'], $date['body_ar'], 'notofication',null,null);
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication send successfully'], $not ? 200 : 400);
 
