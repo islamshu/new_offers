@@ -283,6 +283,7 @@
 
         formData.append('end_date', document.getElementById('end_date').value);
         formData.append('days_of_trial', document.getElementById('days_of_trial').value);
+        formData.append('type_balance', 'limit');
 
         formData.append('type_paid', 'trial');
         formData.append('image', document.getElementById('image').files[0]);

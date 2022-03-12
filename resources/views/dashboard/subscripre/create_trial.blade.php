@@ -280,6 +280,7 @@
         // formData.append('expire_date_type', document.getElementById('expire_date_type').value);
 
         formData.append('start_date', document.getElementById('start_date').value);
+        formData.append('type_balance', 'limit');
 
         formData.append('end_date', document.getElementById('end_date').value);
         formData.append('days_of_trial', document.getElementById('days_of_trial').value);
