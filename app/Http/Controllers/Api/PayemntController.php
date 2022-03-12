@@ -188,7 +188,7 @@ class PayemntController extends BaseController
             $res['data']['myfatoorah_payment']['payment_id']= $request->payment_id;
             $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
             $res['data']['myfatoorah_payment']['pay_for']='subscription';
-            $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
+            $res['data']['myfatoorah_payment']['updated_at']=auth()->user()->updated_at->format('Y-m-d h:i:s');
             return $res;
 
 
