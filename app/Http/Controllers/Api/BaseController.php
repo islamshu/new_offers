@@ -37,7 +37,7 @@ class BaseController extends Controller
             return $response;
         }
         public function SendCustomError($title,$meesage){
-            $response = ['status' => false,'HTTP_code'=>404,'HTTP_response'=>'Not Found','title'=>$title,'message'=>$message];
+            $response = ['status' => false,'HTTP_code'=>404,'HTTP_response'=>'Not Found','title'=>$title,'message'=>$meesage];
      
             return $response;
         }
