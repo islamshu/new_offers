@@ -215,18 +215,12 @@ class UserController extends BaseController
     {
         $page = $request->has('page') ? $request->get('page') : 1;
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-        $trans = Transaction::where('client_id',auth('')->id())->orderBy('id','desc')->get();
-        // ->limit($limit)->offset(($page - 1) * $limit)->get()
+        $trans = Transaction::where('client_id',auth('')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status']= $this->sendResponse200('OK');
-        $transarr =[];
+        // $trans =
         foreach($trans as $d){
-         $of = Offer::find($d->offer_id);
-         if($of){
-            array_push($transarr,$d);
-           } 
+            dd($d);
         }
-        $trans = Transaction::whereIn('id',$transarr)->limit($limit)->offset(($page - 1) * $limit)->get();
-
         $res['data']['transactions'] = new TransactionCollection($trans);
         return $res;
     }
