@@ -166,7 +166,7 @@ class PayemntController extends BaseController
             $payment->discount=$code->price - $price;
             $payment->amount=$price;
             $payment->package_id=$request->package_id;
-            $payment->mobile_country_iso=$request->currency_iso_code;
+            $payment->mobile_country_iso=$request->mobile_country_iso_code;
             $payment->all_request = json_encode($request->all());
             $payment->promocode = $request->promo_code;
             $payment->save();
