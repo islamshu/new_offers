@@ -53,7 +53,6 @@ class UserController extends BaseController
 
         }else{
             $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
-            dd($code);
             $user = new Clinet();
             $user->phone = $request->phone;
             $user->code = 1991;
@@ -65,6 +64,7 @@ class UserController extends BaseController
             if($enter){
             $user->uuid_type =  'enterprise';
             $user->enterprise_id = $enter->id;
+           
             }else{
                 $res['status']=$this->sendError();
                 $res['meessage'] = 'not found enterprise unkonw uuid';
@@ -83,10 +83,11 @@ class UserController extends BaseController
             // }
             // dd($uuid);
 
-            
+          
             $user->save();
             $user = new Subscriptions_User();
-            $user->payment_type = 'activition_code';
+            $user->payment_type = 'new_user';
+            $client->is_trial = 1;
             // dd(auth('client_api')->id());
             $client = auth('client_api')->user();
             $client->type_of_subscribe = $code->type_paid;
@@ -121,7 +122,7 @@ class UserController extends BaseController
             }
             $user->status = 'active';
             $user->balnce = $code->balance;
-            $user->purchases_no =  $count + 1;
+            $user->purchases_no =  1;
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
             $user->save();
@@ -198,7 +199,17 @@ class UserController extends BaseController
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
-            $res['other']['is_trial_subscriber']= false;
+            if(Carbon::noew() > $user->expire_date ){
+                $user->is_trial =0;
+                $user->type_of_subscribe ='FREE';
+                $user->save();
+            }
+            if($user->is_trial == 1){
+                $res['other']['is_trial_subscriber']= true;
+            }else{
+                $res['other']['is_trial_subscriber']= false;
+ 
+            }
             return $res;
         }else{
             $res['status']=$this->sendError();
