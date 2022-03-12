@@ -240,4 +240,28 @@ class PayemntController extends BaseController
 
         return $error;
     }
+    public  function active(Request $request)
+    {
+        $postFields = [
+            'Key'     => $request->invoice_id,
+            'KeyType' => 'InvoiceId'
+        ];
+        $curl = curl_init(get_general('base_url') . '/v2/getPaymentStatus');
+        $test = curl_setopt_array($curl, array(
+            CURLOPT_CUSTOMREQUEST  => 'POST',
+            CURLOPT_POSTFIELDS     => json_encode($postFields),
+            CURLOPT_HTTPHEADER     => array("Authorization: Bearer " . get_general('api_key'), 'Content-Type: application/json'),
+            CURLOPT_RETURNTRANSFER => true,
+        ));
+
+        $response = curl_exec($curl);
+        $error = $this->handleError($response);
+        if ($error) {
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = $error;
+            return $res;
+        }
+        $json = json_decode($response);
+        dd($json);
+    }
 }
