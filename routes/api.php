@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth:client_api'], function () {
         Route::post('store-favorite/create', 'Api\FavoritController@store_to_favorate');
         Route::delete('store-favorite/delete', 'Api\FavoritController@AddOrRemoveStoreFavorit');
         Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
-        Route::post('  package/payment/myfatoorah/activate','Api\PayemntController@active');
+        Route::post('package/payment/myfatoorah/activate','Api\PayemntController@active');
 
       
 
