@@ -24,6 +24,7 @@ class PakegeTowResourses extends JsonResource
             'is_family'=>0,
             'multible_accounts_no'=>0,
             'image'=>asset('images/coupun/'.$this->image),
+            'duration'=>$this->duration($this)
 
 
         ];

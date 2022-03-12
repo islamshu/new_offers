@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Http\Resources\PakegeTowResourses;
 use App\Models\Discount;
 use App\Models\DiscountSubscription;
 use App\Models\Payment;
@@ -253,49 +254,117 @@ class PayemntController extends BaseController
 
         return $error;
     }
-    // public  function active(Request $request)
-    // {
-    //     $postFields = [
-    //         'Key'     => $request->invoice_id,
-    //         'KeyType' => 'InvoiceId'
-    //     ];
-    //     $curl = curl_init(get_general('base_url') . '/v2/getPaymentStatus');
-    //     $test = curl_setopt_array($curl, array(
-    //         CURLOPT_CUSTOMREQUEST  => 'POST',
-    //         CURLOPT_POSTFIELDS     => json_encode($postFields),
-    //         CURLOPT_HTTPHEADER     => array("Authorization: Bearer " . get_general('api_key'), 'Content-Type: application/json'),
-    //         CURLOPT_RETURNTRANSFER => true,
-    //     ));
+    public  function active(Request $request)
+    {
+        $postFields = [
+            'Key'     => $request->invoice_id,
+            'KeyType' => 'InvoiceId'
+        ];
+        $curl = curl_init(get_general('base_url') . '/v2/getPaymentStatus');
+        $test = curl_setopt_array($curl, array(
+            CURLOPT_CUSTOMREQUEST  => 'POST',
+            CURLOPT_POSTFIELDS     => json_encode($postFields),
+            CURLOPT_HTTPHEADER     => array("Authorization: Bearer " . get_general('api_key'), 'Content-Type: application/json'),
+            CURLOPT_RETURNTRANSFER => true,
+        ));
 
-    //     $response = curl_exec($curl);
-    //     $error = $this->handleError($response);
-    //     if ($error) {
-    //         $res['status'] = $this->SendError();
-    //         $res['status']['message'] = $error;
-    //         return $res;
-    //     }
-    //     $json = json_decode($response);
-    //     if (isset($json->IsSuccess) && $json->IsSuccess == true) {
-    //         if($json->Data->InvoiceStatus == 'Paid'){
-    //             $res['status'] = $this->sendResponsewithMessage('Created',"","");
-    //             $res['data']['myfatoorah_payment']['price']= $code->price;
-    //             $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
-    //             $res['data']['myfatoorah_payment']['amount']= $price;
-    //             $res['data']['myfatoorah_payment']['customer_name']= $json->Data->CustomerName;
-    //             $res['data']['myfatoorah_payment']['customer_email']= $json->Data->CustomerEmail;
-    //             $res['data']['myfatoorah_payment']['customer_phone']= $json->Data->CustomerMobile;
-    //             $res['data']['myfatoorah_payment']['payment_method']= $json->Data->PaymentGateway->PaymentGateway;
-    //             $res['data']['myfatoorah_payment']['currency_iso_code']= $json->Data->PaymentGateway->PaidCurrency;
-    //             $res['data']['myfatoorah_payment']['mobile_country_iso_code']= '+966';
-    //             $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
-    //             $res['data']['myfatoorah_payment']['payment_id']=$json->Data->PaymentGateway->PaymentId;
-    //             $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
-    //             $res['data']['myfatoorah_payment']['pay_for']='subscription';
-    //             $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
-    //             return $res;
+        $response = curl_exec($curl);
+        $error = $this->handleError($response);
+        if ($error) {
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = $error;
+            return $res;
+        }
+        $json = json_decode($response);
+        if (isset($json->IsSuccess) && $json->IsSuccess == true) {
+            if($json->Data->InvoiceStatus == 'Paid'){
+
+               $payment = Payment::find($request->order_id);
+               $code = Subscription::find($payment->package_id);
+               $price = $code->price;
+
+               $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
+               $user = new Subscriptions_User();
+               $user->payment_type = 'visa';
+               // dd(auth('client_api')->id());
+               $client = auth('client_api')->user();
+               $client->type_of_subscribe = $code->type_paid;
+   
+               if ($code->type_balance == 'Limit') {
+                   $client->is_unlimited = 0;
+                   $client->credit = $code->balance;
+                   $client->remain = $code->balance;
+               } elseif ($code->type_balance == 'UnLimit') {
+                   $client->is_unlimited = 1;
+                   $client->credit = null;
+                   $client->remain = null;
+               }
+               $client->start_date = Carbon::now();
+               $data_type = $code->expire_date_type;
+               $data_type_number = $code->number_of_dayes;
+               if ($data_type == 'days') {
+                   $client->expire_date = Carbon::now()->addDays($data_type_number);
+               } elseif ($data_type == 'months') {
+                   $client->expire_date = Carbon::now()->addMonths($data_type_number);
+               } elseif ($data_type == 'years') {
+                   $client->expire_date = Carbon::now()->addYears($data_type_number);
+               }
+               $client->save();
+   
+               if ($data_type == 'days') {
+                   $user->expire_date = Carbon::now()->addDays($data_type_number);
+               } elseif ($data_type == 'months') {
+                   $user->expire_date = Carbon::now()->addMonths($data_type_number);
+               } elseif ($data_type == 'years') {
+                   $user->expire_date = Carbon::now()->addYears($data_type_number);
+               }
+               $user->status = 'active';
+               $user->balnce = $code->balance;
+               $user->purchases_no =  $count + 1;
+               $user->sub_id  = $code->id;
+               $user->clinet_id  = auth('client_api')->id();
+               $user->save();
+               if($price != $code->price){
+                   $promocode =new  PromocodeUser();
+                   $promocode->client_id = auth('client_api')->id();
+                   $promocode->promocode = $request->promo_code;
+                   $promocode->save();
+               }     
+
+
+
+
+
+                $res['status'] = $this->sendResponsewithMessage('Created',"","");
+                $res['data']['package']=new PakegeTowResourses(Subscription::find($payment->package_id));
+                // $res['data']['myfatoorah_payment']['price']= $payment->price;
+                // $res['data']['myfatoorah_payment']['discount']= $payment->discount;
+                // $res['data']['myfatoorah_payment']['amount']= $payment->amount;
+                // $res['data']['myfatoorah_payment']['customer_name']= $json->Data->CustomerName;
+                // $res['data']['myfatoorah_payment']['customer_email']= $json->Data->CustomerEmail;
+                // $res['data']['myfatoorah_payment']['customer_phone']= $json->Data->CustomerMobile;
+                // $res['data']['myfatoorah_payment']['payment_method']= $json->Data->PaymentGateway->PaymentGateway;
+                // $res['data']['myfatoorah_payment']['currency_iso_code']= $json->Data->PaymentGateway->PaidCurrency;
+                // $res['data']['myfatoorah_payment']['mobile_country_iso_code']= '+966';
+                // $res['data']['myfatoorah_payment']['invoice_id']= $json->Data->InvoiceId;
+                // $res['data']['myfatoorah_payment']['payment_id']=$json->Data->PaymentGateway->PaymentId;
+                // $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
+                // $res['data']['myfatoorah_payment']['pay_for']='subscription';
+                // $res['data']['myfatoorah_payment']['updated_at']=$user->updated_at->format('Y-m-d h:i:s');
+                return $res;
     
-    //         }
-    //     }
-    //     dd($json,);
-    // }
+            }else{
+                $res['status'] = $this->sendResponsewithMessage('Error',"","");
+                $res['data']['message']='Not paid';
+            
+                return $res;
+            }
+        }else{
+            $res['status'] = $this->sendResponsewithMessage('Created',"","");
+            $res['data']['message']='error occrer';
+        
+            return $res;
+        }
+        
+    }
 }
