@@ -45,8 +45,14 @@ class UserController extends BaseController
                 $res['other']['for']= 'signup';  
             }
             if(get_general('actvie_sms') == '1'){
-                $message = 'JOOY Offers Code: '.$user->code;
+                if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
+                    $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+    
+                }else{
+                    $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+       
+                }
                 send_message($user->phone,$message );
             }
 
@@ -55,7 +61,7 @@ class UserController extends BaseController
             $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
             $userr = new Clinet();
             $userr->phone = $request->phone;
-            $userr->code = 1991;
+            $userr->code = rand(0000,1111);
             $userr->image = 'default.jpeg';
             $userr->country_id = 1;
             $userr->type_of_subscribe = 'TRIAL';
@@ -134,8 +140,14 @@ class UserController extends BaseController
             $user->save();
             
             if(get_general('actvie_sms') == '1'){
-                $message = 'JOOY Offers Code: '.$user->code;
+                if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
+                    $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+    
+                }else{
+                    $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+       
+                }
                 send_message($user->phone,$message );
             }
             $res['status']= $this->sendResponse('Created');
@@ -151,13 +163,21 @@ class UserController extends BaseController
     }
     public function resend_sms(Request $request){
         $phone = $request->phone;
-        $code = 1991;
+        $user = Clinet::where('phone',$phone)->first();
         
         // $user = Clinet::where('phone',$phone)->first();
         // dd($user);
         // $user->code = 1991;
         // $user->save();
-        $message = 'JOOY Offers Code: '.$code;
+
+        if(request()->header('lang') == null || request()->header('lang') == 'en' ){
+
+            $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+
+        }else{
+            $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+
+        }
         if(get_general('actvie_sms') == '1'){
             send_message($request->phone,$message );
         }
