@@ -354,14 +354,12 @@ class PayemntController extends BaseController
                 return $res;
     
             }else{
-                $res['status'] = $this->sendResponsewithMessage('Error',"","");
-                $res['data']['message']='Not paid';
+                $res['status'] = $this->sendResponsewithMessage('Created',"فشل الدفع","لم يتم الدفع");
             
                 return $res;
             }
         }else{
-            $res['status'] = $this->sendResponsewithMessage('Created',"","");
-            $res['data']['message']='error occrer';
+            $res['status'] = $this->SendError();
         
             return $res;
         }
