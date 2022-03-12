@@ -217,6 +217,9 @@ class UserController extends BaseController
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
         $trans = Transaction::where('client_id',auth('')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status']= $this->sendResponse200('OK');
+        foreach($trans as $d){
+            dd($d);
+        }
         $res['data']['transactions'] = new TransactionCollection($trans);
         return $res;
     }
