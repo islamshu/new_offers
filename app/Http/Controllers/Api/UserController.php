@@ -58,7 +58,7 @@ class UserController extends BaseController
             $userr->code = 1991;
             $userr->image = 'default.jpeg';
             $userr->country_id = 1;
-            $userr->type_of_subscribe = 'FREE';
+            $userr->type_of_subscribe = 'TRIAL';
             $uuid = 'jooy';
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
@@ -88,32 +88,31 @@ class UserController extends BaseController
             $user = new Subscriptions_User();
             $user->payment_type = 'new_user';
             // dd(auth('client_api')->id());
-            $client = auth('client_api')->user();
             $userr->is_trial = 1;
             $userr->save();
 
-            $client->type_of_subscribe = $code->type_paid;
+            $userr->type_of_subscribe = $code->type_paid;
     
             if ($code->type_balance == 'Limit') {
-                $client->is_unlimited = 0;
-                $client->credit = $code->balance;
-                $client->remain = $code->balance;
+                $userr->is_unlimited = 0;
+                $userr->credit = $code->balance;
+                $userr->remain = $code->balance;
             } elseif ($code->type_balance == 'UnLimit') {
-                $client->is_unlimited = 1;
-                $client->credit = null;
-                $client->remain = null;
+                $userr->is_unlimited = 1;
+                $userr->credit = null;
+                $userr->remain = null;
             }
-            $client->start_date = Carbon::now();
+            $userr->start_date = Carbon::now();
             $data_type = $code->expire_date_type;
             $data_type_number = $code->number_of_dayes;
             if ($data_type == 'days') {
-                $client->expire_date = Carbon::now()->addDays($data_type_number);
+                $userr->expire_date = Carbon::now()->addDays($data_type_number);
             } elseif ($data_type == 'months') {
-                $client->expire_date = Carbon::now()->addMonths($data_type_number);
+                $userr->expire_date = Carbon::now()->addMonths($data_type_number);
             } elseif ($data_type == 'years') {
-                $client->expire_date = Carbon::now()->addYears($data_type_number);
+                $userr->expire_date = Carbon::now()->addYears($data_type_number);
             }
-            $client->save();
+            $userr->save();
     
             if ($data_type == 'days') {
                 $user->expire_date = Carbon::now()->addDays($data_type_number);
