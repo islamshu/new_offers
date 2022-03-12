@@ -42,8 +42,8 @@ class PayemntController extends BaseController
                              if($dis->type_discount == 'fixed'){
                                  $pricedis = $price - $dis->value_discount ;
                              }else{
-                                $pricedis = ($dis->value / 100) * $price;
-                                dd($pricedis ,($dis->value));
+                                $pricedis = ($dis->value_discount / 100) * $price;
+                                dd($pricedis);
                              }
                              
                        }else{
