@@ -28,6 +28,8 @@ class UserController extends BaseController
     {
         $user = Clinet::where('phone',$request->phone)->first();
         if($user){
+            $user->code = rand(1111,9999);
+            $user->save();
             $res['status']= $this->sendResponse('Created');
             // $res['data']['client'] = new UserResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->accessToken;
