@@ -53,17 +53,17 @@ class UserController extends BaseController
 
         }else{
             $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
-            $user = new Clinet();
-            $user->phone = $request->phone;
-            $user->code = 1991;
-            $user->image = 'default.jpeg';
-            $user->country_id = 1;
-            $user->type_of_subscribe = 'FREE';
+            $userr = new Clinet();
+            $userr->phone = $request->phone;
+            $userr->code = 1991;
+            $userr->image = 'default.jpeg';
+            $userr->country_id = 1;
+            $userr->type_of_subscribe = 'FREE';
             $uuid = 'jooy';
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
-            $user->uuid_type =  'enterprise';
-            $user->enterprise_id = $enter->id;
+            $userr->uuid_type =  'enterprise';
+            $userr->enterprise_id = $enter->id;
            
             }else{
                 $res['status']=$this->sendError();
@@ -84,7 +84,7 @@ class UserController extends BaseController
             // dd($uuid);
 
           
-            $user->save();
+            $userr->save();
             $user = new Subscriptions_User();
             $user->payment_type = 'new_user';
             // dd(auth('client_api')->id());
@@ -201,7 +201,7 @@ class UserController extends BaseController
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
-            dd( $user);
+          
             if(Carbon::now() > $user->expire_date ){
                 $user->is_trial =0;
                 $user->type_of_subscribe ='FREE';
