@@ -125,7 +125,7 @@ class UserController extends BaseController
             $user->balnce = $code->balance;
             $user->purchases_no =  1;
             $user->sub_id  = $code->id;
-            $user->clinet_id  = auth('client_api')->id();
+            $user->clinet_id  = $userr->id;
             $user->save();
             
             if(get_general('actvie_sms') == '1'){
