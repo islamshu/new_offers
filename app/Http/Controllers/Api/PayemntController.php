@@ -33,7 +33,7 @@ class PayemntController extends BaseController
             $discout = DiscountSubscription::where('code',$request->promo_code)->first();
             if($discout){
                 if($discout->sub_id == $request->package_id){
-                    dd('dd');
+               
                    $dis= Discount::find($discout->discount_id);
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
@@ -44,6 +44,7 @@ class PayemntController extends BaseController
                              }else{
                                 $price = ($dis->value / 100) * $price;
                              }
+                             dd($price);
                        }else{
                         $res['status'] = $this->SendError();
                         $res['status']['message'] = 'The promocode has expired';
