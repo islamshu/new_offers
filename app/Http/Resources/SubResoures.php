@@ -60,18 +60,15 @@ class SubResoures extends JsonResource
             $data->save();
         }
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
-            dd('ddddd');
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
-            dd('dddadddd');
-
-
             return (string)$data->remain;
         }
 
     }
     function getcridt($data){
         if($data->expire_date < Carbon::now()){
+            dd('ddd');
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
