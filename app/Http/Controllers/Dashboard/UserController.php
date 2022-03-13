@@ -88,6 +88,15 @@ class UserController extends Controller
                 $role = Role::where('name', 'Vendors')->first();
                 
                 $user->attachRole($role);
+                $permissions= permission_role::where('role_id',$role->id)->get();
+            
+                foreach ($permissions as $one_permission) {
+                    $per = new user_Permission();
+                    $per->user_id = $user->id;
+                    $per->permission_id = $one_permission->permission_id;
+                    $per->save();
+                    // $user->attachPermission($one_permission);
+                }
         }
         return redirect()->back();
         
