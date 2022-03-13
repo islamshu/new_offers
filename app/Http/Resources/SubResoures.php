@@ -54,7 +54,7 @@ class SubResoures extends JsonResource
         }
     }
     function getReman($data){
-        if($data->expire_date > Carbon::now()){
+        if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
@@ -65,7 +65,7 @@ class SubResoures extends JsonResource
         }
     }
     function getcridt($data){
-        if($data->expire_date > Carbon::now()){
+        if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
@@ -76,7 +76,7 @@ class SubResoures extends JsonResource
         }
     }  
     function is_trial($data){
-        if($data->expire_date > Carbon::now()){
+        if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
