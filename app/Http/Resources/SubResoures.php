@@ -50,11 +50,11 @@ class SubResoures extends JsonResource
     }
     function token_number($data)
     {
-        $array=[];
-        $data->tokens->each(function($token, $key) {
-            array_push($array,$token);
-        });
-        return $array;
+        // $array=[];
+        // $data->tokens->each(function($token, $key) {
+        //     array_push($array,$token);
+        // });
+        // return $array;
         
     }
     function startdate($data)
