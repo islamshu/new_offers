@@ -25,9 +25,9 @@ card card-docs mb-2">
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categorys as $item)
+                @foreach ($categorys as $key=>$item)
               
-                @continue($item->id == 1)
+               
                  <tr>
                      
                      <td><img src="{{ asset('images/category/'.$item->image) }}" width="50" height="50" alt=""></td>
@@ -60,7 +60,7 @@ card card-docs mb-2">
                         </a>
                         @endif
                         @if (auth()->user()->isAbleTo(['delete-category']))
-
+                        @if($key != 0)
                         <form method="post" style="display: inline" >
                             <button type="button" onclick="performdelete('{{ $item->id }}')"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm"><span class="svg-icon svg-icon-md svg-icon-primary">
@@ -80,6 +80,7 @@ card card-docs mb-2">
                             <!--end::Svg Icon-->
                         </span> </button>
                         </form>
+                        @endif
                         @endif
                        
                     </td>
