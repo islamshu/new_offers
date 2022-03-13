@@ -40,9 +40,10 @@ class SubResoures extends JsonResource
     function expricedate($data)
     {
         if(Carbon::now() > $data->expire_date ){
+
             return null;
         }else{
-            date('Y-m-d', strtotime((string)$data->expire_date));
+        return    date('Y-m-d', strtotime((string)$data->expire_date));
         }
     }
     function startdate($data)
@@ -50,7 +51,7 @@ class SubResoures extends JsonResource
         if(Carbon::now() > $data->expire_date ){
             return null;
         }else{
-            date('Y-m-d', strtotime((string)$data->start_date));
+            return  date('Y-m-d', strtotime((string)$data->start_date));
         }
     }
     function getReman($data){
@@ -68,7 +69,7 @@ class SubResoures extends JsonResource
     }
     function getcridt($data){
         if($data->expire_date < Carbon::now()){
-            dd('ddd');
+          
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
