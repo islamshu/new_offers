@@ -118,9 +118,10 @@ function paginate($items, $limit, $page , $options = [])
 function send_message($phone,$message)
 {
     $token = get_general('sms_token');
+    $sender = get_general('sender_id') ;
     
     
-  $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src=jooyoffers&dests='.$phone.'&body='.$message;
+  $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src='.$sender.'&dests='.$phone.'&body='.$message;
   $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
 
   $response = Http::withHeaders(['User-Agent' => $userAgent])->get($url);
