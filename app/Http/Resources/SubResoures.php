@@ -26,7 +26,7 @@ class SubResoures extends JsonResource
             'purchases_no'=>$this->purchases_no,
             'credit'=>$this->getcridt($this),
             'remaining_credit'=> $this->getReman($this),
-            'expire_date'=>$this->startdate($this),
+            'expire_date'=>$this->expricedate($this),
             'start_date'=>date('Y-m-d', strtotime((string)$this->start_date)),
             'is_unlimited'=>$this->is_unlimited,
             'is_trial'=>$this->is_trial($this),
@@ -81,6 +81,7 @@ class SubResoures extends JsonResource
         if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
             $data->save();
+            dd('d');
         }
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
             return 0;
