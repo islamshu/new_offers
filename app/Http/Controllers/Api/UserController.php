@@ -239,7 +239,7 @@ class UserController extends BaseController
                 $user->type_of_subscribe ='FREE';
                 $user->save();
             }
-            if($user->tokens->count() != 1){
+            if($user->tokens->count() <= 1){
                 $res['other']['is_trial_subscriber']= true;
             }else{
                 $res['other']['is_trial_subscriber']= false;
