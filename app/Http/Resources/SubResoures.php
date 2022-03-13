@@ -60,7 +60,7 @@ class SubResoures extends JsonResource
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             return (string)$data->remain;
@@ -73,7 +73,7 @@ class SubResoures extends JsonResource
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             return (string)$data->credit;
@@ -85,7 +85,7 @@ class SubResoures extends JsonResource
             $data->save();
         }
         // dd($data->type_of_subscribe);
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'TRIAL' ){
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return 0;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             return 1;
