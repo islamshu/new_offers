@@ -58,7 +58,7 @@ class SubResoures extends JsonResource
     }
     function startdate($data)
     {
-        if(Carbon::now() > $data->expire_date ){
+        if($data->expire_date < Carbon::now()){
             return null;
         }else{
             return  date('Y-m-d', strtotime((string)$data->start_date));
