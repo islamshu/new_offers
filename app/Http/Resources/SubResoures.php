@@ -87,7 +87,7 @@ class SubResoures extends JsonResource
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
-            return (string)$data->credit;
+            return (int)$data->credit;
         }
     }  
     function is_trial($data){
