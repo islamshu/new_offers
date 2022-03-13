@@ -28,16 +28,16 @@ class GeneralInfoController extends Controller
     public function index()
     {
 
-        $token = get_general('sms_token');
-        $sender = get_general('sender_id') ;
-        $message ='test';
+    //     $token = get_general('sms_token');
+    //     $sender = get_general('sender_id') ;
+    //     $message ='test';
         
         
-      $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src='.$sender.'&dests=966548102240&body='.$message;
-      $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
+    //   $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src='.$sender.'&dests=966548102240&body='.$message;
+    //   $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
     
-      $response = Http::withHeaders(['User-Agent' => $userAgent])->get($url);
-      return true;
+    //   $response = Http::withHeaders(['User-Agent' => $userAgent])->get($url);
+    //   return true;
     
       
 
