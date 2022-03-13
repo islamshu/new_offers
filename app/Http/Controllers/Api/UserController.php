@@ -47,14 +47,16 @@ class UserController extends BaseController
                 $res['other']['for']= 'signup';  
             }
             if(get_general('actvie_sms') == '1'){
-                if(request()->header('lang') == null || request()->header('lang') == 'en' ){
+                // if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
-                    $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+                //     $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
     
-                }else{
-                    $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+                // }else{
+                //     $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
        
-                }
+                // }
+                $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+
                 send_message($user->phone,$message );
             }
 
@@ -172,14 +174,14 @@ class UserController extends BaseController
         // $user->code = 1991;
         // $user->save();
 
-        if(request()->header('lang') == null || request()->header('lang') == 'en' ){
+        // if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
-            $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+        //     $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
 
-        }else{
-            $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+        // }else{
+        //     $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
 
-        }
+        // }
         if(get_general('actvie_sms') == '1'){
             send_message($request->phone,$message );
         }
