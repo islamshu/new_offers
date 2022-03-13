@@ -67,7 +67,7 @@ class brandController extends Controller
     public function showmodeluser(Request $request){
         $vendor = Vendor::find($request->id);
         // $user = User::whereRoleIs('Vendors')->where('vendor_id',$request->id)->first();  
-        $users = User::whereRoleIs('Vendors')->where('vendor_id',auth()->user()->vendor_id)->get();
+        $users = User::whereRoleIs('Vendors')->get();
         dd($users);
         return view('dashboard.vendor.show_model_user')->with('vendor',$vendor)->with('user',$user);
     }
