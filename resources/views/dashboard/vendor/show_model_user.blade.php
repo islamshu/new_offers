@@ -4,10 +4,10 @@
         <input type="hidden" name="vendor_id" value="{{ $vendor->id }}" id="">
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="name" name="name" value="{{ @$user->username }}" class="form-control" placeholder="Enter Name" id="">
+                <input type="name" name="name"  class="form-control" placeholder="Enter Name" id="">
             </div>
             <div class="col-md-12 form-group">
-                <input type="email" name="email"  value="{{ @$user->email }}" class="form-control" placeholder="Enter email" id="">
+                <input type="email" name="email"  class="form-control" placeholder="Enter email" id="">
             </div>
             <div class="col-md-12 form-group">
                 <input type="password" name="password" class="form-control" placeholder="Enter password" id="">
