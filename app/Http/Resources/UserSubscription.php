@@ -30,8 +30,8 @@ class UserSubscription extends JsonResource
             'duration_id'=>$this->sub_id,
             'actual_account_no'=>$client->actual_accounts_no,
             'price'=>Subscription::find($this->sub_id)->price,
-            'package'=>new PakegeTowResourses(Subscription::find($this->sub_id)),
-            'duration'=>$this->duration(Subscription::find($this->sub_id))
+            'package'=>new PakegeTowResourses(Subscription::withTrashed()->find($this->sub_id)),
+            'duration'=>$this->duration(Subscription::withTrashed()->find($this->sub_id))
         ];
     }
     public function duration($data){
