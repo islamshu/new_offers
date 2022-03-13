@@ -60,8 +60,12 @@ class SubResoures extends JsonResource
             $data->save();
         }
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
+            dd('ddddd');
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
+            dd('dddadddd');
+
+
             return (string)$data->remain;
         }
 
@@ -81,7 +85,7 @@ class SubResoures extends JsonResource
         if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
             $data->save();
-            dd('d');
+         
         }
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'PREMIUM' ){
             return 0;
