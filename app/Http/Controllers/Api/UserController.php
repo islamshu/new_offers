@@ -216,7 +216,7 @@ class UserController extends BaseController
     }
     public function verification_code(Request $request){
     
-        $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->orWhere('code',1991)->first();
+        $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         // dd($user);
         if($user){
            
