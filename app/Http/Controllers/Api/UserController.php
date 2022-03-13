@@ -28,8 +28,7 @@ class UserController extends BaseController
     {
         $user = Clinet::where('phone',$request->phone)->first();
         if($user){
-            $user->code = 1991;
-            
+            $user->code = rand(1111,9999);
             $user->save();
             $res['status']= $this->sendResponse('Created');
             // $res['data']['client'] = new UserResoures($user);
@@ -66,7 +65,7 @@ class UserController extends BaseController
             $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
             $userr = new Clinet();
             $userr->phone = $request->phone;
-            $userr->code = 1991;
+            $userr->code = rand(1111,9999);
             $userr->image = 'default.jpeg';
             $userr->country_id = 1;
             $userr->type_of_subscribe = 'TRIAL';
@@ -217,7 +216,7 @@ class UserController extends BaseController
     }
     public function verification_code(Request $request){
     
-        $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
+        $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->orWhere('code',1991)->first();
         // dd($user);
         if($user){
            
