@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class SubResouresPaid extends JsonResource
@@ -23,17 +24,81 @@ class SubResouresPaid extends JsonResource
             'coupons_saving'=>$this->coupon_saving,
             'used_offers_no'=>$this->used_offers_no,
             'purchases_no'=>$this->purchases_no,
-            'credit'=>$this->credit == null ? null : (int)$this->credit,
-            'remaining_credit'=>$this->remain == null ? null : (string)$this->remain,
-            'expire_date'=> date('Y-m-d', strtotime((string)$this->expire_date)),
-            'start_date'=> date('Y-m-d', strtotime((string)$this->start_date)),
-            'is_unlimited'=>$this->is_unlimited == null ? 0 : $this->is_unlimited,
-            'is_trial'=>$this->is_trial == null ? 0 : $this->is_trial,
-            'is_family'=>$this->is_family == null ? 0 : $this->is_family,
-            'multiple_accounts_no'=>$this->multiple_accounts_no == null ? 0 : $this->multiple_accounts_no,  
-            'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no  
- ,
+            'credit'=>$this->getcridt($this),
+            'remaining_credit'=> $this->getReman($this),
+            'expire_date'=>$this->expricedate($this),
+            'start_date'=>$this->startdate($this),
+            'is_unlimited'=>$this->is_unlimited,
+            'is_trial'=>$this->is_trial($this),
+            
+            'is_family'=>$this->is_family != 0 ? $this->is_family : null,
+            'multiple_accounts_no'=>$this->multiple_accounts_no,
+            'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no,
         
         ];
+    }
+   
+    function expricedate($data)
+    {
+        if(Carbon::now() > $data->expire_date ){
+
+            return null;
+        }else{
+        return    date('Y-m-d', strtotime((string)$data->expire_date));
+        }
+    }
+    function token_number($data)
+    {
+        // $array=[];
+        // $data->tokens->each(function($token, $key) {
+        //     array_push($array,$token);
+        // });
+        // return $array;
+        
+    }
+    function startdate($data)
+    {
+        if($data->expire_date < Carbon::now()){
+            return null;
+        }else{
+            return  date('Y-m-d', strtotime((string)$data->start_date));
+        }
+    }
+    function getReman($data){
+
+        if($data->expire_date < Carbon::now()){
+            $data->type_of_subscribe = 'FREE';
+            $data->save();
+        }
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+            return null;
+        }elseif($data->type_of_subscribe == 'TRIAL'){
+            return (string)$data->remain;
+        }
+
+    }
+    function getcridt($data){
+        if($data->expire_date < Carbon::now()){
+            $data->type_of_subscribe = 'FREE';
+            $data->save();
+        }
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+            return null;
+        }elseif($data->type_of_subscribe == 'TRIAL'){
+            
+            return (int)$data->credit;
+        }
+    }  
+    function is_trial($data){
+        if($data->expire_date < Carbon::now()){
+            $data->type_of_subscribe = 'FREE';
+            $data->save();
+        }
+        // dd($data->type_of_subscribe);
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+            return 0;
+        }elseif($data->type_of_subscribe == 'TRIAL'){
+            return 1;
+        }
     }
 }
