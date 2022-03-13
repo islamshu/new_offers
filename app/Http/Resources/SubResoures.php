@@ -26,7 +26,7 @@ class SubResoures extends JsonResource
             'purchases_no'=>$this->purchases_no,
             'credit'=>$this->getcridt($this),
             'remaining_credit'=> $this->getReman($this),
-            'expire_date'=>date('Y-m-d', strtotime((string)$this->expire_date)),
+            'expire_date'=>$this->startdate($this),
             'start_date'=>date('Y-m-d', strtotime((string)$this->start_date)),
             'is_unlimited'=>$this->is_unlimited,
             'is_trial'=>$this->is_trial($this),
@@ -36,6 +36,22 @@ class SubResoures extends JsonResource
             'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no 
         
         ];
+    }
+    function expricedate($data)
+    {
+        if(Carbon::now() > date('Y-m-d', strtotime((string)$data->expire_date)) ){
+            return null;
+        }else{
+            date('Y-m-d', strtotime((string)$data->expire_date));
+        }
+    }
+    function startdate($data)
+    {
+        if(Carbon::now() > date('Y-m-d', strtotime((string)$data->expire_date)) ){
+            return null;
+        }else{
+            date('Y-m-d', strtotime((string)$data->start_date));
+        }
     }
     function getReman($data){
         if($data->expire_date > Carbon::now()){
