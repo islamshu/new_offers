@@ -79,7 +79,7 @@ class SubResoures extends JsonResource
 
     }
     function getcridt($data){
-dd($data->type_of_subscribe);
+dd($data->expire_date);
         if($data->expire_date < Carbon::now()){
           
             $data->type_of_subscribe = 'FREE';
