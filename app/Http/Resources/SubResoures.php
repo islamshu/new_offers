@@ -33,10 +33,12 @@ class SubResoures extends JsonResource
             
             'is_family'=>$this->is_family != 0 ? $this->is_family : null,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
-            'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no 
+            'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no,
+            'number_token'=>$this->token_number($this), 
         
         ];
     }
+   
     function expricedate($data)
     {
         if(Carbon::now() > $data->expire_date ){
@@ -45,6 +47,15 @@ class SubResoures extends JsonResource
         }else{
         return    date('Y-m-d', strtotime((string)$data->expire_date));
         }
+    }
+    function token_number($data)
+    {
+        $array=[];
+        $data->tokens->each(function($token, $key) {
+            array_push($array,$token);
+        });
+        return $array;
+        
     }
     function startdate($data)
     {
@@ -63,7 +74,7 @@ class SubResoures extends JsonResource
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
-            return (string)$data->remain;
+            return $data->remain;
         }
 
     }
@@ -76,7 +87,7 @@ class SubResoures extends JsonResource
         if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
-            return (string)$data->credit;
+            return $data->credit;
         }
     }  
     function is_trial($data){
