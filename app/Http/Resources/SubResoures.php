@@ -34,7 +34,6 @@ class SubResoures extends JsonResource
             'is_family'=>$this->is_family != 0 ? $this->is_family : null,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no,
-            'number_token'=>$this->tokens->count(),
         
         ];
     }
