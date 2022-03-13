@@ -33,7 +33,6 @@ class VendorOfferDeResourses extends JsonResource
             'client_usage_times'=>$this->usege_member  == 'unlimit' ? null : (int)$this->usage_member_number ,
             'total_usage_times'=> $this->check($this),
             'limit_period_duration'=>null,
-            'limit_period_duration'=>null,
             'limit_period_unit'=>null,
             'points_no'=>$this->system_point,
             'store_points_no'=>$this->store_point,
