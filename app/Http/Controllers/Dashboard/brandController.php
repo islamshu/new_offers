@@ -66,7 +66,8 @@ class brandController extends Controller
     }
     public function showmodeluser(Request $request){
         $vendor = Vendor::find($request->id);
-        return view('dashboard.vendor.show_model_user')->with('vendor',$vendor);
+        $user = User::whereRoleIs('Vendors')->where('vendor_id',$request->id)->first();  
+        return view('dashboard.vendor.show_model_user')->with('vendor',$vendor)->with('user',$user);
     }
     
      public function post_cover(Request $request)
