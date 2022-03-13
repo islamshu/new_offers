@@ -84,8 +84,8 @@ class SubResoures extends JsonResource
             $data->type_of_subscribe = 'FREE';
             $data->save();
         }
-        dd($data->type_of_subscribe);
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+        // dd($data->type_of_subscribe);
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe = 'TRIAL' ){
             return 0;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             return 1;
