@@ -54,7 +54,7 @@ class SubResoures extends JsonResource
         }
     }
     function getReman($data){
-        dd($data->expire_date);
+        dd($data->expire_date < Carbon::now());
 
         if($data->expire_date < Carbon::now()){
             $data->type_of_subscribe = 'FREE';
