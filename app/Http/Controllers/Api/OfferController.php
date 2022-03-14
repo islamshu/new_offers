@@ -64,7 +64,6 @@ class OfferController extends BaseController
                        $q->where('country_id', $request->country_id);
                      });
         })->where('type_paid','PREMIUM')->get();
-        dd($pakege);
         $res['status']= $this->sendResponse('OK');
         $res['data'] = new PakegeCollection($pakege);
         return $res;
