@@ -21,7 +21,9 @@ class ClientImport implements ToCollection
             if($row[0]  == null || $row[1] == null || $key == 0 || $key == 1 ){
                 continue;
             }
-         dd($row[3]);
+            $string = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
+
+         dd($string);
        
             $client = new Clinet();
             $client->name = $row[0];
