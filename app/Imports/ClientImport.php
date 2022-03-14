@@ -22,6 +22,7 @@ class ClientImport implements ToCollection
                 continue;
             }
             $bod_date = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
+            dd($bod_date);
 
             $client = new Clinet();
             $client->name = $row[0];
