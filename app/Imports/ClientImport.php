@@ -21,15 +21,14 @@ class ClientImport implements ToCollection
             if($row[0]  == null || $row[1] == null || $key == 0 || $key == 1 ){
                 continue;
             }
-            $string = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
+            $bod_date = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
 
-         dd($string);
-       
+       dd(is_date($bod_date));
             $client = new Clinet();
             $client->name = $row[0];
             $client->phone = $row[1];
             $client->email =  str_replace(' ','',$row[2]);
-            $client->birth_date = is_date($row[3] );
+            $client->birth_date = is_date($bod_date);
             $client->nationality =  $row[4];
             $client->register_time =  $row[5];
             $client->type_of_subscribe = $row[6];
