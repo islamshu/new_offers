@@ -22,14 +22,19 @@ class ClientImport implements ToCollection
                 continue;
             }
             $bod_date = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
-            dd($bod_date);
+
+            if($bod_date != null){
+                $bod_date  = $bod_date.' 00:00:00'; 
+            }else{
+                $bod_date= null; 
+            }
 
             $client = new Clinet();
             $client->name = $row[0];
             $client->phone = $row[1];
             $client->email =  str_replace(' ','',$row[2]);
             $client->birth_date = $bod_date;
-            $client->nationality =  $row[4];
+            $client->nationality =  $bod_date;
             $client->register_time =  $row[5];
             $client->type_of_subscribe = $row[6];
             $client->number_of_operations =  $row[7];
