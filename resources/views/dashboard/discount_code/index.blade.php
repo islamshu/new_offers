@@ -52,9 +52,9 @@
                                 {{ $code->status == 1 ? 'checked' : '' }}>
                                 @endif
                         </td>
-                        <td>{{ $code->number_of_code }}</td>
-                        <td>{{ $code->total_remain }}</td>
-                       
+                        <td>{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
+                        <td>{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
+
                         <td class="pr-0 text-left">
 
                             <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
