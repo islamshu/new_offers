@@ -89,7 +89,7 @@
 
                                                     <a target="_blank" href="{{ route('vendor.offer', [ app()->getLocale(),$item->id]) }}"
                                                         class="btn btn-icon">
-                                                        <img src="http://cdn.onlinewebfonts.com/svg/img_544032.png" width="70" height="50" alt="">
+                                                        <img src="http://cdn.onlinewebfonts.com/svg/img_544032.png" width="70" height="40" alt="">
                                                     </a>
                                                     @if (auth()->user()->isAbleTo(['update-vendor']))
 
