@@ -13,6 +13,7 @@
                         <th>{{ __('name') }}</th>
                         <th>{{ __('name of package') }}</th>
                         <th>{{ __('price for package') }}</th>
+                        <th>{{ __('price after descount') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
                         <td>{{ __('Status') }}</td>
@@ -22,9 +23,17 @@
                 </thead>
                 <tbody>
                     @foreach ($codes as $code)
+                    @php
+                           if ( $code->type_discount == 'percentage') {
+                            $total =     @$code->package->price -  (@$code->package->price * $code->value_discount / 100);
+                        } else {
+                            $total =     @$code->package->price -  $code->value_discount;
+                        }
+                    @endphp
                         <td>{{ $code->name_en }}</td>
                         <td>{{ @$code->package->name_en }}</td>
                         <td>{{ @$code->package->price }}</td>
+                        <td>{{ @$total}}</td>
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
