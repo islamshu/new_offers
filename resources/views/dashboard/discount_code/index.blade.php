@@ -39,7 +39,7 @@
                         <td>{{ @$total}}</td>
                         <td>{{ @$code->value_discount}}</td>
 
-                        <td>{{ strval(100 * (@$code->package->price - $total) / @$code->package->price)}}</td>
+                        <td>{{ strval(100 * (@$code->package->price - $total) / @$code->package->price)}} %</td>
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
