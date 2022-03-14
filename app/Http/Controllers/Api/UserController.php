@@ -100,13 +100,13 @@ class UserController extends BaseController
             if(get_general('actvie_sms') == '1'){
                 if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
-                    $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
+                    $message = 'welcome to Jooy offers Your activation code is: '.$userr->code.' #jooy received it';
     
                 }else{
-                    $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+                    $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$userr->code.' #جووي تلقاه';
        
                 }
-                send_message($user->phone,$message );
+                send_message($userr->phone,$message );
             }
             $res['status']= $this->sendResponse('Created');
 
