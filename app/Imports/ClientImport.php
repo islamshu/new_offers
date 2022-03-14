@@ -23,7 +23,6 @@ class ClientImport implements ToCollection
             }
             $bod_date = trim(str_replace('\n', '', (str_replace('\r', '', $row[3]))));
 
-       dd(is_date($bod_date));
             $client = new Clinet();
             $client->name = $row[0];
             $client->phone = $row[1];
@@ -34,6 +33,9 @@ class ClientImport implements ToCollection
             $client->type_of_subscribe = $row[6];
             $client->number_of_operations =  $row[7];
             $client->last_transaction =   $row[8];
+            $client->is_unlimited =   1;
+            $client->gender =   1;
+            $client->city_id =   15;
             $client->register_date =   Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[9]));
             $client->mobile_type =  $row[10];
             $client->expire_date =   Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[11]));
