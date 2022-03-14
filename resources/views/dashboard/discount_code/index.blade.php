@@ -84,7 +84,7 @@
                                 </span>
                             </a>
                             @endif
-                            @if (auth()->user()->isAbleTo(['delete-discount']))
+                            {{-- @if (auth()->user()->isAbleTo(['delete-discount']))
 
                             <form method="post" style="display: inline">
                                 <button type="button" onclick="performdelete('{{ $code->id }}')"
@@ -107,7 +107,7 @@
                                     </span>
                                 </button>
                             </form>
-                            @endif
+                            @endif --}}
 
                         </td>
                         </tr>
