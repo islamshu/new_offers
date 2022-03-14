@@ -19,11 +19,10 @@
                         <th>{{ __('Descount Persantage') }}</th>
                         <th>{{ __('Start Date') }}</th>
                         <th>{{ __('End Date') }}</th>
-
-                        <th>{{ __('Descount Persantage') }}</th>
+                        <td>{{ __('Status') }}</td>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
-                        <td>{{ __('Status') }}</td>
+                       
                         <th>{{ __('Action') }}</th>
 
                     </tr>
@@ -46,9 +45,6 @@
                         <td>{{ strval(100 * (@$code->package->price - $total) / @$code->package->price)}} %</td>
                         <td>{{ $code->start_at }}</td>
                         <td>{{ $code->end_at }}</td>
-
-                        <td>{{ $code->number_of_code }}</td>
-                        <td>{{ $code->total_remain }}</td>
                         <td>
                             @if (auth()->user()->isAbleTo(['update-discount']))
 
@@ -56,6 +52,9 @@
                                 {{ $code->status == 1 ? 'checked' : '' }}>
                                 @endif
                         </td>
+                        <td>{{ $code->number_of_code }}</td>
+                        <td>{{ $code->total_remain }}</td>
+                       
                         <td class="pr-0 text-left">
 
                             <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
