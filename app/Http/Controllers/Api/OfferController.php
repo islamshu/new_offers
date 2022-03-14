@@ -47,9 +47,8 @@ class OfferController extends BaseController
       dd('dd');
     }
     public function package(Request $request){
-      $pakege = Subscription::where('type_paid','PREMIUM')->get();
-      dd($pakege);
-        $pakege = Subscription::where('type_paid','PREMIUM')->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+      
+        $pakege = Subscription::with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
 
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
@@ -64,7 +63,8 @@ class OfferController extends BaseController
                     $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
                        $q->where('country_id', $request->country_id);
                      });
-        })->get();
+        })->where('type_paid','PREMIUM')->get();
+        dd($pakege);
         $res['status']= $this->sendResponse('OK');
         $res['data'] = new PakegeCollection($pakege);
         return $res;
