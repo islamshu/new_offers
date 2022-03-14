@@ -230,15 +230,15 @@ class CodeController extends BaseController
                                 $price = ($dis->value / 100) * $price;
                              }
                              $res['status'] = $this->sendResponse200('OK');
-                        $res['data']['discount']["price"] = $price;
+                        $res['data']['discount']["price"] = $sub->price;
                         $res['data']['discount']["discout_type"] = $dis->type_discount;
                         $res['data']['discount']["discout_value"] = $dis->value_discount;
                         if ( $dis->type_discount == 'percentage') {
-                            $total =     $price -  ($price * $dis->value_discount / 100);
+                            $total =     $sub->price -  ($sub->price * $dis->value_discount / 100);
                         } else {
-                            $total =     $price -  $dis->value_discount;
+                            $total =     $sub->price -  $dis->value_discount;
                         }
-                        $res['data']['discount']['discount_percentage']= strval(100 * ($price - $total) / $price);
+                        $res['data']['discount']['discount_percentage']= strval(100 * ($sub->price - $total) / $sub->price);
                         $res['data']['discount']["price_after_discount"] = $total;
                         return $res;
 
