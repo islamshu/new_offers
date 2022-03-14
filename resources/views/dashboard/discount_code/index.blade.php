@@ -11,6 +11,7 @@
                     <tr class="fw-bold fs-6 text-gray-800">
 
                         <th>{{ __('name') }}</th>
+                        <th>{{ __('name of package') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
                         <td>{{ __('Status') }}</td>
@@ -21,6 +22,7 @@
                 <tbody>
                     @foreach ($codes as $code)
                         <td>{{ $code->name_en }}</td>
+                        <td>{{ $code->package->name_en }}</td>
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
