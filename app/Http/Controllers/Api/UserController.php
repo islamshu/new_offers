@@ -184,6 +184,7 @@ class UserController extends BaseController
             if($userr->is_new == 1 ){
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
               if($code){
+                  dd($code);
                 $user = new Subscriptions_User();
                 $user->payment_type = 'new_user';
                 $userr->is_trial = 1;
