@@ -55,7 +55,7 @@
                         </td>
                         <td style="font-size: 33px">{{  $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
                         <td style="font-size: 33px">{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
-                        <td>{{ $code->promocode }}</td>
+                        <td>{{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code;}}</td>
                         {{-- <td>{{ App\Models\PromocodeUser::where('code','like',$code->promocode->code)->count() }}</td> --}}
                         <td class="pr-0 text-left">
 
