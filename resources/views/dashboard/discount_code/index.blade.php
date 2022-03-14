@@ -12,6 +12,7 @@
 
                         <th>{{ __('name') }}</th>
                         <th>{{ __('name of package') }}</th>
+                        <th>{{ __('price for package') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
                         <td>{{ __('Status') }}</td>
@@ -22,7 +23,8 @@
                 <tbody>
                     @foreach ($codes as $code)
                         <td>{{ $code->name_en }}</td>
-                        <td>{{ $code->package->name_en }}</td>
+                        <td>{{ @$code->package->name_en }}</td>
+                        <td>{{ @$code->package->price }}</td>
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
