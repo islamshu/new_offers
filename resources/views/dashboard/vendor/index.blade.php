@@ -88,8 +88,8 @@
                                                     </a>
 
                                                     <a href="{{ route('vendor.offer', [ app()->getLocale(),$item->id]) }}"
-                                                        class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                                                        <img src="http://cdn.onlinewebfonts.com/svg/img_544032.png" width="100" height="70" alt="">
+                                                        class="btn btn-icon">
+                                                        <img src="http://cdn.onlinewebfonts.com/svg/img_544032.png" width="70" height="50" alt="">
                                                     </a>
                                                     @if (auth()->user()->isAbleTo(['update-vendor']))
 
