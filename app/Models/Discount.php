@@ -14,4 +14,10 @@ class Discount extends Model
     {
         return $this->belongsTo(Subscription::class, 'sub_id');
     }
+    public function promocode()
+    {
+        return $this->belongsTo(DiscountSubscription::class, 'sub_id');
+    }
+
+    
 }
