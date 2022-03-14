@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Subscription;
+use App\Models\Subscriptions_User;
+use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -19,6 +22,24 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function add_import_to_client()
+    {
+       $clients = Client::where('type_of_subscribe','PREMIUM')->get();
+       $page = Subscription::find(12);
+       foreach($clients as $users){
+        $user = new Subscriptions_User();
+        $user->payment_type = 'new_user';
+        $user->expire_date = date('Y-m-d', strtotime((string)$users->expire_date));
+        $user->status = 'active';
+        $user->balnce = 5;
+        $user->purchases_no = $users->purchases_no;
+        $user->sub_id = $page->id;
+        $user->clinet_id = $users->id;
+        $user->country_id = 1;
+        $user->save();
+       }
+
+    }
     public function index()
     {
 

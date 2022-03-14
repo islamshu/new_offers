@@ -175,6 +175,7 @@ Route::group([
         Route::resource('termis', 'TermisController');
         Route::resource('How-it-work', 'HowItWorkController');
         Route::resource('faqs', 'FaqsController');
+        Route::get('add_import_to_client','AboutController@add_import_to_client');
 
         
         
