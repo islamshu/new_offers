@@ -21,7 +21,7 @@ class TransactionResoures extends JsonResource
             'branch_id' => $this->branch_id,
             'store_id' => $this->vendor_id,
             'saving' => 0,
-            'created_at' => $this->created_at,
+            'created_at' =>  date('Y-m-d H:i:s', strtotime((string)$this->created_at)),
             'offer' => new OfferResourses($this->offer),
             'store' => $this->store($this),
         ];
