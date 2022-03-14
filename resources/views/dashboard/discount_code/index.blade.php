@@ -17,6 +17,10 @@
 
                         <th>{{ __('Descount value') }}</th>
                         <th>{{ __('Descount Persantage') }}</th>
+                        <th>{{ __('Start Date') }}</th>
+                        <th>{{ __('End Date') }}</th>
+
+                        <th>{{ __('Descount Persantage') }}</th>
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
                         <td>{{ __('Status') }}</td>
@@ -40,6 +44,9 @@
                         <td>{{ @$code->value_discount}}</td>
 
                         <td>{{ strval(100 * (@$code->package->price - $total) / @$code->package->price)}} %</td>
+                        <td>{{ $code->start_at }}</td>
+                        <td>{{ $code->end_at }}</td>
+
                         <td>{{ $code->number_of_code }}</td>
                         <td>{{ $code->total_remain }}</td>
                         <td>
