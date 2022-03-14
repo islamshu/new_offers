@@ -38,6 +38,7 @@ class AboutController extends Controller
         $user->country_id = 1;
         $user->save();
        }
+       dd('dd');
 
     }
     public function index()
