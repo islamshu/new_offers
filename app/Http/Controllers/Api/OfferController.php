@@ -63,7 +63,7 @@ class OfferController extends BaseController
                     $q->with('counteire')->whereHas('counteire', function ($q) use ($request) {
                        $q->where('country_id', $request->country_id);
                      });
-        })->where('type_paid','PREMIUM')->get();
+        })->where('type_paid','PREMIUM')->where('id','!=',12)->get();
         $res['status']= $this->sendResponse('OK');
         $res['data'] = new PakegeCollection($pakege);
         return $res;
