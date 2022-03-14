@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Clinet;
 use App\Models\Subscription;
 use App\Models\Subscriptions_User;
 use Facade\FlareClient\Http\Client;
@@ -24,7 +25,7 @@ class AboutController extends Controller
      */
     public function add_import_to_client()
     {
-       $clients = Client::where('type_of_subscribe','PREMIUM')->get();
+       $clients = Clinet::where('type_of_subscribe','PREMIUM')->get();
        $page = Subscription::find(12);
        foreach($clients as $users){
         $user = new Subscriptions_User();
