@@ -52,8 +52,8 @@
                                 {{ $code->status == 1 ? 'checked' : '' }}>
                                 @endif
                         </td>
-                        <td>{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
-                        <td>{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
+                        <td style="font-size: 33px">{{  $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
+                        <td style="font-size: 33px">{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
 
                         <td class="pr-0 text-left">
 
