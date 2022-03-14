@@ -27,7 +27,7 @@ class ClientImport implements ToCollection
             $client->name = $row[0];
             $client->phone = $row[1];
             $client->email =  str_replace(' ','',$row[2]);
-            $client->birth_date = is_date($bod_date);
+            $client->birth_date = $bod_date;
             $client->nationality =  $row[4];
             $client->register_time =  $row[5];
             $client->type_of_subscribe = $row[6];
