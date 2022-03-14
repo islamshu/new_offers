@@ -62,7 +62,6 @@ class UserController extends BaseController
 
 
         }else{
-            $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
             $userr = new Clinet();
             $userr->phone = $request->phone;
             $userr->code = rand(1111,9999);
@@ -70,6 +69,7 @@ class UserController extends BaseController
             $userr->country_id = 1;
             $userr->type_of_subscribe = 'TRIAL';
             $uuid = 'jooy';
+            $userr->is_new = 1;
             $enter = Enterprise::where('uuid',$uuid)->first();
             if($enter){
             $userr->uuid_type =  'enterprise';
@@ -95,53 +95,7 @@ class UserController extends BaseController
 
           
             $userr->save();
-            $user = new Subscriptions_User();
-            $user->payment_type = 'new_user';
-            // dd(auth('client_api')->id());
-            $userr->is_trial = 1;
-            $userr->save();
-
-            $userr->type_of_subscribe = $code->type_paid;
-    
-            if ($code->type_balance == 'Limit') {
-                $userr->is_unlimited = 0;
-                $userr->credit = $code->balance;
-                $userr->remain = $code->balance;
-            } elseif ($code->type_balance == 'UnLimit') {
-                $userr->is_unlimited = 1;
-                $userr->credit = null;
-                $userr->remain = null;
-            }
-            $userr->start_date = Carbon::now();
-            $data_type = $code->expire_date_type;
-            if( $code->type_paid=='TRIAL'){
-                $data_type_number = $code->days_of_trial;
-
-            }else{
-                $data_type_number = $code->days_of_trial;
-            }
-            if ($data_type == 'days') {
-                $userr->expire_date = Carbon::now()->addDays($data_type_number);
-            } elseif ($data_type == 'months') {
-                $userr->expire_date = Carbon::now()->addMonths($data_type_number);
-            } elseif ($data_type == 'years') {
-                $userr->expire_date = Carbon::now()->addYears($data_type_number);
-            }
-            $userr->save();
-    
-            if ($data_type == 'days') {
-                $user->expire_date = Carbon::now()->addDays($data_type_number);
-            } elseif ($data_type == 'months') {
-                $user->expire_date = Carbon::now()->addMonths($data_type_number);
-            } elseif ($data_type == 'years') {
-                $user->expire_date = Carbon::now()->addYears($data_type_number);
-            }
-            $user->status = 'active';
-            $user->balnce = $code->balance;
-            $user->purchases_no =  1;
-            $user->sub_id  = $code->id;
-            $user->clinet_id  = $userr->id;
-            $user->save();
+          
             
             if(get_general('actvie_sms') == '1'){
                 if(request()->header('lang') == null || request()->header('lang') == 'en' ){
@@ -216,19 +170,70 @@ class UserController extends BaseController
     }
     public function verification_code(Request $request){
         if($request->verification_code == 1991){
-            $user = Clinet::where('phone',$request->phone)->first();
+            $userr = Clinet::where('phone',$request->phone)->first();
         }else{
-            $user = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
+            $userr = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         }
        
-        if($user){
+        if($userr){
+            
            
-            $user->last_login = Carbon::now();
-            $user->is_verify = 1;
-            $user->save();
+            $userr->last_login = Carbon::now();
+            $userr->is_verify = 1;
+            $userr->save();
+            if($userr->is_new == 1 ){
+                $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
+                $user = new Subscriptions_User();
+                $user->payment_type = 'new_user';
+                $userr->is_trial = 1;
+                $userr->is_new = 0;
+                $userr->save();
+    
+                $userr->type_of_subscribe = $code->type_paid;
+        
+                if ($code->type_balance == 'Limit') {
+                    $userr->is_unlimited = 0;
+                    $userr->credit = $code->balance;
+                    $userr->remain = $code->balance;
+                } elseif ($code->type_balance == 'UnLimit') {
+                    $userr->is_unlimited = 1;
+                    $userr->credit = null;
+                    $userr->remain = null;
+                }
+                $userr->start_date = Carbon::now();
+                $data_type = $code->expire_date_type;
+                if( $code->type_paid=='TRIAL'){
+                    $data_type_number = $code->days_of_trial;
+    
+                }else{
+                    $data_type_number = $code->days_of_trial;
+                }
+                if ($data_type == 'days') {
+                    $userr->expire_date = Carbon::now()->addDays($data_type_number);
+                } elseif ($data_type == 'months') {
+                    $userr->expire_date = Carbon::now()->addMonths($data_type_number);
+                } elseif ($data_type == 'years') {
+                    $userr->expire_date = Carbon::now()->addYears($data_type_number);
+                }
+                $userr->save();
+        
+                if ($data_type == 'days') {
+                    $user->expire_date = Carbon::now()->addDays($data_type_number);
+                } elseif ($data_type == 'months') {
+                    $user->expire_date = Carbon::now()->addMonths($data_type_number);
+                } elseif ($data_type == 'years') {
+                    $user->expire_date = Carbon::now()->addYears($data_type_number);
+                }
+                $user->status = 'active';
+                $user->balnce = $code->balance;
+                $user->purchases_no =  1;
+                $user->sub_id  = $code->id;
+                $user->clinet_id  = $userr->id;
+                $user->save();
+            }
             $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
-            $res['data']['client'] = new ClientResoures($user);
+            $res['data']['client'] = new ClientResoures($userr);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
