@@ -31,7 +31,7 @@ class HomeSLiderResourses extends JsonResource
         }
     
         
-        return new OfferCollection(Offer::whereIn('id',$array)->where('end_time','>=',Carbon::now())->get());
+        return new OfferCollection(Offer::whereIn('id',$array)->where('status',1)->where('end_time','>=',Carbon::now())->get());
         
     }
     public function lang_name($data)
