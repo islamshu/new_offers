@@ -103,7 +103,7 @@ class HomeController extends BaseController
     $res['data']['recent_offers']['metadata']['max_no'] = 15;
     $res['data']['recent_offers']['metadata']['color'] = '#bcbcbc';
     $res['data']['recent_offers']['data'] = [];
-    $res['data']['home_sliders'] = new HomeSLiderCollection(HomeSlider::where('city_id', $city_id)->get());
+    $res['data']['home_sliders'] = new HomeSLiderCollection(HomeSlider::where('city_id', $city_id)->orderBy('sort', 'asc')->get());
     return $res;
   }
   public  function vendor_list(Request $request)
