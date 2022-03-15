@@ -91,7 +91,7 @@ class OfferController extends BaseController
             $q->where('city_id', $request->city_id);
           })-> 
           with('offers')->has('offers')->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status','active')->get();
-
+          dd($stores);
         $res['data']['offers'] =  sort_offer(OfferResourses::collection($offers));
         $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
 
