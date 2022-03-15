@@ -215,10 +215,10 @@ class CodeController extends BaseController
     {
 
         if($request->code != null){
-            $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
-                $q->where('code', $request->code);
-              })->get();
-              dd($dd);
+            // $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
+            //     $q->where('code', $request->code);
+            //   })->get();
+            //   dd($dd);
             $discout = DiscountSubscription::where('code',$request->code)->first();
             if($discout){
                     $sub = Subscription::find($discout->sub_id);
