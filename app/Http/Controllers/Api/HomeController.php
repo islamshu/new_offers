@@ -93,7 +93,7 @@ class HomeController extends BaseController
     }
     // $country_id = Enterprise::with('categorys')->where('uuid',$uuid)->first()->counteire->first()->id;
     $enterprice = Enterprise::with('categorys')->where('uuid', $uuid)->first();
-    // dd($enterprice);
+    dd($enterprice->categorys);
     if (!$enterprice) {
       $res['status'] = $this->sendError();
       return  $res;
