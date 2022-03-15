@@ -221,11 +221,11 @@ class CodeController extends BaseController
             //   dd($dd);
             $discout = @$dd->promocode;
             // $discout = DiscountSubscription::where('code',$request->code)->first();
-            dd($discout);
+        
             if($discout != null ){
                     $sub = Subscription::find($discout->sub_id);
                     $price =$sub->price;
-                   $dis= Discount::find($discout->discount_id);
+                    $dis= Discount::find($discout->discount_id);
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
@@ -264,7 +264,9 @@ class CodeController extends BaseController
                     $res['status']['message'] = 'Not Found Promocode';
                     return $res; 
                    }
-                }
+                }     $res['status'] = $this->SendError();
+                $res['status']['message'] = 'Not Found Promocode';
+                return $res; 
             }else{
                 $res['status'] = $this->SendError();
                 $res['status']['message'] = 'Not Found Promocode';
