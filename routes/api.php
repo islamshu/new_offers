@@ -30,6 +30,9 @@ Route::get('vendor-list', 'Api\HomeController@vendor_list');
 Route::get('vendor-store-list', 'Api\HomeController@vendor_store_list');
 Route::get('store/offers', 'Api\HomeController@vendor_offers');
 Route::get('search', 'Api\OfferController@search');
+Route::get('venven', 'Api\OfferController@venven');
+
+
 Route::get('offers-map', 'Api\OfferController@offer_map');
 Route::get('get_cridit', 'Api\HomeController@get_cridit');
 Route::get('contact', 'Api\OfferController@contact');

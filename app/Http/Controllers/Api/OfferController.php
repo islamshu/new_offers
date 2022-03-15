@@ -74,6 +74,12 @@ class OfferController extends BaseController
         $res['data'] = new SocialCollection($socials);
         return $res;
     }
+    public function venven(){
+    $vend =   Vendor::with('offers')->has('offers')->get();
+    $res['data']['stores'] =  sort_vendor(VednorResourse::collection($vend));
+    return $res;
+
+    }
     public function search(Request $request){
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
