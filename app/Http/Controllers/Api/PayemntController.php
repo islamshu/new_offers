@@ -30,8 +30,12 @@ class PayemntController extends BaseController
         }
         $price = $code->price;
         if($request->promo_code != null){
-            $discout = DiscountSubscription::where('code',$request->promo_code)->first();
-            if($discout){
+            $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
+                $q->where('code', $request->code);
+              })->first();
+            //   dd($dd);
+            $discout = @$dd->promocode;
+            if($discout != null){
                 if($discout->sub_id == $request->package_id){
                
                    $dis= Discount::find($discout->discount_id);
@@ -67,6 +71,9 @@ class PayemntController extends BaseController
                     $res['status']['message'] = 'Not Found Promocode';
                     return $res; 
                 }
+                $res['status'] = $this->SendError();
+                    $res['status']['message'] = 'Not Found Promocode';
+                    return $res; 
             }else{
                 $res['status'] = $this->SendError();
                 $res['status']['message'] = 'Not Found Promocode';
