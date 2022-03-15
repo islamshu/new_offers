@@ -76,6 +76,12 @@ class PremotionController extends Controller
        
 
     }
+    public function delete_homeslider($locale,$id){
+        $slider = Homeslider::find($id);
+        $slider->delete();
+        return response()->json(['icon' => 'success', 'title' => 'homeslider deleted successfully'], 200);
+
+    }
     public function change_color(Request $request, $locale){
         $premotions = Homeslider::find($request->id);
         $premotions->color = $request->color;
@@ -83,14 +89,14 @@ class PremotionController extends Controller
         return true;
 
     }
+    
     public function homeslider_delete($locale ,$id){
-        $premotions = HomesliderOffer::where('id',$id)->first();
+        $premotions = HomesliderOffer::find($id);
         $offer = Offer::find($premotions->offer_id);
         $offer->is_slider = 0;
         $offer->save();
         $premotions->delete();
         return response()->json(['icon' => 'success', 'title' => 'homeslider deleted successfully'], 200);
-
     }
     public function create_item($locale, $type, $city_id)
     {

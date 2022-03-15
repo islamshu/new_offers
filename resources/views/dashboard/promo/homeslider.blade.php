@@ -107,7 +107,7 @@
             }
 
             function performdelete(id) {
-                var url = '{{ route('homeslider.destroy', [':id', 'locale' => app()->getLocale()]) }}';
+                var url = '{{ route('delete_homeslider.destroy', [':id', 'locale' => app()->getLocale()]) }}';
                 url = url.replace(':id', id);
 
 
