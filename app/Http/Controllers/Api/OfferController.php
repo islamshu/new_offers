@@ -77,7 +77,7 @@ class OfferController extends BaseController
     public function search(Request $request){
         // $socials = Social::get();
         $res['status']= $this->sendResponse('OK');
-        $offers = Offer::where('status',1)->where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
@@ -85,9 +85,9 @@ class OfferController extends BaseController
             $q->with('cities')->whereHas('cities', function ($q) use ($request) {
                    $q->where('city_id', $request->city_id);
                  }); 
-                 })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
+                 })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->get();
 
-        $stores = Vendor::with('cities')->whereHas('cities', function ($q) use ($request) {
+        $stores = Vendor::whereHas('offers')->with('cities')->whereHas('cities', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           }) 
         ->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status','active')->get();
