@@ -87,10 +87,10 @@ class OfferController extends BaseController
                  }); 
                  })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
 
-        $stores = Vendor::where('status','active')->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $stores = Vendor::with('cities')->whereHas('cities', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           }) 
-        ->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
+        ->where('status','active')->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->get();
 
         $res['data']['offers'] =  sort_offer(OfferResourses::collection($offers));
         $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
