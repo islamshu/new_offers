@@ -76,7 +76,7 @@ class OfferController extends BaseController
     }
     public function venven(){
     $vend =   Vendor::with('offers')->has('offers')->get();
-    $res['data']['stores'] =  sort_vendor(VednorResourse::collection($vend));
+    $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
     return $res;
 
     }
@@ -93,10 +93,10 @@ class OfferController extends BaseController
                  }); 
                  })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->get();
 
-        $stores = Vendor::where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->with('cities')->whereHas('cities', function ($q) use ($request) {
+        $stores = Vendor::with('cities')->whereHas('cities', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           })
-          ->has('offers')->get();
+          ->wherehas('offers')->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status','active')->get();
           // dd($stores);
         $res['data']['offers'] =  sort_offer(OfferResourses::collection($offers));
         $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
