@@ -221,7 +221,7 @@ class CodeController extends BaseController
             //   dd($dd);
             $discout = @$dd->promocode;
             // $discout = DiscountSubscription::where('code',$request->code)->first();
-            if($discout){
+            if($discout != null ){
                     $sub = Subscription::find($discout->sub_id);
                     $price =$sub->price;
                    $dis= Discount::find($discout->discount_id);
