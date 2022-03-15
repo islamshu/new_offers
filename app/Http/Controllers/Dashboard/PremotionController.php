@@ -76,6 +76,12 @@ class PremotionController extends Controller
        
 
     }
+    public function delete_slider_promotion($locale,$id){
+        $slider = Slider::find($id);
+        $slider->delete();
+        return response()->json(['icon' => 'success', 'title' => 'slider deleted successfully'], 200);
+
+    }
     public function delete_homeslider($locale,$id){
         $slider = Homeslider::find($id);
         $slider->delete();
