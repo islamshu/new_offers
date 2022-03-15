@@ -219,7 +219,7 @@ class CodeController extends BaseController
                 $q->where('code', $request->code);
               })->first();
             //   dd($dd);
-            $discout = @$dd->promocode;
+            $discout = @$dd->promocode->first();
             // $discout = DiscountSubscription::where('code',$request->code)->first();
               dd($discout->sub_id);
             if($discout != null ){
