@@ -64,7 +64,7 @@
                                    Vendor
                                 </label>
                             </div>
-                            <select name="vendor_id" class="form-control" id="">
+                            <select name="vendor_id" class="form-control selectpicker" data-live-search="true">
                                 <option value="" selected> Chose Branch</option>
                                 @foreach ($vendors as $item)
                                 <option value="{{ $item->id }}" @if($request->vendor_id == $item->id) selected @endif> {{ $item->name_en }} </option>
@@ -78,7 +78,7 @@
                                    Branch
                                 </label>
                             </div>
-                            <select name="branch_id" class="form-control" id="">
+                            <select name="branch_id" class="form-control selectpicker" data-live-search="true">
                                 <option value="" selected> Chose Branch</option>
                                 @foreach ($branches as $item)
                                 <option value="{{ $item->id }}" @if($request->branch_id == $item->id) selected @endif> {{ $item->name_en }} </option>
