@@ -179,7 +179,7 @@ class UserController extends BaseController
             $userr->save();
             if($userr->is_new == 1 ){
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
-              if(!$code){
+              if($code){
                 $user = new Subscriptions_User();
                 $user->payment_type = 'new_user';
                 $userr->is_trial = 1;
@@ -295,7 +295,6 @@ class UserController extends BaseController
        
         $res['status']= $this->sendResponse200('ok');
         $sub = Subscriptions_User::where('clinet_id',$user->id)->orderBy('id','desc')->first();
-        // dd($user);
         $res['data']['client_subscription'] =new UserSubscription($sub);
 
         return $res;
