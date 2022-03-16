@@ -1,5 +1,7 @@
 {{-- Mixed Widget 1 --}}
-
+@php
+$lang = app()->getLocale();
+@endphp
 <div class="card card-custom bg-gray-100 {{ @$class }}">
     {{-- Header --}}
     <div class="card-header border-0 bg-danger py-5">
@@ -129,9 +131,7 @@
                     {{ Metronic::getSVG('media/svg/icons/Communication/Outgoing-box.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Brand') }} <br>
-                        @php
-                            $lang = app()->getLocale();
-                        @endphp
+                      
                         @if($lang == 'ar')
                         {{ App\Models\Offer::find(best_offer())->name_ar }}
                         @else
@@ -143,7 +143,12 @@
                 <div class="col-md-2 bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Send.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
-                        {{ __('Best Branch') }}
+                        {{ __('Best Branch') }} <br>
+                        @if($lang == 'ar')
+                        {{ App\Models\Branch::find(best_branch())->name_ar }}
+                        @else
+                        {{ App\Models\Branch::find(best_branch())->name_en }}
+                        @endif
 
                     </a>
                 </div>

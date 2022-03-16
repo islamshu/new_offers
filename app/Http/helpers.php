@@ -145,7 +145,7 @@ function get_nationalities(){
 
 }
 function best_offer(){
-    $trans = Transaction::get();
+    $trans = Transaction::where('enterprise_id',auth()->user()->ent_id)->get();
     $offer =[];
     foreach($trans as $tr){
      array_push($offer,$tr->offer_id) ;  
@@ -162,6 +162,25 @@ function best_offer(){
         $most_offer_use = key($counts);
     }
     return $most_offer_use;
+}
+function best_branch(){
+    $trans = Transaction::where('enterprise_id',auth()->user()->ent_id)->get();
+    $branch =[];
+    foreach($trans as $tr){
+     array_push($branch,$tr->offer_id) ;  
+    }
+    if($branch != null){
+        $counts = array_count_values($branch);
+        arsort($counts);
+    }else{
+        $counts = 0;
+    }
+    if($counts == 0){
+        $most_branch_use = 0; 
+    }else{
+        $most_branch_use = key($counts);
+    }
+    return $most_branch_use;
 }
 function return_redirect($url){
    return new RedirectResponse($url); 
