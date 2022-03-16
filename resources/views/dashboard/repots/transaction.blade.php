@@ -57,14 +57,7 @@
                             </div>
                           <input type="date" value="{{ $request->to }}" class="form-control" name="to">
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Referance code
-                                </label>
-                            </div>
-                          <input type="text" value="{{ $request->referance }}" class="form-control" name="referance">
-                        </div>
+                     
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">

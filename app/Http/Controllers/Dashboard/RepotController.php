@@ -13,8 +13,8 @@ class RepotController extends Controller
 {
     public function transaction(Request $request){
         $query = Transaction::query()->where('vendor_id',auth()->user()->vendor_id);
-        $query->when($request->referance, function ($q) use ($request) {  
-            return $q->where('refreance_number', $request->referance);
+        $query->when($request->vendor_id, function ($q) use ($request) {
+            return $q->where('vendor_id', $request->vendor_id);
         });
         $query->when($request->branch_id, function ($q) use ($request) {
             return $q->where('branch_id', $request->branch_id);
