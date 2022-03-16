@@ -28,7 +28,7 @@ class HomeController extends Controller
     }
    
     function lang($local){
-
+        dd($local);
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
         
