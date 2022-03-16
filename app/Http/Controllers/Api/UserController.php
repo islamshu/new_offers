@@ -80,19 +80,6 @@ class UserController extends BaseController
                 $res['meessage'] = 'not found enterprise unkonw uuid';
                 return  $res;
             }
-
-
-            // if(!$enter){
-            //     $ee = Offer::where('uuid',$uuid)->first();
-            //     if($ee){
-            //         $user->uuid_type =  'offer';
-            //         $user->offer_id = $ee->id;  
-            //     }
-            // }else{
-            //     $user->uuid_type =  'null';
-            // }
-            // dd($uuid);
-
           
             $userr->save();
           
