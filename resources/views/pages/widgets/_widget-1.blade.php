@@ -72,26 +72,22 @@
                     <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
                         {{ Metronic::getSVG('media/svg/icons/General/Attachment1.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                         <a href="#" class="text-warning font-weight-bold font-size-h6">
-                            {{ __('Active Branch') }}<br>
-                            @php
-                                $count = App\Models\Offers::with('vendor')
-                                ->whereHas('vendor', function ($q) use ($request) {
-                                        $q->where('enterprise_id', auth()->user()->ent_id);
-                                    })
-                                    ->count();
-                            @endphp
-                            
-                            {{ $count }}
-                            {{-- {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
-                            $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id)
-                        })->count() }} --}}
+                     
                         </a>
                     </div>
                 @endif
                 <div class="col-md-2 bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Address-card.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                        {{ __('Active orders') }}
+                        {{ __('Active orders') }} <br>
+                        @php
+                                $count = App\Models\Offers::with('vendor')
+                                ->whereHas('vendor', function ($q) use ($request) {
+                                        $q->where('enterprise_id', auth()->user()->ent_id);
+                                    })
+                                    ->count();
+                        @endphp
+                        {{ $count }}
 
                     </a>
                 </div>
