@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Clinet;
+use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Session;
@@ -15,6 +17,18 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function all_user_not_sub()
+    {
+       $users = Clinet::get();
+       $array= [];
+       foreach($users as $us){
+      $is_user=  Subscriptions_User::where('clinet_id',$us->id)->first();
+      if(!$is_user){
+        array_push($array,$us->id);
+      }    
+       }
+       dd($array);
     }
 
     /**

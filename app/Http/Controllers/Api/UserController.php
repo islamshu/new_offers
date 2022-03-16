@@ -299,6 +299,7 @@ class UserController extends BaseController
 
         return $res;
     }
+  
     public function update_image(Request $request){
         $user = auth('client_api')->user();
         $user->image = $request->image->store('client/image');
