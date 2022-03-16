@@ -228,11 +228,14 @@ class UserController extends BaseController
             // $res['data'][""]="";
           
             if(Carbon::now() > $userr->expire_date ){
+                dd('ddddd');
                 $userr->is_trial =0;
                 $userr->type_of_subscribe ='FREE';
                 $userr->save();
             }
             if($userr->is_new == 1){
+                dd('dddddddd');
+
                 $res['other']['is_trial_subscriber']= true;
 
                 $userr->is_new = 0 ;
