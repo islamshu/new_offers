@@ -47,6 +47,7 @@ class UserController extends BaseController
                 $res['other']['for']= 'signup';  
             }
             if(get_general('actvie_sms') == '1'){
+                dd('dd');
                 // if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
                 //     $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
