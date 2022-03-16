@@ -160,7 +160,7 @@ $lang = app()->getLocale();
                 </span>
                 <i class="menu-arrow"></i>
             </a>
-     
+
         </li>
     @endif
     {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -217,65 +217,26 @@ $lang = app()->getLocale();
 
     @if (auth()->user()->isAbleTo(['read-category']))
 
-    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-        <a href="#" class="menu-link menu-toggle">
-            <span class="svg-icon menu-icon">
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
-            </span>
-            <span class="menu-text">{{ __('Category') }}</span>
-            <i class="menu-arrow"></i>
-        </a>
-
-        <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-            <ul class="menu-subnav">
-                <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                            class="menu-text">{{ __('Category') }}</span></span>
-                </li>
-
-                <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category"
-                        class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                            class="menu-text">{{ __('List') }}</span></a></li>
-                @if (auth()->user()->isAbleTo(['read-category']))
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category/create"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Create') }}</span></a></li>
-                @endif
-
-            </ul>
-        </div>
-    </li>
-@endif
-@if (auth()->user()->isAbleTo(['read-promotion']))
-<li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-    <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
-        <span class="svg-icon menu-icon">
-            <i class="fa fa-bookmark" aria-hidden="true"></i>
-        </span>
-        <span class="menu-text">{{ __('premotion') }}</span>
-        <i class="menu-arrow"></i>
-    </a>
-</li>
-@endif
-    @if (auth()->user()->isAbleTo(['read-role']))
-
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
                     <i class="fa fa-bookmark" aria-hidden="true"></i>
                 </span>
-                <span class="menu-text">{{ __('Roles') }}</span>
+                <span class="menu-text">{{ __('Category') }}</span>
                 <i class="menu-arrow"></i>
             </a>
+
             <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
                 <ul class="menu-subnav">
                     <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Role') }}</span></span>
+                                class="menu-text">{{ __('Category') }}</span></span>
                     </li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role"
+
+                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('List') }}</span></a></li>
-                    @if (auth()->user()->hasPermission('create-role'))
-                        <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role/create"
+                    @if (auth()->user()->isAbleTo(['read-category']))
+                        <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/category/create"
                                 class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                     class="menu-text">{{ __('Create') }}</span></a></li>
                     @endif
@@ -284,8 +245,17 @@ $lang = app()->getLocale();
             </div>
         </li>
     @endif
-    {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
-   
+    @if (auth()->user()->isAbleTo(['read-promotion']))
+        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+            <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
+                <span class="svg-icon menu-icon">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                </span>
+                <span class="menu-text">{{ __('premotion') }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+        </li>
+    @endif
 
     <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
         <a href="#" class="menu-link menu-toggle">
@@ -322,6 +292,37 @@ $lang = app()->getLocale();
             </ul>
         </div>
     </li>
+    @if (auth()->user()->isAbleTo(['read-role']))
+
+        <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+            <a href="#" class="menu-link menu-toggle">
+                <span class="svg-icon menu-icon">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                </span>
+                <span class="menu-text">{{ __('Roles') }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+                <ul class="menu-subnav">
+                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
+                                class="menu-text">{{ __('Role') }}</span></span>
+                    </li>
+                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role"
+                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                class="menu-text">{{ __('List') }}</span></a></li>
+                    @if (auth()->user()->hasPermission('create-role'))
+                        <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/role/create"
+                                class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                    class="menu-text">{{ __('Create') }}</span></a></li>
+                    @endif
+
+                </ul>
+            </div>
+        </li>
+    @endif
+    {{-- {{ dd(auth()->user()->isAbleTo(['read-category'])) }} --}}
+
+
 
     {{-- {{ dd(auth()->user()->isAbleTo(['read-vendor'])) }} --}}
     @if (auth()->user()->isAbleTo(['read-vendor']))
@@ -599,7 +600,7 @@ $lang = app()->getLocale();
 
         </li>
     @endif
-  
+
     @if (auth()->user()->isAbleTo(['read-page']))
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
