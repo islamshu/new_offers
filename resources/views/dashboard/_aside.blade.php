@@ -169,15 +169,15 @@ $lang = app()->getLocale();
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('show') }}</span></a></li>
-
+{{-- 
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">
                                 {{ __('list') }}
 
 
-                            </span></a></li>
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise/create"
+                            </span></a></li> --}}
+                    {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise/create"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">
                                 {{ __('create') }}
@@ -185,7 +185,7 @@ $lang = app()->getLocale();
 
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
                 </ul>
             </div>
