@@ -129,7 +129,7 @@
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
 
-                    <th>{{ __('Send Whatsapp') }}</th>
+                    <th>{{ __('Whatsapp') }}</th>
                     <th>{{ __('Status') }}</th>
                     <th>{{ __('name') }}</th>
                     <th>{{ __('nationality') }}</th>
