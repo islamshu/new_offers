@@ -21,10 +21,9 @@ class RepotController extends Controller
         });
         $query->when($request->from, function ($q) use ($request) {
             if($request->to == null && $request->from != null){
-                dd($request->from);
-                return $q->whereBetween('created_at', [$request->from,Carbon::now()->format('Y-m-d')]);
+                return $q->whereBetween('created_at', [$request->from,Carbon::now()]);
             }elseif($request->to != null && $request->from == null){
-                return $q->whereBetween('created_at', [Carbon::now()->format('Y-m-d'),$request->to,]);
+                return $q->whereBetween('created_at', [Carbon::now(),$request->to,]);
             }else{
                 return $q->whereBetween('created_at', [$request->from,$request->to,]);
             }
