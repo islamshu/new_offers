@@ -131,9 +131,13 @@
                         success: function(data) {
                             $('#offer_id').html(new Option('choose', '','disabled','selected'));
                             for (var i = 0; i < data.length; i++) {
-
-                                $('#offer_id').append(new Option(data[i].name_en,
+                                @if($lang == 'ar')
+                                $('#offer_id').append(new Option(data[i].name_ar,
                                     data[i].id));
+                                    @else
+                                    $('#offer_id').append(new Option(data[i].name_en,
+                                    data[i].id));
+                                    @endif
 
                             }
                         },
