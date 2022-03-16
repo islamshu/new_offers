@@ -161,7 +161,7 @@ function best_offer(){
     }else{
         $most_offer_use = key($counts);
     }
-    dd($most_offer_use);
+    return $most_offer_use;
 }
 function return_redirect($url){
    return new RedirectResponse($url); 
