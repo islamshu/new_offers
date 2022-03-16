@@ -16,6 +16,7 @@ use App\Http\Resources\VednorResourse;
 use App\Http\Resources\VendorCoverCollection;
 use App\Http\Resources\VendorDetiesResourses;
 use App\Http\Resources\VendorOfferDeResourses;
+use App\Models\City;
 use App\Models\Social;
 use App\Models\Subscription;
 use App\Models\Vendor;
@@ -82,14 +83,18 @@ class OfferController extends BaseController
     }
     public function search(Request $request){
         // $socials = Social::get();
+        $city = City::find($request->city_id) ;
+        if(!$city){
+          $city = 15;
+        }
         $res['status']= $this->sendResponse('OK');
-        $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request) {
+        $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request , $city) {
           $q->where('status','active');
             $q->with('enterprise')->whereHas('enterprise', function ($q) use ($request) {
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
-            $q->with('cities')->whereHas('cities', function ($q) use ($request) {
-                   $q->where('city_id', $request->city_id);
+            $q->with('cities')->whereHas('cities', function ($q) use ($city) {
+                   $q->where('city_id', $city);
                  }); 
                  })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->get();
 
