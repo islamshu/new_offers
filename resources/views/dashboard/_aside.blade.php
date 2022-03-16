@@ -564,6 +564,10 @@ $lang = app()->getLocale();
                 <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/transaction_reports"
                         class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                             class="menu-text">{{ __('Transaction Reports') }}</span></a></li>
+                            <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/clients_reports"
+                                class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                    class="menu-text">{{ __('Client Reports') }}</span></a></li>
+                            
               
 
             </ul>
