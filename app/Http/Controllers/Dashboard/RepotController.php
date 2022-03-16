@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Transaction;
 use App\Models\Vendor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RepotController extends Controller
@@ -28,7 +29,7 @@ class RepotController extends Controller
             }
         });
         $trans = $query->get();
-        $vendors = Vendor::where('enterprice_id',auth()->user()->ent_id)->get();
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
         $branches = Branch::where('vendor_id',auth()->user()->vendor_id)->get();
         return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
     }
