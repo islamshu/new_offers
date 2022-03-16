@@ -182,6 +182,25 @@ function best_branch(){
     }
     return $most_branch_use;
 }
+function best_brand(){
+    $trans = Transaction::where('enterprise_id',auth()->user()->ent_id)->get();
+    $branch =[];
+    foreach($trans as $tr){
+     array_push($branch,$tr->vendor_id) ;  
+    }
+    if($branch != null){
+        $counts = array_count_values($branch);
+        arsort($counts);
+    }else{
+        $counts = 0;
+    }
+    if($counts == 0){
+        $most_branch_use = 0; 
+    }else{
+        $most_branch_use = key($counts);
+    }
+    return $most_branch_use;
+}
 function return_redirect($url){
    return new RedirectResponse($url); 
 
