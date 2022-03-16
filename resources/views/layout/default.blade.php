@@ -15,6 +15,7 @@
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}" />
     <link href="{{asset('/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
     {{-- Fonts --}}
     {{ Metronic::getGoogleFontsInclude() }}
@@ -74,6 +75,7 @@
         });
     </script>
     <script src="{{ asset('/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
     <script>
     
