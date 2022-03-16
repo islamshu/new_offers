@@ -73,7 +73,7 @@
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Active Branch') }}<br>
                         {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
-                            $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id);
+                            $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id)
                         })->count();
 
 
