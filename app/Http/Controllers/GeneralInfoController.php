@@ -30,7 +30,7 @@ class GeneralInfoController extends Controller
 
         $token = get_general('sms_token');
         $sender = get_general('sender_id') ;
-        $message ='test';
+        $message ='تجربة';
         
         
       $url = 'https://api.oursms.com/api-a/msgs?token='.$token.'&src='.$sender.'&dests=966548102240&body='.$message;
