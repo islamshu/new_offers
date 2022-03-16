@@ -72,12 +72,7 @@
                     {{ Metronic::getSVG("media/svg/icons/General/Attachment1.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Active Branch') }}<br>
-                        @php
-                            $count = App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
-                            $q->where('enterprise_id',auth()->user()->ent_id)
-                        })->count();
-                        @endphp
-                        {{ $count }}
+                       
                         {{-- {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
                             $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id)
                         })->count() }} --}}
