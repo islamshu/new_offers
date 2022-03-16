@@ -75,8 +75,6 @@
                         {{-- {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
                             $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id)
                         })->count() }} --}}
-
-
                     </a>
                 </div>
                 @endif
