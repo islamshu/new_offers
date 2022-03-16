@@ -128,7 +128,8 @@
                 <div class="col-md-2 bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Outgoing-box.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                        {{ __('Best Brand') }}
+                        {{ __('Best Brand') }} <br>
+                        {{ best_offer() }}
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
