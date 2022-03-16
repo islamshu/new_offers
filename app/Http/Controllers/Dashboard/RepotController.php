@@ -43,7 +43,7 @@ class RepotController extends Controller
     public function clients(Request $request)
     {
         $clients = Clinet::get();
-        return view('dashboard.repots.clients',compact('clients'));
+        return view('dashboard.repots.clients',compact('clients','request'));
 
     }
     public function get_branch_ajax(Request $request,$locale )
