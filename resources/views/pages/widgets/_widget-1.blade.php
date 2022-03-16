@@ -82,7 +82,7 @@
                         {{ __('Active orders') }} <br>
                         @php
                                 $count = App\Models\Offer::with('vendor')
-                                ->whereHas('vendor', function ($q) use ($request) {
+                                ->whereHas('vendor', function ($q) {
                                         $q->where('enterprise_id', auth()->user()->ent_id);
                                     })
                                     ->count();
