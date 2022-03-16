@@ -6,7 +6,8 @@
         <h3 class="card-title font-weight-bolder text-white">{{ __('Statistics') }}</h3>
         <div class="card-toolbar">
             <div class="dropdown dropdown-inline">
-                <a href="#" class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Export
                 </a>
                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
@@ -59,92 +60,99 @@
         <div class="card-spacer mt-n25">
             {{-- Row --}}
             <div class="row m-0">
-               @if(auth()->user()->hasRole('Enterprises'))
-                <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/General/Attachment1.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
-                    <a href="#" class="text-warning font-weight-bold font-size-h6">
-                        {{ __('Active Brand') }} <br>
-                        {{ App\Models\Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->count() }}
-                    </a>
-                </div>
+                @if (auth()->user()->hasRole('Enterprises'))
+                    <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
+                        {{ Metronic::getSVG('media/svg/icons/General/Attachment1.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
+                        <a href="#" class="text-warning font-weight-bold font-size-h6">
+                            {{ __('Active Brand') }} <br>
+                            {{ App\Models\Vendor::where('enterprise_id', auth()->user()->ent_id)->where('status', 'active')->count() }}
+                        </a>
+                    </div>
                 @else
-                <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/General/Attachment1.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
-                    <a href="#" class="text-warning font-weight-bold font-size-h6">
-                        {{ __('Active Branch') }}<br>
-                       
-                        {{-- {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
+                    <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
+                        {{ Metronic::getSVG('media/svg/icons/General/Attachment1.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
+                        <a href="#" class="text-warning font-weight-bold font-size-h6">
+                            {{ __('Active Branch') }}<br>
+                            @php
+                                $count = App\Models\Offers::with('vendor')
+                                ->whereHas('vendor', function ($q) use ($request) {
+                                        $q->where('enterprise_id', auth()->user()->ent_id);
+                                    })
+                                    ->count();
+                            @endphp
+                            {{ $count }}
+                            {{-- {{ App\Models\Branch::with('vendor')->whereHas('vendor', function ($q)  {
                             $q->where('status','active')->where('enterprise_id',auth()->user()->ent_id)
                         })->count() }} --}}
-                    </a>
-                </div>
+                        </a>
+                    </div>
                 @endif
                 <div class="col-md-2 bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Address-card.svg", "svg-icon-3x svg-icon-primary d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Address-card.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Active orders') }}
 
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Flag.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Flag.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Nationalities') }}
 
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Add-user.svg", "svg-icon-3x svg-icon-primary d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Add-user.svg', 'svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Users') }}
 
                     </a>
                 </div>
                 <div class="col-md-2  bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Contact1.svg", "svg-icon-3x svg-icon-danger d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Contact1.svg', 'svg-icon-3x svg-icon-danger d-block my-2') }}
                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-                      {{ __('premium customers') }}
+                        {{ __('premium customers') }}
                     </a>
                 </div>
             </div>
             <div class="row m-0">
-               
+
                 <div class="col-md-2 bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Shopping/Chart-bar2.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Shopping/Chart-bar2.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Total customer saving') }}
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Outgoing-box.svg", "svg-icon-3x svg-icon-primary d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Outgoing-box.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Brand') }}
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Send.svg", "svg-icon-3x svg-icon-warning d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Send.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Best Branch') }}
 
                     </a>
                 </div>
                 <div class="col-md-2 bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Clipboard-check.svg", "svg-icon-3x svg-icon-primary d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Communication/Clipboard-check.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Offer') }}
 
                     </a>
                 </div>
                 <div class="col-md-2  bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
-                    {{ Metronic::getSVG("media/svg/icons/Design/Layers.svg", "svg-icon-3x svg-icon-danger d-block my-2") }}
+                    {{ Metronic::getSVG('media/svg/icons/Design/Layers.svg', 'svg-icon-3x svg-icon-danger d-block my-2') }}
                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
                         {{ __('All Action') }}
                     </a>
                 </div>
             </div>
-            
+
             {{-- Row --}}
-           
+
         </div>
     </div>
 </div>
