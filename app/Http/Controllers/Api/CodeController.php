@@ -95,8 +95,7 @@ class CodeController extends BaseController
         if ($user->status != 'active') {
             $user->type_paid_user == 'free';
         }
-        
-        $type_paid_user = $user->type_paid;
+        $type_paid_user = $user->subs->last()->subscripe->type_paid;
         $offer = Offer::find($request->offer_id);
         $vendor = Vendor::find($offer->vendor_id);
         if(!($vendor->qr_code == $request->store_pin_code || $request->store_pin_code == 'dbc4d84bfcfe2284ba11beffb853a8c4')){
