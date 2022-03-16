@@ -118,6 +118,8 @@ Route::group([
         
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
         Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
+        Route::get('/get_branch_ajax', 'Dashboard\RepotController@get_branch_ajax')->name('get_branch_ajax');
+
         Route::get('offer_status','Dashboard\OfferController@update_status')->name('offerstatus.update');
         
         Route::post('/get_modal/branch', 'Dashboard\branchController@get_modal')->name('showpostModalBranch');

@@ -33,4 +33,11 @@ class RepotController extends Controller
         $branches = Branch::where('vendor_id',auth()->user()->vendor_id)->get();
         return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
     }
+    public function get_branch_ajax(Request $request,$locale )
+    {
+
+       $offers = Branch::where('vendor_id',$request->venodr_id)->get();
+       return response()->json($offers);
+
+    }
 }

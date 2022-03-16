@@ -64,8 +64,8 @@
                                    Vendor
                                 </label>
                             </div>
-                            <select name="vendor_id" class="form-control selectpicker" data-live-search="true">
-                                <option value="" selected> Chose Branch</option>
+                            <select name="vendor_id" id="vendor_id" class="form-control selectpicker" data-live-search="true">
+                                <option value="" selected> Choose Brand</option>
                                 @foreach ($vendors as $item)
                                 <option value="{{ $item->id }}" @if($request->vendor_id == $item->id) selected @endif> {{ $item->name_en }} </option>
 
@@ -78,12 +78,9 @@
                                    Branch
                                 </label>
                             </div>
-                            <select name="branch_id" class="form-control selectpicker" data-live-search="true">
-                                <option value="" selected> Chose Branch</option>
-                                @foreach ($branches as $item)
-                                <option value="{{ $item->id }}" @if($request->branch_id == $item->id) selected @endif> {{ $item->name_en }} </option>
+                            <select name="branch_id" id="branch_id" class="form-control selectpicker" data-live-search="true">
+                                <option selected  >{{ __('choose') }}</option>
 
-                                @endforeach
                             </select>
                         </div>
                        
@@ -164,5 +161,42 @@
 @endsection
 
 @section('scripts')
+<script>
+    $(document).ready(function() {
 
+$('#vendor_id').on('change', function() {
+    // console.log("hmm its change");
+    var cat_id = $(this).val();
+    // console.log(cat_id);
+    var div = $(this).parent();
+
+    var op = " ";
+
+    $.ajax({
+        type: 'get',
+        url: "{{ route('get_branch_ajax', ['locale' => app()->getLocale()]) }}",
+        data: {
+            'venodr_id': cat_id
+        },
+        success: function(data) {
+            $('#branch_id').html(new Option('choose', '','disabled','selected'));
+            for (var i = 0; i < data.length; i++) {
+                @if($lang == 'ar')
+                $('#branch_id').append(new Option(data[i].name_ar,
+                    data[i].id));
+                    @else
+                    $('#branch_id').append(new Option(data[i].name_en,
+                    data[i].id));
+                    @endif
+
+            }
+        },
+        error: function() {
+
+        }
+    });
+
+});
+});
+</script>
 @endsection
