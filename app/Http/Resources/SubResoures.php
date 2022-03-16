@@ -16,6 +16,8 @@ class SubResoures extends JsonResource
      */
     public function toArray($request)
     {
+        dd($this->is_new);
+
         return [
             'type'=>$this->type_of_subscribe != null ? $this->type_of_subscribe : 'FREE',
             'points_no'=>$this->points_no,

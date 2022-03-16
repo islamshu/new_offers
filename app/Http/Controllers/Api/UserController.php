@@ -227,7 +227,6 @@ class UserController extends BaseController
                 $userr->is_new = 0;
                 $userr->save(); 
               }
-              dd($userr->is_new);
                 
             }
             $res['status']= $this->sendResponse200('OK');
