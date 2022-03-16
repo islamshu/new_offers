@@ -34,7 +34,7 @@ class HomeController extends Controller
        
         Session::put('lang', $local);
         
-        return redirect(url($local.'/dashboard/home'));
+        return redirect(url($local.'/home'));
 
         
         return redirect()->route($route,$local);
