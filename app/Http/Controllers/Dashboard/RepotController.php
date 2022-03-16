@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class RepotController extends Controller
 {
     public function transaction(Request $request){
-        $query = Transaction::query()->where('vendor_id',auth()->user()->vendor_id);
+        $query = Transaction::query()->where('enterprise_id',auth()->user()->ent_id);
         $query->when($request->vendor_id, function ($q) use ($request) {
             return $q->where('vendor_id', $request->vendor_id);
         });
