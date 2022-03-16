@@ -140,7 +140,6 @@
                     <th>{{ __('register time') }}</th>
                     <th>{{ __('Subscripe time') }}</th>
                     <th>{{ __('Subscripe type') }}</th>
-                    <th>{{ __('SAR') }}</th>
                     <th>{{ __('Transaction number') }}</th>
                     <th>{{ __('last transaction') }}</th>
                 </tr>
@@ -165,7 +164,6 @@
                     <td>{{@$item->register_date}}</td>
                     <td>{{@$item->start_date}}</td>
                     <td>{{@$item->expire_date}}</td>
-                    <td> 0</td>
                     <td>{{@$item->purchases_no}}</td>
                     <td>{{$item->last_transaction }}</td>
 
