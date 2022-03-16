@@ -112,7 +112,8 @@ Route::group([
         Route::post('/show/usermodel', 'Dashboard\brandController@showmodeluser')->name('showmodeluser');
         Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
 
-        
+        Route::get('/transaction_reports', 'Dashboard\RepotController@transaction')->name('transaction.repots');
+
         
         
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
