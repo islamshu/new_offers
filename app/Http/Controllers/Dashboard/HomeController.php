@@ -27,14 +27,14 @@ class HomeController extends Controller
         return view('home');
     }
    
-    function lang($local){
+    function lang(Request $request,$local){
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
         
        
         Session::put('lang', $local);
         
-        dd($route);
+        dd($request);
         
         return redirect()->route($route,$local);
     }
