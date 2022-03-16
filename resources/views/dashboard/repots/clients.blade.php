@@ -137,7 +137,7 @@
                         $city = @App\Models\City::find($item->city_id);
                     @endphp
                     <td>
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone="{{ $item->phone }}>Send
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone={{ $item->phone }}">Send
                     </a>
                 </td>
                     <td>{{ @$item->status }}</td>
