@@ -233,15 +233,7 @@ class UserController extends BaseController
             }
             $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
-            if($userr->is_new == 1){
-                $res['other']['is_trial_subscriber']= true;
-                $userr->is_new = 0 ;
-                $userr->is_trial = 0 ;
-
-                $userr->save();
-            }else{
-                $res['other']['is_trial_subscriber']= false;
-            }
+            
             $res['data']['client'] = new ClientResoures($userr);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
@@ -252,6 +244,19 @@ class UserController extends BaseController
                 $userr->is_trial =0;
                 $userr->type_of_subscribe ='FREE';
                 $userr->save();
+            }
+            if($userr->is_new == 1){
+                $res['other']['is_trial_subscriber']= true;
+                $res['data']['client']['subscription']['is_trial']= 1;
+
+                $userr->is_new = 0 ;
+                $userr->is_trial = 0 ;
+
+                $userr->save();
+            }else{
+                $res['other']['is_trial_subscriber']= false;
+                $res['data']['client']['subscription']['is_trial']= 0;
+
             }
           
             return $res;
