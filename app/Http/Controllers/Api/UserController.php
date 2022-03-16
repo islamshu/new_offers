@@ -171,11 +171,12 @@ class UserController extends BaseController
             $userr = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         }
         if($userr){
-            dd($userr->is_new);
+           
             $userr->last_login = Carbon::now();
             $userr->is_verify = 1;
             $userr->save();
             if($userr->is_new == 1 ){
+                dd($userr->is_new);
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
               if($code){
                 $user = new Subscriptions_User();
