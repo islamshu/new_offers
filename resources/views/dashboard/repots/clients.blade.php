@@ -84,6 +84,14 @@
                             </div>
                           <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
                         </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    Subscribe To
+                                </label>
+                            </div>
+                          <input type="date" value="{{ $request->sub_to}}" placeholder="Subscribe To" class="form-control" name="sub_to">
+                        </div>
                      
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -91,7 +99,14 @@
                                     Subscripe Type
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
+                            <select name="sub_type" class="form-control" >
+                                <option value="">Choose Type</option>
+                                <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
+                                <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>
+                                <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
+
+                            </select>
+                          <input type="date" value="{{ $request->sub_type}}" placeholder="Subscribe Type" class="form-control" name="sub_type">
                         </div>
                        
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>

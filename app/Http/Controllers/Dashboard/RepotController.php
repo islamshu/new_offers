@@ -50,6 +50,9 @@ class RepotController extends Controller
         $query->when($request->phone, function ($q) use ($request) {
             return $q->where('phone',$request->phone);
         });
+        $query->when($request->sub_type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe',$request->sub_type);
+        });
         $query->when($request->register_form, function ($q) use ($request) {
             if($request->register_to == null && $request->register_form != null){
                 return $q->whereBetween('register_date', [$request->register_form,Carbon::now()]);
@@ -59,6 +62,17 @@ class RepotController extends Controller
                 return $q->whereBetween('register_date', [$request->register_form,$request->register_to]);
             }else{
                 return $q->whereBetween('register_date', [$request->register_form,$request->register_to,]);
+            }
+        });
+        $query->when($request->sub_form, function ($q) use ($request) {
+            if($request->sub_to == null && $request->sub_form != null){
+                return $q->whereBetween('start_date', [$request->sub_form,Carbon::now()]);
+            }elseif($request->sub_to != null && $request->sub_form == null){
+                return $q->whereBetween('start_date', [Carbon::now(),$request->sub_to,]);
+            }elseif($request->sub_to == $request->sub_form){
+                return $q->whereBetween('start_date', [$request->sub_form,$request->sub_to]);
+            }else{
+                return $q->whereBetween('start_date', [$request->sub_form,$request->sub_to,]);
             }
         });
         
