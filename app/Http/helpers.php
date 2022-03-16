@@ -4,6 +4,7 @@ use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\GeneralInfo;
 use App\Models\Offer;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Container\Container;
@@ -142,6 +143,25 @@ function get_nationalities(){
    return ( count(array_unique($natonalty, SORT_REGULAR)));
 
 
+}
+function best_offer(){
+    $trans = Transaction::get();
+    $offer =[];
+    foreach($trans as $tr){
+     array_push($offer,$tr->offer_id) ;  
+    }
+    if($offer != null){
+        $counts = array_count_values($offer);
+        arsort($counts);
+    }else{
+        $counts = 0;
+    }
+    if($counts == 0){
+        $most_offer_use = 0; 
+    }else{
+        $most_offer_use = key($counts);
+    }
+    dd($most_offer_use);
 }
 function return_redirect($url){
    return new RedirectResponse($url); 
