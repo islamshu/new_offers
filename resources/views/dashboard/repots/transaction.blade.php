@@ -2,7 +2,7 @@
 
 @section('content')
 @php
-    $lang = app()->getLocal();
+    $lang = app()->getLocale();
 @endphp
 <div class="card card-custom">
 
