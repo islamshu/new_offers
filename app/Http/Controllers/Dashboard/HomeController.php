@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
     public function all_user_not_sub()
     {
-       $users = Clinet::get();
+       $users = Clinet::where('type_of_subscribe','TRIAL')->get();
        $array= [];
        foreach($users as $us){
       $is_user=  Subscriptions_User::where('clinet_id',$us->id)->first();
