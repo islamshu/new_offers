@@ -176,7 +176,7 @@ class UserController extends BaseController
             $userr->is_verify = 1;
             $userr->save();
             if($userr->is_new == 1 ){
-                dd($userr->is_new);
+            
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
               if($code){
                 $user = new Subscriptions_User();
@@ -227,7 +227,7 @@ class UserController extends BaseController
                 $userr->is_new = 0;
                 $userr->save(); 
               }
-              
+              dd($userr->is_new);
                 
             }
             $res['status']= $this->sendResponse200('OK');
