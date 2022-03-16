@@ -178,7 +178,17 @@ class UserController extends BaseController
             if($userr->is_new == 1 ){
             
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
-              if($code){
+             
+                if($userr->is_new == 1){
+                    $res['other']['is_trial_subscriber']= true;
+                    $userr->is_new = 0 ;
+                    $userr->is_trail = 0 ;
+
+                    $userr->save();
+                }else{
+                    $res['other']['is_trial_subscriber']= false;
+                }
+                if($code){
                 $user = new Subscriptions_User();
                 $user->payment_type = 'new_user';
                 $userr->is_trial = 1;
@@ -242,14 +252,7 @@ class UserController extends BaseController
                 $userr->type_of_subscribe ='FREE';
                 $userr->save();
             }
-            if($userr->is_new == 1){
-                $res['other']['is_trial_subscriber']= true;
-                $userr->is_new = 0 ;
-                $userr->save();
-            }else{
-                $res['other']['is_trial_subscriber']= false;
- 
-            }
+          
             return $res;
         }else{
             $res['status']=$this->sendError();
