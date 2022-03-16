@@ -86,9 +86,10 @@ class OfferController extends BaseController
         $city = City::find($request->city_id) ;
         
         if(!$city){
-          dd($city);
+        
           $city = 15;
         }
+        dd($city);
         $res['status']= $this->sendResponse('OK');
         $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request , $city) {
           $q->where('status','active');
