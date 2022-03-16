@@ -24,7 +24,7 @@
                         </div>
                         <input type="text" name="homeslider_id" hidden value="{{ $homeslider->id }}" id="">
                         <div class="col-md-3">
-                            <select value="offer_id" name="offer_id" id="offer_id" class="form-control">
+                            <select value="offer_id" name="offer_id" id="offer_id" class="form-control selectpicker " data-live-search="true">
                                 <option selected  disabled>{{ __('choose') }}</option>
 
 
