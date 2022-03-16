@@ -160,7 +160,7 @@ $lang = app()->getLocale();
                 </span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
+            {{-- <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
                 <ul class="menu-subnav">
                     <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
                                 class="menu-text">{{ __('Enterprises') }}</span></span>
@@ -188,7 +188,7 @@ $lang = app()->getLocale();
                     </li> --}}
 
                 </ul>
-            </div>
+            </div> --}}
         </li>
     @endif
     {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
