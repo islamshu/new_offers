@@ -42,7 +42,7 @@ class VednorResourse extends JsonResource
             // 'offers'=>new VendorOfferDeCollection($this->offers)  ,
             // 'branches'=> new BranchCollection($this->branches),
             'store_reviews'=>new  VendorReviewCollection($this->review),
-            'offersss'=>$this->offers
+            // 'offersss'=>$this->offers
             
 
         ];
