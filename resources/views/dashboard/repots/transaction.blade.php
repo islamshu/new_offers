@@ -1,6 +1,9 @@
 @extends('layout.default')
 
 @section('content')
+@php
+    $lang = app()->getLocal();
+@endphp
 <div class="card card-custom">
 
     <div class="card-header">
