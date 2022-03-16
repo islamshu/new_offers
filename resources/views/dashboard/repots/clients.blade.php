@@ -106,7 +106,6 @@
                                 <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
 
                             </select>
-                          <input type="date" value="{{ $request->sub_type}}" placeholder="Subscribe Type" class="form-control" name="sub_type">
                         </div>
                        
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
