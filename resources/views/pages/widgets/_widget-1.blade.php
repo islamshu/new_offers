@@ -103,14 +103,16 @@
                 <div class="col-md-2 bg-light-success px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Add-user.svg', 'svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                        {{ __('Users') }}
+                        {{ __('Clients') }}<br>
+                        {{ App\Models\Clinet::count() }}
 
                     </a>
                 </div>
                 <div class="col-md-2  bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Contact1.svg', 'svg-icon-3x svg-icon-danger d-block my-2') }}
                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-                        {{ __('premium customers') }}
+                        {{ __('premium customers') }}<br>
+                        {{ App\Models\Clinet::where('type_of_subscribe','PREMIUM')->count() }}
                     </a>
                 </div>
             </div>
