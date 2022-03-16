@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
@@ -7,6 +8,7 @@ use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Session;
+
 class HomeController extends Controller
 {
     /**
@@ -20,15 +22,15 @@ class HomeController extends Controller
     }
     public function all_user_not_sub()
     {
-       $users = Clinet::where('type_of_subscribe','TRIAL')->get();
-       $array= [];
-       foreach($users as $us){
-      $is_user=  Subscriptions_User::where('clinet_id',$us->id)->first();
-      if(!$is_user){
-        array_push($array,$us->id);
-      }    
-       }
-       dd($array);
+        $users = Clinet::where('type_of_subscribe', 'TRIAL')->get();
+        $array = [];
+        foreach ($users as $us) {
+            $is_user =  Subscriptions_User::where('clinet_id', $us->id)->first();
+            if (!$is_user) {
+                array_push($array, $us->id);
+            }
+        }
+        dd($array);
     }
 
     /**
@@ -40,24 +42,25 @@ class HomeController extends Controller
     {
         return view('home');
     }
-   
-    function lang(Request $request,$local){
+
+    function lang(Request $request, $local)
+    {
         $url = url()->previous();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
-        
-       
-        Session::put('lang', $local);
-        
-        return redirect(url($local.'/home'));
 
-        
-        return redirect()->route($route,$local);
+
+        Session::put('lang', $local);
+
+        return redirect(url($local . '/home'));
+
+
+        return redirect()->route($route, $local);
     }
 
-    public function show_translate($local,$lang)
+    public function show_translate($local, $lang)
     {
         $language = $lang;
-        
+
         return view('languages.language_view_en', compact('language'));
     }
     public function key_value_store(Request $request)
@@ -69,5 +72,4 @@ class HomeController extends Controller
         saveJSONFile($request->id, $data);
         return back();
     }
-
 }

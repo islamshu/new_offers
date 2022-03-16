@@ -170,10 +170,7 @@ class UserController extends BaseController
         }else{
             $userr = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         }
-       
         if($userr){
-            
-           
             $userr->last_login = Carbon::now();
             $userr->is_verify = 1;
             $userr->save();
@@ -184,9 +181,7 @@ class UserController extends BaseController
                 $user->payment_type = 'new_user';
                 $userr->is_trial = 1;
                 $userr->save();
-    
                 $userr->type_of_subscribe = $code->type_paid;
-        
                 if ($code->type_balance == 'Limit') {
                     $userr->is_unlimited = 0;
                     $userr->credit = $code->balance;
