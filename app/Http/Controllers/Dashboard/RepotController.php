@@ -30,7 +30,7 @@ class RepotController extends Controller
         $query->when($request->branch_id, function ($q) use ($request) {
             return $q->where('branch_id', $request->branch_id);
         });
-        dd($query->get());
+        // dd($query->get());
 
         $trans = $query->get();
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
