@@ -81,7 +81,8 @@
                                    Branch
                                 </label>
                             </div>
-                            <select name="branch_id" id="branch_id" class="form-control selectpicker" data-live-search="true">
+
+                            <select value="branch_id" name="branch_id" id="branch_id" class="form-control">
                                 <option selected  >{{ __('choose') }}</option>
 
                             </select>
