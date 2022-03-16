@@ -179,15 +179,7 @@ class UserController extends BaseController
             
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
              
-                if($userr->is_new == 1){
-                    $res['other']['is_trial_subscriber']= true;
-                    $userr->is_new = 0 ;
-                    $userr->is_trial = 0 ;
-
-                    $userr->save();
-                }else{
-                    $res['other']['is_trial_subscriber']= false;
-                }
+                
                 if($code){
                 $user = new Subscriptions_User();
                 $user->payment_type = 'new_user';
@@ -241,6 +233,15 @@ class UserController extends BaseController
             }
             $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
+            if($userr->is_new == 1){
+                $res['other']['is_trial_subscriber']= true;
+                $userr->is_new = 0 ;
+                $userr->is_trial = 0 ;
+
+                $userr->save();
+            }else{
+                $res['other']['is_trial_subscriber']= false;
+            }
             $res['data']['client'] = new ClientResoures($userr);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
