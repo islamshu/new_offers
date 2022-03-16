@@ -84,7 +84,9 @@ class OfferController extends BaseController
     public function search(Request $request){
         // $socials = Social::get();
         $city = City::find($request->city_id) ;
+        
         if(!$city){
+          dd($city);
           $city = 15;
         }
         $res['status']= $this->sendResponse('OK');
