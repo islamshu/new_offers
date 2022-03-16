@@ -83,7 +83,7 @@
                             </div>
 
                             <select value="branch_id" name="branch_id" id="branch_id" class="form-control">
-                                <option selected  >{{ __('choose') }}</option>
+                                <option value="" selected  >{{ __('choose') }}</option>
 
                             </select>
                         </div>
@@ -183,7 +183,7 @@ $('#vendor_id').on('change', function() {
             'venodr_id': cat_id
         },
         success: function(data) {
-            $('#branch_id').html(new Option('choose', '','disabled','selected'));
+            $('#branch_id').html(new Option('', '','disabled','selected'));
             for (var i = 0; i < data.length; i++) {
                 @if($lang == 'ar')
                 $('#branch_id').append(new Option(data[i].name_ar,
