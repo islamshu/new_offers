@@ -109,6 +109,7 @@
                 <tr class="fw-bold fs-6 text-gray-800">
 
                     <th>{{ __('offer') }}</th>
+                    <th>{{ __('brand') }}</th>
                     <th>{{ __('offer type') }}</th>
                     <th>{{ __('price after discount') }}</th>
                     <th>{{ __('discount percentage') }}</th>
@@ -123,9 +124,13 @@
                 @foreach ($trans as $item)
                 @php
                     $offer = App\Models\Offer::find($item->offer_id);
+                    $vendor = App\Models\Vendor::find($item->vendor_id);
+
                     $client = App\Models\Clinet::find($item->client_id);
                 @endphp
                     <td>{{ @$offer->name_en }}</td>
+                    <td>{{ @$vendor->name_en }}</td>
+
                     <td>{{ @$offer->offertype->offer_type }}</td>
                     <td>{{@$offer->offertype->price_after_discount }}</td>
                     <td>{{@$offer->offertype->discount_value }}</td>
