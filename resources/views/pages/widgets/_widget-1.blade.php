@@ -81,7 +81,7 @@
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Active orders') }} <br>
                         @php
-                                $count = App\Models\Offers::with('vendor')
+                                $count = App\Models\Offer::with('vendor')
                                 ->whereHas('vendor', function ($q) use ($request) {
                                         $q->where('enterprise_id', auth()->user()->ent_id);
                                     })
