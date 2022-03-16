@@ -167,8 +167,7 @@
                     <td>{{@$item->expire_date}}</td>
                     <td> 0</td>
                     <td>{{@$item->purchases_no}}</td>
-                    <td>{{@$item->purchases_no}}</td>
-                    <td>{{ @$item->last_transaction }}</td>
+                    <td>{{$item->last_transaction }}</td>
 
                    
                     </tr>
