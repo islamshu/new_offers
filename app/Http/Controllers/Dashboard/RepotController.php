@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Clinet;
 use App\Models\Transaction;
 use App\Models\Vendor;
 use Carbon\Carbon;
@@ -38,6 +39,12 @@ class RepotController extends Controller
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
         $branches = Branch::where('vendor_id',auth()->user()->vendor_id)->get();
         return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
+    }
+    public function clients(Request $request)
+    {
+        $clients = Clinet::get();
+        return view('dashboard.repots.clients',compact('clients'));
+
     }
     public function get_branch_ajax(Request $request,$locale )
     {

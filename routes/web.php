@@ -113,6 +113,7 @@ Route::group([
         Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
 
         Route::get('/transaction_reports', 'Dashboard\RepotController@transaction')->name('transaction_sales');
+        Route::get('/clients_reports', 'Dashboard\RepotController@clients')->name('clients_sales');
 
         
         
