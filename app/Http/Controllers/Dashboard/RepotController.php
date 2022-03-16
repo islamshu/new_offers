@@ -47,9 +47,11 @@ class RepotController extends Controller
         $query->when($request->email, function ($q) use ($request) {
             return $q->where('email', $request->email);
         });
+        dd($query->get());
         $query->when($request->phone, function ($q) use ($request) {
             return $q->where('phone', $request->phone);
         });
+
         $clients = $query->get();
         return view('dashboard.repots.clients',compact('clients','request'));
 
