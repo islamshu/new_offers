@@ -43,7 +43,7 @@ class RepotController extends Controller
     public function clients(Request $request)
     {
         $query = Clinet::query();
-   
+        dd($request->all());
         $query->when($request->email, function ($q) use ($request) {
             return $q->where('email', $request->email);
         });
