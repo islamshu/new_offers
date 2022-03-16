@@ -160,35 +160,7 @@ $lang = app()->getLocale();
                 </span>
                 <i class="menu-arrow"></i>
             </a>
-            {{-- <div class="menu-submenu " kt-hidden-height="80" style=""><span class="menu-arrow"></span>
-                <ul class="menu-subnav">
-                    <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
-                                class="menu-text">{{ __('Enterprises') }}</span></span>
-                    </li>
-
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('show') }}</span></a></li>
-{{-- 
-                    <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">
-                                {{ __('list') }}
-
-
-                            </span></a></li> --}}
-                    {{-- <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/enterprise/create"
-                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">
-                                {{ __('create') }}
-
-
-                            </span>
-                        </a>
-                    </li> --}}
-
-                </ul>
-            </div> --}}
+     
         </li>
     @endif
     {{-- <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
