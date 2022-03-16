@@ -93,13 +93,10 @@ class CodeController extends BaseController
     {
         $user = auth('client_api')->user();
         if ($user->status != 'active') {
-            $user->type_of_subscribe == 'FREE';
+            $user->type_paid_user == 'free';
         }
-        if($user->expire_date < Carbon::now()){
-            $user->type_of_subscribe = 'FREE';
-            $user->save();
-        }
-        $type_paid_user = $user->type_of_subscribe;
+        
+        $type_paid_user = $user->type_paid;
         $offer = Offer::find($request->offer_id);
         $vendor = Vendor::find($offer->vendor_id);
         if(!($vendor->qr_code == $request->store_pin_code || $request->store_pin_code == 'dbc4d84bfcfe2284ba11beffb853a8c4')){
