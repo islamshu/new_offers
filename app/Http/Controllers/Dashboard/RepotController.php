@@ -51,7 +51,7 @@ class RepotController extends Controller
             return $q->where('phone',$request->phone);
         });
         $query->when($request->sub_type, function ($q) use ($request) {
-            return $q->where('type_of_subscribe',$request->sub_type);
+            return $q->where('type_of_subscribe','like','%'.$request->sub_type.'%');
         });
         $query->when($request->register_form, function ($q) use ($request) {
             if($request->register_to == null && $request->register_form != null){
