@@ -89,7 +89,6 @@ class OfferController extends BaseController
         
           $city = 15;
         }
-        dd($city);
         $res['status']= $this->sendResponse('OK');
         $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request , $city) {
           $q->where('status','active');
@@ -97,6 +96,7 @@ class OfferController extends BaseController
                 $q->where('enterprise_id', get_enterprose_uuid(request()->header('uuid')));
               });
             $q->with('cities')->whereHas('cities', function ($q) use ($city) {
+              dd($city);
                    $q->where('city_id', $city);
                  }); 
                  })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->get();
