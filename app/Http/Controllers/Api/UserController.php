@@ -171,6 +171,7 @@ class UserController extends BaseController
             $userr = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
         }
         if($userr){
+            dd($userr->is_new);
             $userr->last_login = Carbon::now();
             $userr->is_verify = 1;
             $userr->save();
