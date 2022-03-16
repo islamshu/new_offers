@@ -83,11 +83,13 @@ class OfferController extends BaseController
     }
     public function search(Request $request){
         // $socials = Social::get();
-        $city = City::find($request->city_id) ;
+        $city_id = City::find($request->city_id) ;
         
-        if(!$city){
+        if(!$city_id){
         
           $city = 15;
+        }else{
+          $city = $city_id->id;
         }
         $res['status']= $this->sendResponse('OK');
         $offers = Offer::where('end_time','>=',Carbon::now())->with('vendor')->whereHas('vendor', function ($q) use ($request , $city) {
