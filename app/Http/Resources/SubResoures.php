@@ -96,10 +96,10 @@ class SubResoures extends JsonResource
             $data->save();
         }
         // dd($data->type_of_subscribe);
-        if($data->is_new == 1  ){
-            return 1;
-        }else{
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
             return 0;
+        }elseif($data->type_of_subscribe == 'TRIAL'){
+            return 1;
         }
     }
 }
