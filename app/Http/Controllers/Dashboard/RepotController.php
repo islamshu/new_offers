@@ -47,6 +47,21 @@ class RepotController extends Controller
         $query->when($request->email, function ($q) use ($request) {
             return $q->where('email','like','%'. $request->email.'%');
         });
+        $query->when($request->phone, function ($q) use ($request) {
+            return $q->where('phone',$request->phone);
+        });
+        $query->when($request->register_form, function ($q) use ($request) {
+            if($request->register_to == null && $request->register_form != null){
+                return $q->whereBetween('register_date', [$request->register_form,Carbon::now()]);
+            }elseif($request->register_to != null && $request->register_form == null){
+                return $q->whereBetween('register_date', [Carbon::now(),$request->register_to,]);
+            }elseif($request->register_to == $request->register_form){
+                return $q->whereBetween('register_date', [$request->register_form,$request->register_to]);
+            }else{
+                return $q->whereBetween('register_date', [$request->register_form,$request->register_to,]);
+            }
+        });
+        
 
         $clients = $query->get();
         return view('dashboard.repots.clients',compact('clients','request'));
