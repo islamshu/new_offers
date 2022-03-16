@@ -12,12 +12,15 @@
 
                 <form action="{{ route('create_offer',app()->getLocale()) }}" method="post">
                     @csrf
+                    @php
+                        $lang = app()->getLocale();
+                    @endphp
                     <div class="row">
                         <div class="col-md-3">
                             <select name="vendor_id" id="vendor_id"  class="selectpicker form-control" data-live-search="true">
                                 <option selected disabled>{{ __('choose') }}</option>
                                 @foreach ($brands as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name_ar }}</option>
+                                    <option value="{{ $item->id }}">@if($lang == 'ar') {{ $item->name_ar }} @else {{ $item->name_en }} @endif </option>
                                 @endforeach
 
                             </select>
