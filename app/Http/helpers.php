@@ -139,7 +139,8 @@ function get_nationalities(){
     foreach($clients as $c){
         array_push($natonalty,$c->nationality);
     }
-   dd(count($natonalty));
+   return ( count(array_unique($natonalty, SORT_REGULAR)));
+
 
 }
 function return_redirect($url){
