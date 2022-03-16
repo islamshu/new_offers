@@ -95,7 +95,7 @@ class OfferController extends BaseController
 
         $stores = Vendor::where(function ($query) use($request) {
           $query->where('name_ar','like','%'.$request->search_key.'%')
-                ->orWhere('name_em','like','%'.$request->search_key.'%');
+                ->orWhere('name_en','like','%'.$request->search_key.'%');
       })->with('cities')->whereHas('cities', function ($q) use ($request) {
             $q->where('city_id', $request->city_id);
           })->where('status','active')->has('offers')->get();
