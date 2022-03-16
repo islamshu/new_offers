@@ -79,7 +79,7 @@
                 <div class="col-md-2 bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Address-card.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-                        {{ __('Active orders') }} <br>
+                        {{ __('Active Offers') }} <br>
                         @php
                                 $count = App\Models\Offer::with('vendor')
                                 ->whereHas('vendor', function ($q) {
@@ -94,7 +94,9 @@
                 <div class="col-md-2 bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
                     {{ Metronic::getSVG('media/svg/icons/Communication/Flag.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
-                        {{ __('Nationalities') }}
+                        {{ __('Nationalities') }} <br>
+                        {{ get_nationalities() }}
+
 
                     </a>
                 </div>

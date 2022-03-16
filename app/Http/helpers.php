@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\GeneralInfo;
 use App\Models\Offer;
@@ -131,6 +132,15 @@ function send_message($phone,$message)
  
 
    
+}
+function get_nationalities(){
+    $clients = Clinet::get();
+    $natonalty =[];
+    foreach($clients as $c){
+        array_push($natonalty,$c->nationality);
+    }
+   return ( array_unique($natonalty, SORT_REGULAR));
+
 }
 function return_redirect($url){
    return new RedirectResponse($url); 
