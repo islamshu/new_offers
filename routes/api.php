@@ -47,7 +47,7 @@ Route::get('payment/myfatoorah/credentials','Api\OfferController@my_fatoorah_cre
 Route::post('credentials','Api\HomeController@credentials');
 Route::post('apply-promo-code', 'Api\CodeController@apply_promo_code');
 
-Route::group(['middleware' => 'auth:client_api'], function () {
+Route::group(['middleware' => 'is_login'], function () {
     Route::group(['middleware' => 'devide'], function () {
         Route::get('client/info', 'Api\UserController@user_info');
         Route::post('store-favorite/create', 'Api\FavoritController@store_to_favorate');

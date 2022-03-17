@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Is_login 
+class Is_login
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,14 @@ class Is_login
      */
     public function handle($request, Closure $next)
     {
-        if (auth('api')->check()) {
-       
+        if (auth('client_api')->check()) {
             return $next($request);
         }
-        // dd('dd');
-        return redirect(route('header_token'));
-
- 
-        // return $response;
+        $response['status']['status'] = 'false';
+        $response['status']['HTTP_code'] = 401;
+        $response['status']['HTTP_response'] = 'Unauthorized';
+        $response['status']['message'] = "Unauthorized or Signed in from another device";
+        return response()->json($response , 404);
       }
     
         
