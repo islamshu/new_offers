@@ -74,7 +74,7 @@ class VendorOfferResourses extends JsonResource
          }
     }
     public function is_fav($data){
-        $fav = FavoritOffer::where('offer_id',$data->id)->where('user_id',auth()->id())->first();
+        $fav = FavoritOffer::where('offer_id',$data->id)->where('user_id',auth('client_api')->id())->first();
         if($fav){
             return 1;
         }else{

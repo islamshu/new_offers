@@ -36,7 +36,7 @@ class StoresCollection extends ResourceCollection
         ];
     }
     public function is_fav($data){
-        $fav = FavoritVendor::where('vendor_id',$data->id)->where('user_id',auth()->id())->first();
+        $fav = FavoritVendor::where('vendor_id',$data->id)->where('user_id',auth('client_api')->id())->first();
         if($fav){
             return 1;
         }else{

@@ -33,7 +33,7 @@ class FavoritOfferResourses extends JsonResource
         ];
     }
     public function get_subs($data){
-   $subs=  Subscriptions_User::where('user_id',auth()->id())->where('status','active')->orderBy('id', 'desc')->get()->last()->sub_id;
+   $subs=  Subscriptions_User::where('user_id',auth('client_api')->id())->where('status','active')->orderBy('id', 'desc')->get()->last()->sub_id;
    $subsctiton = Subscription::find($subs);
    return $subsctiton->type_paid;
     }
