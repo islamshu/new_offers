@@ -23,7 +23,7 @@ class Is_login
         $response['status']['HTTP_code'] = 401;
         $response['status']['HTTP_response'] = 'Unauthorized';
         $response['status']['message'] = "Unauthorized or Signed in from another device";
-        return response()->json($response , 404);
+        return response()->json($response , 401);
       }
     
         
