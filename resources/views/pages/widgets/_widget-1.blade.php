@@ -156,11 +156,11 @@ $lang = app()->getLocale();
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Offer') }}<br>
                       
-                        @if($lang == 'ar')
+                        {{-- @if($lang == 'ar')
                         {{ App\Models\Offer::find(best_offer())->name_ar }}
                         @else
                         {{ App\Models\Offer::find(best_offer())->name_en }}
-                        @endif
+                        @endif --}}
 
                     </a>
                 </div>
