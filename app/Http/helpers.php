@@ -167,7 +167,7 @@ function best_branch(){
     $trans = Transaction::where('enterprise_id',auth()->user()->ent_id)->get();
     $branch =[];
     foreach($trans as $tr){
-     array_push($branch,$tr->offer_id) ;  
+     array_push($branch,$tr->branch_id) ;  
     }
     if($branch != null){
         $counts = array_count_values($branch);
