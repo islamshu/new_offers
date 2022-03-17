@@ -13,6 +13,7 @@ class Is_login
      * @param  \Closure  $next
      * @return mixed
      */
+    
     public function handle($request, Closure $next)
     {
         if (auth('client_api')->check()) {
