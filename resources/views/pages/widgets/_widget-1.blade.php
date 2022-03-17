@@ -139,7 +139,7 @@ $lang = app()->getLocale();
                     {{ Metronic::getSVG('media/svg/icons/Communication/Send.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Best Branch') }} <br>
-                      
+                        {{ best_branch() }}
 
                     </a>
                 </div>
@@ -147,7 +147,7 @@ $lang = app()->getLocale();
                     {{ Metronic::getSVG('media/svg/icons/Communication/Clipboard-check.svg','svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Offer') }}<br>
-                      
+                        {{ best_offer() }}
                        
 
                     </a>
