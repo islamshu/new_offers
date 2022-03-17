@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Clinet;
+use App\Models\Subscription;
 use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -30,7 +31,21 @@ class HomeController extends Controller
                 array_push($array, $us->id);
             }
         }
-        dd($array);
+        $clients = Clinet::whereIn('id',$array)->get();
+        $page = Subscription::find(12);
+        foreach($clients as $users){
+         $user = new Subscriptions_User();
+         $user->payment_type = 'new_user';
+         $user->expire_date = date('Y-m-d', strtotime((string)$users->expire_date));
+         $user->status = 'active';
+         $user->balnce = 5;
+         $user->purchases_no = $users->purchases_no;
+         $user->sub_id = $page->id;
+         $user->clinet_id = $users->id;
+         $user->country_id = 1;
+         $user->save();
+        }
+        dd('dd');
     }
 
     /**
