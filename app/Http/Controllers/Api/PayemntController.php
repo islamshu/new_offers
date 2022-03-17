@@ -186,7 +186,6 @@ class PayemntController extends BaseController
             
 
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
-            dd(auth()->user());
             $res['data']['myfatoorah_payment']['price']= $code->price;
             $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
             $res['data']['myfatoorah_payment']['amount']= $price;
@@ -200,7 +199,7 @@ class PayemntController extends BaseController
             $res['data']['myfatoorah_payment']['payment_id']= $request->payment_id;
             $res['data']['myfatoorah_payment']['order_id']= Carbon::now()->timestamp;
             $res['data']['myfatoorah_payment']['pay_for']='subscription';
-            $res['data']['myfatoorah_payment']['updated_at']=auth()->user()->updated_at;
+            $res['data']['myfatoorah_payment']['updated_at']=auth('client_api')->user()->updated_at->format('Y-m-d h:i:s');
             return $res;
 
 
