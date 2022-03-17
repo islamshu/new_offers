@@ -186,6 +186,7 @@ class PayemntController extends BaseController
             
 
             $res['status'] = $this->sendResponsewithMessage('Created',"","");
+            dd(auth()->user());
             $res['data']['myfatoorah_payment']['price']= $code->price;
             $res['data']['myfatoorah_payment']['discount']= $code->price - $price;
             $res['data']['myfatoorah_payment']['amount']= $price;
