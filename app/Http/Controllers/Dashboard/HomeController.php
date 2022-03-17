@@ -31,6 +31,7 @@ class HomeController extends Controller
                 array_push($array, $us->id);
             }
         }
+        dd($array);
         $clients = Clinet::whereIn('id',$array)->get();
         $page = Subscription::find(12);
         foreach($clients as $users){
