@@ -162,6 +162,10 @@ class UserController extends BaseController
             $userr->last_login = Carbon::now();
             $userr->is_verify = 1;
             $userr->save();
+            $userr->tokens->each(function($token, $key) {
+      
+                $token->delete();
+            });
             if($userr->is_new == 1 ){
             
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
