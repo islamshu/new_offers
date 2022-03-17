@@ -19,7 +19,7 @@ class Is_login
         if (auth('client_api')->check()) {
             return $next($request);
         }
-        $response['status']['status'] = 'false';
+        $response['status']['status'] = false;
         $response['status']['HTTP_code'] = 401;
         $response['status']['HTTP_response'] = 'Unauthorized';
         $response['status']['message'] = "Unauthorized or Signed in from another device";
