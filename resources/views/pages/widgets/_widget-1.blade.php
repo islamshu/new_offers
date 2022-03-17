@@ -67,7 +67,7 @@ $lang = app()->getLocale();
                         {{ Metronic::getSVG('media/svg/icons/General/Attachment1.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                         <a href="#" class="text-warning font-weight-bold font-size-h6">
                             {{ __('Active Brand') }} <br>
-                            {{ @App\Models\Vendor::where('enterprise_id', auth()->user()->ent_id)->where('status', 'active')->count() }}
+                            {{ @App\Models\Vendor::withTrashed()->where('enterprise_id', auth()->user()->ent_id)->where('status', 'active')->count() }}
                         </a>
                     </div>
                 @else
@@ -83,7 +83,7 @@ $lang = app()->getLocale();
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Active Offers') }} <br>
                         @php
-                                $count = @App\Models\Offer::with('vendor')
+                                $count = @App\Models\Offer::withTrashed()->with('vendor')
                                 ->whereHas('vendor', function ($q) {
                                         $q->where('enterprise_id', auth()->user()->ent_id);
                                     })
@@ -133,9 +133,9 @@ $lang = app()->getLocale();
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Brand') }}  <br>
                         @if($lang == 'ar')
-                        {{ @App\Models\Vendor::find(best_brand())->name_ar }}
+                        {{ @App\Models\Vendor::withTrashed()->find(best_brand())->name_ar }}
                         @else
-                        {{ @App\Models\Vendor::find(best_brand())->name_en }}
+                        {{ @App\Models\Vendor::withTrashed()->find(best_brand())->name_en }}
                         @endif
                     </a>
                 </div>
@@ -144,9 +144,9 @@ $lang = app()->getLocale();
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Best Branch') }} <br>
                         @if($lang == 'ar')
-                        {{ App\Models\Branch::find(best_branch())->name_ar }}
+                        {{ App\Models\Branch::withTrashed()->find(best_branch())->name_ar }}
                         @else
-                        {{ App\Models\Branch::find(best_branch())->name_en }}
+                        {{ App\Models\Branch::withTrashed()->find(best_branch())->name_en }}
                         @endif
 
                     </a>
@@ -157,9 +157,9 @@ $lang = app()->getLocale();
                         {{ __('Best Offer') }}<br>
                       
                         @if($lang == 'ar')
-                        {{ App\Models\Offer::find(best_offer())->name_ar }}
+                        {{ App\Models\Offer::withTrashed()->find(best_offer())->name_ar }}
                         @else
-                        {{ App\Models\Offer::find(best_offer())->name_en }}
+                        {{ App\Models\Offer::withTrashed()->find(best_offer())->name_en }}
                         @endif
 
                     </a>
