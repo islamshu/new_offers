@@ -67,7 +67,7 @@ $lang = app()->getLocale();
                         {{ Metronic::getSVG('media/svg/icons/General/Attachment1.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                         <a href="#" class="text-warning font-weight-bold font-size-h6">
                             {{ __('Active Brand') }} <br>
-                            {{ App\Models\Vendor::where('enterprise_id', auth()->user()->ent_id)->where('status', 'active')->count() }}
+                            {{ @App\Models\Vendor::where('enterprise_id', auth()->user()->ent_id)->where('status', 'active')->count() }}
                         </a>
                     </div>
                 @else
@@ -83,7 +83,7 @@ $lang = app()->getLocale();
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Active Offers') }} <br>
                         @php
-                                $count = App\Models\Offer::with('vendor')
+                                $count = @App\Models\Offer::with('vendor')
                                 ->whereHas('vendor', function ($q) {
                                         $q->where('enterprise_id', auth()->user()->ent_id);
                                     })
@@ -106,7 +106,7 @@ $lang = app()->getLocale();
                     {{ Metronic::getSVG('media/svg/icons/Communication/Add-user.svg', 'svg-icon-3x svg-icon-primary d-block my-2') }}
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Clients') }}<br>
-                        {{ App\Models\Clinet::count() }}
+                        {{ @App\Models\Clinet::count() }}
 
                     </a>
                 </div>
@@ -114,7 +114,7 @@ $lang = app()->getLocale();
                     {{ Metronic::getSVG('media/svg/icons/Communication/Contact1.svg', 'svg-icon-3x svg-icon-danger d-block my-2') }}
                     <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
                         {{ __('premium customers') }}<br>
-                        {{ App\Models\Clinet::where('type_of_subscribe','PREMIUM')->count() }}
+                        {{ @App\Models\Clinet::where('type_of_subscribe','PREMIUM')->count() }}
                     </a>
                 </div>
             </div>
@@ -124,7 +124,7 @@ $lang = app()->getLocale();
                     {{ Metronic::getSVG('media/svg/icons/Shopping/Chart-bar2.svg', 'svg-icon-3x svg-icon-warning d-block my-2') }}
                     <a href="#" class="text-warning font-weight-bold font-size-h6">
                         {{ __('Total customer saving') }} <br>
-                        {{ App\Models\Transaction::where('enterprise_id',auth()->user()->ent_id)->sum('price') }}
+                        {{ @App\Models\Transaction::where('enterprise_id',auth()->user()->ent_id)->sum('price') }}
 
                     </a>
                 </div>
@@ -133,9 +133,9 @@ $lang = app()->getLocale();
                     <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
                         {{ __('Best Brand') }}  <br>
                         @if($lang == 'ar')
-                        {{ App\Models\Vendor::find(best_brand())->name_ar }}
+                        {{ @App\Models\Vendor::find(best_brand())->name_ar }}
                         @else
-                        {{ App\Models\Vendor::find(best_brand())->name_en }}
+                        {{ @App\Models\Vendor::find(best_brand())->name_en }}
                         @endif
                     </a>
                 </div>
