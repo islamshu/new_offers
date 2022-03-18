@@ -41,9 +41,10 @@ class PayemntController extends BaseController
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
-                        dd($count_useage);
 
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
+                        dd($count_useage);
+
                              if($dis->type_discount == 'fixed'){
                                  $price = $price - $dis->value_discount ;
                              }else{
