@@ -30,6 +30,7 @@ class PayemntController extends BaseController
         }
         $price = $code->price;
         if($request->promo_code != null){
+            dd('d');
             $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
                 $q->where('code', $request->code);
               })->first();
@@ -41,7 +42,6 @@ class PayemntController extends BaseController
                    $dis= Discount::find($discout->discount_id);
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
-                       dd($count_useage);
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
                              if($dis->type_discount == 'fixed'){
