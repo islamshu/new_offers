@@ -34,7 +34,6 @@ class PayemntController extends BaseController
                 $q->where('code', $request->promo_code);
               })->first();
             
-              dd($dd);
             $discout = @$dd->promocode;
             if($discout != null){
                 if($discout->sub_id == $request->package_id){
