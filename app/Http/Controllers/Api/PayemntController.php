@@ -38,8 +38,8 @@ class PayemntController extends BaseController
                 if($discout->sub_id == $request->package_id){
                
                    $dis= Discount::find($discout->discount_id);
-                   dd($dis);
                    if($dis){
+                       dd($request->promo_code);
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
