@@ -22,7 +22,12 @@ class Is_login
         $response['status']['status'] = false;
         $response['status']['HTTP_code'] = 401;
         $response['status']['HTTP_response'] = 'Unauthorized';
+        if(request()->header('lang') == null || request()->header('en')){
         $response['status']['message'] = "Unauthorized or Signed in from another device";
+        }else{
+            $response['status']['message'] = "تم التسجيل من جهاز آخر او من جهاز غير مصرح به";
+
+        }
         return response()->json($response , 200);
       }
     
