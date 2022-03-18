@@ -64,18 +64,18 @@ class PayemntController extends BaseController
                        
                    }else{
                     $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode 1';
+                    $res['status']['message'] = 'Not Found Promocode';
                     return $res; 
                    }
                 }else{
                     $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode 2';
+                    $res['status']['message'] = 'Not Found Promocode';
                     return $res; 
                 }
                 
             }else{
                 $res['status'] = $this->SendError();
-                $res['status']['message'] = 'Not Found Promocode 4';
+                $res['status']['message'] = 'Not Found Promocode';
                 return $res; 
             }
            
