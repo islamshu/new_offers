@@ -43,7 +43,6 @@ class PayemntController extends BaseController
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
 
                        if(Carbon::now()->isoFormat('YYYY-MM-DD') >= $dis->start_at && Carbon::now()->isoFormat('YYYY-MM-DD') <= $dis->end_at ){
-                        dd($count_useage);
 
                              if($dis->type_discount == 'fixed'){
                                  $price = $price - $dis->value_discount ;
@@ -65,20 +64,20 @@ class PayemntController extends BaseController
                        
                    }else{
                     $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode';
+                    $res['status']['message'] = 'Not Found Promocode 1';
                     return $res; 
                    }
                 }else{
                     $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode';
+                    $res['status']['message'] = 'Not Found Promocode 2';
                     return $res; 
                 }
                 $res['status'] = $this->SendError();
-                    $res['status']['message'] = 'Not Found Promocode';
+                    $res['status']['message'] = 'Not Found Promocode 3';
                     return $res; 
             }else{
                 $res['status'] = $this->SendError();
-                $res['status']['message'] = 'Not Found Promocode';
+                $res['status']['message'] = 'Not Found Promocode 4';
                 return $res; 
             }
            
