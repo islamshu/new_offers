@@ -33,8 +33,7 @@ class PayemntController extends BaseController
             $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
                 $q->where('code', $request->code);
               })->get();
-              dd($dd);
-         
+            
 
             $discout = @$dd->promocode;
             if($discout != null){
