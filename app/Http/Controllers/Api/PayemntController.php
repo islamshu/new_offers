@@ -35,10 +35,10 @@ class PayemntController extends BaseController
               })->first();
             $discout = @$dd->promocode;
             if($discout != null){
-                dd($discout);
                 if($discout->sub_id == $request->package_id){
                
                    $dis= Discount::find($discout->discount_id);
+                   dd($dis);
                    if($dis){
                        $count_useage = PromocodeUser::where('promocode',$request->promo_code)->count();
                        if($dis->type_of_limit == 'unlimit' || $dis->value > $count_useage ){
