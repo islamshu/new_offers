@@ -30,11 +30,12 @@ class PayemntController extends BaseController
         }
         $price = $code->price;
         if($request->promo_code != null){
-            dd('d');
             $dd = Discount::where('status',1)->with('promocode')->whereHas('promocode', function ($q) use ($request) {
                 $q->where('code', $request->code);
               })->first();
             //   dd($dd);
+            dd($dd);
+
             $discout = @$dd->promocode;
             if($discout != null){
                 if($discout->sub_id == $request->package_id){
