@@ -168,6 +168,8 @@ Route::group([
         Route::delete('/delete_home_slider/{id}', 'Dashboard\PremotionController@delete_homeslider')->name('delete_homeslider.destroy');
         Route::delete('/delete_slider_promotion/{id}', 'Dashboard\PremotionController@delete_slider_promotion')->name('slider_promotion.destroy');
 
+        Route::delete('/delete_paneer/{id}', 'Dashboard\PremotionController@delete_paneer')->name('delete_paneer.destroy');
+
         
         Route::get('get_city_for_country/{type}/{id}', 'Dashboard\PremotionController@get_city_for_country')->name('get_city_for_country');
         Route::get('get_country_promotion/{type}', 'Dashboard\PremotionController@get_country_promotion')->name('get_country_promotion');

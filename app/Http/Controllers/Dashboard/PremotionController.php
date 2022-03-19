@@ -82,6 +82,14 @@ class PremotionController extends Controller
         return response()->json(['icon' => 'success', 'title' => 'slider deleted successfully'], 200);
 
     }
+    public function delete_paneer($locale,$id){
+        $slider = Banner::find($id);
+        $slider->delete();
+        return response()->json(['icon' => 'success', 'title' => 'Banner deleted successfully'], 200);
+
+    }
+
+
     public function delete_homeslider($locale,$id){
         $slider = Homeslider::find($id);
         $slider->delete();
