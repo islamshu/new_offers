@@ -185,7 +185,7 @@
                                             <select class="form-control form-control-solid form-control-lg" id="member_type"
                                                 name="member_type">
                                                 <option value="free">{{ __('free') }}</option>
-                                                <option value="paid">{{ __('paid') }}</option>
+                                                <option value="Premium">{{ __('paid') }}</option>
                                                 <option value="all">{{ __('all') }}</option>
 
                                             </select>
