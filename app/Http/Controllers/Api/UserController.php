@@ -243,7 +243,7 @@ class UserController extends BaseController
             }else{
                 $res['other']['is_trial_subscriber']= false;
             }
-            dd($res['data']);
+            dd($res['data']->client);
           
             return $res;
         }else{
