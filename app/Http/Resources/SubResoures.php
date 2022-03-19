@@ -16,7 +16,6 @@ class SubResoures extends JsonResource
      */
     public function toArray($request)
     {
-        dd($this->is_trial);
 
         return [
             'type'=>$this->type_of_subscribe != null ? $this->type_of_subscribe : 'FREE',
@@ -93,12 +92,13 @@ class SubResoures extends JsonResource
         }
     }  
     function is_trial($user){
-        if($user->is_new == 1){
-            $user->is_new = 0;
-            $user->save();
-        }
-        
-        return $user->is_new;
+       if($user->is_trial == 1){
+           $user->is_trial = 0 ;
+           $user->save();
+           return 1;
+       }else{
+        return 0;
+       }
        
     }
 }
