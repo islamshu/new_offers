@@ -234,6 +234,7 @@ class UserController extends BaseController
                 $userr->type_of_subscribe ='FREE';
                 $userr->save();
             }
+            dd($userr->is_new);
             if($userr->is_new == 1){
                 $res['other']['is_trial_subscriber']= true;
             }else{

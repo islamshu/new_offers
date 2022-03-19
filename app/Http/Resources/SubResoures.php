@@ -95,6 +95,7 @@ class SubResoures extends JsonResource
             $user->is_new = 0;
             $user->save();
         }
+        
         return $user->is_new;
        
     }
