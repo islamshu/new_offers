@@ -16,6 +16,6 @@ class Banner extends Model
      */
     public function homeslider()
     {
-        return $this->belongsTo(homeslider::class, 'homeslider_id');
+        return $this->belongsTo(Homeslider::class, 'homeslider_id');
     }
 }
