@@ -56,43 +56,28 @@
 
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Phone') }}</th>
-                        <th>{{ __('email') }}</th>
+                        <th>{{ __('city') }}</th>
+                        <th>{{ __('registration date') }}</th>
+                        <th>{{ __('Subscription type') }}</th>
+                        <th>{{ __('Mobile type') }}</th>
                         {{-- <th>{{ __('acount status') }}</th> --}}
 
-                        <th>{{ __('last Login Date') }}</th>
+                        <th>{{ __('Date Of Birth') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($type == 'subs')
-                        @foreach ($clinets as $item)
-                            <td>{{ $item->client->name }}</td>
-                            <td>{{ $item->client->phone }}</td>
-                            <td>{{ $item->client->email }}</td>
-                            {{-- <td>{{ $item->client->type_of_subscribe }}</td> --}}
-
-                            <td>{{ $item->client->last_login }}</td>
-                            <td class="pr-0 text-left">
-
-
-
-                                <a href="{{ route('clinets.show', [app()->getLocale(), $item->client->id]) }}"
-                                    class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                                    <i class="fa fa-eye"> </i>
-                                </a>
-
-
-
-
-                            </td>
-                            </tr>
-                        @endforeach
-                    @elseif($type == 'client')
+             
                         @foreach ($clinets as $item)
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->phone }}</td>
-                            <td>{{ $item->email }}</td>
-                            <td>{{ $item->last_login }}</td>
+                            <td>{{ @App\Models\City::find($item->email) }}</td>
+                            <td>{{ $item->register_date ? $item->register_date : $item->created_at }}</td>
+                            <td>{{ $item->type_of_subscribe }}</td>
+                            <td>{{ $item->type_of_subscribe }}</td>
+                            <td>{{ $item->mobile_type }}</td>
+                            <td>{{ $item->birth_date }}</td>
+
                             <td class="pr-0 text-left">
                                 @if (auth()->user()->isAbleTo(['create-client']))
 
@@ -122,7 +107,6 @@
                             </td>
                             </tr>
                         @endforeach
-                    @endif
 
                 </tbody>
 
