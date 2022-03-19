@@ -31,26 +31,31 @@ class PakegeTowResourses extends JsonResource
     }
     public function duration($data){
         $type = $data->expire_date_type;
+        if($data->type_paid == 'TRIAL'){
+            $days = $data->days_of_trial;
+        }else{
+            $days = $data->number_of_dayes;
+        }
         if($type == 'days'){
             
             return[
                 'id'=>$data->id,
                 'name' =>$data->number_of_dayes.' Days',
-                'period'=>$data->number_of_dayes,
+                'period'=> $days,
                 'unit'=>'DD'
             ] ;
         }elseif($type == 'months'){
             return[
                 'id'=>$data->id,
                 'name' =>$data->number_of_dayes.' Months',
-                'period'=>$data->number_of_dayes,
+                'period'=> $days,
                 'unit'=>'MM'
             ] ;
         }elseif($type == 'years'){
             return[
                 'id'=>$data->id,
                 'name' =>$data->number_of_dayes.' Years',
-                'period'=>$data->number_of_dayes,
+                'period'=> $days,
                 'unit'=>'YY'
             ] ;
         }
