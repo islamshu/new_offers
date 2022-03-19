@@ -103,7 +103,7 @@ class OfferController extends BaseController
                  })->where('name_ar','like','%'.$request->search_key.'%')->orWhere('name_en','like','%'.$request->search_key.'%')->where('status',1)->get();
 
         $stores = Vendor::has('offers')->whereHas('offers', function ($q) use ($request,$city) {
-          $q->where('end_time','>=',Carbon::now());
+          $q->where('end_time','>=',Carbon::now())->where('status',1);
         })->where(function ($query) use($request) {
           $query->where('name_ar','like','%'.$request->search_key.'%')
                 ->orWhere('name_en','like','%'.$request->search_key.'%');
