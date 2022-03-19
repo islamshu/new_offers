@@ -18,6 +18,7 @@ class Clinet extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    protected $guarded=[];
     public function city()
     {
         return $this->belongsTo(City::class);
