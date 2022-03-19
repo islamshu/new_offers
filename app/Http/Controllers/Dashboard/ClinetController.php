@@ -128,22 +128,22 @@ class ClinetController extends Controller
     {
 
         if($type == 'all'){
-            $clinets = Clinet::orderBy('')->get();
+            $clinets = Clinet::orderBy('register_date','desc')->get();
             $type ='client';
 
         }elseif($type == 'premium'){
-            $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->get();
+            $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->get();
               
             $type ='client';
 
         }elseif($type == 'trail'){
             
-            $clinets =   Clinet::where('type_of_subscribe','TRIAL')->get();
+            $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->get();
               
             $type ='client';
 
         }elseif($type == 'none'){
-            $clinets =   Clinet::where('type_of_subscribe','FREE')->get();
+            $clinets =   Clinet::where('type_of_subscribe','FREE')->orderBy('register_date','desc')->get();
               
             $type ='client';
 
