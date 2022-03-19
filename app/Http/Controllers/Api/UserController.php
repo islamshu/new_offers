@@ -166,19 +166,6 @@ class UserController extends BaseController
       
                 $token->delete();
             });
-            if(Carbon::now() > $userr->expire_date ){
-                $userr->is_trial =0;
-                $userr->type_of_subscribe ='FREE';
-                $userr->save();
-            }
-            if($userr->is_new == 1){
-                $res['other']['is_trial_subscriber']= true;
-                $userr->is_new = 0;
-                $userr->is_trial =0;
-                $userr->save();
-            }else{
-                $res['other']['is_trial_subscriber']= false;
-            }
             if($userr->is_new == 1 ){
             
                 $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
@@ -244,7 +231,18 @@ class UserController extends BaseController
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
           
-       
+            if(Carbon::now() > $userr->expire_date ){
+                $userr->is_trial =0;
+                $userr->type_of_subscribe ='FREE';
+                $userr->save();
+            }
+            if($userr->is_new == 1){
+                $res['other']['is_trial_subscriber']= true;
+                $userr->is_new = 0;
+                $userr->save();
+            }else{
+                $res['other']['is_trial_subscriber']= false;
+            }
           
             return $res;
         }else{
