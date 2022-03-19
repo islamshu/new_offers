@@ -74,7 +74,6 @@
                             <td>{{ @App\Models\City::find($item->email) }}</td>
                             <td>{{ $item->register_date ? $item->register_date : $item->created_at }}</td>
                             <td>{{ $item->type_of_subscribe }}</td>
-                            <td>{{ $item->type_of_subscribe }}</td>
                             <td>{{ $item->mobile_type }}</td>
                             <td>{{ $item->birth_date }}</td>
 
