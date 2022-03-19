@@ -222,7 +222,7 @@ class UserController extends BaseController
             $res['status']= $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
             
-            $res['data']['client'] = new ClientResoures($userr);
+         
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
@@ -238,6 +238,7 @@ class UserController extends BaseController
             }else{
                 $res['other']['is_trial_subscriber']= false;
             }
+            $res['data']['client'] = new ClientResoures($userr);
             $userr->is_new = 0 ;
             $userr->is_trial = 0;
             $userr->save();
