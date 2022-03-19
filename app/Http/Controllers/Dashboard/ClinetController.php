@@ -138,13 +138,13 @@ class ClinetController extends Controller
 
         }elseif($type == 'trail'){
             
-            $clinets = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
-                $q->where('type_paid','trial');
-            })->get();
-            $type ='subs';
+            $clinets =   Clinet::where('type_of_subscribe','TRIAL')->get();
+              
+            $type ='client';
 
         }elseif($type == 'none'){
-            $clinets =   Clinet::where('uuid_type','null')->get();
+            $clinets =   Clinet::where('type_of_subscribe','FREE')->get();
+              
             $type ='client';
 
         }
