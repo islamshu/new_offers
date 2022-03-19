@@ -91,7 +91,6 @@ class SubResoures extends JsonResource
     }  
     function is_trial($user){
     if($user->is_new == 1){
-        dd('dd');
     
         $user->is_new = 0;
         $user->is_trial = 0;
