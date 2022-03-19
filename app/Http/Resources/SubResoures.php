@@ -91,7 +91,11 @@ class SubResoures extends JsonResource
         }
     }  
     function is_trial($user){
-  dd($user->is_new);
+        if($user->is_new == 1){
+            $user->is_new = 0;
+            $user->save();
+        }
+        return $user->is_new;
        
     }
 }
