@@ -2,6 +2,8 @@
 @php
 $lang = app()->getLocale();
 @endphp
+@if (auth()->user()->isAbleTo(['statistic-dashboard']))
+
 <div class="card card-custom bg-gray-100 {{ @$class }}">
     {{-- Header --}}
     <div class="card-header border-0 bg-danger py-5">
@@ -179,3 +181,4 @@ $lang = app()->getLocale();
         </div>
     </div>
 </div>
+@endif
