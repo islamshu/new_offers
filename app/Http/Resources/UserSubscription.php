@@ -36,23 +36,28 @@ class UserSubscription extends JsonResource
     }
     public function duration($data){
         $type = $data->expire_date_type;
+        if($data->type_paid == 'TRIAL'){
+            $days = $data->days_of_trial;
+        }else{
+            $days = $data->number_of_dayes;
+        }
+
         if($type == 'days'){
-            
             return[
                 'id'=>$data->id,
-                'duration'=>$data->number_of_dayes,
+                'duration'=>$days,
                 'unit'=>'DD'
             ] ;
         }elseif($type == 'months'){
             return[
                 'id'=>$data->id,
-                'duration'=>$data->number_of_dayes,
+                'duration'=>$days,
                 'unit'=>'MM'
             ] ;
         }elseif($type == 'years'){
             return[
                 'id'=>$data->id,
-                'duration'=>$data->number_of_dayes,
+                'duration'=>$days,
                 'unit'=>'YY'
             ] ;
         }
