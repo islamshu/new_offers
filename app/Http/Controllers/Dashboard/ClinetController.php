@@ -128,7 +128,7 @@ class ClinetController extends Controller
     {
 
         if($type == 'all'){
-            $clinets = Clinet::get();
+            $clinets = Clinet::orderBy('')->get();
             $type ='client';
 
         }elseif($type == 'premium'){

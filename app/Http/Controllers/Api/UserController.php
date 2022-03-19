@@ -68,6 +68,7 @@ class UserController extends BaseController
             $userr->image = 'default.jpeg';
             $userr->country_id = 1;
             $userr->type_of_subscribe = 'TRIAL';
+            $userr->register_date = Carbon::now();
             $uuid = 'jooy';
             $userr->is_new = 1;
             $enter = Enterprise::where('uuid',$uuid)->first();
