@@ -90,13 +90,14 @@ class SubResoures extends JsonResource
             return (int)$data->credit;
         }
     }  
-    function is_trial($data){
-    if($data->is_new == 1){
+    function is_trial($user){
+    if($user->is_new == 1){
     
-        $data->is_new = 0;
-        $data->is_trial = 0;
-        $data->save();
-        dd($data);
+        $user->is_new = 0;
+        $user->is_trial = 0;
+        
+        $user->save();
+        dd($user->is_new);
         return 1;
     }else{
         return 0; 
