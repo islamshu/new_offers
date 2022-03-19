@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Models\Branch;
 use App\Models\FavoritVendor;
 use App\Models\Offer;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class VendorForOfferResourses extends JsonResource
@@ -26,7 +27,7 @@ class VendorForOfferResourses extends JsonResource
             'is_favorite' => @$this->is_fav($this),
             'is_top'=>0,
             // 'count_b' => Branch::where('vendor_id',$this->id)->count(),
-            'count_o' => Offer::where('vendor_id',$this->id)->count(),
+            'count_o' => Offer::where('vendor_id',$this->id)->where('end_time','>=',Carbon::now())->count(),
             'distance'=>@$this->get_dinstance($this,$request) ? @$this->get_dinstance($this,$request) : 0,
         ];
     }
