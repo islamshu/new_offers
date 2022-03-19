@@ -92,6 +92,7 @@ class SubResoures extends JsonResource
     }  
     function is_trial($data){
     if($data->is_new == 1){
+        dd($data->is_new);
         $data->is_new = 0;
         $data->is_trial = 0;
         $data->save();
