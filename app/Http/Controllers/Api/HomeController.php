@@ -80,7 +80,7 @@ class HomeController extends BaseController
     $res['status'] = $this->sendResponse200('OK');
     $city = enterprise_city::where('enterprise_id',$ent->id)->where('status','active')->get();
     
-    $res['data'] = new CityCollection($city );
+    $res['data'] = new CityCollection($city->where('status',1) );
     return $res;
   }
   public function home(Request $request)
