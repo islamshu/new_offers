@@ -17,7 +17,7 @@ class TransactionController extends Controller
     }//end of constructor
     public function index()
     {
-        $transactions =Transaction::where('enterprise_id',auth()->user()->ent_id)->orderBy('id','desc')->get(); 
+        $transactions =Transaction::where('enterprise_id',auth()->user()->ent_id)->orderBy('created_at','desc')->get(); 
         return view('dashboard.transaction.index')->with('transactions',$transactions);
     }
 }
