@@ -30,6 +30,7 @@ class SubResoures extends JsonResource
             'start_date'=>$this->startdate($this),
             'is_unlimited'=>$this->is_unlimited,
             'is_trial'=>$this->is_trial($this),
+            
             'is_family'=>$this->is_family != 0 ? $this->is_family : null,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no,
@@ -90,16 +91,7 @@ class SubResoures extends JsonResource
         }
     }  
     function is_trial($user){
-    if($user->is_new == 1){
-    
-        $user->is_new = 0;
-        $user->is_trial = 0;
-        
-        $user->save();
-        return 1;
-    }else{
-        return 0; 
-    }
+  dd($user->is_new);
        
     }
 }
