@@ -16,6 +16,7 @@ class ClientResoures extends JsonResource
      */
     public function toArray($request)
     {
+        dd($userr->is_trial);
 
         return [
             'name'=>$this->name,
