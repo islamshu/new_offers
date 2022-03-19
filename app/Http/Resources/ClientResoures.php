@@ -16,7 +16,6 @@ class ClientResoures extends JsonResource
      */
     public function toArray($request)
     {
-        dd($this->is_new);
 
         return [
             'name'=>$this->name,
