@@ -93,7 +93,7 @@ class SubResoures extends JsonResource
     }  
     function is_trial($user){
        if($user->is_trial == 1){
-           $user->is_trial = 0 ;
+           $user->update(['is_trial'=>0]);
            $user->save();
            return 1;
        }else{
