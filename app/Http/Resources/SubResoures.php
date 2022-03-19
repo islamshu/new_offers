@@ -29,7 +29,8 @@ class SubResoures extends JsonResource
             'expire_date'=>$this->expricedate($this),
             'start_date'=>$this->startdate($this),
             'is_unlimited'=>$this->is_unlimited,
-            'is_trial'=>$this->is_trial,
+            'is_trial'=>$this->is_trial($this),
+            
             'is_family'=>$this->is_family != 0 ? $this->is_family : null,
             'multiple_accounts_no'=>$this->multiple_accounts_no,
             'actual_accounts_no'=>$this->actual_accounts_no == null ? 0 : $this->actual_accounts_no,
@@ -90,15 +91,14 @@ class SubResoures extends JsonResource
         }
     }  
     function is_trial($data){
-        if($data->expire_date < Carbon::now()){
-            $data->type_of_subscribe = 'FREE';
-            $data->save();
-        }
-        // dd($data->type_of_subscribe);
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
-            return 0;
-        }elseif($data->type_of_subscribe == 'TRIAL'){
-            return 1;
-        }
+    if($data->is_new == 1){
+        $data->is_new = 0;
+        $data->is_trial = 0;
+        $data->save();
+        return 1;
+    }else{
+        return 0; 
+    }
+       
     }
 }
