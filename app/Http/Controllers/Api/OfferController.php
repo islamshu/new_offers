@@ -107,7 +107,9 @@ class OfferController extends BaseController
                 ->orWhere('name_en','like','%'.$request->search_key.'%');
       })->with('cities')->whereHas('cities', function ($q) use ($city) {
             $q->where('city_id',$city);
-          })->where('status','active')->has('offers')->get();
+          })->where('status','active')->has('offers')->has('offers')->whereHas('offers', function ($q) use ($request,$city) {
+            $q->where('end_time','>=',Carbon::now());
+          })->get();
           // dd($stores);
         $res['data']['offers'] =  sort_offer(OfferResourses::collection($offers));
         $res['data']['stores'] =  sort_vendor(VednorResourse::collection($stores));
