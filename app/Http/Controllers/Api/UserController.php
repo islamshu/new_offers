@@ -62,6 +62,7 @@ class UserController extends BaseController
 
 
         }else{
+            
             $userr = new Clinet();
             $userr->phone = $request->phone;
             $userr->code = rand(1111,9999);
@@ -69,6 +70,7 @@ class UserController extends BaseController
             $userr->country_id = 1;
             $userr->type_of_subscribe = 'TRIAL';
             $userr->register_date = Carbon::now();
+            $userr->mobile_type = request()->header('Device');
             $uuid = 'jooy';
             $userr->is_new = 1;
             $enter = Enterprise::where('uuid',$uuid)->first();
