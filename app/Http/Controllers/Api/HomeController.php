@@ -31,6 +31,7 @@ use App\Models\Branch;
 use App\Models\City;
 use App\Models\ContactUs;
 use App\Models\Enterprise;
+use App\Models\enterprise_city;
 use App\Models\Homeslider;
 use App\Models\Offer;
 use App\Models\Popup;
@@ -73,10 +74,13 @@ class HomeController extends BaseController
   {
     // dd($request);
     $uuid = userdefult() ? userdefult() : 'jooy';
-    $country_id = Enterprise::where('uuid', $uuid)->first()->counteire->first()->id;
+    $ent = Enterprise::where('uuid', $uuid)->first();
+    $country_id = $ent->counteire->first()->id;
 
     $res['status'] = $this->sendResponse200('OK');
-    $res['data'] = new CityCollection(City::where('country_id', $country_id)->where('status', 1)->get());
+    $city = enterprise_city::where('enterprise_id',$ent->id)->where('status','active')->get();
+    
+    $res['data'] = new CityCollection($city );
     return $res;
   }
   public function home(Request $request)

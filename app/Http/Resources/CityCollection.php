@@ -17,11 +17,11 @@ class CityCollection extends ResourceCollection
         return [
             'cities' => $this->collection->map(function($data) {
                 return [
-                'id'=> $data->id,
+                'id'=> $data->city->id,
                 'name'=> $this->lang_name($data),
                 
                 
-                'image'=>$data->image,
+                'image'=>$data->city->image,
                 ];
               
             }),
@@ -34,13 +34,13 @@ class CityCollection extends ResourceCollection
         $lang = request()->header('Lang');
         if($lang != null){
             if($lang  =='ar'){
-                return $data->city_name;
+                return $data->city->city_name;
             }else{
-                return $data->city_name_english;
+                return $data->city->city_name_english;
   
             }
         }else{
-            return $data->city_name_english;
+            return $data->city->city_name_english;
 
         }
     }
