@@ -204,9 +204,10 @@ class HomeController extends BaseController
     ->has('cities')->whereHas('cities', function ($q) use ($request,$city) {
       $q->where('city_id', $city);
     })
-    ->has('offers')->whereHas('offers', function ($q) use ($request,$city) {
-      $q->where('end_time','>=',Carbon::now());
-    })->get();
+    // ->has('offers')->whereHas('offers', function ($q) use ($request,$city) {
+    //   $q->where('end_time','>=',Carbon::now());
+    // })
+    ->get();
     $res['status'] = $this->sendResponse200('OK');
 
     $res['data'] = new VendorForOfferCollection($vendors);
