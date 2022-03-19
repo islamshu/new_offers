@@ -194,7 +194,7 @@ class HomeController extends BaseController
     $page = $request->last_index +2;
     $city = $request->has('city_id') ? $request->city_id : 15;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $vendors = Vendor::with('categorys','counteire','cities')->whereHas('branches')->has('offers')->where('status','active')
+    $vendors = Vendor::with('categorys','counteire','cities')->whereHas('branches')->whereHas('offers')->where('status','active')
     ->has('categorys')->whereHas('categorys', function ($q) use ($request) {
       $q->where('category_id', $request->category_id);
     })
