@@ -238,7 +238,8 @@ class UserController extends BaseController
             }
             if($userr->is_new == 1){
                 $res['other']['is_trial_subscriber']= true;
-                $userr->is_new = 0 ;
+                $userr->is_new = 0;
+                $userr->is_trial =0;
                 $userr->save();
             }else{
                 $res['other']['is_trial_subscriber']= false;
