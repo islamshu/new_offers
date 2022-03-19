@@ -167,7 +167,10 @@ class UserController extends BaseController
                 $token->delete();
             });
             if($userr->is_new == 1 ){
-                $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();      
+            
+                $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
+             
+                
                 if($code){
                 $user = new Subscriptions_User();
                 $user->payment_type = 'new_user';
@@ -230,17 +233,16 @@ class UserController extends BaseController
           
             if(Carbon::now() > $userr->expire_date ){
                 $userr->is_trial =0;
-                $userr->is_new =0;
                 $userr->type_of_subscribe ='FREE';
                 $userr->save();
             }
             if($userr->is_new == 1){
                 $res['other']['is_trial_subscriber']= true;
+                $userr->is_new = 0;
+                $userr->save();
             }else{
                 $res['other']['is_trial_subscriber']= false;
             }
-            // dd()
-         
           
             return $res;
         }else{
