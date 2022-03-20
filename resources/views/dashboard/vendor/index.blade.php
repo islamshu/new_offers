@@ -1,5 +1,23 @@
 @extends('layout.default')
+@section('styles')
+<style>
+    #loading {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(192, 192, 192, 0.5);
+  background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+  background-repeat: no-repeat;
+  background-position: center;}
+</style>
+
+@endsection
 @section('content')
+
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
@@ -24,6 +42,8 @@
                                 </div>
                             @endif
                         </div>
+                        <div id="loading"></div>
+
                         <!--end::Header-->
                         <!--begin::Body-->
                         <div class="card-body py-0">
