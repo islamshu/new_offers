@@ -177,8 +177,8 @@ class brandController extends Controller
             // 'owner_name' => 'required|string|min:3',
             'commercial_registration_number' => 'required',
             'email' => 'required|email|unique:users',
-            'telephoone' => 'unique:vendors',
-            'mobile' => 'unique:vendors',
+            // 'telephoone' => 'unique:vendors',
+            // 'mobile' => 'unique:vendors',
             'password' => 'required|min:6',
             'image' => 'required',
         ]);
@@ -339,7 +339,7 @@ class brandController extends Controller
                     }
                 } catch (\Exception $e) {
                     DB::rollback();
-                    dd($e);
+                  
                     return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
                 }
             } elseif (Auth::user()->hasRole('Admin')) {
@@ -510,7 +510,6 @@ class brandController extends Controller
                 }
             }
         } else {
-
             return response()->json(['icon' => 'error', 'title' => $validator->errors()->first()], 400);
         }
     }
@@ -955,8 +954,8 @@ class brandController extends Controller
             // 'owner_name' => 'required|string|min:3',
             'commercial_registration_number' => 'required',
             'email' => 'required|email|unique:users,email,' . @$user->id,
-            'telephoone' => 'unique:vendors,telephoone,' . $vendor->id,
-            'mobile' => 'unique:vendors,mobile,' . $vendor->id,
+            // 'telephoone' => 'unique:vendors,telephoone,' . $vendor->id,
+            // 'mobile' => 'unique:vendors,mobile,' . $vendor->id,
             'image' => 'required',
             // 'image_cover' => 'required',
         ]);
