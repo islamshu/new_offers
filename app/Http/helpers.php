@@ -98,6 +98,8 @@ function userdefult(){
       }
 }
 function offer_type($type){
+    dd($type);
+    
     if($type == 'buyOneGetOne'){
         return 'Buy 1 Get 1';
     }elseif($type =='general_offer'){
