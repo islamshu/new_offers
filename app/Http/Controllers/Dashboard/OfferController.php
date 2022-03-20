@@ -273,7 +273,7 @@ class OfferController extends Controller
 
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $offer ? 200 : 400);
         } else {
-            // dd($validator->getMessageBag());
+            dd($validator->getMessageBag());
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
@@ -417,6 +417,7 @@ class OfferController extends Controller
             $offer->update($request_all);
 
             $image_offer =  $offer->offerimage;
+            dd($image_offer);
             
             if($request->primary_image != 'undefined' &&  $request->primary_image != null){
 
