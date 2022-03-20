@@ -23,7 +23,7 @@
 <td class="pr-0 text-center">{{ $item->created_at->format('M d Y') }}
 </td>
 <td>
-    <label class="switch">
+    <label class="switchh">
         <input type="checkbox" type="checkbox" data-id="{{ $item->id }}" name="status" {{ $item->status == 'active' ? 'checked' : '' }}>
         <span class="slider round"></span>
       </label>

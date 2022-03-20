@@ -15,14 +15,14 @@
   background-position: center;}
 </style>
 <style>
-    .switch {
+    .switchh {
       position: relative;
       display: inline-block;
       width: 60px;
       height: 34px;
     }
     
-    .switch input { 
+    .switchh input { 
       opacity: 0;
       width: 0;
       height: 0;
