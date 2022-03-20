@@ -308,7 +308,7 @@ class UserController extends BaseController
     {
         $page = $request->has('page') ? $request->get('page') : 1;
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-        $trans = Transaction::where('client_id',auth('clinet_id')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
+        $trans = Transaction::where('client_id',auth('client_api')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
         $res['status']= $this->sendResponse200('OK');
         // $trans =
       
