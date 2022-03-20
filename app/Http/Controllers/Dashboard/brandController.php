@@ -71,11 +71,11 @@ class brandController extends Controller
 
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $Vendor =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
+            $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
                     ->orWhere('name_ar', 'like', '%'.$query.'%')
                     ->orWhere('name_en', 'like', '%'.$query.'%')
                     ->paginate(10);
-      return view('dashboard.vendor.pagination_data', compact('data'))->render();
+      return view('dashboard.vendor.pagination_data', compact('vendors'))->render();
      }
     }
     public function showmodeluser(Request $request){
