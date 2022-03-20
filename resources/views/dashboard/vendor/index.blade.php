@@ -219,7 +219,7 @@
             url:"/en/pagination/fetch_data?page="+page+"&query="+query,
             success:function(data)
             {
-                console.log(data);
+                alert('ddd');
                 $('tbody').html('');
                 $('tbody').html(data);
             }
