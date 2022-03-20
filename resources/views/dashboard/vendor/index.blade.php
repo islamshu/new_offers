@@ -9,6 +9,7 @@
   z-index: 100;
   width: 100vw;
   height: 100vh;
+  display: none;
   background-color: rgba(192, 192, 192, 0.5);
   background-image: url("https://i.stack.imgur.com/MnyxU.gif");
   background-repeat: no-repeat;
