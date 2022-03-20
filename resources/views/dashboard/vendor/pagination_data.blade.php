@@ -1,4 +1,4 @@
-<tbody  >
+<div class="set_date">
 @foreach ($vendors as $item)
 <tr>
 <td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50" alt=""></td>
@@ -72,7 +72,9 @@
     </a>
 </td>
 </tr>
+
 @endforeach
+</div>
 <tr>
     <td colspan="3" align="center">
      {!! $vendors->links() !!}
