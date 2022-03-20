@@ -78,6 +78,19 @@ class branchController extends Controller
         }
         return view('dashboard.branch.index', compact('vendors'));
     }
+    public function fetch_data(Request $request){
+        if($request->ajax())
+        {
+   
+               $query = $request->get('query');
+               $query = str_replace(" ", "%", $query);
+               $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
+                       ->orWhere('name_ar', 'like', '%'.$query.'%')
+                       ->orWhere('name_en', 'like', '%'.$query.'%')
+                       ->orderBy('id','desc')->paginate(10);
+         return view('dashboard.branch.pagination_data', compact('vendors'));
+        }
+    }
     public function get_modal(Request $request){
         $vendor = Vendor::find($request->id);
         // dd($vendor);

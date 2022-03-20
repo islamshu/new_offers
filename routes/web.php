@@ -84,6 +84,8 @@ Route::group([
         Route::post('update_enterprise/{id}',"Dashboard\EnterpriseController@updateEnterpise")->name('update-enterprise');
         Route::post('update_brand/{id}',"Dashboard\brandController@update_brand")->name('update-brand');
         Route::resource('branch', Dashboard\branchController::class);
+        Route::get('branch_paginate',"Dashboard\branchController@fetch_data");
+
         Route::post('update_branch/{id}',"Dashboard\branchController@updateBranch")->name('update-branch');
         Route::get('country_vendor/{id}',"Dashboard\brandController@country_vendor")->name('country-vendor');
         Route::get('city_vendor/{id}',"Dashboard\brandController@city_vendor")->name('city-vendor');
