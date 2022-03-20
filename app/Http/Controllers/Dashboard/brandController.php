@@ -71,7 +71,7 @@ class brandController extends Controller
 
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-      $data =  Vendor::where('id', 'like', '%'.$query.'%')
+            $Vendor =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
                     ->orWhere('name_ar', 'like', '%'.$query.'%')
                     ->orWhere('name_en', 'like', '%'.$query.'%')
                     ->paginate(10);
