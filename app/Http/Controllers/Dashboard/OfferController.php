@@ -150,6 +150,10 @@ class OfferController extends Controller
             // 'terms_ar' => 'required',
             // 'terms_en' => 'required'
         ]);
+        if($request->primary_image == 'undefined'){
+            return response()->json(['icon' => 'error', 'title' => 'You need To Add image'], 400);
+
+        }
         if (!$validator->fails()) {
 
 
@@ -273,7 +277,6 @@ class OfferController extends Controller
 
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $offer ? 200 : 400);
         } else {
-            dd($validator->getMessageBag());
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
