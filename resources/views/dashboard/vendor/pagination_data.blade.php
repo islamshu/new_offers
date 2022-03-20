@@ -14,6 +14,7 @@
 
             </tr>
         </thead>
+        <tbody>
 
 @foreach ($vendors as $item)
 <tr>
