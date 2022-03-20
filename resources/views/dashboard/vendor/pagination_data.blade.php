@@ -1,22 +1,6 @@
 
 <div class="set_date">
-    <table class="table table-striped table-bordered">
-                                    
-        <thead>
-            <tr class="fw-bold fs-6 text-gray-800">
-                <th class="pr-0 text-center">{{ __('image') }}</th>
-                <th class="pr-0 text-center">{{ __('name') }}</th>
-                {{-- <th class="pr-0 text-center">{{ __('Email') }}</th> --}}
-                {{-- <th>{{ __('commercial_registration_number') }}</th> --}}
-                {{-- <th class="pr-0 text-center">{{ __('Phone') }}</th> --}}
-                <th class="pr-0 text-center">{{ __('Branch number') }}</th>
-                <th class="pr-0 text-center">{{ __('Category') }}</th>
-                <th class="pr-0 text-center">{{ __('Created at') }}</th>
-                <th class="pr-0 text-center">{{ __('Status') }}</th>
-                <th class="pr-0 text-center">{{ __('Action') }}</th>
-
-            </tr>
-        </thead>
+ 
 @foreach ($vendors as $item)
 <tr>
 <td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50" alt=""></td>
@@ -101,62 +85,4 @@
     </td>
    </tr>
 </tbody>
-<div class="modal fase" id="myModal" data-backdrop="static"
-data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            
-            <h5 class="modal-title" id="staticBackdropLabel">
-                {{ __('Categories') }}</h5>
-
-            <button type="button" class="close" data-dismiss="modal"
-                aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div id="addToCart-modal-body">
-            <div class="c-preloader text-center p-3">
-                <i class="las la-spinner la-spin la-3x"></i>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light"
-                data-dismiss="modal">Close</button>
-            <button type="button" class="btn ok">Ok</button>
-        </div>
-    </div>
-</div>
-</div>
-<div class="modal fase" id="myModaluser" data-backdrop="static"
-data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-        
-        <h5 class="modal-title" id="staticBackdropLabel">
-            {{ __('create user') }}</h5>
-
-        <button type="button" class="close" data-dismiss="modal"
-            aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div id="addToCart-modal-body-user">
-        <div class="c-preloader text-center p-3">
-            <i class="las la-spinner la-spin la-3x"></i>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light"
-            data-dismiss="modal">Close</button>
-        <button type="button" class="btn ok">Ok</button>
-    </div>
-</div>
-</div>
-</div>
-
-</table>
 
