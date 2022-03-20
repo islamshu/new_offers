@@ -621,8 +621,11 @@
             // formData.append('uuid', document.getElementById('uuid').value);
             var value = $('#currencies').val();
             formData.append('currencies', JSON.stringify(value));
+            if (document.getElementById('commercial_registration_number') != null) {
+
             formData.append('commercial_registration_number', document.getElementById('commercial_registration_number')
                 .value);
+            }
             // formData.append('email', document.getElementById('email').value);
             formData.append('mobile', document.getElementById('mobile').value);
             // formData.append('password', document.getElementById('password').value);

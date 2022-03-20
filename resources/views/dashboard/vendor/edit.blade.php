@@ -491,8 +491,11 @@
                 formData.append('owner_name', document.getElementById('owner_name').value);
             }
             // formData.append('telephoone', document.getElementById('telephoone').value);
+            if (document.getElementById('commercial_registration_number') != null) {
+
             formData.append('commercial_registration_number', document.getElementById('commercial_registration_number')
                 .value);
+            }
             formData.append('pincode', document.getElementById('pincode').value);
             formData.append('type_refound', document.getElementById('type_refound').value);
             if (document.getElementById('facebook') != null) {
