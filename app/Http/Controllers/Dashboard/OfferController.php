@@ -429,7 +429,7 @@ class OfferController extends Controller
                 $file = $request->file('primary_image');
                 $imageName = time() . 'image.' . $file->getClientOriginalExtension();
              
-                $file->move('images/primary_offer', $imageName);
+                $file->store('images/primary_offer', $imageName);
                 $image_offer->primary_image = $imageName;
                 if ($request->TotalImages > 0) {
                     $files = [];
