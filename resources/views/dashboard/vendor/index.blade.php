@@ -214,10 +214,11 @@
         <script>
             $(document).ready(function(){
             $('.switchh').change(function () {
+                alert($(this).data('check'));
                 let status = $(this).data('check') === 'true' ? 'active' : 'deactive';
                 let userId = $(this).data('id');
 
-                alert('')
+             
                 $.ajax({
                     type: "GET",
                     dataType: "json",
