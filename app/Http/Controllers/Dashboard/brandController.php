@@ -51,12 +51,12 @@ class brandController extends Controller
 
         
         if (Auth::user()->hasRole('Admin')) {
-            $vendors = $query-> select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->paginate(10);
+            $vendors = $query-> select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->orderBy('id','desc')->paginate(10);
             return response()->view('dashboard.vendor.indexAdmin', compact('vendors'));
         } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-vendor') ) {
            
             $enterprise = Enterprise::find(Auth::user()->ent_id);
-            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->paginate(10);
+            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->orderBy('id','desc')->paginate(10);
             return response()->view('dashboard.vendor.index', compact('vendors', 'enterprise'));
         } elseif (Auth::user()->hasRole('Vendor')) {
             $Vendor = Vendor::find(Auth::user()->vendor_id);
@@ -74,7 +74,7 @@ class brandController extends Controller
             $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
                     ->orWhere('name_ar', 'like', '%'.$query.'%')
                     ->orWhere('name_en', 'like', '%'.$query.'%')
-                    ->paginate(10);
+                    ->orderBy('id','desc')->paginate(10);
       return view('dashboard.vendor.pagination_data', compact('vendors'))->render();
      }
     }
@@ -117,11 +117,11 @@ class brandController extends Controller
     }
     public function Brands($lang, $id)
     {
-
+        
 
         if (Auth::user()->hasRole('Admin')) {
             $enterprise = Enterprise::find($id);
-            $vendors = Vendor::where('enterprise_id', $id)->select('name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile')->paginate(10);
+            $vendors = Vendor::where('enterprise_id', $id)->select('name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile')->paginate(8);
             return response()->view('dashboard.vendor.index', compact('vendors', 'enterprise'));
         }
     }
