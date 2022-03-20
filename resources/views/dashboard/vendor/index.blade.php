@@ -115,85 +115,12 @@
                                         <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
                                        </div>
                                     <!--begin::Details-->
-                                        <table class="table table-striped table-bordered">
-                                    
-                                        <thead>
-                                            <tr class="fw-bold fs-6 text-gray-800">
-                                                <th class="pr-0 text-center">{{ __('image') }}</th>
-                                                <th class="pr-0 text-center">{{ __('name') }}</th>
-                                                {{-- <th class="pr-0 text-center">{{ __('Email') }}</th> --}}
-                                                {{-- <th>{{ __('commercial_registration_number') }}</th> --}}
-                                                {{-- <th class="pr-0 text-center">{{ __('Phone') }}</th> --}}
-                                                <th class="pr-0 text-center">{{ __('Branch number') }}</th>
-                                                <th class="pr-0 text-center">{{ __('Category') }}</th>
-                                                <th class="pr-0 text-center">{{ __('Created at') }}</th>
-                                                <th class="pr-0 text-center">{{ __('Status') }}</th>
-                                                <th class="pr-0 text-center">{{ __('Action') }}</th>
-
-                                            </tr>
-                                        </thead>
+                                        
                                         
                                          @include('dashboard.vendor.pagination_data')
 
                                         
-                                        <div class="modal fase" id="myModal" data-backdrop="static"
-                                            data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        
-                                                        <h5 class="modal-title" id="staticBackdropLabel">
-                                                            {{ __('Categories') }}</h5>
-
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div id="addToCart-modal-body">
-                                                        <div class="c-preloader text-center p-3">
-                                                            <i class="las la-spinner la-spin la-3x"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn ok">Ok</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal fase" id="myModaluser" data-backdrop="static"
-                                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    
-                                                    <h5 class="modal-title" id="staticBackdropLabel">
-                                                        {{ __('create user') }}</h5>
-
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div id="addToCart-modal-body-user">
-                                                    <div class="c-preloader text-center p-3">
-                                                        <i class="las la-spinner la-spin la-3x"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn ok">Ok</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    </table>
+                                     
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
                                     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
                                     <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
