@@ -221,7 +221,7 @@
             {
                 
                 $('.set_data').html('');
-                $('.set_data').replace(data);
+                $('.set_data').html(data);
             }
             })
             }
