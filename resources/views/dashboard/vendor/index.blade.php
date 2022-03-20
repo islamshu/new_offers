@@ -285,7 +285,6 @@
         <script>
             $(document).ready(function(){
             $('.switchh').change(function () {
-                alert('dd');
                 let status = $(this).prop('checked') === true ? 'active' : 'deactive';
                 let userId = $(this).data('id');
                 $.ajax({
