@@ -151,11 +151,7 @@ class brandController extends Controller
      */
     public function store(Request $request)
     {
-    //   $image=   \QrCode::size(500)
-    //     ->
-    //     ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
-    //     dd($image);
-    // dd($request->all());
+
 
         $validator = Validator::make($request->all(), [
             'name_ar' => 'required|string|min:3',
@@ -296,7 +292,12 @@ class brandController extends Controller
                             'useR_id' =>  $user->id
                         ]);
                         foreach ($role->permissions as $one_permission) {
-                            $user->attachPermission($one_permission);
+                            DB::table('permission_user')->insert([
+                            'permission_id' =>  $one_permission,
+                            'user_id' =>  $user->id,
+                            'user_type'=>'Vendor'
+                        ]);
+                            
                         }
                         DB::commit();
                         if ($request->TotalImages > 0) {
@@ -499,6 +500,352 @@ class brandController extends Controller
             return response()->json(['icon' => 'error', 'title' => $validator->errors()->first()], 400);
         }
     }
+    // public function store(Request $request)
+    // {
+
+
+    //     $validator = Validator::make($request->all(), [
+    //         'name_ar' => 'required|string|min:3',
+    //         'name_en' => 'required|string|min:3',
+    //         'desc_en' => 'required',
+    //         'desc_ar' => 'required',
+    //         // 'visitor' => 'required',
+    //         // 'sales' => 'required',
+    //         // 'owner_name' => 'required|string|min:3',
+    //         'commercial_registration_number' => 'required',
+    //         'email' => 'required|email|unique:users',
+    //         'telephoone' => 'unique:vendors',
+    //         'mobile' => 'unique:vendors',
+    //         'password' => 'required|min:6',
+    //         'image' => 'required',
+    //     ]);
+
+    //     if (!$validator->fails()) {
+    //         if (Auth::user()->hasRole('Enterprises')) {
+    //             try {
+    //                 DB::beginTransaction();
+    //                 $enterprise =  Enterprise::find(Auth::user()->ent_id);
+    //                 //check count of vendors(brands) in enterprise
+
+    //                 if ($enterprise->vendors != null && $enterprise->vendors->count() >= $enterprise->count_of_brands) {
+    //                     return response()->json(['icon' => 'error', 'title' => 'You Canot create New vendor ,You Have To Contact Admin']);
+    //                 } else {
+    //                     $vendor = new Vendor();
+    //                     //$vendor->customer_type_id = '1';
+    //                     $vendor->enterprise_id = Auth::user()->ent_id;
+    //                     $vendor->name_ar = $request->name_ar;
+    //                     $vendor->name_en = $request->name_en;
+    //                     $vendor->desc_en = $request->desc_en;
+    //                     $vendor->desc_ar = $request->desc_ar;
+    //                     $vendor->policy_en = $request->policy_en;
+    //                     $vendor->policy_ar = $request->policy_ar;
+
+    //                     $vendor->terms_ar = $request->terms_ar;
+    //                     $vendor->terms_en = $request->terms_en;
+    //                     $vendor->visitor = $request->visitor;
+    //                     $vendor->sales = $request->sales;
+    //                     $vendor->menu_link = $request->menu_link;
+
+    //                     // $vendor->uuid = $request->uuid;
+    //                     $vendor->owner_name = $request->owner_name;
+    //                     $vendor->commercial_registration_number = $request->commercial_registration_number;
+    //                     $vendor->telephoone = $request->telephoone;
+    //                     $vendor->mobile = $request->mobile;
+    //                     $vendor->vat = $request->vat;
+    //                     $vendor->vat_type = $request->vat_type;
+    //                     $vendor->vat_no = $request->vat_no;
+    //                     $vendor->start_at = $request->start_at;
+    //                     $vendor->end_at = $request->end_at;
+    //                     $codeinput = '';
+    //                     if($request->codeinput == null){
+    //                         $codeinput = rand(0, 999);
+    //                     }else{
+    //                         $codeinput =   $request->codeinput;
+    //                     }
+    //                     $image = QrCode::format('svg')
+    //                     ->size(200)->errorCorrection('H')
+    //                     ->generate((string)$codeinput);
+    //                     $output_file =  time() . '.svg';
+    //                     $file =  Storage::disk('local')->put($output_file, $image);
+                        
+    //                     $vendor->qr_code = $codeinput;
+    //                     $vendor->is_pincode = $request->pincode;
+    //                     $vendor->qr_image = $output_file;
+    //                     $vendor->customer_use = $request->customer_use;
+    //                     $vendor->number_of_hours = $request->time_count_input;
+    //                     if (request()->hasFile('image')) {
+    //                         $image = $request->file('image');
+    //                         $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+    //                         $image->move('images/brand', $imageName);
+    //                         $vendor->image = $imageName;
+    //                     }
+                   
+                       
+                        
+    //                     $country_ids = json_decode($request->country_id);
+
+    //                     $vendor->save();
+    //                     DB::table('soial_vendors')->insert([
+    //                         'facebook' => $request->facebook,
+    //                         'twitter' =>  $request->twitter,
+    //                         'instagram' => $request->instagram,
+    //                         'snapchat' =>  $request->snapchat,
+    //                         'vendor_id' =>  $vendor->id,
+    //                     ]);
+    //                     // $soial->save();
+                    
+    //                     $vendor->currencies()->sync(json_decode($request->currencies, false));
+    //                     $vendor->categorys()->sync(json_decode($request->category_id, false));
+
+    //                     if ($country_ids > 0) {
+
+
+
+    //                         for ($i = 0; $i < count($country_ids); $i++) {
+    //                             $enterpriseCountry = new vendor_country();
+    //                             $enterpriseCountry->vendor_id = $vendor->id;
+    //                             $enterpriseCountry->country_id = $country_ids[$i];
+    //                             $enterpriseCountry->save();
+    //                             $cities = City::where('country_id', $country_ids)->get();
+    //                             foreach ($cities as $city) {
+    //                                 $citiesVendor = new Vendor_cities();
+    //                                 $citiesVendor->vendor_id = $vendor->id;
+    //                                 $citiesVendor->city_id = $city->id;
+    //                                 $citiesVendor->save();
+    //                                 $Neighborhoods = Neighborhood::where('city_id', $city->id)->get();
+    //                                 foreach ($Neighborhoods as $Neighborhood) {
+    //                                     $citiesVendor = new Vendor_neighborhood();
+    //                                     $citiesVendor->vendor_id = $vendor->id;
+    //                                     $citiesVendor->neighborhood_id = $Neighborhood->id;
+    //                                     $citiesVendor->save();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                     $user = new User();
+    //                     $user->username = $vendor->name_en;
+    //                     $user->password =  bcrypt($request->password);
+    //                     $user->email = $request->email;
+    //                     $user->last_ip = \Request::ip();
+    //                     $user->last_login = now();
+    //                     $user->name = $request->name_en;
+    //                     $user->phone = $request->mobile;
+    //                     $user->vendor_id = $vendor->id;
+    //                     $user->ent_id = Auth::user()->ent_id;
+
+    //                     $user->save();
+
+
+
+    //                     $role = Role::where('name', 'Vendors')->first();
+    //                     DB::table('role_user')->insert([
+    //                         'role_id' =>   $role->id,
+    //                         'useR_id' =>  $user->id
+    //                     ]);
+    //                     foreach ($role->permissions as $one_permission) {
+    //                         $user->attachPermission($one_permission);
+    //                     }
+    //                     DB::commit();
+    //                     if ($request->TotalImages > 0) {
+                           
+    //                         for ($x = 0; $x < $request->TotalImages; $x++) {
+    //                             if ($request->hasFile('image_cover' . $x)) {
+                                  
+    //                                 $imagex      = $request->file('image_cover' . $x);
+            
+    //                                 $imageNamee = time()+$x . 'image_cover.' . $imagex->getClientOriginalExtension();
+    //                                 $imagex->move('images/vendor_cover', $imageNamee);
+                                   
+    //                                $vendor_image = new ImageVendor();
+    //                                $vendor_image->vendor_id = $vendor->id;
+    //                                $vendor_image->image = $imageNamee;
+    //                                $vendor_image->save();
+                                
+    
+    //                             }
+    //                         }
+                         
+    //                     }
+    //                     return response()->json(['icon' => 'success', 'title' => 'Vendor created successfully']);
+                       
+    //                 }
+    //             } catch (\Exception $e) {
+    //                 DB::rollback();
+    //                 dd($e);
+    //                 return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
+    //             }
+    //         } elseif (Auth::user()->hasRole('Admin')) {
+    //             try {
+    //                 DB::beginTransaction();
+    //                 $vendor = new Vendor();
+    //                 //$vendor->customer_type_id = '2';
+    //                 if ($request->customer_type == 'Enterprise') {
+    //                     $vendor->enterprise_id = $request->enterprise_id;
+    //                 } else {
+    //                     $vendor->enterprise_id = null;
+    //                 }
+
+    //                 $vendor->name_ar = $request->name_ar;
+    //                 $vendor->name_en = $request->name_en;
+    //                 $vendor->desc_en = $request->desc_en;
+    //                 $vendor->desc_ar = $request->desc_ar;
+    //                 $vendor->policy_en = $request->policy_en;
+    //                 $vendor->policy_ar = $request->policy_ar;
+    //                 $vendor->terms_ar = $request->terms_ar;
+    //                 $vendor->terms_en = $request->terms_en;
+    //                 $vendor->visitor = $request->visitor;
+    //                 $vendor->sales = $request->sales;
+    //                 $vendor->uuid = $request->uuid;
+    //                 $vendor->vat = $request->vat;
+    //                 $vendor->vat_type = $request->vat_type;
+
+    //                 $vendor->owner_name = $request->owner_name;
+    //                 $vendor->commercial_registration_number = $request->commercial_registration_number;
+    //                 $vendor->telephoone = $request->telephoone;
+    //                 $vendor->mobile = $request->mobile;
+    //                 $vendor->address = $request->address;
+    //                 if (request()->hasFile('image')) {
+    //                     $image = $request->file('image');
+    //                     $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+    //                     $image->move('images/brand', $imageName);
+    //                     $vendor->image = $imageName;
+    //                 }
+    //                 $codeinput='';
+    //                 if($request->codeinput == null){
+    //                     $codeinput = rand(0, 999);
+    //                 }else{
+    //                     $codeinput =   $request->codeinput;
+    //                 }
+                  
+    //                 $image = QrCode::format('svg')
+    //                     ->size(200)->errorCorrection('H')
+    //                     ->generate((string)$codeinput);
+    //                 $output_file =  time() . '.svg';
+    //                 $file =  Storage::disk('local')->put($output_file, $image);
+    //                 $vendor->qr_code =$codeinput;
+    //                 $vendor->is_pincode = $request->pincode;
+    //                 $vendor->qr_image = $output_file;
+    //                 $vendor->customer_use = $request->customer_use;
+    //                 $vendor->number_of_hours = $request->time_count_input;
+    //                 $vendor->cover_image = " ";
+    //                 $vendor->type_refound = $request->type_refound;
+    //                 $vendor->save();
+    //                 // if (request()->hasFile('image_cover')) {
+    //                 //     $image = $request->file('image_cover');
+    //                 //     $imageName = time() . 'image_cover.' . $image->getClientOriginalExtension();
+    //                 //     $image->move('images/brand', $imageName);
+                      
+    //                 // }
+    //                 if ($request->TotalImages > 0) {
+    //                     $files = [];
+    //                     for ($x = 0; $x < $request->TotalImages; $x++) {
+        
+    //                         if ($request->hasFile('image' . $x)) {
+    //                             $imagex      = $request->file('image' . $x);
+        
+    //                             $imageNamee = time() . 'image.' . $imagex->getClientOriginalExtension();
+    //                             $imagex->move('images/vendor_cover', $imageNamee);
+                               
+    //                            $vendor_image = new ImageVendor();
+    //                            $vendor_image->vendor_id = $vendor->id;
+    //                            $vendor_image->image = $imageNamee;
+    //                            $vendor_image->save();
+
+    //                         }
+    //                     }
+                     
+    //                 }
+    //                 $vendor->currencies()->sync(json_decode($request->currencies, false));
+    //                 $vendor->categorys()->sync(json_decode($request->category_id, false));
+
+    //                 $country_ids = json_decode($request->country_ids);
+
+
+    //                 for ($i = 0; $i < count($country_ids); $i++) {
+    //                     $enterpriseCountry = new vendor_country();
+    //                     $enterpriseCountry->vendor_id = $vendor->id;
+    //                     $enterpriseCountry->country_id = $country_ids[$i];
+    //                     $enterpriseCountry->save();
+    //                     $cities = City::where('country_id', $country_ids)->get();
+    //                     foreach ($cities as $city) {
+    //                         $citiesVendor = new Vendor_cities();
+    //                         $citiesVendor->vendor_id = $vendor->id;
+    //                         $citiesVendor->city_id = $city->id;
+    //                         $citiesVendor->save();
+
+
+    //                         $Neighborhoods = Neighborhood::where('city_id', $city->id)->get();
+    //                         foreach ($Neighborhoods as $Neighborhood) {
+    //                             $citiesVendor = new Vendor_neighborhood();
+    //                             $citiesVendor->vendor_id = $vendor->id;
+    //                             $citiesVendor->neighborhood_id = $Neighborhood->id;
+    //                             $citiesVendor->save();
+    //                         }
+    //                     }
+    //                 }
+    //                 $user = new User();
+    //                 $user->username = $vendor->name_en;
+    //                 $user->password =  bcrypt($request->password);
+    //                 $user->email = $request->email;
+    //                 $user->last_ip = \Request::ip();
+    //                 $user->last_login = now();
+    //                 $user->name = $request->name_en;
+    //                 $user->vendor_id = $vendor->id;
+    //                 $user->phone = $request->mobile;
+
+    //                 if ($request->customer_type == 'Enterprise') {
+    //                     $user->ent_id = $request->enterprise_id;
+    //                 } else {
+    //                     $user->ent_id = null;
+    //                 }
+    //                 $user->save();
+
+    //                 //Assign Vendor Role To New User
+    //                 $role = Role::where('name', 'Vendors')->first();
+    //                 DB::table('role_user')->insert([
+    //                     'role_id' =>   $role->id,
+    //                     'useR_id' =>  $user->id
+    //                 ]);
+    //                 foreach ($role->permissions as $one_permission) {
+    //                     $user->attachPermission($one_permission);
+    //                 }
+    //                 DB::commit();
+    //                 if ($request->TotalImages > 0) {
+                           
+    //                     for ($x = 0; $x < $request->TotalImages; $x++) {
+    //                         if ($request->hasFile('image_cover' . $x)) {
+                              
+    //                             $imagex      = $request->file('image_cover' . $x);
+        
+    //                             $imageNamee = time() . 'image_cover.' . $imagex->getClientOriginalExtension();
+    //                             $imagex->move('images/vendor_cover', $imageNamee);
+                               
+    //                            $vendor_image = new ImageVendor();
+    //                            $vendor_image->vendor_id = $vendor->id;
+    //                            $vendor_image->image = $imageNamee;
+    //                            $vendor_image->save();
+                            
+
+    //                         }
+    //                     }
+                     
+    //                 }
+    //                 return response()->json(['icon' => 'success', 'title' => 'Vendor created successfully']);
+                    
+    //             } catch (\Exception $e) {
+    //                 DB::rollback();
+
+
+
+
+    //                 return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
+    //             }
+    //         }
+    //     } else {
+
+    //         return response()->json(['icon' => 'error', 'title' => $validator->errors()->first()], 400);
+    //     }
+    // }
     public function download()
     {
         $file = public_path() . "/brands_new_new.xlsx";
