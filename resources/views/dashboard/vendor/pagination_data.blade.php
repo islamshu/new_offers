@@ -87,4 +87,21 @@
     </td>
    </tr>
 </tbody>
+<script>
+         $(document).ready(function(){
+            $('.switchh').change(function () {
+                let status = $(this).prop('checked') === true ? 'active' : 'deactive';
+                let userId = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '{{ route('vednor.update.status',app()->getLocale()) }}',
+                    data: {'status': status, 'user_id': userId},
+                    success: function (data) {
+                        console.log(data.message);
+                    }
+                });
+            });
+        });
+</script>
 
