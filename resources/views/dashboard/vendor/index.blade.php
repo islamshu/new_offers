@@ -219,10 +219,9 @@
             url:"/en/pagination/fetch_data?page="+page+"&query="+query,
             success:function(data)
             {
-                alert('ddd');
                 
-                $('tbody').html('');
-                $('tbody').html(data);
+                $('tbody').append('');
+                $('tbody').append(data);
             }
             })
             }
