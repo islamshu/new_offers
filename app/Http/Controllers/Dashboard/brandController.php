@@ -455,14 +455,14 @@ class brandController extends Controller
                     $user->save();
 
                     //Assign Vendor Role To New User
-                    $role = Role::where('name', 'Vendors')->first();
-                    DB::table('role_user')->insert([
-                        'role_id' =>   $role->id,
-                        'useR_id' =>  $user->id
-                    ]);
-                    foreach ($role->permissions as $one_permission) {
-                        $user->attachPermission($one_permission);
-                    }
+                    // $role = Role::where('name', 'Vendors')->first();
+                    // DB::table('role_user')->insert([
+                    //     'role_id' =>   $role->id,
+                    //     'useR_id' =>  $user->id
+                    // ]);
+                    // foreach ($role->permissions as $one_permission) {
+                    //     $user->attachPermission($one_permission);
+                    // }
                     DB::commit();
                     if ($request->TotalImages > 0) {
                            
