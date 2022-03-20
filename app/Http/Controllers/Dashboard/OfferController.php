@@ -417,15 +417,40 @@ class OfferController extends Controller
             $offer->update($request_all);
 
             $image_offer =  $offer->offerimage;
-            dd($image_offer);
+            
             
             if($request->primary_image != 'undefined' &&  $request->primary_image != null){
-
-           
             $file = $request->file('primary_image');
             $imageName = time() . 'image.' . $file->getClientOriginalExtension();
             $file->move('images/primary_offer', $imageName);
-            $image_offer->primary_image = $imageName;
+            if($image_offer == null){
+                $image_offer =  new Offerimage();
+                $image_offer->offer_id = $offer->id;
+                $file = $request->file('primary_image');
+                $imageName = time() . 'image.' . $file->getClientOriginalExtension();
+                $file->move('images/primary_offer', $imageName);
+                $image_offer->primary_image = $imageName;
+                if ($request->TotalImages > 0) {
+                    $files = [];
+                    for ($x = 0; $x < $request->TotalImages; $x++) {
+    
+                        if ($request->hasFile('image' . $x)) {
+                            $imagex      = $request->file('image' . $x);
+    
+                            $imageNamee = time() . 'image.' . $imagex->getClientOriginalExtension();
+                            $imagex->move('images/primary_offer', $imageNamee);
+                           
+                            // $files[$x] = $imageNamee;
+                            array_push($files,$imageNamee);
+                        }
+                    }
+                    $image_offer->image = json_encode($files);
+                }
+                    $image_offer->save();
+            }else{
+                $image_offer->primary_image = $imageName;
+
+            }
             }
             if ($request->TotalImages > 0) {
                 $files = [];
