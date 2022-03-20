@@ -43,7 +43,7 @@
                             <td>{{ $item->name_ar }}</td>
                         @endif
 
-                        <td>{{ offer_type($item->offertype->offer_type) }}</td>
+                        <td>{{ offer_type(@$item->offertype->offer_type) }}</td>
                         <td>{{ $item->start_time }}</td>
                         <td>{{ $item->end_time }}</td>
                         @if (auth()->user()->hasPermission(['update-offer']))
