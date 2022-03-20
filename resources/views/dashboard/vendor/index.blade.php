@@ -234,8 +234,8 @@
             success:function(data)
             {
                 
-                $('tbody').html('');
-                $('tbody').html(data);
+                $('.set_date').html('');
+                $('.set_date').html(data);
             }
             })
             }
