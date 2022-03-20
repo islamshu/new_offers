@@ -447,7 +447,6 @@ class OfferController extends Controller
                 } 
             }else{
                 $image_offer->primary_image = $imageName;
-
             }
             }
             if ($request->TotalImages > 0) {
@@ -468,7 +467,10 @@ class OfferController extends Controller
             }
                 $image_offer->save();
                 $offer_type = $offer->offertype;
-
+                if( $offer_type == null){
+                    $offer_type = new Offertype();
+                }
+                $offer_type->offer_id = $offer->id;
                 $offer_type->offer_type = $request->offer_type_2;
                 $offer_type->price = $request->price;
 
