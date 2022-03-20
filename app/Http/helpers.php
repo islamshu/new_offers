@@ -101,7 +101,7 @@ function offer_type($type){
     
     
     if($type == 'buyOneGetOne'){
-        dd('dd');
+   
         return 'Buy 1 Get 1';
     }elseif($type =='general_offer'){
         return 'General Discount';
