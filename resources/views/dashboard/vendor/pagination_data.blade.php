@@ -95,6 +95,7 @@
 </tr>
 
 @endforeach
+
 <div class="modal fase" id="myModal" data-backdrop="static"
 data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
 aria-hidden="true">
@@ -153,12 +154,13 @@ aria-hidden="true">
 </div>
 
 </table>
-</div>
 <tr>
     <td colspan="3" align="center">
      {!! $vendors->appends(request()->input())->links() !!}
     </td>
    </tr>
+
+
 </tbody>
 <script>
          $(document).ready(function(){
