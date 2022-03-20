@@ -24,8 +24,8 @@
 </td>
 <td>
     <label class="switchh">
-        <input type="checkbox" type="checkbox" data-id="{{ $item->id }}" class="swatched" name="status" {{ $item->status == 'active' ? 'checked' : '' }}>
-        <span class="slider round"></span>
+        <input type="checkbox" type="checkbox" data-id="{{ $item->id }}" name="status" {{ $item->status == 'active' ? 'checked' : '' }}>
+        <span class="slider round swatched"></span>
       </label>
     {{-- <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}> --}}
 </td>
