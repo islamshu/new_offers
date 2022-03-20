@@ -420,16 +420,14 @@ class OfferController extends Controller
             
             
             if($request->primary_image != 'undefined' &&  $request->primary_image != null){
+
+           
             $file = $request->file('primary_image');
             $imageName = time() . 'image.' . $file->getClientOriginalExtension();
             $file->move('images/primary_offer', $imageName);
             if($image_offer == null){
                 $image_offer =  new Offerimage();
                 $image_offer->offer_id = $offer->id;
-                $file = $request->file('primary_image');
-                $imageName = time() . 'image.' . $file->getClientOriginalExtension();
-             
-                $file->store('images/primary_offer', $imageName);
                 $image_offer->primary_image = $imageName;
                 if ($request->TotalImages > 0) {
                     $files = [];
@@ -446,8 +444,7 @@ class OfferController extends Controller
                         }
                     }
                     $image_offer->image = json_encode($files);
-                }
-                    $image_offer->save();
+                } 
             }else{
                 $image_offer->primary_image = $imageName;
 
