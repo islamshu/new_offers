@@ -2,6 +2,7 @@
 
 <thead>
     <tr class="fw-bold fs-6 text-gray-800">
+        <th>{{ __('Image') }}</th>
         <th>{{ __('Name') }}</th>
         <th>{{ __('Active Branch') }}</th>
         <th>{{ __('Deactive Branch') }}</th>
@@ -12,8 +13,14 @@
 <tbody>
     @foreach ($vendors as $item)
         <tr>
-            <td>{{ $item->name_ar }}</td>
-            <td>{{ $item->branches->where('status', 'active')->count() }}</td>
+            <td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50" alt=""></td>
+            <td class="pr-0 text-center">
+                @if (app()->getLocale() == 'en')
+                    {{ $item->name_en }}
+                @elseif(app()->getLocale() == "ar")
+                    {{ $item->name_ar }}
+                @endif
+            </td>            <td>{{ $item->branches->where('status', 'active')->count() }}</td>
             <td>{{ $item->branches->where('status', 'deactive')->count() }}</td>
 
 
