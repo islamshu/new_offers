@@ -1,7 +1,7 @@
 @extends('layout.default')
 @section('styles')
 <style>
-    #loading {
+    #loading_par {
   display: block;
   position: absolute;
   top: 0;
