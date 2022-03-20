@@ -214,7 +214,8 @@
         <script>
             $(document).ready(function(){
             $('.switchh').change(function () {
-                let status = $(this).prop('checked') === true ? 'active' : 'deactive';
+                alert($(this).getAttribute( "checked" ));
+                let status = $(this).getAttribute( "checked" ) === true ? 'active' : 'deactive';
                 let userId = $(this).data('id');
                 $.ajax({
                     type: "GET",
