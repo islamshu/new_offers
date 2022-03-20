@@ -155,7 +155,6 @@ class OfferController extends Controller
         }
         if($request->offer_type_2 == null){
             return response()->json(['icon' => 'error', 'title' => 'You need To Add Offer Type'], 400);
-
         }
         if (!$validator->fails()) {
 
