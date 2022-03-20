@@ -427,6 +427,7 @@ class OfferController extends Controller
                 $image_offer =  new Offerimage();
                 $image_offer->offer_id = $offer->id;
                 $file = $request->file('primary_image');
+                dd($file);
                 $imageName = time() . 'image.' . $file->getClientOriginalExtension();
                 $file->move('images/primary_offer', $imageName);
                 $image_offer->primary_image = $imageName;
