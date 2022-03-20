@@ -78,6 +78,6 @@
 @endforeach
 <tr>
     <td colspan="3" align="center">
-     {!! $data->links() !!}
+     {!! $vendors->links() !!}
     </td>
    </tr>
