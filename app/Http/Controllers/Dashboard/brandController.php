@@ -75,7 +75,7 @@ class brandController extends Controller
                     ->orWhere('name_ar', 'like', '%'.$query.'%')
                     ->orWhere('name_en', 'like', '%'.$query.'%')
                     ->paginate(10);
-      return view('pagination_data', compact('data'))->render();
+      return view('dashboard.vendor.pagination_data', compact('data'))->render();
      }
     }
     public function showmodeluser(Request $request){
