@@ -37,12 +37,10 @@
 <td class="pr-0 text-center">{{ $item->created_at->format('M d Y') }}
 </td>
 <td>
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" {{ $item->status == 'active' ? 'checked' : '' }}>
-        <input type="checkbox">
-
-      </div>
-       
+    <label class="switchh" data-id="{{ $item->id }}" >
+        <input type="checkbox" type="checkbox" data-id="{{ $item->id }}" name="status" {{ $item->status == 'active' ? 'checked' : '' }}>
+        <span class="slider round swatched"></span>
+      </label>
     {{-- <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}> --}}
 </td>
 <td class="pr-0 text-center">
@@ -122,6 +120,7 @@ aria-hidden="true">
             <button type="button" class="btn ok">Ok</button>
         </div>
     </div>
+</div>
 </div>
 <div class="modal fase" id="myModaluser" data-backdrop="static"
 data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
