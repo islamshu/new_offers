@@ -62,6 +62,7 @@ class OfferController extends Controller
     }
     function fetch_data(Request $request)
     {
+       dd('dd'); 
      if($request->ajax())
      {
 
