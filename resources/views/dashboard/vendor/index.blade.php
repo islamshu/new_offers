@@ -42,7 +42,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div id="loading"></div>
+                        <div id="loading_par"></div>
 
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -183,8 +183,11 @@
                         "_token": "{{ csrf_token() }}",
                         'id': id
                     },
-
+                    beforeSend : function(){
+                    $('#loading_par').show();
+                    },
                     success: function(data) {
+                        $('#loading_par').hide();
 
                         $('#addToCart-modal-body').html(data);
 
