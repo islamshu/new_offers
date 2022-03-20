@@ -91,7 +91,7 @@ Route::group([
         Route::get('neighborhoods_branch/{id}',"Dashboard\branchController@neighborhoods_branch")->name('neighborhoods-branch');
         Route::get('city_branch/{id}',"Dashboard\branchController@cityBranch")->name('city-branch');
         Route::resource('offers', Dashboard\OfferController::class);
-        Route::get('offers/fetch_data', "Dashboard\brandController@fetch_data");
+        Route::get('offers/fetch_data', "Dashboard\OfferController@fetch_data");
 
         Route::post('update_offer/{id}',"Dashboard\OfferController@update_offer")->name('update-offer');
         Route::resource('subscription', Dashboard\SubscriptionController::class);
