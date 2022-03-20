@@ -51,7 +51,7 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="set_data">
                                          @include('dashboard.vendor.pagination_data')
 
                                         </tbody>
@@ -220,8 +220,8 @@
             success:function(data)
             {
                 
-                $('tbody').append('');
-                $('tbody').append(data);
+                $('.set_data').html('');
+                $('.set_data').html(data);
             }
             })
             }
