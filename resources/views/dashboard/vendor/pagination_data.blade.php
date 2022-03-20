@@ -1,5 +1,5 @@
 @foreach ($vendors as $item)
-
+{{ dd($item) }}
 <td class="pr-0 text-center"><img
         src="{{ asset('images/brand/' . $item->image) }}" width="50"
         height="50" alt=""></td>
