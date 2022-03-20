@@ -216,7 +216,7 @@
         function fetch_data(page,  query)
             {
             $.ajax({
-            url:"/en/pagination/fetch_data?page="+page+"&query="+query,
+            url:"/en/vendors/fetch_data?page="+page+"&query="+query,
             success:function(data)
             {
                 
