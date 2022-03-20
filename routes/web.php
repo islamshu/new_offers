@@ -71,6 +71,9 @@ Route::group([
         Route::resource('city', Dashboard\CityController::class);
         Route::resource('neighborhood', 'Dashboard\NeighborhoodController');
         Route::resource('vendor', Dashboard\brandController::class);
+        Route::get('pagination/fetch_data', "Dashboard\brandController@fetch_data");
+
+        
         Route::get('get-citis',[NeighborhoodController::class, 'get_cites_by_country'])->name('get_cites_by_country.ajax');
         Route::get('get-countries-enterprise', "Dashboard\brandController@countriesAjax")->name('countriesAjax');
         Route::get('get-citis-vendor', 'Dashboard\branchController@vendorCitiesAjax')->name('vendorCitiesAjax');

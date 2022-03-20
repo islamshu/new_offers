@@ -45,24 +45,38 @@ class brandController extends Controller
         $this->middleware(['permission:delete-vendor'])->only('destroy');
 
     }//end of constructor
-    public function index()
+    public function index(Request $request)
     {
         // dd(auth()->user()->isAbleTo('update-vendor'));
 
+        
         if (Auth::user()->hasRole('Admin')) {
-
-            $vendors = Vendor::select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->paginate(10);
+            $vendors = $query-> select('image','id', 'name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'image')->paginate(10);
             return response()->view('dashboard.vendor.indexAdmin', compact('vendors'));
         } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-vendor') ) {
            
             $enterprise = Enterprise::find(Auth::user()->ent_id);
-            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->get();
+            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->select('status','image','created_at','name_en', 'name_ar', 'uuid', 'commercial_registration_number', 'mobile', 'id')->paginate(10);
             return response()->view('dashboard.vendor.index', compact('vendors', 'enterprise'));
         } elseif (Auth::user()->hasRole('Vendor')) {
             $Vendor = Vendor::find(Auth::user()->vendor_id);
             return response()->view('dashboard.vendor.index', compact('vendors', 'Vendor'));
         }
         //
+    }
+    function fetch_data(Request $request)
+    {
+     if($request->ajax())
+     {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+      $data =  Vendor::where('id', 'like', '%'.$query.'%')
+                    ->orWhere('name_ar', 'like', '%'.$query.'%')
+                    ->orWhere('name_en', 'like', '%'.$query.'%')
+                    ->paginate(10);
+      return view('pagination_data', compact('data'))->render();
+     }
     }
     public function showmodeluser(Request $request){
         $vendor = Vendor::find($request->id);
