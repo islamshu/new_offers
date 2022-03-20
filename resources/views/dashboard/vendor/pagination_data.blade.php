@@ -162,7 +162,7 @@ aria-hidden="true">
 <script>
          $(document).ready(function(){
             $('.switchh').change(function () {
-                let status = $(this).prop('checked') === true ? 'active' : 'deactive';
+                let status = $(this).data('check') === false ? 'active' : 'deactive';
                 let userId = $(this).data('id');
                 $.ajax({
                     type: "GET",
