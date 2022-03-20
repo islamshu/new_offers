@@ -214,7 +214,7 @@
         <script>
             $(document).ready(function(){
             $('.switchh').change(function () {
-                let status = $(this).data('check'); == 'true' ? 'active' : 'deactive';
+                let status = $(this).data('check') === 'true' ? 'active' : 'deactive';
                 let userId = $(this).data('id');
 
                 alert('')
