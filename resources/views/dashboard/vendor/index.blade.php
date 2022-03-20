@@ -51,10 +51,10 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody class="set_data">
+                                        
                                          @include('dashboard.vendor.pagination_data')
 
-                                        </tbody>
+                                        
                                         <div class="modal fase" id="myModal" data-backdrop="static"
                                             data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                             aria-hidden="true">
