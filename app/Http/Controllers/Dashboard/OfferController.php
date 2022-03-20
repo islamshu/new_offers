@@ -150,8 +150,11 @@ class OfferController extends Controller
             // 'terms_ar' => 'required',
             // 'terms_en' => 'required'
         ]);
-        if($request->primary_image == 'undefined'){
+        if($request->primary_image == 'undefined' || $request->TotalImages == 0){
             return response()->json(['icon' => 'error', 'title' => 'You need To Add image'], 400);
+        }
+        if($request->offer_type_2 == null){
+            return response()->json(['icon' => 'error', 'title' => 'You need To Add Offer Type'], 400);
 
         }
         if (!$validator->fails()) {
