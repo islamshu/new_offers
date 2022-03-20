@@ -179,7 +179,7 @@ class brandController extends Controller
             'email' => 'required|email|unique:users',
             // 'telephoone' => 'unique:vendors',
             // 'mobile' => 'unique:vendors',
-            'password' => 'required|min:6',
+            // 'password' => 'required|min:6',
             'image' => 'required',
         ]);
 
@@ -285,18 +285,18 @@ class brandController extends Controller
                                 }
                             }
                         }
-                        $user = new User();
-                        $user->username = $vendor->name_en;
-                        $user->password =  bcrypt($request->password);
-                        $user->email = $request->email;
-                        $user->last_ip = \Request::ip();
-                        $user->last_login = now();
-                        $user->name = $request->name_en;
-                        $user->phone = $request->mobile;
-                        $user->vendor_id = $vendor->id;
-                        $user->ent_id = Auth::user()->ent_id;
+                        // $user = new User();
+                        // $user->username = $vendor->name_en;
+                        // $user->password =  bcrypt($request->password);
+                        // $user->email = $request->email;
+                        // $user->last_ip = \Request::ip();
+                        // $user->last_login = now();
+                        // $user->name = $request->name_en;
+                        // $user->phone = $request->mobile;
+                        // $user->vendor_id = $vendor->id;
+                        // $user->ent_id = Auth::user()->ent_id;
 
-                        $user->save();
+                        // $user->save();
 
 
 
@@ -451,22 +451,22 @@ class brandController extends Controller
                             }
                         }
                     }
-                    $user = new User();
-                    $user->username = $vendor->name_en;
-                    $user->password =  bcrypt($request->password);
-                    $user->email = $request->email;
-                    $user->last_ip = \Request::ip();
-                    $user->last_login = now();
-                    $user->name = $request->name_en;
-                    $user->vendor_id = $vendor->id;
-                    $user->phone = $request->mobile;
+                    // $user = new User();
+                    // $user->username = $vendor->name_en;
+                    // $user->password =  bcrypt($request->password);
+                    // $user->email = $request->email;
+                    // $user->last_ip = \Request::ip();
+                    // $user->last_login = now();
+                    // $user->name = $request->name_en;
+                    // $user->vendor_id = $vendor->id;
+                    // $user->phone = $request->mobile;
 
-                    if ($request->customer_type == 'Enterprise') {
-                        $user->ent_id = $request->enterprise_id;
-                    } else {
-                        $user->ent_id = null;
-                    }
-                    $user->save();
+                    // if ($request->customer_type == 'Enterprise') {
+                    //     $user->ent_id = $request->enterprise_id;
+                    // } else {
+                    //     $user->ent_id = null;
+                    // }
+                    // $user->save();
 
                     //Assign Vendor Role To New User
                     // $role = Role::where('name', 'Vendors')->first();
@@ -953,7 +953,7 @@ class brandController extends Controller
             'desc_ar' =>  'required',
             // 'owner_name' => 'required|string|min:3',
             'commercial_registration_number' => 'required',
-            'email' => 'required|email|unique:users,email,' . @$user->id,
+            // 'email' => 'required|email|unique:users,email,' . @$user->id,
             // 'telephoone' => 'unique:vendors,telephoone,' . $vendor->id,
             // 'mobile' => 'unique:vendors,mobile,' . $vendor->id,
             'image' => 'required',
@@ -1054,25 +1054,25 @@ class brandController extends Controller
                                 }
                             }
                         }
-                        if($user == null){
-                            $user = new User();
-                        $user->username = $vendor->name_en;
-                        $user->password =  bcrypt($request->password);
-                        $user->email = $request->email;
-                        $user->last_ip = \Request::ip();
-                        $user->last_login = now();
-                        $user->name = $request->name_en;
-                        $user->phone = $request->mobile;
-                        $user->vendor_id = $vendor->id;
-                        $user->ent_id = Auth::user()->ent_id;
+                        // if($user == null){
+                        //     $user = new User();
+                        // $user->username = $vendor->name_en;
+                        // $user->password =  bcrypt($request->password);
+                        // $user->email = $request->email;
+                        // $user->last_ip = \Request::ip();
+                        // $user->last_login = now();
+                        // $user->name = $request->name_en;
+                        // $user->phone = $request->mobile;
+                        // $user->vendor_id = $vendor->id;
+                        // $user->ent_id = Auth::user()->ent_id;
 
-                        $user->save();
-                        }else{
-                            $user->username = $vendor->name_en;
-                            $user->email = $request->email;
-                            $user->name = $request->name_en;
-                            $user->save();
-                        }
+                        // $user->save();
+                        // }else{
+                        //     $user->username = $vendor->name_en;
+                        //     $user->email = $request->email;
+                        //     $user->name = $request->name_en;
+                        //     $user->save();
+                        // }
 
                       
                         //Assign Vendor Role To New User
@@ -1202,32 +1202,32 @@ class brandController extends Controller
                             }
                         }
                     }
-                    if($user == null){
-                        $user = new User();
-                    $user->username = $vendor->name_en;
-                    $user->password =  bcrypt($request->password);
-                    $user->email = $request->email;
-                    $user->last_ip = \Request::ip();
-                    $user->last_login = now();
-                    $user->name = $request->name_en;
-                    $user->phone = $request->mobile;
-                    $user->vendor_id = $vendor->id;
-                    $user->ent_id = Auth::user()->ent_id;
+                //     if($user == null){
+                //         $user = new User();
+                //     $user->username = $vendor->name_en;
+                //     $user->password =  bcrypt($request->password);
+                //     $user->email = $request->email;
+                //     $user->last_ip = \Request::ip();
+                //     $user->last_login = now();
+                //     $user->name = $request->name_en;
+                //     $user->phone = $request->mobile;
+                //     $user->vendor_id = $vendor->id;
+                //     $user->ent_id = Auth::user()->ent_id;
 
-                    $user->save();
-                    }else{
+                //     $user->save();
+                //     }else{
                      
-                    $user->username = $vendor->name_en;
-                    $user->email = $vendor->email;
+                //     $user->username = $vendor->name_en;
+                //     $user->email = $vendor->email;
 
-                    $user->name = $request->name_en;
-                    if ($request->customer_type == 'Enterprise') {
-                        $user->ent_id = $request->enterprise_id;
-                    } else {
-                        $user->ent_id = null;
-                    }
-                    $user->save();
-                }
+                //     $user->name = $request->name_en;
+                //     if ($request->customer_type == 'Enterprise') {
+                //         $user->ent_id = $request->enterprise_id;
+                //     } else {
+                //         $user->ent_id = null;
+                //     }
+                //     $user->save();
+                // }
                     DB::commit();
                     if ($request->TotalImages > 0) {
                            
