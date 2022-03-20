@@ -176,7 +176,7 @@ class brandController extends Controller
             // 'sales' => 'required',
             // 'owner_name' => 'required|string|min:3',
             'commercial_registration_number' => 'required',
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             // 'telephoone' => 'unique:vendors',
             // 'mobile' => 'unique:vendors',
             // 'password' => 'required|min:6',
