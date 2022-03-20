@@ -267,6 +267,10 @@
             $(this).parent().addClass('active');
             fetch_data(page, query);
             });
+            $(document).find(".new-switchery-stock").each(function(k,v) {
+            var elems = $(document).find('.new-switchery-stock'+k);
+            var switchery = new Switchery(elems[0]);
+        });
 
 
         </script>

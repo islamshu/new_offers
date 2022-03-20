@@ -23,7 +23,7 @@
 <td class="pr-0 text-center">{{ $item->created_at->format('M d Y') }}
 </td>
 <td>
-    <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch switchery switchery-small" {{ $item->status == 'active' ? 'checked' : '' }}>
+    <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->status == 'active' ? 'checked' : '' }}>
 </td>
 <td class="pr-0 text-center">
 
