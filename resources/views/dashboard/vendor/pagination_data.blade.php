@@ -77,7 +77,7 @@
 </div>
 <tr>
     <td colspan="3" align="center">
-     {!! $vendors->links() !!}
+     {!! $vendors->appends(request()->input())->links() !!}
     </td>
    </tr>
 </tbody>
