@@ -35,7 +35,6 @@
             rel="stylesheet" type="text/css" />
     @endforeach
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
     {{-- Includable CSS --}}
     @yield('styles')
@@ -65,15 +64,7 @@
 
     {{-- Includable JS --}}
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script>
-        let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-
-        elems.forEach(function(html) {
-            let switchery = new Switchery(html, {
-                size: 'small'
-            });
-        });
-    </script>
+ 
     <script src="{{ asset('/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
@@ -87,6 +78,17 @@
          });
     </script>
     @yield('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+
+    <script>
+        let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+        elems.forEach(function(html) {
+            let switchery = new Switchery(html, {
+                size: 'small'
+            });
+        });
+    </script>
 
 </body>
 
