@@ -47,7 +47,7 @@ class OfferController extends Controller
             $vendors = Vendor::get();
             
         } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-offer')) {
-            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->get();
+            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->paginate(10);
 
             // $offers = Offer::where('enterprises_id', auth()->user()->ent_id)->get();
         } elseif (Auth::user()->hasRole('Vendors')) {
@@ -59,6 +59,20 @@ class OfferController extends Controller
         }
 
         return response()->view('dashboard.offers.index', compact('vendors'));
+    }
+    function fetch_data(Request $request)
+    {
+     if($request->ajax())
+     {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
+                    ->orWhere('name_ar', 'like', '%'.$query.'%')
+                    ->orWhere('name_en', 'like', '%'.$query.'%')
+                    ->orderBy('id','desc')->paginate(10);
+      return view('dashboard.offers.pagination_data', compact('vendors'));
+     }
     }
 
     /**
