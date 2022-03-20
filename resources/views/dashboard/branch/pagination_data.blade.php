@@ -79,7 +79,7 @@
 
 </table>
 <tr>
-    <td colspan="3" >
-     {!! $vendors->links() !!}
+    <td colspan="3" align="center">
+     {!! $vendors->appends(request()->input())->links() !!}
     </td>
    </tr>
