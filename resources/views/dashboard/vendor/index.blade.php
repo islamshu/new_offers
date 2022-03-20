@@ -220,8 +220,8 @@
             success:function(data)
             {
                 
-                $('.set_data').html('');
-                $('.set_data').html(data);
+                $('tbody').html('');
+                $('tbody').html(data);
             }
             })
             }

@@ -1,9 +1,7 @@
-<tbody class="set_data" >
+<tbody  >
 @foreach ($vendors as $item)
 <tr>
-<td class="pr-0 text-center"><img
-        src="{{ asset('images/brand/' . $item->image) }}" width="50"
-        height="50" alt=""></td>
+<td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50" alt=""></td>
 <td class="pr-0 text-center">
     @if (app()->getLocale() == 'en')
         {{ $item->name_en }}
@@ -11,9 +9,7 @@
         {{ $item->name_ar }}
     @endif
 </td>
-{{-- <td class="pr-0 text-center">{{ @$item->user->email }}</td> --}}
-{{-- <td>{{ $item->commercial_registration_number }}</td> --}}
-{{-- <td class="pr-0 text-center">{{ $item->mobile }}</td> --}}
+
 <td class="pr-0 text-center">{{ $item->branches->count() }}</td>
 <td class="pr-0 text-center"><button data-toggle="modal"
         data-target="#myModal" class="btn btn-outline-primary"
