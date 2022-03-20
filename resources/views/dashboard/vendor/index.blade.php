@@ -30,8 +30,8 @@
                             <!--begin::Table-->
                             <div class="card card-custom gutter-b">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <input type="text" name="serach" id="serach" class="form-control" />
+                                    <div class="form-group col-md-3">
+                                        <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
                                        </div>
                                     <!--begin::Details-->
                                         <table class="table table-striped table-bordered">
