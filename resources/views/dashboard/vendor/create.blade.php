@@ -80,7 +80,7 @@
 
                         <textarea class="form-control" name="terms_en" id="terms_en" rows="3"></textarea>
                     </div>
-                    <div class="form-group col-md-6">
+                    {{-- <div class="form-group col-md-6">
                         <label>{{ __('Email') }}:</label>
                         <small class="text-danger">*</small>
                         <input type="text" name="email" id="email" class="form-control form-control-solid"
@@ -91,7 +91,7 @@
                         <small class="text-danger">*</small>
                         <input type="password" name="password" id="password" class="form-control form-control-solid"
                             placeholder="Enter password" required />
-                    </div>
+                    </div> --}}
                     @if (Auth::user()->hasRole('Admin'))
                         <div class="form-group col-md-6">
                             <label>{{ __('UUID') }}:</label>
@@ -623,9 +623,9 @@
             formData.append('currencies', JSON.stringify(value));
             formData.append('commercial_registration_number', document.getElementById('commercial_registration_number')
                 .value);
-            formData.append('email', document.getElementById('email').value);
+            // formData.append('email', document.getElementById('email').value);
             formData.append('mobile', document.getElementById('mobile').value);
-            formData.append('password', document.getElementById('password').value);
+            // formData.append('password', document.getElementById('password').value);
             var value = $('#category_id').val();
             formData.append('category_id', JSON.stringify(value));
             if (document.getElementById('customer_type') != null) {

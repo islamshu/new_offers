@@ -83,11 +83,11 @@
                         <textarea class="form-control" name="terms_en" id="terms_en"
                             rows="3">{{ $vendor->terms_en }}</textarea>
                     </div>
-                    <div class="form-group col-md-6">
+                    {{-- <div class="form-group col-md-6">
                         <label>{{ __('Email') }}:</label>
                         <input type="text" name="email" id="email" value="{{ @$user->email }}"
                             class="form-control form-control-solid" placeholder="Enter email" required />
-                    </div>
+                    </div> --}}
                     @if (Auth::user()->hasRole('Admin'))
 
                         <div class="form-group col-md-6">
@@ -545,9 +545,9 @@
 
            
 
-            formData.append('email', document.getElementById('email').value);
+            // formData.append('email', document.getElementById('email').value);
             formData.append('mobile', document.getElementById('mobile').value);
-            formData.append('email', document.getElementById('email').value);
+            // formData.append('email', document.getElementById('email').value);
             var value = $('#currencies').val();
             formData.append('currencies', JSON.stringify(value));
             if (document.getElementById('customer_type') != null) {
