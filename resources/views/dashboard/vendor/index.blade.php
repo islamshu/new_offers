@@ -213,7 +213,7 @@
         </script>
         <script>
             $(document).ready(function(){
-            $('.js-switch').change(function () {
+            $('.switchh').change(function () {
                 let status = $(this).prop('checked') === true ? 'active' : 'deactive';
                 let userId = $(this).data('id');
                 $.ajax({
