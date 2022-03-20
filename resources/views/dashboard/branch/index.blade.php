@@ -5,6 +5,11 @@ card card-docs mb-2">
 
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">All Branches</h2>
+            <div class="card card-custom gutter-b">
+                <div class="card-body">
+                    <div class="form-group col-md-3">
+                        <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+                    </div>
             <div class="set_date">
 
                 @include('dashboard.branch.pagination_data')
