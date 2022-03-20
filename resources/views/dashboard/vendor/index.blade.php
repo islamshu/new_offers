@@ -116,8 +116,10 @@
                                        </div>
                                     <!--begin::Details-->
                                         
-                                        
+                                    <div class="set_date">
+
                                          @include('dashboard.vendor.pagination_data')
+                                        </div>
 
                                         
                                      

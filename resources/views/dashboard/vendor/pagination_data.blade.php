@@ -1,5 +1,4 @@
 
-<div class="set_date">
     <table class="table table-striped table-bordered">
                                     
         <thead>
@@ -121,7 +120,6 @@ aria-hidden="true">
             <button type="button" class="btn ok">Ok</button>
         </div>
     </div>
-</div>
 </div>
 <div class="modal fase" id="myModaluser" data-backdrop="static"
 data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
