@@ -185,7 +185,7 @@
                                             <select class="form-control form-control-solid form-control-lg" id="member_type"
                                                 name="member_type">
                                                 <option value="free" @if($offer->member_type == 'free') selected @endif>{{ __('free') }}</option>
-                                                <option value="paid" @if($offer->member_type == 'Premium') selected @endif>{{ __('paid') }}</option>
+                                                <option value="Premium" @if($offer->member_type == 'Premium') selected @endif>{{ __('paid') }}</option>
                                                 <option value="all" @if($offer->member_type == 'all') selected @endif>{{ __('all') }}</option>
 
                                             </select>
