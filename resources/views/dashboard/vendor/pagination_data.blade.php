@@ -1,8 +1,10 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
-</head>
+
 <div class="set_date">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+    </head>
+    
 @foreach ($vendors as $item)
 <tr>
 <td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50" alt=""></td>
