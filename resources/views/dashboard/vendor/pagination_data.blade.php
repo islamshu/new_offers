@@ -1,4 +1,4 @@
-<tbody >
+<tbody class="set_data" >
 @foreach ($vendors as $item)
 <tr>
 <td class="pr-0 text-center"><img
