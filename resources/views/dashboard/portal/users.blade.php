@@ -128,7 +128,7 @@
 
                 $.ajax({
                     type: 'post',
-                    url: "{{ route('updateuser', app()->getLocale()) }}",
+                    url: "{{ route('showmodeluser', app()->getLocale()) }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         'id': {{ $id }}
