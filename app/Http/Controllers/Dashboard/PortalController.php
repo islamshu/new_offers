@@ -61,7 +61,7 @@ class PortalController extends Controller
             $user->save();
         }
         $u = User::find($request->user_id);
-        $u->update(['is_priamry'=>1]);
+        $u->update(['is_priamry'=>$request->status]);
         
         return true;
     }
