@@ -70,7 +70,7 @@
                     function fetch_data(page,  query)
             {
             $.ajax({
-            url:"/en/vendor_paginate?page="+page+"&query="+query,
+            url:"/en/users_pagiante/fetch_data?page="+page+"&query="+query,
             success:function(data)
             {
                 
