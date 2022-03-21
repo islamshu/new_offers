@@ -326,6 +326,22 @@ $lang = app()->getLocale();
             </div>
         </li>
     @endif
+    @if (auth()->user()->isAbleTo(['read-portal']))
+    <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <a href="/{{ $lang }}/portal" class="menu-link menu-toggle">
+            <span class="svg-icon menu-icon">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+            </span>
+            <span class="menu-text">{{ __('Portal') }}</span>
+            <i class="menu-arrow"></i>
+        </a>
+
+       
+    </li>
+@endif
+
+
+    
     @if (auth()->user()->isAbleTo(['read-branch']))
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
