@@ -184,7 +184,7 @@ class brandController extends Controller
         ]);
 
         if (!$validator->fails()) {
-            if (Auth::user()->hasRole('Enterprises')) {
+            if (Auth::user()->hasRole('Enterprises')  || auth()->user()->hasPermission('create-vendor')) {
                 try {
                     DB::beginTransaction();
                     $enterprise =  Enterprise::find(Auth::user()->ent_id);
