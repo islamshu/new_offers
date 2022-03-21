@@ -7,7 +7,7 @@
             data-target="#myModaluser" class="btn btn-outline-primary"
             onclick="makeuser('{{ $id }}')" 
                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                Make User
+                Add User
             </a>
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
