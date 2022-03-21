@@ -159,7 +159,7 @@
                                 id="country_id" multiple>
 
                                 @foreach ($country as $item)
-                                    <option value="{{ $item->country->id }}">{{ $item->country->country_name_en }}
+                                    <option value="{{ $item->country->id }}" @if($item->country->id == 1) selected @endif>{{ $item->country->country_name_en }}
                                     </option>
                                 @endforeach
                             </select>
@@ -171,7 +171,7 @@
                                 id="category_id" multiple>
 
                                 @foreach ($category->where('is_show',1) as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name_ar }}</option>
+                                    <option value="{{ $item->id }}" @if($item->id == 1) selected @endif>{{ $item->name_ar }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -195,7 +195,7 @@
                                 </label>
                                 <select class="country_id custom-select" id="country_id" name="country_id" multiple>
                                     @foreach ($country as $item)
-                                        <option value="{{ $item->id }}">{{ $item->country_name_en }}</option>
+                                        <option value="{{ $item->id }}" >{{ $item->country_name_en }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -209,7 +209,7 @@
                             data-live-search="true" id="currencies" multiple>
 
                             @foreach ($curruncy as $item)
-                                <option value="{{ $item->id }}">{{ $item->name_en }}</option>
+                                <option value="{{ $item->id }}" @if($item->id == 2) selected @endif>{{ $item->name_en }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -218,14 +218,14 @@
                         <label>{{ __('pin code') }}:</label>
                         <small class="text-danger">*</small>
                         <select class="form-control selectpicker curruncy" id="pincode">
-                            <option value="0" selected>{{ __('optional') }}</option>
-                            <option value="1">{{ __('Mandatory') }}</option>
+                            <option value="0" >{{ __('optional') }}</option>
+                            <option value="1" selected>{{ __('Mandatory') }}</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6" id="code" style="display: none">
                         <label>{{ __('code number') }}:</label>
                         <small class="text-danger">*</small>
-                        <input type="number" name="code" id="codeinput" class="form-control">
+                        <input type="number" name="code" value="4444" id="codeinput" class="form-control">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -386,6 +386,7 @@
 
                 } else if (val == 0) {
                     $('#code').css("display", "none")
+                    $('#code').val();
 
                 }
 

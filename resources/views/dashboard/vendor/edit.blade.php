@@ -148,7 +148,7 @@
                                 id="country_id" multiple>
 
                                 @foreach ($country as $item)
-                                    <option value="{{ $item->country->id }}" )>{{ $item->country->country_name_en }}
+                                    <option value="{{ $item->country->id }}" >{{ $item->country->country_name_en }}
                                     </option>
                                 @endforeach
                             </select>
@@ -159,7 +159,8 @@
                                 id="category_id" multiple>
 
                                 @foreach ($category->where('is_show',1) as $item)
-                                    <option value="{{ $item->id }}" @foreach ($vendor->categorys as $tagp)
+                                    <option value="{{ $item->id }}"
+                                         @foreach ($vendor->categorys as $tagp)
                                         {{ $tagp->id == $item->id ? 'selected' : '' }}
                                 @endforeach
                                 >{{ $item->name_ar }}</option>
