@@ -245,7 +245,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-6">
+                {{-- <div class="form-group col-md-6">
                     <label>{{ __('Start at') }}:</label>
                     <small class="text-danger">*</small>
                     <input class="form-control" type="time" value="{{ $vendor->start_at }}" name="start_at" id="start_at">
@@ -255,7 +255,7 @@
                     <label>{{ __('End at') }}:</label>
                     <small class="text-danger">*</small>
                     <input class="form-control" type="time" value="{{ $vendor->end_at }}" name="end_at" id="end_at">
-                </div>
+                </div> --}}
                 <div class="form-group col-md-6">
                     <label>{{ __('Menu link') }}:</label>
                     <input class="form-control" type="url" value="{{ $vendor->menu_link }}" name="menu_link" id="menu_link">

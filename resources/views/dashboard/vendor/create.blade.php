@@ -112,7 +112,6 @@
                     <div class="form-group col-md-6">
 
                         <label>{{ __('commercial_registration_number') }}:</label>
-                        <small class="text-danger">*</small>
                         <input type="number" name="commercial_registration_number" id="commercial_registration_number"
                             class="form-control form-control-solid" placeholder="Enter commercial registration number"
                             required />
@@ -255,7 +254,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    {{-- <div class="form-group col-md-6">
                         <label>{{ __('Start at') }}:</label>
                         <small class="text-danger">*</small>
                         <input class="form-control" type="time" name="start_at" id="start_at">
@@ -265,7 +264,7 @@
                         <label>{{ __('End at') }}:</label>
                         <small class="text-danger">*</small>
                         <input class="form-control" type="time" name="end_at" id="end_at">
-                    </div>
+                    </div> --}}
                     <div class="form-group col-md-6">
                         <label>{{ __('Menu link') }}:</label>
                         <input class="form-control" type="url" name="menu_link" id="menu_link">
@@ -561,8 +560,8 @@
             formData.append('desc_en', document.getElementById('desc_en').value);
             formData.append('desc_ar', document.getElementById('desc_ar').value);
 
-            formData.append('start_at', document.getElementById('start_at').value);
-            formData.append('end_at', document.getElementById('end_at').value);
+            // formData.append('start_at', document.getElementById('start_at').value);
+            // formData.append('end_at', document.getElementById('end_at').value);
 
             formData.append('pincode', document.getElementById('pincode').value);
             formData.append('type_refound', document.getElementById('type_refound').value);
