@@ -86,7 +86,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="addToCart-modal-body-user">
+            <div id="addToCart-modal-body-update">
                 <div class="c-preloader text-center p-3">
                     <i class="las la-spinner la-spin la-3x"></i>
                 </div>
@@ -159,7 +159,7 @@
 
                     success: function(data) {
 
-                        $('#addToCart-modal-body-user').html(data);
+                        $('#addToCart-modal-body-update').html(data);
 
 
                     }
