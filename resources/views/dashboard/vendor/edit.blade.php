@@ -64,11 +64,11 @@
                         <textarea class="form-control" id="desc_en" rows="3">{{ $vendor->desc_en }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('policy ar') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Policy ar') }} <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="policy_ar" rows="3">{{ $vendor->policy_ar }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleTextarea">{{ __('policy en') }} <span class="text-danger">*</span></label>
+                        <label for="exampleTextarea">{{ __('Policy en') }} <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="policy_en" rows="3">{{ $vendor->policy_en }}</textarea>
                     </div>
                     <div class="form-group col-md-6">
@@ -219,13 +219,13 @@
                         class="form-control">
                 </div>
                 <div class="form-group col-md-6">
-                    <label>{{ __('min limit of visitor') }}:</label>
+                    <label>{{ __('Min limit of visitor') }}:</label>
                     <input type="number" name="visitor" id="visitor" value="{{ $vendor->visitor }}"
                         class="form-control">
 
                 </div>
                 <div class="form-group col-md-6">
-                    <label>{{ __('min limit of sales') }}:</label>
+                    <label>{{ __('Min limit of sales') }}:</label>
                     <input type="number" name="sales" id="sales" value="{{ $vendor->sales }}" class="form-control">
 
                 </div>
