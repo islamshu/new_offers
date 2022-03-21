@@ -75,6 +75,7 @@ Route::group([
         Route::get('users_pagiante/fetch_data', "Dashboard\PortalController@fetch_data");
         Route::get('portal', "Dashboard\PortalController@index");
         Route::get('get_user_vendor/{id}', "Dashboard\PortalController@user_vendor")->name('get_user');
+        Route::get('user_pan', "Dashboard\PortalController@panuser")->name('userpand.update');
 
         
         Route::get('get-citis',[NeighborhoodController::class, 'get_cites_by_country'])->name('get_cites_by_country.ajax');

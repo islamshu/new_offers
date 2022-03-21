@@ -20,6 +20,7 @@
 
                         <th>{{ __('username') }}</th>
                         <th>{{ __('email') }}</th>
+                        <th>{{ __('status') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
@@ -28,6 +29,8 @@
                         <td>{{ $user->username }}</td>
 
                         <td>{{ $user->email }}</td>
+                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" @if($item->status == 1 ) checked @endif >
+
                         <td class="pr-0 text-left">
 
                             @if (auth()->user()->isAbleTo(['update-portal']))
@@ -114,9 +117,19 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
-        $(function() {
-
+          $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let userid = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('userpand.update',app()->getLocale()) }}',
+            data: {'status': status, 'user_id': userid},
+            success: function (data) {
+                console.log(data.message);
+            }
         });
+    });
 
         function performdelete(id) {
             var url = '{{ route('user.destroy', [':id', 'locale' => app()->getLocale()]) }}';

@@ -46,6 +46,11 @@ class PortalController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
         return redirect()->back();
-
+    }
+    public function panuser(Request $request){
+        $user = User::find($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+        return true;
     }
 }
