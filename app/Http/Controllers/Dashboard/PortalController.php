@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,5 +27,11 @@ class PortalController extends Controller
                     ->orderBy('id','desc')->paginate(10);
       return view('dashboard.portal.pagination_data', compact('vendors'));
      }
+    }
+    public function user_vendor($locale,$id)
+    {
+        $users = User::whereRoleIs('Vendors')->where('vendor_id',$id)->get();
+        return view('dashboard.portal.users', compact('users'));
+
     }
 }
