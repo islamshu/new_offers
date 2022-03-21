@@ -7,6 +7,8 @@
                 <th class="pr-0 text-center">{{ __('name') }}</th>
              
                 <th class="pr-0 text-center">{{ __('Branch number') }}</th>
+                <th class="pr-0 text-center">{{ __('Offer number') }}</th>
+
                 <th class="pr-0 text-center">{{ __('Category') }}</th>
                 <th class="pr-0 text-center">{{ __('Created at') }}</th>
                 <th class="pr-0 text-center">{{ __('Status') }}</th>
@@ -27,7 +29,9 @@
     @endif
 </td>
 
-<td class="pr-0 text-center">{{ $item->branches->count() }}</td>
+<td class="pr-0 text-center">{{ @$item->branches->count() }}</td>
+<td class="pr-0 text-center">{{ @$item->offers->count() }}</td>
+
 <td class="pr-0 text-center"><button data-toggle="modal"
         data-target="#myModal" class="btn btn-outline-primary"
         onclick="make('{{ $item->id }}')">{{ __('Category') }}</button>
