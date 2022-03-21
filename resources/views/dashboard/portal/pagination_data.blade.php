@@ -25,7 +25,8 @@
     @endif
 </td>
 
-<td class="pr-0 text-center">{{ @$item->branches->count() }}</td>
+
+<td class="pr-0 text-center">{{ @App\Models\User::whereRoleIs('Vendors')->where('vendor_id',$item->id)->count() }}</td>
 
 
 
