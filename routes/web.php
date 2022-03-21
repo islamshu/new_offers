@@ -72,6 +72,8 @@ Route::group([
         Route::resource('neighborhood', 'Dashboard\NeighborhoodController');
         Route::resource('vendor', Dashboard\brandController::class);
         Route::get('vendors/fetch_data', "Dashboard\brandController@fetch_data");
+        Route::get('users_pagiante/fetch_data', "Dashboard\PortalController@fetch_data");
+        Route::get('portal', "Dashboard\PortalController@index");
 
         
         Route::get('get-citis',[NeighborhoodController::class, 'get_cites_by_country'])->name('get_cites_by_country.ajax');
