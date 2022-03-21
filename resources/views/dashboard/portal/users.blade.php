@@ -142,7 +142,7 @@
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: '{{ route('userpand.update',app()->getLocale()) }}',
+            url: '{{ route('set_Primary.update',app()->getLocale()) }}',
             data: {'status': status, 'user_id': userid,'vendor_id':{{ $id }}},
             success: function (data) {
                 console.log(data.message);
