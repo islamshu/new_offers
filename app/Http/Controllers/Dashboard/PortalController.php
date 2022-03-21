@@ -31,7 +31,8 @@ class PortalController extends Controller
     public function user_vendor($locale,$id)
     {
         $users = User::whereRoleIs('Vendors')->where('vendor_id',$id)->get();
-        return view('dashboard.portal.users', compact('users'));
+
+        return view('dashboard.portal.users', compact('users','id'));
 
     }
 }

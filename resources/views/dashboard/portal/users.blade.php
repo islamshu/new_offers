@@ -25,7 +25,7 @@
 
                             <a data-toggle="modal"
                             data-target="#myModaluser" class="btn btn-outline-primary"
-                            onclick="makeuser('{{ $item->id }}')" 
+                            onclick="makeuser('{{ $id }}')" 
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <i class="fa fa-user"></i>
                             </a>
@@ -76,7 +76,7 @@
                     url: "{{ route('showmodeluser', app()->getLocale()) }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
-                        'id': id
+                        'id': {{ $id }}
                     },
 
                     success: function(data) {
