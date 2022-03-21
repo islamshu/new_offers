@@ -961,7 +961,7 @@ class brandController extends Controller
         ]);
         if (!$validator->fails()) {
       
-            if (Auth::user()->hasRole('Enterprises')) {
+            if (Auth::user()->hasRole('Enterprises')  || auth()->user()->hasPermission('update-vendor')) {
 
 
                 $enterprise =  Enterprise::find(Auth::user()->ent_id);
