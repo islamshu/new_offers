@@ -120,6 +120,10 @@ Route::group([
         Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
         Route::post('/show/gendernotofication', 'Dashboard\GeneralNotoficationController@model_gender')->name('gendernotofication');
         Route::post('/show/usermodel', 'Dashboard\brandController@showmodeluser')->name('showmodeluser');
+        Route::post('/show/usermodelupdate', 'Dashboard\PortalController@updateuser')->name('usermodelupdate');
+        Route::post('/update_user_vendor', 'Dashboard\PortalController@updateusermodel')->name('update_user_vendor');
+
+        
         Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
 
         Route::get('/transaction_reports', 'Dashboard\RepotController@transaction')->name('transaction_sales');
