@@ -210,6 +210,8 @@ class HomeController extends BaseController
     })
     ->has('offers')->whereHas('offers', function ($q) use ($request,$city) {
       $q->where('end_time','>=',Carbon::now());
+    })->has('branches')->whereHas('branches', function ($q) use ($request,$city) {
+      $q->where('city_id',$city)->where('status','active');
     })
     ->get();
     $res['status'] = $this->sendResponse200('OK');
