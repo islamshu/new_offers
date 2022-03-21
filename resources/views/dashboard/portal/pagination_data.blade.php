@@ -42,7 +42,7 @@
     </a> --}}
 
 
-    <a href="{{ route('get_user', [ 'locale' => app()->getLocale(),'vendor' => $item->id]) }}"
+    <a href="{{ route('get_user', [app()->getLocale(), $item->id]) }}"
         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
         <i class="fa fa-eye"></i>
     </a>
