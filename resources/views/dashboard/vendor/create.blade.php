@@ -151,7 +151,7 @@
                             placeholder="Enter Vat" required />
                     </div>
 
-                    @if (Auth::user()->hasRole('Enterprises'))
+                    {{-- @if (Auth::user()->hasRole('Enterprises')) --}}
                         <div class="form-group col-md-6 country">
                             <label>{{ __('country') }}:</label>
                             <small class="text-danger">*</small>
@@ -175,7 +175,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                     @if (Auth::user()->hasRole('Admin'))
                         <div class="form-group col-md-6 country">
                             <label>{{ __('country') }}:</label>
