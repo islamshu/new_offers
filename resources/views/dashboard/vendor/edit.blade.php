@@ -141,7 +141,7 @@
                     </div>
                   
                    
-                    @if (Auth::user()->hasRole('Enterprises'))
+                    {{-- @if (Auth::user()->hasRole('Enterprises')) --}}
                         <div class="form-group col-md-6 country">
                             <label>{{ __('country') }}:</label>
                             <select class="form-control selectpicker country_id" data-size="7" data-live-search="true"
@@ -166,7 +166,7 @@
                     @endforeach
                     </select>
                 </div>
-                @endif
+                {{-- @endif --}}
                 @if (Auth::user()->hasRole('Admin'))
                     <div class="form-group col-md-6 country">
                         <label>{{ __('country') }}:</label>
