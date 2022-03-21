@@ -222,7 +222,7 @@
                             <option value="1" selected>{{ __('Mandatory') }}</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-6" id="code" style="display: none">
+                    <div class="form-group col-md-6" id="code" >
                         <label>{{ __('code number') }}:</label>
                         <small class="text-danger">*</small>
                         <input type="number" name="code" value="4444" id="codeinput" class="form-control">
@@ -386,7 +386,7 @@
 
                 } else if (val == 0) {
                     $('#code').css("display", "none")
-                    $('#code').val();
+                    $('#codeinput').val(""); 
 
                 }
 
