@@ -42,7 +42,6 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </a>
-                                @endif
                            
 
                         </td>
