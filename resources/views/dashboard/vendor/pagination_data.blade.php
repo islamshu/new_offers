@@ -50,12 +50,12 @@
 </td>
 <td class="pr-0 text-center">
 
-    <a data-toggle="modal"
+    {{-- <a data-toggle="modal"
     data-target="#myModaluser" class="btn btn-outline-primary"
     onclick="makeuser('{{ $item->id }}')" 
         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
         <i class="fa fa-user"></i>
-    </a>
+    </a> --}}
 
     <a target="_blank" href="{{ route('vendor.offer', [ app()->getLocale(),$item->id]) }}"
         class="btn btn-icon">
