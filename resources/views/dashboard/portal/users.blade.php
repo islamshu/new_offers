@@ -29,8 +29,9 @@
                         <td>{{ $user->username }}</td>
 
                         <td>{{ $user->email }}</td>
+                        <td>
                         <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch" @if($user->status == 1 ) checked @endif >
-
+                        </td>
                         <td class="pr-0 text-left">
 
                             @if (auth()->user()->isAbleTo(['update-portal']))
