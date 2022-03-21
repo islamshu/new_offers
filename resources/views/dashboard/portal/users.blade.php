@@ -29,7 +29,7 @@
                         <td>{{ $user->username }}</td>
 
                         <td>{{ $user->email }}</td>
-                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" @if($item->status == 1 ) checked @endif >
+                        <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch" @if($user->status == 1 ) checked @endif >
 
                         <td class="pr-0 text-left">
 
