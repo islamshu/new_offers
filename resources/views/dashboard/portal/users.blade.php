@@ -20,6 +20,8 @@
 
                         <th>{{ __('username') }}</th>
                         <th>{{ __('email') }}</th>
+                        <th>{{ __('Is Primary') }}</th>
+
                         <th>{{ __('status') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
@@ -29,6 +31,9 @@
                         <td>{{ $user->username }}</td>
 
                         <td>{{ $user->email }}</td>
+                        <td>
+                            <input type="checkbox" data-id="{{ $user->is_primary }}" name="is_primary" class="js-switch switch2" @if($user->is_primary == 1 ) checked @endif >
+                            </td>
                         <td>
                         <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch" @if($user->status == 1 ) checked @endif >
                         </td>
@@ -131,6 +136,21 @@
             }
         });
     });
+    $('.switch2').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let userid = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('userpand.update',app()->getLocale()) }}',
+            data: {'status': status, 'user_id': userid,'vendor_id':{{ $id }}},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+
+    
 
         function performdelete(id) {
             var url = '{{ route('user.destroy', [':id', 'locale' => app()->getLocale()]) }}';

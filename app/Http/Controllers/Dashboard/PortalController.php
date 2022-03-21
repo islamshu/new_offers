@@ -53,4 +53,18 @@ class PortalController extends Controller
         $user->save();
         return true;
     }
+    public function set_Primary(Request $request){
+
+        $users = User::whereRoleIs('Vendors')->where('vendor_id',$request->vendor_id)->get();
+        foreach($users as $user){
+            $user->is_priamry = 0;
+            $user->save();
+        }
+        $u = User::find($request->user_id);
+        $u->is_priamry = 1;
+        $u->save();
+        return true;
+    }
+
+
 }

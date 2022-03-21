@@ -76,6 +76,7 @@ Route::group([
         Route::get('portal', "Dashboard\PortalController@index");
         Route::get('get_user_vendor/{id}', "Dashboard\PortalController@user_vendor")->name('get_user');
         Route::get('user_pan', "Dashboard\PortalController@panuser")->name('userpand.update');
+        Route::get('set_Primary', "Dashboard\PortalController@set_Primary")->name('set_Primary.update');
 
         
         Route::get('get-citis',[NeighborhoodController::class, 'get_cites_by_country'])->name('get_cites_by_country.ajax');
