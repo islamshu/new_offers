@@ -32,7 +32,7 @@
 
                         <td>{{ $user->email }}</td>
                         <td>
-                            <input type="checkbox" data-id="{{ $user->is_primary }}" name="is_primary" class="js-switch switch2" @if($user->is_primary == 1 ) checked @endif >
+                            <input type="checkbox" data-id="{{ $user->id }}" name="is_primary" class="js-switch switch2" @if($user->is_primary == 1 ) checked @endif >
                             </td>
                         <td>
                         <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch switch1" @if($user->status == 1 ) checked @endif >
