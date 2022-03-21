@@ -3,11 +3,12 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All User') }}</h2>
-            <button   data-target="#myModaluser" class="btn btn-outline-primary"
+            <a data-toggle="modal"
+            data-target="#myModaluser" class="btn btn-outline-primary"
             onclick="makeuser('{{ $id }}')" 
                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-               Add User</button>
-
+                Make User
+            </a>
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
                 id="kt_datatable">
