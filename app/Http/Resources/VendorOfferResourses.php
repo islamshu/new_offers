@@ -27,9 +27,9 @@ class VendorOfferResourses extends JsonResource
             'membership_type'=>strtoupper($this->member_type),
             'start_date'=>$this->start_time,
             'expire_date'=>$this->end_time,
-            'before_price'=>$this->offertype->price_befor_discount,
-            'price'=> $this->offertype->price != null ? $this->offertype->price : 0 ,
-            'percentage'=>$this->offertype->discount_value != null ? $this->offertype->discount_value : 0,
+            'before_price'=>@$this->offertype->price_befor_discount,
+            'price'=> @$this->offertype->price != null ? @$this->offertype->price : 0 ,
+            'percentage'=>@$this->offertype->discount_value != null ? @$this->offertype->discount_value : 0,
             'client_usage_times'=>$this->usege_member  == 'unlimit' ? null : (int)$this->usage_member_number ,
             'total_usage_times'=> $this->check($this),
             'limit_period_duration'=>null,
@@ -139,11 +139,11 @@ class VendorOfferResourses extends JsonResource
         }
     }
     public function typeoffer($data){
-        if($data->offertype->offer_type =='buyOneGetOne'){
+        if(@$data->offertype->offer_type =='buyOneGetOne'){
             return 'buy_1_get_1';
-        }elseif($data->offertype->offer_type =='special_discount'){
+        }elseif(@$data->offertype->offer_type =='special_discount'){
             return 'special_discount';
-        }elseif($data->offertype->offer_type =='general_offer'){
+        }elseif(@$data->offertype->offer_type =='general_offer'){
             return 'general_discount';
         }
     }
