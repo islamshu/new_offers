@@ -42,25 +42,27 @@ class BranchResourses extends JsonResource
                 return [
                     'country' => @$this->city->country->country_name_en,
                     'city' => @$this->city->city_name_english,
-                    'district' => null,
-                    'street'=>null,
+                    'district' => @$this->neighborhood->neighborhood_name_english,
+                    'street'=>$this->street_en,
                     'details'=>null
                 ];
             } else {
                 return [
                     'country' => @$this->city->country->country_name_ar,
                     'city' => @$this->city->city_name,
-                    'neighborhood' =>null,
-                    'street'=>null,
+                    'neighborhood' => @$this->neighborhood->neighborhood_name,
+                    'street'=>$this->street,
                     'details'=>null
 
                 ];
             }
         } else {
             return [
-                'country' => @$this->city->country->country_name_en,
-                'city' => @$this->city->city_name_english,
-                'neighborhood' => null,
+                'country' => @$this->city->country->country_name_ar,
+                'city' => @$this->city->city_name,
+                'neighborhood' => @$this->neighborhood->neighborhood_name,
+                'street'=>$this->street,
+                'details'=>null
             ];
         }
     }
