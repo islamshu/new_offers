@@ -189,7 +189,7 @@ class brandController extends Controller
                     DB::beginTransaction();
                     $enterprise =  Enterprise::find(Auth::user()->ent_id);
                     //check count of vendors(brands) in enterprise
-
+                    dd($request->all());
                     if ($enterprise->vendors != null && $enterprise->vendors->count() >= $enterprise->count_of_brands) {
                         return response()->json(['icon' => 'error', 'title' => 'You Canot create New vendor ,You Have To Contact Admin']);
                     } else {
