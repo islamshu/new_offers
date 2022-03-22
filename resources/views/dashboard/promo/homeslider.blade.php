@@ -97,7 +97,7 @@
                             'id': id,
                         },
                         success: function(data) {
-                  
+                        alert('change sucessffuly')
                          location.reload()
                         },
                         error: function() {
