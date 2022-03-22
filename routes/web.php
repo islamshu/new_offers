@@ -167,6 +167,11 @@ Route::group([
         
         Route::get('get_perfomed_vendor_code/{id}', 'Dashboard\PerfomedController@get_perfomed_vendor_code')->name('vendor.get_perfomed_vendor_code');
         Route::post('importCode', 'Dashboard\PerfomedController@Codeimport')->name('vendor.Codeimport');
+        Route::post('pffertype_import', 'Dashboard\OfferController@pffertype_import')->name('pffertype_import');
+        Route::get('get_import_type', 'Dashboard\OfferController@get_import_type');
+
+        
+        
         Route::get('vendor-offers/{id}', 'Dashboard\OfferController@offers')->name('vendor.offer');
         Route::get('create_offer/{id}', 'Dashboard\OfferController@create_offer')->name('vendor.create_offer');
         Route::get('vendor_update_status', 'Dashboard\brandController@updateStatus')->name('vednor.update.status');

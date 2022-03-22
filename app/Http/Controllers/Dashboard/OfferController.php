@@ -6,6 +6,7 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Imports\OfferImport;
+use App\Imports\OfferType as ImportsOfferType;
 use App\Models\Enterprise;
 use App\Models\Offerdays;
 use App\Models\Offerimage;
@@ -59,6 +60,15 @@ class OfferController extends Controller
         }
 
         return response()->view('dashboard.offers.index', compact('vendors'));
+    }
+    public function get_import_type()
+    {
+        return view('dashboard.offers.get_import');
+    }
+    public function pffertype_import()
+    {
+        Excel::import(new ImportsOfferType, request()->file('file'));
+        return redirect()->back()->with(['success' => 'offer Uploded successfully']);
     }
     function fetch_data(Request $request)
     {
