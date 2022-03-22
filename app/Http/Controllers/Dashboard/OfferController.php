@@ -75,7 +75,10 @@ class OfferController extends Controller
             }
         }
         foreach($array as $sd){
-            dd($sd);
+           $offer_type = new Offertype();
+           $offer_type->offer_id = $sd;
+           $offer_type->offer_type = 'general_offer';
+           $offer_type->save();
         }
     }
     public function pffertype_import()
