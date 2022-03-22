@@ -48,7 +48,7 @@
                 @endphp
                 <div class="form-group col-md-6">
                     <label>phone:</label>
-                    <input type="text" name="phone" id="phone"  value="{{ $branch->phone }}" class="form-control form-control-solid"
+                    <input type="number" name="phone" id="phone"  value="{{ $branch->phone }}" class="form-control form-control-solid"
                         placeholder="Enter phone" required />
                 </div>
                 <div class="form-group col-md-6">
