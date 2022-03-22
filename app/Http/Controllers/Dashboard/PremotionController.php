@@ -104,7 +104,18 @@ class PremotionController extends Controller
         return true;
 
     }
-    
+    public function updateOrder(Request $request){
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $menu = Homeslider::find($id);
+                $menu->sort = $sortOrder;
+                $menu->save();
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
+    }
     public function homeslider_delete($locale ,$id){
         $premotions = HomesliderOffer::find($id);
         $offer = Offer::find($premotions->offer_id);
