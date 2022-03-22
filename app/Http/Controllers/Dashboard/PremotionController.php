@@ -98,7 +98,6 @@ class PremotionController extends Controller
     }
     public function change_color(Request $request, $locale){
         $premotions = Homeslider::find($request->id);
-        dd($premotions);
         $premotions->update(['color'=>$request->color]);
 
         return true;
