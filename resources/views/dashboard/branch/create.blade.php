@@ -244,7 +244,7 @@
                     'vendor_id':'{{ $vendor->id }}'
                 },
                 success: function (data) {
-                    $('#neighborhood_id').html(new Option('chose city', '0'));
+                    $('#neighborhood_id').html(new Option('chose neighborhood', '0'));
                     for (var i = 0; i < data.length; i++) {
                         if(lang == 'en'){
                         $('#neighborhood_id').append(new Option(data[i].neighborhood
