@@ -19,6 +19,7 @@
                     <thead>
                         <tr class="fw-bold fs-6 text-gray-800 " >
 
+                            
 
                             <th>{{ __('Title ar') }}</th>
                             <th>{{ __('Title en') }}</th>
