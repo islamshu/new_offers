@@ -46,7 +46,7 @@ class OfferType implements ToCollection
             $offertype->price_befor_discount = $row[4];
             $offertype->discount_value = $row[5];
             $offertype->discount_type = $row[6];
-            if( $row[8] == null){
+            if( $row[11] == null){
                 $offertype->save();
             }
             
