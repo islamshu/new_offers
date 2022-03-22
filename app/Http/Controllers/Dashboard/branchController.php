@@ -223,6 +223,9 @@ class branchController extends Controller
             $new_branch->longitude = $request->longitude;
             $new_branch->phone = $request->phone;
             $new_branch->street = $request->street;
+            $new_branch->street_en = $request->street_en;
+            $new_branch->neighborhood_ar = $request->neighborhood_ar;
+            $new_branch->neighborhood_en = $request->neighborhood_en;
             $new_branch->status = 'active';
             $new_branch->save();
 

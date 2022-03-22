@@ -71,17 +71,34 @@
                 </div>
                 <div class="form-group col-md-6">
 
-                    <label>{{ __('Neighborhood') }}:</label>
-                    <select class="neighborhood custom-select" id="neighborhood_id" name="neighborhood_id">
-                        <option value="" disabled="true" selected="true">Neighborhood Name</option>
-                    </select>
+                    <label>{{ __('Street Ar') }}:</label>
+                    <input type="text" name="street" class="form-control" id="street" placeholder="Enter Street In Arabic" required>
+                    
                 </div>
-                 <div class="form-group col-md-6">
-                    <label>{{ __('street') }}:</label>
-                    <input type="text" name="street" id="street" class="form-control form-control-solid"
-                        placeholder="Enter uuid" required />
+                <div class="form-group col-md-6">
+
+                    <label>{{ __('Street Ar') }}:</label>
+                    <input type="text" name="street_en" class="form-control" id="street_en" placeholder="Enter Street In English" required>
+                    
                 </div>
 
+                <div class="form-group col-md-6">
+
+                    <label>{{ __('Neighborhood AR') }}:</label>
+                    <input type="text" name="neighborhood_ar" class="form-control" id="neighborhood_ar" placeholder="Enter Neighborhood In Arabic" required>
+                    
+                </div>
+                <div class="form-group col-md-6">
+
+                    <label>{{ __('Neighborhood EN') }}:</label>
+                    <input type="text" name="neighborhood_en" class="form-control" id="neighborhood_en" placeholder="Enter Neighborhood In English" required>
+                    
+                </div>
+
+
+
+
+                 
                 <div class="form-group col-md-6">
                     <label>{{ __('Latitude') }}</label>
                     <div class="input-group mb-3">
@@ -303,9 +320,7 @@
         formData.append('name_ar', document.getElementById('name_ar').value);
         formData.append('name_en', document.getElementById('name_en').value);
         formData.append('kt_select2_1', '{{ $vendor->id }}');
-        if (document.getElementById('street') != null) {
-                formData.append('street', document.getElementById('street').value);
-        }
+       
         formData.append('phone', document.getElementById('phone').value);
         // formData.append('email', document.getElementById('email').value);
         // formData.append('password', document.getElementById('password').value);
@@ -315,6 +330,19 @@
         if (document.getElementById('neighborhood_id') != null) {
         formData.append('neighborhood_id', document.getElementById('neighborhood_id').value);
         }
+        if (document.getElementById('neighborhood_en') != null) {
+        formData.append('neighborhood_en', document.getElementById('neighborhood_en').value);
+        }
+        if (document.getElementById('neighborhood_ar') != null) {
+        formData.append('neighborhood_ar', document.getElementById('neighborhood_ar').value);
+        }
+        if (document.getElementById('street') != null) {
+        formData.append('street', document.getElementById('street').value);
+        }
+        if (document.getElementById('street_en') != null) {
+        formData.append('street_en', document.getElementById('street_en').value);
+        }
+        
         store("{{ route('branch.store', [app()->getLocale()]) }}", formData)
     }
 
