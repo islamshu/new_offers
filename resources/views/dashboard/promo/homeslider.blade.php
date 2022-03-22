@@ -88,7 +88,6 @@
             function change_color(obj,id){
 
                 var color = $(obj).val();
-                alert(color);
                 var id = id;
                 $.ajax({
                         type: 'get',
