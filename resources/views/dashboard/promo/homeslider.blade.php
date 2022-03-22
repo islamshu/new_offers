@@ -20,6 +20,7 @@
                         <tr class="fw-bold fs-6 text-gray-800 " >
 
                             
+                            <th>{{ __('drop') }}</th>
 
                             <th>{{ __('Title ar') }}</th>
                             <th>{{ __('Title en') }}</th>
@@ -33,6 +34,7 @@
 
                         @foreach ($premotions as $item)
                             <tr data-id="{{ $item->id }}">
+                                <td><span class="handle"></span></td>
 
                                 <td>{{ $item->title_ar }}</td>
                                 <td>{{ $item->title_en }}</td>
