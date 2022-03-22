@@ -31,7 +31,7 @@ class OfferType implements ToCollection
        
       
         foreach($rows as $key =>$row){
-            dd($row);
+            dd('dd');
             if($key == 0 || $key == 1  ){
                 continue;
             }
