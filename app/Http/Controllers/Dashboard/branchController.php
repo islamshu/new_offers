@@ -114,7 +114,7 @@ class branchController extends Controller
     public function create()
     {
 
-        if (Auth::user()->hasRole('Enterprises')) {
+        if (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('create-branch')) {
             $vendor = Vendor::where('enterprise_id',Auth::user()->ent_id)->get();
         }elseif(Auth::user()->hasRole('Admin')){
             $vendor = Vendor::all();

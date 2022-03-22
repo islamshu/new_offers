@@ -308,8 +308,9 @@
         formData.append('longitude', document.getElementById('longitude').value);
         formData.append('latitude', document.getElementById('latitude').value);
         formData.append('city_id', document.getElementById('city_id').value);
+        if (document.getElementById('neighborhood_id') != null) {
         formData.append('neighborhood_id', document.getElementById('neighborhood_id').value);
-        update("{{ route('update-branch', ['locale'=>app()->getLocale(),$branch->id]) }}", formData)
+        }        update("{{ route('update-branch', ['locale'=>app()->getLocale(),$branch->id]) }}", formData)
     }
 
 </script>
