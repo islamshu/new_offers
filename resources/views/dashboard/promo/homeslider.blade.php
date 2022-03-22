@@ -44,8 +44,10 @@
                     <tbody class="sort_menu">
 
                         @foreach ($premotions as $item)
-                            <tr data-id="{{ $item->id }}">
-                                <td><span class="handle"></span></td>
+                        <tr data-id="{{ $item->id }}">
+
+
+                            <td><span class="handle"></span></td>
 
                                 <td>{{ $item->title_ar }}</td>
                                 <td>{{ $item->title_en }}</td>
@@ -128,9 +130,7 @@
 
                 confirmDestroy(url)
             }
-            $(document).ready(function() {
-
-                function updateToDatabase(idString) {
+            function updateToDatabase(idString) {
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -162,8 +162,7 @@
                         alert('dd');
                         updateToDatabase(sortData.join(','))
                     }
-                })
+                });
 
-            })
         </script>
     @endsection
