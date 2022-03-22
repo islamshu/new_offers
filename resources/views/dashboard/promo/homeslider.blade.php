@@ -44,7 +44,7 @@
                     <tbody class="sort_menu">
 
                         @foreach ($premotions as $item)
-                        <tr data-id="{{ $item->id }}">
+                        <tr data-id="{{ $item->sort }}">
 
 
                             <td><span class="handle"></span></td>
