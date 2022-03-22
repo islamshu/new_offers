@@ -157,6 +157,7 @@
                                         {{ $tagp->id == $item->country->id  ? 'selected' : '' }}
                                 @endforeach
                                 >{{ $item->name_ar }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6 country">
