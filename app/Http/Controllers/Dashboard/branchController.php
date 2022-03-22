@@ -131,7 +131,6 @@ class branchController extends Controller
         $vendor =Vendor::find($id);
         $city = Vendor_cities::where('vendor_id',$id)->where('status','active')->with('city')->get()->unique('city_id');
         
-        dd($city);
        
         return response()->view('dashboard.branch.create', compact('vendor','city'));
     }
