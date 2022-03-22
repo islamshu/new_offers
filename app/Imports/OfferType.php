@@ -3,20 +3,10 @@
 namespace App\Imports;
 
 use App\Models\Branch;
-use App\Models\City;
-use App\Models\CodePermfomed;
-use App\Models\Performed;
-use App\User;
-use Session;
-use Illuminate\Validation\Rule;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\Importable;
-use Maatwebsite\Excel\Concerns\WithValidation;
+use App\Models\Offertype as ModelsOffertype;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Events\BeforeImport;
+
 
 class OfferType implements ToCollection     
 {
@@ -36,7 +26,7 @@ class OfferType implements ToCollection
                 continue;
             }
           
-            $offertype = new Offertype();
+            $offertype = new ModelsOffertype();
             $offertype->offer_id = $row[7];
             $offertype->offer_type = $row[1];
 
@@ -47,7 +37,6 @@ class OfferType implements ToCollection
             $offertype->discount_value = $row[5];
             $offertype->discount_type = $row[6];
             if( $row[11] == null){
-                dd($offertype);
                 $offertype->save();
             }
             
