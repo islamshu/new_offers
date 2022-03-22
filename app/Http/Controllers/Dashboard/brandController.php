@@ -1030,7 +1030,7 @@ class brandController extends Controller
                         $soial->instagram = $request->instagram;
                         $soial->snapchat = $request->snapchat;
                         $soial->save();
-                        dd($request->all());
+                        // dd($request->all());
                         $vendor->currencies()->sync(json_decode($request->currencies, false));
                         $vendor->categorys()->sync(json_decode($request->category_id, false));
                         $country_ids = json_decode($request->country_id);
