@@ -156,7 +156,7 @@
                                          @foreach ($vendor->counteire as $tagp)
                                         {{ $tagp->id == $item->country->id  ? 'selected' : '' }}
                                 @endforeach
-                                >{{ $item->name_ar }}</option>
+                                >{{ $item->country->country_name_ar }}</option>
                                 @endforeach
                             </select>
                         </div>
