@@ -32,8 +32,7 @@
 
                     <td>{{ $item->title_ar }}</td>
                     <td>{{ $item->title_en }}</td>
-                    <td><input type="color" readonly="true" id="input_color" name="color" onchange="color({{ $item->id }})" ondblclick="this.readOnly='';"  value="{{ $item->color }}"></td>
-                    {{-- <td ><button style="background: {{ $item->color  }}">{{ $item->color }}</button></td>   --}}
+                    <td><input type="color" readonly="true"  name="color" onchange="change_color(this,{{ $item->id }})" ondblclick="this.readOnly='';"  value="{{ $item->color }}"></td>
                     <td>{{ $item->city->city_name_english }}</td>
                     <td>{{ $item->sort }}</td>
 
@@ -86,8 +85,10 @@
         <script src="{{ asset('crudjs/crud.js') }}"></script>
         <script>
           
-            function color(id){
-                var color = $('#input_color').val();
+            function change_color(obj,id){
+
+                var color = $(obj).val();
+                alert(color);
                 var id = id;
                 $.ajax({
                         type: 'get',
@@ -97,7 +98,7 @@
                             'id': id,
                         },
                         success: function(data) {
-                         alert('change succffuly');
+                  
                          location.reload()
                         },
                         error: function() {
