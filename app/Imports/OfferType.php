@@ -35,7 +35,7 @@ class OfferType implements ToCollection
             if($key == 0 || $key == 1  ){
                 continue;
             }
-          dd($row);
+          
             $offertype = new Offertype();
             $offertype->offer_id = $row[7];
             $offertype->offer_type = $row[1];
@@ -46,7 +46,12 @@ class OfferType implements ToCollection
             $offertype->price_befor_discount = $row[4];
             $offertype->discount_value = $row[5];
             $offertype->discount_type = $row[6];
-            $offertype->save();
+            if( $row[8] == null){
+                $offertype->save();
+            }
+            
+             
+            
 
         } 
         // return redirect()->back();
