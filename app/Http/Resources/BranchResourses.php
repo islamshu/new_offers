@@ -43,7 +43,7 @@ class BranchResourses extends JsonResource
                     'country' => @$this->city->country->country_name_en,
                     'city' => @$this->city->city_name_english,
                     'district' => null,
-                    'street'=>$this->street_en,
+                    'street'=>null,
                     'details'=>null
                 ];
             } else {
@@ -51,7 +51,7 @@ class BranchResourses extends JsonResource
                     'country' => @$this->city->country->country_name_ar,
                     'city' => @$this->city->city_name,
                     'neighborhood' =>null,
-                    'street'=>$this->street,
+                    'street'=>null,
                     'details'=>null
 
                 ];
