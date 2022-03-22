@@ -70,8 +70,7 @@ class OfferController extends Controller
         $offers =Offer::get();
         foreach($offers as $offer){
             $o = Offertype::where('offer_id',$offer->is)->first();
-            dd($o);
-            if(!$o){
+            if($o == null){
                 array_push($array,$offer->id);
             }
         }
