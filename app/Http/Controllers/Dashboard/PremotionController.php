@@ -110,8 +110,10 @@ class PremotionController extends Controller
             
             foreach($arr as $sortOrder => $id){
                 $menu = Homeslider::find($id);
+                dd($menu);
                 $menu->sort = $sortOrder;
-                $menu->save();
+                // $menu->save();
+                $menu->update(['sort'=>$sortOrder]);
             }
             return ['success'=>true,'message'=>'Updated'];
         }
