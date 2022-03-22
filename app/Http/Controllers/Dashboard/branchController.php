@@ -327,10 +327,10 @@ class branchController extends Controller
              $branch->latitude = $request->latitude;
              $branch->longitude = $request->longitude;
              $branch->phone = $request->phone;
-             $new_branch->street = $request->street;
-             $new_branch->street_en = $request->street_en;
-             $new_branch->neighborhood_ar = $request->neighborhood_ar;
-             $new_branch->neighborhood_en = $request->neighborhood_en;
+             $branch->street = $request->street;
+             $branch->street_en = $request->street_en;
+             $branch->neighborhood_ar = $request->neighborhood_ar;
+             $branch->neighborhood_en = $request->neighborhood_en;
              $branch->status = 'active';
              $branch->save();
             //Create New User
