@@ -35,7 +35,7 @@ class OfferType implements ToCollection
             if($key == 0 || $key == 1  ){
                 continue;
             }
-            dd($row[7]);
+          
             $offertype = new Offertype();
             $offertype->offer_id = $row[7];
             $offertype->offer_type = $row[1];
