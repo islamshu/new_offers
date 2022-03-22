@@ -1,4 +1,15 @@
 @extends('layout.default')
+<style>
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
+    }
+
+</style>
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
