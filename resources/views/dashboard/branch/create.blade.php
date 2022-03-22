@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group col-md-6">
 
-                    <label>{{ __('Street Ar') }}:</label>
+                    <label>{{ __('Street En') }}:</label>
                     <input type="text" name="street_en" class="form-control" id="street_en" placeholder="Enter Street In English" required>
                     
                 </div>
