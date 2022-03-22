@@ -125,7 +125,7 @@
                     });
 
                     $.ajax({
-                        url: '{{ route('menu_update') }}',
+                        url: '{{ route('menu_update',app()->getLocale()) }}',
                         method: 'POST',
                         data: {
                             ids: idString
