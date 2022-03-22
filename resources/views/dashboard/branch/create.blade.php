@@ -52,7 +52,7 @@
                 @endphp
                 <div class="form-group col-md-6">
                     <label>{{ __('phone') }}:</label>
-                    <input type="text" name="phone" id="phone" class="form-control form-control-solid"
+                    <input type="number" name="phone" id="phone" class="form-control form-control-solid"
                         placeholder="Enter phone" required />
                 </div>
                 <div class="form-group col-md-6">
