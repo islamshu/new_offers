@@ -37,7 +37,7 @@
                             <th>{{ __('Title en') }}</th>
                             <th>{{ __('Color') }}</th>
                             <th>{{ __('City') }}</th>
-                            <th>{{ __('Sort') }}</th>
+                            {{-- <th>{{ __('Sort') }}</th> --}}
                             <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@
                                         onchange="change_color(this,{{ $item->id }})" ondblclick="this.readOnly='';"
                                         value="{{ $item->color }}"></td>
                                 <td>{{ $item->city->city_name_english }}</td>
-                                <td>{{ $item->sort }}</td>
+                                {{-- <td>{{ $item->sort }}</td> --}}
 
                                 <td class="pr-0 text-left">
                                     @if (auth()->user()->isAbleTo(['update-promotion']))
