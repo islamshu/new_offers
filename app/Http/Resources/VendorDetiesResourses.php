@@ -89,7 +89,7 @@ class VendorDetiesResourses extends JsonResource
             return $data->desc_en;
         }
     }
-    public function lang_policy($data)
+    public function lang_policyd($data)
     {
         $lang = request()->header('Lang');
         if ($lang != null) {
@@ -100,6 +100,38 @@ class VendorDetiesResourses extends JsonResource
             }
         } else {
             return $data->policy_en;
+        }
+    }
+
+    public function lang_policy($data)
+    {
+        
+        $array = [];
+        $lang = request()->header('Lang');
+        if ($lang != null) {
+            if ($lang  == 'ar') {
+             
+               $items = explode('-',$data->policy_ar);
+            foreach($items as $key=>$i){
+               array_push($array,$items[$key]);
+             }
+               return $array;
+
+            } else {
+               
+                $items = explode('-',$data->policy_en);
+             foreach($items as $key=>$i){
+                array_push($array,$items[$key]);
+              }
+                return $array;
+            }
+        } else {
+          
+            $items = explode('-',$data->policy_en);
+         foreach($items as $key=>$i){
+            array_push($array,$items[$key]);
+          }
+            return $array;
         }
     }
 

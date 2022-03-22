@@ -65,6 +65,17 @@ class OfferController extends Controller
     {
         return view('dashboard.offers.get_import');
     }
+    public function offer_type_null(){
+        $array=[];
+        $offers =Offer::get();
+        foreach($offers as $offer){
+            $o = Offertype::where('offer_id',$offer->is)->first();
+            if(!$o){
+                array_push($array,$offer->id);
+            }
+        }
+        dd($array);
+    }
     public function pffertype_import()
     {
         Excel::import(new ImportsOfferType, request()->file('file'));

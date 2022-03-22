@@ -169,6 +169,7 @@ Route::group([
         Route::post('importCode', 'Dashboard\PerfomedController@Codeimport')->name('vendor.Codeimport');
         Route::post('pffertype_import', 'Dashboard\OfferController@pffertype_import')->name('pffertype_import');
         Route::get('get_import_type', 'Dashboard\OfferController@get_import_type');
+        Route::get('offer_type_null', 'Dashboard\OfferController@offer_type_null');
 
         
         
