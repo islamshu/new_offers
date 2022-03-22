@@ -42,7 +42,7 @@ class BranchResourses extends JsonResource
                 return [
                     'country' => @$this->city->country->country_name_en,
                     'city' => @$this->city->city_name_english,
-                    'district' => @$this->neighborhood->neighborhood_name_english,
+                    'district' => @$this->neighborhood_en,
                     'street'=>$this->street_en,
                     'details'=>null
                 ];
@@ -50,7 +50,7 @@ class BranchResourses extends JsonResource
                 return [
                     'country' => @$this->city->country->country_name_ar,
                     'city' => @$this->city->city_name,
-                    'neighborhood' => @$this->neighborhood->neighborhood_name,
+                    'district' => @$this->neighborhood_ar,
                     'street'=>$this->street,
                     'details'=>null
 
@@ -60,7 +60,7 @@ class BranchResourses extends JsonResource
             return [
                 'country' => @$this->city->country->country_name_ar,
                 'city' => @$this->city->city_name,
-                'neighborhood' => @$this->neighborhood->neighborhood_name,
+                'district' => @$this->neighborhood_ar,
                 'street'=>$this->street,
                 'details'=>null
             ];
