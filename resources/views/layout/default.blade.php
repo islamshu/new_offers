@@ -79,7 +79,6 @@
     </script>
     @yield('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script>
         let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
