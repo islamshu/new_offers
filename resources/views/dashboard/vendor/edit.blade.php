@@ -537,6 +537,8 @@
             if (document.getElementById('telephoone') != null) {
                 formData.append('telephoone', document.getElementById('telephoone').value);
             }
+            var value = $('#category_id').val();
+            formData.append('category_id', JSON.stringify(value));
 
 
             if (document.getElementById('codeinput') != null) {
