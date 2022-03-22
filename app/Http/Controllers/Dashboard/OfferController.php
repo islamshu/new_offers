@@ -74,7 +74,9 @@ class OfferController extends Controller
                 array_push($array,$offer->id);
             }
         }
-        dd($array);
+        foreach($array as $sd){
+            dd($sd);
+        }
     }
     public function pffertype_import()
     {
