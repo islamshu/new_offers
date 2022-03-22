@@ -159,6 +159,7 @@
                         var sortData = target.sortable('toArray', {
                             attribute: 'data-id'
                         })
+                        alert('dd');
                         updateToDatabase(sortData.join(','))
                     }
                 })
