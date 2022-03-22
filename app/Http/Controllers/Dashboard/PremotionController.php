@@ -66,7 +66,7 @@ class PremotionController extends Controller
             return view('dashboard.promo.popups', compact('premotions', 'type','city_id'));
         }
         if($type == 'homeslider'){
-            $premotions = Homeslider::where('city_id',$city_id)->get();
+            $premotions = Homeslider::where('city_id',$city_id)->orderBy('sort','asc')->get();
             return view('dashboard.promo.homeslider', compact('premotions', 'type','city_id'));
         }
         if($type == 'banner'){
