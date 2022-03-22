@@ -214,7 +214,12 @@ class branchController extends Controller
             $new_branch->name_ar = $request->name_ar;
             $new_branch->name_en = $request->name_en;
             $new_branch->city_id = $request->city_id;
-            $new_branch->neighborhood_id = $request->neighborhood_id;
+            if($request->neighborhood_id != 0){
+                $new_branch->neighborhood_id = $request->neighborhood_id;
+            }else{
+                $new_branch->neighborhood_id =null;
+
+            }
             $new_branch->latitude = $request->latitude;
             $new_branch->longitude = $request->longitude;
             $new_branch->phone = $request->phone;
@@ -227,7 +232,6 @@ class branchController extends Controller
            
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
             return response()->json(['icon' => 'error', 'title' => 'error when insert data'], 400);
         }
 
@@ -312,7 +316,12 @@ class branchController extends Controller
             $branch->name_ar = $request->name_ar;
             $branch->name_en = $request->name_en;
             $branch->city_id = $request->city_id;
-             $branch->neighborhood_id = $request->neighborhood_id;
+            if($request->neighborhood_id != 0){
+                $branch->neighborhood_id = $request->neighborhood_id;
+            }else{
+                $branch->neighborhood_id =null;
+
+            }
              $branch->latitude = $request->latitude;
              $branch->longitude = $request->longitude;
              $branch->phone = $request->phone;
@@ -328,7 +337,6 @@ class branchController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e);
 
             return response()->json(['icon' => 'error', 'title' =>'error when insert data'], 400);
 
