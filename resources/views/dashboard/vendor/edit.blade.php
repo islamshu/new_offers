@@ -148,13 +148,12 @@
                                 id="country_id" multiple>
 
                                 @foreach ($country as $item)
-                                    <option value="{{ $item->country->id }}" >{{ $item->country->country_name_en }}
+                                    <option value="{{ $item->country->id }}"  >{{ $item->country->country_name_en }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6 country">
-                            {{ dd($vendor->categorys) }}
                             <label>{{ __('category') }}:</label>
                             <select class="form-control selectpicker category_id" data-size="7" data-live-search="true"
                                 id="category_id" multiple>
