@@ -119,6 +119,8 @@ class branchController extends Controller
         }elseif(Auth::user()->hasRole('Admin')){
             $vendor = Vendor::all();
         }
+        $vendor = Vendor::where('enterprise_id',Auth::user()->ent_id)->get();
+
         return response()->view('dashboard.branch.create', compact('vendor'));
 
 
