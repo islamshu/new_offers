@@ -48,7 +48,7 @@ class OfferController extends Controller
             $vendors = Vendor::get();
             
         } elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-offer')) {
-            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->paginate(10);
+            $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id) ->orderBy('id','desc')->paginate(10);
 
             // $offers = Offer::where('enterprises_id', auth()->user()->ent_id)->get();
         } elseif (Auth::user()->hasRole('Vendors')) {
