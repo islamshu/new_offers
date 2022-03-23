@@ -1,15 +1,5 @@
 @extends('layout.default')
-<style>
-    .handle {
-        min-width: 18px;
-        background: #607D8B;
-        height: 15px;
-        display: inline-block;
-        cursor: move;
-        margin-right: 10px;
-    }
 
-</style>
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
@@ -28,9 +18,9 @@
                 <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
                     id="kt_datatable">
                     <thead>
-                        <tr class="fw-bold fs-6 text-gray-800 " >
+                        <tr class="fw-bold fs-6 text-gray-800 ">
 
-                            
+
                             <th>{{ __('drop') }}</th>
 
                             <th>{{ __('Title ar') }}</th>
@@ -44,10 +34,11 @@
                     <tbody class="sort_menu">
 
                         @foreach ($premotions as $item)
-                        <tr data-id="{{ $item->id }}">
+                            <tr data-id="{{ $item->id }}">
 
 
-                            <td><span class="handle"></span></td>
+                                <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
+
 
                                 <td>{{ $item->title_ar }}</td>
                                 <td>{{ $item->title_en }}</td>
@@ -99,7 +90,8 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
         <script src="{{ asset('crudjs/crud.js') }}"></script>
         <script>
             function change_color(obj, id) {
@@ -131,38 +123,38 @@
 
                 confirmDestroy(url)
             }
+
             function updateToDatabase(idString) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    });
-
-                    $.ajax({
-                        url: '{{ route('menu_update',app()->getLocale()) }}',
-                        method: 'POST',
-                        data: {
-                            ids: idString
-                        },
-                        success: function() {
-                            alert('Successfully updated')
-                            //do whatever after success
-                        }
-                    })
-                }
-
-                var target = $('.sort_menu');
-                target.sortable({
-                    handle: '.handle',
-                    placeholder: 'highlight',
-                    axis: "y",
-                    update: function(e, ui) {
-                        var sortData = target.sortable('toArray', {
-                            attribute: 'data-id'
-                        })
-                        updateToDatabase(sortData.join(','))
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }
                 });
 
+                $.ajax({
+                    url: '{{ route('menu_update', app()->getLocale()) }}',
+                    method: 'POST',
+                    data: {
+                        ids: idString
+                    },
+                    success: function() {
+                        alert('Successfully updated')
+                        //do whatever after success
+                    }
+                })
+            }
+
+            var target = $('.sort_menu');
+            target.sortable({
+                handle: '.handle',
+                placeholder: 'highlight',
+                axis: "y",
+                update: function(e, ui) {
+                    var sortData = target.sortable('toArray', {
+                        attribute: 'data-id'
+                    })
+                    updateToDatabase(sortData.join(','))
+                }
+            });
         </script>
     @endsection
