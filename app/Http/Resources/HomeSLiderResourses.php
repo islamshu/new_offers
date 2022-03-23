@@ -29,12 +29,9 @@ class HomeSLiderResourses extends JsonResource
         foreach($slider as $of){
             array_push($array,$of->offer_id);
         }
-
         
         return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
             $q->where('status', 'active');
-        })->whereHas('offerpromo', function ($q)  {
-            $q->orderBy('sort', 'asc');
         })->where('status',1)->where('end_time','>=',Carbon::now())->get());
         
 
