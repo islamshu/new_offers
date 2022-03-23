@@ -102,7 +102,7 @@ class HomeController extends BaseController
       return  $res;
     }
     $res['status'] = $this->sendResponse200('OK');
-    $res['data']['slider'] = new SliderCollection(Slider::where('city_id', $city_id)->get());
+    $res['data']['slider'] = new SliderCollection(Slider::where('city_id', $city_id)->orderBy('sort','asc')->get());
     $res['data']['categories'] = new CategoryCollection(@$enterprice->categorys->where('is_show',1));
     $res['data']['recent_offers']['metadata']['max_no'] = 15;
     $res['data']['recent_offers']['metadata']['color'] = '#bcbcbc';
