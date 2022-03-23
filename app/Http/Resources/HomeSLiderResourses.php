@@ -35,9 +35,9 @@ class HomeSLiderResourses extends JsonResource
         // })->where('status',1)->where('end_time','>=',Carbon::now())->get());
         return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
             $q->where('status', 'active');
-        })->whereHas('offerpromo', function ($q)  {
+        })->with(['offerpromo' => function ($q){
             $q->orderBy('sort', 'asc');
-        })->where('status',1)->where('end_time','>=',Carbon::now())->get());
+        }])->where('status',1)->where('end_time','>=',Carbon::now())->get());
         
 
         
