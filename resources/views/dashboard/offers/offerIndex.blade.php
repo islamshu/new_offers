@@ -16,9 +16,10 @@
             <h2 class="mb-3">{{ __('All Offer') }}</h2>
 
             <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-                id="kt_datatable">
+               >
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
+                        <th>{{ __('drog') }}</th>
                         <th>{{ __('Image') }}</th>
                         <th>{{ __('Name') }}</th>
                         <th>{{ __('Type') }}</th>
@@ -28,11 +29,15 @@
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="sort_menu">
                     @php
                         $lang = app()->getLocale();
                     @endphp
-                    @foreach ($offers as $item)
+                    @foreach ($offers as $key=>$item)
+                  
+                   
+                    <tr data-id="{{ $item->id }}">
+                        <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
                         <td><img src="{{ asset('images/primary_offer/' . @$item->offerimage->primary_image) }}" width="150"
                                 height="100" alt=""></td>
 
@@ -152,5 +157,37 @@
 
             confirmDestroy(url)
         }
+        function updateToDatabase(idString) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    });
+
+                    $.ajax({
+                        url: '{{ route('update_sort_offer',app()->getLocale()) }}',
+                        method: 'POST',
+                        data: {
+                            ids: idString
+                        },
+                        success: function() {
+                            alert('Successfully updated')
+                            //do whatever after success
+                        }
+                    })
+                }
+
+                var target = $('.sort_menu');
+                target.sortable({
+                    handle: '.handle',
+                    placeholder: 'highlight',
+                    axis: "y",
+                    update: function(e, ui) {
+                        var sortData = target.sortable('toArray', {
+                            attribute: 'data-id'
+                        })
+                        updateToDatabase(sortData.join(','))
+                    }
+                });
     </script>
 @endsection

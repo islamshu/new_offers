@@ -322,15 +322,22 @@ class OfferController extends Controller
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
-    public function update_sort()
+    public function update_sort(Request $request)
     {
-        $offers = Offer::get();
-        foreach($offers as $of){
-            $of->sort = $of->id;
-            $of->save();
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $menu = Offer::find($id);
+                
+                $menu->sort = $sortOrder;
+                // $menu->save();
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
         }
-        dd('ddd');
     }
+   
 
     /**
      * Display the specified resource.

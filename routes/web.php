@@ -212,7 +212,7 @@ Route::group([
         Route::post('offer_slider/update-offer-order','Dashboard\PremotionController@menu_slideroffer')->name('menu_slideroffer'); 
         Route::post('update_cateory_sort','Dashboard\CategoryController@update_cateory_sort')->name('update_cateory_sort'); 
         Route::post('update_slider_sort','Dashboard\PremotionController@update_slider_sort')->name('update_slider_sort'); 
-        Route::get('update_sort_offer','Dashboard\OfferController@update_sort')->name('update_sort'); 
+        Route::get('update_sort_offer','Dashboard\OfferController@update_sort')->name('update_sort_offer'); 
 
         
         

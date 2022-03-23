@@ -67,6 +67,7 @@
 
                         confirmDestroy(url)
                     }
+                    
                     function fetch_data(page,  query)
             {
             $.ajax({
