@@ -41,7 +41,7 @@ class CategoryController extends Controller
                 
                 $menu->order = $sortOrder;
                 // $menu->save();
-                $menu->update(['sort'=>$sortOrder]);
+                $menu->update(['order'=>$sortOrder]);
             }
             return ['success'=>true,'message'=>'Updated'];
         }
