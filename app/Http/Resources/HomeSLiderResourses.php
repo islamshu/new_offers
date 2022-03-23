@@ -24,7 +24,7 @@ class HomeSLiderResourses extends JsonResource
         ];
     }
     public function get_offer($data){
-        $slider =HomesliderOffer::where('homeslider_id',$this->id)->get();
+        $slider =HomesliderOffer::where('homeslider_id',$this->id)->orderBy('sort','asc')->get();
         $array =[];
         foreach($slider as $of){
             array_push($array,$of->offer_id);
