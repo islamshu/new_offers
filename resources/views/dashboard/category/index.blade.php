@@ -22,7 +22,7 @@ card card-docs mb-2">
                     <th>{{ __('image') }}</th>
                     <th>{{ __('Name') }}</th>
                     <th>{{ __('Status') }}</th>
-                    <th>{{ __('Order') }}</th>
+                    {{-- <th>{{ __('Order') }}</th> --}}
                     <th>{{ __('Action') }}</th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@ card card-docs mb-2">
                     <td>
                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch" {{ $item->is_show == 1 ? 'checked' : '' }}>
                         </td>
-                        <td>{{$item->order}}</td>
+                        {{-- <td>{{$item->order}}</td> --}}
                     <td class="pr-0 text-left">
                         @if (auth()->user()->isAbleTo(['update-category']))
 
