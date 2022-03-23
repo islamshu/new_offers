@@ -58,7 +58,7 @@ class PremotionController extends Controller
     }
     public function get_elemet_by_type($locale,$type,$city_id){
         if($type == 'slider'){
-            $premotions = Slider::where('city_id',$city_id)->get();
+            $premotions = Slider::where('city_id',$city_id)->orderBy('sort','asc')->get();
             return view('dashboard.promo.sliders', compact('premotions', 'type','city_id'));
         }
         if($type == 'popup'){
