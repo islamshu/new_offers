@@ -31,8 +31,8 @@ card card-docs mb-2">
               
                
                 <tr data-id="{{ $item->id }}">
-                    <td><i class="fa fa-bars" aria-hidden="true"></i></td>
-                     
+                    <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
+
                      <td><img src="{{ asset('images/category/'.$item->image) }}" width="50" height="50" alt=""></td>
                     <td>{{$item->title}}</td>
                     <td>
