@@ -18,7 +18,7 @@
                 id="kt_datatable">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
-
+                        <th>{{ __('drop') }}</th>
                         <th>{{ __('image') }}</th>
                         <th>{{ __('Home/Category') }}</th>
                         <th>{{ __('city') }}</th>
