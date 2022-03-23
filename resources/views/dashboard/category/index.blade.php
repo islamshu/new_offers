@@ -17,6 +17,8 @@ card card-docs mb-2">
             id="kt_datatable">
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
+                    <th>{{ __('drop') }}</th>
+
                     <th>{{ __('image') }}</th>
                     <th>{{ __('Name') }}</th>
                     <th>{{ __('Status') }}</th>
@@ -24,11 +26,12 @@ card card-docs mb-2">
                     <th>{{ __('Action') }}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="sort_menu">
                 @foreach ($categorys as $key=>$item)
               
                
-                 <tr>
+                <tr data-id="{{ $item->id }}">
+                    <td><span class="handle"></span></td>
                      
                      <td><img src="{{ asset('images/category/'.$item->image) }}" width="50" height="50" alt=""></td>
                     <td>{{$item->title}}</td>
@@ -106,6 +109,7 @@ card card-docs mb-2">
 @section('scripts')
 <script src="{{ asset('/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{ asset('crudjs/crud.js') }}"></script>
@@ -138,5 +142,37 @@ card card-docs mb-2">
 
             confirmDestroy(url)
         }
+        function updateToDatabase(idString) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    });
+
+                    $.ajax({
+                        url: '{{ route('update_cateory_sort',app()->getLocale()) }}',
+                        method: 'POST',
+                        data: {
+                            ids: idString
+                        },
+                        success: function() {
+                            alert('Successfully updated')
+                            //do whatever after success
+                        }
+                    })
+                }
+
+                var target = $('.sort_menu');
+                target.sortable({
+                    handle: '.handle',
+                    placeholder: 'highlight',
+                    axis: "y",
+                    update: function(e, ui) {
+                        var sortData = target.sortable('toArray', {
+                            attribute: 'data-id'
+                        })
+                        updateToDatabase(sortData.join(','))
+                    }
+                });
 </script>
 @endsection

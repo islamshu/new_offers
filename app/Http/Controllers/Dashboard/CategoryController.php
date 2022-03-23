@@ -29,8 +29,22 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys = Category::all();
+        $categorys = Category::orderBy('order','asc')->get();
         return response()->view('dashboard.category.index', compact('categorys'));
+    }
+    public function update_cateory_sort(Request $request){
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $menu = Category::find($id);
+                
+                $menu->order = $sortOrder;
+                // $menu->save();
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
     }
 
     /**

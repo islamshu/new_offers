@@ -210,6 +210,7 @@ Route::group([
         Route::get('add_import_to_client','AboutController@add_import_to_client');
         Route::post('homeslider/update-order','Dashboard\PremotionController@updateOrder')->name('menu_update'); 
         Route::post('offer_slider/update-offer-order','Dashboard\PremotionController@menu_slideroffer')->name('menu_slideroffer'); 
+        Route::post('update_cateory_sort','Dashboard\CategoryController@update_cateory_sort')->name('update_cateory_sort'); 
 
         
         
