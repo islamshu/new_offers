@@ -33,7 +33,7 @@ class Offer extends Model
     }
     public function offerpromo()
     {
-        return $this->hasOne(PromostionOffer::class, 'offer_id');
+        return $this->hasOne(HomesliderOffer::class, 'offer_id');
     }
     /**
      * Get the user that owns the Offer
