@@ -24,20 +24,37 @@ class HomeSLiderResourses extends JsonResource
         ];
     }
     public function get_offer($data){
-        $slider =HomesliderOffer::where('homeslider_id',$this->id)->orderBy('sort','asc')->get();
+        // $slider =HomesliderOffer::where('homeslider_id',$this->id)->orderBy('sort','asc')->get();
+        // $array =[];
+        // foreach($slider as $of){
+        //     array_push($array,$of->offer_id);
+        // }
+        
+        // // return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
+        // //     $q->where('status', 'active');
+        // // })->where('status',1)->where('end_time','>=',Carbon::now())->get());
+        // return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
+        //     $q->where('status', 'active');
+        // })->where('status',1)->where('end_time','>=',Carbon::now())->with(['offerpromo' => function ($q){
+        //     $q->orderBy('sort', 'asc');
+        // }])->get());
+        $slider =HomesliderOffer::where('homeslider_id',$this->id)->get();
         $array =[];
         foreach($slider as $of){
             array_push($array,$of->offer_id);
         }
-        
-        // return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
-        //     $q->where('status', 'active');
-        // })->where('status',1)->where('end_time','>=',Carbon::now())->get());
-        return new PromostionOffer(Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
+        $coll=[];
+    
+      $offers=  Offer::whereIn('id',$array)->with('vendor')->whereHas('vendor', function ($q)  {
             $q->where('status', 'active');
-        })->where('status',1)->where('end_time','>=',Carbon::now())->with(['offerpromo' => function ($q){
-            $q->orderBy('sort', 'asc');
-        }])->get());
+        })->where('status',1)->where('end_time','>=',Carbon::now())->get()->sortBy(function($query){
+            return $query->offerpromo->sort;
+        });
+        foreach($offers as $o){
+            array_push($coll,$o);
+        }
+        return   new PromostionOffer ($coll);
+        
         
 
         
