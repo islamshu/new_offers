@@ -245,7 +245,7 @@ class PremotionController extends Controller
       $brands = Vendor::with('cities')->whereHas('cities', function ($q) use ($city_id) {
         $q->where('city_id', $city_id);
       })->get();
-      $slider_offer = HomesliderOffer::where('homeslider_id',$id)->orderBy('sort','acs')->get();
+      $slider_offer = HomesliderOffer::where('homeslider_id',$id)->orderBy('sort','asc')->get();
       return view('dashboard.promo.get_offer', compact('homeslider','brands','slider_offer'));
        
     }
