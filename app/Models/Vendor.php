@@ -70,6 +70,9 @@ class Vendor extends Model
     public function offers(){
         return $this->hasMany(Offer::class,'vendor_id');
     }
+    public function offers_sort(){
+        return $this->hasMany(Offer::class,'vendor_id')->orderBy('sort','asc');
+    }
     
     public function review()
     {
