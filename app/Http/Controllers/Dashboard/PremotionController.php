@@ -118,6 +118,25 @@ class PremotionController extends Controller
             return ['success'=>true,'message'=>'Updated'];
         }
     }
+    public function menu_slideroffer(Request $request){
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $menu = HomesliderOffer::find($id);
+                
+                $menu->sort = $sortOrder;
+                // $menu->save();
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
+    }
+
+    
+
+
+
     public function homeslider_delete($locale ,$id){
         $premotions = HomesliderOffer::find($id);
         $offer = Offer::find($premotions->offer_id);
@@ -226,7 +245,7 @@ class PremotionController extends Controller
       $brands = Vendor::with('cities')->whereHas('cities', function ($q) use ($city_id) {
         $q->where('city_id', $city_id);
       })->get();
-      $slider_offer = HomesliderOffer::where('homeslider_id',$id)->get();
+      $slider_offer = HomesliderOffer::where('homeslider_id',$id)->orderBy('sort','acs')->get();
       return view('dashboard.promo.get_offer', compact('homeslider','brands','slider_offer'));
        
     }

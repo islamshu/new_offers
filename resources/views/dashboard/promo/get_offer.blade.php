@@ -1,4 +1,15 @@
 @extends('layout.default')
+<style>
+    .handle {
+        min-width: 18px;
+        background: #607D8B;
+        height: 15px;
+        display: inline-block;
+        cursor: move;
+        margin-right: 10px;
+    }
+
+</style>
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
@@ -54,20 +65,22 @@
                     id="kt_datatable">
                     <thead>
                         <tr class="fw-bold fs-6 text-gray-800">
+                            <th>{{ __('drop') }}</th>
 
                             <th>{{ __('brand name') }}</th>
                             <th>{{ __('offer name') }}</th>
-                            <th>{{ __('Sort') }}</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="sort_menu">
                         @foreach ($slider_offer as $item)
+                        <tr data-id="{{ $item->id }}">
 
+
+                            <td><span class="handle"></span></td>
                             <td>{{ $item->vendor->name_en }}</td>
                             <td>{{ $item->offer->name_en }}</td>
 
-                            <td>{{ $item->sort }}</td>
 
                             <td class="pr-0 text-left">
                                 {{-- <a href="{{ route('offer_slider', [app()->getLocale(), $item->id]) }}"
@@ -110,6 +123,8 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
         <script src="{{ asset('crudjs/crud.js') }}"></script>
         <script>
             $(document).ready(function() {
@@ -156,5 +171,38 @@
 
                 confirmDestroy(url)
             }
+
+            function updateToDatabase(idString) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    });
+
+                    $.ajax({
+                        url: '{{ route('menu_slideroffer',app()->getLocale()) }}',
+                        method: 'POST',
+                        data: {
+                            ids: idString
+                        },
+                        success: function() {
+                            alert('Successfully updated')
+                            //do whatever after success
+                        }
+                    })
+                }
+
+                var target = $('.sort_menu');
+                target.sortable({
+                    handle: '.handle',
+                    placeholder: 'highlight',
+                    axis: "y",
+                    update: function(e, ui) {
+                        var sortData = target.sortable('toArray', {
+                            attribute: 'data-id'
+                        })
+                        updateToDatabase(sortData.join(','))
+                    }
+                });
         </script>
     @endsection

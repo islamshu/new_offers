@@ -209,6 +209,7 @@ Route::group([
         Route::resource('faqs', 'FaqsController');
         Route::get('add_import_to_client','AboutController@add_import_to_client');
         Route::post('homeslider/update-order','Dashboard\PremotionController@updateOrder')->name('menu_update'); 
+        Route::post('offer_slider/update-offer-order','Dashboard\PremotionController@menu_slideroffer')->name('menu_slideroffer'); 
 
         
         
