@@ -322,6 +322,15 @@ class OfferController extends Controller
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
+    public function update_sort()
+    {
+        $offers = Offer::get();
+        foreach($offers as $of){
+            $of->sort = $of->id;
+            $of->save();
+        }
+        dd('ddd');
+    }
 
     /**
      * Display the specified resource.

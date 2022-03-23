@@ -186,6 +186,7 @@ class PremotionController extends Controller
             $slider->link    = $request->link ;
             $slider->start_date = $request->start_date;
             $slider->end_date = $request->end_date;
+            $slider->sort = Slider::count() + 1;
             $slider->save();
             return response()->json(['icon' => 'success', 'title' => 'Slider  created successfully'], 200);
         }elseif($type == 'popup'){
