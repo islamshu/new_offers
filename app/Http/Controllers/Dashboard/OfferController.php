@@ -36,7 +36,7 @@ class OfferController extends Controller
      public function offers($locale , $id)
      {
          $vendor = Vendor::find($id);
-         $offers = Offer::where('vendor_id',$id)->get();
+         $offers = Offer::where('vendor_id',$id)->orderBy('sort','asc')->get();
          
          return response()->view('dashboard.offers.offerIndex', compact('offers','vendor'));
         }
