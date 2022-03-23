@@ -69,14 +69,23 @@
                         </tr>
                     </thead>
                     <tbody class="sort_menu">
+                        @php
+                            $lang = app()->getLocale();
+                        @endphp
                         @foreach ($slider_offer as $item)
                             <tr data-id="{{ $item->id }}">
 
 
                                 <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
-
+                                @if($lang == 'ar')
+                                <td>{{ $item->vendor->name_ar }}</td>
+                                
+                                <td>{{ $item->offer->name_ar }}</td>
+                                @else
                                 <td>{{ $item->vendor->name_en }}</td>
+                                
                                 <td>{{ $item->offer->name_en }}</td>
+                                @endif
 
 
                                 <td class="pr-0 text-left">
