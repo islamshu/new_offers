@@ -41,7 +41,7 @@
     <style>
         .handle {
             min-width: 18px;
-            background: #607D8B;
+            background: #747474;
             height: 15px;
             display: inline-block;
             cursor: move;
