@@ -25,9 +25,10 @@
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="sort_menu">
                     @foreach ($premotions as $item)
-
+                    <tr data-id="{{ $item->id }}">
+                        <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
                     <td><img src="{{ asset('images/slider/'.$item->image) }}" width="100" height="100" alt=""></td>
                     <td>{{ $item->show_as }}</td>
 
@@ -82,6 +83,7 @@
 
     @section('scripts')
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="{{ asset('crudjs/crud.js') }}"></script>
@@ -97,5 +99,37 @@
 
                 confirmDestroy(url)
             }
+            function updateToDatabase(idString) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    });
+
+                    $.ajax({
+                        url: '{{ route('update_slider_sort',app()->getLocale()) }}',
+                        method: 'POST',
+                        data: {
+                            ids: idString
+                        },
+                        success: function() {
+                            alert('Successfully updated')
+                            //do whatever after success
+                        }
+                    })
+                }
+
+                var target = $('.sort_menu');
+                target.sortable({
+                    handle: '.handle',
+                    placeholder: 'highlight',
+                    axis: "y",
+                    update: function(e, ui) {
+                        var sortData = target.sortable('toArray', {
+                            attribute: 'data-id'
+                        })
+                        updateToDatabase(sortData.join(','))
+                    }
+                });
         </script>
     @endsection

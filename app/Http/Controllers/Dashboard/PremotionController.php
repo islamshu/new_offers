@@ -167,6 +167,20 @@ class PremotionController extends Controller
         return view('dashboard.promo.create_banner', compact('city_id','homeslider'));
        }
     }
+    public function update_slider_sort(Request $request){
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            
+            foreach($arr as $sortOrder => $id){
+                $menu = Slider::find($id);
+                
+                $menu->sort = $sortOrder;
+                // $menu->save();
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
+    }
     public function store_item(Request $request, $locale, $type, $city_id)
     {
         $city = City::find($city_id);
