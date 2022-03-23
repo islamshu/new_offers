@@ -311,9 +311,7 @@ class OfferController extends Controller
                     $offer_days->save();
                     
                 }
-                $offer->is_order = $offer->id;
-                $offer->save();
-               
+          
            
 
 
