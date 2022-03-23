@@ -40,9 +40,7 @@
 
                                 </select>
                             </div>
-                            <div class="col-md-3">
-                                <input type="number" class="form-control" placeholder="sort" name="sort" id="">
-                            </div>
+                           
                             <div class="col-md-2">
                                 <input type="submit" class="form-control btn-info" value="{{ __('Submit') }}">
                             </div>
