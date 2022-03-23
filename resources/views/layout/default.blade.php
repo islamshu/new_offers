@@ -38,6 +38,17 @@
 
     {{-- Includable CSS --}}
     @yield('styles')
+    <style>
+        .handle {
+            min-width: 18px;
+            background: #607D8B;
+            height: 15px;
+            display: inline-block;
+            cursor: move;
+            margin-right: 10px;
+        }
+    
+    </style>
 </head>
 
 <body {{ Metronic::printAttrs('body') }} {{ Metronic::printClasses('body') }}>
