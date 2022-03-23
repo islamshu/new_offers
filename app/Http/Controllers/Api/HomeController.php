@@ -255,7 +255,7 @@ class HomeController extends BaseController
   {
     $page = $request->last_index +2;
     $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-    $stores = Offer::where('status',1)->where('end_time','>=',Carbon::now())->where('vendor_id', $request->store_id)->get();
+    $stores = Offer::where('status',1)->where('end_time','>=',Carbon::now())->where('vendor_id', $request->store_id)->orderBy('sort','asc')->get();
     $res['status'] = $this->sendResponse200('OK');
     $res['data'] = (new VendorOfferDeCollection($stores));
     return $res;
