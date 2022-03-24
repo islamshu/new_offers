@@ -25,7 +25,7 @@ class AboutController extends Controller
      */
     public function add_import_to_client()
     {
-       $clients = Clinet::where('type_of_subscribe','PREMIUM')->get();
+       $clients = Clinet::where('type_of_subscribe','PREMIUM')->orderBy('sort','asc')->get();
        $page = Subscription::find(12);
        foreach($clients as $users){
         $user = new Subscriptions_User();
@@ -45,7 +45,7 @@ class AboutController extends Controller
     public function index()
     {
 
-        return view('dashboard.pages.about')->with('about',About::get());
+        return view('dashboard.pages.about')->with('about',About::orderBy('sort','asc')->get());
     }
 
     /**
