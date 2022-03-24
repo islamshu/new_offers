@@ -21,7 +21,7 @@ class FaqsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.faqs')->with('faqs',Faqs::get());
+        return view('dashboard.pages.faqs')->with('faqs',Faqs::orderBy('sort','asc')->get());
 
     }
 
@@ -48,9 +48,21 @@ class FaqsController extends Controller
         $page->answer_en = $request->answer_en;
         $page->qus_ar = $request->qus_ar;
         $page->qus_en = $request->qus_en;
-        $page->sort = $request->sort;
+        $page->sort =  Faqs::count() +1;
         $page->save();
         return redirect()->back()->with(['succss'=>trans('add succeefully')]);
+    }
+    public function update_sort(Request $request)
+    {
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            foreach($arr as $sortOrder => $id){
+                $menu = Faqs::find($id); 
+                $menu->sort = $sortOrder;
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
     }
 
     /**

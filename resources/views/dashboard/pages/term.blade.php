@@ -19,23 +19,21 @@
     >
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
-            <th>{{ __('sort') }}</th>
+            <th>{{ __('drop') }}</th>
             <th>{{ __('title') }}</th>
             <th>{{ __('content') }}</th>
           
             <th>{{ __('Actions') }}</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach ($term as $item)
-        
-        
-         <tr>
+    <tbody class="sort_menu">
+        @foreach ($term as $key=>$item)
+      
+       
+        <tr data-id="{{ $item->id }}">
              {{-- {{ dd($item) }} --}}
              
-             
-           
-            <td>{{$item->sort}}</td>
+             <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
             @if(app()->getLocale() == 'ar')
 
             <td>{{$item->title_ar}}</td>
@@ -112,11 +110,7 @@
                     <label>{{ __('Content en') }} :</label>
                     <textarea name="content_en" class="form-control" required id="" cols="30" rows="5"></textarea>
                 </div>
-                <div class="form-group col-md-3">
-                    <label>{{ __('sort') }} :</label>
-                    <input type="number" name="sort" id="sort" class="form-control form-control-solid"
-                        placeholder="Enter sort" required />
-                </div>
+            
 
 
             <div class="card-footer">
@@ -129,7 +123,8 @@
 @endsection
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
 
@@ -143,5 +138,37 @@
 
             confirmDestroy(url)
         }
+        function updateToDatabase(idString) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+
+            $.ajax({
+                url: '{{ route('update_sort_term', app()->getLocale()) }}',
+                method: 'POST',
+                data: {
+                    ids: idString
+                },
+                success: function() {
+                    alert('Successfully updated')
+                    //do whatever after success
+                }
+            })
+        }
+
+        var target = $('.sort_menu');
+        target.sortable({
+            handle: '.handle',
+            placeholder: 'highlight',
+            axis: "y",
+            update: function(e, ui) {
+                var sortData = target.sortable('toArray', {
+                    attribute: 'data-id'
+                })
+                updateToDatabase(sortData.join(','))
+            }
+        });
     </script>
 @endsection

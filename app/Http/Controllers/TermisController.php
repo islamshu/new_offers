@@ -22,7 +22,7 @@ class TermisController extends Controller
     public function index()
     {
 
-        return view('dashboard.pages.term')->with('term',Termis::get());
+        return view('dashboard.pages.term')->with('term',Termis::orderBy('sort','asc')->get());
     }
 
     /**
@@ -48,9 +48,22 @@ class TermisController extends Controller
         $page->title_en = $request->title_en;
         $page->content_ar = $request->content_ar;
         $page->content_en = $request->content_en;
-        $page->sort = $request->sort;
+        $page->sort = Termis::count() +1;
+        
         $page->save();
         return redirect()->back()->with(['succss'=>trans('add succeefully')]);
+    }
+    public function update_sort(Request $request)
+    {
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            foreach($arr as $sortOrder => $id){
+                $menu = Termis::find($id); 
+                $menu->sort = $sortOrder;
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
     }
 
     /**

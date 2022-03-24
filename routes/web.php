@@ -215,6 +215,8 @@ Route::group([
         Route::post('update_sort_offer','Dashboard\OfferController@update_sort')->name('update_sort_offer'); 
         Route::post('update_sort_about','AboutController@update_sort')->name('update_sort_about'); 
         Route::post('update_sort_privacy','PrivacyController@update_sort')->name('update_sort_privacy'); 
+        Route::post('update_sort_term','TermisController@update_sort')->name('update_sort_term'); 
+        Route::post('update_sort_faqs','FaqsController@update_sort')->name('update_sort_faqs'); 
 
         
         
