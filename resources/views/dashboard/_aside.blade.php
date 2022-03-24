@@ -676,10 +676,10 @@ $lang = app()->getLocale();
                                 class="menu-text">{{ __('How it work') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/faqs"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Social Media') }}</span></a></li>
+                                class="menu-text">{{ __('FAQs') }}</span></a></li>
                                 <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/social_info_post"
                                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                        class="menu-text">{{ __('FAQs') }}</span></a></li>
+                                        class="menu-text">{{ __('Social Media') }}</span></a></li>
 
                                 
 
