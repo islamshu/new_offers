@@ -152,7 +152,7 @@
             });
 
             $.ajax({
-                url: '{{ route('update_sort_about', app()->getLocale()) }}',
+                url: '{{ route('update_sort_privacy', app()->getLocale()) }}',
                 method: 'POST',
                 data: {
                     ids: idString
