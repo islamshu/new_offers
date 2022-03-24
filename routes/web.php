@@ -218,7 +218,7 @@ Route::group([
         Route::post('update_sort_term','TermisController@update_sort')->name('update_sort_term'); 
         Route::post('update_sort_faqs','FaqsController@update_sort')->name('update_sort_faqs'); 
         Route::get('social_info','SocialController@index'); 
-        Route::post('social_info_post','SocialController@store')->route('social_info_post'); 
+        Route::post('social_info_post','SocialController@store')->name('social_info_post'); 
 
         
         
