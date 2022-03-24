@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <form method="post" ">
+    <form method="post" action="{{ route('social_info_post',app()->getLocale()) }}">
         @csrf
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -136,7 +136,7 @@
 
         </div>
         <div class="card-footer">
-            <button type="button" onclick="performStore()" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
+            <button type="submit" onclick="performStore()" class="btn btn-primary mr-2">{{ __('Submit') }}</button>
     </form>
 </div>
 
