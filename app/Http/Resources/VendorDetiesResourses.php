@@ -26,7 +26,7 @@ class VendorDetiesResourses extends JsonResource
             'cover'=>asset('images/vendor_cover/'.@$this->vendor_image->first()->image),
             'email'=>@$this->email,
             'phone'=>@$this->mobile,
-            'website'=>null,
+            'website'=>@$this->menu,
             'facebook'=>@$this->social->facebook,
             'snapchat'=>@$this->social->snapchat,
 
