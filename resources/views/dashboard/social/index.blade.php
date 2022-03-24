@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <form method="post" action="{{ route('social_info_post',app()->getLocale()) }}">
+    <form method="post" action="">
         @csrf
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
