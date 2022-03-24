@@ -68,7 +68,7 @@ if ( ! function_exists('get_social'))
 {
     function get_social($key)
     {
-       $general = Social::where('key', $key)->first();
+       $general = Social::where('type', $key)->first();
        if($general){
            return $general->value;
        }
