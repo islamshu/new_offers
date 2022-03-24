@@ -217,6 +217,7 @@ Route::group([
         Route::post('update_sort_privacy','PrivacyController@update_sort')->name('update_sort_privacy'); 
         Route::post('update_sort_term','TermisController@update_sort')->name('update_sort_term'); 
         Route::post('update_sort_faqs','FaqsController@update_sort')->name('update_sort_faqs'); 
+        Route::get('social_info','SocialController@index'); 
 
         
         

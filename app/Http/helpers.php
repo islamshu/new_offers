@@ -4,6 +4,7 @@ use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\GeneralInfo;
 use App\Models\Offer;
+use App\Models\Social;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -62,6 +63,19 @@ function saveJSONFile($code, $data){
     $dist = rad2deg($dist); 
     $miles = $dist * 60 * 1.1515;
     return $miles;
+}
+if ( ! function_exists('get_social'))
+{
+    function get_social($key)
+    {
+       $general = Social::where('key', $key)->first();
+       if($general){
+           return $general->value;
+       }
+
+       return '';
+    }
+
 }
 function get_sort($data)
 {
