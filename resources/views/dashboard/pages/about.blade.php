@@ -33,7 +33,8 @@
         <tr data-id="{{ $item->id }}">
              {{-- {{ dd($item) }} --}}
              
-             
+             <td> <i class="fa fa-bars handle" aria-hidden="true"></i></td>
+
            
             @if(app()->getLocale() == 'ar')
 
