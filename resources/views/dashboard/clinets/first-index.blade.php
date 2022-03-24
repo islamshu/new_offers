@@ -17,7 +17,7 @@
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                             {{-- <i class=" fa-4x"></i> --}}
                           
-                            {{ $all}}
+                            {{ App\Models\Clinet::orderBy('register_date','desc')->count()}}
                         </span>
                         
                         <!--end::Svg Icon-->
@@ -34,7 +34,7 @@
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                             {{-- <i class=" fa-4x"></i> --}}
                           
-                            {{ $all}}
+                            {{ App\Models\Clinet::where('is_verify',1)->orderBy('register_date','desc')->count()}}
                         </span>
                         
                         <!--end::Svg Icon-->
@@ -53,7 +53,7 @@
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                         {{-- <i class=" fa-4x"></i> --}}
                       
-                        {{ $paid}}
+                        {{ App\Models\Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->count()}}
                     </span>
                     <!--end::Svg Icon-->
                     <a href="{{ route('show_clients',[app()->getLocale(),'premium']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('premium Clients') }}</a>
@@ -67,8 +67,8 @@
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                         {{-- <i class=" fa-4x"></i> --}}
                       
-                        {{ $trial}}
-                    </span>
+                        {{ App\Models\Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->count()}}
+                                        </span>
                     <!--end::Svg Icon-->
                     <a href="{{ route('show_clients',[app()->getLocale(),'trail']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Trail Clients') }}</a>
                 </div>
@@ -81,7 +81,7 @@
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                         {{-- <i class=" fa-4x"></i> --}}
                       
-                        {{ $non_sub}}
+                        {{ App\Models\Clinet::where('type_of_subscribe','FREE')->orderBy('register_date','desc')->count()}}
                     </span>
                     <!--end::Svg Icon-->
                     <a href="{{ route('show_clients',[app()->getLocale(),'none']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Unsubscribed Clients') }}</a>
