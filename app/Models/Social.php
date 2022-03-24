@@ -9,7 +9,7 @@ class Social extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'key', 'value',
+        'type', 'value',
     ];
     public $timestamps = false;
 
@@ -18,7 +18,7 @@ class Social extends Model
     public static function setValue($key, $value)
     {
         static::query()->updateOrCreate([
-            'key' => $key,
+            'type' => $key,
         ], [
             'value' => $value,
         ]);
