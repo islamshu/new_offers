@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Termis extends Model
 {
+    protected $guarded=[];
+
     use HasFactory;
 }
