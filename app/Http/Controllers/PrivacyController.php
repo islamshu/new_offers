@@ -20,7 +20,7 @@ class PrivacyController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.privacy')->with('privacy',Privacy::get());
+        return view('dashboard.pages.privacy')->with('privacy',Privacy::orderBy('sort','asc')->get());
     }
 
     /**
@@ -28,6 +28,19 @@ class PrivacyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function update_sort(Request $request)
+    {
+        if($request->has('ids')){
+            $arr = explode(',',$request->input('ids'));
+            foreach($arr as $sortOrder => $id){
+                $menu = Privacy::find($id); 
+                $menu->sort = $sortOrder;
+                $menu->update(['sort'=>$sortOrder]);
+            }
+            return ['success'=>true,'message'=>'Updated'];
+        }
+    }
+
     public function create()
     {
         //
@@ -46,7 +59,7 @@ class PrivacyController extends Controller
         $page->title_en = $request->title_en;
         $page->content_ar = $request->content_ar;
         $page->content_en = $request->content_en;
-        $page->sort = $request->sort;
+        $page->sort = Privacy::count() +1;
         $page->save();
         return redirect()->back()->with(['succss'=>trans('add succeefully')]);
     }

@@ -214,6 +214,7 @@ Route::group([
         Route::post('update_slider_sort','Dashboard\PremotionController@update_slider_sort')->name('update_slider_sort'); 
         Route::post('update_sort_offer','Dashboard\OfferController@update_sort')->name('update_sort_offer'); 
         Route::post('update_sort_about','AboutController@update_sort')->name('update_sort_about'); 
+        Route::post('update_sort_privacy','PrivacyController@update_sort')->name('update_sort_privacy'); 
 
         
         
