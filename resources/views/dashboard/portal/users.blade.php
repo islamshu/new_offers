@@ -2,8 +2,19 @@
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
-            <h2 class="mb-3">{{ __('All User') }}</h2>
-            @if (auth()->user()->isAbleTo(['create-portal']))
+            <div class="card-header">
+          
+                @php
+                    $brand = App\Models\Vendor::find($id);
+                @endphp
+                <ol class="breadcrumb">
+                    <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                    <li><a href="/{{ get_lang() }}/portal"><i class="fa fa-dashboard"></i> {{ __('Portal') }}</a></li>
+                    
+                    <li class="active">{{ __('All User for '$brand->name_en) }}</li>
+                </ol>
+            
+            </div>            @if (auth()->user()->isAbleTo(['create-portal']))
 
             <a data-toggle="modal"
             data-target="#myModaluser" class="btn btn-outline-primary"
