@@ -261,7 +261,7 @@ class PremotionController extends Controller
         $q->where('city_id', $city_id);
       })->get();
       $slider_offer = HomesliderOffer::where('homeslider_id',$id)->orderBy('sort','asc')->get();
-      return view('dashboard.promo.get_offer', compact('homeslider','brands','slider_offer'));
+      return view('dashboard.promo.get_offer', compact('homeslider','brands','slider_offer','city_id'));
        
     }
     public function create_offer(Request $request,$locale){
