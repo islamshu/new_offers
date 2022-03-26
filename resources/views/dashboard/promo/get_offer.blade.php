@@ -1,6 +1,13 @@
 @extends('layout.default')
 
 @section('content')
+<ol class="breadcrumb">
+    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+    <li><a href="{{ route('promotion.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('promotion') }}</a></li>
+    <li><a href="{{ route('get_elemet_by_type',[get_lang(),'homeslider', $city_id]) }}"><i class="fa fa-dashboard"></i> {{ __('Sliders') }}</a></li>
+    
+    <li class="active">{{ __('create Home slider') }}</li>
+</ol>
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Offer for this slider') }}</h2>
