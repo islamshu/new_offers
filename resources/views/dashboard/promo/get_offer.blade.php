@@ -4,7 +4,7 @@
 <ol class="breadcrumb">
     <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
     <li><a href="{{ route('promotion.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('promotion') }}</a></li>
-    <li><a href="{{ route('get_elemet_by_type',[get_lang(),'homeslider', $city_id]) }}"><i class="fa fa-dashboard"></i> {{ __('Sliders') }}</a></li>
+    <li><a href="{{ route('get_elemet_by_type',[get_lang(),'homeslider', $city_id]) }}"><i class="fa fa-dashboard"></i> {{ __('Home Sliders') }}</a></li>
     
     <li class="active">{{ __('create Home slider') }}</li>
 </ol>
