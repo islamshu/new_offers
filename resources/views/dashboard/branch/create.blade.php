@@ -9,6 +9,7 @@
         <ol class="breadcrumb">
             <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
             <li><a href="/{{ get_lang() }}/branch"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+            <li><a href="/{{ get_lang() }}/create_vendor_branches/{{ $vendor->id }}"><i class="fa fa-dashboard"></i> {{ $vendor->name_en}} Branches</a></li>
 
             <li class="active">{{ __('Create Branche') }}</li>
 
