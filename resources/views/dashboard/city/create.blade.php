@@ -60,12 +60,12 @@
         <h3 class="card-title">
             {{ __('Create City') }}
         </h3>
-        <div class="card-toolbar">
-            <div class="example-tools justify-content-center">
-                <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
-            </div>
-        </div>
+        <ol class="breadcrumb">
+            <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="{{ route('category.city',get_lang()) }}">{{ __('City') }}</a></li>
+            <li class="active">{{ __('create') }}</li>
+        </ol>
+       
     </div>
     <form method="post" action="{{route('city.store',['locale'=>app()->getLocale()])}}">
         @csrf
