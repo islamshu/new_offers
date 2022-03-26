@@ -10,7 +10,7 @@
                 <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                 <li><a href="{{ route('general_notofication.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Notofication') }}</a></li>
 
-                <li class="active">{{ __('All Notofication') }}</li>
+                <li class="active">{{ __('Create General Notofication') }}</li>
             </ol>
         
         </div> 
