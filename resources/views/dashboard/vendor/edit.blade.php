@@ -3,16 +3,18 @@
 @section('content')
     <div class="card card-custom">
 
-        <div class="card-header">
-            <h3 class="card-title">
-                {{ __('Edit Brand') }}
-            </h3>
-            <div class="card-toolbar">
-                <div class="example-tools justify-content-center">
-                    <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                    <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
-                </div>
-            </div>
+        <div class="card-header border-0 py-5">
+          
+        
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li><a href="{{ route('vendor.index') }}"><i class="fa fa-dashboard"></i> {{ __('Brands') }}</a></li>
+
+                <li class="active">{{ __('Edit Brand') }}</li>
+            </ol>
+        
+        
+        
         </div>
         <form class="form" method="post" id='create_form' enctype="multipart/form-data">
             @csrf
