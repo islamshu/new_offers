@@ -4,20 +4,20 @@
     <!--begin::Container-->
     <div class="container">
         
-        <!--begin::Profile 2-->
+        <div class="card-header">
+            <h3 class="card-title">
+                {{ __('Main Info') }}
+            </h3>
+    
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li class="active">{{ __('Main Info') }}</li>
+            </ol>
+    
+        </div>
         <div class="d-flex flex-row">
             <!--begin::Aside-->
-            <div class="card-header">
-                <h3 class="card-title">
-                    {{ __('Main Info') }}
-                </h3>
-        
-                <ol class="breadcrumb">
-                    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                    <li class="active">{{ __('Main Info') }}</li>
-                </ol>
-        
-            </div>
+            
             <div class="flex-row-auto offcanvas-mobile w-200px w-xl-250px" id="kt_profile_aside">
                 <!--begin::Card-->
                 <div class="card card-custom">
