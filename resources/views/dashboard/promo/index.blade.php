@@ -3,13 +3,11 @@
 
     <div class="card card-docs mb-2">
         <div class="card-header">
-            <h3 class="card-title">
-                {{ __('Main Info') }}
-            </h3>
+          
         
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                <li class="active">{{ __('Main Info') }}</li>
+                <li class="active">{{ __('Promotion') }}</li>
             </ol>
         
         </div>
