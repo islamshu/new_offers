@@ -20,22 +20,22 @@ class PageController extends BaseController
 {
     public function privacy(){
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['privacy_policy'] = new PageCollection(Privacy::get());
+        $res['data']['privacy_policy'] = new PageCollection(Privacy::orderBy('sort','asc')->get());
         return $res;  
     }
     public function terms(){
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['term_and_conditions'] = new PageCollection(Termis::get());
+        $res['data']['term_and_conditions'] = new PageCollection(Termis::orderBy('sort','asc')->get());
         return $res;  
     }
     public function abouts(){
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['about_us'] = new PageCollection(About::get());
+        $res['data']['about_us'] = new PageCollection(About::orderBy('sort','asc')->get());
         return $res;  
     }
     public function faqs(){
         $res['status']= $this->sendResponse200('OK');
-        $res['data']['FAQs'] = new FaqsCollection(Faqs::get());
+        $res['data']['FAQs'] = new FaqsCollection(Faqs::orderBy('sort','asc')->get());
         return $res;  
     }
     public function works(){
