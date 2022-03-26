@@ -11,7 +11,7 @@
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                     <li><a href="/{{ get_lang() }}/portal"><i class="fa fa-dashboard"></i> {{ __('Portal') }}</a></li>
                     
-                    <li class="active">{{ __('All User for '$brand->name_en) }}</li>
+                    <li class="active">{{ __('All User for ') }}{{ $brand->name_en }}</li>
                 </ol>
             
             </div>            @if (auth()->user()->isAbleTo(['create-portal']))
