@@ -2,7 +2,16 @@
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
-            <h2 class="mb-3">{{ __('All Vendors') }}</h2>
+            <div class="card-header">
+          
+        
+                <ol class="breadcrumb">
+                    <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            
+                    <li class="active">{{ __('Portal') }}</li>
+                </ol>
+            
+            </div>
             <div class="card-body py-0">
                 <!--begin::Table-->
                 <div class="card card-custom gutter-b">
