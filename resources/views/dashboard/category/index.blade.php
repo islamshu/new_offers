@@ -8,18 +8,18 @@ card card-docs mb-2">
 </ol>
 
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
-        @if (auth()->user()->isAbleTo(['create-category']))
-
-        <div  style="float: right" >
-            <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
-        </div>
-        @endif
+     
         <br>
         <div class="card-header">
             <h3 class="card-title">
                 {{ __('Category') }}
             </h3>
-           
+            @if (auth()->user()->isAbleTo(['create-category']))
+
+            <div  style="float: right" >
+                <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
+            </div>
+            @endif
            
         </div>
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
