@@ -77,6 +77,9 @@ if ( ! function_exists('get_social'))
     }
 
 }
+function get_lang(){
+    return app()->getLocale();
+}
 function get_sort($data)
 {
    $ss = collect($data);

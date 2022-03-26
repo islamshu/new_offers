@@ -61,9 +61,9 @@
             {{ __('Create currency') }}
         </h3>
         <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-dashboard"></i> home</a></li>
-            <li><a href="">asdas</a></li>
-            <li class="active">aaa</li>
+            <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="{{ route('category',get_lang()) }}">{{ __('Category') }}</a></li>
+            <li class="active">{{ __('create') }}</li>
         </ol>
        
     </div>
