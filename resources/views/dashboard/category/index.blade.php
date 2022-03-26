@@ -12,6 +12,11 @@ card card-docs mb-2">
         @endif
         <br>
         <h2 class="mb-3">{{ __('All category') }}</h2>
+
+        <ol class="breadcrumb">
+            <li><a href="{{route('category.index',get_lang())  }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li class="active">{{ __('Category') }}</li>
+        </ol>
        
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
             id="kt_datatable">

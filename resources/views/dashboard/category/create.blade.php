@@ -58,7 +58,7 @@
 
     <div class="card-header">
         <h3 class="card-title">
-            {{ __('Create currency') }}
+            {{ __('Create Category') }}
         </h3>
         <ol class="breadcrumb">
             <li><a href="{{route('category.index',get_lang())  }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
