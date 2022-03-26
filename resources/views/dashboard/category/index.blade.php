@@ -15,12 +15,7 @@ card card-docs mb-2">
                 <h3 class="card-title">
                 {{ __('Category') }}
                 </h3>
-                @if (auth()->user()->isAbleTo(['create-category']))
-
-                <div  >
-                    <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
-                </div>
-                @endif
+               
                 <ol class="breadcrumb">
                     <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                     <li class="active">{{ __('Category') }}</li>
