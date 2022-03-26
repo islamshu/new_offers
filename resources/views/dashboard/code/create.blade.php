@@ -4,15 +4,13 @@
     <div class="card card-custom">
 
         <div class="card-header">
-            <h3 class="card-title">
-                {{ __('Create Code') }}
-            </h3>
-            <div class="card-toolbar">
-                <div class="example-tools justify-content-center">
-                    <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                    <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
-                </div>
-            </div>
+          
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li ><a href="{{ route('code.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li class="active"> {{ __('Create Activation code') }}</li>
+            </ol>
+        
         </div>
         <form class="form" method="post" id='create_form' enctype="multipart/form-data">
             @csrf
