@@ -2,10 +2,7 @@
 @section('content')
 <div class="
 card card-docs mb-2">
-<ol class="breadcrumb">
-    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-<li class="active">{{ __('Category') }}</li>
-</ol>
+
 
  
 
