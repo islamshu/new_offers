@@ -57,9 +57,13 @@
 <div class="card card-custom">
 
     <div class="card-header">
-        <h3 class="card-title">
-            {{ __('Upload Brands') }}
-        </h3>
+        <ol class="breadcrumb">
+            <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="{{ route('vendor.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Brands') }}</a></li>
+
+            <li class="active">{{ __('Upload Brand') }}</li>
+        </ol>
+    
 
         <div class="card-toolbar">
             <div class="example-tools justify-content-center">
