@@ -2,6 +2,16 @@
 @section('content')
     <div class="
 card card-docs mb-2">
+<div class="card-header">
+          
+        
+    <ol class="breadcrumb">
+        <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+
+        <li class="active">{{ __('All Notofication') }}</li>
+    </ol>
+
+</div> 
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <div style="float:right;">
                 <a href="{{ route('general_notofication.create',app()->getLocale()) }}" class="btn btn-info">{{ __('Create new notofication') }}</a>
