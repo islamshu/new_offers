@@ -92,17 +92,24 @@
 
                     <div class="card card-custom gutter-b">
                         <!--begin::Header-->
+
                         <div class="card-header border-0 py-5">
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Brands</span>
-                            </h3>
+          
+        
+                            <ol class="breadcrumb">
+                                <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                        
+                                <li class="active">{{ __('Brands') }}</li>
+                            </ol>
                             @if (auth()->user()->isAbleTo(['create-vendor']))
-                                <div class="card-toolbar">
-                                    <a href="{{ route('vendor.create', ['locale' => app()->getLocale()]) }}"
-                                        class="btn btn-info font-weight-bolder font-size-sm">New Brands</a>
-                                </div>
-                            @endif
-                        </div>
+                            <div class="card-toolbar">
+                                <a href="{{ route('vendor.create', ['locale' => app()->getLocale()]) }}"
+                                    class="btn btn-info font-weight-bolder font-size-sm">New Brands</a>
+                            </div>
+                        @endif
+                        
+                        </div> 
+                        
                         <div id="loading_par"></div>
 
                         <!--end::Header-->
