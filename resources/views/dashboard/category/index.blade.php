@@ -17,13 +17,14 @@ card card-docs mb-2">
                     <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                     <li class="active">{{ __('Category') }}</li>
                 </ol>
-                @if (auth()->user()->isAbleTo(['create-category']))
-
-                <div  >
-                    <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
-                </div>
-                @endif
+               
             </div>
+            @if (auth()->user()->isAbleTo(['create-category']))
+
+            <div  >
+                <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
+            </div>
+            @endif
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
             id="kt_datatable">
             <thead>
