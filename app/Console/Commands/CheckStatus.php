@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Clinet;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class CheckStatus extends Command
@@ -37,6 +39,15 @@ class CheckStatus extends Command
      */
     public function handle()
     {
-        return Command::SUCCESS;
+      $clients =Clinet::get();
+      foreach($clients as $userr)
+
+        if(Carbon::now() > $userr->expire_date ){
+            $userr->is_trial =0;
+            $userr->type_of_subscribe ='FREE';
+            $userr->save();
+        }
     }
-}
+    }
+    
+
