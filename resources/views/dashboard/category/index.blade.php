@@ -2,6 +2,10 @@
 @section('content')
 <div class="
 card card-docs mb-2">
+<ol class="breadcrumb">
+    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+<li class="active">{{ __('Category') }}</li>
+</ol>
 
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
         @if (auth()->user()->isAbleTo(['create-category']))
@@ -15,10 +19,7 @@ card card-docs mb-2">
             <h3 class="card-title">
                 {{ __('Category') }}
             </h3>
-            <ol class="breadcrumb">
-                <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-            <li class="active">{{ __('Category') }}</li>
-            </ol>
+           
            
         </div>
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
