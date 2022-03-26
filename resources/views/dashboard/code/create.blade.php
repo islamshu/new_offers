@@ -7,7 +7,7 @@
           
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                <li ><a href="{{ route('code.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li ><a href="{{ route('code.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('All Activation code') }}</a></li>
                 <li class="active"> {{ __('Create Activation code') }}</li>
             </ol>
         
