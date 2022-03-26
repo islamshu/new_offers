@@ -4,16 +4,16 @@
 <div class="card card-custom">
 
     <div class="card-header">
-        <h3 class="card-title">
-            Create Branch
-        </h3>
-        <div class="card-toolbar">
-            <div class="example-tools justify-content-center">
-                <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
-                <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
-            </div>
-        </div>
-    </div>
+          
+               
+        <ol class="breadcrumb">
+            <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="/{{ get_lang() }}/branch"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+            <li class="active">{{ __('Branches') }}</li>
+
+        </ol>
+    
+    </div> 
     <form class="form" method="post" id='create_form' enctype="multipart/form-data">
         @csrf
         <div class="card-body">

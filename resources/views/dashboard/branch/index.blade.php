@@ -3,7 +3,16 @@
     <div class="
 card card-docs mb-2">
 
-<h2 class="mb-3">All Branches</h2>
+<div class="card-header">
+          
+               
+    <ol class="breadcrumb">
+        <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+        
+        <li class="active">{{ __('Vendors') }}</li>
+    </ol>
+
+</div> 
 <div class="card card-custom gutter-b">
                 <div class="card-body">
                     <div class="form-group col-md-3">
