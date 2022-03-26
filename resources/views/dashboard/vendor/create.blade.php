@@ -8,9 +8,9 @@
         
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                <li><a href="{{ route('vendor.index') }}"><i class="fa fa-dashboard"></i> {{ __('Brands') }}</a></li>
+                <li><a href="{{ route('vendor.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Brands') }}</a></li>
 
-                <li class="active">{{ __('Create Brand') }}</li>
+                <li class="active">{{ __('Edit Brand') }}</li>
             </ol>
         
         
