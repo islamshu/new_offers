@@ -2,10 +2,19 @@
 
 @section('content')
     <div class="card card-custom">
-
+        <div class="card-header">
+          
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li><a href="{{ route('coupun.index') }}"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+                <li class="active">{{ __('Edit coupoun') }}</li>
+    
+            </ol>
+        
+        </div>
         <div class="card-header">
             <h3 class="card-title">
-                {{ __('Create Subscribe') }}
+                {{ __('Edit Subscribe') }}
             </h3>
             <div class="card-toolbar">
                 <div class="example-tools justify-content-center">

@@ -2,6 +2,16 @@
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
+            <div class="card-header">
+          
+                <ol class="breadcrumb">
+                    <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                    <li><a href="{{ route('coupun.index') }}"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+                    <li class="active">{{ __('All coupoun') }}</li>
+        
+                </ol>
+            
+            </div>
             @if (auth()->user()->isAbleTo(['create-promocode']))
 
             <div style="float: right">
