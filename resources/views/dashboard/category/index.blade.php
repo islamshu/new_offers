@@ -9,7 +9,6 @@ card card-docs mb-2">
 
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
      
-        <br>
         <div class="card-header">
             <h3 class="card-title">
                 {{ __('Category') }}
