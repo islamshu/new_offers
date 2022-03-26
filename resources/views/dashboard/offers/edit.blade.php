@@ -15,6 +15,18 @@
 @endsection
 @section('content')
     <div class="card card-custom">
+        <div class="card-header">
+          
+               
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li><a href="/{{ get_lang() }}/branch"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+                <li><a href="/{{ get_lang() }}/vendor-offers/{{ $offer->vendor->id }}"><i class="fa fa-dashboard"></i> {{ $offer->vendor->name_en}} Offers</a></li>
+                <li class="active">{{ __('Edit Offer') }}</li>
+    
+            </ol>
+        
+        </div> 
         <div class="card-body p-0">
             <!--begin::Wizard-->
             <div class="wizard wizard-1" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="false">
