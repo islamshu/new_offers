@@ -60,6 +60,11 @@
         <h3 class="card-title">
             {{ __('Create currency') }}
         </h3>
+        <ol class="breadcrumb">
+            <li><a href=""><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
+            <li><a href=""> @lang('site.categories')</a></li>
+            <li class="active">@lang('site.edit')</li>
+        </ol>
         <div class="card-toolbar">
             <div class="example-tools justify-content-center">
                 <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
