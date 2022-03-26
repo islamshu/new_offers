@@ -15,7 +15,7 @@ card card-docs mb-2">
             </h3>
             @if (auth()->user()->isAbleTo(['create-category']))
 
-            <div  style="float: right" >
+            <div  >
                 <a class="btn btn-info"href="{{ route('category.create',app()->getLocale()) }}">{{ __('Create category') }}</a>
             </div>
             @endif
