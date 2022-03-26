@@ -3,6 +3,17 @@
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
     <div class="container">
+        <div class="card-header">
+            <h3 class="card-title">
+                {{ __('Main Info') }}
+            </h3>
+    
+            <ol class="breadcrumb">
+                <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                <li class="active">{{ __('Main Info') }}</li>
+            </ol>
+    
+        </div>
         <!--begin::Profile 2-->
         <div class="d-flex flex-row">
             <!--begin::Aside-->
@@ -65,17 +76,7 @@
             </div>
             <!--end::Aside-->
             <!--begin::Content-->
-            <div class="card-header">
-                <h3 class="card-title">
-                    {{ __('Main Info') }}
-                </h3>
-        
-                <ol class="breadcrumb">
-                    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                    <li class="active">{{ __('Main Info') }}</li>
-                </ol>
-        
-            </div>
+           
             <div class="flex-row-fluid ml-lg-8">
                 
                 <div class="card card-custom gutter-b">
