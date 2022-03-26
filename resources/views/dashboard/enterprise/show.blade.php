@@ -65,18 +65,19 @@
             </div>
             <!--end::Aside-->
             <!--begin::Content-->
+            <div class="card-header">
+                <h3 class="card-title">
+                    {{ __('Main Info') }}
+                </h3>
+        
+                <ol class="breadcrumb">
+                    <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                    <li class="active">{{ __('Main Info') }}</li>
+                </ol>
+        
+            </div>
             <div class="flex-row-fluid ml-lg-8">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        {{ __('Main Info') }}
-                    </h3>
-            
-                    <ol class="breadcrumb">
-                        <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                        <li class="active">{{ __('Main Info') }}</li>
-                    </ol>
-            
-                </div>
+                
                 <div class="card card-custom gutter-b">
                     <!--begin::Header-->
                     <div class="card-header border-0 py-5">
