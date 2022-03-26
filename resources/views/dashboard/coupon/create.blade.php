@@ -6,7 +6,7 @@
           
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                <li><a href="{{ route('coupun.index') }}"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+                <li><a href="{{ route('coupun.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
                 <li class="active">{{ __('create coupoun') }}</li>
     
             </ol>
