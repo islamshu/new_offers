@@ -115,6 +115,8 @@
                     <th>{{ __('price after discount') }}</th>
                     <th>{{ __('discount percentage') }}</th>
                     <th>{{ __('Crated at') }}</th>
+                    <th>{{ __('client name') }}</th>
+                    <th>{{ __('client phone') }}</th>
                     <th>{{ __('client age') }}</th>
                     <th>{{ __('client gender') }}</th>
                     <th>{{ __('branch') }}</th>
@@ -136,6 +138,9 @@
                     <td>{{@$offer->offertype->price_after_discount }}</td>
                     <td>{{@$offer->offertype->discount_value }}</td>
                     <td>{{$item->created_at}}</td>
+                    <td>{{$client->name}}</td>
+                    <td>{{$client->phone}}</td>
+
                     @if($client->birth_date != null)
                     <td>{{ \Carbon\Carbon::parse($client->birth_date)->age}}</td>
                     @else
