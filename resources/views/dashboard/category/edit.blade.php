@@ -61,7 +61,7 @@
             {{ __('Edit Category') }}
         </h3>
         <ol class="breadcrumb">
-            <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
             <li><a href="{{ route('category.create',get_lang()) }}">{{ __('Category') }}</a></li>
             <li class="active">{{ __('edit') }}</li>
         </ol>

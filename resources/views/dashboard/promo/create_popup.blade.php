@@ -7,7 +7,7 @@
           
         
         <ol class="breadcrumb">
-            <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+            <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
             <li><a href="{{ route('promotion.index',get_lang()) }}"><i class="fa fa-dashboard"></i> {{ __('promotion') }}</a></li>
             <li><a href="{{ route('get_elemet_by_type',[get_lang(),'popup', $city_id]) }}"><i class="fa fa-dashboard"></i> {{ __('Popup') }}</a></li>
             
