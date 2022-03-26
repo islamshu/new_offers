@@ -14,8 +14,9 @@
 
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{ asset('media/logos/favicon.ico') }}" />
-    <link href="{{asset('/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link href="{{ asset('/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
     {{-- Fonts --}}
     {{ Metronic::getGoogleFontsInclude() }}
@@ -39,6 +40,33 @@
     {{-- Includable CSS --}}
     @yield('styles')
     <style>
+        ol.breadcrumb {
+            padding: 10px 16px;
+            list-style: none;
+            background-color: #eee;
+        }
+
+        ol.breadcrumb li {
+            display: inline;
+            font-size: 18px;
+        }
+
+        ol.breadcrumb li+li:before {
+            padding: 8px;
+            color: black;
+            content: "/\00a0";
+        }
+
+        ol.breadcrumb li a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+
+        ol.breadcrumb li a:hover {
+            color: #01447e;
+            text-decoration: underline;
+        }
+
         .handle {
             min-width: 18px;
             /* background: #747474; */
@@ -47,7 +75,7 @@
             cursor: move;
             margin-right: 10px;
         }
-    
+
     </style>
 </head>
 
@@ -75,19 +103,18 @@
 
     {{-- Includable JS --}}
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
- 
+
     <script src="{{ asset('/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
     <script>
-    
         $(function() {
             $("#kt_datatable").DataTable({
                 "pagingType": "full_numbers",
                 "scrollX": true
-    
-                });
-         });
+
+            });
+        });
     </script>
     @yield('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
