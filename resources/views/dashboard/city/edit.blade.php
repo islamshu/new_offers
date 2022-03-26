@@ -10,7 +10,7 @@ card card-docs mb-2">
             </h3>
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                <li><a href="{{ route('category.city',get_lang()) }}">{{ __('City') }}</a></li>
+                <li><a href="{{ route('city.index',get_lang()) }}">{{ __('City') }}</a></li>
                 <li class="active">{{ __('Edit') }}</li>
             </ol>
            
