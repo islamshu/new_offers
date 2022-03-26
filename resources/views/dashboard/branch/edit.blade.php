@@ -5,15 +5,14 @@
 
     <div class="card-header">
           
-               
         <ol class="breadcrumb">
             <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
             <li><a href="/{{ get_lang() }}/branch"><i class="fa fa-dashboard"></i> {{ __('Vendors') }}</a></li>
+            <li><a href="/{{ get_lang() }}/vendor_branches/{{ $vendor->id }}"><i class="fa fa-dashboard"></i> {{ $vendor->name_en}} Branches</a></li>
 
             <li class="active">{{ __('Edit Branche') }}</li>
 
         </ol>
-    
     </div> 
     <form class="form" method="post" id='create_form' enctype="multipart/form-data">
         @csrf
