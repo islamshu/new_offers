@@ -1,5 +1,16 @@
 @extends('layout.default')
 @section('content')
+<div class="card-header">
+    <h3 class="card-title">
+        {{ __('Main Info') }}
+    </h3>
+
+    <ol class="breadcrumb">
+        <li><a href="/{{ get_lang() }}"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+        <li class="active">{{ __('Main Info') }}</li>
+    </ol>
+
+</div>
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Promotion') }}</h2>
