@@ -7,7 +7,7 @@
           
         <ol class="breadcrumb">
             <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-            <li > <a href="/{{ get_lang() }}/index_sub/trial"></a>{{ __('All Trial Packages') }}</li>
+            <li > <a href="/{{ get_lang() }}/index_sub/trial">{{ __('All Trial Packages') }}</a></li>
             <li class="active"> {{ __('create Packages') }}</li>
 
         </ol>
