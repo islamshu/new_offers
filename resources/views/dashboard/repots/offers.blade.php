@@ -99,6 +99,20 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    Category
+                                </label>
+                            </div>
+                            <select name="category_id" class="form-control" >
+                                <option value=""> _ </option>
+                                @foreach (App\Models\Category::where('status',1)->get() as $item)
+                                <option value="{{ $item->id }}" @if($request->category_id == $item->id) selected @endif> {{ $item->name_en }} </option>
+
+                                @endforeach
+                            </select>
+                        </div>
                      
                      
                
@@ -140,7 +154,6 @@
             </thead>
             <tbody>
                 @foreach ($offers as $item)
-<td>{{ $item->id }}</td>
                    @if(get_lang() == 'ar')
                     <td>{{ @$item->vendor->name_ar }}</td>
                     @else
