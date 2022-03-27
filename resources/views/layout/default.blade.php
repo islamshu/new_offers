@@ -111,7 +111,7 @@
         $(function() {
             $("#kt_datatable").DataTable({
                 "pagingType": "full_numbers",
-                "scrollX": true
+                // "scrollX": true
 
             });
         });
