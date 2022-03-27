@@ -168,7 +168,7 @@ class RepotController extends Controller
     }
     public function offers_reports(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         $query = Offer::query();
 
