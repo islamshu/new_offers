@@ -107,7 +107,7 @@
                             </div>
                             <select name="category_id" class="form-control" >
                                 <option value=""> _ </option>
-                                @foreach (App\Models\Category::where('status',1)->get() as $item)
+                                @foreach (App\Models\Category::where('is_show',1)->get() as $item)
                                 <option value="{{ $item->id }}" @if($request->category_id == $item->id) selected @endif> {{ $item->name_en }} </option>
 
                                 @endforeach
