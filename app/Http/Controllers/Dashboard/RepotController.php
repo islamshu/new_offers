@@ -170,7 +170,7 @@ class RepotController extends Controller
     {
 
         $query = Offer::query();
-dd(Carbon::now()->addDays($request->number_date)->format('M d Y'));
+dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'));
         $query->when($request->created_form, function ($q) use ($request) {
             if ($request->created_to == null && $request->created_form != null) {
                 return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
