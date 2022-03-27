@@ -37,13 +37,14 @@
         </div>
         @endif
         <div class="card-body">
-            <div class="row">
+            <div class="container">
 
-                <div class="form-group col-md-6">
-
-                    <div class="form-group">
-                        
-                        <div class="input-group mb-3">
+                <div class="row">
+    
+    
+                  
+                            
+                            <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Email
@@ -52,7 +53,7 @@
                           <input type="email" value="{{ $request->email }}" placeholder="Email" class="form-control" name="email">
                         </div>
                        
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Phone
@@ -60,7 +61,7 @@
                             </div>
                           <input type="text" value="{{ $request->phone }}" placeholder="phone" class="form-control" name="phone">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Registar From
@@ -68,7 +69,7 @@
                             </div>
                           <input type="date" value="{{ $request->register_form }}" placeholder="Registar From" class="form-control" name="register_form">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Registar To
@@ -76,7 +77,7 @@
                             </div>
                           <input type="date" value="{{ $request->register_to}}" placeholder="Registar To" class="form-control" name="register_to">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Subscribe From
@@ -84,7 +85,7 @@
                             </div>
                           <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Subscribe To
@@ -93,7 +94,7 @@
                           <input type="date" value="{{ $request->sub_to}}" placeholder="Subscribe To" class="form-control" name="sub_to">
                         </div>
                      
-                        <div class="input-group mb-3">
+                        <div class="input-group col-md-5">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Subscripe Type
@@ -111,7 +112,6 @@
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
                     </div>
-                </div>
               
             </div>
 
