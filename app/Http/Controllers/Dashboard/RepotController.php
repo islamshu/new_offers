@@ -113,16 +113,10 @@ class RepotController extends Controller
                 return $q->whereBetween('register_date', [$request->register_form, $request->register_to,]);
             }
         });
-        $query->when($request->sub_form, function ($q) use ($request) {
-            if ($request->sub_to == null && $request->sub_form != null) {
-                return $q->whereBetween('start_date', [$request->sub_form, Carbon::now()]);
-            } elseif ($request->sub_to != null && $request->sub_form == null) {
-                return $q->whereBetween('start_date', [Carbon::now(), $request->sub_to,]);
-            } elseif ($request->sub_to == $request->sub_form) {
-                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to]);
-            } else {
-                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to,]);
-            }
+        $query->when($request->last_from, function ($q) use ($request) {
+            $q->whereHas('subs', function ($qq) use ($request) {
+                $qq->last()->where('created_at', $request->last_from);
+              });
         });
 
 
