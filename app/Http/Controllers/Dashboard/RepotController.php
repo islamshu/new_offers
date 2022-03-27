@@ -168,7 +168,6 @@ class RepotController extends Controller
     }
     public function offers_reports(Request $request)
     {
-        dd($request->all());
 
         $query = Offer::query();
 
@@ -184,7 +183,8 @@ class RepotController extends Controller
             }
         });
         $query->when($request->offer_status, function ($q) use ($request) {
-            return $q->where('status',(int)$request->offer_status);
+            dd('d');
+            return $q->where('status',$request->offer_status);
         });
         
         // $query->when($request->vendor_status, function ($q) use ($request) {
