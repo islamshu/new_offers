@@ -149,7 +149,7 @@
                         $city = @App\Models\City::find($item->city_id);
                     @endphp
                     <td>
-                      {{ @$city->city_name }}
+                      {{ @$city->city_name ? @$city->city_name : - }}
                 </td>
                     <td>{{ @$item->register_date }}</td>
 
