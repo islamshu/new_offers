@@ -39,11 +39,11 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
 
-                    <div class="form-group">
+              
                         
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-6">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     From
@@ -52,7 +52,7 @@
                           <input type="date" value="{{ $request->from }}" placeholder="from" class="form-control" name="from">
                         </div>
                        
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-6">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     To
