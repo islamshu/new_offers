@@ -183,14 +183,14 @@ class RepotController extends Controller
             }
         });
         $query->when($request->offer_status, function ($q) use ($request) {
-            return $q->where('status',$request->offer_status);
+            return $q->where('status',(int)$request->offer_status);
         });
         $query->when($request->vendor_status, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
                 return $qq->where('status', $request->vendor_status);
               });
         });
-        $query->when($request->end_time, function ($q) use ($request) {
+        $query->when($request->number_date, function ($q) use ($request) {
             return $q->where('end_time', Carbon::now()->addDays($request->number_date));
         });
         $query->when($request->city_id, function ($q) use ($request) {
@@ -209,7 +209,15 @@ class RepotController extends Controller
         });
 
         $offers = $query->get();
+        if($request->created_to == null && $request->created_to == null && $request->offer_status == null && $request->vendor_status == null &&
+        $request->number_date == null && $request->city_id == null && $request->category_id == null  )
+    {
+        $offers = Offer::whereDate('created_at', Carbon::today())->get();
         return view('dashboard.repots.offers', compact('offers', 'request'));
+
+    }else{
+        return view('dashboard.repots.offers', compact('offers', 'request'));
+    }
 
     }
 }

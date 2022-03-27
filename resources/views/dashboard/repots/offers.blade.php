@@ -47,35 +47,43 @@
                             <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Email
+                                    Created From
                                 </label>
                             </div>
-                          <input type="email" value="{{ $request->email }}" placeholder="Email" class="form-control" name="email">
+                          <input type="date" value="{{ $request->created_form }}" placeholder="Created From" class="form-control" name="created_form">
                         </div>
                        
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Phone
+                                    Created To
                                 </label>
                             </div>
-                          <input type="text" value="{{ $request->phone }}" placeholder="phone" class="form-control" name="phone">
+                          <input type="text" value="{{ $request->created_to }}" placeholder=" Created To" class="form-control" name="created_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Registar From
+                                    Brand status
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->register_form }}" placeholder="Registar From" class="form-control" name="register_form">
+                            <select name="vendor_status" class="form-control" >
+                                <option value=""> _ </option>
+                                <option value="active"> active </option>
+                                <option value="deactive"> deactive </option>
+                            </select>
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Registar To
+                                    Offer status
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->register_to}}" placeholder="Registar To" class="form-control" name="register_to">
+                            <select name="vendor_status" class="form-control" >
+                                <option value=""> _ </option>
+                                <option value="1"> active </option>
+                                <option value="0"> deactive </option>
+                            </select>
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
