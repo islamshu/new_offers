@@ -168,7 +168,7 @@ class RepotController extends Controller
     }
     public function offers_reports(Request $request)
     {
-        dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'). '00:00:00');
+        dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00');
 
         $query = Offer::query();
         $query->when($request->created_form, function ($q) use ($request) {
