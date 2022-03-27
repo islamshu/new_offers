@@ -143,7 +143,7 @@
                     @endif
                     <td>{{ @$item->created_at }}</td>
                     <td>{{ @$item->end_time }}</td>
-                    <td>{{ $item->status == 0  }}</td>
+                    <td>{{ $item->status  }}</td>
                     <td>{{ @$item->offertype->price}}</td>
                     <td>{{ @$item->offertype->price_after_discount}}</td>
                     <td>{{ @$item->offertype->discount_value}}</td>
