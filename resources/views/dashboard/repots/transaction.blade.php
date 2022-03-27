@@ -87,9 +87,10 @@
 
                             </select>
                         </div>
-                       
+                        
+                        <div class="input-group col-md-3">
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-
+                        </div>
               
             </div>
             </div>
