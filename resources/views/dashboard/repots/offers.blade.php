@@ -113,7 +113,16 @@
                                 @endforeach
                             </select>
                         </div>
-                     
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    Expired after
+                                </label>
+                                <input type="number" value="{{ $request->number_date }}" placeholder="Expired after" class="form-control" name="number_date">
+
+                            </div>
+                            
+                        </div>
                      
                
                        
