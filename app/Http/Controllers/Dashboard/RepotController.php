@@ -141,16 +141,8 @@ class RepotController extends Controller
 
 
         $clients = $query->get();
-        if (
-            $request->sub_form == null && $request->sub_to == null && $request->register_form == null &&
-            $request->register_to == null && $request->sub_type == null && $request->emaill == null && $request->phone == null
-        ) {
-            $clients = Clinet::whereDate('created_at', Carbon::today())->get();
+        return view('dashboard.repots.clients_admin', compact('clients', 'request'));
 
-            return view('dashboard.repots.clients_admin', compact('clients', 'request'));
-        } else {
-            return view('dashboard.repots.clients_admin', compact('clients', 'request'));
-        }
     }
     public function get_branch_ajax(Request $request, $locale)
     {
