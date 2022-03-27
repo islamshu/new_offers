@@ -140,7 +140,7 @@
             </thead>
             <tbody>
                 @foreach ($offers as $item)
-
+<td>{{ $item->id }}</td>
                    @if(get_lang() == 'ar')
                     <td>{{ @$item->vendor->name_ar }}</td>
                     @else
