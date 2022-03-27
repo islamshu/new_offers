@@ -155,7 +155,10 @@
 
                     <td>{{ @$item->type_of_subscribe }}</td>
                     <td>{{@$item->subs->last()->created_at }}</td>
-                  
+                    <td>{{@$item->subs->last()->created_at }}</td>
+                    <td>{{@$item->start_date }}</td>
+                    <td>{{@$item->expire_date }}</td>
+
 
                    
                     </tr>
