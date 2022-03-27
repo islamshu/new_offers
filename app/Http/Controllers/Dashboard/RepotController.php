@@ -120,23 +120,38 @@ class RepotController extends Controller
                   });
             }elseif ($request->last_to != null && $request->last_from == null) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-
                 return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
             });
             } elseif ($request->last_to == $request->last_from) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-
                 return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
                 });
             } else {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-
                 return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
                 });
-            }
+            }    
+        });
 
 
-            
+        $query->when($request->transaction_from, function ($q) use ($request) {
+            if ($request->transaction_to == null && $request->transaction_from != null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, Carbon::now()]);
+                  });
+            }elseif ($request->transaction_to != null && $request->transaction_from == null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                return $qq->whereBetween('created_at', [Carbon::now(), $request->transaction_to]);
+            });
+            } elseif ($request->transaction_to == $request->transaction_from) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            } else {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            }    
         });
 
 
