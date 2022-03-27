@@ -170,7 +170,6 @@ class RepotController extends Controller
     {
 
         $query = Offer::query();
-dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'));
         $query->when($request->created_form, function ($q) use ($request) {
             if ($request->created_to == null && $request->created_form != null) {
                 return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
@@ -196,7 +195,7 @@ dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'));
               });
         });
         $query->when($request->number_date, function ($q) use ($request) {
-            return $q->where('end_time', Carbon::now()->addDays($request->number_date)->format('M d Y'));
+            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). '00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). '23:59:59' ]);
         });
         $query->when($request->city_id, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
