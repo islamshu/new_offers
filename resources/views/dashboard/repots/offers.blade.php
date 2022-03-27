@@ -85,37 +85,8 @@
                                 <option value="0" @if($request->offer_status == '0') selected @endif> deactive </option>
                             </select>
                         </div>
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscribe From
-                                </label>
-                            </div>
-                          <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
-                        </div>
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscribe To
-                                </label>
-                            </div>
-                          <input type="date" value="{{ $request->sub_to}}" placeholder="Subscribe To" class="form-control" name="sub_to">
-                        </div>
                      
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscripe Type
-                                </label>
-                            </div>
-                            <select name="sub_type" class="form-control" >
-                                <option value="">Choose Type</option>
-                                <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
-                                <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>
-                                <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
-
-                            </select>
-                        </div>
+               
                        
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
