@@ -59,7 +59,7 @@
                                     Created To
                                 </label>
                             </div>
-                          <input type="text" value="{{ $request->created_to }}" placeholder=" Created To" class="form-control" name="created_to">
+                          <input type="date" value="{{ $request->created_to }}" placeholder=" Created To" class="form-control" name="created_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
