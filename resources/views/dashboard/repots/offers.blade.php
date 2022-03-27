@@ -85,6 +85,21 @@
                                 <option value="deactive" @if($request->offer_status == 'deactive') selected @endif> deactive </option>
                             </select>
                         </div>
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    City
+                                </label>
+                            </div>
+                            <select name="city_id" class="form-control" >
+                                <option value=""> _ </option>
+                                @foreach (App\Models\City::where('status',1)->get() as $item)
+                                <option value="{{ $item->id }}" @if($request->city_id == $item->id) selected @endif> {{ $item->city_name }} </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                     
                      
                
                        
