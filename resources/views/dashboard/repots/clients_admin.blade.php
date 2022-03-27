@@ -66,7 +66,7 @@
                                     last subscribe from 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->last_from }}" placeholder="Registar From" class="form-control" name="register_form">
+                          <input type="date" value="{{ $request->last_from }}" placeholder="last subscribe from" class="form-control" name="last_from">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -74,9 +74,24 @@
                                     last subscribe to 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->last_to}}" placeholder="Registar To" class="form-control" name="register_to">
+                          <input type="date" value="{{ $request->last_to}}" placeholder="last subscribe to " class="form-control" name="last_to">
                         </div>
-                     
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    transaction from 
+                                </label>
+                            </div>
+                          <input type="date" value="{{ $request->transaction_from }}" placeholder="Transaction from " class="form-control" name="transaction_from">
+                        </div>
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    transaction to 
+                                </label>
+                            </div>
+                          <input type="date" value="{{ $request->transaction_to}}" placeholder="Transaction To" class="form-control" name="transaction_to">
+                        </div>
                      
                         <div class="input-group col-md-5 mb-3">
 
