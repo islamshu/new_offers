@@ -36,7 +36,6 @@
                     </button>
         </div>
         @endif
-        <div class="card-body">
             <div class="container">
 
             <div class="row">
@@ -97,7 +96,6 @@
             </div>
             </div>
 
-        </div>
         
     </form>
 </div>
