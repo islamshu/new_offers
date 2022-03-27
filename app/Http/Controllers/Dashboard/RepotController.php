@@ -19,11 +19,11 @@ class RepotController extends Controller
             if ($request->to == null && $request->from != null) {
                 return $q->whereBetween('created_at', [$request->from, Carbon::now()]);
             } elseif ($request->to != null && $request->from == null) {
-                return $q->whereBetween('created_at', [Carbon::now(), $request->to,]);
+                return $q->whereBetween('created_at', [Carbon::now(), $request->to]);
             } elseif ($request->to == $request->from) {
                 return $q->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']);
             } else {
-                return $q->whereBetween('created_at', [$request->from, $request->to,]);
+                return $q->whereBetween('created_at', [$request->from, $request->to]);
             }
         });
 
@@ -65,22 +65,22 @@ class RepotController extends Controller
             if ($request->register_to == null && $request->register_form != null) {
                 return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
             } elseif ($request->register_to != null && $request->register_form == null) {
-                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to,]);
+                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to]);
             } elseif ($request->register_to == $request->register_form) {
                 return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
             } else {
-                return $q->whereBetween('register_date', [$request->register_form, $request->register_to,]);
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
             }
         });
         $query->when($request->sub_form, function ($q) use ($request) {
             if ($request->sub_to == null && $request->sub_form != null) {
                 return $q->whereBetween('start_date', [$request->sub_form, Carbon::now()]);
             } elseif ($request->sub_to != null && $request->sub_form == null) {
-                return $q->whereBetween('start_date', [Carbon::now(), $request->sub_to,]);
+                return $q->whereBetween('start_date', [Carbon::now(), $request->sub_to]);
             } elseif ($request->sub_to == $request->sub_form) {
                 return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to]);
             } else {
-                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to,]);
+                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to]);
             }
         });
 
@@ -106,17 +106,37 @@ class RepotController extends Controller
             if ($request->register_to == null && $request->register_form != null) {
                 return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
             } elseif ($request->register_to != null && $request->register_form == null) {
-                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to,]);
+                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to]);
             } elseif ($request->register_to == $request->register_form) {
                 return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
             } else {
-                return $q->whereBetween('register_date', [$request->register_form, $request->register_to,]);
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
             }
         });
         $query->when($request->last_from, function ($q) use ($request) {
-            $q->whereHas('subs_last', function ($qq) use ($request) {
-                $qq->where('created_at', $request->last_from);
-              });
+            if ($request->last_to == null && $request->last_from != null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, Carbon::now()]);
+                  });
+            }elseif ($request->last_to != null && $request->last_from == null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+
+                return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
+            });
+            } elseif ($request->last_to == $request->last_from) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+
+                return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            } else {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+
+                return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            }
+
+
+            
         });
 
 
