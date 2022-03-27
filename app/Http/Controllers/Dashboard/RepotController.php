@@ -114,8 +114,8 @@ class RepotController extends Controller
             }
         });
         $query->when($request->last_from, function ($q) use ($request) {
-            $q->whereHas('subs', function ($qq) use ($request) {
-                $qq->last()->where('created_at', $request->last_from);
+            $q->whereHas('subs_last', function ($qq) use ($request) {
+                $qq->where('created_at', $request->last_from);
               });
         });
 
