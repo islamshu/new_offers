@@ -208,7 +208,7 @@ class RepotController extends Controller
               });
         });
 
-        $offer = $query->get();
+        $offers = $query->get();
         return view('dashboard.repots.offers', compact('offers', 'request'));
 
     }
