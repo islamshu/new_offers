@@ -168,7 +168,6 @@ class RepotController extends Controller
     }
     public function offers_reports(Request $request)
     {
-        dd(Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00');
 
         $query = Offer::query();
         $query->when($request->created_form, function ($q) use ($request) {
@@ -196,7 +195,7 @@ class RepotController extends Controller
               });
         });
         $query->when($request->number_date, function ($q) use ($request) {
-            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). '00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). '23:59:59' ]);
+            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
         });
         $query->when($request->city_id, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
