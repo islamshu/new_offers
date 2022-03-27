@@ -38,7 +38,7 @@ class Clinet extends Authenticatable
     }
     public function trans()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class,'client_id');
     }
 
     
