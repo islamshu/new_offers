@@ -81,8 +81,8 @@
                             </div>
                             <select name="offer_status" class="form-control" >
                                 <option value=""> _ </option>
-                                <option value="1"@if($request->offer_status == 1) selected @endif> active </option>
-                                <option value="0" @if($request->offer_status == 0) selected @endif> deactive </option>
+                                <option value="1"@if($request->offer_status == '1') selected @endif> active </option>
+                                <option value="0" @if($request->offer_status == '0') selected @endif> deactive </option>
                             </select>
                         </div>
                         <div class="input-group col-md-5 mb-3">
