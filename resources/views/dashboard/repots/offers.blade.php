@@ -107,7 +107,6 @@
             >
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
-                    <th>id</th>
                     <th>{{ __('Brand name') }}</th>
                     <th>{{ __('Brand created at') }}</th>
                     <th>{{ __('Brand status') }}</th>
@@ -127,7 +126,6 @@
             <tbody>
                 @foreach ($offers as $item)
 
-                <td>{{ $item->id }}</td>
                    @if(get_lang() == 'ar')
                     <td>{{ @$item->vendor->name_ar }}</td>
                     @else
@@ -145,7 +143,7 @@
                     @endif
                     <td>{{ @$item->created_at }}</td>
                     <td>{{ @$item->end_time }}</td>
-                    <td>{{ $item->status  }}</td>
+                    <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
                     <td>{{ @$item->offertype->price}}</td>
                     <td>{{ @$item->offertype->price_after_discount}}</td>
                     <td>{{ @$item->offertype->discount_value}}</td>
