@@ -184,14 +184,14 @@ class RepotController extends Controller
             }
         });
         $query->when($request->offer_status, function ($q) use ($request) {
-            return $q->where('status',$request->offer_status);
+            return $q->where('status',(int)$request->offer_status);
         });
-
-        $query->when($request->vendor_status, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                return $qq->where('status', $request->vendor_status);
-              });
-        });
+        
+        // $query->when($request->vendor_status, function ($q) use ($request) {
+        //     $q->whereHas('vendor', function ($qq) use ($request) {
+        //         return $qq->where('status', $request->vendor_status);
+        //       });
+        // });
         $query->when($request->number_date, function ($q) use ($request) {
             return $q->where('end_time', Carbon::now()->addDays($request->number_date));
         });
