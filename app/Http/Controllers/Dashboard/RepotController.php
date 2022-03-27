@@ -183,8 +183,11 @@ class RepotController extends Controller
             }
         });
         $query->when($request->offer_status, function ($q) use ($request) {
-            dd('d');
-            return $q->where('status',$request->offer_status);
+          if($request->offer_status == 'active'){
+            return $q->where('status',1);
+          }elseif($request->offer_status == 'deactive'){
+            return $q->where('status',0);
+          }
         });
         
         // $query->when($request->vendor_status, function ($q) use ($request) {
