@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Clinet;
+use App\Models\Offer;
 use App\Models\Transaction;
 use App\Models\Vendor;
 use Carbon\Carbon;
@@ -164,5 +165,51 @@ class RepotController extends Controller
 
         $offers = Branch::where('vendor_id', $request->venodr_id)->get();
         return response()->json($offers);
+    }
+    public function offers_reports(Request $request)
+    {
+
+        $query = Offer::query();
+
+        $query->when($request->created_form, function ($q) use ($request) {
+            if ($request->created_to == null && $request->created_form != null) {
+                return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
+            } elseif ($request->created_to != null && $request->created_form == null) {
+                return $q->whereBetween('created_at', [Carbon::now(), $request->created_form]);
+            } elseif ($request->created_to == $request->created_form) {
+                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+            } else {
+                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+            }
+        });
+        $query->when($request->offer_status, function ($q) use ($request) {
+            return $q->where('status',$request->offer_status);
+        });
+        $query->when($request->vendor_status, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                return $qq->where('status', $request->vendor_status);
+              });
+        });
+        $query->when($request->end_time, function ($q) use ($request) {
+            return $q->where('end_time', Carbon::now()->addDays($request->number_date));
+        });
+        $query->when($request->city_id, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                $qq->whereHas('cities', function ($qqq) use ($request) {
+                return    $qqq->where('city_id',$request->city_id);
+                });    
+              });
+        });
+        $query->when($request->category_id, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                $qq->whereHas('categorys', function ($qqq) use ($request) {
+                return    $qqq->where('category_id',$request->category_id);
+                });    
+              });
+        });
+
+        $offer = $query->get();
+        return view('dashboard.repots.offers', compact('offers', 'request'));
+
     }
 }

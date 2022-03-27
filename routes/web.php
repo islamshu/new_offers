@@ -131,6 +131,7 @@ Route::group([
         Route::get('/transaction_reports', 'Dashboard\RepotController@transaction')->name('transaction_sales');
         Route::get('/clients_reports', 'Dashboard\RepotController@clients')->name('clients_sales');
         Route::get('/clients_admin_reports', 'Dashboard\RepotController@clients_admin')->name('clients_sales_admin');
+        Route::get('/offer_reports', 'Dashboard\RepotController@offers_reports')->name('offers_reports');
 
         Route::get('/all_user_not_sub', 'Dashboard\HomeController@all_user_not_sub')->name('all_user_not_sub');
 
