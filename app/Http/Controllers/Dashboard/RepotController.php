@@ -90,10 +90,12 @@ class RepotController extends Controller
             $request->sub_form == null && $request->sub_to == null && $request->register_form == null &&
             $request->register_to == null && $request->sub_type == null && $request->emaill == null && $request->phone == null
         ) {
+            dd('k');
             $clients = Clinet::query()->whereDate('created_at', Carbon::today())->get();
 
             return view('dashboard.repots.clients', compact('clients', 'request'));
         } else {
+            dd('uu');
             return view('dashboard.repots.clients', compact('clients', 'request'));
         }
     }
