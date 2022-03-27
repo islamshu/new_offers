@@ -64,7 +64,7 @@
                         <div class="input-group col-md-6">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                   Vendor
+                                   Brand
                                 </label>
                             </div>
                             <select name="vendor_id" id="vendor_id" class="form-control selectpicker" data-live-search="true">
