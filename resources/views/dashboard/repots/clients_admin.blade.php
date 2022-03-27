@@ -162,7 +162,7 @@
                     <td>{{@$item->trans->count() }}</td>
                     <td>0</td>
                     <td>{{ @$item->subs->last()->payment_type }}</td>
-                    <td>{{ @$item->subs->last()->mobile_type }}</td>
+                    <td>{{ @$item->mobile_type }}</td>
 
                    
                     </tr>
