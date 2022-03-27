@@ -37,6 +37,8 @@
         </div>
         @endif
         <div class="card-body">
+            <div class="container">
+
             <div class="row">
 
                 <div class="form-group ">
@@ -92,6 +94,7 @@
 
                 </div>
               
+            </div>
             </div>
 
         </div>
