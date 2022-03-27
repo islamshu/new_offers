@@ -38,7 +38,15 @@ class RepotController extends Controller
         $trans = $query->get();
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
         $branches = Branch::where('vendor_id',auth()->user()->vendor_id)->get();
-        return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
+        if($request->from == null && $request->to == null &&$request->vendor_id == null && $request->branch_id == null ){
+            $trans = Transaction::query()->where('enterprise_id',auth()->user()->ent_id)->whereDate('created_at', Carbon::today())->get();
+
+            return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
+
+        }else{
+            return view('dashboard.repots.transaction',compact('request','trans','branches','vendors'));
+
+        }
     }
     public function clients(Request $request)
     {
