@@ -102,16 +102,6 @@ class RepotController extends Controller
 
         $query = Clinet::query();
 
-        $query->when($request->email, function ($q) use ($request) {
-            return $q->where('email', 'like', '%' . $request->email . '%');
-        });
-        $query->when($request->phone, function ($q) use ($request) {
-            return $q->where('phone', $request->phone);
-        });
-        $query->when($request->sub_type, function ($q) use ($request) {
-            return $q->where('type_of_subscribe', 'like', '%' . $request->sub_type . '%');
-        });
-        
         $query->when($request->register_form, function ($q) use ($request) {
             if ($request->register_to == null && $request->register_form != null) {
                 return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
