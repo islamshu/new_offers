@@ -36,6 +36,10 @@ class Clinet extends Authenticatable
     {
         return $this->hasMany(Subscriptions_User::class);
     }
+    public function trans()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 
     
 }

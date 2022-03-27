@@ -158,7 +158,9 @@
                     <td>{{@$item->subs->last()->created_at }}</td>
                     <td>{{@$item->start_date }}</td>
                     <td>{{@$item->expire_date }}</td>
-
+                    <td>-</td>
+                    <td>{{@$item->subs->count() }}</td>
+                    <td>{{@$item->trans->count() }}</td>
 
                    
                     </tr>
