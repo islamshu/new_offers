@@ -94,7 +94,6 @@ class RepotController extends Controller
 
             return view('dashboard.repots.clients', compact('clients', 'request'));
         } else {
-            dd('uu');
             return view('dashboard.repots.clients', compact('clients', 'request'));
         }
     }
