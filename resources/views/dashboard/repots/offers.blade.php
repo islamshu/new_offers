@@ -69,8 +69,8 @@
                             </div>
                             <select name="vendor_status" class="form-control" >
                                 <option value=""> _ </option>
-                                <option value="active"> active </option>
-                                <option value="deactive"> deactive </option>
+                                <option value="active" @if($request->vendor_status == 'active') selected @endif> active </option>
+                                <option value="deactive" @if($request->vendor_status == 'deactive') selected @endif> deactive </option>
                             </select>
                         </div>
                         <div class="input-group col-md-5 mb-3">
@@ -79,10 +79,10 @@
                                     Offer status
                                 </label>
                             </div>
-                            <select name="vendor_status" class="form-control" >
+                            <select name="offer_status" class="form-control" >
                                 <option value=""> _ </option>
-                                <option value="1"> active </option>
-                                <option value="0"> deactive </option>
+                                <option value="1"@if($request->offer_status == 1) selected @endif> active </option>
+                                <option value="0" @if($request->offer_status == 0) selected @endif> deactive </option>
                             </select>
                         </div>
                         <div class="input-group col-md-5 mb-3">
