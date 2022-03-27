@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form method="get" action="{{route('clients_sales',['locale'=>app()->getLocale()])}}">
+    <form method="get" action="{{route('clients_sales_admin',['locale'=>app()->getLocale()])}}">
         
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -43,24 +43,7 @@
     
     
                   
-                            
-                            <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Email
-                                </label>
-                            </div>
-                          <input type="email" value="{{ $request->email }}" placeholder="Email" class="form-control" name="email">
-                        </div>
-                       
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Phone
-                                </label>
-                            </div>
-                          <input type="text" value="{{ $request->phone }}" placeholder="phone" class="form-control" name="phone">
-                        </div>
+                         
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
@@ -80,34 +63,21 @@
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscribe From
+                                    last subscribe from 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
+                          <input type="date" value="{{ $request->last_from }}" placeholder="Registar From" class="form-control" name="register_form">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscribe To
+                                    last subscribe to 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->sub_to}}" placeholder="Subscribe To" class="form-control" name="sub_to">
+                          <input type="date" value="{{ $request->last_to}}" placeholder="Registar To" class="form-control" name="register_to">
                         </div>
                      
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscripe Type
-                                </label>
-                            </div>
-                            <select name="sub_type" class="form-control" >
-                                <option value="">Choose Type</option>
-                                <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
-                                <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>
-                                <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
-
-                            </select>
-                        </div>
+                     
                        
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
