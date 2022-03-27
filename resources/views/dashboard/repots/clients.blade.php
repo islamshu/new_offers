@@ -129,18 +129,19 @@
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
 
+                    <th>{{ __('Whatsapp') }}</th>
+                    <th>{{ __('Status') }}</th>
+                    <th>{{ __('name') }}</th>
+                    <th>{{ __('nationality') }}</th>
+                    <th>{{ __('gender') }}</th>
                     <th>{{ __('city') }}</th>
-                    <th>{{ __('register date') }}</th>
-                    <th>{{ __('subscribe status') }}</th>
-                    <th>{{ __('last subscribe') }}</th>
-                    <th>{{ __('first date of last subscribe') }}</th>
-                    <th>{{ __('last date of last subscribe') }}</th>
-                    <th>{{ __('Subscription event') }}</th>
-                    <th>{{ __('subscribe count') }}</th>
-                    <th>{{ __('Transaction count') }}</th>
-                    <th>{{ __('saving') }}</th>
-                    <th>{{ __('Payment method') }}</th>
-                    <th>{{ __('mobile type') }}</th>
+                    <th>{{ __('mobile') }}</th>
+                    <th>{{ __('email') }}</th>
+                    <th>{{ __('register time') }}</th>
+                    <th>{{ __('Subscripe time') }}</th>
+                    <th>{{ __('Subscripe type') }}</th>
+                    <th>{{ __('Transaction number') }}</th>
+                    <th>{{ __('last transaction') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -149,13 +150,22 @@
                         $city = @App\Models\City::find($item->city_id);
                     @endphp
                     <td>
-                      {{ $city->city_name }}
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone={{ $item->phone }}">Send
+                    </a>
                 </td>
-                    <td>{{ @$item->register_date }}</td>
+                    <td>{{ @$item->status }}</td>
 
-                    <td>{{ @$item->type_of_subscribe }}</td>
-                    <td>{{@$item->subs->last()->created_at }}</td>
-                  
+                    <td>{{ @$item->name }}</td>
+                    <td>{{@$item->nationality }}</td>
+                    <td>{{$item->gender == 0 ?'Female' : 'Male' }}</td>
+                    <td>{{@$city->city_name}}</td>
+                    <td>{{@$item->phone}}</td>
+                    <td>{{@$item->email}}</td>
+                    <td>{{@$item->register_date}}</td>
+                    <td>{{@$item->start_date}}</td>
+                    <td>{{@$item->expire_date}}</td>
+                    <td>{{@$item->purchases_no}}</td>
+                    <td>{{$item->last_transaction }}</td>
 
                    
                     </tr>
