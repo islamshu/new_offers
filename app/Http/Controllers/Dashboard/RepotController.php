@@ -97,6 +97,56 @@ class RepotController extends Controller
             return view('dashboard.repots.clients', compact('clients', 'request'));
         }
     }
+    public function clients_admin(Request $request)
+    {
+
+        $query = Clinet::query();
+
+        $query->when($request->email, function ($q) use ($request) {
+            return $q->where('email', 'like', '%' . $request->email . '%');
+        });
+        $query->when($request->phone, function ($q) use ($request) {
+            return $q->where('phone', $request->phone);
+        });
+        $query->when($request->sub_type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe', 'like', '%' . $request->sub_type . '%');
+        });
+        $query->when($request->register_form, function ($q) use ($request) {
+            if ($request->register_to == null && $request->register_form != null) {
+                return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
+            } elseif ($request->register_to != null && $request->register_form == null) {
+                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to,]);
+            } elseif ($request->register_to == $request->register_form) {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+            } else {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to,]);
+            }
+        });
+        $query->when($request->sub_form, function ($q) use ($request) {
+            if ($request->sub_to == null && $request->sub_form != null) {
+                return $q->whereBetween('start_date', [$request->sub_form, Carbon::now()]);
+            } elseif ($request->sub_to != null && $request->sub_form == null) {
+                return $q->whereBetween('start_date', [Carbon::now(), $request->sub_to,]);
+            } elseif ($request->sub_to == $request->sub_form) {
+                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to]);
+            } else {
+                return $q->whereBetween('start_date', [$request->sub_form, $request->sub_to,]);
+            }
+        });
+
+
+        $clients = $query->get();
+        if (
+            $request->sub_form == null && $request->sub_to == null && $request->register_form == null &&
+            $request->register_to == null && $request->sub_type == null && $request->emaill == null && $request->phone == null
+        ) {
+            $clients = Clinet::whereDate('created_at', Carbon::today())->get();
+
+            return view('dashboard.repots.clients_admin', compact('clients', 'request'));
+        } else {
+            return view('dashboard.repots.clients_admin', compact('clients', 'request'));
+        }
+    }
     public function get_branch_ajax(Request $request, $locale)
     {
 
