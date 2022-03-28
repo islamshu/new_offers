@@ -17,7 +17,7 @@ class SubResouresPaid extends JsonResource
     public function toArray($request)
     {
         return [
-            'type'=>$this->type_of_subscribe != null ? $this->type_of_subscribe : 'FREE',
+            'type'=>$this->get_user_type($this),
             'points_no'=>$this->points_no,
             'store_points_no'=>$this->store_points_no,
             'offers_saving'=>$this->offers_saving,
@@ -37,7 +37,18 @@ class SubResouresPaid extends JsonResource
         
         ];
     }
-   
+    function get_user_type($data)
+   {
+       if($data->type_of_subscribe != null){
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'Expir_premium' ){
+            return 'FREE';
+        }else{
+            return $data->type_of_subscribe;
+        }
+       }else{
+           return 'FREE';
+       }
+   }
     function expricedate($data)
     {
         if(Carbon::now() > $data->expire_date ){
