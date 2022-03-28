@@ -78,7 +78,7 @@ if ( ! function_exists('get_social'))
 
 }
 function get_count_client($id){
-    $trans = Transaction::where('offer_id',2781)->get()->unique('client_id')->count();
+    $trans = Transaction::where('offer_id',$id)->get()->unique('client_id')->count();
     return $trans;
     
 
