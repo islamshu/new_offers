@@ -44,7 +44,14 @@ class CheckStatus extends Command
 
         if(Carbon::now() > $userr->expire_date ){
             $userr->is_trial =0;
-            $userr->type_of_subscribe ='FREE';
+            if($userr->type_of_subscribe == 'TRIAL'){
+                $userr->type_of_subscribe ='FREE';     
+            }elseif($userr->type_of_subscribe == 'PREMIUM'){
+                $userr->type_of_subscribe ='Expir_premium'; 
+            }
+
+            $userr->credit = null;
+            $userr->remain = null;
             $userr->save();
         }
     }
