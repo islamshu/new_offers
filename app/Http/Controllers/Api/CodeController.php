@@ -126,7 +126,7 @@ class CodeController extends BaseController
 
 
         $type_of_offer = $offer->member_type;
-        // dd($type_of_offer,$type_paid_user);
+        dd($type_of_offer,$type_paid_user);
 
         if ($system_uses != 'unlimit') {
             if ($offer->usage_number_system <= $numer_time) {
