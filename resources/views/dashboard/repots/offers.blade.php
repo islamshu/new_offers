@@ -185,7 +185,7 @@
                     <td>{{ @$item->created_at }}</td>
                     <td>{{ @$item->end_time }}</td>
                     <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
-                    @if(Carbon\Carbon::now() < $item->end_time)
+                    @if(Carbon\Carbon::now() > $item->end_time)
                     <td>Not Exprie</td>
                     @else
                     <td>Exprie</td>
