@@ -187,8 +187,8 @@
                     <td>{{ @$item->offertype->price_after_discount}}</td>
                     <td>{{ @$item->offertype->discount_value}}</td>
                     <td>{{ @$item->offertype->offer_type}}</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>{{ @App\Models\Transaction::where('offer_id',$item->id)->count() }}</td>
+                    <td>{{ get_count_client($item->id) }}</td>
 
                    
                     </tr>
