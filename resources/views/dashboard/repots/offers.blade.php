@@ -186,9 +186,9 @@
                     <td>{{ @$item->end_time }}</td>
                     <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
                     @if(Carbon\Carbon::now() > $item->end_time)
-                    <td>Not Exprie</td>
+                    <td> Exprie</td>
                     @else
-                    <td>Exprie</td>
+                    <td> Not Exprie</td>
                     @endif
 
                     <td>{{ @$item->offertype->price}}</td>
