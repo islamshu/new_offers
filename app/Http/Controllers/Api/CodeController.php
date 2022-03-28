@@ -95,10 +95,7 @@ class CodeController extends BaseController
         if ($user->status != 'active') {
             $user->type_of_subscribe == 'FREE';
         }
-        if($user->expire_date < Carbon::now()){
-            $user->type_of_subscribe = 'FREE';
-            $user->save();
-        }
+        
         $type_paid_user = $user->type_of_subscribe;
         $offer = Offer::find($request->offer_id);
         $vendor = Vendor::find($offer->vendor_id);
@@ -126,7 +123,6 @@ class CodeController extends BaseController
 
 
         $type_of_offer = $offer->member_type;
-        dd($type_of_offer,$type_paid_user);
 
         if ($system_uses != 'unlimit') {
             if ($offer->usage_number_system <= $numer_time) {
