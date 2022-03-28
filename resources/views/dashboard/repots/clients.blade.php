@@ -105,6 +105,8 @@
                                 <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
                                 <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>
                                 <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
+                                <option value="Expir_premium" @if($request->sub_type =='Expir_premium') selected @endif>EXPIRED PREMIUM</option>
+
 
                             </select>
                         </div>
