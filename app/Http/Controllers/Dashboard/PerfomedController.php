@@ -28,9 +28,23 @@ class PerfomedController extends Controller
         if (Auth::user()->hasRole('Admin')) {
             $vendors = Vendor::get();
         }elseif (Auth::user()->hasRole('Enterprises') || auth()->user()->hasPermission('read-reference')) {
-            $vendors =  Vendor::where('enterprise_id',Auth::user()->ent_id)->get();
+            $vendors =  Vendor::where('enterprise_id',Auth::user()->ent_id)->orderBy('id','desc')->paginate(10);
         }
         return view('dashboard.pefounds.index')->with('vendors',$vendors );
+    }
+    function fetch_data(Request $request)
+    {
+     if($request->ajax())
+     {
+
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
+                    ->orWhere('name_ar', 'like', '%'.$query.'%')
+                    ->orWhere('name_en', 'like', '%'.$query.'%')
+                    ->orderBy('id','desc')->paginate(10);
+      return view('dashboard.pefounds.pagination_data', compact('vendors'));
+     }
     }
     public function updateStatus(Request $request)
     {

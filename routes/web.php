@@ -158,6 +158,9 @@ Route::group([
 
         
         Route::resource('perfomeds', 'Dashboard\PerfomedController');
+        Route::get('perfomed_fetch_data', 'Dashboard\PerfomedController@fetch_data')->name('perfomed_fetch_data');
+
+        
         Route::resource('sms_config', 'GeneralInfoController');
         Route::get('config', 'GeneralInfoController@config')->name('config.index');
         Route::get('myfatoorah_config', 'GeneralInfoController@myfatoorah')->name('myfatoorah_config.index');

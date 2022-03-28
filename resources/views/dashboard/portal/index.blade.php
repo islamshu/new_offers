@@ -3,14 +3,14 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <div class="card-header">
-          
-        
+
+
                 <ol class="breadcrumb">
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-            
+
                     <li class="active">{{ __('Portal') }}</li>
                 </ol>
-            
+
             </div>
             <div class="card-body py-0">
                 <!--begin::Table-->
@@ -23,7 +23,7 @@
 
                         <div class="set_date">
 
-                        @include('dashboard.portal.pagination_data')
+                            @include('dashboard.portal.pagination_data')
                         </div>
 
 
@@ -76,35 +76,34 @@
 
                         confirmDestroy(url)
                     }
-                    function fetch_data(page,  query)
-            {
-            $.ajax({
-            url:"/en/users_pagiante/fetch_data?page="+page+"&query="+query,
-            success:function(data)
-            {
-                
-                $('.set_date').html('');
-                $('.set_date').html(data);
-            }
-            })
-            }
-            $(document).on('keyup', '#serach', function(){
-            var query = $('#serach').val();
-    
-            var page = $('#hidden_page').val();
-            fetch_data(page, query);
-            });
-            $(document).on('click', '.pagination a', function(event){
-            event.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            $('#hidden_page').val(page);
-  
 
-            var query = $('#serach').val();
+                    function fetch_data(page, query) {
+                        $.ajax({
+                            url: "/en/users_pagiante/fetch_data?page=" + page + "&query=" + query,
+                            success: function(data) {
 
-            $('li').removeClass('active');
-            $(this).parent().addClass('active');
-            fetch_data(page, query);
-            });
+                                $('.set_date').html('');
+                                $('.set_date').html(data);
+                            }
+                        })
+                    }
+                    $(document).on('keyup', '#serach', function() {
+                        var query = $('#serach').val();
+
+                        var page = $('#hidden_page').val();
+                        fetch_data(page, query);
+                    });
+                    $(document).on('click', '.pagination a', function(event) {
+                        event.preventDefault();
+                        var page = $(this).attr('href').split('page=')[1];
+                        $('#hidden_page').val(page);
+
+
+                        var query = $('#serach').val();
+
+                        $('li').removeClass('active');
+                        $(this).parent().addClass('active');
+                        fetch_data(page, query);
+                    });
                 </script>
             @endsection
