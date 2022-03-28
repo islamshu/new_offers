@@ -230,11 +230,7 @@ class UserController extends BaseController
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
 
-            if (Carbon::now() > $userr->expire_date) {
-                $userr->is_trial = 0;
-                $userr->type_of_subscribe = 'FREE';
-                $userr->save();
-            }
+            
             if ($userr->is_new == 1) {
                 $res['other']['is_trial_subscriber'] = true;
                 $userr->is_new = 0;
@@ -257,7 +253,8 @@ class UserController extends BaseController
 
 
         $res['status'] = $this->sendResponse200('OK');
-        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free') {
+        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free' || $user->type_of_subscribe == 'Expir_premium') {
+
             $res['data']['client'] =  new ClientResoures($user);
             $res['other']['is_trial_subscriber'] = false;
         }

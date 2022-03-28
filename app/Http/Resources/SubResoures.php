@@ -68,11 +68,8 @@ class SubResoures extends JsonResource
     }
     function getReman($data){
 
-        if($data->expire_date < Carbon::now()){
-            $data->type_of_subscribe = 'FREE';
-            $data->save();
-        }
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+      
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' || $data->type_of_subscribe == 'Expir_premium'  ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             return (string)$data->remain;
@@ -80,11 +77,8 @@ class SubResoures extends JsonResource
 
     }
     function getcridt($data){
-        if($data->expire_date < Carbon::now()){
-            $data->type_of_subscribe = 'FREE';
-            $data->save();
-        }
-        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' ){
+       
+        if($data->type_of_subscribe == 'FREE' || $data->type_of_subscribe == 'PREMIUM' || $data->type_of_subscribe == 'Expir_premium'  ){
             return null;
         }elseif($data->type_of_subscribe == 'TRIAL'){
             
