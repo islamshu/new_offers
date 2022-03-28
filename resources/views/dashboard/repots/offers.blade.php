@@ -185,7 +185,7 @@
                     <td>{{ @$item->created_at }}</td>
                     <td>{{ @$item->end_time }}</td>
                     <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
-                    <td>{{ (Carbon\Carbon::now() > $item->end_time == true) ? 'deactive' :'active' }}</td>
+                    <td>{{ (Carbon\Carbon::now() < $item->end_time == true) ? 'deactive' :'active' }}</td>
 
                     <td>{{ @$item->offertype->price}}</td>
                     <td>{{ @$item->offertype->price_after_discount}}</td>
