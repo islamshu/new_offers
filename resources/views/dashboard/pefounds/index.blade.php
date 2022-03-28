@@ -16,7 +16,10 @@
             <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
         </div>
 
-       @include('dashboard.pefounds.pagination_data')
+        <div class="set_date">
+
+            @include('dashboard.pefounds.pagination_data')
+        </div>
 
 
     </div>
