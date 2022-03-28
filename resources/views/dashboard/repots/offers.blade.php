@@ -156,6 +156,7 @@
                     <th>{{ __('offer created at') }}</th>
                     <th>{{ __('expired at') }}</th>
                     <th>{{ __('offer status') }}</th>
+                    <th>{{ __('Expired / Notexpired') }}</th>
                     <th>{{ __('price') }}</th>
                     <th>{{ __('price after discount') }}</th>
                     <th>{{ __('percentage discount') }}</th>
@@ -184,6 +185,8 @@
                     <td>{{ @$item->created_at }}</td>
                     <td>{{ @$item->end_time }}</td>
                     <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
+                    <td>{{ (Carbon\Carbon::now() > $item->end_time == true) ? 'deactive' :'active' }}</td>
+
                     <td>{{ @$item->offertype->price}}</td>
                     <td>{{ @$item->offertype->price_after_discount}}</td>
                     <td>{{ @$item->offertype->discount_value}}</td>
