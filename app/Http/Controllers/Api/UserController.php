@@ -26,87 +26,85 @@ class UserController extends BaseController
 {
     public  function login(Request $request)
     {
-        $user = Clinet::where('phone',$request->phone)->first();
-        if($user){
-            $user->code = rand(1111,9999);
+        $user = Clinet::where('phone', $request->phone)->first();
+        if ($user) {
+            $user->code = rand(1111, 9999);
             $user->save();
-            $res['status']= $this->sendResponse('Created');
+            $res['status'] = $this->sendResponse('Created');
             // $res['data']['client'] = new UserResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->accessToken;
-                // $res['data']['client'] = new UserResoures($user);
+            // $res['data']['client'] = new UserResoures($user);
             // $res['token'] = $user->createToken('Personal Access Token')->token;
-            if($user->is_verify == 1){
+            if ($user->is_verify == 1) {
 
-            
-            $res['data'][""]="";
-            $res['other']['exist_status']= 'EXIST';
-            $res['other']['for']= 'login';
-            }else{
-                $res['data'][""]="";
-                $res['other']['exist_status']= 'NON-VERIFIED';
-                $res['other']['for']= 'signup';  
+
+                $res['data'][""] = "";
+                $res['other']['exist_status'] = 'EXIST';
+                $res['other']['for'] = 'login';
+            } else {
+                $res['data'][""] = "";
+                $res['other']['exist_status'] = 'NON-VERIFIED';
+                $res['other']['for'] = 'signup';
             }
-            if(get_general('actvie_sms') == '1'){
+            if (get_general('actvie_sms') == '1') {
                 // if(request()->header('lang') == null || request()->header('lang') == 'en' ){
 
                 //     $message = 'welcome to Jooy offers Your activation code is: '.$user->code.' #jooy received it';
-    
+
                 // }else{
                 //     $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
-       
+
                 // }
-                $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+                $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : ' . $user->code . ' #جووي تلقاه';
 
-                send_message($user->phone,$message );
+                send_message($user->phone, $message);
             }
+        } else {
 
-
-        }else{
-            
             $userr = new Clinet();
             $userr->phone = $request->phone;
-            $userr->code = rand(1111,9999);
+            $userr->code = rand(1111, 9999);
             $userr->image = 'default.jpeg';
             $userr->country_id = 1;
-            $userr->type_of_subscribe = 'TRIAL';
+            $userr->type_of_subscribe = Null;
             $userr->register_date = Carbon::now();
             $userr->mobile_type = request()->header('Device');
             $uuid = 'jooy';
             $userr->is_new = 1;
-            $enter = Enterprise::where('uuid',$uuid)->first();
-            if($enter){
-            $userr->uuid_type =  'enterprise';
-            $userr->enterprise_id = $enter->id;
-           
-            }else{
-                $res['status']=$this->sendError();
+            $enter = Enterprise::where('uuid', $uuid)->first();
+            if ($enter) {
+                $userr->uuid_type =  'enterprise';
+                $userr->enterprise_id = $enter->id;
+            } else {
+                $res['status'] = $this->sendError();
                 $res['meessage'] = 'not found enterprise unkonw uuid';
                 return  $res;
             }
-          
-            $userr->save();
-          
-            
-            if(get_general('actvie_sms') == '1'){
-                $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$userr->code.' #جووي تلقاه';
 
-                send_message($userr->phone,$message );
+            $userr->save();
+
+
+            if (get_general('actvie_sms') == '1') {
+                $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : ' . $userr->code . ' #جووي تلقاه';
+
+                send_message($userr->phone, $message);
             }
-            $res['status']= $this->sendResponse('Created');
+            $res['status'] = $this->sendResponse('Created');
 
             // $res['data']['client'] = new ClientResoures($user);
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
-            $res['data'][""]="";
-            $res['other']['exist_status']= 'NEW';
-            $res['other']['for']= 'signup';
+            $res['data'][""] = "";
+            $res['other']['exist_status'] = 'NEW';
+            $res['other']['for'] = 'signup';
         }
         return $res;
     }
-    public function resend_sms(Request $request){
+    public function resend_sms(Request $request)
+    {
         $phone = $request->phone;
-        $user = Clinet::where('phone',$phone)->first();
-        
+        $user = Clinet::where('phone', $phone)->first();
+
         // $user = Clinet::where('phone',$phone)->first();
         // dd($user);
         // $user->code = 1991;
@@ -120,22 +118,21 @@ class UserController extends BaseController
         //     $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
 
         // }
-        $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : '.$user->code.' #جووي تلقاه';
+        $message = 'أهلا بك فى جووي كود التفعيل الخاص بك هو : ' . $user->code . ' #جووي تلقاه';
 
-        if(get_general('actvie_sms') == '1'){
-            send_message($request->phone,$message );
+        if (get_general('actvie_sms') == '1') {
+            send_message($request->phone, $message);
         }
-        $res['status']= $this->sendResponse('Created');
+        $res['status'] = $this->sendResponse('Created');
 
         // $res['data']['client'] = new ClientResoures($user);
 
         // $res['token'] = $user->createToken('Personal Access Token')->token;
-        $res['data'][""]="";
+        $res['data'][""] = "";
         return $res;
-
-
     }
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $user = auth('client_api')->user();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -143,10 +140,9 @@ class UserController extends BaseController
         $user->gender = $request->gender;
         $user->birth_date = $request->birth_date;
         $user->save();
-        $res['status']= $this->sendResponse200('OK');
-        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+        $res['status'] = $this->sendResponse200('OK');
+        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free') {
             $res['data']['client'] =  new ClientResoures($user);
-
         }
         $res['data']['client'] = new ClientPaidResourse($user);
 
@@ -154,151 +150,152 @@ class UserController extends BaseController
 
         return $res;
     }
-    public function verification_code(Request $request){
-        if($request->verification_code == 1991){
-            $userr = Clinet::where('phone',$request->phone)->first();
-        }else{
-            $userr = Clinet::where('phone',$request->phone)->where('code',$request->verification_code)->first();
+    public function verification_code(Request $request)
+    {
+        if ($request->verification_code == 1991) {
+            $userr = Clinet::where('phone', $request->phone)->first();
+        } else {
+            $userr = Clinet::where('phone', $request->phone)->where('code', $request->verification_code)->first();
         }
-        if($userr){
-           
+        if ($userr) {
+
             $userr->last_login = Carbon::now();
             $userr->is_verify = 1;
             $userr->save();
-            $userr->tokens->each(function($token, $key) {
-      
+            $userr->tokens->each(function ($token, $key) {
+
                 $token->delete();
             });
-            if($userr->is_new == 1 ){
-            
-                $code = Subscription::where('type_paid','TRIAL')->where('status',1)->where('end_date','>=',Carbon::now())->first();
-             
-                
-                if($code){
-                $user = new Subscriptions_User();
-                $user->payment_type = 'new_user';
-                $userr->is_trial = 1;
-                $userr->save();
-                $userr->type_of_subscribe = $code->type_paid;
-                if ($code->type_balance == 'Limit') {
-                    $userr->is_unlimited = 0;
-                    $userr->credit = $code->balance;
-                    $userr->remain = $code->balance;
-                } elseif ($code->type_balance == 'UnLimit') {
-                    $userr->is_unlimited = 1;
-                    $userr->credit = null;
-                    $userr->remain = null;
+            if ($userr->is_new == 1) {
+
+                $code = Subscription::where('type_paid', 'TRIAL')->where('status', 1)->where('end_date', '>=', Carbon::now())->first();
+
+
+                if ($code) {
+                    $user = new Subscriptions_User();
+                    $user->payment_type = 'new_user';
+                    $userr->is_trial = 1;
+                    $userr->save();
+                    $userr->type_of_subscribe = $code->type_paid;
+                    if ($code->type_balance == 'Limit') {
+                        $userr->is_unlimited = 0;
+                        $userr->credit = $code->balance;
+                        $userr->remain = $code->balance;
+                    } elseif ($code->type_balance == 'UnLimit') {
+                        $userr->is_unlimited = 1;
+                        $userr->credit = null;
+                        $userr->remain = null;
+                    }
+                    $userr->start_date = Carbon::now();
+                    $data_type = $code->expire_date_type;
+                    if ($code->type_paid == 'TRIAL') {
+                        $data_type_number = $code->days_of_trial;
+                    } else {
+                        $data_type_number = $code->days_of_trial;
+                    }
+                    if ($data_type == 'days') {
+                        $userr->expire_date = Carbon::now()->addDays($data_type_number);
+                    } elseif ($data_type == 'months') {
+                        $userr->expire_date = Carbon::now()->addMonths($data_type_number);
+                    } elseif ($data_type == 'years') {
+                        $userr->expire_date = Carbon::now()->addYears($data_type_number);
+                    }
+                    $userr->save();
+
+                    if ($data_type == 'days') {
+                        $user->expire_date = Carbon::now()->addDays($data_type_number);
+                    } elseif ($data_type == 'months') {
+                        $user->expire_date = Carbon::now()->addMonths($data_type_number);
+                    } elseif ($data_type == 'years') {
+                        $user->expire_date = Carbon::now()->addYears($data_type_number);
+                    }
+                    $user->status = 'active';
+                    $user->balnce = $code->balance;
+                    $user->purchases_no =  1;
+                    $user->sub_id  = $code->id;
+                    $user->clinet_id  = $userr->id;
+                    $user->save();
+                } else {
+                    $userr->is_new = 0;
+                    $userr->type_of_subscribe = 'FREE';
+                    $userr->save();
                 }
-                $userr->start_date = Carbon::now();
-                $data_type = $code->expire_date_type;
-                if( $code->type_paid=='TRIAL'){
-                    $data_type_number = $code->days_of_trial;
-    
-                }else{
-                    $data_type_number = $code->days_of_trial;
-                }
-                if ($data_type == 'days') {
-                    $userr->expire_date = Carbon::now()->addDays($data_type_number);
-                } elseif ($data_type == 'months') {
-                    $userr->expire_date = Carbon::now()->addMonths($data_type_number);
-                } elseif ($data_type == 'years') {
-                    $userr->expire_date = Carbon::now()->addYears($data_type_number);
-                }
-                $userr->save();
-        
-                if ($data_type == 'days') {
-                    $user->expire_date = Carbon::now()->addDays($data_type_number);
-                } elseif ($data_type == 'months') {
-                    $user->expire_date = Carbon::now()->addMonths($data_type_number);
-                } elseif ($data_type == 'years') {
-                    $user->expire_date = Carbon::now()->addYears($data_type_number);
-                }
-                $user->status = 'active';
-                $user->balnce = $code->balance;
-                $user->purchases_no =  1;
-                $user->sub_id  = $code->id;
-                $user->clinet_id  = $userr->id;
-                $user->save();
-              }else{
-                $userr->is_new = 0;
-                $userr->save(); 
-              }
-                
             }
-            $res['status']= $this->sendResponse200('OK');
+            $res['status'] = $this->sendResponse200('OK');
             // $res['data']['client'] = new UserResoures($user);
-            
+
             $res['data']['client'] = new ClientResoures($userr);
             // $res['data']['token'] = $user->createToken('Personal Access Token')->accessToken;
 
             // $res['token'] = $user->createToken('Personal Access Token')->token;
             // $res['data'][""]="";
-          
-            if(Carbon::now() > $userr->expire_date ){
-                $userr->is_trial =0;
-                $userr->type_of_subscribe ='FREE';
+
+            if (Carbon::now() > $userr->expire_date) {
+                $userr->is_trial = 0;
+                $userr->type_of_subscribe = 'FREE';
                 $userr->save();
             }
-            if($userr->is_new == 1){
-                $res['other']['is_trial_subscriber']= true;
+            if ($userr->is_new == 1) {
+                $res['other']['is_trial_subscriber'] = true;
                 $userr->is_new = 0;
                 $userr->save();
-            }else{
-                $res['other']['is_trial_subscriber']= false;
+            } else {
+                $res['other']['is_trial_subscriber'] = false;
             }
-          
+
             return $res;
-        }else{
-            $res['status']=$this->sendError();
+        } else {
+            $res['status'] = $this->sendError();
             return  $res;
         }
     }
     public function user_info()
     {
-      
+
 
         $user = auth('client_api')->user();
-       
-       
-        $res['status']= $this->sendResponse200('OK');
-        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
-            $res['data']['client'] =  new ClientResoures($user);
-            $res['other']['is_trial_subscriber']= false;
 
+
+        $res['status'] = $this->sendResponse200('OK');
+        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free') {
+            $res['data']['client'] =  new ClientResoures($user);
+            $res['other']['is_trial_subscriber'] = false;
         }
         $res['data']['client'] = new ClientPaidResourse($user);
         return $res;
     }
     public function register_token(Request $request)
     {
-      
+
 
         $user = auth('client_api')->user();
         $user->token = $request->registration_id;
         $user->save();
-       
-        $res['status']= $this->sendResponse('Created');
-        $res['data']['data'][''] ="" ;
+
+        $res['status'] = $this->sendResponse('Created');
+        $res['data']['data'][''] = "";
 
         return $res;
     }
-    public function current_subscription(){
+    public function current_subscription()
+    {
         $user = auth('client_api')->user();
-        
-       
-        $res['status']= $this->sendResponse200('ok');
-        $sub = Subscriptions_User::where('clinet_id',$user->id)->orderBy('id','desc')->first();
-        $res['data']['client_subscription'] =new UserSubscription($sub);
+
+
+        $res['status'] = $this->sendResponse200('ok');
+        $sub = Subscriptions_User::where('clinet_id', $user->id)->orderBy('id', 'desc')->first();
+        $res['data']['client_subscription'] = new UserSubscription($sub);
 
         return $res;
     }
-  
-    public function update_image(Request $request){
+
+    public function update_image(Request $request)
+    {
         $user = auth('client_api')->user();
         $user->image = $request->image->store('client/image');
         $user->save();
-        $res['status']= $this->sendResponse200('OK');
-        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+        $res['status'] = $this->sendResponse200('OK');
+        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free') {
             $res['data']['client'] =  new ClientResoures($user);
         }
         $res['data']['client'] = new ClientPaidResourse($user);
@@ -308,45 +305,46 @@ class UserController extends BaseController
     {
         $page = $request->has('page') ? $request->get('page') : 1;
         $limit = $request->has('paginate') ? $request->get('paginate') : 10;
-        $trans = Transaction::where('client_id',auth('client_api')->id())->orderBy('id','desc')->limit($limit)->offset(($page - 1) * $limit)->get();
-        $res['status']= $this->sendResponse200('OK');
+        $trans = Transaction::where('client_id', auth('client_api')->id())->orderBy('id', 'desc')->limit($limit)->offset(($page - 1) * $limit)->get();
+        $res['status'] = $this->sendResponse200('OK');
         // $trans =
-      
+
         $res['data']['transactions'] = new TransactionCollection($trans);
         return $res;
     }
-    public function update_city(Request $request){
+    public function update_city(Request $request)
+    {
         $user = auth('client_api')->user();
         $city = City::find($request->city_id);
-        if(!$city){
-            $res['status']=$this->sendError();
-            $res['message']= 'city not found';
+        if (!$city) {
+            $res['status'] = $this->sendError();
+            $res['message'] = 'city not found';
             return  $res;
         }
         $user->city_id = $request->city_id;
         $user->save();
-        $res['status']= $this->sendResponse200('OK');
-        if($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free'){
+        $res['status'] = $this->sendResponse200('OK');
+        if ($user->type_of_subscribe == null || $user->type_of_subscribe == 'Free') {
             $res['data']['client'] =  new ClientResoures($user);
-
         }
         $res['data']['client'] = new ClientPaidResourse($user);
         return $res;
     }
-    public function logout() {
+    public function logout()
+    {
         // dd
-       $user = auth('client_api')->user();
-       $user->tokens->each(function($token, $key) {
-      
+        $user = auth('client_api')->user();
+        $user->tokens->each(function ($token, $key) {
+
             $token->delete();
         });
         $user->token = null;
         $user->save();
-        $res['status']= $this->sendResponse200('OK');
-        $res['data']['']="";
+        $res['status'] = $this->sendResponse200('OK');
+        $res['data'][''] = "";
 
 
-    
+
         return $res;
     }
 }
