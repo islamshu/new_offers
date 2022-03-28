@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class PortalController extends Controller
 {
     public function index(){
-        $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->paginate(10);
+        $vendors = Vendor::where('enterprise_id', Auth::user()->ent_id)->orderBy('id','desc')->paginate(10);
         return view('dashboard.portal.index')->with('vendors',$vendors);
     }
     function fetch_data(Request $request)
