@@ -12,6 +12,9 @@
             </ol>
         
         </div> 
+        <div class="form-group col-md-3">
+            <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+        </div>
 
        @include('dashboard.pefounds.pagination_data')
 
