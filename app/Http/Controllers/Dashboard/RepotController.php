@@ -218,7 +218,6 @@ class RepotController extends Controller
     }
     function fetch_data(Request $request)
     {
-        
      if($request->ajax())
      {
 
@@ -229,12 +228,6 @@ class RepotController extends Controller
             
         $query = Offer::query()->where('name_ar', 'like', '%'.$query_se.'%')
         ->orWhere('name_en', 'like', '%'.$query_se.'%');
-       
-        // $query->with('vendor' ,function ($q) use ($query_se){
-        //     $q->orWhere('name_ar', 'like', '%'.$query_se.'%')
-        //     ->orWhere('name_en', 'like', '%'.$query_se.'%');
-        // }); 
-        
       
         $query->when($request->created_form, function ($q) use ($request) {
             if ($request->created_to == null && $request->created_form != null) {
@@ -255,7 +248,11 @@ class RepotController extends Controller
           }
         });
         
-    
+        $query->when($request->vendor_status, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                return $qq->where('status', $request->vendor_status);
+              });
+        });
         $query->when($request->number_date, function ($q) use ($request) {
             return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
         });
@@ -280,14 +277,7 @@ class RepotController extends Controller
                 });    
               });
         });
-        $query->when($request->vendor_status, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                if($request->vendor_status == 'active'){
-                    return $qq->where('status', 'active');
-                }elseif($request->offer_status == 'deactive'){
-                    return $qq->where('status', 'deactive');                  }
-              });
-        });
+        
 
         $offers =$query->paginate(10);
 
