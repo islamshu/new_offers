@@ -253,7 +253,8 @@ class RepotController extends Controller
             });
             $query->where($request->query, function ($q) use ($test_q) {
                 $q->whereHas('vendor', function ($qq) use ($test_q) {
-                    return    $qq->where('name_en','like','%'.$test_q.'%');
+                    dd($test_q);
+                    return $qq->where('name_en','like','%'.$test_q.'%');
                 });
             });
             $query->when($request->number_date, function ($q) use ($request) {
