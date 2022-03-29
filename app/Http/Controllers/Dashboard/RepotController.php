@@ -234,11 +234,9 @@ class RepotController extends Controller
 
 
             
-        $query = Offer::query();
-        $query->when($request->query, function ($q) use ($query_se) {
-            return $q-> Where('name_ar', 'like', '%'.$query_se.'%')
-                    ->orWhere('name_en', 'like', '%'.$query_se.'%');
-         });
+        $query = Offer::query()->where('name_ar', 'like', '%'.$query_se.'%')
+        ->orWhere('name_en', 'like', '%'.$query_se.'%');
+      
         $query->when($request->created_form, function ($q) use ($request) {
             if ($request->created_to == null && $request->created_form != null) {
                 return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
