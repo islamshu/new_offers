@@ -283,9 +283,10 @@ class RepotController extends Controller
                 });    
               });
         });
-        $query->when($request->query, function ($q) use ($request) {
-          return  $q->where('name_ar', 'like', '%'.$request->query.'%')
-            ->orWhere('name_en', 'like', '%'.$request->query.'%');
+        $query->when($request->query, function ($q) use ($query_se) {
+           return $q-> Where('name_ar', 'like', '%'.$query_se.'%')
+                   ->orWhere('name_en', 'like', '%'.$query_se.'%');
+
         });
 
         $offers =$query->paginate(10);
