@@ -2,21 +2,21 @@
     
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
-            <th>{{ __('Brand name') }}</th>
-            <th>{{ __('Brand created at') }}</th>
-            <th>{{ __('Brand status') }}</th>
-            <th>{{ __('Offer Count') }}</th>
-            <th>{{ __('offer name') }}</th>
-            <th>{{ __('offer created at') }}</th>
-            <th>{{ __('expired at') }}</th>
-            <th>{{ __('offer status') }}</th>
-            <th>{{ __('Expired / Notexpired') }}</th>
-            <th>{{ __('price') }}</th>
-            <th>{{ __('price after discount') }}</th>
-            <th>{{ __('percentage discount') }}</th>
-            <th>{{ __('Type') }}</th>
-            <th>{{ __('Buy Count') }}</th>
-            <th>{{ __('client Count') }}</th>
+            <th style="width: 100px">{{ __('Brand name') }}</th>
+            <th style="width: 100px">{{ __('Brand created at') }}</th>
+            <th style="width: 100px">{{ __('Brand status') }}</th>
+            <th style="width: 100px">{{ __('Offer Count') }}</th>
+            <th style="width: 100px">{{ __('offer name') }}</th>
+            <th style="width: 100px">{{ __('offer created at') }}</th>
+            <th style="width: 100px">{{ __('expired at') }}</th>
+            <th style="width: 100px">{{ __('offer status') }}</th>
+            <th style="width: 100px">{{ __('Expired / Notexpired') }}</th>
+            <th style="width: 100px">{{ __('price') }}</th>
+            <th style="width: 100px">{{ __('price after discount') }}</th>
+            <th style="width: 100px">{{ __('percentage discount') }}</th>
+            <th style="width: 100px">{{ __('Type') }}</th>
+            <th style="width: 100px">{{ __('Buy Count') }}</th>
+            <th style="width: 100px">{{ __('client Count') }}</th>
         </tr>
     </thead>
     <tbody>
