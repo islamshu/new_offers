@@ -118,20 +118,20 @@ class RepotController extends Controller
             if ($request->last_to == null && $request->last_from != null) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
                     return $qq->whereBetween('created_at', [$request->last_from, Carbon::now()]);
-                  });
-            }elseif ($request->last_to != null && $request->last_from == null) {
+                });
+            } elseif ($request->last_to != null && $request->last_from == null) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
-            });
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
+                });
             } elseif ($request->last_to == $request->last_from) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
                 });
             } else {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
                 });
-            }    
+            }
         });
 
 
@@ -139,26 +139,25 @@ class RepotController extends Controller
             if ($request->transaction_to == null && $request->transaction_from != null) {
                 $q->whereHas('trans', function ($qq) use ($request) {
                     return $qq->whereBetween('created_at', [$request->transaction_from, Carbon::now()]);
-                  });
-            }elseif ($request->transaction_to != null && $request->transaction_from == null) {
+                });
+            } elseif ($request->transaction_to != null && $request->transaction_from == null) {
                 $q->whereHas('trans', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [Carbon::now(), $request->transaction_to]);
-            });
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->transaction_to]);
+                });
             } elseif ($request->transaction_to == $request->transaction_from) {
                 $q->whereHas('trans', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
                 });
             } else {
                 $q->whereHas('trans', function ($qq) use ($request) {
-                return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
                 });
-            }    
+            }
         });
 
 
         $clients = $query->get();
         return view('dashboard.repots.clients_admin', compact('clients', 'request'));
-
     }
     public function get_branch_ajax(Request $request, $locale)
     {
@@ -182,113 +181,98 @@ class RepotController extends Controller
             }
         });
         $query->when($request->offer_status, function ($q) use ($request) {
-          if($request->offer_status == 'active'){
-            return $q->where('status',1);
-          }elseif($request->offer_status == 'deactive'){
-            return $q->where('status',0);
-          }
+            if ($request->offer_status == 'active') {
+                return $q->where('status', 1);
+            } elseif ($request->offer_status == 'deactive') {
+                return $q->where('status', 0);
+            }
         });
-        
+
         $query->when($request->vendor_status, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
                 return $qq->where('status', $request->vendor_status);
-              });
+            });
         });
         $query->when($request->number_date, function ($q) use ($request) {
-            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
+            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 00:00:00', Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 23:59:59']);
         });
         $query->when($request->city_id, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
                 $qq->whereHas('cities', function ($qqq) use ($request) {
-                return    $qqq->where('city_id',$request->city_id);
-                });    
-              });
+                    return    $qqq->where('city_id', $request->city_id);
+                });
+            });
         });
         $query->when($request->category_id, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
                 $qq->whereHas('categorys', function ($qqq) use ($request) {
-                return    $qqq->where('category_id',$request->category_id);
-                });    
-              });
+                    return    $qqq->where('category_id', $request->category_id);
+                });
+            });
         });
 
         $offers = $query->paginate(10);
         return view('dashboard.repots.offers', compact('offers', 'request'));
-
     }
     function fetch_data(Request $request)
     {
-     if($request->ajax())
-     {
+        if ($request->ajax()) {
 
             $query_se = $request->get('query');
 
 
-            
-        $query = Offer::query();
-        $query->when($request->query, function ($q) use ($query_se) {
-            $q ->where('name_ar', 'like', '%'.$query_se.'%')
-            ->orWhere('name_en', 'like', '%'.$query_se.'%');
-        });
-       
-      
-        $query->when($request->created_form, function ($q) use ($request) {
-            if ($request->created_to == null && $request->created_form != null) {
-                return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
-            } elseif ($request->created_to != null && $request->created_form == null) {
-                return $q->whereBetween('created_at', [Carbon::now(), $request->created_form]);
-            } elseif ($request->created_to == $request->created_form) {
-                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
-            } else {
-                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
-            }
-        });
-        $query->when($request->offer_status, function ($q) use ($request) {
-          if($request->offer_status == 'active'){
-            return $q->where('status',1);
-          }elseif($request->offer_status == 'deactive'){
-            return $q->where('status',0);
-          }
-        });
-        
-        $query->when($request->vendor_status, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                return $qq->where('status', $request->vendor_status);
-              });
-        });
-        $query->when($request->number_date, function ($q) use ($request) {
-            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
-        });
-        $query->when($request->city_id, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                $qq->whereHas('cities', function ($qqq) use ($request) {
-                return    $qqq->where('city_id',$request->city_id);
-                });    
-              });
-        });
-        $query->when($request->category_id, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                $qq->whereHas('categorys', function ($qqq) use ($request) {
-                return    $qqq->where('category_id',$request->category_id);
-                });    
-              });
-        });
-        $query->when($request->category_id, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                $qq->whereHas('categorys', function ($qqq) use ($request) {
-                return    $qqq->where('category_id',$request->category_id);
-                });    
-              });
-        });
-        
+            $query = Offer::query();
 
-        $offers =$query->paginate(10);
+
+            $query->when($request->created_form, function ($q) use ($request) {
+                if ($request->created_to == null && $request->created_form != null) {
+                    return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
+                } elseif ($request->created_to != null && $request->created_form == null) {
+                    return $q->whereBetween('created_at', [Carbon::now(), $request->created_form]);
+                } elseif ($request->created_to == $request->created_form) {
+                    return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+                } else {
+                    return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+                }
+            });
+            $query->when($request->offer_status, function ($q) use ($request) {
+                if ($request->offer_status == 'active') {
+                    return $q->where('status', 1);
+                } elseif ($request->offer_status == 'deactive') {
+                    return $q->where('status', 0);
+                }
+            });
+
+            $query->when($request->vendor_status, function ($q) use ($request) {
+                $q->whereHas('vendor', function ($qq) use ($request) {
+                    return $qq->where('status', $request->vendor_status);
+                });
+            });
+            $query->when($request->number_date, function ($q) use ($request) {
+                return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 00:00:00', Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 23:59:59']);
+            });
+            $query->when($request->city_id, function ($q) use ($request) {
+                $q->whereHas('vendor', function ($qq) use ($request) {
+                    $qq->whereHas('cities', function ($qqq) use ($request) {
+                        return    $qqq->where('city_id', $request->city_id);
+                    });
+                });
+            });
+            $query->when($request->category_id, function ($q) use ($request) {
+                $q->whereHas('vendor', function ($qq) use ($request) {
+                    $qq->whereHas('categorys', function ($qqq) use ($request) {
+                        return    $qqq->where('category_id', $request->category_id);
+                    });
+                });
+            });
+
+            $offers = $query->paginate(10);
 
             // $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
             //         ->orWhere('name_ar', 'like', '%'.$query.'%')
             //         ->orWhere('name_en', 'like', '%'.$query.'%')
             //         ->orderBy('id','desc')->paginate(10);
-      return view('dashboard.repots._offers', compact('offers','request'));
-     }
+            return view('dashboard.repots._offers', compact('offers', 'request'));
+        }
     }
 }
