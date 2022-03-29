@@ -66,6 +66,7 @@ Route::group([
         Route::get('upload-brands', "Dashboard\brandController@get_import")->name('get.import');
         Route::get('dawnload-brands', "Dashboard\brandController@download")->name('download.brands');
 
+        
         Route::post('import', "Dashboard\brandController@import")->name('post.import');
         Route::resource('country', Dashboard\CountryController::class);
         Route::resource('city', Dashboard\CityController::class);
