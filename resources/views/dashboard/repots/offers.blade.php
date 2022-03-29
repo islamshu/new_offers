@@ -206,7 +206,7 @@ $('#vendor_id').on('change', function() {
 
         });
     });
-    function fetch_data(page,  query,request)
+    function fetch_data(page,  query)
             {
                 var created_form = $('#created_form').val();
                 var created_to = $('#created_to').val();
@@ -246,7 +246,7 @@ $('#vendor_id').on('change', function() {
 
             $('li').removeClass('active');
             $(this).parent().addClass('active');
-            fetch_data(page, query,request);
+            fetch_data(page, query);
             });
 </script>
 @endsection
