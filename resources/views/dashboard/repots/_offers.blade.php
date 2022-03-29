@@ -2,21 +2,21 @@
     
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
-            <th style="width: 100px">{{ __('Brand name') }}</th>
-            <th style="width: 100px">{{ __('Brand created at') }}</th>
-            <th style="width: 100px">{{ __('Brand status') }}</th>
-            <th style="width: 100px">{{ __('Offer Count') }}</th>
-            <th style="width: 100px">{{ __('offer name') }}</th>
-            <th style="width: 100px">{{ __('offer created at') }}</th>
-            <th style="width: 100px">{{ __('expired at') }}</th>
-            <th style="width: 100px">{{ __('offer status') }}</th>
-            <th style="width: 100px">{{ __('Expired / Notexpired') }}</th>
-            <th style="width: 100px">{{ __('price') }}</th>
-            <th style="width: 100px">{{ __('price after discount') }}</th>
-            <th style="width: 100px">{{ __('percentage discount') }}</th>
-            <th style="width: 100px">{{ __('Type') }}</th>
-            <th style="width: 100px">{{ __('Buy Count') }}</th>
-            <th style="width: 100px">{{ __('client Count') }}</th>
+            <th style="width: 100%">{{ __('Brand name') }}</th>
+            <th style="width: 100%">{{ __('Brand created at') }}</th>
+            <th style="width: 100%">{{ __('Brand status') }}</th>
+            <th style="width: 100%">{{ __('Offer Count') }}</th>
+            <th style="width: 100%">{{ __('offer name') }}</th>
+            <th style="width: 100%">{{ __('offer created at') }}</th>
+            <th style="width: 100%">{{ __('expired at') }}</th>
+            <th style="width: 100%">{{ __('offer status') }}</th>
+            <th style="width: 100%">{{ __('Expired / Notexpired') }}</th>
+            <th style="width: 100%">{{ __('price') }}</th>
+            <th style="width: 100%">{{ __('price after discount') }}</th>
+            <th style="width: 100%">{{ __('percentage discount') }}</th>
+            <th style="width: 100%">{{ __('Type') }}</th>
+            <th style="width: 100%">{{ __('Buy Count') }}</th>
+            <th style="width: 100%">{{ __('client Count') }}</th>
         </tr>
     </thead>
     <tbody>
