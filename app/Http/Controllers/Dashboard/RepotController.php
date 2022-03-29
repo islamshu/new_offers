@@ -220,7 +220,9 @@ class RepotController extends Controller
 
            $test_q= str_replace(" ", "%", $request->get('query'));
 
-            $query = Offer::query()->where('name_en','like','%'.$test_q.'%');
+            $query = Offer::query()->where('name_en','like','%'.$test_q.'%')->orWhereHas('vendor',function ($q) use ($test_q){
+                $q->where('name_en','like','%'.$test_q.'%');
+            });
           
 
             $query->when($request->created_form, function ($q) use ($request) {
