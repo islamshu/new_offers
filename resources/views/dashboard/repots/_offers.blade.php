@@ -1,4 +1,4 @@
-<table class=" table-row-bordered gy-5 gs-7" >
+<table class=" table" >
     
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
@@ -37,7 +37,8 @@
             <td>{{ @$item->name_en }}</td>
             @endif
             <td>{{ @$item->created_at->format('Y-m-d') }}</td>
-            <td>{{ @$item->end_time->format('Y-m-d') }}</td>
+            <td>{{ Carbon\Carbon::createFromFormat('m/d/Y', @$item->end_time)->format('Y-m-d') }}</td>
+            
             <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
             @if(Carbon\Carbon::now() > $item->end_time)
             <td> Exprie</td>
