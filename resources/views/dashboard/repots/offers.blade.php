@@ -50,7 +50,7 @@
                                     Created From
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->created_form }}" placeholder="Created From" class="form-control" name="created_form">
+                          <input type="date" value="{{ $request->created_form }}" id="created_form" placeholder="Created From" class="form-control" name="created_form">
                         </div>
                        
                         <div class="input-group col-md-5 mb-3">
@@ -59,7 +59,7 @@
                                     Created To
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->created_to }}" placeholder=" Created To" class="form-control" name="created_to">
+                          <input type="date" value="{{ $request->created_to }}" id="created_to" placeholder=" Created To" class="form-control" name="created_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -67,7 +67,7 @@
                                     Brand status
                                 </label>
                             </div>
-                            <select name="vendor_status" class="form-control" >
+                            <select name="vendor_status" id="vendor_status" class="form-control" >
                                 <option value=""> _ </option>
                                 <option value="active" @if($request->vendor_status == 'active') selected @endif> active </option>
                                 <option value="deactive" @if($request->vendor_status == 'deactive') selected @endif> deactive </option>
@@ -79,7 +79,7 @@
                                     Offer status
                                 </label>
                             </div>
-                            <select name="offer_status" class="form-control" >
+                            <select name="offer_status" id="offer_status"  class="form-control" >
                                 <option value=""> _ </option>
                                 <option value="active"@if($request->offer_status == 'active') selected @endif> active </option>
                                 <option value="deactive" @if($request->offer_status == 'deactive') selected @endif> deactive </option>
@@ -91,7 +91,7 @@
                                     City
                                 </label>
                             </div>
-                            <select name="city_id" class="form-control" >
+                            <select name="city_id" id="city_id" class="form-control" >
                                 <option value=""> _ </option>
                                 @foreach (App\Models\City::where('status',1)->get() as $item)
                                 <option value="{{ $item->id }}" @if($request->city_id == $item->id) selected @endif> {{ $item->city_name }} </option>
@@ -105,7 +105,7 @@
                                     Category
                                 </label>
                             </div>
-                            <select name="category_id" class="form-control" >
+                            <select name="category_id" id="category_id"  class="form-control" >
                                 <option value=""> _ </option>
                                 @foreach (App\Models\Category::where('is_show',1)->get() as $item)
                                 <option value="{{ $item->id }}" @if($request->category_id == $item->id) selected @endif> {{ $item->name_en }} </option>
@@ -118,7 +118,7 @@
                                 <label class="input-group-text" for="inputGroupSelect01">
                                     Expired after
                                 </label>
-                                <input type="number" value="{{ $request->number_date }}" placeholder="Expired after" class="form-control" name="number_date">
+                                <input type="number" value="{{ $request->number_date }}" placeholder="Expired after" class="form-control" id="number_date" name="number_date">
 
                             </div>
                             
@@ -268,10 +268,17 @@ $('#vendor_id').on('change', function() {
     });
     function fetch_data(page,  query,request)
             {
-            var  request =   $("#addUserForm").serialize();
-        
+                var created_form = $('#created_form').val();
+                var created_to = $('#created_to').val();
+                var vendor_status = $('#vendor_status').val();
+                var offer_status = $('#offer_status').val();
+                var city_id = $('#city_id').val();
+                var category_id = $('#category_id').val();
+                var number_date = $('#number_date').val();
+
+
             $.ajax({
-            url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+"&"+request,
+            url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+"&created_form="+created_form+"&created_to="+created_to+"&vendor_status="+vendor_status+"&offer_status="+offer_status+"&city_id="+city_id+"&category_id="+category_id+"&number_date="+number_date
             success:function(data)
             {
                 
