@@ -230,10 +230,10 @@ class RepotController extends Controller
         $query = Offer::query()->where('name_ar', 'like', '%'.$query_se.'%')
         ->orWhere('name_en', 'like', '%'.$query_se.'%');
        
-        $query->with('vendor' ,function ($q) use ($query_se){
-            $q->orWhere('name_ar', 'like', '%'.$query_se.'%')
-            ->orWhere('name_en', 'like', '%'.$query_se.'%');
-        }); 
+        // $query->with('vendor' ,function ($q) use ($query_se){
+        //     $q->orWhere('name_ar', 'like', '%'.$query_se.'%')
+        //     ->orWhere('name_en', 'like', '%'.$query_se.'%');
+        // }); 
         
       
         $query->when($request->created_form, function ($q) use ($request) {
@@ -257,6 +257,7 @@ class RepotController extends Controller
         
         $query->when($request->vendor_status, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
+                // dd($request->vendor_status);
                 return $qq->where('status', $request->vendor_status);
               });
         });
