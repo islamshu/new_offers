@@ -142,7 +142,9 @@
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
         <h2 class="mb-3">{{ __('All Offers') }}</h2>
 
-
+        <div class="form-group col-md-3">
+            <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+        </div>
         <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7">
     
             <thead>
@@ -264,5 +266,35 @@ $('#vendor_id').on('change', function() {
 
         });
     });
+    function fetch_data(page,  query)
+            {
+            $.ajax({
+            url:"/en/branch_paginate?page="+page+"&query="+query,
+            success:function(data)
+            {
+                
+                $('.set_date').html('');
+                $('.set_date').html(data);
+            }
+            })
+            }
+            $(document).on('keyup', '#serach', function(){
+            var query = $('#serach').val();
+    
+            var page = $('#hidden_page').val();
+            fetch_data(page, query);
+            });
+            $(document).on('click', '.pagination a', function(event){
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            $('#hidden_page').val(page);
+  
+
+            var query = $('#serach').val();
+
+            $('li').removeClass('active');
+            $(this).parent().addClass('active');
+            fetch_data(page, query);
+            });
 </script>
 @endsection
