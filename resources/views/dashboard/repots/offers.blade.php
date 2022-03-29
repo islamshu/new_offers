@@ -269,7 +269,8 @@ $('#vendor_id').on('change', function() {
     function fetch_data(page,  query,request)
             {
             let  data =   $("#addUserForm").serialize();
-            console.log(data);
+            alert( data);
+           
             $.ajax({
             url:"/en/branch_paginate?page="+page+"&query="+query,
             success:function(data)
