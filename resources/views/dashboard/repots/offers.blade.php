@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form method="get" action="{{route('offers_reports',['locale'=>app()->getLocale()])}}">
+    <form method="get" action="{{route('offers_reports',['locale'=>app()->getLocale()])}}" id="filter_search">
         
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -266,10 +266,11 @@ $('#vendor_id').on('change', function() {
 
         });
     });
-    function fetch_data(page,  query)
+    function fetch_data(page,  query,request)
             {
+            var data = $("#addUserForm").serialize();
             $.ajax({
-            url:"/en/branch_paginate?page="+page+"&query="+query,
+            url:"/en/branch_paginate,
             success:function(data)
             {
                 
@@ -280,9 +281,11 @@ $('#vendor_id').on('change', function() {
             }
             $(document).on('keyup', '#serach', function(){
             var query = $('#serach').val();
-    
+            var request = $("#filter_search").serialize();
+
+            
             var page = $('#hidden_page').val();
-            fetch_data(page, query);
+            fetch_data(page, query,request);
             });
             $(document).on('click', '.pagination a', function(event){
             event.preventDefault();
@@ -294,7 +297,7 @@ $('#vendor_id').on('change', function() {
 
             $('li').removeClass('active');
             $(this).parent().addClass('active');
-            fetch_data(page, query);
+            fetch_data(page, query,request);
             });
 </script>
 @endsection
