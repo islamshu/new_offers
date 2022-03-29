@@ -268,10 +268,10 @@ $('#vendor_id').on('change', function() {
     });
     function fetch_data(page,  query,request)
             {
-            let  data =   $("#addUserForm").serialize();
+            let  request =   $("#addUserForm").serialize();
         
             $.ajax({
-            url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+data,
+            url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+"&"+request,
             success:function(data)
             {
                 
