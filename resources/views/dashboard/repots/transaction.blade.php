@@ -188,7 +188,7 @@ $('#vendor_id').on('change', function() {
             'venodr_id': cat_id
         },
         success: function(data) {
-            $('#branch_id').html(new Option('', 'chose','disabled','selected'));
+            $('#branch_id').html(new Option('chose', '','disabled','selected'));
             for (var i = 0; i < data.length; i++) {
                 @if($lang == 'ar')
                 $('#branch_id').append(new Option(data[i].name_ar,
