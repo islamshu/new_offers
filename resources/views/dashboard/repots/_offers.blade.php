@@ -7,8 +7,8 @@
             <th >{{ __('Brand status') }}</th>
             <th >{{ __('Offer Count') }}</th>
             <th >{{ __('offer name') }}</th>
-            <th >{{ __('offer created at') }}</th>
-            <th >{{ __('expired at') }}</th>
+            <th  style="width: 100px;" >{{ __('offer created at') }}</th>
+            <th style="width: 100px;" >{{ __('expired at') }}</th>
             <th >{{ __('offer status') }}</th>
             <th >{{ __('Expired / Notexpired') }}</th>
             <th >{{ __('price') }}</th>
