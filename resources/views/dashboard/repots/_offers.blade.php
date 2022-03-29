@@ -3,7 +3,7 @@
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
             <th >{{ __('Brand name') }}</th>
-            <th >{{ __('Brand created at') }}</th>
+            <th style="width: 100px;" >{{ __('Brand created at') }}</th>
             <th >{{ __('Brand status') }}</th>
             <th >{{ __('Offer Count') }}</th>
             <th >{{ __('offer name') }}</th>
@@ -28,7 +28,7 @@
             @endif
 
 
-            <td>{{ @$item->vendor->created_at }}</td>
+            <td>{{ @$item->vendor->created_at->format('Y-m-d') }}</td>
             <td>{{ @$item->vendor->status }}</td>
             <td>{{ @$item->vendor->offers->count() }}</td>
             @if(get_lang() == 'ar')
