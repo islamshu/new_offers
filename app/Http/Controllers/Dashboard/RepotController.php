@@ -218,13 +218,12 @@ class RepotController extends Controller
     {
         if ($request->ajax()) {
 
-            $query_se = $request->get('query');
-
+           $test_q= str_replace(" ", "%", $request->get('query'));
 
             $query = Offer::query();
-            $query->when($request->query, function ($q) use ($request)
+            $query->when($request->query, function ($q) use ($test_q)
             {
-                return    $q->where('name_en','like','%'.$request->query.'%');
+                return    $q->where('name_en','like','%'.$test_q.'%');
             });
 
 
