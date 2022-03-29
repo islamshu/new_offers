@@ -261,14 +261,14 @@ class RepotController extends Controller
             return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
         });
         $query->when($request->city_id, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
+            $q->with('vendor', function ($qq) use ($request) {
                 $qq->whereHas('cities', function ($qqq) use ($request) {
                 return    $qqq->where('city_id',$request->city_id);
                 });    
               });
         });
         $query->when($request->category_id, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
+            $q->with('vendor', function ($qq) use ($request) {
                 $qq->whereHas('categorys', function ($qqq) use ($request) {
                 return    $qqq->where('category_id',$request->category_id);
                 });    
