@@ -239,17 +239,17 @@ $('#vendor_id').on('change', function() {
             var page = $('#hidden_page').val();
             fetch_data(page, query,request);
             });
-            // $(document).on('click', '.pagination a', function(event){
-            // event.preventDefault();
-            // var page = $(this).attr('href').split('page=')[1];
-            // $('#hidden_page').val(page);
+            $(document).on('click', '.pagination a', function(event){
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            $('#hidden_page').val(page);
   
 
-            // var query = $('#serach').val();
+            var query = $('#serach').val();
 
-            // $('li').removeClass('active');
-            // $(this).parent().addClass('active');
-            // fetch_data(page, query);
-            // });
+            $('li').removeClass('active');
+            $(this).parent().addClass('active');
+            fetch_data(page, query);
+            });
 </script>
 @endsection
