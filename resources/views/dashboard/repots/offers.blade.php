@@ -145,70 +145,10 @@
         <div class="form-group col-md-3">
             <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
         </div>
-        <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7">
-    
-            <thead>
-                <tr class="fw-bold fs-6 text-gray-800">
-                    <th>{{ __('Brand name') }}</th>
-                    <th>{{ __('Brand created at') }}</th>
-                    <th>{{ __('Brand status') }}</th>
-                    <th>{{ __('Offer Count') }}</th>
-                    <th>{{ __('offer name') }}</th>
-                    <th>{{ __('offer created at') }}</th>
-                    <th>{{ __('expired at') }}</th>
-                    <th>{{ __('offer status') }}</th>
-                    <th>{{ __('Expired / Notexpired') }}</th>
-                    <th>{{ __('price') }}</th>
-                    <th>{{ __('price after discount') }}</th>
-                    <th>{{ __('percentage discount') }}</th>
-                    <th>{{ __('Type') }}</th>
-                    <th>{{ __('Buy Count') }}</th>
-                    <th>{{ __('client Count') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($offers as $item)
-                   @if(get_lang() == 'ar')
-                    <td>{{ @$item->vendor->name_ar }}</td>
-                    @else
-                    <td>{{ @$item->vendor->name_en }}</td>
-                    @endif
+        <div class="set_date">
 
-
-                    <td>{{ @$item->vendor->created_at }}</td>
-                    <td>{{ @$item->vendor->status }}</td>
-                    <td>{{ @$item->vendor->offers->count() }}</td>
-                    @if(get_lang() == 'ar')
-                    <td>{{ @$item->name_ar }}</td>
-                    @else
-                    <td>{{ @$item->name_en }}</td>
-                    @endif
-                    <td>{{ @$item->created_at }}</td>
-                    <td>{{ @$item->end_time }}</td>
-                    <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
-                    @if(Carbon\Carbon::now() > $item->end_time)
-                    <td> Exprie</td>
-                    @else
-                    <td> Not Exprie</td>
-                    @endif
-
-                    <td>{{ @$item->offertype->price}}</td>
-                    <td>{{ @$item->offertype->price_after_discount}}</td>
-                    <td>{{ @$item->offertype->discount_value}}</td>
-                    <td>{{ @$item->offertype->offer_type}}</td>
-                    <td>{{ @App\Models\Transaction::where('offer_id',$item->id)->count() }}</td>
-                    <td>{{ get_count_client($item->id) }}</td>
-
-                   
-                    </tr>
-                @endforeach
-           
-
-
-            </tbody>
-
-        </table>
-        {!! $offers->appends(request()->input())->links() !!}
+            @include('dashboard.repots._offers')
+        </div>
 
 
     </div>
@@ -277,7 +217,7 @@ $('#vendor_id').on('change', function() {
                 var number_date = $('#number_date').val();
 
 
-                
+
             $.ajax({
             url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+"&created_form="+created_form+"&created_to="+created_to+"&vendor_status="+vendor_status+"&offer_status="+offer_status+"&city_id="+city_id+"&category_id="+category_id+"&number_date="+number_date,
             success:function(data)

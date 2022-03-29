@@ -224,7 +224,77 @@ class RepotController extends Controller
     }
 
     }
-    public function fetch_data(Request $request){
-        dd($request);
+    function fetch_data(Request $request)
+    {
+     if($request->ajax())
+     {
+
+            $query_se = $request->get('query');
+            $query_se = str_replace(" ", "%", $query_se);
+
+
+            
+        $query = Offer::query();
+        $query->when($request->created_form, function ($q) use ($request) {
+            if ($request->created_to == null && $request->created_form != null) {
+                return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
+            } elseif ($request->created_to != null && $request->created_form == null) {
+                return $q->whereBetween('created_at', [Carbon::now(), $request->created_form]);
+            } elseif ($request->created_to == $request->created_form) {
+                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+            } else {
+                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+            }
+        });
+        $query->when($request->offer_status, function ($q) use ($request) {
+          if($request->offer_status == 'active'){
+            return $q->where('status',1);
+          }elseif($request->offer_status == 'deactive'){
+            return $q->where('status',0);
+          }
+        });
+        
+        $query->when($request->vendor_status, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                return $qq->where('status', $request->vendor_status);
+              });
+        });
+        $query->when($request->number_date, function ($q) use ($request) {
+            return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
+        });
+        $query->when($request->city_id, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                $qq->whereHas('cities', function ($qqq) use ($request) {
+                return    $qqq->where('city_id',$request->city_id);
+                });    
+              });
+        });
+        $query->when($request->category_id, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                $qq->whereHas('categorys', function ($qqq) use ($request) {
+                return    $qqq->where('category_id',$request->category_id);
+                });    
+              });
+        });
+        $query->when($request->category_id, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                $qq->whereHas('categorys', function ($qqq) use ($request) {
+                return    $qqq->where('category_id',$request->category_id);
+                });    
+              });
+        });
+        $query->when($request->query, function ($q) use ($request) {
+          return  $q->where('name_ar', 'like', '%'.$request->query.'%')
+            ->orWhere('name_en', 'like', '%'.$request->query.'%');
+        });
+
+        $offers =$query->paginate(10);
+
+            // $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
+            //         ->orWhere('name_ar', 'like', '%'.$query.'%')
+            //         ->orWhere('name_en', 'like', '%'.$query.'%')
+            //         ->orderBy('id','desc')->paginate(10);
+      return view('dashboard.repots._offers', compact('offers','request'));
+     }
     }
 }
