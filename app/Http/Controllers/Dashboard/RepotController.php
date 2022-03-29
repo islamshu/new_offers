@@ -212,7 +212,7 @@ class RepotController extends Controller
               });
         });
 
-        $offers = $query->paginate(30);
+        $offers = $query->paginate(10);
         if($request->created_to == null && $request->created_to == null && $request->offer_status == null && $request->vendor_status == null &&
         $request->number_date == null && $request->city_id == null && $request->category_id == null  )
     {
