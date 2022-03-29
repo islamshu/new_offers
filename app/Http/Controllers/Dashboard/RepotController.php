@@ -227,7 +227,7 @@ class RepotController extends Controller
 
             
         $query = Offer::query()->where('name_ar', 'like', '%'.$query_se.'%')
-        ->orWhere('name_en', 'like', '%'.$query_se.'%')->orWhereHas('vendor' ,function ($q) use ($request){
+        ->orWhere('name_en', 'like', '%'.$query_se.'%')->orWhereHas('vendor' ,function ($q) use ($query_se){
             $q->where('name_ar', 'like', '%'.$query_se.'%')
             ->orWhere('name_en', 'like', '%'.$query_se.'%');
         }); 
