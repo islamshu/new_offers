@@ -218,6 +218,7 @@ class RepotController extends Controller
     }
     function fetch_data(Request $request)
     {
+        
      if($request->ajax())
      {
 
@@ -229,7 +230,7 @@ class RepotController extends Controller
         $query = Offer::query()->where('name_ar', 'like', '%'.$query_se.'%')
         ->orWhere('name_en', 'like', '%'.$query_se.'%');
        
-        $query->orWhereHas('vendor' ,function ($q) use ($query_se){
+        $query->with('vendor' ,function ($q) use ($query_se){
             $q->orWhere('name_ar', 'like', '%'.$query_se.'%')
             ->orWhere('name_en', 'like', '%'.$query_se.'%');
         }); 
