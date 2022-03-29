@@ -228,7 +228,7 @@ class RepotController extends Controller
             
         $query = Offer::query();
         $query->when($request->query, function ($q) use ($query_se) {
-            return   $q ->where('name_ar', 'like', '%'.$query_se.'%')
+            $q ->where('name_ar', 'like', '%'.$query_se.'%')
             ->orWhere('name_en', 'like', '%'.$query_se.'%');
         });
        
@@ -253,7 +253,7 @@ class RepotController extends Controller
         });
         
         $query->when($request->vendor_status, function ($q) use ($request) {
-            $q->with('vendor', function ($qq) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
                 return $qq->where('status', $request->vendor_status);
               });
         });
@@ -261,14 +261,14 @@ class RepotController extends Controller
             return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
         });
         $query->when($request->city_id, function ($q) use ($request) {
-            $q->with('vendor', function ($qq) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
                 $qq->whereHas('cities', function ($qqq) use ($request) {
                 return    $qqq->where('city_id',$request->city_id);
                 });    
               });
         });
         $query->when($request->category_id, function ($q) use ($request) {
-            $q->with('vendor', function ($qq) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
                 $qq->whereHas('categorys', function ($qqq) use ($request) {
                 return    $qqq->where('category_id',$request->category_id);
                 });    
