@@ -222,6 +222,10 @@ class RepotController extends Controller
 
 
             $query = Offer::query();
+            $query->when($request->query, function ($q) use ($request)
+            {
+                return    $q->where('name_en','like','%'.$request->query.'%');
+            });
 
 
             $query->when($request->created_form, function ($q) use ($request) {
@@ -268,10 +272,7 @@ class RepotController extends Controller
 
             $offers = $query->paginate(10);
 
-            // $vendors =  Vendor::where('enterprise_id', Auth::user()->ent_id)->where('id', 'like', '%'.$query.'%')
-            //         ->orWhere('name_ar', 'like', '%'.$query.'%')
-            //         ->orWhere('name_en', 'like', '%'.$query.'%')
-            //         ->orderBy('id','desc')->paginate(10);
+        
             return view('dashboard.repots._offers', compact('offers', 'request'));
         }
     }
