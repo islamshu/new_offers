@@ -145,7 +145,7 @@
         <div class="form-group col-md-3">
             <input type="text" name="serach" id="serach" placeholder="offer name" class="form-control" />
         </div>
-        <div class="set_date">
+        <div class="set_date overflow-x:auto;">
 
             @include('dashboard.repots._offers')
         </div>
