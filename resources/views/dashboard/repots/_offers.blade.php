@@ -28,7 +28,7 @@
             @endif
 
 
-            <td>{{ @$item->vendor->created_at->format('Y-m-d') }}</td>
+            <td>{{ @$item->vendor->created_at }}</td>
             <td>{{ @$item->vendor->status }}</td>
             <td>{{ @$item->vendor->offers->count() }}</td>
             @if(get_lang() == 'ar')
