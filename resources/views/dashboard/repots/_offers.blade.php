@@ -26,8 +26,6 @@
             @else
             <td>{{ @$item->vendor->name_en }}</td>
             @endif
-
-
             <td>{{ @$item->vendor->created_at }}</td>
             <td>{{ @$item->vendor->status }}</td>
             <td>{{ @$item->vendor->offers->count() }}</td>
