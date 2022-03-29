@@ -36,8 +36,8 @@
             @else
             <td>{{ @$item->name_en }}</td>
             @endif
-            <td>{{ @$item->created_at }}</td>
-            <td>{{ @$item->end_time }}</td>
+            <td>{{ @$item->created_at->format('Y-m-d') }}</td>
+            <td>{{ @$item->end_time->format('Y-m-d') }}</td>
             <td>{{ $item->status == 0 ? 'deactive' :'active' }}</td>
             @if(Carbon\Carbon::now() > $item->end_time)
             <td> Exprie</td>
