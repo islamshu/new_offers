@@ -221,12 +221,7 @@ class RepotController extends Controller
            $test_q= str_replace(" ", "%", $request->get('query'));
 
             $query = Offer::query();
-            $query->when($request->query, function ($q) use ($test_q)
-            {
-                return $q->where('name_en','like','%'.$test_q.'%');
-              
-            });
-
+          
 
             $query->when($request->created_form, function ($q) use ($request) {
                 if ($request->created_to == null && $request->created_form != null) {
@@ -269,6 +264,11 @@ class RepotController extends Controller
                         return    $qqq->where('category_id', $request->category_id);
                     });
                 });
+            });
+            $query->when($request->query, function ($q) use ($test_q)
+            {
+                return $q->where('name_en','like','%'.$test_q.'%')->orWhere('name_ar','like','%'.$test_q.'%');
+              
             });
 
             $offers = $query->paginate(10);
