@@ -265,13 +265,9 @@ class RepotController extends Controller
                     });
                 });
             });
-            $query->when($request->query, function ($q) use ($test_q)
-            {
-                return $q->where('name_en','like','%'.$test_q.'%');
-              
-            });
+           
 
-            $offers = $query->paginate(10);
+            $offers = $query->where('name_en','like','%'.$test_q.'%')->orWhere('name_ar','like','%'.$test_q.'%')->paginate(10);
 
         
             return view('dashboard.repots._offers', compact('offers', 'request'));
