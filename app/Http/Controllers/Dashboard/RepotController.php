@@ -222,7 +222,6 @@ class RepotController extends Controller
      {
 
             $query_se = $request->get('query');
-            $query_se = str_replace(" ", "%", $query_se);
 
 
             
