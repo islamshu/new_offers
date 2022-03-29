@@ -100,7 +100,8 @@
                                     Subscripe Type
                                 </label>
                             </div>
-                            <select name="sub_type" class="form-control" >
+                            <select name="sub_type" class="selectpicker form-control"
+                            data-live-search="true" >
                                 <option value="">Choose Type</option>
                                 <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
                                 <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>

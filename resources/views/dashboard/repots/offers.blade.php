@@ -67,7 +67,8 @@
                                     Brand status
                                 </label>
                             </div>
-                            <select name="vendor_status" id="vendor_status" class="form-control" >
+                            <select name="vendor_status" id="vendor_status" class="selectpicker form-control"
+                            data-live-search="true" >
                                 <option value=""> _ </option>
                                 <option value="active" @if($request->vendor_status == 'active') selected @endif> active </option>
                                 <option value="deactive" @if($request->vendor_status == 'deactive') selected @endif> deactive </option>
@@ -79,7 +80,8 @@
                                     Offer status
                                 </label>
                             </div>
-                            <select name="offer_status" id="offer_status"  class="form-control" >
+                            <select name="offer_status" id="offer_status"  class="selectpicker form-control"
+                            data-live-search="true">
                                 <option value=""> _ </option>
                                 <option value="active"@if($request->offer_status == 'active') selected @endif> active </option>
                                 <option value="deactive" @if($request->offer_status == 'deactive') selected @endif> deactive </option>
