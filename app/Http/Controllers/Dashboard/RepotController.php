@@ -255,12 +255,7 @@ class RepotController extends Controller
           }
         });
         
-        $query->when($request->vendor_status, function ($q) use ($request) {
-            $q->whereHas('vendor', function ($qq) use ($request) {
-                // dd($request->vendor_status);
-                return $qq->where('status', $request->vendor_status);
-              });
-        });
+    
         $query->when($request->number_date, function ($q) use ($request) {
             return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 00:00:00',Carbon::now()->addDays($request->number_date)->format('Y-m-d'). ' 23:59:59' ]);
         });
@@ -285,7 +280,12 @@ class RepotController extends Controller
                 });    
               });
         });
-        
+        $query->when($request->vendor_status, function ($q) use ($request) {
+            $q->whereHas('vendor', function ($qq) use ($request) {
+                // dd($request->vendor_status);
+                return $qq->where('status', $request->vendor_status);
+              });
+        });
 
         $offers =$query->paginate(10);
 
