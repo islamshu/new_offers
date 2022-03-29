@@ -269,10 +269,9 @@ $('#vendor_id').on('change', function() {
     function fetch_data(page,  query,request)
             {
             let  data =   $("#addUserForm").serialize();
-            console.log('islam');
-            console.log(data);
+        
             $.ajax({
-            url:"/en/branch_paginate?page="+page+"&query="+query,
+            url:"/en/offer_reports_fetch_data?page="+page+"&query="+query+data,
             success:function(data)
             {
                 

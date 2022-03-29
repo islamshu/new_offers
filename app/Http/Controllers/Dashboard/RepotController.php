@@ -224,4 +224,7 @@ class RepotController extends Controller
     }
 
     }
+    public function fetch_data(Request $request){
+        dd($request);
+    }
 }

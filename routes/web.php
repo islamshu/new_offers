@@ -159,6 +159,7 @@ Route::group([
         
         Route::resource('perfomeds', 'Dashboard\PerfomedController');
         Route::get('perfomed_fetch_data', 'Dashboard\PerfomedController@fetch_data')->name('perfomed_fetch_data');
+        Route::get('offer_reports_fetch_data', 'Dashboard\RepotController@fetch_data')->name('offer_reports_fetch_data');
 
         
         Route::resource('sms_config', 'GeneralInfoController');
