@@ -235,6 +235,10 @@ class RepotController extends Controller
 
             
         $query = Offer::query();
+        $query->when($request->query, function ($q) use ($query_se) {
+            return $q-> Where('name_ar', 'like', '%'.$query_se.'%')
+                    ->orWhere('name_en', 'like', '%'.$query_se.'%');
+         });
         $query->when($request->created_form, function ($q) use ($request) {
             if ($request->created_to == null && $request->created_form != null) {
                 return $q->whereBetween('created_at', [$request->created_form, Carbon::now()]);
@@ -256,7 +260,6 @@ class RepotController extends Controller
         
         $query->when($request->vendor_status, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
-                dd('dd');
                 return $qq->where('status', $request->vendor_status);
               });
         });
@@ -284,11 +287,7 @@ class RepotController extends Controller
                 });    
               });
         });
-        $query->when($request->query, function ($q) use ($query_se) {
-           return $q-> Where('name_ar', 'like', '%'.$query_se.'%')
-                   ->orWhere('name_en', 'like', '%'.$query_se.'%');
-
-        });
+        
 
         $offers =$query->paginate(10);
 
