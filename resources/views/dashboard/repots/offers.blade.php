@@ -268,9 +268,10 @@ $('#vendor_id').on('change', function() {
     });
     function fetch_data(page,  query,request)
             {
-            var data = $("#addUserForm").serialize();
+            let  data =   $("#addUserForm").serialize();
+            console.log(data);
             $.ajax({
-            url:"/en/branch_paginate",
+            url:"/en/branch_paginate?page="+page+"&query="+query,
             success:function(data)
             {
                 
