@@ -143,7 +143,7 @@
         <h2 class="mb-3">{{ __('All Offers') }}</h2>
 
         <div class="form-group col-md-3">
-            <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+            <input type="text" name="serach" id="serach" placeholder="offer name" class="form-control" />
         </div>
         <div class="set_date">
 
