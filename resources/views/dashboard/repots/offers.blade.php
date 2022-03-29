@@ -270,7 +270,7 @@ $('#vendor_id').on('change', function() {
             {
             var data = $("#addUserForm").serialize();
             $.ajax({
-            url:"/en/branch_paginate,
+            url:"/en/branch_paginate",
             success:function(data)
             {
                 
