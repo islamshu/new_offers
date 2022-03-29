@@ -231,7 +231,7 @@ class RepotController extends Controller
             $q->where('name_ar', 'like', '%'.$query_se.'%')
             ->orWhere('name_en', 'like', '%'.$query_se.'%');
         }); 
-       }
+       
         
         
       
