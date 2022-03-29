@@ -213,15 +213,7 @@ class RepotController extends Controller
         });
 
         $offers = $query->paginate(10);
-        if($request->created_to == null && $request->created_to == null && $request->offer_status == null && $request->vendor_status == null &&
-        $request->number_date == null && $request->city_id == null && $request->category_id == null  )
-    {
-        $offers = Offer::whereDate('created_at', Carbon::today())->paginate(10);
         return view('dashboard.repots.offers', compact('offers', 'request'));
-
-    }else{
-        return view('dashboard.repots.offers', compact('offers', 'request'));
-    }
 
     }
     function fetch_data(Request $request)
