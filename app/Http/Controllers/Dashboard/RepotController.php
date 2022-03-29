@@ -251,12 +251,11 @@ class RepotController extends Controller
                     return $qq->where('status', $request->vendor_status);
                 });
             });
-            // $query->where($request->query, function ($q) use ($test_q) {
-            //     $q->whereHas('vendor', function ($qq) use ($test_q) {
-            //         dd($test_q);
-            //         return $qq->where('name_en','like','%'.$test_q.'%');
-            //     });
-            // });
+            $query->where($test_q, function ($q) use ($test_q) {
+                $q->whereHas('vendor', function ($qq) use ($test_q) {
+                    return $qq->where('name_en','like','%'.$test_q.'%');
+                });
+            });
             $query->when($request->number_date, function ($q) use ($request) {
                 return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 00:00:00', Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 23:59:59']);
             });
