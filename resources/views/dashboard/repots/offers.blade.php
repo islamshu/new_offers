@@ -202,7 +202,8 @@ $('#vendor_id').on('change', function() {
     $(function() {
         $("#kt_datatablenew").DataTable({
             // "pagingType": "full_numbers",
-            "scrollX": true
+            "scrollX": true,
+            "searching": false
 
         });
     });
