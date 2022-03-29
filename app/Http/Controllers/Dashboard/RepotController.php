@@ -256,6 +256,7 @@ class RepotController extends Controller
         
         $query->when($request->vendor_status, function ($q) use ($request) {
             $q->whereHas('vendor', function ($qq) use ($request) {
+                dd('dd');
                 return $qq->where('status', $request->vendor_status);
               });
         });
