@@ -23,10 +23,7 @@ class ClinetController extends Controller
     {
         $clients =Clinet::get();
         foreach($clients as $userr)
-  
-          if(Carbon::now() > $userr->expire_date && $userr->type_of_subscribe == 'PREMIUM' ){
-            dd('ddd');             
-          }
+        dd($userr);
           dd('dd');
     }
     public function __construct()
