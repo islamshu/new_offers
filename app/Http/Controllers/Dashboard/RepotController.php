@@ -275,7 +275,14 @@ class RepotController extends Controller
         }
     }
     function subscriprion_reports(Request $request){
-      
+        if($request->date_from != null){
+            $trial =Subscriptions_User::where('payment_type','trial')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $activation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $visa =Subscriptions_User::where('payment_type','visa')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $admin = Subscriptions_User::where('payment_type','admin')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $excel =Subscriptions_User::where('payment_type','excel_import')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request')); 
+        }
         $trial =Subscriptions_User::where('payment_type','trial')->count();
         $activation = Subscriptions_User::where('payment_type','activition_code')->count();
         $visa =Subscriptions_User::where('payment_type','visa')->count();
