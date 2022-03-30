@@ -29,6 +29,7 @@ class ClinetController extends Controller
               if($userr->type_of_subscribe == 'TRIAL'){
                   $userr->type_of_subscribe ='FREE';     
               }elseif($userr->type_of_subscribe == 'PREMIUM'){
+                  dd('d');
                   $userr->type_of_subscribe ='Expir_premium'; 
               }
               $userr->credit = null;
