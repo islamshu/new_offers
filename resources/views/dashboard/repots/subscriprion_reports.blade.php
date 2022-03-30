@@ -132,8 +132,8 @@
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
 
-                    <th>{{ __('Free') }}</th>
-                    <td>{{ $free }}</td>
+                    <th>{{ __('Trial') }}</th>
+                    <td>{{ $trial }}</td>
                    
                 </tr>
             </thead>
