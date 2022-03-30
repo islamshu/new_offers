@@ -173,7 +173,7 @@ class UserController extends BaseController
 
                 if ($code) {
                     $user = new Subscriptions_User();
-                    $user->payment_type = 'new_user';
+                    $user->payment_type = 'trial';
                     $userr->is_trial = 1;
                     $userr->save();
                     $userr->type_of_subscribe = $code->type_paid;
