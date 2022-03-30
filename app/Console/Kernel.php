@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\CheckStatus::class,
-
+        'App\Console\Commands\CheckStatus'
     ];
 
     /**
