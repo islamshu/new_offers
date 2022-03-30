@@ -4,6 +4,77 @@
 @php
     $lang = app()->getLocale();
 @endphp
+<style>
+    .deallist-tbl {
+            width: 100%;
+            .table-striped>tbody>tr:nth-child(odd)>td {
+                background-color: #F9F9F9;
+            }
+            .table-hover tbody tr:hover td {
+                background-color: #0099CC;
+                color: $content-text-white;
+            }
+            .table-hover tbody tr.active td {
+                background-color: #0099CC;
+                color: $content-text-white;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                overflow-x: scroll;
+                display: block;
+            }
+            thead {
+                background-color: #F5F1EF;
+            }
+            thead,
+            tbody {
+                display: block;
+            }
+            tbody {
+                overflow-y: scroll;
+                overflow-x: hidden;
+                height: 650px;
+            }
+            td {
+                min-width: 90px;
+                height: 30px;
+                border: solid 1px $border-color;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
+                padding: 5px 5px 5px 10px;
+                &.index-clm {
+                    width: 35px;
+                    min-width: 35px;
+                    padding: 5px;
+                }
+            }
+            th {
+                font-size: 10px;
+                font-weight: bold;
+                min-width: 90px;
+                height: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-transform: uppercase;
+                max-width: 100px;
+                padding: 5px 5px 6px 10px;
+                border-left: solid 1px $content-text-black;
+                border-top: solid 1px $border-color;
+                border-bottom: solid 1px $border-color;
+                &:last-child {
+                    border-right: solid 1px $content-text-black;
+                }
+                &.index-clm {
+                    width: 35px;
+                    min-width: 35px;
+                    padding: 5px;
+                }
+
+            }
+        } 
+</style>
 <div class="card card-custom">
 
     <div class="card-header">
