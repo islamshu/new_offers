@@ -292,7 +292,6 @@ class RepotController extends Controller
             $excel = $subs->where('payment_type','excel_import')->count();
             return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
         }
-        dd('ff');
         $trial = $subs->where('payment_type','trial')->count();
         $activation = $subs->where('payment_type','activition_code')->count();
         $visa = $subs->where('payment_type','visa')->count();
