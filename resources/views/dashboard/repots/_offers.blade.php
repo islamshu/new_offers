@@ -3,12 +3,12 @@
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
             <th >{{ __('Brand name') }}</th>
-            <th style="width: 100px;" >{{ __('Brand created at') }}</th>
+            <th  >{{ __('Brand created at') }}</th>
             <th >{{ __('Brand status') }}</th>
             <th >{{ __('Offer Count') }}</th>
             <th >{{ __('offer name') }}</th>
-            <th  style="width: 300px;" >{{ __('offer created at') }}</th>
-            <th style="width: 276px;" >{{ __('expired at') }}</th>
+            <th >{{ __('offer created at') }}</th>
+            <th>{{ __('expired at') }}</th>
             <th >{{ __('offer status') }}</th>
             <th >{{ __('Expired / Notexpired') }}</th>
             <th >{{ __('price') }}</th>
