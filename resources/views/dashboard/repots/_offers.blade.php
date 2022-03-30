@@ -1,4 +1,4 @@
-<table class=" table" >
+{{-- <table class=" table" >
     
     <thead>
         <tr class="fw-bold fs-6 text-gray-800">
@@ -60,4 +60,27 @@
     </tbody>
 
 </table>
-{!! $offers->appends(request()->input())->links() !!}
+{!! $offers->appends(request()->input())->links() !!} --}}
+<table  class="table table-striped table-hover mb-0" id="dataTable" #tblDealList (scroll)="scrollHandler($event)">
+    <thead [style.width.px]="tblWidth">
+      <tr>
+        <th class="text-center index-clm">*</th>
+        <th app-sortable-column columnName="Column1">Column 1</th>
+        <th app-sortable-column columnName="Column2">Column 2</th>
+        <th app-sortable-column columnName="Column3">Column 3</th>
+        <th app-sortable-column columnName="Column4">Column 4</th>
+        <th app-sortable-column columnName="Column5">Column 5</th>
+        <th app-sortable-column columnName="Column6">Column 6</th>
+        <th app-sortable-column columnName="Column7">Column 7</th>
+        <th app-sortable-column columnName="Column8">Column 8</th>
+        <th app-sortable-column columnName="Column9">Column 9</th>
+        <th app-sortable-column columnName="Column10">Column 10</th>
+        <th app-sortable-column columnName="Column11">Column 11</th>
+        <th app-sortable-column columnName="Column12">Column 12</th>
+        <th app-sortable-column columnName="Column13">Column 13</th>
+        <th app-sortable-column columnName="Column14">Column 14</th>
+        <th app-sortable-column columnName="Column15">Column 15</th>
+        <th app-sortable-column columnName="Column16">Column 16</th>
+
+      </tr>
+    </thead>
