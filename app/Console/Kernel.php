@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\CheckStatus'
+        Commands\CheckStatus::class,
+
     ];
 
     /**
@@ -25,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('telescope:prune')->everyFourHours();
-        $schedule->command('\App\Console\Commands\CheckStatus')->everyTenMinutes();
+        $schedule->command('check:status')->everyFiveMinutes();
 
     }
 
