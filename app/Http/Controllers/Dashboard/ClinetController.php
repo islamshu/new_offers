@@ -22,8 +22,8 @@ class ClinetController extends Controller
     public function editedit()
     {
         $clients =Clinet::find(3353);
-        dd(Carbon::now() > $clients->created_at);
-          dd('dd');
+        dd(Carbon::now() > $clients->expire_date,$clients->expire_date);
+       
     }
     public function __construct()
     {
