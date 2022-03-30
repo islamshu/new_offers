@@ -273,4 +273,10 @@ class RepotController extends Controller
             return view('dashboard.repots._offers', compact('offers', 'request'));
         }
     }
+    function subscriprion_reports(Request $request){
+    
+        if($request->date_from !=null || $request->date_to != null){
+
+        }
+    }
 }

@@ -49,9 +49,9 @@ class CheckStatus extends Command
             }elseif($userr->type_of_subscribe == 'PREMIUM'){
                 $userr->type_of_subscribe ='Expir_premium'; 
             }
-
             $userr->credit = null;
             $userr->remain = null;
+            $userr->is_unlimited = 0;
             $userr->save();
         }
     }
