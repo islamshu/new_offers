@@ -19,6 +19,25 @@ class ClinetController extends Controller
 {
     use SendNotification;
 
+    public function editedit()
+    {
+        $clients =Clinet::get();
+        foreach($clients as $userr)
+  
+          if(Carbon::now() > $userr->expire_date ){
+              $userr->is_trial =0;
+              if($userr->type_of_subscribe == 'TRIAL'){
+                  $userr->type_of_subscribe ='FREE';     
+              }elseif($userr->type_of_subscribe == 'PREMIUM'){
+                  $userr->type_of_subscribe ='Expir_premium'; 
+              }
+              $userr->credit = null;
+              $userr->remain = null;
+              $userr->is_unlimited = 0;
+              $userr->save();
+          }
+          dd('dd');
+    }
     public function __construct()
     {
         //create read update delete
