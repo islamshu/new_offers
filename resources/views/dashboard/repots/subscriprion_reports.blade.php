@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <form method="get" action="{{route('clients_sales',['locale'=>app()->getLocale()])}}">
+    <form method="get" action="{{route('subscriprion_reports',['locale'=>app()->getLocale()])}}">
         
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
