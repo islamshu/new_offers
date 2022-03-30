@@ -127,12 +127,21 @@
         <h2 class="mb-3">{{ __('All Clients') }}</h2>
 
 
-        <table class="datatable table datatable-bordered datatable-head-custom ">
+        <table class="datatable table datatable-bordered datatable-head-custom " style="width: 50%">
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
 
                     <th>{{ __('Trial') }}</th>
                     <td>{{ $trial }}</td>
+                    <th>{{ __('Activation Code') }}</th>
+                    <td>{{ $activation }}</td>
+
+                    <th>{{ __('Admin') }}</th>
+                    <td>{{ $admin }}</td>
+                    <th>{{ __('Visa') }}</th>
+                    <td>{{ $visa }}</td>
+                    <th>{{ __('By Excel') }}</th>
+                    <td>{{ $excel }}</td>
                    
                 </tr>
             </thead>
