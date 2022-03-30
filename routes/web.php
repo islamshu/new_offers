@@ -141,6 +141,7 @@ Route::group([
         Route::get('/get_offer_ajax', 'Dashboard\PremotionController@get_offer_ajax')->name('get_offer_ajax');
         Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
         Route::get('/get_branch_ajax', 'Dashboard\RepotController@get_branch_ajax')->name('get_branch_ajax');
+        Route::get('/subscriprion_reports', 'Dashboard\RepotController@subscriprion_reports')->name('subscriprion_reports');
 
         Route::get('offer_status','Dashboard\OfferController@update_status')->name('offerstatus.update');
         
@@ -148,7 +149,7 @@ Route::group([
         Route::post('send_client_notofication','Dashboard\ClinetController@send_client_notofication')->name('send_client_notofication');
         Route::post('add_sub_to_client','Dashboard\ClinetController@add_sub_to_client')->name('add_sub_to_client');
         Route::post('add_sub_for_user','Dashboard\ClinetController@add_sub_for_user')->name('add_sub_for_user');
-        Route::get('editedit','Dashboard\ClinetController@editedit')->name('editedit');
+        Route::get('editedit','Dashboard\ClinetController@editedit')->name('add_sub_for_user');
 
         
         

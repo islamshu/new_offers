@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Clinet;
 use App\Models\Offer;
+use App\Models\Subscriptions_User;
 use App\Models\Transaction;
 use App\Models\Vendor;
 use Carbon\Carbon;
@@ -274,9 +275,31 @@ class RepotController extends Controller
         }
     }
     function subscriprion_reports(Request $request){
-    
+    $subs = Subscriptions_User::query();
         if($request->date_from !=null || $request->date_to != null){
 
+            if($request->date_to == null && $request->date_from !=null){
+               return $subs->whereBetween('created_at', [$request->date_from,Carbon::now()]);                
+            }elseif($request->date_to != null && $request->date_from ==null){
+                return$subs->whereBetween('created_at', [Carbon::now(),$request->date_to]);                
+            }elseif($request->date_to != null && $request->date_from ==null){
+                return $subs->whereBetween('created_at', [$request->date_from,$request->date_to]);                
+            }
+            $trial = $subs->where('payment_method','trial')->count();
+            $activation = $subs->where('payment_method','activition_code')->count();
+            $visa = $subs->where('payment_method','visa')->count();
+            $admin = $subs->where('payment_method','admin')->count();
+            $excel = $subs->where('payment_method','excel_import')->count();
+            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
         }
+        $trial = $subs->where('payment_method','trial')->count();
+        $activation = $subs->where('payment_method','activition_code')->count();
+        $visa = $subs->where('payment_method','visa')->count();
+        $admin = $subs->where('payment_method','admin')->count();
+        $excel = $subs->where('payment_method','excel_import')->count();
+        return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
+
     }
+    
+
 }
