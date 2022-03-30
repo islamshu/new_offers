@@ -24,18 +24,8 @@ class ClinetController extends Controller
         $clients =Clinet::get();
         foreach($clients as $userr)
   
-          if(Carbon::now() > $userr->expire_date ){
-              $userr->is_trial =0;
-              if($userr->type_of_subscribe == 'TRIAL'){
-                  $userr->type_of_subscribe ='FREE';     
-              }elseif($userr->type_of_subscribe == 'PREMIUM'){
-                  dd('d');
-                  $userr->type_of_subscribe ='Expir_premium'; 
-              }
-              $userr->credit = null;
-              $userr->remain = null;
-              $userr->is_unlimited = 0;
-              $userr->save();
+          if(Carbon::now() > $userr->expire_date && $userr->type_of_subscribe == 'PREMIUM' ){
+            dd('ddd');             
           }
           dd('dd');
     }
