@@ -13,6 +13,7 @@
                         <th>{{ __('username') }}</th>
                         <th>{{ __('email') }}</th>
                         <th>{{ __('address') }}</th>
+                        <th>{{ __('status') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
                 </thead>
@@ -21,10 +22,13 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->address }}</td>
+                        <td>
+                            <input type="checkbox" data-id="{{ $user->id }}" name="status" class="js-switch switch1"
+                                @if ($user->status == 1) checked @endif>
+                        </td>
                         <td class="pr-0 text-left">
 
                             @if (auth()->user()->isAbleTo(['update-user']))
-
                                 <a href="{{ route('user.edit', ['user' => $user->id, 'locale' => app()->getLocale()]) }}"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                     <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -45,9 +49,8 @@
                                         <!--end::Svg Icon-->
                                     </span>
                                 </a>
-                                @endif
-                                @if (auth()->user()->isAbleTo(['delete-user']))
-
+                            @endif
+                            @if (auth()->user()->isAbleTo(['delete-user']))
                                 <form method="post" style="display: inline">
                                     <button type="button" onclick="performdelete('{{ $user->id }}')"
                                         class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
@@ -70,7 +73,7 @@
                                         </span>
                                     </button>
                                 </form>
-                                @endif
+                            @endif
 
                         </td>
                         </tr>
@@ -84,11 +87,9 @@
 
         </div>
     </div>
-
 @endsection
 
 @section('styles')
-
 @endsection
 
 @section('scripts')
@@ -97,8 +98,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
-        $(function() {
-            
+        $('.switch1').change(function() {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let userid = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('userpand.update', app()->getLocale()) }}',
+                data: {
+                    'status': status,
+                    'user_id': userid
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
         });
 
         function performdelete(id) {
