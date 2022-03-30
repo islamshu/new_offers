@@ -288,7 +288,7 @@ class RepotController extends Controller
 
             $trial = $subs->where('payment_type','trial')->count();
             $activation = $subs->where('payment_type','activition_code')->count();
-            dd($activation);
+            dd($subs->where('payment_type','activition_code')->count());
             $visa = $subs->where('payment_type','visa')->count();
             $admin = $subs->where('payment_type','admin')->count();
             $excel = $subs->where('payment_type','excel_import')->count();
