@@ -21,7 +21,7 @@ class ClinetController extends Controller
 
     public function editedit()
     {
-        $clients =Clinet::where('expire_date','<',Carbon::now());
+        $clients =Clinet::where('expire_date','<',Carbon::now())->get();
         foreach($clients as $userr)
         dd($userr);
           dd('dd');
