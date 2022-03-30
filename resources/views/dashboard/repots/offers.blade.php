@@ -23,7 +23,7 @@ tbody {
 }
 
 tr {
-    width: 100%;
+    width: 200%;
     display: table;
     table-layout: fixed;
 }
