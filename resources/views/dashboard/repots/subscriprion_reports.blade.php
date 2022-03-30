@@ -43,47 +43,14 @@
     
     
                   
-                            
-                            <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Email
-                                </label>
-                            </div>
-                          <input type="email" value="{{ $request->email }}" placeholder="Email" class="form-control" name="email">
-                        </div>
                        
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">
-                                    Phone
+                                    Subscribe at
                                 </label>
                             </div>
-                          <input type="text" value="{{ $request->phone }}" placeholder="phone" class="form-control" name="phone">
-                        </div>
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Registar From
-                                </label>
-                            </div>
-                          <input type="date" value="{{ $request->register_form }}" placeholder="Registar From" class="form-control" name="register_form">
-                        </div>
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Registar To
-                                </label>
-                            </div>
-                          <input type="date" value="{{ $request->register_to}}" placeholder="Registar To" class="form-control" name="register_to">
-                        </div>
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscribe From
-                                </label>
-                            </div>
-                          <input type="date" value="{{ $request->sub_form}}" placeholder="Subscribe From" class="form-control" name="sub_form">
+                          <input type="date" value="{{ $request->date_from}}" placeholder="Subscribe at" class="form-control" name="date_from">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -91,27 +58,9 @@
                                     Subscribe To
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->sub_to}}" placeholder="Subscribe To" class="form-control" name="sub_to">
+                          <input type="date" value="{{ $request->date_to}}" placeholder="Subscribe To" class="form-control" name="date_to">
                         </div>
-                     
-                        <div class="input-group col-md-5 mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">
-                                    Subscripe Type
-                                </label>
-                            </div>
-                            <select name="sub_type" class="selectpicker form-control"
-                            data-live-search="true" >
-                                <option value="">Choose Type</option>
-                                <option value="PREMIUM" @if($request->sub_type =='PREMIUM') selected @endif>PREMIUM</option>
-                                <option value="FREE" @if($request->sub_type =='FREE') selected @endif>FREE</option>
-                                <option value="TRIAL" @if($request->sub_type =='TRIAL') selected @endif>TRIAL</option>
-                                <option value="Expir_premium" @if($request->sub_type =='Expir_premium') selected @endif>EXPIRED PREMIUM</option>
-
-
-                            </select>
-                        </div>
-                       
+                  
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
                     </div>
