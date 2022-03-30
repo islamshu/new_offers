@@ -172,7 +172,7 @@ tr {
         <div class="form-group col-md-3">
             <input type="text" name="serach" id="serach" placeholder="offer name" class="form-control" />
         </div>
-        <div class="set_date " style="height: 700px;overflow: scroll;">
+        <div class="set_date " style="overflow: scroll;">
 
             @include('dashboard.repots._offers')
         </div>
