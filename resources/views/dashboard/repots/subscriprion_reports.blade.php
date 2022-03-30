@@ -133,16 +133,21 @@
 
                     <th>{{ __('Trial') }}</th>
                     <td>{{ $trial }}</td>
+                </tr>
+                <tr>
                     <th>{{ __('Activation Code') }}</th>
                     <td>{{ $activation }}</td>
-
+                </tr>
+                <tr>
                     <th>{{ __('Admin') }}</th>
                     <td>{{ $admin }}</td>
+                </tr>
+                <tr>
                     <th>{{ __('Visa') }}</th>
                     <td>{{ $visa }}</td>
+                </tr>
                     <th>{{ __('By Excel') }}</th>
                     <td>{{ $excel }}</td>
-                   
                 </tr>
             </thead>
          
