@@ -19,12 +19,7 @@ class ClinetController extends Controller
 {
     use SendNotification;
 
-    public function editedit()
-    {
-        $clients =Clinet::find(3353);
-        dd(Carbon::now() > $clients->expire_date,$clients->expire_date);
-       
-    }
+    
     public function __construct()
     {
         //create read update delete
