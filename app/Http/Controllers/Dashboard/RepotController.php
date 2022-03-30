@@ -285,6 +285,8 @@ class RepotController extends Controller
             }elseif($request->date_to != null && $request->date_from ==null){
                 return $subs->whereBetween('created_at', [$request->date_from,$request->date_to]);                
             }
+            dd($subs->where('payment_type','activition_code')->count());
+
             $trial = $subs->where('payment_type','trial')->count();
             $activation = $subs->where('payment_type','activition_code')->count();
             $visa = $subs->where('payment_type','visa')->count();
