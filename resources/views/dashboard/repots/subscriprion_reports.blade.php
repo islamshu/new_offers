@@ -84,7 +84,6 @@
                     <td>{{ $trial }}</td>
                 </tr>
                 <tr>
-                    {{ dd($activation) }}
                     <th>{{ __('Activation Code') }}</th>
                     <td>{{ $activation }}</td>
                 </tr>
