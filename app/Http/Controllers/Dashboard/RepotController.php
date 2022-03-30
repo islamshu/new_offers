@@ -275,30 +275,12 @@ class RepotController extends Controller
         }
     }
     function subscriprion_reports(Request $request){
-    $subs = Subscriptions_User::query();
-        if($request->date_from !=null || $request->date_to != null){
-
-            if($request->date_to == null && $request->date_from !=null){
-               return $subs->whereBetween('created_at', [$request->date_from,Carbon::now()]);                
-            }elseif($request->date_to != null && $request->date_from ==null){
-                return$subs->whereBetween('created_at', [Carbon::now(),$request->date_to]);                
-            }elseif($request->date_to != null && $request->date_from ==null){
-                return $subs->whereBetween('created_at', [$request->date_from,$request->date_to]);                
-            }
-
-            $trial = $subs->where('payment_type','trial')->count();
-            $activation = $subs->where('payment_type','activition_code')->count();
-            dd($subs->where('payment_type','trial')->count());
-            $visa = $subs->where('payment_type','visa')->count();
-            $admin = $subs->where('payment_type','admin')->count();
-            $excel = $subs->where('payment_type','excel_import')->count();
-            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
-        }
-        $trial = $subs->where('payment_type','trial')->count();
-        $activation = $subs->where('payment_type','activition_code')->count();
-        $visa = $subs->where('payment_type','visa')->count();
-        $admin = $subs->where('payment_type','admin')->count();
-        $excel = $subs->where('payment_type','excel_import')->count();
+      
+        $trial =Subscriptions_User::where('payment_type','trial')->count();
+        $activation = Subscriptions_User::where('payment_type','activition_code')->count();
+        $visa =Subscriptions_User::where('payment_type','visa')->count();
+        $admin = Subscriptions_User::where('payment_type','admin')->count();
+        $excel =Subscriptions_User::where('payment_type','excel_import')->count();
         return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
 
     }
