@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('telescope:prune')->everyFourHours();
-        $schedule->command('check:status')->everyFourHours();
+        $schedule->command('\App\Console\Commands\CheckStatus')->everyTenMinutes();
 
     }
 
