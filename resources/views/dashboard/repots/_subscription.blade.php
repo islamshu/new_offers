@@ -39,6 +39,7 @@
             </thead>
             <tbody>
                 @foreach ($subs as $item)
+                {{ dd($item->user) }}
                     <td>{{ @$item->user->name }}</td>
 
                     <td>{{@$item->user->email }}</td>
