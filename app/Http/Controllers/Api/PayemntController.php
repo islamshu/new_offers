@@ -291,13 +291,12 @@ class PayemntController extends BaseController
             if($json->Data->InvoiceStatus == 'Paid'){
 
                $payment = Payment::where('order_id',$request->order_id)->first();
-              dd(json_decode($payment->all_request)->payment_method) ;
                $code = Subscription::find($payment->package_id);
                $price = $code->price;
 
                $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
                $user = new Subscriptions_User();
-               $user->payment_type = $json->Data->InvoiceTransactions->PaymentGateway;
+               $user->payment_type = json_decode($payment->all_request)->payment_method;
                // dd(auth('client_api')->id());
                $user->paid =  $json->Data->InvoiceDisplayValue;
                $client = auth('client_api')->user();
