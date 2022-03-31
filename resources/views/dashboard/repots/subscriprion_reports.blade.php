@@ -82,7 +82,7 @@
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('Type') }}</th>
-                        <td><a href="{{ route('get_detelis',['en',$request,'trial']) }}">{{__('Count') }}</a></td>
+                        <td><a href="{{ route('get_detelis',['en','trial',$request->date_from,$request->date_to]) }}">{{__('Count') }}</a></td>
                         <td>{{__('Total') }}</td>
 
                     </tr>
