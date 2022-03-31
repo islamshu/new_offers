@@ -343,6 +343,7 @@ class RepotController extends Controller
         }
 
         $subs = Subscriptions_User::where('payment_type', $type)->get();
+        dd($subs);
         return view('dashboard.repots._subscription', compact('subs'));
     }
 }
