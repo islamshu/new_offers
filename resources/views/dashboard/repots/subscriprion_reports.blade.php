@@ -109,20 +109,20 @@
                     </tr>
 
                     <tr>
-                        <th><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="100" height="40" alt="">{{ __('Visa/Master') }}</th>
+                        <th><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="100" height="40" alt="">&nbsp;	&nbsp;	{{ __('Visa/Master') }}</th>
                         <td>{{ $visa }}</td>
                         <td>{{ $sumvisa }}SR</td>
 
                     </tr>
                     <tr>
-                        <th><img src="https://eg.poxnel.com/wp-content/uploads/2020/11/%D8%B4%D8%B9%D8%A7%D8%B1-stc-%D8%AC%D8%AF%D9%8A%D8%AF.png" width="100" height="40" alt="">{{ __('STC') }}</th>
+                        <th><img src="https://eg.poxnel.com/wp-content/uploads/2020/11/%D8%B4%D8%B9%D8%A7%D8%B1-stc-%D8%AC%D8%AF%D9%8A%D8%AF.png" width="100" height="40" alt="">&nbsp;	&nbsp;	{{ __('STC') }}</th>
                         <td>{{ $stc }}</td>
                         <td>{{ $sumstc }}SR</td>
 
                     </tr>
                     <tr>
                         <th> <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="100" height="40" alt="">
-                            {{ __('   Apple pay') }}</th>
+                            &nbsp;	&nbsp;	     {{ __('   Apple pay') }}</th>
                         <td>{{ $applepay }}</td>
                         <td>{{ $sumapplepay }}SR</td>
 
@@ -131,7 +131,7 @@
                         <th>
                             <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="100" height="40" alt="">
                                 
-                        {{ __('Apple pay (Mada)') }}
+                            &nbsp;	&nbsp;	 {{ __('Apple pay (Mada)') }}
                         </th>
                         <td>{{ $applepaymada }}</td>
                         <td>{{ $sumapplepaymada }} SR</td>
