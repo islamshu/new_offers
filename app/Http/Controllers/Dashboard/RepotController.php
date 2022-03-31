@@ -318,7 +318,7 @@ class RepotController extends Controller
         $applepay =Subscriptions_User::where('payment_type','Apple Pay')->count();
 
         $sumapplepay =Subscriptions_User::where('payment_type','Apple Pay')->sum('paid');
-        $summada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->count();
+        $applepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->count();
 
         $sumapplepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->sum('paid');
         $stc =Subscriptions_User::where('payment_type','STC Pay')->count();
