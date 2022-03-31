@@ -287,17 +287,30 @@ class RepotController extends Controller
         if($request->date_from != null && $request->date_to == null){
             $trial =Subscriptions_User::where('payment_type','trial')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
             $activation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $visa =Subscriptions_User::where('payment_type','visa')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $mada =Subscriptions_User::where('payment_type','MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $applepay =Subscriptions_User::where('payment_type','Apple Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $applepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $stc =Subscriptions_User::where('payment_type','STC Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+
+           
+           
+           
             $admin = Subscriptions_User::where('payment_type','admin')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
             $excel =Subscriptions_User::where('payment_type','excel_import')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request')); 
+            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','mada','applepay','applepaymada','stc','admin','excel', 'request'));
         }
         $trial =Subscriptions_User::where('payment_type','trial')->count();
         $activation = Subscriptions_User::where('payment_type','activition_code')->count();
-        $visa =Subscriptions_User::where('payment_type','visa')->count();
+        $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->count();
+        $mada =Subscriptions_User::where('payment_type','MADA')->count();
+        $applepay =Subscriptions_User::where('payment_type','Apple Pay')->count();
+        $applepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->count();
+        $stc =Subscriptions_User::where('payment_type','STC Pay')->count();
+
         $admin = Subscriptions_User::where('payment_type','admin')->count();
         $excel =Subscriptions_User::where('payment_type','excel_import')->count();
-        return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request'));
+        return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','mada','applepay','applepaymada','stc','admin','excel', 'request'));
 
     }
     
