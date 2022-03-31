@@ -287,7 +287,7 @@ class RepotController extends Controller
         if($request->date_from != null && $request->date_to == null){
             $trial =Subscriptions_User::where('payment_type','trial')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
             $activation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $sumactivation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');        
+            $sumactivation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('balnce');        
             $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
             $sumvisa =Subscriptions_User::where('payment_type','VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
             $mada =Subscriptions_User::where('payment_type','MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
@@ -310,7 +310,7 @@ class RepotController extends Controller
         }
         $trial =Subscriptions_User::where('payment_type','trial')->count();
         $activation = Subscriptions_User::where('payment_type','activition_code')->count();
-        $sumactivation = Subscriptions_User::where('payment_type','activition_code')->sum('paid');        
+        $sumactivation = Subscriptions_User::where('payment_type','activition_code')->sum('balnce');        
         $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->count();
         $sumvisa =Subscriptions_User::where('payment_type','VISA/MASTER')->sum('paid');
         $mada =Subscriptions_User::where('payment_type','MADA')->count();
