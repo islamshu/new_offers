@@ -296,7 +296,7 @@ class PayemntController extends BaseController
 
                $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
                $user = new Subscriptions_User();
-               dd ( $json->Data->InvoiceTransactions);
+               dd ( $json->Data->InvoiceTransactions->PaymentGateway);
                $user->payment_type = $json->Data->InvoiceTransactions->PaymentGateway;
                // dd(auth('client_api')->id());
                $user->paid =  $json->Data->InvoiceDisplayValue;
