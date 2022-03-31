@@ -21,7 +21,7 @@ class Subscriptions_User extends Model
     }
     public function client()
     {
-        return $this->belongsTo(Clinet::class);
+        return $this->belongsTo(Clinet::class,'clinet_id');
     }
     public function subscripe()
     {
