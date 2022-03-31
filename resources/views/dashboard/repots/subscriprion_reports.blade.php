@@ -81,41 +81,62 @@
             <table class="datatable table datatable-bordered datatable-head-custom " style="width: 50%">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
+                        <th>{{ __('Type') }}</th>
+                        <td>{{__('Count') }}</td>
+                        <td>{{__('Total') }}</td>
+
+                    </tr>
+                    <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('Trial') }}</th>
                         <td>{{ $trial }}</td>
+                        <td>_</td>
                     </tr>
                     <tr>
                         <th>{{ __('By Admin') }}</th>
                         <td>{{ $admin }}</td>
+                        <td>_</td>
                     </tr>
                    <tr>
                     <th>{{ __('By Excel') }}</th>
                     <td>{{ $excel }}</td>
+                    <td>_</td>
                     </tr>
                     <tr>
                         <th>{{ __('Activation Code') }}</th>
                         <td>{{ $activation }}</td>
+                        <td>{{ $sumactivation }}</td>
+
                     </tr>
 
                     <tr>
                         <th>{{ __('Visa/Master') }}</th>
                         <td>{{ $visa }}</td>
+                        <td>{{ $sumvisa }}</td>
+
                     </tr>
                     <tr>
                         <th>{{ __('STC') }}</th>
-                        <td>{{ $visa }}</td>
+                        <td>{{ $stc }}</td>
+                        <td>{{ $sumstc }}</td>
+
                     </tr>
                     <tr>
                         <th>{{ __('Apple pay') }}</th>
-                        <td>{{ $visa }}</td>
+                        <td>{{ $applepay }}</td>
+                        <td>{{ $sumapplepay }}</td>
+
                     </tr>
                     <tr>
                         <th>{{ __('Apple pay (Mada)') }}</th>
-                        <td>{{ $visa }}</td>
+                        <td>{{ $applepaymada }}</td>
+                        <td>{{ $sumapplepaymada }}</td>
+
                     </tr>
                     <tr>
                         <th>{{ __('Mada') }}</th>
-                        <td>{{ $visa }}</td>
+                        <td>{{ $mada }}</td>
+                        <td>{{ $summada }}</td>
+
                     </tr>
                 </thead>
 
