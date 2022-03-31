@@ -39,12 +39,10 @@
             </thead>
             <tbody>
                 @foreach ($subs as $item)
-                {{ dd($item->user) }}
-                    <td>{{ @$item->user->name }}</td>
+                    <td>{{ @$item->client->name }}</td>
 
-                    <td>{{@$item->user->email }}</td>
-                    <td>{{@$item->nationality }}</td>
-                    <td>{{@$item->user->phone }}</td>
+                    <td>{{@$item->client->email }}</td>
+                    <td>{{@$item->client->phone }}</td>
                     <td>{{@$item->subscripe->name_en}}</td>
                     <td>{{@$item->paid}}</td>
                     <td>{{@$item->created_at}}</td>
