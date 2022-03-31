@@ -129,9 +129,9 @@
                     </tr>
                     <tr>
                         <th>
-                            <th> <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="100" height="40" alt="">
+                            <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="100" height="40" alt="">
                                 
-                                {{ __('Apple pay (Mada)') }}
+                        {{ __('Apple pay (Mada)') }}
                         </th>
                         <td>{{ $applepaymada }}</td>
                         <td>{{ $sumapplepaymada }} SR</td>
