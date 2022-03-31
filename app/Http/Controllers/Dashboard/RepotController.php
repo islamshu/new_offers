@@ -330,7 +330,7 @@ class RepotController extends Controller
         $excel = Subscriptions_User::where('payment_type', 'excel_import')->count();
         return view('dashboard.repots.subscriprion_reports', compact('trial', 'activation', 'sumactivation', 'visa', 'mada', 'applepay', 'applepaymada', 'stc', 'sumvisa', 'summada', 'sumapplepay', 'sumapplepaymada', 'sumstc', 'admin', 'excel', 'request'));
     }
-    public function get_detelis(Request $request, $type,$lang)
+    public function get_detelis($lang,$request, $type)
     {
         dd($request);
     }
