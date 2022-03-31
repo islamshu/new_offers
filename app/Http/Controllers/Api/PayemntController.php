@@ -284,7 +284,7 @@ class PayemntController extends BaseController
             $res['status']['message'] = $error;
             return $res;
         }
-        $json = json_decode($response)
+        $json = json_decode($response);
         dd($json);
 
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
