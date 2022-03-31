@@ -39,7 +39,6 @@
             </thead>
             <tbody>
                 @foreach ($subs as $item)
-                   {{ dd($item) }}
                     <td>{{ @$item->user->name }}</td>
 
                     <td>{{@$item->user->email }}</td>
