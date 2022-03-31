@@ -104,38 +104,38 @@
                     <tr>
                         <th>{{ __('Activation Code') }}</th>
                         <td>{{ $activation }}</td>
-                        <td>{{ $sumactivation }}</td>
+                        <td>{{ $sumactivation }}SR</td>
 
                     </tr>
 
                     <tr>
                         <th>{{ __('Visa/Master') }}</th>
                         <td>{{ $visa }}</td>
-                        <td>{{ $sumvisa }}</td>
+                        <td>{{ $sumvisa }}SR</td>
 
                     </tr>
                     <tr>
                         <th>{{ __('STC') }}</th>
                         <td>{{ $stc }}</td>
-                        <td>{{ $sumstc }}</td>
+                        <td>{{ $sumstc }}SR</td>
 
                     </tr>
                     <tr>
                         <th>{{ __('Apple pay') }}</th>
                         <td>{{ $applepay }}</td>
-                        <td>{{ $sumapplepay }}</td>
+                        <td>{{ $sumapplepay }}SR</td>
 
                     </tr>
                     <tr>
                         <th>{{ __('Apple pay (Mada)') }}</th>
                         <td>{{ $applepaymada }}</td>
-                        <td>{{ $sumapplepaymada }}</td>
+                        <td>{{ $sumapplepaymada }} SR</td>
 
                     </tr>
                     <tr>
                         <th>{{ __('Mada') }}</th>
                         <td>{{ $mada }}</td>
-                        <td>{{ $summada }}</td>
+                        <td>{{ $summada }}SR</td>
 
                     </tr>
                 </thead>
