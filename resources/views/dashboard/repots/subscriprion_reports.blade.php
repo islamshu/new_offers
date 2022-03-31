@@ -117,6 +117,7 @@
                     <tr>
                         <th><img src="https://eg.poxnel.com/wp-content/uploads/2020/11/%D8%B4%D8%B9%D8%A7%D8%B1-stc-%D8%AC%D8%AF%D9%8A%D8%AF.png" width="50" height="20" alt="">&nbsp;	&nbsp;	{{ __('STC') }}</th>
                         <td>{{ $stc }}</td>
+                        {{ dd($request->all()) }}
                         <td>{{ $sumstc }}SR</td>
 
                     </tr>
