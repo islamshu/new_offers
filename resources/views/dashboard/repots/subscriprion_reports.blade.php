@@ -109,7 +109,7 @@
                     </tr>
 
                     <tr>
-                        <th>{{ __('Visa/Master') }}</th>
+                        <th><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="30" height="20" alt="">{{ __('Visa/Master') }}</th>
                         <td>{{ $visa }}</td>
                         <td>{{ $sumvisa }}SR</td>
 
