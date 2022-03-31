@@ -76,6 +76,7 @@ class CodeController extends BaseController
         }
         $user->status = 'active';
         $user->balnce = $code->balance;
+        $user->paid = $code->balance;
         $user->purchases_no =  $count + 1;
         $user->sub_id  = $code->id;
         $user->clinet_id  = auth('client_api')->id();
