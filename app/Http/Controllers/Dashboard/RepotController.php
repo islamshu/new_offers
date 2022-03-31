@@ -341,8 +341,8 @@ class RepotController extends Controller
             $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, Carbon::now()])->get();
             return view('dashboard.repots._subscription', compact('subs'));
         }
-dd( Subscriptions_User::where('payment_type', $type)->get());
-        $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, $to])->get();
+
+        $subs = Subscriptions_User::where('payment_type', $type)->get();
         return view('dashboard.repots._subscription', compact('subs'));
     }
 }
