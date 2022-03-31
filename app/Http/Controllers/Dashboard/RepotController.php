@@ -219,10 +219,10 @@ class RepotController extends Controller
     {
         if ($request->ajax()) {
 
-           $test_q= str_replace(" ", "%", $request->get('query'));
+            $test_q = str_replace(" ", "%", $request->get('query'));
 
-            $query = Offer::query()->orwhere('name_en','like','%'.$test_q.'%');
-          
+            $query = Offer::query()->orwhere('name_en', 'like', '%' . $test_q . '%');
+
 
             $query->when($request->created_form, function ($q) use ($request) {
                 if ($request->created_to == null && $request->created_form != null) {
@@ -248,7 +248,7 @@ class RepotController extends Controller
                     return $qq->where('status', $request->vendor_status);
                 });
             });
-          
+
             $query->when($request->number_date, function ($q) use ($request) {
                 return $q->whereDate('end_time', [Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 00:00:00', Carbon::now()->addDays($request->number_date)->format('Y-m-d') . ' 23:59:59']);
             });
@@ -266,69 +266,77 @@ class RepotController extends Controller
                     });
                 });
             });
-           
+
 
             $offers = $query->paginate(10);
 
-        
+
             return view('dashboard.repots._offers', compact('offers', 'request'));
         }
     }
-    function subscriprion_reports(Request $request){
-        if($request->date_from != null && $request->date_to != null){
-            $trial =Subscriptions_User::where('payment_type','trial')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-            $activation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-            $visa =Subscriptions_User::where('payment_type','visa')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-            $admin = Subscriptions_User::where('payment_type','admin')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-            $excel =Subscriptions_User::where('payment_type','excel_import')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','visa','admin','excel', 'request')); 
+    function subscriprion_reports(Request $request)
+    {
+        if ($request->date_from != null && $request->date_to != null) {
+            $trial = Subscriptions_User::where('payment_type', 'trial')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $activation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $sumactivation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $visa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $sumvisa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $mada = Subscriptions_User::where('payment_type', 'MADA')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $summada = Subscriptions_User::where('payment_type', 'MADA')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $applepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $sumapplepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $applepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $sumapplepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $stc = Subscriptions_User::where('payment_type', 'STC Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $sumstc = Subscriptions_User::where('payment_type', 'STC Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
+            $admin = Subscriptions_User::where('payment_type', 'admin')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            $excel = Subscriptions_User::where('payment_type', 'excel_import')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            return view('dashboard.repots.subscriprion_reports', compact('trial', 'activation', 'sumactivation', 'visa', 'mada', 'applepay', 'applepaymada', 'stc', 'sumvisa', 'summada', 'sumapplepay', 'sumapplepaymada', 'sumstc', 'admin', 'excel', 'request'));
         }
 
-        if($request->date_from != null && $request->date_to == null){
-            $trial =Subscriptions_User::where('payment_type','trial')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $activation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $sumactivation = Subscriptions_User::where('payment_type','activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('balnce');        
-            $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $sumvisa =Subscriptions_User::where('payment_type','VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
-            $mada =Subscriptions_User::where('payment_type','MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $summada =Subscriptions_User::where('payment_type','MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
-            $applepay =Subscriptions_User::where('payment_type','Apple Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+        if ($request->date_from != null && $request->date_to == null) {
+            $trial = Subscriptions_User::where('payment_type', 'trial')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $activation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $sumactivation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $visa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $sumvisa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $mada = Subscriptions_User::where('payment_type', 'MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $summada = Subscriptions_User::where('payment_type', 'MADA')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $applepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
 
-            $sumapplepay =Subscriptions_User::where('payment_type','Apple Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
-            $applepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $sumapplepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $applepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
 
-            $sumapplepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
-            $stc =Subscriptions_User::where('payment_type','STC Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $sumstc =Subscriptions_User::where('payment_type','STC Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $sumapplepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
+            $stc = Subscriptions_User::where('payment_type', 'STC Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $sumstc = Subscriptions_User::where('payment_type', 'STC Pay')->whereBetween('created_at', [$request->date_from, Carbon::now()])->sum('paid');
 
-           
-           
-           
-            $admin = Subscriptions_User::where('payment_type','admin')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            $excel =Subscriptions_User::where('payment_type','excel_import')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
+
+
+
+            $admin = Subscriptions_User::where('payment_type', 'admin')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            $excel = Subscriptions_User::where('payment_type', 'excel_import')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
+            return view('dashboard.repots.subscriprion_reports', compact('trial', 'activation', 'sumactivation', 'visa', 'mada', 'applepay', 'applepaymada', 'stc', 'sumvisa', 'summada', 'sumapplepay', 'sumapplepaymada', 'sumstc', 'admin', 'excel', 'request'));
         }
-        $trial =Subscriptions_User::where('payment_type','trial')->count();
-        $activation = Subscriptions_User::where('payment_type','activition_code')->count();
-        $sumactivation = Subscriptions_User::where('payment_type','activition_code')->sum('balnce');        
-        $visa =Subscriptions_User::where('payment_type','VISA/MASTER')->count();
-        $sumvisa =Subscriptions_User::where('payment_type','VISA/MASTER')->sum('paid');
-        $mada =Subscriptions_User::where('payment_type','MADA')->count();
-        $summada =Subscriptions_User::where('payment_type','MADA')->sum('paid');
-        $applepay =Subscriptions_User::where('payment_type','Apple Pay')->count();
+        $trial = Subscriptions_User::where('payment_type', 'trial')->count();
+        $activation = Subscriptions_User::where('payment_type', 'activition_code')->count();
+        $sumactivation = Subscriptions_User::where('payment_type', 'activition_code')->sum('paid');
+        $visa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->count();
+        $sumvisa = Subscriptions_User::where('payment_type', 'VISA/MASTER')->sum('paid');
+        $mada = Subscriptions_User::where('payment_type', 'MADA')->count();
+        $summada = Subscriptions_User::where('payment_type', 'MADA')->sum('paid');
+        $applepay = Subscriptions_User::where('payment_type', 'Apple Pay')->count();
 
-        $sumapplepay =Subscriptions_User::where('payment_type','Apple Pay')->sum('paid');
-        $applepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->count();
+        $sumapplepay = Subscriptions_User::where('payment_type', 'Apple Pay')->sum('paid');
+        $applepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->count();
 
-        $sumapplepaymada =Subscriptions_User::where('payment_type','Apple Pay (Mada)')->sum('paid');
-        $stc =Subscriptions_User::where('payment_type','STC Pay')->count();
-        $sumstc =Subscriptions_User::where('payment_type','STC Pay')->sum('paid');
+        $sumapplepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->sum('paid');
+        $stc = Subscriptions_User::where('payment_type', 'STC Pay')->count();
+        $sumstc = Subscriptions_User::where('payment_type', 'STC Pay')->sum('paid');
 
-        $admin = Subscriptions_User::where('payment_type','admin')->count();
-        $excel =Subscriptions_User::where('payment_type','excel_import')->count();
-        return view('dashboard.repots.subscriprion_reports', compact('trial','activation','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
-
+        $admin = Subscriptions_User::where('payment_type', 'admin')->count();
+        $excel = Subscriptions_User::where('payment_type', 'excel_import')->count();
+        return view('dashboard.repots.subscriprion_reports', compact('trial', 'activation', 'sumactivation', 'visa', 'mada', 'applepay', 'applepaymada', 'stc', 'sumvisa', 'summada', 'sumapplepay', 'sumapplepaymada', 'sumstc', 'admin', 'excel', 'request'));
     }
-    
-
 }
