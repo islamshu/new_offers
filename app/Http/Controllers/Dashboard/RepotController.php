@@ -306,7 +306,7 @@ class RepotController extends Controller
            
             $admin = Subscriptions_User::where('payment_type','admin')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
             $excel =Subscriptions_User::where('payment_type','excel_import')->whereBetween('created_at', [$request->date_from, Carbon::now()])->count();
-            return view('dashboard.repots.subscriprion_reports', compact('trial','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
+            return view('dashboard.repots.subscriprion_reports', compact('trial','activation','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
         }
         $trial =Subscriptions_User::where('payment_type','trial')->count();
         $activation = Subscriptions_User::where('payment_type','activition_code')->count();
@@ -326,7 +326,7 @@ class RepotController extends Controller
 
         $admin = Subscriptions_User::where('payment_type','admin')->count();
         $excel =Subscriptions_User::where('payment_type','excel_import')->count();
-        return view('dashboard.repots.subscriprion_reports', compact('trial','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
+        return view('dashboard.repots.subscriprion_reports', compact('trial','activation','sumactivation','visa','mada','applepay','applepaymada','stc','sumvisa','summada','sumapplepay','sumapplepaymada','sumstc','admin','excel', 'request'));
 
     }
     
