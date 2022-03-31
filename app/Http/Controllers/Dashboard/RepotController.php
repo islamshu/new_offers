@@ -333,13 +333,18 @@ class RepotController extends Controller
     public function get_detelis($lang, $type, $from = null, $to = null)
     {
         if ($from != null && $to != null) {
+            dd('dd');
             $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, $to])->get();
             return view('dashboard.repots._subscription', compact('subs'));
         }
         if ($from != null && $to == null) {
+            dd('ddd');
+
             $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, Carbon::now()])->get();
             return view('dashboard.repots._subscription', compact('subs'));
         }
+        dd('dddd');
+
         $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, $to])->get();
         return view('dashboard.repots._subscription', compact('subs'));
     }
