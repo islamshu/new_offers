@@ -291,7 +291,7 @@ class PayemntController extends BaseController
             if($json->Data->InvoiceStatus == 'Paid'){
 
                $payment = Payment::where('order_id',$request->order_id)->first();
-               json_decode($payment->all_request);
+              dd(json_decode($payment->all_request)) ;
                $code = Subscription::find($payment->package_id);
                $price = $code->price;
 
