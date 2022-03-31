@@ -121,7 +121,7 @@
 
                     </tr>
                     <tr>
-                        <th> <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="50" height="20" alt="">
+                        <th> <img src="https://e7.pngegg.com/pngimages/462/855/png-clipart-apple-pay-google-pay-payment-samsung-pay-apple-text-logo.png" width="50" height="20" alt="">
                             &nbsp;	&nbsp;	     {{ __('   Apple pay') }}</th>
                         <td>{{ $applepay }}</td>
                         <td>{{ $sumapplepay }}SR</td>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr>
                         <th>
-                            <img src="https://freepikpsd.com/file/2019/10/apple-pay-png-5.png" width="50" height="20" alt="">
+                            <img src="https://e7.pngegg.com/pngimages/462/855/png-clipart-apple-pay-google-pay-payment-samsung-pay-apple-text-logo.png" width="50" height="20" alt="">
                                 
                             &nbsp;	&nbsp;	 {{ __('Apple pay (Mada)') }}
                         </th>
