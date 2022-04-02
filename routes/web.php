@@ -242,7 +242,7 @@ Route::group([
 
         Route::get('all_clients', 'Dashboard\ClinetController@first_index');
 
-        Route::get('show_clients/{type}','Dashboard\ClinetController@index');
+        Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
 
         
         Route::get('import_client','Dashboard\ClinetController@get_import')->name('get_import');
