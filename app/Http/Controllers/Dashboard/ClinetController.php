@@ -135,7 +135,7 @@ class ClinetController extends Controller
         }elseif($type == 'unverify'){
             $clinets =  Clinet::where('is_verify',0)->orderBy('register_date','desc')->paginate(20);;
         }elseif($type == 'premiumuser'){
-            $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->paginate(20);
+            $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->paginate(100);
         }elseif($type == 'trail'){      
             $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->paginate(20);
         }elseif($type == 'none'){
