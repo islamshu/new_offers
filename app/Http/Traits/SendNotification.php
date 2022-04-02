@@ -13,8 +13,8 @@ trait SendNotification
         $notification = array(
             'title' =>$title,
             'body' => $body,
-            'vendor' =>$vendor_id,
-            'offer' => $offer_id,
+            'store_id' =>$vendor_id,
+            'offer_id' => $offer_id,
             'sound' => 'default',
             'badge' => '1',
             );
