@@ -92,6 +92,23 @@
                             </div>
                           <input type="date" value="{{ $request->transaction_to}}" placeholder="Transaction To" class="form-control" name="transaction_to">
                         </div>
+                        <div class="input-group col-md-5 mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    Type
+                                </label>
+                            </div>
+                            <select name="type" class="form-control" id="">
+                                <option value="">_</option>
+                                <option value="FREE" @if($request->type == 'FREE') selected @endif>FREE</option>
+                                <option value="TRIAL" @if($request->type == 'TRIAL') selected @endif>TRIAL</option>
+                                <option value="PREMIUM" @if($request->type == 'PREMIUM') selected @endif>PREMIUM</option>
+                                <option value="Expir_premium" @if($request->type == 'Expir_premium') selected @endif>Expir premium</option>
+
+                                
+                                
+                            </select>
+                        </div>
                      
                         <div class="input-group col-md-5 mb-3">
 
