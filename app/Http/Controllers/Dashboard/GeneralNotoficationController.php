@@ -32,13 +32,13 @@ class GeneralNotoficationController extends Controller
     }
     public function store(Request $request ,$locale){
     
-        fcm()
-        ->toTopic("general") // $topic must an string (topic name)
-        ->notification([
-            'title' =>  $request->title_en,
-            'body' => $request->body_en,
-        ])
-        ->send();
+        // fcm()
+        // ->toTopic("general") // $topic must an string (topic name)
+        // ->notification([
+        //     'title' =>  $request->title_en,
+        //     'body' => $request->body_en,
+        // ])
+        // ->send();
         $not = new GeneralNotofication();
         $not->title_en = $request->title_en;
         $not->title_ar = $request->title_ar;
@@ -54,10 +54,10 @@ class GeneralNotoficationController extends Controller
 
 
 
-        // $users = Clinet::where('token','!=',null)->get();
-        // foreach($users as $user){
-        //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
-        // }
+        $users = Clinet::where('token','!=',null)->get();
+        foreach($users as $user){
+            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
+        }
 
         return 'true';
     }
