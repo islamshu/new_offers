@@ -136,7 +136,12 @@ class ClinetController extends Controller
         }elseif($type == 'verify'){
             $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->get();
               
+            
+        }elseif($type == 'unverify'){
+            $clinets =  Clinet::where('is_verify',0)->orderBy('register_date','desc')->get();
+              
 
+        
         }elseif($type == 'premium'){
             $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->get();
               
