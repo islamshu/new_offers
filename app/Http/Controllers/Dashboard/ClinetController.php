@@ -127,7 +127,7 @@ class ClinetController extends Controller
     }
     public function index($locale,$type)
     {
-        dd('d');
+      
         if($type == 'all'){
             $clinets = Clinet::orderBy('register_date','desc')->paginate(20);
         }elseif($type == 'verify'){
@@ -135,6 +135,7 @@ class ClinetController extends Controller
         }elseif($type == 'unverify'){
             $clinets =  Clinet::where('is_verify',0)->orderBy('register_date','desc')->paginate(20);;
         }elseif($type == 'premium'){
+            dd('d');
             $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->paginate(20);
         }elseif($type == 'trail'){      
             $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->paginate(20);
