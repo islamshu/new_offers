@@ -127,7 +127,6 @@ class ClinetController extends Controller
     }
     public function index($locale,$type)
     {
-        dd('asdasdas');
       
         if($type == 'all'){
             $clinets = Clinet::orderBy('register_date','desc')->paginate(20);
@@ -135,7 +134,7 @@ class ClinetController extends Controller
             $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->paginate(20);            
         }elseif($type == 'unverify'){
             $clinets =  Clinet::where('is_verify',0)->orderBy('register_date','desc')->paginate(20);;
-        }elseif($type == 'premium'){
+        }elseif($type == 'premiumuser'){
             $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->paginate(20);
         }elseif($type == 'trail'){      
             $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->paginate(20);
@@ -175,9 +174,9 @@ class ClinetController extends Controller
                   
     
             
-            }elseif($type == 'premium'){
+            }elseif($type == 'premiumuser'){
                 $clinets =   Clinet::where('type_of_subscribe','PREMIUM')
-                >orWhere('name', 'like', '%'.$query.'%')
+                ->orWhere('name', 'like', '%'.$query.'%')
                 ->orWhere('email', 'like', '%'.$query.'%')
                 ->orWhere('phone','like', '%'.$query.'%'
                 )->orderBy('register_date','desc')->paginate(20);
