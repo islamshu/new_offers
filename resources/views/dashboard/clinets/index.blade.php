@@ -199,9 +199,10 @@
         }
 
         function fetch_data(page, query) {
+            var type = $('#type').val();
 
                 $.ajax({
-                    url: "/en/get_type_client?page=" + page + "&query=" + query ,
+                    url: "/en/get_type_client?page=" + page + "&query=" + query + "&type=" + type,
                     success: function(data) {
 
                         $('.set_date').html('');
