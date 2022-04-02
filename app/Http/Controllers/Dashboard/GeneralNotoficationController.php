@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Traits\SendNotification;
 use App\Models\City;
 use App\Models\Clinet;
+use FCM;
 
 class GeneralNotoficationController extends Controller
 {
@@ -30,7 +31,7 @@ class GeneralNotoficationController extends Controller
         $offers = Offer::with('vendor')->where('status',1)->where('vendor_id',$id)->get();
     }
     public function store(Request $request ,$locale){
-        dd($request);
+    
         fcm()
         ->toTopic("general") // $topic must an string (topic name)
         ->notification([
@@ -38,7 +39,7 @@ class GeneralNotoficationController extends Controller
             'body' => $request->body_en,
         ])
         ->send();
-        
+        dd($request);
         $not = new GeneralNotofication();
         $not->title_en = $request->title_en;
         $not->title_ar = $request->title_ar;
