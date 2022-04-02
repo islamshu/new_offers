@@ -39,7 +39,6 @@ class GeneralNotoficationController extends Controller
             'body' => $request->body_en,
         ])
         ->send();
-        dd($request);
         $not = new GeneralNotofication();
         $not->title_en = $request->title_en;
         $not->title_ar = $request->title_ar;
