@@ -182,8 +182,8 @@ class ClinetController extends Controller
                 $clinets =   Clinet::where('type_of_subscribe','PREMIUM')
                 ->orWhere('name', 'like', '%'.$query.'%')
                 ->orWhere('email', 'like', '%'.$query.'%')
-                ->orWhere('phone','like', '%'.$query.'%'
-                )->orderBy('register_date','desc')->paginate(20);
+                ->orWhere('phone','like', '%'.$query.'%')
+                ->orderBy('register_date','desc')->paginate(20);
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
