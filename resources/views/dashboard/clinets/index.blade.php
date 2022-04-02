@@ -63,6 +63,8 @@
 
             <div class="form-group col-md-3">
                 <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+                <input type="hidden" name="type" id="type" value="{{ $type }}" />
+
             </div>
 
             <div class="set_date">
@@ -197,8 +199,10 @@
         }
 
         function fetch_data(page, query) {
+            var type = $('#type').val();
+
                 $.ajax({
-                    url: "/en/ftech_data_clients?page=" + page + "&query=" + query + "&type=" + {{ $type }},
+                    url: "/en/ftech_data_clients?page=" + page + "&query=" + query + "&type=" + type,
                     success: function(data) {
 
                         $('.set_date').html('');
