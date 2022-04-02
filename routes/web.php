@@ -242,6 +242,9 @@ Route::group([
         Route::get('all_clients', 'Dashboard\ClinetController@first_index');
 
         Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
+        Route::get('ftech_data_clients/{type}','Dashboard\ClinetController@ftech_data')->name('ftech_data_clients');
+
+        
         Route::get('import_client','Dashboard\ClinetController@get_import')->name('get_import');
         Route::post('import_client','Dashboard\ClinetController@post_import')->name('client.import');
 

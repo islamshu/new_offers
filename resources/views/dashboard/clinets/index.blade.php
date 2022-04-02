@@ -61,67 +61,15 @@
                 </div>
             @endif
 
-            <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-                id="kt_datatable">
-                <thead>
-                    <tr class="fw-bold fs-6 text-gray-800">
+            <div class="form-group col-md-3">
+                <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
+            </div>
 
-                        <th>{{ __('Name') }}</th>
-                        <th>{{ __('Phone') }}</th>
-                        <th>{{ __('city') }}</th>
-                        <th>{{ __('registration date') }}</th>
-                        <th>{{ __('Subscription type') }}</th>
-                        <th>{{ __('Mobile type') }}</th>
-                        {{-- <th>{{ __('acount status') }}</th> --}}
+            <div class="set_date">
 
-                        <th>{{ __('Date Of Birth') }}</th>
-                        <th>{{ __('Action') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-             
-                        @foreach ($clinets as $item)
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ @App\Models\City::find($item->email) }}</td>
-                            <td>{{ $item->register_date ? $item->register_date : $item->created_at }}</td>
-                            <td>{{ $item->type_of_subscribe }}</td>
-                            <td>{{ $item->mobile_type }}</td>
-                            <td>{{ $item->birth_date }}</td>
-
-                            <td class="pr-0 text-left">
-                                @if (auth()->user()->isAbleTo(['create-client']))
-
-                                <div class="dropdown">
-                                    <button class="dropbtn">{{ __('Action') }}</button>
-                                    <div class="dropdown-content">
-                                        <a
-                                            href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}">{{ __('show') }}</a>
-                                        <a data-toggle="modal" data-target="#myModal"
-                                            onclick="make('{{ $item->id }}')">Send Notofication</a>
-                                        
-                                        <a data-toggle="modal" data-target="#addSub"
-                                            onclick="makenew_fun({{ $item->id }})">Add Subscribe</a>
-
-                                    </div>
-                                    @endif
-
-
-                                    {{-- <a href="{{ route('clinets.show', [app()->getLocale(), $item->id]) }}"
-                            class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-                            <i class="fa fa-eye"> </i>
-                        </a> --}}
-
-
-
-
-                            </td>
-                            </tr>
-                        @endforeach
-
-                </tbody>
-
-            </table>
+                @include('dashboard.clinets.pagination_data')
+            </div>
+           
 
 
         </div>
@@ -237,6 +185,7 @@
 
         }
 
+
         
 
         function performdelete(id) {
@@ -246,5 +195,34 @@
 
             confirmDestroy(url)
         }
+
+        function fetch_data(page, query) {
+                $.ajax({
+                    url: "/en/ftech_data_clients?page=" + page + "&query=" + query + "&type=" + {{ $type }},
+                    success: function(data) {
+
+                        $('.set_date').html('');
+                        $('.set_date').html(data);
+                    }
+                })
+            }
+            $(document).on('keyup', '#serach', function() {
+                var query = $('#serach').val();
+
+                var page = $('#hidden_page').val();
+                fetch_data(page, query);
+            });
+            $(document).on('click', '.pagination a', function(event) {
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                $('#hidden_page').val(page);
+
+
+                var query = $('#serach').val();
+
+                $('li').removeClass('active');
+                $(this).parent().addClass('active');
+                fetch_data(page, query);
+            });
     </script>
 @endsection
