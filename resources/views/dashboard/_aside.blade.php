@@ -591,6 +591,9 @@ $lang = app()->getLocale();
                                 <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/subscriprion_reports"
                                     class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                         class="menu-text">{{ __('Subscription Reports') }}</span></a></li>
+                                        <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/clients_admin_reports"
+                                            class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
+                                                class="menu-text">{{ __('Client For Admin') }}</span></a></li>
 
 
 
