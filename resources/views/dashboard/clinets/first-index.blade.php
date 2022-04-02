@@ -33,7 +33,7 @@
                         <!--end::Svg Icon-->
                         <a href="{{ route('show_clients',[app()->getLocale(),'all']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('All_Clients') }}</a>
                     </div>
-                    <div class="col-md-3 bg-light-primary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
+                    <div class="col-md-3 bg-light-success w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
                             {{-- <i class=" fa-4x"></i> --}}
@@ -43,13 +43,12 @@
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                             {{-- <i class=" fa-4x"></i> --}}
                           
-                            {{ App\Models\Clinet::orderBy('register_date','desc')->count()}}
+                            {{ App\Models\Clinet::where('is_verify',1)->orderBy('register_date','desc')->count()}}
                         </span>
                         
                         <!--end::Svg Icon-->
-                        <a href="{{ route('show_clients',[app()->getLocale(),'all']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('All_Clients') }}</a>
+                        <a href="{{ route('show_clients',[app()->getLocale(),'verify']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Verify Clients') }}</a>
                     </div>
-     
                     <div class="col-md-3 bg-light-secondary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                         <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">
