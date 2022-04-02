@@ -60,7 +60,7 @@
                     </button>
                 </div>
             @endif
-            <form action="{{ route('show_clients') }}" method="get">
+            <form action="{{ route('show_clients',[app()->getLocale(),$type]) }}" method="get">
                 <div class="form-group col-md-3">
                     <input type="date" name="regestar_from" id="regestar_from" class="form-control">
                 </div>
