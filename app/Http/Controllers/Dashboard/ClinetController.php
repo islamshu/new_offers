@@ -147,7 +147,6 @@ class ClinetController extends Controller
     }
     public function ftech_data(Request $request)
     {
-        dd($request->type);
         if($request->ajax())
         {
 
