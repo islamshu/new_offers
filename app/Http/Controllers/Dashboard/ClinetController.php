@@ -125,7 +125,7 @@ class ClinetController extends Controller
         Excel::import(new ClientImport, request()->file('file'));
         return redirect()->back()->with(['success' => 'client Uploded successfully']);
     }
-    public function index($locale,$type)
+    public function index(Request $request,$locale,$type)
     {
       
         if($type == 'all'){
@@ -141,7 +141,7 @@ class ClinetController extends Controller
         }elseif($type == 'none'){
             $clinets =   Clinet::where('type_of_subscribe','FREE')->orderBy('register_date','desc')->paginate(20);
         }
-        return view('dashboard.clinets.index',compact('clinets','type'));
+        return view('dashboard.clinets.index',compact('clinets','type','request'));
 
     
     }
