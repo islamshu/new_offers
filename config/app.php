@@ -164,7 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Kawankoding\Fcm\FcmServiceProvider::class,
+        // Kawankoding\Fcm\FcmServiceProvider::class,
 
 
         /*
