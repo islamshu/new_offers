@@ -202,7 +202,7 @@
             var type = $('#type').val();
 
                 $.ajax({
-                    url: "/en/ftech_data_clients?page=" + page + "&query=" + query + "&type=" + type,
+                    url: "/en/get_type_client?page=" + page + "&query=" + query + "&type=" + type,
                     success: function(data) {
 
                         $('.set_date').html('');
