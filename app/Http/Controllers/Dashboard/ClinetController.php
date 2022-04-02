@@ -193,7 +193,7 @@ class ClinetController extends Controller
             }
             
               
-         return view('dashboard.clinets.pagination_data', compact('vendors'));
+         return view('dashboard.clinets.pagination_data', compact('clinets'));
         }
     }
 
