@@ -127,6 +127,7 @@ class ClinetController extends Controller
     }
     public function index($locale,$type)
     {
+        dd('asdasdas');
       
         if($type == 'all'){
             $clinets = Clinet::orderBy('register_date','desc')->paginate(20);
