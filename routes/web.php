@@ -127,6 +127,7 @@ Route::group([
         Route::post('/show/usermodel', 'Dashboard\brandController@showmodeluser')->name('showmodeluser');
         Route::post('/show/usermodelupdate', 'Dashboard\PortalController@updateuser')->name('updateuser');
         Route::post('/update_user_vendor', 'Dashboard\PortalController@updateusermodel')->name('update_user_vendor');
+        Route::get('get_type_client','Dashboard\ClinetController@ftech_data')->name('get_type_client');
 
         
         Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
@@ -242,7 +243,6 @@ Route::group([
         Route::get('all_clients', 'Dashboard\ClinetController@first_index');
 
         Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
-        Route::get('get_type_client/{type}','Dashboard\ClinetController@ftech_data')->name('get_type_client');
 
         
         Route::get('import_client','Dashboard\ClinetController@get_import')->name('get_import');
