@@ -79,7 +79,9 @@
                         </div>
                       <input type="date" value="{{ $request->regestar_to }}" id="regestar_to" placeholder="Created To" class="form-control" name="regestar_to">
                     </div>
-                   
+                    <div class="input-group col-md-5 mb-3">
+                        <input type="submit" value="submit" class="form-control" >
+                    </div>
             </div>
 
             </form>
