@@ -63,9 +63,19 @@
             <form action="{{ route('show_clients',[app()->getLocale(),$type]) }}" method="get">
                 <div class="row">
                 <div class="form-group col-md-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">
+                            Register From
+                        </label>
+                    </div>
                     <input type="date" name="regestar_from" id="regestar_from" class="form-control">
                 </div>
                 <div class="form-group col-md-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">
+                            Register To
+                        </label>
+                    </div>
                     <input type="date" name="regestar_to" id="regestar_to" class="form-control">
                 </div>
             </div>
