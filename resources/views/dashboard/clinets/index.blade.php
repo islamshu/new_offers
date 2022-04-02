@@ -60,6 +60,14 @@
                     </button>
                 </div>
             @endif
+            <form action="{{ route('show_clients') }}" method="get">
+                <div class="form-group col-md-3">
+                    <input type="date" name="regestar_from" id="regestar_from" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="date" name="regestar_to" id="regestar_to" class="form-control">
+                </div>
+            </form>
 
             <div class="form-group col-md-3">
                 <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
