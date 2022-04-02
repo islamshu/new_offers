@@ -30,6 +30,7 @@ class GeneralNotoficationController extends Controller
         $offers = Offer::with('vendor')->where('status',1)->where('vendor_id',$id)->get();
     }
     public function store(Request $request ,$locale){
+        dd($request);
         fcm()
         ->toTopic("general") // $topic must an string (topic name)
         ->notification([
