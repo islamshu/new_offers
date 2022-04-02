@@ -106,7 +106,7 @@
                     <span class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2"  style="font-size: 18px">
                         {{-- <i class=" fa-4x"></i> --}}
                       
-                        {{ App\Models\Clinet::where('is_verify',1)->where('type_of_subscribe','FREE')->orderBy('register_date','desc')->count() }}
+                        {{ App\Models\Clinet::where('is_verify',1)->where('type_of_subscribe','FREE')->orderBy('register_date','desc')->count() + App\Models\Clinet::where('is_verify',1)->where('type_of_subscribe','Expir_premium')->orderBy('register_date','desc')->count() }}
                     </span>
                     <!--end::Svg Icon-->
                     <a href="{{ route('show_clients',[app()->getLocale(),'none']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Free Clients') }}</a>
