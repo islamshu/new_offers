@@ -168,7 +168,7 @@ class ClinetController extends Controller
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'premiumuser'){
-            $query = Clinet::query()->where('type_of_subscribe','PREMIUM');
+            $query = Clinet::query()->where('type_of_subscribe','PREMIUM')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
                     return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
@@ -180,7 +180,7 @@ class ClinetController extends Controller
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'trail'){      
-            $query = Clinet::query()->where('type_of_subscribe','TRIAL');
+            $query = Clinet::query()->where('type_of_subscribe','TRIAL')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
                     return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
@@ -192,7 +192,7 @@ class ClinetController extends Controller
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'none'){
-            $query = Clinet::query()->where('type_of_subscribe','FREE');
+            $query = Clinet::query()->where('type_of_subscribe','FREE')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
                     return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
