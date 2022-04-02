@@ -30,6 +30,14 @@ class GeneralNotoficationController extends Controller
         $offers = Offer::with('vendor')->where('status',1)->where('vendor_id',$id)->get();
     }
     public function store(Request $request ,$locale){
+        fcm()
+        ->toTopic("general") // $topic must an string (topic name)
+        ->notification([
+            'title' =>  $request->title_en,
+            'body' => $request->body_en,
+        ])
+        ->send();
+        
         $not = new GeneralNotofication();
         $not->title_en = $request->title_en;
         $not->title_ar = $request->title_ar;
@@ -40,19 +48,7 @@ class GeneralNotoficationController extends Controller
 
         $not->save();
 
-        fcm()
-        ->toTopic("general") 
-        ->priority('normal')
-        ->timeToLive(0)
-        ->notification([
-            'title' => $request->title_en,
-            'body' => $request->body_en,
-        ])
-        ->data([
-            'click_action'=> 'FLUTTER_NOTIFICATION_CLICK'
-        ])
-      
-        ->send();
+       
 
 
 
