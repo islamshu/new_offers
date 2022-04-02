@@ -232,7 +232,7 @@ class ClinetController extends Controller
 
             }elseif($type == 'none'){
         
-                if($query == null && ){
+                if($query == null  ){
                     $clinets =   Clinet::where('type_of_subscribe','FREE')->orderBy('register_date','desc')->paginate(20);
                 }else{
                     $clinets =   Clinet::
