@@ -159,6 +159,7 @@ class ClinetController extends Controller
     {
         if($request->ajax())
         {
+            dd($request);
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             if($type == 'all'){
