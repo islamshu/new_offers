@@ -63,7 +63,7 @@
             <form action="{{ route('show_clients',[app()->getLocale(),$type]) }}" method="get">
                 <div class="row">
                     <div class="input-group col-md-5 mb-3">
-                        <div class="input-group-prepend">
+                        <div class="input-group-prepend" style="display:block">
                             <label class="input-group-text" for="inputGroupSelect01">
                                 Register From
                             </label>
@@ -71,14 +71,14 @@
                       <input type="date" value="{{ $request->regestar_from }}" id="regestar_from" placeholder="Created From" class="form-control" name="regestar_from">
                     </div>
                    
-                <div class="form-group col-md-4">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">
-                            Register To
-                        </label>
+                    <div class="input-group col-md-5 mb-3">
+                        <div class="input-group-prepend" style="display:block">
+                            <label class="input-group-text" for="inputGroupSelect01">
+                                Register To
+                            </label>
+                        </div>
+                      <input type="date" value="{{ $request->regestar_to }}" id="regestar_to" placeholder="Created To" class="form-control" name="regestar_to">
                     </div>
-                    <input type="date" name="regestar_to" id="regestar_to" class="form-control">
-                </div>
             </div>
             </form>
 
