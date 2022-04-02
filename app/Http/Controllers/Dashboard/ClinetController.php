@@ -179,7 +179,13 @@ class ClinetController extends Controller
             
             }elseif($type == 'premiumuser'){
                 
-                $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->where('name','like', '%'.$query.'%')->paginate(20);
+                $clinets =   Clinet::
+               
+                where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')
+                ->orWhere('phone', 'like', '%'.'966'.$query.'%')
+
+                 ->where('type_of_subscribe','PREMIUM')->paginate(20);
                 // ->orWhere('name', 'like', '%'.$query.'%')
                 // ->orWhere('email', 'like', '%'.$query.'%')
                 // ->orWhere('phone','like', '%'.$query.'%')
