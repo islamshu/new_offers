@@ -59,7 +59,7 @@ class GeneralNotoficationController extends Controller
         //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
         // }
 
-        return redirect()->back();
+        return 'true';
     }
     public function create_user_notofication(){
         $users = Clinet::get();
