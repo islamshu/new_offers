@@ -116,7 +116,7 @@ class RepotController extends Controller
             }
         });
         $query->when($request->type, function ($q) use ($request) {
-            return $q->where('type_of_subscribe',$request->type)
+            return $q->where('type_of_subscribe',$request->type);
         });
             
             $query->when($request->last_from, function ($q) use ($request) {
