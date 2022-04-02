@@ -181,7 +181,7 @@ class ClinetController extends Controller
                 
                 $clinets =   Clinet::
                
-                where('name', 'like', '%'.$query.'%')
+                orWhere('name', 'like', '%'.$query.'%')
                 ->orWhere('email', 'like', '%'.$query.'%')
                 ->orWhere('phone', 'like', '%'.'966'.$query.'%')
 
