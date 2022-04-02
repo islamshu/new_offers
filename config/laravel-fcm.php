@@ -7,6 +7,6 @@ return [
      * Change to yours
      */
 
-    // 'server_key' => get_general('firebase'),
+    'server_key' => env('FCM_SERVER_KEY', ''),
 
 ];
