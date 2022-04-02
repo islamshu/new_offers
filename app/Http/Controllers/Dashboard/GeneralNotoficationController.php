@@ -39,10 +39,28 @@ class GeneralNotoficationController extends Controller
         $not->offer_id = $request->offer_id;
 
         $not->save();
-        $users = Clinet::where('token','!=',null)->get();
-        foreach($users as $user){
-            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
-        }
+
+        fcm()
+        ->toTopic("general") 
+        ->priority('normal')
+        ->timeToLive(0)
+        ->notification([
+            'title' => $request->title_en,
+            'body' => $request->body_en,
+        ])
+        ->data([
+            'click_action'=> 'FLUTTER_NOTIFICATION_CLICK'
+        ])
+      
+        ->send();
+
+
+
+
+        // $users = Clinet::where('token','!=',null)->get();
+        // foreach($users as $user){
+        //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
+        // }
 
         return redirect()->back();
     }

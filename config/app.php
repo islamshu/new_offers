@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Kawankoding\Fcm\FcmServiceProvider::class,
 
 
         /*
@@ -235,6 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Fcm' => Kawankoding\Fcm\FcmFacade::class,
 
         // Metronic Aliases
         'Metronic' => App\Classes\Theme\Metronic::class,
