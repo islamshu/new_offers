@@ -216,13 +216,13 @@ class ClinetController extends Controller
             }elseif($type == 'trail'){
                 
                 if($query == null){
-                    $clinets =   Clinet::where('type_of_subscribe','TRAIL')->orderBy('register_date','desc')->paginate(20);
+                    $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->paginate(20);
                 }else{
                     $clinets =   Clinet::
                     Where('name', 'like', '%'.$query.'%')
                     ->orWhere('email', 'like', '%'.$query.'%')
                     ->orWhere('phone', 'like', '%'.'966'.$query.'%')
-                    ->where('type_of_subscribe','TRAIL')
+                    ->where('type_of_subscribe','TRIAL')
                     ->orderBy('register_date','desc')->paginate(20);
                       
                 }
