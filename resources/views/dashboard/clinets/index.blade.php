@@ -61,7 +61,7 @@
                 </div>
             @endif
             <form action="{{ route('show_clients',[app()->getLocale(),$type]) }}" method="get">
-               
+                <div class="row">
                     <div class="input-group col-md-5 mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">
@@ -79,6 +79,7 @@
                     </div>
                     <input type="date" name="regestar_to" id="regestar_to" class="form-control">
                 </div>
+            </div>
             </form>
 
             <div class="form-group col-md-3">
