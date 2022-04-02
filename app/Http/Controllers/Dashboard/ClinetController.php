@@ -148,37 +148,38 @@ class ClinetController extends Controller
     {
         if($request->ajax())
         {
+
             $type = $request->type;
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             if($type == 'all'){
-                $clinets = Clinet::orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);
+                $clinets = Clinet::Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);
             }elseif($type == 'verify'){
-                $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);
+                $clinets =   Clinet::where('is_verify',1)->Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);
                   
                 
             }elseif($type == 'unverify'){
-                $clinets =  Clinet::where('is_verify',0)->orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);;
+                $clinets =  Clinet::where('is_verify',0)->Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);;
                   
     
             
             }elseif($type == 'premium'){
-                $clinets =   Clinet::where('type_of_subscribe','PREMIUM')->orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);
+                $clinets =   Clinet::where('type_of_subscribe','PREMIUM')>Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);
                   
     
             }elseif($type == 'trail'){
                 
-                $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);
+                $clinets =   Clinet::where('type_of_subscribe','TRIAL')->Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);
                   
     
             }elseif($type == 'none'){
-                $clinets =   Clinet::where('type_of_subscribe','FREE')->orderBy('register_date','desc')->Where('name', 'like', '%'.$query.'%')
-                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->paginate(20);
+                $clinets =   Clinet::where('type_of_subscribe','FREE')->Where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')->where('phone','like', '%'.$query.'%')->orderBy('register_date','desc')->paginate(20);
             }
             
               
