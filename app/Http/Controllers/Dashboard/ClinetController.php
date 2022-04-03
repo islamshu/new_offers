@@ -150,7 +150,7 @@ class ClinetController extends Controller
 
           
         }elseif($type == 'verifyuser'){
-            $query = Clinet::query()->where('is_verify',1)->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59'])->first();
+            $query = Clinet::query()->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
                     return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
