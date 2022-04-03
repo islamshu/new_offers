@@ -177,6 +177,7 @@ class ClinetController extends Controller
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'unverify'){
+            dd('d');
             $query = Clinet::query()->where('is_verify',0);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
@@ -186,7 +187,7 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()]);
                 }
                 if($request->regestar_from == $request->regestar_to  ){
-                    dd('d');
+          
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
