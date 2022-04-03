@@ -540,7 +540,7 @@ $lang = app()->getLocale();
 
     @if (auth()->user()->isAbleTo(['read-client']))
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-            <a href="/{{ $lang }}/all_clients" class="menu-link menu-toggle">
+            <a href="/{{ $lang }}/all_client" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
                     <i class="fa fa-bookmark" aria-hidden="true"></i>
                 </span>

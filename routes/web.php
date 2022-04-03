@@ -244,7 +244,7 @@ Route::group([
         Route::resource('coupun', 'Dashboard\CouponController');
         Route::get('get_vendor_promocode/{id}', 'Dashboard\CouponController@vednor_promocode')->name('vendor.get_copoun');
 
-        Route::get('all_clients', 'Dashboard\ClinetController@first_index');
+        Route::get('all_client', 'Dashboard\ClinetController@first_index');
 
         Route::get('show_clients/{type}','Dashboard\ClinetController@index')->name('show_clients');
 

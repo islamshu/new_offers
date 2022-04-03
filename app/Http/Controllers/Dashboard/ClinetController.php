@@ -36,7 +36,6 @@ class ClinetController extends Controller
      */
     public function first_index()
     {
-        dd('dd');
         $all = Clinet::count();
         $trial = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
             $q->where('type_paid','trial');
