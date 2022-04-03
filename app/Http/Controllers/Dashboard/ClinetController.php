@@ -187,7 +187,6 @@ class ClinetController extends Controller
                 }
                 if($request->regestar_from == $request->regestar_to  ){
                     dd('daa');
-
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
