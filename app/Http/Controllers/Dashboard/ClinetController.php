@@ -75,7 +75,7 @@ class ClinetController extends Controller
 
 
 
-        
+
         $client->type_of_subscribe = $code->type_paid;
        
         if($code->type_balance == 'Limit'){
@@ -131,6 +131,7 @@ class ClinetController extends Controller
     }
     public function index(Request $request,$locale,$type)
     {
+        dd('ee');
         if($type == 'all'){
             
             $query = Clinet::query();
