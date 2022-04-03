@@ -4,11 +4,11 @@
         <th>{{ __('Name') }}</th>
         <th>{{ __('phone') }}</th>
         <th>{{ __('city') }}</th>
-        <th>{{ __('register date') }}</th>
+        <th style="width:100%">{{ __('register date') }}</th>
         <th>{{ __('subscribe status') }}</th>
-        <th>{{ __('last subscribe') }}</th>
-        <th>{{ __('first date of last subscribe') }}</th>
-        <th>{{ __('last date of last subscribe') }}</th>
+        <th style="width:100%">{{ __('last subscribe') }}</th>
+        <th style="width:100%">{{ __('first date of last subscribe') }}</th>
+        <th style="width:100%">{{ __('last date of last subscribe') }}</th>
         <th>{{ __('Subscription event') }}</th>
         <th>{{ __('subscribe count') }}</th>
         <th>{{ __('Transaction count') }}</th>
