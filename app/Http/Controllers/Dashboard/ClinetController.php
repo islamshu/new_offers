@@ -72,6 +72,10 @@ class ClinetController extends Controller
         // dd(auth('client_api')->id());
         $count = Subscriptions_User::where('clinet_id',$client->id)->where('sub_id',$code->id)->count();
 
+
+
+
+        
         $client->type_of_subscribe = $code->type_paid;
        
         if($code->type_balance == 'Limit'){
