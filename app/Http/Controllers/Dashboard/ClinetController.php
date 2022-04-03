@@ -131,7 +131,6 @@ class ClinetController extends Controller
     }
     public function index(Request $request,$locale,$type)
     {
-        dd('ee');
         if($type == 'all'){
             
             $query = Clinet::query();
