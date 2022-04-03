@@ -161,7 +161,7 @@ class RepotController extends Controller
         });
 
 
-        $clients = $query->get();
+        $clients = $query->paginate(20);
         return view('dashboard.repots.clients_admin', compact('clients', 'request'));
     }
     public function fetch_data_admin(Request $request)
@@ -226,7 +226,7 @@ class RepotController extends Controller
         });
 
 
-        $clients = $query->get();
+        $clients = $query->paginate(20);
         return view('dashboard.repots._clients_admin', compact('clients', 'request'));
     }
     }
