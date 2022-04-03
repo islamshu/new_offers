@@ -167,7 +167,10 @@ class RepotController extends Controller
     public function fetch_data_admin(Request $request)
     {
         if ($request->ajax()) {
+              $test_q = str_replace(" ", "%", $request->get('query'));
+
         $query = Clinet::query();
+        $query ->where('name', 'like', '%' . $test_q . '%')->orwhere('phone', 'like', '%' . $test_q . '%');
 
         $query->when($request->register_form, function ($q) use ($request) {
             if ($request->register_to == null && $request->register_form != null) {
