@@ -127,7 +127,6 @@ class ClinetController extends Controller
     }
     public function index(Request $request,$locale,$type)
     {
-      dd($request->regestar_from . ' 00:00:00');
         if($type == 'all'){
             
             $query = Clinet::query();
