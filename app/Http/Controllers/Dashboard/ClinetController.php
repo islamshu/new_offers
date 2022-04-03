@@ -177,6 +177,7 @@ class ClinetController extends Controller
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'unverify'){
+            dd('islam');
             $query = Clinet::query()->where('is_verify',0);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
