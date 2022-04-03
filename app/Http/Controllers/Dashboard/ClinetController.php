@@ -149,7 +149,7 @@ class ClinetController extends Controller
             return view('dashboard.clinets.index',compact('clinets','type','request'));
 
           
-        }elseif($type == 'verifyuser'){
+        }elseif($type == 'verifyusers'){
 
             $query = Clinet::query()->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -256,7 +256,7 @@ class ClinetController extends Controller
                 }
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
-            }elseif($type == 'verifyuser'){
+            }elseif($type == 'verifyusers'){
                 if($query == null){
                     $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->paginate(20);
                 }else{

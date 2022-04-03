@@ -47,7 +47,7 @@
                         </span>
                         
                         <!--end::Svg Icon-->
-                        <a href="{{ route('show_clients',[app()->getLocale(),'verifyuser']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Verify Clients') }}</a>
+                        <a href="{{ route('show_clients',[app()->getLocale(),'verifyusers']) }}" style="font-weight: bold;" class="svg-icon svg-icon-3x text-center svg-icon-danger d-block my-2">{{ __('Verify Clients') }}</a>
                     </div>
                     <div class="col-md-3 bg-light-secondary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
