@@ -36,7 +36,6 @@ class ClinetController extends Controller
      */
     public function first_index()
     {
-        // dd(Clinet::query()->where('is_verify',1)->whereBetween('register_date',['2022-04-02' . ' 00:00:00', '2022-04-02' . ' 23:59:59'])->first());
         $all = Clinet::count();
         $trial = Subscriptions_User::with('subscripe')->whereHas('subscripe', function ($q) {
             $q->where('type_paid','trial');
