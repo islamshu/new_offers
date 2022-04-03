@@ -130,7 +130,7 @@ class ClinetController extends Controller
     }
     public function index(Request $request,$locale,$type)
     {
-        if($type == 'all'){
+        if($type == 'alluser'){
             
             $query = Clinet::query();
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -144,23 +144,12 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-            $query->when($request->subscribe_from, function ($q) use ($request) {
-                if($request->subscribe_from != null && $request->subscribe_to != null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,$request->subscribe_to]);
-                }
-                if($request->subscribe_from != null && $request->subscribe_to == null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,Carbon::now()]);
-                }
-                if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from ==$request->regestar_to  ){
-                    return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                }
-            });
-
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
 
           
-        }elseif($type == 'verify'){
+        }elseif($type == 'verifyuser'){
             $query = Clinet::query()->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
@@ -176,8 +165,7 @@ class ClinetController extends Controller
             
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
-        }elseif($type == 'unverify'){
-            dd('islam');
+        }elseif($type == 'unverifyuser'){
             $query = Clinet::query()->where('is_verify',0);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
@@ -187,21 +175,10 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()]);
                 }
                 if($request->regestar_from == $request->regestar_to  ){
-                    dd('daa');
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-            $query->when($request->subscribe_from, function ($q) use ($request) {
-                if($request->subscribe_from != null && $request->subscribe_to != null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,$request->subscribe_to]);
-                }
-                if($request->subscribe_from != null && $request->subscribe_to == null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,Carbon::now()]);
-                }
-                if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from ==$request->regestar_to  ){
-                    return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                }
-            });
+          
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'premiumuser'){
@@ -217,20 +194,10 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-            $query->when($request->subscribe_from, function ($q) use ($request) {
-                if($request->subscribe_from != null && $request->subscribe_to != null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,$request->subscribe_to]);
-                }
-                if($request->subscribe_from != null && $request->subscribe_to == null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,Carbon::now()]);
-                }
-                if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from ==$request->regestar_to  ){
-                    return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                }
-            });
+         
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
-        }elseif($type == 'trail'){      
+        }elseif($type == 'trailuser'){      
             $query = Clinet::query()->where('type_of_subscribe','TRIAL')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
                 if($request->regestar_from != null && $request->regestar_to != null){
@@ -243,17 +210,7 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-            $query->when($request->subscribe_from, function ($q) use ($request) {
-                if($request->subscribe_from != null && $request->subscribe_to != null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,$request->subscribe_to]);
-                }
-                if($request->subscribe_from != null && $request->subscribe_to == null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,Carbon::now()]);
-                }
-                if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from ==$request->regestar_to  ){
-                    return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                }
-            });
+         
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));
         }elseif($type == 'none'){
@@ -269,17 +226,7 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-            $query->when($request->subscribe_from, function ($q) use ($request) {
-                if($request->subscribe_from != null && $request->subscribe_to != null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,$request->subscribe_to]);
-                }
-                if($request->subscribe_from != null && $request->subscribe_to == null){
-                    return $q->whereBetween('expire_date',[$request->subscribe_from,Carbon::now()]);
-                }
-                if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from ==$request->regestar_to  ){
-                    return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                }
-            });
+         
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
             return view('dashboard.clinets.index',compact('clinets','type','request'));        }
         
@@ -294,7 +241,7 @@ class ClinetController extends Controller
             $type = $request->type;
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            if($type == 'all'){
+            if($type == 'alluser'){
 
 
                 if($query == null){
@@ -308,7 +255,7 @@ class ClinetController extends Controller
                 }
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
-            }elseif($type == 'verify'){
+            }elseif($type == 'verifyuser'){
                 if($query == null){
                     $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->paginate(20);
                 }else{
@@ -324,7 +271,7 @@ class ClinetController extends Controller
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
-            }elseif($type == 'unverify'){
+            }elseif($type == 'unverifyuser'){
                 if($query == null){
                     $clinets =   Clinet::where('is_verify',0)->orderBy('register_date','desc')->paginate(20);
                 }else{
@@ -354,7 +301,7 @@ class ClinetController extends Controller
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
-            }elseif($type == 'trail'){
+            }elseif($type == 'trailuser'){
                 
                 if($query == null){
                     $clinets =   Clinet::where('type_of_subscribe','TRIAL')->orderBy('register_date','desc')->paginate(20);
