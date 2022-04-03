@@ -4,6 +4,13 @@
 @php
     $lang = app()->getLocale();
 @endphp
+<style>
+    .table th, .table td {
+    padding: 0.50rem !important;
+    vertical-align: top !important;
+    border-top: 1px solid #EBEDF3 !important;
+}
+</style>
 <div class="card card-custom">
 
     <div class="card-header">
