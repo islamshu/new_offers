@@ -51,3 +51,4 @@
 </tbody>
 
 </table>
+{!! $offers->appends(request()->input())->links() !!}
