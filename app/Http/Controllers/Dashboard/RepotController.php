@@ -170,7 +170,9 @@ class RepotController extends Controller
               $test_q = str_replace(" ", "%", $request->get('query'));
 
         $query = Clinet::query();
-        $query ->where('name', 'like', '%' . $test_q . '%')->orwhere('phone', 'like', '%' . $test_q . '%');
+        if($test_q != null){
+            $query ->where('name', 'like', '%' . $test_q . '%')->orwhere('phone', 'like', '%' . $test_q . '%');
+        }
 
         $query->when($request->register_form, function ($q) use ($request) {
             if ($request->register_to == null && $request->register_form != null) {
