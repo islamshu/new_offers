@@ -132,7 +132,9 @@ Route::group([
         Route::post('/show/usermodelupdate', 'Dashboard\PortalController@updateuser')->name('updateuser');
         Route::post('/update_user_vendor', 'Dashboard\PortalController@updateusermodel')->name('update_user_vendor');
         Route::get('get_type_client','Dashboard\ClinetController@ftech_data')->name('get_type_client');
+        Route::get('fetch_data_admin_client','Dashboard\RepotController@fetch_data_admin')->name('fetch_data_admin');
 
+        
         
         Route::post('/create_user_brand', 'Dashboard\UserController@create_user_brand')->name('create_user_brand');
 

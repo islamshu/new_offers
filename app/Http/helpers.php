@@ -23,6 +23,11 @@ function openJSONFile($code){
     }
     return $jsonString;
 }
+function saveJSONFile($code, $data){
+    ksort($data);
+    $jsonData = json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+    file_put_contents(base_path('resources/lang/'.$code.'.json'), stripslashes($jsonData));
+}
 function check_offer($item){
 
     if($item->end_time >= Carbon::now()){
@@ -31,11 +36,7 @@ function check_offer($item){
         return 0;
     }
 }
-function saveJSONFile($code, $data){
-    ksort($data);
-    $jsonData = json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
-    file_put_contents(base_path('resources/lang/'.$code.'.json'), stripslashes($jsonData));
-}
+
  function sort_vendor($data)
  {
     $datad = [];

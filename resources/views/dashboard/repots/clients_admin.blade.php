@@ -50,7 +50,7 @@
                                     Registar From
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->register_form }}" placeholder="Registar From" class="form-control" name="register_form">
+                          <input type="date" value="{{ $request->register_form }}" id="register_form" placeholder="Registar From" class="form-control" name="register_form">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -58,7 +58,7 @@
                                     Registar To
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->register_to}}" placeholder="Registar To" class="form-control" name="register_to">
+                          <input type="date" value="{{ $request->register_to}}" id="register_to" placeholder="Registar To" class="form-control" name="register_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -66,7 +66,7 @@
                                     last subscribe from 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->last_from }}" placeholder="last subscribe from" class="form-control" name="last_from">
+                          <input type="date" value="{{ $request->last_from }}" id="last_from" placeholder="last subscribe from" class="form-control" name="last_from">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -74,7 +74,7 @@
                                     last subscribe to 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->last_to}}" placeholder="last subscribe to " class="form-control" name="last_to">
+                          <input type="date" value="{{ $request->last_to}}" id="last_to" placeholder="last subscribe to " class="form-control" name="last_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -82,7 +82,7 @@
                                     transaction from 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->transaction_from }}" placeholder="Transaction from " class="form-control" name="transaction_from">
+                          <input type="date" value="{{ $request->transaction_from }}" id="transaction_from" placeholder="Transaction from " class="form-control" name="transaction_from">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -90,7 +90,7 @@
                                     transaction to 
                                 </label>
                             </div>
-                          <input type="date" value="{{ $request->transaction_to}}" placeholder="Transaction To" class="form-control" name="transaction_to">
+                          <input type="date" value="{{ $request->transaction_to}}" id="transaction_to" placeholder="Transaction To" class="form-control" name="transaction_to">
                         </div>
                         <div class="input-group col-md-5 mb-3">
                             <div class="input-group-prepend">
@@ -98,7 +98,7 @@
                                     Type
                                 </label>
                             </div>
-                            <select name="type" class="form-control" id="">
+                            <select name="type" class="form-control" id="type">
                                 <option value="">_</option>
                                 <option value="FREE" @if($request->type == 'FREE') selected @endif>FREE</option>
                                 <option value="TRIAL" @if($request->type == 'TRIAL') selected @endif>TRIAL</option>
@@ -126,62 +126,14 @@
 <div class="card card-docs mb-2">
     <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
         <h2 class="mb-3">{{ __('All Clients') }}</h2>
+        <div class="form-group col-md-3">
+            <input type="text" name="serach" id="serach" placeholder="offer name" class="form-control" />
+        </div>
 
+        <div class="set_date " style="overflow: scroll;">
 
-        <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-            id="kt_datatable">
-            <thead>
-                <tr class="fw-bold fs-6 text-gray-800">
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('phone') }}</th>
-                    <th>{{ __('city') }}</th>
-                    <th>{{ __('register date') }}</th>
-                    <th>{{ __('subscribe status') }}</th>
-                    <th>{{ __('last subscribe') }}</th>
-                    <th>{{ __('first date of last subscribe') }}</th>
-                    <th>{{ __('last date of last subscribe') }}</th>
-                    <th>{{ __('Subscription event') }}</th>
-                    <th>{{ __('subscribe count') }}</th>
-                    <th>{{ __('Transaction count') }}</th>
-                    <th>{{ __('saving') }}</th>
-                    <th>{{ __('Payment method') }}</th>
-                    <th>{{ __('mobile type') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($clients as $item)
-                    @php
-                        $city = @App\Models\City::find($item->city_id);
-                    @endphp
-              <td>{{ @$item->name }}</td>
-
-                <td>{{ @$item->phone }}</td>
-
-                    <td>
-                      {{ @$city->city_name ? @$city->city_name : '-' }}
-                </td>
-                    <td>{{ @$item->register_date }}</td>
-
-                    <td>{{ @$item->type_of_subscribe }}</td>
-                    <td>{{@$item->subs->last()->created_at }}</td>
-                    <td>{{@$item->start_date }}</td>
-                    <td>{{@$item->expire_date }}</td>
-                    <td>-</td>
-                    <td>{{@$item->subs->count() }}</td>
-                    <td>{{@$item->trans->count() }}</td>
-                    <td>0</td>
-                    <td>{{ @$item->subs->last()->payment_type }}</td>
-                    <td>{{ @$item->mobile_type }}</td>
-
-                   
-                    </tr>
-                @endforeach
-           
-
-
-            </tbody>
-
-        </table>
+            @include('dashboard.repots._clients_admin')
+        </div>
 
 
     </div>
@@ -230,5 +182,48 @@ $('#vendor_id').on('change', function() {
 
 });
 });
+function fetch_data(page, query) {
+            var register_form = $('#register_form').val();
+            var register_to = $('#register_to').val();
+            var last_from = $('#last_from').val();
+            var last_to = $('#last_to').val();
+            var transaction_from = $('#transaction_from').val();
+            var transaction_to = $('#transaction_to').val();
+            var type = $('#type').val();
+
+
+
+            $.ajax({
+                url: "/en/fetch_data_admin_client?page=" + page + "&query=" + query + "&register_form=" +
+                register_form + "&register_to=" + register_to + "&last_from=" + last_from +
+                    "&last_to=" + last_to + "&transaction_from=" + transaction_from + "&transaction_to=" + transaction_to +
+                    "&type=" + type,
+                success: function(data) {
+
+                    $('.set_date').html('');
+                    $('.set_date').html(data);
+                }
+            })
+        }
+        $(document).on('keyup', '#serach', function() {
+            var query = $('#serach').val();
+            var request = $("#filter_search").serialize();
+
+
+            var page = $('#hidden_page').val();
+            fetch_data(page, query, request);
+        });
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            $('#hidden_page').val(page);
+
+
+            var query = $('#serach').val();
+
+            $('li').removeClass('active');
+            $(this).parent().addClass('active');
+            fetch_data(page, query);
+        });
 </script>
 @endsection
