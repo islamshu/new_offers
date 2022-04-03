@@ -132,7 +132,8 @@
             id="kt_datatable">
             <thead>
                 <tr class="fw-bold fs-6 text-gray-800">
-
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('phone') }}</th>
                     <th>{{ __('city') }}</th>
                     <th>{{ __('register date') }}</th>
                     <th>{{ __('subscribe status') }}</th>
@@ -152,6 +153,10 @@
                     @php
                         $city = @App\Models\City::find($item->city_id);
                     @endphp
+              <td>{{ @$item->name }}</td>
+
+                <td>{{ @$item->phone }}</td>
+
                     <td>
                       {{ @$city->city_name ? @$city->city_name : '-' }}
                 </td>
