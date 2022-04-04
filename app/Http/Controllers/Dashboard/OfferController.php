@@ -286,9 +286,9 @@ class OfferController extends Controller
                     $offer_type->discount_type = $request->discount_type;
 
                 }
-                // $offer_type->price_after_discount = $request->price_after_discount;
-                // $offer_type->price_befor_discount = $request->price_befor_discount;
-                // $offer_type->discount_value = $request->discount_value;
+                $offer_type->price_after_discount = $request->price;
+                $offer_type->price_befor_discount = $request->price_befor_discount;
+                $offer_type->discount_value = $request->discount_value;
                 $offer_type->save();
                 if($request->specific_days == 'actvie'){
                     $offer_days = new Offerdays();
@@ -536,7 +536,10 @@ class OfferController extends Controller
                 $offer_type->offer_id = $offer->id;
                 $offer_type->offer_type = $request->offer_type_2;
                 $offer_type->price = $request->price;
+                $offer_type->price_befor_discount = $request->price_befor_discount;
 
+
+                
                 if($request->offer_type_2 == 'buyOneGetOne'){
                     $offer_type->sale = $request->price;
                     
@@ -547,9 +550,9 @@ class OfferController extends Controller
                     $offer_type->discount_type = $request->discount_type;
 
                 }
-                // $offer_type->price_after_discount = $request->price_after_discount;
-                // $offer_type->price_befor_discount = $request->price_befor_discount;
-                // $offer_type->discount_value = $request->discount_value;
+                $offer_type->price_after_discount = $request->price;
+                $offer_type->price_befor_discount = $request->price_befor_discount;
+                $offer_type->discount_value = $request->discount_value;
                 $offer_type->save();
                 if($request->specific_days == 'actvie'){
                     $offer_days = $offer->offerday;
