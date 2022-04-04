@@ -196,7 +196,7 @@ class CodeController extends BaseController
                 $res['data']["coupon"]['offer_id'] = (int)$request->offer_id;
                 $res['data']["coupon"]['branch_id'] = (int)$request->branch_id;
                 $res['data']["coupon"]['store_id'] = (int)$offer->vendor_id;
-                $res['data']["coupon"]['saving'] = 0;
+                $res['data']["coupon"]['saving'] = offer_saving( (int)$request->offer_id);
                 $res['data']["coupon"]['reference_no'] = (int)$ofe->referance_no;
                 return $res;
             } else {
