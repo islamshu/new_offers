@@ -24,7 +24,7 @@
             @endphp
       <td>{{ @$item->name }}</td>
     
-        <td>{{ @$item->phone }}</td>
+        <td><i class="fa fa-search"></i></td>
     
             <td>
               {{ @$city->city_name ? @$city->city_name : '-' }}
