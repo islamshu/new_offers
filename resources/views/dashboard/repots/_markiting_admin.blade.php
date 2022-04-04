@@ -24,7 +24,9 @@
             @endphp
       <td>{{ @$item->name }}</td>
     
-        <td><i class="fa fa-search"></i></td>
+        <td><button data-toggle="modal"
+            data-target="#myModal" class="btn btn-outline-primary"
+            onclick="make('{{ $item->id }}')"><i class="fa fa-search"></i></button></td>
     
             <td>
               {{ @$city->city_name ? @$city->city_name : '-' }}
