@@ -38,7 +38,7 @@ class VendorOfferResourses extends JsonResource
             'points_no'=>$this->system_point,
             'store_points_no'=>$this->store_point,
             'is_general'=>0,
-            'estimated_saving'=>0,
+            'estimated_saving'=>offer_saving( (int)$this->id),
             'is_favorite'=>$this->is_fav($this),
             'flash_deal'=> (int)$this->is_flashdeal,
             'voucher'=> (int)$this->is_voucher,

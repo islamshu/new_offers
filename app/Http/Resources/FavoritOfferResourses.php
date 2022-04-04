@@ -23,7 +23,7 @@ class FavoritOfferResourses extends JsonResource
             'before_price'=>@$this->offer->price_befor_discount,
             'percentage'=>'',
             'expire_date'=>@$this->vendor->end_time,
-            'estimated_saving'=>'',
+            'estimated_saving'=>offer_saving( (int)$this->offer->id),
             'type'=>@$this->offer->offer_type,
             'image'=>asset('images/brand/'.@$this->offer->image),
             'membership_type'=>@$this->offer->member_type,
