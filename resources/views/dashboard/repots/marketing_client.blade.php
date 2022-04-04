@@ -15,7 +15,7 @@
 
     <div class="card-header">
         <h3 class="card-title">
-            {{ __('Client admin Repots') }}
+            {{ __('Markiting client Repots') }}
         </h3>
         <div class="card-toolbar">
             <div class="example-tools justify-content-center">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <form method="get" action="{{route('clients_sales_admin',['locale'=>app()->getLocale()])}}">
+    <form method="get" action="{{route('marketing_client',['locale'=>app()->getLocale()])}}">
         
         @if ($errors->any())
         <div class="alert alert-danger" role="alert">
@@ -139,7 +139,7 @@
 
         <div class="set_date " style="overflow: scroll;">
 
-            @include('dashboard.repots._clients_admin')
+            @include('dashboard.repots._markiting_admin')
         </div>
 
 
@@ -201,7 +201,7 @@ function fetch_data(page, query) {
 
 
             $.ajax({
-                url: "/en/fetch_data_admin_client?page=" + page + "&query=" + query + "&register_form=" +
+                url: "/en/fetch_data_markinteming_client?page=" + page + "&query=" + query + "&register_form=" +
                 register_form + "&register_to=" + register_to + "&last_from=" + last_from +
                     "&last_to=" + last_to + "&transaction_from=" + transaction_from + "&transaction_to=" + transaction_to +
                     "&type=" + type,

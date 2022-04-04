@@ -164,6 +164,73 @@ class RepotController extends Controller
         $clients = $query->orderBy('id','desc')->paginate(20);
         return view('dashboard.repots.clients_admin', compact('clients', 'request'));
     }
+
+    
+    public function marketing_client(Request $request)
+    {
+
+        $query = Clinet::query();
+
+        $query->when($request->register_form, function ($q) use ($request) {
+            if ($request->register_to == null && $request->register_form != null) {
+                return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
+            } elseif ($request->register_to != null && $request->register_form == null) {
+                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to]);
+            } elseif ($request->register_to == $request->register_form) {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+            } else {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+            }
+        });
+        $query->when($request->type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe',$request->type);
+        });
+            
+            $query->when($request->last_from, function ($q) use ($request) {
+            if ($request->last_to == null && $request->last_from != null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, Carbon::now()]);
+                });
+            } elseif ($request->last_to != null && $request->last_from == null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
+                });
+            } elseif ($request->last_to == $request->last_from) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            } else {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            }
+        });
+
+
+        $query->when($request->transaction_from, function ($q) use ($request) {
+            if ($request->transaction_to == null && $request->transaction_from != null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, Carbon::now()]);
+                });
+            } elseif ($request->transaction_to != null && $request->transaction_from == null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->transaction_to]);
+                });
+            } elseif ($request->transaction_to == $request->transaction_from) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            } else {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            }
+        });
+
+
+        $clients = $query->orderBy('id','desc')->paginate(20);
+        return view('dashboard.repots.marketing_client', compact('clients', 'request'));
+    }
     public function fetch_data_admin(Request $request)
     {
         if ($request->ajax()) {
@@ -235,6 +302,80 @@ class RepotController extends Controller
         return view('dashboard.repots._clients_admin', compact('clients', 'request'));
     }
     }
+    public function fetch_data_markinteming_client(Request $request)
+    {
+        if ($request->ajax()) {
+              $test_q = str_replace(" ", "%", $request->get('query'));
+
+        $query = Clinet::query();
+        if($test_q != null){
+            $query ->where('name', 'like', '%' . $test_q . '%')->orwhere('phone', 'like', '%' . $test_q . '%');
+        }
+
+        $query->when($request->register_form, function ($q) use ($request) {
+            if ($request->register_to == null && $request->register_form != null) {
+                return $q->whereBetween('register_date', [$request->register_form, Carbon::now()]);
+            } elseif ($request->register_to != null && $request->register_form == null) {
+                return $q->whereBetween('register_date', [Carbon::now(), $request->register_to]);
+            } elseif ($request->register_to == $request->register_form) {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+            } else {
+                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+            }
+        });
+        $query->when($request->type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe',$request->type);
+        });
+            
+            $query->when($request->last_from, function ($q) use ($request) {
+            if ($request->last_to == null && $request->last_from != null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, Carbon::now()]);
+                });
+            } elseif ($request->last_to != null && $request->last_from == null) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->last_to]);
+                });
+            } elseif ($request->last_to == $request->last_from) {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            } else {
+                $q->whereHas('subs_last', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                });
+            }
+        });
+
+
+        $query->when($request->transaction_from, function ($q) use ($request) {
+            if ($request->transaction_to == null && $request->transaction_from != null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, Carbon::now()]);
+                });
+            } elseif ($request->transaction_to != null && $request->transaction_from == null) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [Carbon::now(), $request->transaction_to]);
+                });
+            } elseif ($request->transaction_to == $request->transaction_from) {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            } else {
+                $q->whereHas('trans', function ($qq) use ($request) {
+                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                });
+            }
+        });
+
+
+        $clients = $query->orderBy('id','desc')->paginate(20);
+        return view('dashboard.repots._markiting_admin', compact('clients', 'request'));
+    }
+    }
+
+
+
     public function get_branch_ajax(Request $request, $locale)
     {
 

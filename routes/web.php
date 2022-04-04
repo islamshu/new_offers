@@ -133,6 +133,7 @@ Route::group([
         Route::post('/update_user_vendor', 'Dashboard\PortalController@updateusermodel')->name('update_user_vendor');
         Route::get('get_type_client','Dashboard\ClinetController@ftech_data')->name('get_type_client');
         Route::get('fetch_data_admin_client','Dashboard\RepotController@fetch_data_admin')->name('fetch_data_admin');
+        Route::get('fetch_data_markinteming_client','Dashboard\RepotController@fetch_data_markinteming_client')->name('fetch_data_markinteming_client');
 
         
         
@@ -141,6 +142,9 @@ Route::group([
         Route::get('/transaction_reports', 'Dashboard\RepotController@transaction')->name('transaction_sales');
         Route::get('/clients_reports', 'Dashboard\RepotController@clients')->name('clients_sales');
         Route::get('/clients_admin_reports', 'Dashboard\RepotController@clients_admin')->name('clients_sales_admin');
+        Route::get('/marketing_client', 'Dashboard\RepotController@marketing_client')->name('marketing_client');
+
+
         Route::get('/offer_reports', 'Dashboard\RepotController@offers_reports')->name('offers_reports');
 
         Route::get('/all_user_not_sub', 'Dashboard\HomeController@all_user_not_sub')->name('all_user_not_sub');
