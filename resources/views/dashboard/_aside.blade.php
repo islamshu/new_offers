@@ -564,7 +564,9 @@ $lang = app()->getLocale();
 
         </li>
     @endif
-    @if (auth()->user()->isAbleTo(['read-reports']))
+    @if (auth()->user()->isAbleTo(['transaction_repots']) || auth()->user()->isAbleTo(['transaction_repots']) || auth()->user()->isAbleTo(['clients_repots'])
+    || auth()->user()->isAbleTo(['Offer_brand_repots']) || auth()->user()->isAbleTo(['subscription_repots']) || auth()->user()->isAbleTo(['admin_client_repots'])
+    || auth()->user()->isAbleTo(['marketing_client_repots']))
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="#" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
@@ -578,28 +580,41 @@ $lang = app()->getLocale();
                     <li class="menu-item  menu-item-parent" aria-haspopup="true"><span class="menu-link"><span
                                 class="menu-text">{{ __('Reports') }}</span></span>
                     </li>
+                    @if (auth()->user()->isAbleTo(['transaction_repots']))
                     <li class="menu-item " aria-haspopup="true"><a
                             href="/{{ $lang }}/transaction_reports" class="menu-link "><i
                                 class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Transaction Reports') }}</span></a></li>
+                    @endif            
+
+                    @if (auth()->user()->isAbleTo(['clients_repots']))
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/clients_reports"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Client Reports') }}</span></a></li>
+                    @endif
+                    @if (auth()->user()->isAbleTo(['Offer_brand_repots']))
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/offer_reports"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Offer & Brand Reports') }}</span></a></li>
+                    @endif
+
+                    @if (auth()->user()->isAbleTo(['subscription_repots']))
                     <li class="menu-item " aria-haspopup="true"><a
                             href="/{{ $lang }}/subscriprion_reports" class="menu-link "><i
                                 class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Subscription Reports') }}</span></a></li>
+                    @endif
+                    @if (auth()->user()->isAbleTo(['admin_client_repots']))
                     <li class="menu-item " aria-haspopup="true"><a
                             href="/{{ $lang }}/clients_admin_reports" class="menu-link "><i
                                 class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Client For Admin') }}</span></a></li>
+                    @endif
+                    @if (auth()->user()->isAbleTo(['marketing_client_repots']))
                     <li class="menu-item " aria-haspopup="true"><a href="/{{ $lang }}/marketing_client"
                             class="menu-link "><i class="menu-bullet menu-bullet-dot"><span></span></i><span
-                                class="menu-text">{{ __('Marketing Client Repor') }}</span></a></li>
-
+                                class="menu-text">{{ __('Marketing Client Report') }}</span></a></li>
+                    @endif
 
 
 
