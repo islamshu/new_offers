@@ -49,7 +49,7 @@ function saving_offer($user){
         array_push($count,$offer->offertype->price);
        }
     }
-    return collect($count);
+    return array_sum($count);
 }
  function sort_vendor($data)
  {
