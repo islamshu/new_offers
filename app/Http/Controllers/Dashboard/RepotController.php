@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 
 class RepotController extends Controller
 {
+    public function showphone(Request $request){
+        $vendor = Clinet::find($request->id);
+        return view('dashboard.repots.model')->with('client',$vendor);
+    }
     public function transaction(Request $request)
     {
         $query = Transaction::query()->where('enterprise_id', auth()->user()->ent_id);

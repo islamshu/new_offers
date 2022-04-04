@@ -189,6 +189,32 @@ $('#vendor_id').on('change', function() {
 
 });
 });
+function make(id) {
+                $("#myModal").show();
+
+                // $('#staticBackdrop').modal();
+                $('.c-preloader').show();
+
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('showphone', app()->getLocale()) }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'id': id
+                    },
+                    beforeSend : function(){
+                    $('#loading_par').show();
+                    },
+                    success: function(data) {
+                        $('#loading_par').hide();
+
+                        $('#addToCart-modal-body').html(data);
+
+
+                    }
+                });
+
+            }
 function fetch_data(page, query) {
             var register_form = $('#register_form').val();
             var register_to = $('#register_to').val();

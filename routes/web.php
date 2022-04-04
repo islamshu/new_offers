@@ -126,6 +126,9 @@ Route::group([
         Route::get('/vendor-cover/{id}', 'Dashboard\brandController@get_cover')->name('cover.show');
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
+        Route::post('/show/phone', 'Dashboard\RepotController@showphone')->name('showphone');
+
+
         Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
         Route::post('/show/gendernotofication', 'Dashboard\GeneralNotoficationController@model_gender')->name('gendernotofication');
         Route::post('/show/usermodel', 'Dashboard\brandController@showmodeluser')->name('showmodeluser');
