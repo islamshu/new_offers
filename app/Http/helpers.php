@@ -4,6 +4,7 @@ use App\Models\Clinet;
 use App\Models\Enterprise;
 use App\Models\GeneralInfo;
 use App\Models\Offer;
+use App\Models\OfferUser;
 use App\Models\Social;
 use App\Models\Transaction;
 use Carbon\Carbon;
@@ -36,7 +37,10 @@ function check_offer($item){
         return 0;
     }
 }
-
+function saving($user){
+    $offeruser = OfferUser::where('client_id',$user)->count();
+    return $offeruser;
+}
  function sort_vendor($data)
  {
     $datad = [];
