@@ -37,7 +37,7 @@ function check_offer($item){
         return 0;
     }
 }
-function saving($user){
+function saving_offer($user){
     $offeruser = OfferUser::where('client_id',$user)->get();
     $count = [];
     foreach($offeruser as $of){
