@@ -51,6 +51,16 @@ function saving_offer($user){
     }
     return array_sum($count);
 }
+function offer_saving($id)
+{
+    $offer = Offer::find($id);
+
+    if($offer->offertype->offer_type == 'special_discount'){
+       return $offer->offertype->price_befor_discount - $offer->offertype->price_after_discount;
+    }elseif($offer->offertype->offer_type == 'buyOneGetOne'){
+        return $offer->offertype->price;
+    }
+}
  function sort_vendor($data)
  {
     $datad = [];
