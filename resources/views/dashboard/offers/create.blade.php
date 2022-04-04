@@ -295,6 +295,7 @@
                                             placeholder="Price befor discount" />
                                     </div>
                                 </div>
+                                
                                 <div class="row">
 
                                     <div class="col-md-6 discont_value" style="display: none">
