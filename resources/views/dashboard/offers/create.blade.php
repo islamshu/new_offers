@@ -1123,6 +1123,9 @@
             if (document.getElementById('discount_type') != null) {
                 formData.append('discount_type', document.getElementById('discount_type').value);
             }
+            if (document.getElementById('price_befor_discount') != null) {
+                formData.append('price_befor_discount', document.getElementById('price_befor_discount').value);
+            }
 
             //   if (document.getElementById('offer_type_2') != null) {
             // formData.append('offer_type_2', document.getElementById('offer_type_2').value);
