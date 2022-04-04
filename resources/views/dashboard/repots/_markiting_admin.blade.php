@@ -40,7 +40,7 @@
             <td>-</td>
             <td>{{@$item->subs->count() }}</td>
             <td>{{@$item->trans->count() }}</td>
-            <td>0</td>
+            <td>{{ saving_offer($item->id) }}</td>
             <td>{{ @$item->subs->last()->payment_type }}</td>
             <td>{{ @$item->mobile_type }}</td>
     
