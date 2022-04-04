@@ -38,8 +38,18 @@ function check_offer($item){
     }
 }
 function saving($user){
-    $offeruser = OfferUser::where('client_id',$user)->count();
-    return $offeruser;
+    dd(20 - null);
+    $offeruser = OfferUser::where('client_id',$user)->get();
+    $count = [];
+    foreach($offeruser as $of){
+       $offer = Offer::find($of->offer_id);
+       if($offer->offertype->offer_type == 'special_discount'){
+
+
+           $c = $offer->offertype->price_befor_discount - $offer->offertype->price_after_discount;
+
+       }
+    }
 }
  function sort_vendor($data)
  {
