@@ -39,7 +39,7 @@ class MapOfferResourses extends JsonResource
     public function get_distance($data,$request){
         $array =[];
         $branches = Branch::where('status','active')->where('vendor_id',$data->vendor_id)->get();
-        dd($branches);
+        dd($request->latitude,$request->longitude);
         foreach($branches as $branch){
             
            $value =  get_dinstance(@$request->latitude,@$request->longitude,@$branch->latitude,@$branch->longitude);
