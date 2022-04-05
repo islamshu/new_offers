@@ -284,7 +284,6 @@ class OfferController extends Controller
                 }elseif($request->offer_type_2 == 'general_offer'){
                     $offer_type->discount_value = $request->discount_value;
                     $offer_type->discount_type = $request->discount_type;
-
                 }
                 $offer_type->price_after_discount = $request->price;
                 $offer_type->price_befor_discount = $request->price_befor_discount;
@@ -318,7 +317,6 @@ class OfferController extends Controller
 
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $offer ? 200 : 400);
         } else {
-            dd($validator->getMessageBag());
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
         }
     }
