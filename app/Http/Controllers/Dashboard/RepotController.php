@@ -575,7 +575,8 @@ class RepotController extends Controller
             return view('dashboard.repots._subscription', compact('subs'));
         }
         if ($from != null && $to != null && $from == $to) {
-            $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from. ' 00:00:00', $to. ' 23:59:59'])->get();
+            $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from. ' 00:00:00', $from. ' 23:59:59'])->get();
+            return 4;
             return view('dashboard.repots._subscription', compact('subs'));
         }
         if ($from != null && $to == null && $from !='from' && $to != 'to') {
