@@ -318,7 +318,8 @@ class OfferController extends Controller
 
             return response()->json(['icon' => 'success', 'title' => 'offer created successfully'], $offer ? 200 : 400);
         } else {
-           foreach($validator->getMessageBag()->all() as $key=>$err){
+            dd($validator->getMessageBag());
+           foreach($validator->getMessageBag() as $key=>$err){
                dd($key);
            }
             return response()->json(['icon' => 'error', 'title' => $validator->getMessageBag()->first()], 400);
