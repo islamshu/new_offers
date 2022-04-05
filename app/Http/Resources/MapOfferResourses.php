@@ -40,6 +40,7 @@ class MapOfferResourses extends JsonResource
         $array =[];
         $branches = Branch::where('status','active')->where('vendor_id',$data->vendor_id)->get();
         foreach($branches as $branch){
+            dd('dddddd');
            $value =  get_dinstance(@$request->latitude,@$request->longitude,@$branch->latitude,@$branch->longitude);
             $di = $value  * 1.609344 ;
             array_push($array,$di);
