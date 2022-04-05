@@ -297,7 +297,7 @@
                                     <div class="col-md-6 discont_value"  @if(@$offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
                                         <label>{{ __('Discount value') }}</label>
                                         <input type="number" class="form-control form-control-solid form-control-lg"
-                                            id="discount_value" name="discount_value" placeholder="Discount value" value="20" />
+                                            id="discount_value" name="discount_value" placeholder="Discount value" value="{{ $offer->offertype->discount_value }}" />
                                     </div>
                                     <div class="col-md-6 discont_value"  @if(@$offer->offertype->offer_type == 'general_offer') style="display: block" @else style="display: none"@endif>
                                       <label>{{ __('Discount Type') }}</label>
