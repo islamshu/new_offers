@@ -24,7 +24,7 @@ class GeneralNotoficationController extends Controller
     public function create(){
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
        
-        $notofications=GeneralNotofication::get();
+        $notofications=GeneralNotofication::orderBy('id','desc')->get();
         return view('dashboard.notofication.general_create',compact('vendors','notofications'));
     }
     public function get_offer($locale,$id){
