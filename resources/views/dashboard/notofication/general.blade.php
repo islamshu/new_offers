@@ -26,6 +26,7 @@ card card-docs mb-2">
                         <th>{{ __('Body') }}</th>
                         <th>{{ __('vendor') }}</th>
                         <th>{{ __('offer') }}</th>
+                        <th>{{ __('action') }}</th>
 
 
                     </tr>
@@ -36,7 +37,9 @@ card card-docs mb-2">
                             <td>{{ @$item->title_en }}</td>
                             <td>{{ @$item->body_en }}</td>
                             <td>{{ @$item->vendor->name_en != null ? @$item->vendor->name_en : '-'  }}</td>
-                            <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>                        </tr>
+                            <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>
+                            <td><a href="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}"><i class="fa fa-share"></i></a></td>
+                        </tr>
                     @endforeach
 
 

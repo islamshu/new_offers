@@ -61,6 +61,15 @@ class GeneralNotoficationController extends Controller
 
         return 'true';
     }
+    public function resend(Request $request ,$locale,$id)
+    {
+        $not =GeneralNotofication::find($id);
+        $users = Clinet::where('token','!=',null)->get();
+        foreach($users as $user){
+            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
+        }
+        return redirect()->back()->with(['success'=>'تم الارسال بنجاح']);
+    }
     public function create_user_notofication(){
         $users = Clinet::get();
         return view('dashboard.notofication.user_create',compact('users'));
