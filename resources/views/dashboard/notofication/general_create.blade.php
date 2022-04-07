@@ -39,7 +39,8 @@
 
                     <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
-                        <select name="type" id="vendor_id" class="form-control">
+                        <select name="type" id="vendor_id" class="selectpicker form-control"
+                        data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
                                 <option value="{{ $item->id }}">{{ $item->name_en }}</option>
@@ -50,7 +51,8 @@
                     </div>
                     <div class="form-group col-md-6 offer">
                         <label>{{ __('Choose Offer') }}:</label>
-                        <select name="type" id="offer_id" class="form-control">
+                        <select name="type" id="offer_id" class="selectpicker form-control"
+                        data-live-search="true">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
 
 
