@@ -1,6 +1,11 @@
 @extends('layout.default')
-
+<style>
+    .dropdown-menu show{
+        top: 157px !important;
+}
+</style>
 @section('content')
+
     <div class="card card-custom">
 
         <div class="card-header">
