@@ -51,8 +51,7 @@
                     </div>
                     <div class="form-group col-md-6 offer">
                         <label>{{ __('Choose Offer') }}:</label>
-                        <select name="type" id="offer_id" class="selectpicker form-control"
-                        data-live-search="true">
+                        <select name="type" id="offer_id" class=" form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
 
 
