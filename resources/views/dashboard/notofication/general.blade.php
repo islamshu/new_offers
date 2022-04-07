@@ -40,7 +40,11 @@ card card-docs mb-2">
                             <td>{{ @$item->vendor->name_en != null ? @$item->vendor->name_en : '-'  }}</td>
                             <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>
                             <td>{{ $item->created_at->format('Y-m-d')}}</td>
-                            <td><a href="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}"><i class="fa fa-share"></i></a></td>
+                            <td>
+                                <form action="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}" method="post">
+                                @csrf
+                                <button type="submit"><i class="fa fa-share"></i></button>
+                                </form>
                         </tr>
                     @endforeach
 
