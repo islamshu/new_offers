@@ -33,21 +33,6 @@
                         <input type="text" name="title_en" id="title_en" class="form-control form-control-solid"
                             placeholder="{{ __('title en') }}" required />
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('body ar') }}:</label>
-                        <textarea name="body_ar" class="form-control form-control-solid" id="body_ar" rows="3"></textarea>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('body en') }}:</label>
-                        <textarea name="body_en" class="form-control form-control-solid" id="body_en" rows="3"></textarea>
-                    </div>
-                    <div class="form-group col-md-6" style="visibility: hidden">
-                        <label>{{ __('body ar') }}:</label>
-                    </div>
-                    <div class="form-group col-md-6" style="visibility: hidden">
-                        <label>{{ __('body en') }}:</label>
-                    </div>
-
                     <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
                         <style>
@@ -74,6 +59,17 @@
                         </select>
 
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('body ar') }}:</label>
+                        <textarea name="body_ar" class="form-control form-control-solid" id="body_ar" rows="3"></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('body en') }}:</label>
+                        <textarea name="body_en" class="form-control form-control-solid" id="body_en" rows="3"></textarea>
+                    </div>
+                  
+
+                 
 
                 </div>
 
