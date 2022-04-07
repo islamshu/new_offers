@@ -41,6 +41,12 @@
                         <label>{{ __('body en') }}:</label>
                         <textarea name="body_en" class="form-control form-control-solid" id="body_en" rows="3"></textarea>
                     </div>
+                    <div class="form-group col-md-6" style="visibility: hidden">
+                        <label>{{ __('body ar') }}:</label>
+                    </div>
+                    <div class="form-group col-md-6" style="visibility: hidden">
+                        <label>{{ __('body en') }}:</label>
+                    </div>
 
                     <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
