@@ -56,6 +56,7 @@
                                 top: 20px !important
                             }
                         </style>
+                        
                         <select name="type" id="vendor_id" class="selectpicker form-control"
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
