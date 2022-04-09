@@ -141,6 +141,7 @@ class GeneralNotoficationController extends Controller
             'vendor_id'=>$request->vendor_id,
 
         ];
+        return $request->user_id;
        
         $users = Clinet::whereIn('id',$request->user_id)->get();
         foreach($users as $user){
