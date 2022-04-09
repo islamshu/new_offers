@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>{{ __('Users') }}:</label>
-                        <select name="user_id" id="user_id"class="selectpicker form-control"
+                        <select multiple name="user_id[]" id="user_id"class="selectpicker form-control"
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($users as $item)
