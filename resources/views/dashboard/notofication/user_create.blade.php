@@ -22,7 +22,7 @@
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($users as $item)
-                            <option value="{{ $item->id }}" >{{ $item->name }}</option>
+                            <option value="{{ $item->id }}" >{{ $item->phone }}</option>
 
                             @endforeach
                         </select>
