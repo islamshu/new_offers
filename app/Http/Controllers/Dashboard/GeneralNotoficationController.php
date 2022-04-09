@@ -136,6 +136,7 @@ class GeneralNotoficationController extends Controller
             'body_ar' => $request->body_ar,
             'body_en' => $request->body_en,
         ];
+        return $request->user_id;
         $user = Clinet::find($request->user_id);
         Notification::send($user, new UserNotification($date));
         $not = 'true';

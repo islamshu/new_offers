@@ -106,9 +106,9 @@
             formData.append('title_ar', document.getElementById('title_ar').value);
             formData.append('body_en', document.getElementById('body_en').value);
             formData.append('body_ar', document.getElementById('body_ar').value);
-            formData.append('user_id', document.getElementById('user_id').value);
        
-            
+            var value = $('#user_id').val();
+            formData.append('user_id', JSON.stringify(value));
 
             store("{{ route('store_user_notofication', ['locale' => app()->getLocale()]) }}", formData);
 
