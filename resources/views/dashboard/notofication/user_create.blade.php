@@ -56,6 +56,7 @@
                             @endforeach
 
                         </select>
+                    </div>
                         <div class="form-group col-md-6 offer">
                             <label>{{ __('Choose Offer') }}:</label>
                             <select name="type" id="offer_id" class=" form-control">
