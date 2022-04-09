@@ -143,7 +143,7 @@ class GeneralNotoficationController extends Controller
         ];
 
        
-        $users = Clinet::whereIn('id',$request->user_id)->get();
+        $users = Clinet::whereIn('id',json_decode($request->user_id))->get();
         return $users;
         foreach($users as $user){
             Notification::send($user, new UserNotification($date));
