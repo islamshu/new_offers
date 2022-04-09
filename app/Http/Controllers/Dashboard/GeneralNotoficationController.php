@@ -72,7 +72,9 @@ class GeneralNotoficationController extends Controller
     }
     public function create_user_notofication(){
         $users = Clinet::get();
-        return view('dashboard.notofication.user_create',compact('users'));
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+
+        return view('dashboard.notofication.user_create',compact('users','vendors'));
     }
     public function create_city_notofication(){
         $cities = City::where('status',1)->get();
@@ -135,12 +137,18 @@ class GeneralNotoficationController extends Controller
             'title_en' => $request->title_en,
             'body_ar' => $request->body_ar,
             'body_en' => $request->body_en,
+            'offer_id'=>$request->offer_id,
+            'vendor_id'=>$request->vendor_id,
+
         ];
-        return $request->user_id;
-        $user = Clinet::find($request->user_id);
-        Notification::send($user, new UserNotification($date));
-        $not = 'true';
-        $this->notification($user->token,  $date['title_ar'], $date['body_ar'], 'notofication',null,null);
+       
+        $users = Clinet::whereIn($request->user_id)->get();
+        foreach($users as $user){
+            Notification::send($user, new UserNotification($date));
+            $not = 'true';
+            $this->notification($user->token,  $date['title_ar'], $date['body_ar'], 'notofication',null,null);
+        }
+       
 
         return response()->json(['icon' => 'success', 'title' => 'Notofication send successfully'], $not ? 200 : 400);
 

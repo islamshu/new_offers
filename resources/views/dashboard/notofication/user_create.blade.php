@@ -49,6 +49,23 @@
                         <textarea name="body_en" class="form-control form-control-solid" id="body_en"  rows="3"></textarea>
                     </div>
                     
+                    <div class="form-group col-md-6 vendor">
+                        <label>{{ __('Choose Vendor') }}:</label>
+                        <style>
+                            .dropdown-menu{
+                                top: 20px !important
+                            }
+                        </style>
+                        <select name="type" id="vendor_id" class="selectpicker form-control"
+                        data-live-search="true">
+                            <option value="" selected disabled>{{ __('Choose') }}</option>
+                            @foreach ($vendors as $item)
+                                <option value="{{ $item->id }}">{{ $item->name_en }}</option>
+                            @endforeach
+
+                        </select>
+
+                    </div>
                     
                 </div>
                     
