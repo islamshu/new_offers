@@ -6,7 +6,10 @@ trait SendNotification
     {
         $firebase_key = get_general('firebase');
         $dataArr = array(
-          'store_id'=>$vendor_id
+            'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+            'status'=>"done",
+            'screen'=>$page,
+            'store_id'=>$vendor_id
         );
         $notification = array(
             'title' =>$title,
@@ -22,7 +25,6 @@ trait SendNotification
             'data' => $dataArr,
             'priority'=>'high'
         );
-        
         $dataString = json_encode ($arrayToSend);
         $headers = [
             'Authorization: key=' . $firebase_key,
