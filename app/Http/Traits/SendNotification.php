@@ -5,9 +5,10 @@ trait SendNotification
     public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
         $firebase_key = get_general('firebase');
-        $dataArr = ['status'=>"done",
+        $dataArr = [
         'screen'=>$page,
-        'store_id'=>$vendor_id];
+        'store_id'=>$vendor_id
+                ];
         $notification = array(
             'title' =>$title,
             'body' => $body,
