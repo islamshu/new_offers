@@ -5,10 +5,11 @@ trait SendNotification
     public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
         $firebase_key = get_general('firebase');
-        $dataArr = [
-        'screen'=>$page,
-        'store_id'=>$vendor_id
-                ];
+        $dataArr = array(
+            'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+            'status'=>"done",
+            'screen'=>$page
+        );
         $notification = array(
             'title' =>$title,
             'body' => $body,
