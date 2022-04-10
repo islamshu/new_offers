@@ -5,7 +5,9 @@ trait SendNotification
     public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
         $firebase_key = get_general('firebase');
-
+        $dataArr = array(
+          'store_id'=>$vendor_id
+        );
         $notification = array(
             'title' =>$title,
             'body' => $body,
@@ -14,14 +16,13 @@ trait SendNotification
             'sound' => 'default',
             'badge' => '1',
             );
-            $extraNotificationData = ["message" => $notification,"store_id" => $vendor_id];
-
         $arrayToSend = array(
             'to' => $to,
             'notification' => $notification,
-            'data' => $extraNotificationData,
+            'data' => $dataArr,
             'priority'=>'high'
         );
+        
         $dataString = json_encode ($arrayToSend);
         $headers = [
             'Authorization: key=' . $firebase_key,
