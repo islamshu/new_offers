@@ -9,7 +9,6 @@ trait SendNotification
             'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
             'status'=>"done",
             'screen'=>$page
-     
         );
         $notification = array(
             'title' =>$title,
