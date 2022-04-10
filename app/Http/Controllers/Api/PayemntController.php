@@ -164,12 +164,7 @@ class PayemntController extends BaseController
             $user->sub_id  = $code->id;
             $user->clinet_id  = auth('client_api')->id();
             // $user->save();
-            if($price != $code->price){
-                $promocode =new  PromocodeUser();
-                $promocode->client_id = auth('client_api')->id();
-                $promocode->promocode = $request->promo_code;
-                // $promocode->save();
-            }
+           
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
             $payment->price = $code->price;
@@ -339,7 +334,7 @@ class PayemntController extends BaseController
                if($price != $code->price){
                    $promocode =new  PromocodeUser();
                    $promocode->client_id = auth('client_api')->id();
-                   $promocode->promocode = $request->promo_code;
+                   $promocode->promocode = $payment->promo_code;
                    $promocode->save();
                }     
 

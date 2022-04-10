@@ -5,27 +5,29 @@ trait SendNotification
     public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
         $firebase_key = get_general('firebase');
-        $dataArr = array(
-            'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
-            'status'=>"done",
-            'screen'=>$page,
-            'store_id' =>$vendor_id,
-            'offer_id' => $offer_id,
-        );
+       
+
+      
         $notification = array(
             'title' =>$title,
             'body' => $body,
-            'storeID ' =>$vendor_id,
-            'offerID' => $offer_id,
+            'store_id ' =>$vendor_id,
+            'offer_id' => $offer_id,
             'sound' => 'default',
             'badge' => '1',
+            );
+            $dataArr = array(
+                'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
+                'status'=>"done",
+                'screen'=>$page,
+                'store_id' =>$vendor_id,
+                'offer_id' => $offer_id, 
+                'message'=>$notification
             );
         $arrayToSend = array(
             'to' => $to,
             'notification' => $notification,
             'data' => $dataArr,
-            'priority'=>'high',
-           
         );
         $dataString = json_encode ($arrayToSend);
         $headers = [
