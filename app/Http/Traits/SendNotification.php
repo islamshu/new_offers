@@ -6,6 +6,7 @@ trait SendNotification
     {
         $firebase_key = get_general('firebase');
         $dataArr = array(
+            'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
             'status'=>"done",
             'screen'=>$page,
             'store_id' =>$vendor_id,
@@ -14,8 +15,8 @@ trait SendNotification
         $notification = array(
             'title' =>$title,
             'body' => $body,
-            'store_id' =>$vendor_id,
-            'offer_id' => $offer_id,
+            'storeID ' =>$vendor_id,
+            'offerID' => $offer_id,
             'sound' => 'default',
             'badge' => '1',
             );
