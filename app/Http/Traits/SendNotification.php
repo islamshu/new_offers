@@ -2,18 +2,18 @@
 namespace App\Http\Traits;
 trait SendNotification
 {
-    public function notification($registration_ids,$title, $message, $page,$vendor_id,$offer_id)
+    public function notification($registration_ids,$title, $message, $page,$store_id,$offer_id)
     {
-        $firebase_key = get_general('firebase');
+        $api_access_key = get_general('firebase');
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
-
+		// $token='235zgagasd634sdgds46436';
 
 	    $notification = [
             'title' => $title,
             'body' => $message
         ];
 
-        $extraNotificationData = ["message" => $notification,"store_id" => $vendor_id];
+        $extraNotificationData = ["message" => $notification,"store_id" => $store_id];
 
         $fcmNotification = [
             'registration_ids' => $registration_ids,
@@ -22,7 +22,7 @@ trait SendNotification
         ];
 
         $headers = [
-            'Authorization: key=' . $firebase_key,
+            'Authorization: key=' . $api_access_key,
             'Content-Type: application/json'
         ];
 
@@ -37,8 +37,6 @@ trait SendNotification
         $result = curl_exec($ch);
 
         curl_close($ch);
-        // dd($response);
-
         
     }
 }
