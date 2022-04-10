@@ -8,7 +8,9 @@ trait SendNotification
         $dataArr = array(
             'click_action' => 'FLUTTER_NOTIFICATION_CLICK',
             'status'=>"done",
-            'screen'=>$page
+            'screen'=>$page,
+            'store_id' =>$vendor_id,
+            'offer_id' => $offer_id,
         );
         $notification = array(
             'title' =>$title,
