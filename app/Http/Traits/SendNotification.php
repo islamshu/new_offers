@@ -2,38 +2,40 @@
 namespace App\Http\Traits;
 trait SendNotification
 {
-    public function notification($registration_ids,$title, $message, $page,$store_id,$offer_id)
+    public function notification($to,$title, $body, $page,$vendor_id,$offer_id)
     {
-        $api_access_key = get_general('firebase');
-        $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
-		// $token='235zgagasd634sdgds46436';
+        $firebase_key = get_general('firebase');
 
-	    $notification = [
-            'title' => $title,
-            'body' => $message
-        ];
+        $notification = array(
+            'title' =>$title,
+            'body' => $body,
+            'store_id' =>$vendor_id,
+            'offer_id' => $offer_id,
+            'sound' => 'default',
+            'badge' => '1',
+            );
+            $extraNotificationData = ["message" => $notification,"store_id" => $vendor_id];
 
-        $extraNotificationData = ["message" => $notification,"store_id" => $store_id];
-
-        $fcmNotification = [
-            'registration_ids' => $registration_ids,
+        $arrayToSend = array(
+            'to' => $to,
             'notification' => $notification,
-            'data' => $extraNotificationData
-        ];
-
+            'data' => $extraNotificationData,
+            'priority'=>'high'
+        );
+        $dataString = json_encode ($arrayToSend);
         $headers = [
-            'Authorization: key=' . $api_access_key,
-            'Content-Type: application/json'
+            'Authorization: key=' . $firebase_key,
+            'Content-Type:application/json',
         ];
 
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$fcmUrl);
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
         $response = curl_exec($ch);
         // dd($response);
 
