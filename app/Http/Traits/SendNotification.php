@@ -24,7 +24,9 @@ trait SendNotification
             'to' => $to,
             'notification' => $notification,
             'data' => $dataArr,
-            'priority'=>'high'
+            'priority'=>'high',
+            'store_id' =>$vendor_id,
+            'offer_id' => $offer_id,
         );
         $dataString = json_encode ($arrayToSend);
         $headers = [
