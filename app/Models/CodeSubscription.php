@@ -9,5 +9,11 @@ class CodeSubscription extends Model
 {
     use HasFactory;
     protected $guarded =[];
+    /**
+     * Get the user that owns the CodeSubscription
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+ 
     
 }

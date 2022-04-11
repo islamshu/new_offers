@@ -22,6 +22,7 @@
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('code') }}</th>
                         <th>{{ __('is used') }}</th>
+                        <th>{{ __('User') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@
 
                             <i class="fa fa-check fa-2x " style="color: green" aria-hidden="true"></i>
                         @endif
+                        <td>{{ @\App\Models\Subscriptions_User::where('code',$item->code)->first()->client->id }}</td>
                         </tr>
                     @endforeach
 
