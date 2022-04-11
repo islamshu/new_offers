@@ -64,7 +64,7 @@
                         <td>{{ App\Models\PromocodeUser::where('promocode','like',$promo)->count() }}</td>
                         <td class="pr-0 text-left">
                             
-                            <form action="{{ route('showCodes',get_lang()) }}" method="post">
+                            <form action="{{ route('showCodes',get_lang()) }}" method="get">
                             @csrf
                             <input type="hidden"  name="id" value="{{ $code->id }}" id="">
                         <button type="submit"><i class="fa fa-eye"></i></button>
