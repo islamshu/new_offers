@@ -26,6 +26,10 @@ class CodeController extends BaseController
     {
         // dd(auth('client_api')->id());
         $codesub = CodeSubscription::where('code', $request->activation_code)->first();
+        if(!$codesub){
+            $res['status'] = $this->sendNewErorr('Failed to Subscribe', 'Unkonwn Activition Code');
+            return $res; 
+        }
         if ($codesub->is_used == 1) {
             $res['status'] = $this->sendNewErorr('Failed to Subscribe', 'Activition Code is not Found or Used');
             return $res;
