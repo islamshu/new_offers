@@ -22,7 +22,7 @@
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('code') }}</th>
                         <th>{{ __('is used') }}</th>
-                        <th>{{ __('User') }}</th>
+                        <th>{{ __('User phone') }}</th>
                     </tr>
                 </thead>
                 <tbody>
