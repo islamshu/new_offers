@@ -35,7 +35,7 @@
 
                             <i class="fa fa-check fa-2x " style="color: green" aria-hidden="true"></i>
                         @endif
-                        <td>{{ @\App\Models\Subscriptions_User::where('code',$item->code)->first()->client->id }}</td>
+                        <td>{{ @\App\Models\Subscriptions_User::where('code',$item->code)->first()->client->phone }}</td>
                         </tr>
                     @endforeach
 
