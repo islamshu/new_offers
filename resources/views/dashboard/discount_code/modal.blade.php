@@ -3,37 +3,39 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <div class="card-header">
-          
+
                 <ol class="breadcrumb">
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                     <li class="active"> {{ __('All Discount Code') }}</li>
-            
+
                 </ol>
-            
+
             </div>
-<table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-id="kt_datatable">
-<thead>
-    <tr class="fw-bold fs-6 text-gray-800">
-        <th>{{ __('code') }}</th>
-        <th>{{ __('total') }}</th>
-        <th>{{ __('total usage') }}</th>
-    </tr>
-</thead>
-<tbody>
-    @foreach ($codes as $item)
-    @php
-        $dis = App\Models\Discount::find($item->discount_id);
-    @endphp
-    <tr>
-    <td>{{ $item->code }}</td>
-    <td>{{ $dis->value}}</td>
-    <td>{{ App\Models\PromocodeUser::where('promocode',$item->code)->count()}}</td>
-    </tr>
-    @endforeach
-  
-</tbody>
-</table>
+            <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
+                id="kt_datatable">
+                <thead>
+                    <tr class="fw-bold fs-6 text-gray-800">
+                        <th>{{ __('code') }}</th>
+                        <th>{{ __('total') }}</th>
+                        <th>{{ __('total usage') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($codes as $item)
+                        @php
+                            $dis = App\Models\Discount::find($item->discount_id);
+                        @endphp
+                        <tr>
+                            <td>{{ $item->code }}</td>
+                            <td>{{ $dis->value }}</td>
+                            <td>{{ App\Models\PromocodeUser::where('promocode', $item->code)->count() }}</td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection
 
 @section('styles')
@@ -68,8 +70,6 @@ id="kt_datatable">
         }
     </script>
     <script>
-       
-
         function performdelete(id) {
             var url = '{{ route('discount_code.destroy', [':id', 'locale' => app()->getLocale()]) }}';
             url = url.replace(':id', id);
