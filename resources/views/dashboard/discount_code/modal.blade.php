@@ -6,7 +6,7 @@
 
                 <ol class="breadcrumb">
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-                    <li class="active"> {{ __('All Discount Code for ')  }} {{ $codes->discount->first()->title_ar }}</li>
+                    <li class="active"> {{ __('All Discount Code for ')  }} {{ $codes->first()->discount }}  </li>
 
                 </ol>
 

@@ -11,6 +11,6 @@ class DiscountSubscription extends Model
     protected $guarded=[];
     public function discount()
     {
-        return $this->belongsTo(Discount::class, 'client_id');
+        return $this->belongsTo(Discount::class, 'discount_id');
     }
 }
