@@ -9,4 +9,8 @@ class DiscountSubscription extends Model
 {
     use HasFactory;
     protected $guarded=[];
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class, 'client_id');
+    }
 }
