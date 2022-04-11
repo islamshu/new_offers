@@ -152,7 +152,7 @@ class CodeController extends Controller
      */
     public function show($locale,Code $code)
     {
-      $codes=  CodeSubscription::where('sub_id',$code->sub_id)->get();
+      $codes=  CodeSubscription::where('code_id',$code->id)->get();
 
       $code_id = $code->sub_id;
    
