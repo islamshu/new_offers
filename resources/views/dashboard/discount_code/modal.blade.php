@@ -6,7 +6,13 @@
 
                 <ol class="breadcrumb">
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
+                    @if(get_lang() == ar)
                     <li class="active"> {{ __('All Discount Code for ')  }} {{ @$codes->first()->discount->name_ar }}  </li>
+                    @else
+
+                     <li class="active"> {{ __('All Discount Code for ')  }} {{ @$codes->first()->discount->name_en }}  </li>
+
+                    @endif
 
                 </ol>
 
