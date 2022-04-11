@@ -93,6 +93,7 @@ class CodeController extends Controller
                 $codesub = new CodeSubscription();
                 $codesub->code = $request->code;
                 $codesub->sub_id = $request->sub_id;
+                $codesub->code_id = $code->id;
                 $codesub->save();
             } else {
                 $code_num = $request->number_of_code;
@@ -100,6 +101,7 @@ class CodeController extends Controller
                     $codesub = new CodeSubscription();
                     $codesub->code = mt_rand(100000000, 999999999);
                     $codesub->sub_id = $request->sub_id;
+                    $codesub->code_id = $code->id;
                     $codesub->save();
                 }
             }
@@ -159,14 +161,14 @@ class CodeController extends Controller
     public function not_used_code($locale,$id)
     {
         $code = Code::find($id);
-        $codes=  CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',0)->get();
+        $codes=  CodeSubscription::where('sub_id',$code->id)->where('is_used',0)->get();
         $code_id = $code->sub_id;
         return view('dashboard.code.show_code',compact('codes','code_id'));
     }
     public function used_code($locale,$id)
     {
         $code = Code::find($id);
-        $codes=  CodeSubscription::where('sub_id',$code->sub_id)->where('is_used',1)->get();
+        $codes=  CodeSubscription::where('sub_id',$code->id)->where('is_used',1)->get();
         $code_id = $code->sub_id;
         return view('dashboard.code.show_code',compact('codes','code_id'));
     }
