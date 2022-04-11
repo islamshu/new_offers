@@ -35,7 +35,17 @@
 
                             <i class="fa fa-check fa-2x " style="color: green" aria-hidden="true"></i>
                         @endif
-                        <td>{{ @\App\Models\Subscriptions_User::where('code',$item->code)->first()->client->phone }}</td>
+                        <td>
+                            @php
+                                $client = \App\Models\Subscriptions_User::where('code',$item->code)->first()->client;
+                            @endphp
+                            @if($client)
+                            <a target="_blank" href="{{ route('clinets.show',[get_lang(),$client->id]) }}">
+                                {{ $client->phone }}
+                            </a>
+                            @else
+                             _
+                            </td>
                         </tr>
                     @endforeach
 
