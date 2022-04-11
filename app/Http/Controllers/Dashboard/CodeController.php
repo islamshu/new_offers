@@ -161,14 +161,14 @@ class CodeController extends Controller
     public function not_used_code($locale,$id)
     {
         $code = Code::find($id);
-        $codes=  CodeSubscription::where('sub_id',$code->id)->where('is_used',0)->get();
+        $codes=  CodeSubscription::where('code_id',$code->id)->where('is_used',0)->get();
         $code_id = $code->sub_id;
         return view('dashboard.code.show_code',compact('codes','code_id'));
     }
     public function used_code($locale,$id)
     {
         $code = Code::find($id);
-        $codes=  CodeSubscription::where('sub_id',$code->id)->where('is_used',1)->get();
+        $codes=  CodeSubscription::where('code_id',$code->id)->where('is_used',1)->get();
         $code_id = $code->sub_id;
         return view('dashboard.code.show_code',compact('codes','code_id'));
     }
