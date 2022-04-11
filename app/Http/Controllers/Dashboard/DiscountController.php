@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CodeSubscription;
 use App\Models\Discount;
 use App\Models\DiscountSubscription;
+use App\Models\PromocodeUser;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
@@ -113,6 +114,11 @@ class DiscountController extends Controller
         $codes = DiscountSubscription::where('discount_id',$request->id)->get();
         return response()->view('dashboard.discount_code.modal', compact('codes'));
 
+    }
+    public function showCodesUser(Request $request)
+    {
+       $promo = PromocodeUser::where('promocode',$request->promo)->get();
+       return view('dashboard.discount_code.modal_users', compact('promo'));
     }
 
     /**

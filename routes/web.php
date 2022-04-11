@@ -288,7 +288,9 @@ Route::group([
         Route::resource('discount_code', 'Dashboard\DiscountController');   
         Route::post('update-discount/{id}', 'Dashboard\DiscountController@update_code')->name('update-code.discountcode');
         Route::get('show_promocode','Dashboard\DiscountController@showCodes')->name('showCodes');
-     
+        Route::get('show_promocode_user','Dashboard\DiscountController@showCodesUser')->name('showCodesUser');
+
+        
         Route::post('update-code/{id}', 'Dashboard\CodeController@update_code')->name('update-code.code');
 
         Route::post('update-coupun/{id}', 'Dashboard\CouponController@update_coupun')->name('update-coupun.coupun');

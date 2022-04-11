@@ -18,6 +18,7 @@
                         <th>{{ __('code') }}</th>
                         <th>{{ __('total') }}</th>
                         <th>{{ __('total usage') }}</th>
+                        <th>{{ __('User Usage this') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,10 @@
                             <td>{{ $item->code }}</td>
                             <td>{{ $dis->value }}</td>
                             <td>{{ App\Models\PromocodeUser::where('promocode', $item->code)->count() }}</td>
+                            <td>
+                                <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
+                                onclick="make('{{  $item->code }}')"><i class="fa fa-eye"></i></a></td>
+                            
                         </tr>
                     @endforeach
 
@@ -36,6 +41,33 @@
             </table>
         </div>
     </div>
+    <div class="modal fase" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 123%;">
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    {{ __('User') }}</h5>
+                
+
+
+               
+            </div>
+            
+
+            <div id="addToCart-modal-body">
+                <div class="c-preloader text-center p-3">
+                    <i class="las la-spinner la-spin la-3x"></i>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('styles')
@@ -47,18 +79,18 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
-        function make(id) {
+        function make(promocode) {
             $("#myModal").show();
 
             // $('#staticBackdrop').modal();
             $('.c-preloader').show();
 
             $.ajax({
-                type: 'post',
-                url: "{{ route('showCodes', app()->getLocale()) }}",
+                type: 'get',
+                url: "{{ route('showCodesUser', app()->getLocale()) }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    'id': id
+                    'promo': promocode
                 },
 
                 success: function(data) {
