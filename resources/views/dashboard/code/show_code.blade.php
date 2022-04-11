@@ -37,7 +37,7 @@
                         @endif
                         <td>
                             @php
-                                $client = \App\Models\Subscriptions_User::where('code',$item->code)->first()->client;
+                                $client = @\App\Models\Subscriptions_User::where('code',$item->code)->first()->client;
                             @endphp
                             @if($client)
                             <a target="_blank" href="{{ route('clinets.show',[get_lang(),$client->id]) }}">
