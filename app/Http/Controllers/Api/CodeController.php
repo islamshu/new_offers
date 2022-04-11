@@ -46,7 +46,7 @@ class CodeController extends BaseController
         $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
         $user = new Subscriptions_User();
         $user->payment_type = 'activition_code';
-        $user->code = $request->code;
+        $user->code = $request->activation_code;
         // dd(auth('client_api')->id());
         $client = auth('client_api')->user();
         $client->type_of_subscribe = $code->type_paid;
