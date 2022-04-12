@@ -45,6 +45,7 @@
                         }
                         $per = strval(100 * (@$code->package->price - $total) / @$code->package->price);
                         $number_code = App\Models\DiscountSubscription::where('discount_id',$code->id)->count();
+                        $descount =App\Models\DiscountSubscription::where('discount_id',$code->id)->first();
 
                     @endphp
                   
@@ -72,7 +73,8 @@
                                 @if($number_code == 1)
 
                                 <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
-                                onclick="make('{{ {{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}}}')">{{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}</a>
+                                onclick="make('{{ $descount->code }}')">
+                                {{ $descount->code }}</a>
                                 
                                 @else
                                 <form action="{{ route('showCodes',get_lang()) }}" method="get">
