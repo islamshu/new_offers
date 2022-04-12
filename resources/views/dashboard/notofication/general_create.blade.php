@@ -39,6 +39,7 @@
                                     {{ $item->name_ar }} 
                                 @else
                                 {{ $item->name_en }} 
+                                @endif
                             </option>
                             @endforeach
 
