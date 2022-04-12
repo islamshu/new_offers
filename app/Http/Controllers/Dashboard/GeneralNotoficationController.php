@@ -19,7 +19,7 @@ class GeneralNotoficationController extends Controller
 {
     use SendNotification;
     public function index(){
-       $not= GeneralNotofication::ordgerBy('id','desc')->get();
+       $not= GeneralNotofication::orderBy('id','desc')->get();
         return view('dashboard.notofication.general')->with('notofications',$not);
     }
     public function create(){
