@@ -53,7 +53,7 @@
                         <td>{{ @$code->value_discount}}</td>
 
 
-                        <td>{{bcdiv($per,1,2)}}) %</td>
+                        <td>{{bcdiv($per,1,2)}} %</td>
                         <td>{{ $code->start_at }}</td>
                         <td>{{ $code->end_at }}</td>
                         <td>
