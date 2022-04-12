@@ -80,7 +80,7 @@
                                 <form action="{{ route('showCodes',get_lang()) }}" method="get">
                                     @csrf
                                 <input type="hidden"  name="id" value="{{ $code->id }}" id="">
-                                <button type="submit"><i class="fa fa-eye"></i></button>
+                                <button type="submit" class="btn"><i class="fa fa-eye "></i></button>
                                 </form>
                                 @endif
 
