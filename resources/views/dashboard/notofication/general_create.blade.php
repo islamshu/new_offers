@@ -34,7 +34,12 @@
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
-                                <option value="{{ $item->id }}">{{ $item->name_en }}</option>
+                                <option value="{{ $item->id }}">
+                                    @if(get_lang() == 'ar')
+                                    {{ $item->name_ar }} 
+                                @else
+                                {{ $item->name_en }} 
+                            </option>
                             @endforeach
 
                         </select>
