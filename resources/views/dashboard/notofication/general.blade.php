@@ -39,7 +39,7 @@ card card-docs mb-2">
                             <td>{{ @$item->body_en }}</td>
                             <td>{{ @$item->vendor->name_en != null ? @$item->vendor->name_en : '-'  }}</td>
                             <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>
-                            <td>{{ $item->created_at->format('Y-m-d')}}</td>
+                            <td>{{ $item->created_at}}</td>
                             <td>
                                 <form action="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}" method="post">
                                 @csrf
