@@ -71,7 +71,9 @@
                         <td>
                                 @if($number_code == 1)
 
-                                {{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}
+                                <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
+                                onclick="make('{{ {{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}}}')">{{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}</a>
+                                
                                 @else
                                 <form action="{{ route('showCodes',get_lang()) }}" method="get">
                                     @csrf
@@ -159,18 +161,18 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="{{ asset('crudjs/crud.js') }}"></script>
     <script>
-        function make(id) {
+        function make(promocode) {
             $("#myModal").show();
 
             // $('#staticBackdrop').modal();
             $('.c-preloader').show();
 
             $.ajax({
-                type: 'post',
-                url: "{{ route('showCodes', app()->getLocale()) }}",
+                type: 'get',
+                url: "{{ route('showCodesUser', app()->getLocale()) }}",
                 data: {
                     "_token": "{{ csrf_token() }}",
-                    'id': id
+                    'promo': promocode
                 },
 
                 success: function(data) {
