@@ -19,6 +19,14 @@ card card-docs mb-2">
             </div>
             <br>
             <h2 class="mb-3">{{ __('All Notofication') }}</h2>
+            @if(Session::has('success'))
+    <div class="row mr-2 ml-2">
+
+            <button type="text" class="btn btn-lg btn-block btn-outline-success mb-2"
+                    id="type-error">{{Session::get('success')}}
+            </button>
+    </div>
+@endif
             <table class=" table ">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">

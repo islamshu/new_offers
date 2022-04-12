@@ -61,7 +61,7 @@ class GeneralNotoficationController extends Controller
         // foreach($users as $user){
         //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
         // }
-
+        return redirect()->back()->with(['success'=>'Edit and Resend Successfully']);
         // return 'true';
     }
     public function store(Request $request ,$locale){
