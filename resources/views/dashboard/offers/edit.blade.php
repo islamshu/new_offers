@@ -309,6 +309,33 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="row">
+
+
+
+                                    <!--end::Input-->
+                                    <!--begin::Input-->
+                                    
+                                    <div class="col-md-6">
+    
+                                    <div class="form-group">
+                                        <label>{{ __('Start time') }}</label>
+                                        <input type="datetime" value="{{ $offer->start_time }}" class="form-control form-control-solid form-control-lg"
+                                            name="start_time" id="start_time" placeholder="start_time" />
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+    
+                                    <!--end::Input-->
+                                    <!--begin::Input-->
+                                    <div class="form-group">
+                                        <label>{{ __('End time') }}</label>
+                                        <input type="datetime" value="{{ $offer->end_time }}" class=" form-control form-control-solid form-control-lg"
+                                            name="end_time" id="end_time" placeholder="end_time" />
+                                    </div>
+                                    </div>
+                                    </div>
+    
 
                                 <div class="row">
 
@@ -384,33 +411,7 @@
                             <div class="pb-5" data-wizard-type="step-content">
                                 <h4 class="mb-10 font-weight-bold text-dark">{{ __('DataTime info') }}</h4>
                                 <!--begin::Input-->
-                                <div class="row">
-
-
-
-                                <!--end::Input-->
-                                <!--begin::Input-->
-                                
-                                <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label>{{ __('Start time') }}</label>
-                                    <input type="datetime" value="{{ $offer->start_time }}" class="form-control form-control-solid form-control-lg"
-                                        name="start_time" id="start_time" placeholder="start_time" />
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-
-                                <!--end::Input-->
-                                <!--begin::Input-->
-                                <div class="form-group">
-                                    <label>{{ __('End time') }}</label>
-                                    <input type="datetime" value="{{ $offer->end_time }}" class=" form-control form-control-solid form-control-lg"
-                                        name="end_time" id="end_time" placeholder="end_time" />
-                                </div>
-                                </div>
-                                </div>
-
+                      
                                 <div class="row">
 
                                     <div class="col-md-6">

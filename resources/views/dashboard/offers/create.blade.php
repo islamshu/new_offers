@@ -313,6 +313,27 @@
                                             id="discount_value" name="discount_value" placeholder="Discount value" />
                                     </div>
                                 </div>
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ __('Start time') }}</label>
+                                        <input type="datetime-local"
+                                            class="form-control form-control-solid form-control-lg" name="start_time"
+                                            id="start_time" placeholder="start_time" />
+                                    </div>
+                                    </div>
+                                    <!--end::Input-->
+                                    <!--begin::Input-->
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ __('End time') }}</label>
+                                        <input type="datetime-local"" class="
+                                             form-control form-control-solid form-control-lg" name="end_time" id="end_time"
+                                            placeholder="end_time" />
+                                    </div>
+                                    </div>
+                                </div>
 
                                 <div class="row">
 
@@ -392,27 +413,7 @@
 
                                 <!--end::Input-->
                                 <!--begin::Input-->
-                                <div class="row">
-                                    
-                                    <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{ __('Start time') }}</label>
-                                        <input type="datetime-local"
-                                            class="form-control form-control-solid form-control-lg" name="start_time"
-                                            id="start_time" placeholder="start_time" />
-                                    </div>
-                                    </div>
-                                    <!--end::Input-->
-                                    <!--begin::Input-->
-                                    <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{ __('End time') }}</label>
-                                        <input type="datetime-local"" class="
-                                             form-control form-control-solid form-control-lg" name="end_time" id="end_time"
-                                            placeholder="end_time" />
-                                    </div>
-                                    </div>
-                                </div>
+                            
                                    
 
                                     <div class="row">
