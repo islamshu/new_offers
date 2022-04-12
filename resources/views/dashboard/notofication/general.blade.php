@@ -52,6 +52,7 @@ card card-docs mb-2">
                 </tbody>
 
             </table>
+            {{ $notofications->links() }}
 
 
         </div>
