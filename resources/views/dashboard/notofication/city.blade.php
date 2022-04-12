@@ -2,64 +2,60 @@
 @section('content')
     <div class="card card-docs mb-2">
         <div class="card-header">
-          
-        
+
+
             <ol class="breadcrumb">
                 <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
-        
+
                 <li class="active">{{ __('City Notofication') }}</li>
             </ol>
-        
-        </div> 
+
+        </div>
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Promotion') }}</h2>
             <div class="mt-10">
 
                 <div class="row">
                     @foreach ($cities as $item)
-                    <div class="col-md-3 bg-light-primary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
-                        <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                        <div class=" symbol-75px mb-5 text-center">
-                            <img src="{{  $item->image  }}" width="80" height="80" alt="">
+                        <div class="col-md-3 bg-light-primary w-100 h-100 px-6 py-8 rounded-2 mb-7 mr-7 ml-7 ">
+                            <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
+                            <div class=" symbol-75px mb-5 text-center">
+                                <img src="{{ $item->image }}" width="80" height="80" alt="">
+                            </div>
+                            <!--end::Svg Icon-->
+                            <button data-toggle="modal" style="margin-left: 37%;" data-target="#myModal"
+                                class="btn btn-outline-primary"
+                                onclick="make('{{ $item->id }}')">{{ $item->city_name }}</button>
                         </div>
-                        <!--end::Svg Icon-->
-                        <button data-toggle="modal" style="margin-left: 37%;"
-                                                        data-target="#myModal" class="btn btn-outline-primary"
-                                                        onclick="make('{{ $item->id }}')">{{ $item->city_name }}</button>
-                    </div>
-                        
                     @endforeach
 
 
                 </div>
-                <div class="modal fase" id="myModal" data-backdrop="static"
-                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            
-                            <h5 class="modal-title" id="staticBackdropLabel">
-                                {{ __('Send Notofication') }}</h5>
+                <div class="modal fase" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
 
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div id="addToCart-modal-body">
-                            <div class="c-preloader text-center p-3">
-                                <i class="las la-spinner la-spin la-3x"></i>
+                                <h5 class="modal-title" id="staticBackdropLabel">
+                                    {{ __('Send Notofication') }}</h5>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light"
-                                data-dismiss="modal">Close</button>
-                            <button type="button" class="btn ok">Ok</button>
+                            <div id="addToCart-modal-body">
+                                <div class="c-preloader text-center p-3">
+                                    <i class="las la-spinner la-spin la-3x"></i>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn ok">Ok</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
 
