@@ -20,14 +20,15 @@ class GeneralNotoficationController extends Controller
     use SendNotification;
     public function index(){
        $not= GeneralNotofication::orderBy('id','desc')->paginate(10);
-       $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
 
-        return view('dashboard.notofication.general')->with('notofications',$not)->with('vendors',$vendors);
+        return view('dashboard.notofication.general')->with('notofications',$not);
     }
     public function shownotoficationmodel(Request $request)
     {
         $not = GeneralNotofication::find($request->id);
-        return view('dashboard.notofication.general_model')->with('not', $not);
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+
+        return view('dashboard.notofication.general_model')->with('not', $not)->with('vendors',$vendors);
     }
     public function create(){
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
