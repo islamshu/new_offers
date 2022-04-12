@@ -12,8 +12,8 @@
             
             </div>
 
-            <table class="datatable table "
-                id="kt_datatable" style="overflow-y:auto;">
+            <table class="table"
+                 style="overflow-y:auto;">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
 
