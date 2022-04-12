@@ -50,7 +50,7 @@ card card-docs mb-2">
                             <td>{{ $item->created_at->format('Y-m-d') }}</td>
                             <td>
                                 <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
-                                    onclick="make('{{ $item->id }}')">
+                                    onclick="make('{{ $item->id }}')"><i class="fa fa-share"></i>
                                 </a>
                                 {{-- <form action="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}" method="post">
                                 @csrf

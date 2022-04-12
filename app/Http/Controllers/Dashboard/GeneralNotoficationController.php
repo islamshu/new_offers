@@ -57,10 +57,10 @@ class GeneralNotoficationController extends Controller
 
 
 
-        // $users = Clinet::where('token','!=',null)->get();
-        // foreach($users as $user){
-        //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
-        // }
+        $users = Clinet::where('token','!=',null)->get();
+        foreach($users as $user){
+            $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
+        }
         return redirect()->back()->with(['success'=>'Edit and Resend Successfully']);
         // return 'true';
     }
