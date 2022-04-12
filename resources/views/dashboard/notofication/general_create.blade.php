@@ -23,16 +23,6 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label>{{ __('Title ar') }}:</label>
-                        <input type="text" name="title_ar" id="title_ar" class="form-control form-control-solid"
-                            placeholder="{{ __('title ar') }}" required />
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>{{ __('Title en') }}:</label>
-                        <input type="text" name="title_en" id="title_en" class="form-control form-control-solid"
-                            placeholder="{{ __('title en') }}" required />
-                    </div>
                     <div class="form-group col-md-6 vendor">
                         <label>{{ __('Choose Vendor') }}:</label>
                         <style>
@@ -59,6 +49,17 @@
                         </select>
 
                     </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Title ar') }}:</label>
+                        <input type="text" name="title_ar" id="title_ar" class="form-control form-control-solid"
+                            placeholder="{{ __('title ar') }}" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>{{ __('Title en') }}:</label>
+                        <input type="text" name="title_en" id="title_en" class="form-control form-control-solid"
+                            placeholder="{{ __('title en') }}" required />
+                    </div>
+                   
                     <div class="form-group col-md-6">
                         <label>{{ __('body ar') }}:</label>
                         <textarea name="body_ar" class="form-control form-control-solid" id="body_ar" rows="3"></textarea>
