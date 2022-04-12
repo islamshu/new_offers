@@ -29,6 +29,7 @@
                         <th>{{ __('number of codes') }}</th>
                         <th>{{ __('number of remain') }}</th>
                         <th>{{ __('number of useage') }}</th>
+                        <th>{{ __('code') }}</th>
                         <th>{{ __('Action') }}</th>
 
                     </tr>
@@ -43,6 +44,7 @@
                             $total =     @$code->package->price -  $code->value_discount;
                         }
                         $per = strval(100 * (@$code->package->price - $total) / @$code->package->price);
+                        $number_code = App\Models\DiscountSubscription::where('discount_id',$code->id)->count();
 
                     @endphp
                   
@@ -66,12 +68,21 @@
                         <td style="font-size: 33px">{{  $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
                         <td style="font-size: 33px">{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
                         <td>{{ App\Models\PromocodeUser::where('promocode','like',$promo)->count() }}</td>
-                        <td class="pr-0 text-left">
-                            <form action="{{ route('showCodes',get_lang()) }}" method="get">
-                                @csrf
+                        <td>
+                                @if($number_code == 1)
+
+                                {{ App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code }}
+                                @else
+                                <form action="{{ route('showCodes',get_lang()) }}" method="get">
+                                    @csrf
                                 <input type="hidden"  name="id" value="{{ $code->id }}" id="">
-                            <button type="submit"><i class="fa fa-eye"></i></button>
-                            </form>>
+                                <button type="submit"><i class="fa fa-eye"></i></button>
+                                </form>
+                                @endif
+
+                        </td>
+                        <td class="pr-0 text-left">
+                            
                       
                                 @if (auth()->user()->isAbleTo(['update-discount']))
 
