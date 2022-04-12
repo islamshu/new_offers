@@ -41,10 +41,13 @@ card card-docs mb-2">
                             <td>{{ @$item->offer->name_en != null ? @$item->offer->name_en : '-'  }}</td>
                             <td>{{ $item->created_at->format('Y-m-d')}}</td>
                             <td>
-                                <form action="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}" method="post">
+                                <a data-toggle="modal" data-target="#myModal" class="btn btn-outline-primary"
+                                onclick="make('{{ $item->id }}')">
+                                </a>
+                                {{-- <form action="{{ route('resend_gendernotofication',[get_lang(),$item->id]) }}" method="post">
                                 @csrf
                                 <button type="submit"><i class="fa fa-share"></i></button>
-                                </form>
+                                </form> --}}
                         </tr>
                     @endforeach
 
@@ -80,4 +83,29 @@ card card-docs mb-2">
             confirmDestroy(url)
         }
     </script>
+         <script>
+            function make(id) {
+                $("#myModal").show();
+
+                // $('#staticBackdrop').modal();
+                $('.c-preloader').show();
+
+                $.ajax({
+                    type: 'post',
+                    url: "{{ route('shownotoficationmodel', app()->getLocale()) }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'id': id
+                    },
+
+                    success: function(data) {
+
+                        $('#addToCart-modal-body').html(data);
+
+
+                    }
+                });
+
+            }
+        </script>
 @endsection

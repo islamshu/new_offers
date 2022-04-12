@@ -20,7 +20,14 @@ class GeneralNotoficationController extends Controller
     use SendNotification;
     public function index(){
        $not= GeneralNotofication::orderBy('id','desc')->paginate(10);
-        return view('dashboard.notofication.general')->with('notofications',$not);
+       $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+
+        return view('dashboard.notofication.general')->with('notofications',$not)->with('vendors',$vendors);
+    }
+    public function shownotoficationmodel(Request $request)
+    {
+        $not = GeneralNotofication::find($request->id);
+        return view('dashboard.notofication.general_model')->with('not', $not);
     }
     public function create(){
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
@@ -30,6 +37,31 @@ class GeneralNotoficationController extends Controller
     }
     public function get_offer($locale,$id){
         $offers = Offer::with('vendor')->where('status',1)->where('vendor_id',$id)->get();
+    }
+    public function update_notofication(Request $request,$locale,$id)
+    {
+
+        $not = GeneralNotofication::find($id);
+        $not->title_en = $request->title_en;
+        $not->title_ar = $request->title_ar;
+        $not->body_en = $request->body_en;
+        $not->body_ar = $request->body_ar;
+        $not->vendor_id = $request->vendor_id;
+        $not->offer_id = $request->offer_id;
+
+        $not->save();
+
+       
+
+
+
+
+        // $users = Clinet::where('token','!=',null)->get();
+        // foreach($users as $user){
+        //     $this->notification($user->token, $not->title_ar, $not->body_ar,  'notofication',$not->vendor_id,$not->offer_id);
+        // }
+
+        // return 'true';
     }
     public function store(Request $request ,$locale){
     
