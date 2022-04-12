@@ -36,14 +36,16 @@
                 <tbody>
                     @foreach ($codes as $code)
                     @php
-                    $per = strval(100 * (@$code->package->price - $total) / @$code->package->price);
                     $promo = App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code;
                            if ( $code->type_discount == 'percentage') {
                             $total =     @$code->package->price -  (@$code->package->price * $code->value_discount / 100);
                         } else {
                             $total =     @$code->package->price -  $code->value_discount;
                         }
+                        $per = strval(100 * (@$code->package->price - $total) / @$code->package->price);
+
                     @endphp
+                  
                         <td>{{ $code->name_en }}</td>
                         <td>{{ @$code->package->name_en }}</td>
                         <td>{{ @$code->package->price }}</td>
