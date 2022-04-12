@@ -36,6 +36,7 @@
                 <tbody>
                     @foreach ($codes as $code)
                     @php
+                    $per = strval(100 * (@$code->package->price - $total) / @$code->package->price);
                     $promo = App\Models\DiscountSubscription::where('discount_id',$code->id)->first()->code;
                            if ( $code->type_discount == 'percentage') {
                             $total =     @$code->package->price -  (@$code->package->price * $code->value_discount / 100);
@@ -49,7 +50,8 @@
                         <td>{{ @$total}}</td>
                         <td>{{ @$code->value_discount}}</td>
 
-                        <td>{{bcdiv(strval(100 * (@$code->package->price - $total) / @$code->package->price)}},1,2) %</td>
+
+                        <td>{{bcdiv($per,1,2)}}) %</td>
                         <td>{{ $code->start_at }}</td>
                         <td>{{ $code->end_at }}</td>
                         <td>
