@@ -33,7 +33,7 @@
                 @endphp
                 <select name="type" id="offer_id" class=" form-control">
                     @foreach ($offers as $item)
-                    <option value="{{ $item->id }}"  @if($item->id == $not_offer_id) selected @endif >{{ $item->name_en }}</option>
+                    <option value="{{ $item->id }}"  @if($item->id == $not->offer_id) selected @endif >{{ $item->name_en }}</option>
 
                     @endforeach
                     
