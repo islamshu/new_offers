@@ -12,8 +12,8 @@
                         top: 20px !important
                     }
                 </style>
-                <select name="type" id="vendor_id" class="selectpicker form-control"
-                data-live-search="true">
+                <select name="type" id="vendor_id" class=" form-control"
+                >
                     <option value="" selected disabled>{{ __('Choose') }}</option>
                     @foreach ($vendors as $item)
                         <option @if($item->id == $not->vendor_id) selected @endif value="{{ $item->id }}">
