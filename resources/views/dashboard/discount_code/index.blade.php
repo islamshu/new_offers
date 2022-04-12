@@ -49,7 +49,7 @@
                         <td>{{ @$total}}</td>
                         <td>{{ @$code->value_discount}}</td>
 
-                        <td>{{round(strval(100 * (@$code->package->price - $total) / @$code->package->price)}},2) %</td>
+                        <td>{{bcdiv(strval(100 * (@$code->package->price - $total) / @$code->package->price)}},1,2) %</td>
                         <td>{{ $code->start_at }}</td>
                         <td>{{ $code->end_at }}</td>
                         <td>
