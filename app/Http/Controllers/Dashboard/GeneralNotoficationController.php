@@ -19,7 +19,8 @@ class GeneralNotoficationController extends Controller
 {
     use SendNotification;
     public function index(){
-        return view('dashboard.notofication.general')->with('notofications',GeneralNotofication::orderBy('created_at','desc')->get());
+       $not= GeneralNotofication::get();
+        return view('dashboard.notofication.general')->with('notofications',$not);
     }
     public function create(){
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
