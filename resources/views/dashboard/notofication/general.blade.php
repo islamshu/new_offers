@@ -18,8 +18,8 @@ card card-docs mb-2">
             </div>
             <br>
             <h2 class="mb-3">{{ __('All Notofication') }}</h2>
-            <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-                id="kt_datatable">
+            <table class=" table "
+              >
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('Title') }}</th>
