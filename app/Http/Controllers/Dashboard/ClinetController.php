@@ -260,13 +260,14 @@ class ClinetController extends Controller
                 if($query == null){
                     $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->paginate(20);
                 }else{
+                
                     $clinets =   Clinet::
+                    where('is_verify',1)->
                     Where('name', 'like', '%'.$query.'%')
                     ->orWhere('email', 'like', '%'.$query.'%')
                     ->orWhere('phone', 'like', '%'.$query.'%')
-                    ->where('is_verify',1)
-                    ->orderBy('register_date','desc')->paginate(20);
-                      
+                    
+                    ->orderBy('register_date','desc')->paginate(20);  
                 }
                
                   
