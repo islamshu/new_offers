@@ -127,7 +127,7 @@ class GeneralNotoficationController extends Controller
         foreach($users as $user){
             $this->notification($user->token, $request->title_ar, $request->body_ar,  'notofication',$request->vendor_id,$request->offer_id);
         }
-        return redirect()->back()->with(['success'=>'send succfuly'])
+        return redirect()->back()->with(['success'=>'send succfuly']);
 
     }
     public function resend(Request $request ,$locale,$id)
