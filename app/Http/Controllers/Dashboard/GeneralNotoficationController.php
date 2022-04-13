@@ -123,7 +123,11 @@ class GeneralNotoficationController extends Controller
         $queryy->when($request->tra_form, function ($q) use ($request) {
             return $q->whereBetween('purchases_no',[$request->tra_form,$request->tra_to]);
         });
-        return $queryy->take(5)->get();
+        $users =  $queryy->get();
+        foreach($users as $user){
+            $this->notification($user->token, $request->title_ar, $request->body_ar,  'notofication',$request->vendor_id,$request->offer_id);
+        }
+        return redirect()->back()->with(['success'=>'send succfuly'])
 
     }
     public function resend(Request $request ,$locale,$id)
