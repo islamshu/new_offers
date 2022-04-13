@@ -257,13 +257,13 @@ class ClinetController extends Controller
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             }elseif($type == 'verifyusers'){
-                $query =   Clinet::query()->where('is_verify',1);
+                $queryy =   Clinet::query()->where('is_verify',1);
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
-                    $clinets =   $query->paginate(20);
+                    $clinets =   $queryy->paginate(20);
                 }
                 elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
-                $query->when($request->regestar_from, function ($q) use ($request) {
+                $queryy->when($request->regestar_from, function ($q) use ($request,$query) {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
                         return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
                     }
@@ -278,7 +278,7 @@ class ClinetController extends Controller
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
-                $query->when($request->regestar_from, function ($q) use ($request ,$query) {
+                $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
                         return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%')
@@ -300,7 +300,7 @@ class ClinetController extends Controller
 
 
                 
-                $clinets =  $query->orderBy('register_date','desc')->paginate(20);  
+                $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
                 //     where('is_verify',1)->
                 //     Where('name', 'like', '%'.$query.'%')
                 //     ->orWhere('email', 'like', '%'.$query.'%')
