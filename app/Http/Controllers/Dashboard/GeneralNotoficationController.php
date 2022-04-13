@@ -125,7 +125,6 @@ class GeneralNotoficationController extends Controller
             return $q->whereBetween('purchases_no',[$request->tra_form,$request->tra_to]);
         });
 
-        dd($queryy->take(5)->get());
     }
     public function resend(Request $request ,$locale,$id)
     {
