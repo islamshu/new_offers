@@ -257,7 +257,6 @@ class ClinetController extends Controller
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             }elseif($type == 'verifyusers'){
-                dd($request);
                 $query =   Clinet::query()->where('is_verify',1);
                 if($query == null){
                     $clinets =   $query->paginate(20);

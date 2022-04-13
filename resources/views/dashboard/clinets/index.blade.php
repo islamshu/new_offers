@@ -243,11 +243,14 @@
 
         function fetch_data(page, query) {
             var type = $('#type').val();
-
+            var regestar_from = $('#regestar_from').val();
+            var regestar_to = $('#regestar_to').val();
                 $.ajax({
                     url: "/en/get_type_client?page=" + page + "&query=" + query,
                     data: {
                     'type': type,
+                    'regestar_from': regestar_from,
+                    'regestar_to': regestar_to,
                 },
                     success: function(data) {
 
