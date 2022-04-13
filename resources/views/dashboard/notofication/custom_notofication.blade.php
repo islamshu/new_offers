@@ -65,12 +65,12 @@
                         <input type="date" name="register_to" id="register_to" class="form-control form-control-solid"
                             placeholder="{{ __('Register to') }}" required />
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label>{{ __('Transaction number from') }}:</label>
                         <input type="number" name="tra_form" id="tra_form" class="form-control form-control-solid"
                             placeholder="{{ __('Transaction number from') }}" required />
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label>{{ __('Transaction number to') }}:</label>
                         <input type="number" name="tra_to" id="tra_to" class="form-control form-control-solid"
                             placeholder="{{ __('Transaction number to') }}" required />
