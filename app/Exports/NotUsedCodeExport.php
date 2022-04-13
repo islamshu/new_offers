@@ -18,6 +18,6 @@ class NotUsedCodeExport implements FromCollection
     
     public function collection()
     {
-        return CodeSubscription::where('sub_id',$this->id)->where('is_used',0)->get(['code','is_used']);
+        return CodeSubscription::where('code_id',$this->id)->where('is_used',0)->get(['code','is_used']);
     }
 }

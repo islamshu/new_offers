@@ -154,7 +154,7 @@ class CodeController extends Controller
     {
       $codes=  CodeSubscription::where('code_id',$code->id)->get();
 
-      $code_id = $code->sub_id;
+      $code_id = $code->id;
    
       return view('dashboard.code.show_code',compact('codes','code_id'));
     }
