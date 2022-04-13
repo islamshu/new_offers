@@ -59,7 +59,7 @@
 
 </table>
 <tr>
-    <td colspan="3" align="center">
+    <td >
      {!! $clinets->appends(request()->input())->links() !!}
     </td>
    </tr>

@@ -257,18 +257,20 @@ class ClinetController extends Controller
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             }elseif($type == 'verifyusers'){
+                dd($request);
+                $query =   Clinet::query()->where('is_verify',1);
                 if($query == null){
-                    $clinets =   Clinet::where('is_verify',1)->orderBy('register_date','desc')->paginate(20);
-                }else{
-                
-                    $clinets =   Clinet::
+                    $clinets =   $query->paginate(20);
+                }
+              
+
+                $clinets =   Clinet::
                     where('is_verify',1)->
                     Where('name', 'like', '%'.$query.'%')
                     ->orWhere('email', 'like', '%'.$query.'%')
                     ->orWhere('phone', 'like', '%'.$query.'%')
                     
                     ->orderBy('register_date','desc')->paginate(20);  
-                }
                
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
