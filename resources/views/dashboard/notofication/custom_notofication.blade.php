@@ -58,22 +58,22 @@
                     <div class="form-group col-md-6">
                         <label>{{ __('Register form') }}:</label>
                         <input type="date" name="register_from" id="register_from" class="form-control form-control-solid"
-                            placeholder="{{ __('Register form') }}" required />
+                            placeholder="{{ __('Register form') }}"  />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Register to') }}:</label>
                         <input type="date" name="register_to" id="register_to" class="form-control form-control-solid"
-                            placeholder="{{ __('Register to') }}" required />
+                            placeholder="{{ __('Register to') }}"  />
                     </div>
                     <div class="form-group col-md-3">
                         <label>{{ __('Transaction number from') }}:</label>
                         <input type="number" name="tra_form" id="tra_form" class="form-control form-control-solid"
-                            placeholder="{{ __('Transaction number from') }}" required />
+                            placeholder="{{ __('Transaction number from') }}"  />
                     </div>
                     <div class="form-group col-md-3">
                         <label>{{ __('Transaction number to') }}:</label>
                         <input type="number" name="tra_to" id="tra_to" class="form-control form-control-solid"
-                            placeholder="{{ __('Transaction number to') }}" required />
+                            placeholder="{{ __('Transaction number to') }}"  />
                     </div>
                     <div class="form-group col-md-6 ">
                         <label>{{ __('Choose type') }}:</label>
