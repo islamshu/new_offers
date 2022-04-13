@@ -277,7 +277,7 @@ $lang = app()->getLocale();
                                 class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('General Notofication') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a
-                            href="/{{ $lang }}/create_user_notofication" class="menu-link "><i
+                            href="/{{ $lang }}/create_customs_notofication" class="menu-link "><i
                                 class="menu-bullet menu-bullet-dot"><span></span></i><span
                                 class="menu-text">{{ __('Custom Notofication') }}</span></a></li>
                     <li class="menu-item " aria-haspopup="true"><a
