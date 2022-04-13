@@ -106,7 +106,7 @@ class GeneralNotoficationController extends Controller
     {
         $queryy = Clinet::query();
         
-        $queryy->when($request->register_from, function ($q) use ($request,$query) {
+        $queryy->when($request->register_from, function ($q) use ($request) {
             if($request->register_from != null && $request->register_to != null && $request->register_from != $request->register_to ){
                 return $q->whereBetween('register_date',[$request->register_from,$request->register_to]);
             }
