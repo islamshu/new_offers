@@ -98,6 +98,7 @@ class GeneralNotoficationController extends Controller
     }
     public function create_custom_notofication(Request $request)
     {
+        dd('da');
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
        
         return view('dashboard.notofication.custom_notofication',compact('vendors'));
