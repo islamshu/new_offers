@@ -270,7 +270,7 @@ Route::group([
         Route::post('update_notofication/{id}', 'Dashboard\GeneralNotoficationController@update_notofication')->name('update_notofication');
 
         Route::get('create_custom_notofication', 'Dashboard\GeneralNotoficationController@create_custom_notofication')->name('create_custom_notofication');
-        Route::post('create_custom_notofication', 'Dashboard\GeneralNotoficationController@create_custom_notofication_post')->name('create_custom_notofication_post');
+        Route::post('create_custom_notofication_post', 'Dashboard\GeneralNotoficationController@create_custom_notofication_post')->name('create_custom_notofication_post');
 
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
         Route::get('create_city_notofication', 'Dashboard\GeneralNotoficationController@create_city_notofication')->name('create_city_notofication');
