@@ -95,6 +95,12 @@ class GeneralNotoficationController extends Controller
 
         return 'true';
     }
+    public function create_custom_notofication(Request $request)
+    {
+        $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
+       
+        return view('dashboard.notofication.custom_notofication',compact('vendors'));
+    }
     public function resend(Request $request ,$locale,$id)
     {
         $not =GeneralNotofication::find($id);

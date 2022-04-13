@@ -269,7 +269,8 @@ Route::group([
         Route::post('shownotoficationmodel', 'Dashboard\GeneralNotoficationController@shownotoficationmodel')->name('shownotoficationmodel');
         Route::post('update_notofication/{id}', 'Dashboard\GeneralNotoficationController@update_notofication')->name('update_notofication');
 
-        
+        Route::get('create_custom_notofication', 'Dashboard\GeneralNotoficationController@create_custom_notofication')->name('create_custom_notofication');
+
         Route::get('create_user_notofication', 'Dashboard\GeneralNotoficationController@create_user_notofication')->name('create_user_notofication');
         Route::get('create_city_notofication', 'Dashboard\GeneralNotoficationController@create_city_notofication')->name('create_city_notofication');
         Route::get('create_gender_notofication', 'Dashboard\GeneralNotoficationController@create_gender_notofication')->name('create_gender_notofication');
