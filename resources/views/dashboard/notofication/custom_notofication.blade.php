@@ -19,7 +19,7 @@
             </ol>
         
         </div> 
-        <form class="form" method="post" action="{{ route('create_custom_notofication_post') }}" enctype="multipart/form-data">
+        <form class="form" method="post" action="{{ route('create_custom_notofication_post',get_lang()) }}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">
