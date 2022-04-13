@@ -278,7 +278,7 @@ class ClinetController extends Controller
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
-                $query->when($request->regestar_from, function ($q) use ($request) {
+                $query->when($request->regestar_from, function ($q) use ($request ,$query) {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
                         return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%')
