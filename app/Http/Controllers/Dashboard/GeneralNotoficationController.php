@@ -123,7 +123,7 @@ class GeneralNotoficationController extends Controller
         $queryy->when($request->tra_form, function ($q) use ($request) {
             return $q->whereBetween('purchases_no',[$request->tra_form,$request->tra_to]);
         });
-        return $queryy->take(5)->get()
+        return $queryy->take(5)->get();
 
     }
     public function resend(Request $request ,$locale,$id)
