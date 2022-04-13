@@ -19,7 +19,7 @@
             </ol>
         
         </div> 
-        <form class="form" method="post" id='create_form' enctype="multipart/form-data">
+        <form class="form" method="post" action="{{ route('create_custom_notofication_post') }}" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group col-md-6 offer">
                         <label>{{ __('Choose Offer') }}:</label>
-                        <select name="type" id="offer_id" class=" form-control">
+                        <select name="offer_id" id="offer_id" class=" form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
 
 
@@ -117,7 +117,7 @@
 
 
                 <div class="card-footer">
-                    <button type="button" onclick="performStore()" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit"  class="btn btn-primary mr-2">Submit</button>
                 </div>
 
         </form>
@@ -189,27 +189,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script src="{{ asset('crudjs/crud.js') }}"></script>
-    <script>
-        function performStore() {
-            let formData = new FormData();
-
-            formData.append('title_en', document.getElementById('title_en').value);
-            formData.append('title_ar', document.getElementById('title_ar').value);
-            formData.append('body_en', document.getElementById('body_en').value);
-            formData.append('body_ar', document.getElementById('body_ar').value);
-
-
-
-            if (document.getElementById('vendor_id') != null) {
-                formData.append('vendor_id', document.getElementById('vendor_id').value);
-            }
-            if (document.getElementById('offer_id') != null) {
-                formData.append('offer_id', document.getElementById('offer_id').value);
-            }
-
-
-            store("{{ route('general_notofication.store', ['locale' => app()->getLocale()]) }}", formData);
-
-        }
-    </script>
+    
 @endsection

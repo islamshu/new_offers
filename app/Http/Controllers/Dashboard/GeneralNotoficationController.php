@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Traits\SendNotification;
 use App\Models\City;
 use App\Models\Clinet;
+use Carbon\Carbon;
 use FCM;
 
 class GeneralNotoficationController extends Controller
@@ -100,6 +101,30 @@ class GeneralNotoficationController extends Controller
         $vendors = Vendor::where('enterprise_id',auth()->user()->ent_id)->where('status','active')->where('status',1)->get();
        
         return view('dashboard.notofication.custom_notofication',compact('vendors'));
+    }
+    public function create_custom_notofication_post(Request $request)
+    {
+        $queryy = Clinet::query();
+        
+        $queryy->when($request->register_from, function ($q) use ($request,$query) {
+            if($request->register_from != null && $request->register_to != null && $request->register_from != $request->register_to ){
+                return $q->whereBetween('register_date',[$request->register_from,$request->register_to]);
+            }
+            if($request->register_from != null && $request->register_to == null){
+                return $q->whereBetween('register_date',[$request->register_from,Carbon::now()]);
+            }
+            if($request->register_from ==  $request->register_to ){
+                return $q->whereBetween('register_date',[$request->register_from . ' 00:00:00', $request->register_from . ' 23:59:59']);
+            }
+        });
+        $queryy->when($request->type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe',$request->type);
+        });
+        $queryy->when($request->tra_form, function ($q) use ($request) {
+            return $q->whereBetween('purchases_no',[$request->tra_form,$request->tra_to]);
+        });
+
+        dd($queryy->take(5)->get());
     }
     public function resend(Request $request ,$locale,$id)
     {
