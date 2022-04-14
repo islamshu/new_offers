@@ -37,10 +37,14 @@
                     <textarea name="text" id="text" class="form-control" rows="2">{{ $pop->text }}</textarea>
                 
                 </div>
-                <div class="form-group col-md-6 image"  @if($pop->type_show != 'image') style="display: none" @else style="display: block" @endif>
+                <div class="form-group col-md-4 image"  @if($pop->type_show != 'image') style="display: none" @else style="display: block" @endif>
                     <label>{{ __('Image') }}:</label>
                     <input type="file" name="image" id="image" class="form-control form-control-solid"
                          required />
+                </div>
+                <div class="form-group col-md-2 image"  @if($pop->type_show != 'image') style="display: none" @else style="display: block" @endif>
+                <img src="{{ asset('images/popup/'{{$pop->image  }}) }}" width="70" height="50" alt="">
+            
                 </div>
                 <div class="form-group col-md-6 Enterprise" >
                     <div class="Enterprise">
