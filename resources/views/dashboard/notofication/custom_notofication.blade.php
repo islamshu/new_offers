@@ -154,7 +154,7 @@
                         'type': type,'register_from':register_from,'register_to':register_to,'tra_to':tra_to,'tra_form':tra_form
                     },
                     success: function(data) {
-                        $('.number_client').append('');
+                        $('.number_client').empty();
 
                         $('.number_client').append(data);
                         
