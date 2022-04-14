@@ -106,7 +106,7 @@
                     <select class="form-control form-control-solid restricted" name="num_show" id="num_show">
                         <option value="" selected disabled>{{'chose'}}</option>
 
-                        <option value="once" @if($pop->num_show == 'all') selected @endif>{{ __('once') }}</option>
+                        <option value="once" @if($pop->num_show == 'once') selected @endif>{{ __('once') }}</option>
                         <option value="every_time"  @if($pop->num_show == 'every_time') selected @endif>{{ __('every_time') }}</option>
                         <option value="hour"  @if($pop->num_show == 'hour') selected @endif>{{ __('hour') }}</option>
 
