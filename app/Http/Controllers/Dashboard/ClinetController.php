@@ -246,6 +246,7 @@ class ClinetController extends Controller
 
                 $queryy =   Clinet::query();
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
+
                     $clinets =   $queryy->paginate(20);
                 }
                 elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
@@ -270,10 +271,10 @@ class ClinetController extends Controller
               ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
-
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
-                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
+                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])
+                        ->Where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%')
                         ->orWhere('phone', 'like', '%'.$query.'%');
                     }
@@ -294,11 +295,14 @@ class ClinetController extends Controller
 
                 
                 $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
+               
+                  
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             }elseif($type == 'verifyusers'){
                 $queryy =   Clinet::query()->where('is_verify',1);
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
+
                     $clinets =   $queryy->paginate(20);
                 }
                 elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
@@ -323,10 +327,10 @@ class ClinetController extends Controller
               ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
-
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
-                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
+                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])
+                        ->Where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%')
                         ->orWhere('phone', 'like', '%'.$query.'%');
                     }
@@ -347,11 +351,6 @@ class ClinetController extends Controller
 
                 
                 $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
-                //     where('is_verify',1)->
-                //     Where('name', 'like', '%'.$query.'%')
-                //     ->orWhere('email', 'like', '%'.$query.'%')
-                //     ->orWhere('phone', 'like', '%'.$query.'%')
-                    
                
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
@@ -359,6 +358,7 @@ class ClinetController extends Controller
             }elseif($type == 'unverifyuser'){
                 $queryy =   Clinet::query()->where('is_verify',0);
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
+
                     $clinets =   $queryy->paginate(20);
                 }
                 elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
@@ -383,10 +383,10 @@ class ClinetController extends Controller
               ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
-
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
-                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
+                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])
+                        ->Where('name', 'like', '%'.$query.'%')
                         ->orWhere('email', 'like', '%'.$query.'%')
                         ->orWhere('phone', 'like', '%'.$query.'%');
                     }
@@ -407,75 +407,65 @@ class ClinetController extends Controller
 
                 
                 $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
-                //     where('is_verify',1)->
-                //     Where('name', 'like', '%'.$query.'%')
-                //     ->orWhere('email', 'like', '%'.$query.'%')
-                //     ->orWhere('phone', 'like', '%'.$query.'%')
-                    
                
+                  
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             
             }elseif($type == 'premiumuser'){
                 
-                
-                    $queryy =   Clinet::query()->where('type_of_subscribe','PREMIUM');
-                    if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
-                        $clinets =   $queryy->paginate(20);
-                    }
-                    elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
-    
-                    $queryy->when($request->regestar_from, function ($q) use ($request,$query) {
-                        if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
-                            return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
-                        }
-                        if($request->regestar_from != null && $request->regestar_to == null){
-                            return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()]);
-                        }
-                        if($request->regestar_from ==  $request->regestar_to ){
-                            return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
-                        }
-                    });
-    
-                }
-                elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+                $queryy =   Clinet::query()->where('type_of_subscribe','PREMIUM');
+                if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
 
-                    $queryy->Where('name', 'like', '%'.$query.'%')
-                  ->orWhere('email', 'like', '%'.$query.'%')
-                  ->orWhere('phone', 'like', '%'.$query.'%');
+                    $clinets =   $queryy->paginate(20);
                 }
-                elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
-    
-                    $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
-                        if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
-                            return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])-> Where('name', 'like', '%'.$query.'%')
-                            ->orWhere('email', 'like', '%'.$query.'%')
-                            ->orWhere('phone', 'like', '%'.$query.'%');
-                        }
-                        if($request->regestar_from != null && $request->regestar_to == null){
-                            return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()])-> Where('name', 'like', '%'.$query.'%')
-                            ->orWhere('email', 'like', '%'.$query.'%')
-                            ->orWhere('phone', 'like', '%'.$query.'%');
-                        }
-                        if($request->regestar_from ==  $request->regestar_to ){
-                            return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59'])-> Where('name', 'like', '%'.$query.'%')
-                            ->orWhere('email', 'like', '%'.$query.'%')
-                            ->orWhere('phone', 'like', '%'.$query.'%');
-                        }
-                    });
+                elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
+
+                $queryy->when($request->regestar_from, function ($q) use ($request,$query) {
+                    if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
+                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to]);
+                    }
+                    if($request->regestar_from != null && $request->regestar_to == null){
+                        return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()]);
+                    }
+                    if($request->regestar_from ==  $request->regestar_to ){
+                        return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
+                    }
+                });
+
+            }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
+            }
+            elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
+                $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
+                    if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
+                        return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])
+                        ->Where('name', 'like', '%'.$query.'%')
+                        ->orWhere('email', 'like', '%'.$query.'%')
+                        ->orWhere('phone', 'like', '%'.$query.'%');
+                    }
+                    if($request->regestar_from != null && $request->regestar_to == null){
+                        return $q->whereBetween('register_date',[$request->regestar_from,Carbon::now()])-> Where('name', 'like', '%'.$query.'%')
+                        ->orWhere('email', 'like', '%'.$query.'%')
+                        ->orWhere('phone', 'like', '%'.$query.'%');
+                    }
+                    if($request->regestar_from ==  $request->regestar_to ){
+                        return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59'])-> Where('name', 'like', '%'.$query.'%')
+                        ->orWhere('email', 'like', '%'.$query.'%')
+                        ->orWhere('phone', 'like', '%'.$query.'%');
+                    }
+                });
+           
+            }
+
+
+                
+                $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
                
-                }
-    
-    
-                    
-                    $clinets =  $queryy->orderBy('register_date','desc')->paginate(20);  
-                    //     where('is_verify',1)->
-                    //     Where('name', 'like', '%'.$query.'%')
-                    //     ->orWhere('email', 'like', '%'.$query.'%')
-                    //     ->orWhere('phone', 'like', '%'.$query.'%')
-                        
-                   
-         
                   
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
