@@ -38,7 +38,7 @@
                                 top: 20px !important
                             }
                         </style>
-                        <select name="type" id="vendor_id " class="selectpicker form-control"
+                        <select name="vendor_id" id="vendor_id " class="selectpicker form-control"
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
@@ -85,7 +85,7 @@
                     </div>
                     <div class="form-group col-md-6 ">
                         <label>{{ __('Choose type') }}:</label>
-                        <select name="type"  class=" form-control get_client">
+                        <select name="type" id="type"  class=" form-control get_client">
                             <option value="" selected disabled>{{ __('choose') }}</option>
                             <option value="PREMIUM">PREMIUM</option>
                             <option value="FREE">FREE</option>
