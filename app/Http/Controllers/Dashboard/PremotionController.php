@@ -60,7 +60,9 @@ class PremotionController extends Controller
             $popup->show_as    = $request->show_as ;
             $popup->show_for    = $request->show_for ;
             $popup->start_date = $request->start_date;
+            $popup->num_show = $request->num_show;
             $popup->end_date = $request->end_date;
+
             $popup->number_of_hour = $request->number_of_hour;
             $popup->save();
             return response()->json(['icon' => 'success', 'title' => 'Popup  created successfully'], 200);  
@@ -248,6 +250,7 @@ class PremotionController extends Controller
             $popup->show_for    = $request->show_for ;
             $popup->start_date = $request->start_date;
             $popup->end_date = $request->end_date;
+            $popup->num_show = $request->num_show;
             $popup->number_of_hour = $request->number_of_hour;
             $popup->save();
             return response()->json(['icon' => 'success', 'title' => 'Popup  created successfully'], 200);  
