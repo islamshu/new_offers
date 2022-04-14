@@ -41,9 +41,9 @@ class PremotionController extends Controller
         })->get();
         return view('dashboard.promo.edit_popup', compact('pop','city_id','categorys','brands','branchs'));
     }
-    public function update_popup(Request $request,$id){
+    public function update_popup(Request $request,$lang,$id){
         $popup = Popup::find($id);
-        return $request;
+
         if($request->image != null && $request->image != 'undefined'){
 
            
