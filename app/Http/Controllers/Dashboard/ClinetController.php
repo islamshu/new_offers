@@ -458,12 +458,10 @@ class ClinetController extends Controller
             }elseif($type == 'trailuser'){
                 $queryy =   Clinet::query()->where('type_of_subscribe','TRIAL');
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
-                    return '222234';
 
                     $clinets =   $queryy->paginate(20);
                 }
                 elseif($query == null &&  $request->regestar_from != null && $request->regestar_to != null ){
-                    return '22223';
 
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query) {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
@@ -478,8 +476,13 @@ class ClinetController extends Controller
                 });
 
             }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
+            }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
-                return '2222';
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
                     if($request->regestar_from != null && $request->regestar_to != null && $request->regestar_from != $request->regestar_to ){
                         return $q->whereBetween('register_date',[$request->regestar_from,$request->regestar_to])
