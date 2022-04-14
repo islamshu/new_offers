@@ -43,7 +43,7 @@
                          required />
                 </div>
                 <div class="form-group col-md-2 image"  @if($pop->type_show != 'image') style="display: none" @else style="display: block" @endif>
-                <img src="{{ asset('images/popup/'{{$pop->image  }}) }}" width="70" height="50" alt="">
+                <img src="{{ asset('images/popup/'$pop->image  ) }}" width="70" height="50" alt="">
             
                 </div>
                 <div class="form-group col-md-6 Enterprise" >
