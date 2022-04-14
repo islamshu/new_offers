@@ -34,7 +34,12 @@ class PremotionController extends Controller
     }
     public function edit_popup($lang ,$id){
         $pop = Popup::find($id);
-        return view('dashboard.promo.edit_popup')->with('pop',$pop);
+        $categorys = Enterprise::find(auth()->user()->ent_id)->categorys;
+        $brands =   Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
+        $branchs = Branch::whereHas('vendor', function ($q)  {
+            $q->where('enterprise_id',auth()->user()->ent_id);
+        })->get();
+        return view('dashboard.promo.edit_popup', compact('pop','city_id','categorys','brands','branchs'));
     }
     public function get_country_promotion($locale, $type)
     {
