@@ -30,7 +30,7 @@
                     id="kt_datatable">
                     <thead>
                         <tr class="fw-bold fs-6 text-gray-800">
-
+                            <th>{{ __('image') }}</th>
                             <th>{{ __('Type Show') }}</th>
                             <th>{{ __('Home/Category') }}</th>
                             <th>{{ __('city') }}</th>
@@ -43,6 +43,13 @@
                     </thead>
                     <tbody>
                         @foreach ($premotions as $item)
+                           <td>@if($item->type_show  == 'image')
+                            <img src="{{ asset('images/popup/'.$item->image  ) }}" width="100" height="70" alt="">
+                            @else
+                            _
+                            @endif
+                        </td>
+
                             <td>{{ $item->type_show }}</td>
                             <td>{{ $item->show_as }}</td>
                             <td>{{ $item->city->city_name_english }}</td>
