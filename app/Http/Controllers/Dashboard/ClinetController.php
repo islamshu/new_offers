@@ -263,6 +263,12 @@ class ClinetController extends Controller
                 });
 
             }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
+            }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
                 $queryy->when($request->regestar_from, function ($q) use ($request,$query)  {
@@ -309,6 +315,12 @@ class ClinetController extends Controller
                     }
                 });
 
+            }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
@@ -363,6 +375,12 @@ class ClinetController extends Controller
                     }
                 });
 
+            }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
@@ -419,6 +437,12 @@ class ClinetController extends Controller
                         }
                     });
     
+                }
+                elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                    $queryy->Where('name', 'like', '%'.$query.'%')
+                  ->orWhere('email', 'like', '%'.$query.'%')
+                  ->orWhere('phone', 'like', '%'.$query.'%');
                 }
                 elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
     
@@ -532,6 +556,12 @@ class ClinetController extends Controller
                     }
                 });
 
+            }
+            elseif($query != null &&  $request->regestar_from == null && $request->regestar_to == null ){
+
+                $queryy->Where('name', 'like', '%'.$query.'%')
+              ->orWhere('email', 'like', '%'.$query.'%')
+              ->orWhere('phone', 'like', '%'.$query.'%');
             }
             elseif($query != null &&  $request->regestar_from != null && $request->regestar_to != null ){
 
