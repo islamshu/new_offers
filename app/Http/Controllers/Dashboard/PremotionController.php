@@ -208,6 +208,14 @@ class PremotionController extends Controller
             return ['success'=>true,'message'=>'Updated'];
         }
     }
+    public function pop_status_update(Request $request){
+        $popup = Popup::find($request->popid);
+        $popup->status = $request->status;
+        $popup->save();
+        return response()->json(['icon' => 'success', 'title' => 'Popup  status updated successfully'], 200);  
+
+    }
+    
     public function store_item(Request $request, $locale, $type, $city_id)
     {
         $city = City::find($city_id);

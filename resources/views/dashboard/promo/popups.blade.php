@@ -102,6 +102,26 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="{{ asset('crudjs/crud.js') }}"></script>
         <script>
+            $(document).ready(function() {
+                $('.js-switch').change(function() {
+                    let status = $(this).prop('checked') === true ? 1 : 0;
+                    let popid = $(this).data('id');
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '{{ route('popupstatus.update', app()->getLocale()) }}',
+                        data: {
+                            'status': status,
+                            'popid': popid
+                        },
+                        success: function(data) {
+                            console.log(data.message);
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
             $(function() {
 
             });

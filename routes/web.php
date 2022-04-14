@@ -142,6 +142,9 @@ Route::group([
         Route::get('fetch_data_admin_client','Dashboard\RepotController@fetch_data_admin')->name('fetch_data_admin');
         Route::get('fetch_data_markinteming_client','Dashboard\RepotController@fetch_data_markinteming_client')->name('fetch_data_markinteming_client');
         Route::get('edit_popup/{city_id}/{id}','Dashboard\PremotionController@edit_popup')->name('edit_popup');
+        Route::get('pop_status_update','Dashboard\PremotionController@pop_status_update')->name('popupstatus.update');
+
+        
         Route::post('update_popup/{id}','Dashboard\PremotionController@update_popup')->name('update_popup');
 
         
