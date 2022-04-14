@@ -42,7 +42,23 @@ class PopupResoures extends JsonResource
     public function seen($data)
     {
         if (auth('client_api')->check()) {
-            return 1;
+            if($data->num_show =='every_time'){
+                return 0;
+            }elseif($data->num_show == 'once'){
+                
+                    $show = PopupUser::where('client_id',auth('client_api')->id())->where('popup_id',$this->id)->first();
+                    if($show){
+                        return 1;
+                    }else{
+                        return 0;
+                    }
+                }elseif($data->num_show == 'hour'){
+                    $show = PopupUser::where('created_at', '>', 
+                    Carbon::now()->subHours($data->number_of_hour)->toDateTimeString()
+                )->first();
+              
+                }
+            
 
         }else{
             return 0;
