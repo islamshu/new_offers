@@ -56,11 +56,7 @@ class PopupResoures extends JsonResource
                     $show = PopupUser::where('created_at', '>', 
                     Carbon::now()->subHours($data->number_of_hour)->toDateTimeString()
                 )->first();
-                if($show){
-                    return 1 ;
-                }else{
-                    return 0;
-                }
+              
                 }
             }
 
