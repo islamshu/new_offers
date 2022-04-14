@@ -226,6 +226,7 @@ Route::group([
         Route::delete('/home_slider/{id}', 'Dashboard\PremotionController@homeslider_delete')->name('homeslider.destroy');
         Route::delete('/delete_home_slider/{id}', 'Dashboard\PremotionController@delete_homeslider')->name('delete_homeslider.destroy');
         Route::delete('/delete_slider_promotion/{id}', 'Dashboard\PremotionController@delete_slider_promotion')->name('slider_promotion.destroy');
+        Route::delete('/delete_popup/{id}', 'Dashboard\PremotionController@delete_popup')->name('delete_popup.destroy');
 
         Route::delete('/delete_paneer/{id}', 'Dashboard\PremotionController@delete_paneer')->name('delete_paneer.destroy');
 

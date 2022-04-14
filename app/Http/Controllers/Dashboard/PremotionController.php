@@ -172,6 +172,13 @@ class PremotionController extends Controller
         $premotions->delete();
         return response()->json(['icon' => 'success', 'title' => 'homeslider deleted successfully'], 200);
     }
+    public function delete_popup($locale ,$id){
+        $premotions = Popup::find($id);
+       
+        $premotions->delete();
+        return response()->json(['icon' => 'success', 'title' => 'popup deleted successfully'], 200);
+    }
+    
     public function create_item($locale, $type, $city_id)
     {
         $categorys = Enterprise::find(auth()->user()->ent_id)->categorys;
