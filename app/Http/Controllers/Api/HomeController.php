@@ -408,11 +408,11 @@ class HomeController extends BaseController
     
     $position = $request->position;
     if ($position == 'home') {
-      $data_show = Popup::where('show_as', 'home')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
+      $data_show = Popup::where('show_as', 'home')->where('status',1)->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     } elseif ($position == 'store') {
-      $data_show = Popup::where('show_as', 'brand')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
+      $data_show = Popup::where('show_as', 'brand')->where('status',1)->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     } elseif ($position == 'category') {
-      $data_show = Popup::where('show_as', 'category')->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
+      $data_show = Popup::where('show_as', 'category')->where('status',1)->where('end_date', '>', Carbon::now()->format('Y-m-d'))->first();
     }
     if($data_show){
       if (auth('client_api')->check()) {
