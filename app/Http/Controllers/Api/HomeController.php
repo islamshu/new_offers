@@ -416,6 +416,18 @@ class HomeController extends BaseController
     }
     if($data_show){
       if (auth('client_api')->check()) {
+
+        $res['status'] = $this->sendResponse200('OK');
+        $array = [];
+        $pops = PopupUser::find($data_show->id)->where('client_id', auth('client_api')->id())->first();
+        if($pops && $data_show->num_show == 'once'){
+          $res['status'] = $this->SendError('OK');
+  
+        }else{
+          array_push($array, new PopupResoures($data_show));
+          $res['data']['popup_ads'] = $array;
+        }
+  
     
         if ($data_show->num_show != 'every_time') {
           if ($data_show->num_show == 'once') {
@@ -443,17 +455,7 @@ class HomeController extends BaseController
         }
       
       }
-      $res['status'] = $this->sendResponse200('OK');
-      $array = [];
-      $pops = PopupUser::find($data_show->id)->where('client_id', auth('client_api')->id())->first();
-      if($pops && $data_show->num_show == 'once'){
-        $res['status'] = $this->SendError('OK');
-
-      }else{
-        array_push($array, new PopupResoures($data_show));
-        $res['data']['popup_ads'] = $array;
-      }
-
+    
     
        
     }else{
