@@ -141,6 +141,7 @@ Route::group([
         Route::get('get_type_client','Dashboard\ClinetController@ftech_data')->name('get_type_client');
         Route::get('fetch_data_admin_client','Dashboard\RepotController@fetch_data_admin')->name('fetch_data_admin');
         Route::get('fetch_data_markinteming_client','Dashboard\RepotController@fetch_data_markinteming_client')->name('fetch_data_markinteming_client');
+        Route::get('edit_popup/{id}','Dashboard\PremotionController@edit_popup')->name('edit_popup');
 
         
         

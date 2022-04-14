@@ -48,6 +48,7 @@
                         
                     <td>{{ $item->show_for }}</td>
                         <td class="pr-0 text-left">
+                            <a href="{{ route('edit_popup',[get_lang(),$item->id]) }}"><i class="fa fa-edit"></i></a>
                             @if (auth()->user()->isAbleTo(['delete-promotion']))
 
                             <form method="post" style="display: inline">
