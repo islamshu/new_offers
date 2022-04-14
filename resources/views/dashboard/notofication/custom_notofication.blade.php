@@ -87,9 +87,11 @@
                         <label>{{ __('Choose type') }}:</label>
                         <select name="type" id="type"  class=" form-control get_client">
                             <option value="" selected disabled>{{ __('choose') }}</option>
+                            <option value="">ALL</option>
                             <option value="PREMIUM">PREMIUM</option>
                             <option value="FREE">FREE</option>
                             <option value="TRIAL">TRIAL</option>
+                            <option value="Expir_premium">Expire PREMIUM</option>
                         </select>
 
                     </div>
