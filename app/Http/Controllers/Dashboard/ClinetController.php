@@ -456,7 +456,6 @@ class ClinetController extends Controller
                 return view('dashboard.clinets.pagination_data', compact('clinets'));
 
             }elseif($type == 'trailuser'){
-                       return $query;
                 $queryy =   Clinet::query()->where('type_of_subscribe','TRIAL');
                 if($query == null &&  $request->regestar_from == null && $request->regestar_to== null ){
                     return '222234';
