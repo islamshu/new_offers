@@ -43,6 +43,7 @@ class PremotionController extends Controller
     }
     public function update_popup(Request $request,$id){
         $popup = Popup::find($id);
+        return $request;
         if($request->image != null && $request->image != 'undefined'){
 
            
@@ -51,6 +52,7 @@ class PremotionController extends Controller
             $image->move('images/popup', $imageName);
             $popup->image = $imageName;
         }
+
             $popup->type_show= $request->type_show;
             $popup->text = $request->text;
             $popup->vendor_id   = $request->vendor_id;
