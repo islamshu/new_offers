@@ -42,7 +42,7 @@ class PopupResoures extends JsonResource
     public function seen($data)
     {
         if (auth('client_api')->check()) {
-            return 0;
+            return 1;
 
         }else{
             return 0;
