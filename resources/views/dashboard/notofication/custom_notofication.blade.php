@@ -38,7 +38,7 @@
                                 top: 20px !important
                             }
                         </style>
-                        <select name="type" id="vendor_id" class="selectpicker form-control"
+                        <select name="type" id="vendor_id " class="selectpicker form-control"
                         data-live-search="true">
                             <option value="" selected disabled>{{ __('Choose') }}</option>
                             @foreach ($vendors as $item)
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group col-md-6 offer">
                         <label>{{ __('Choose Offer') }}:</label>
-                        <select name="offer_id" id="offer_id" class=" form-control">
+                        <select name="offer_id" id="offer_id " class=" form-control">
                             <option value="" selected disabled>{{ __('Offer') }}</option>
 
 
@@ -65,27 +65,27 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Register form') }}:</label>
-                        <input type="date" name="register_from" id="register_from" class="form-control form-control-solid"
+                        <input type="date" name="register_from" id="register_from" class="form-control form-control-solid get_client"
                             placeholder="{{ __('Register form') }}"  />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Register to') }}:</label>
-                        <input type="date" name="register_to" id="register_to" class="form-control form-control-solid"
+                        <input type="date" name="register_to" id="register_to" class="form-control form-control-solid get_client"
                             placeholder="{{ __('Register to') }}"  />
                     </div>
                     <div class="form-group col-md-3">
                         <label>{{ __('Transaction number from') }}:</label>
-                        <input type="number" name="tra_form" id="tra_form" class="form-control form-control-solid"
+                        <input type="number" name="tra_form" id="tra_form" class="form-control form-control-solid get_client"
                             placeholder="{{ __('Transaction number from') }}"  />
                     </div>
                     <div class="form-group col-md-3">
                         <label>{{ __('Transaction number to') }}:</label>
-                        <input type="number" name="tra_to" id="tra_to" class="form-control form-control-solid"
+                        <input type="number" name="tra_to" id="tra_to" class="form-control form-control-solid get_client"
                             placeholder="{{ __('Transaction number to') }}"  />
                     </div>
                     <div class="form-group col-md-6 ">
                         <label>{{ __('Choose type') }}:</label>
-                        <select name="type"  class=" form-control">
+                        <select name="type"  class=" form-control get_client">
                             <option value="" selected disabled>{{ __('choose') }}</option>
                             <option value="PREMIUM">PREMIUM</option>
                             <option value="FREE">FREE</option>
@@ -96,12 +96,12 @@
 
                     <div class="form-group col-md-6">
                         <label>{{ __('Title ar') }}:</label>
-                        <input type="text" name="title_ar" id="title_ar" class="form-control form-control-solid"
+                        <input type="text" name="title_ar" id="title_ar" class="form-control form-control-solid "
                             placeholder="{{ __('title ar') }}" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label>{{ __('Title en') }}:</label>
-                        <input type="text" name="title_en" id="title_en" class="form-control form-control-solid"
+                        <input type="text" name="title_en" id="title_en" class="form-control form-control-solid "
                             placeholder="{{ __('title en') }}" required />
                     </div>
                    
@@ -119,6 +119,7 @@
                  
 
                 </div>
+                number of client <span class="number_client"></span>
 
 
 
@@ -138,6 +139,27 @@
     <script>
         $(document).ready(function() {
 
+
+            $('.get_client').on('change', function() {
+
+            var type = $('#type').val();
+            var register_from = $('#register_from').val();
+            var register_to = $('#register_to').val();
+            var tra_to = $('#tra_to').val();
+            var tra_form = $('#tra_form').val();
+            $.ajax({
+                    type: 'get',
+                    url: "{{ route('get_count', ['locale' => app()->getLocale()]) }}",
+                    data: {
+                        'type': type,'register_from':register_from,'register_to':register_to,'tra_to':tra_to,'tra_form':tra_form
+                    },
+                    success: function(data) {
+                        alert(data);
+                        $('.number_client').append(data);
+                        
+                    }
+                });
+            });
             $('#vendor_id').on('change', function() {
                 // console.log("hmm its change");
                 var cat_id = $(this).val();

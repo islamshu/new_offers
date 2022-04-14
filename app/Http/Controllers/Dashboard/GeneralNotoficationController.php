@@ -197,6 +197,29 @@ class GeneralNotoficationController extends Controller
         }
         return redirect()->back();
     }
+    public function get_count(Request $request){
+        $queryy = Clinet::query();
+        
+        $queryy->when($request->register_from, function ($q) use ($request) {
+            if($request->register_from != null && $request->register_to != null && $request->register_from != $request->register_to ){
+                return $q->whereBetween('register_date',[$request->register_from,$request->register_to]);
+            }
+            if($request->register_from != null && $request->register_to == null){
+                return $q->whereBetween('register_date',[$request->register_from,Carbon::now()]);
+            }
+            if($request->register_from ==  $request->register_to ){
+                return $q->whereBetween('register_date',[$request->register_from . ' 00:00:00', $request->register_from . ' 23:59:59']);
+            }
+        });
+        $queryy->when($request->type, function ($q) use ($request) {
+            return $q->where('type_of_subscribe',$request->type);
+        });
+        $queryy->when($request->tra_form, function ($q) use ($request) {
+            return $q->whereBetween('purchases_no',[$request->tra_form,$request->tra_to]);
+        });
+        $client = $queryy->count();
+        return $client;
+    }
 
     
     public function store_user_notofication(Request $request , $locale)

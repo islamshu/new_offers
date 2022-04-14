@@ -132,7 +132,9 @@ Route::group([
         Route::post('/show/city_notofication', 'Dashboard\GeneralNotoficationController@model_city')->name('citynotofication');
         Route::post('/show/gendernotofication', 'Dashboard\GeneralNotoficationController@model_gender')->name('gendernotofication');
         Route::post('/resend/gendernotofication/{id}', 'Dashboard\GeneralNotoficationController@resend')->name('resend_gendernotofication');
+        Route::get('/get_count', 'Dashboard\GeneralNotoficationController@get_count')->name('get_count');
 
+        
 
         
         Route::post('/show/usermodel', 'Dashboard\brandController@showmodeluser')->name('showmodeluser');
