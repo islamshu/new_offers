@@ -21,6 +21,7 @@ class PopupResoures extends JsonResource
     {
         return [
             'id' => $this->id,
+            'client_id'=>$this->client($this),
             'store_id' => $this->vendor_id,
             'category_id' => $this->categoty_id,
             // 'order_no'=>$this->sort ,
@@ -38,6 +39,14 @@ class PopupResoures extends JsonResource
             'store' => new VendorResourses(Vendor::find($this->vendor_id)),
             'category' => new CategoryResourses(Category::find($this->categoty_id)),
         ];
+    }
+    public function client($data)
+    {
+        if (auth('client_api')->check()) {
+            return auth('client_api')->id();
+        }else{
+            return 0;
+        }
     }
     public function seen($data)
     {
