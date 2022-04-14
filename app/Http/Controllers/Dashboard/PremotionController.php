@@ -41,6 +41,28 @@ class PremotionController extends Controller
         })->get();
         return view('dashboard.promo.edit_popup', compact('pop','city_id','categorys','brands','branchs'));
     }
+    public function update_popup(Request $request,$id){
+        $popup = Popup::find($id);
+        if($request->image != null && $request->image != 'undefined'){
+
+           
+            $image =$request->image;
+            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+            $image->move('images/popup', $imageName);
+            $popup->image = $imageName;
+        }
+            $popup->type_show= $request->type_show;
+            $popup->text = $request->text;
+            $popup->vendor_id   = $request->vendor_id;
+            $popup->categoty_id    = $request->categoty_id ;
+            $popup->show_as    = $request->show_as ;
+            $popup->show_for    = $request->show_for ;
+            $popup->start_date = $request->start_date;
+            $popup->end_date = $request->end_date;
+            $popup->number_of_hour = $request->number_of_hour;
+            $popup->save();
+            return response()->json(['icon' => 'success', 'title' => 'Popup  created successfully'], 200);  
+    }
     public function get_country_promotion($locale, $type)
     {
      

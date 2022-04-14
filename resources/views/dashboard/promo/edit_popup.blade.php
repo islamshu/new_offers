@@ -377,7 +377,7 @@
 
 
     
-        store("{{ route('store_item',[app()->getLocale(),'popup',$city_id]) }}", formData)
+        store("{{ route('update_popup',[app()->getLocale(),$pop->id]) }}", formData)
 
     }
 
