@@ -32,7 +32,7 @@ class PremotionController extends Controller
         //   $countries =   enterprise_country::with('country')->where('enterprise_id',Auth::user()->ent_id)->get();
         return view('dashboard.promo.index');
     }
-    public function edit_popup($lang ,$id){
+    public function edit_popup($lang ,$city_id,$id){
         $pop = Popup::find($id);
         $categorys = Enterprise::find(auth()->user()->ent_id)->categorys;
         $brands =   Vendor::where('enterprise_id',auth()->user()->ent_id)->get();
