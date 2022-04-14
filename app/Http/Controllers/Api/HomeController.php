@@ -418,7 +418,7 @@ class HomeController extends BaseController
       
       $res['status'] = $this->sendResponse200('OK');
       $array = [];
-      $pops = PopupUser::find($data_show->id)->where('client_id', auth('client_api')->id())->first();
+      $pops = PopupUser::where('popup_id',$data_show->id)->where('client_id', auth('client_api')->id())->first();
       if($pops  && $data_show->num_show == 'once' ){
         $res['status'] = $this->SendError('OK');
       }
