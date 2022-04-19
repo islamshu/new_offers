@@ -137,6 +137,9 @@ class HomeController extends BaseController
         $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
+        $q->has('branches')->whereHas('branches', function ($q) use ($city) {
+          $q->where('city_id', $city);
+        });
       })->where('is_offer', 1)->get();
       $collction = new VendorOfferCollection($offer);
   
@@ -159,6 +162,9 @@ class HomeController extends BaseController
         $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
         });
+        $q->has('branches')->whereHas('branches', function ($q) use ($city) {
+          $q->where('city_id', $city);
+        });
       })->Where('is_flashdeal', 1)->get();
       $res['status'] = $this->sendResponse200('OK');
       $collction = new VendorOfferCollection($offer);
@@ -180,6 +186,9 @@ class HomeController extends BaseController
         });
         $q->has('categorys')->whereHas('categorys', function ($q) use ($request) {
           $q->where('category_id', $request->category_id);
+        });
+        $q->has('branches')->whereHas('branches', function ($q) use ($city) {
+          $q->where('city_id', $city);
         });
         
       })->Where('is_voucher', 1)->get();
@@ -228,7 +237,6 @@ class HomeController extends BaseController
       $vendor->save();
       
       $res['status'] = $this->sendResponse200('OK');
-
       $res['data']['store'] = new VendorDetiesResourses($vendor);
       $res['data']['offer'] = new VendorOfferDenewCollection($vendor->offers_sort->where('status',1)->where('end_time','>=',Carbon::now())) ;
       $res['data']['branches'] = new BranchCollection($vendor->branches->where('status','active')) ;
