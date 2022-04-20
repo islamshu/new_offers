@@ -255,8 +255,7 @@ class UserController extends Controller
             $user->attachRole($role);
        
             foreach ($role->permissions as $one_permission) {
-                return $one_permission;
-                $user->attachPermission($one_permission);
+                $user->attachPermission($one_permission->id);
             }
           
              return response()->json(['icon' => 'success', 'title' => 'user edit successfully'], $user ? 200 : 400);
