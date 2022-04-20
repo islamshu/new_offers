@@ -255,8 +255,9 @@ class UserController extends Controller
             $user->last_ip= '';
             $user->save();
 
-
-            DB::table('permission_user')->where('user_id',auth()->id())->truncate();
+            $roo= user_roles::where('user_id',$id)->truncate();
+            $pee= permission_role::where('user_id',$id)->truncate();
+            
 
    
            
