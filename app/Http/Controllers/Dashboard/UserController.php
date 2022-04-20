@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\DB as FacadesDB;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        //create read update delete
-        $this->middleware(['permission:read-user'])->only('index');
-        $this->middleware(['permission:create-user'])->only('create','create_user_brand');
-        $this->middleware(['permission:update-user'])->only('edit');
-        $this->middleware(['permission:delete-user'])->only('destroy');
+    // public function __construct()
+    // {
+    //     //create read update delete
+    //     $this->middleware(['permission:read-user'])->only('index');
+    //     $this->middleware(['permission:create-user'])->only('create','create_user_brand');
+    //     $this->middleware(['permission:update-user'])->only('edit');
+    //     $this->middleware(['permission:delete-user'])->only('destroy');
   
-    }//end of constructor
+    // }//end of constructor
     /**
      * Display a listing of the resource.
      *
