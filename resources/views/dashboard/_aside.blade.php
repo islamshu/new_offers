@@ -246,7 +246,7 @@ $lang = app()->getLocale();
             </div>
         </li>
     @endif
-    @if (auth()->user()->isAbleTo(['read-promotion']))
+    @if (auth()->user()->isAbleTo(['read-promotion']) || auth()->user()->isAbleTo(['main-slider']) || auth()->user()->isAbleTo(['pop-up']) || auth()->user()->isAbleTo(['home-slider']) || auth()->user()->isAbleTo(['banner']) )
         <li class="menu-item  menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
             <a href="/{{ $lang }}/promotion" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
