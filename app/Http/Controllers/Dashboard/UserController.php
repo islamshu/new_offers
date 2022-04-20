@@ -11,6 +11,7 @@ use App\Models\user_Permission;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -245,7 +246,10 @@ class UserController extends Controller
             $user->address = $request->address;
             $user->last_ip= '';
             $user->Save();
+
+
             if($user->roles->first()->name != $request->role){
+                DB::table('role_user')->where('user_id',auth()->id())->truncate();
                 $role = Role::where('name', $request->role)->first();
                 $user->attachRole($role);
                 foreach ($role->permissions as $one_permission) {
