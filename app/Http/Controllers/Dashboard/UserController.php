@@ -260,6 +260,7 @@ class UserController extends Controller
             $user_role ->role_id = $role->id; 
             $user_role->user_id = $user->id;
             $user_role->save();
+            return $user_role;
 
            $permissions= permission_role::where('role_id',$role->id)->get();
             
