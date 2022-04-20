@@ -248,13 +248,11 @@ class UserController extends Controller
             $user->Save();
 
 
-            if($user->roles->first()->name != $request->role){
-                DB::table('role_user')->where('user_id',auth()->id())->truncate();
-                $role = Role::where('name', $request->role)->first();
-                $user->attachRole($role);
-                foreach ($role->permissions as $one_permission) {
-                    $user->attachPermission($one_permission);
-                }
+            DB::table('role_user')->where('user_id',auth()->id())->truncate();
+            $role = Role::where('name', $request->role)->first();
+            $user->attachRole($role);
+            foreach ($role->permissions as $one_permission) {
+                $user->attachPermission($one_permission);
             }
           
              return response()->json(['icon' => 'success', 'title' => 'user edit successfully'], $user ? 200 : 400);
