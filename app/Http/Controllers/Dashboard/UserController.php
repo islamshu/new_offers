@@ -254,11 +254,10 @@ class UserController extends Controller
             
            
             $role = Role::where('name', $request->role)->first();
-            return $role->id .  auth()->id();
-            DB::table('role_user')->insert(
-                ['role_id' =>  $role->id, 'user_id' => auth()->id()]
-            );
-            // $user->attachRole($role);
+            // DB::table('role_user')->insert(
+            //     ['role_id' =>  $role->id, 'user_id' => auth()->id()]
+            // );
+            $user->attachRole($role);
        
             foreach ($role->permissions as $one_permission) {
                 
