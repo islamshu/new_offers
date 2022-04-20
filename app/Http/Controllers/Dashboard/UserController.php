@@ -11,7 +11,7 @@ use App\Models\user_Permission;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class UserController extends Controller
 {
@@ -216,7 +216,6 @@ class UserController extends Controller
     public function update_user(Request $request,$local, $id)
     {
         $user = User::find($id);
-        return $request->all();
         $validator = Validator($request->all(), [
             'username' => 'required|string|min:3',
             'email' => 'required|string|min:3',
@@ -255,6 +254,7 @@ class UserController extends Controller
             
            
             $role = Role::where('name', $request->role)->first();
+
             DB::table('role_user')->insert(
                 ['role_id' =>  $role->id, 'user_id' => auth()->id()]
             );
