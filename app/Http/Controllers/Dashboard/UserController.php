@@ -12,6 +12,7 @@ use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class UserController extends Controller
 {
@@ -248,22 +249,18 @@ class UserController extends Controller
             $user->save();
 
 
-            DB::table('role_user')->where('user_id',auth()->id())->truncate();
-            DB::table('permission_user')->where('user_id',auth()->id())->truncate();
-
-   
-           
             $role = Role::where('name', $request->role)->first();
-            // DB::table('role_user')->insert(
-            //     ['role_id' =>  $role->id, 'user_id' => auth()->id()]
-            // );
+            
             $user->attachRole($role);
-       
-            foreach ($role->permissions as $one_permission) {
-                
-                DB::table('permission_user')->insert(
-                    ['permission_id' =>  $one_permission->id, 'user_id' => auth()->id()]
-                );
+           $permissions= permission_role::where('role_id',$role->id)->get();
+            
+            foreach ($permissions as $one_permission) {
+                return $one_permission;
+                $per = new user_Permission();
+                $per->user_id = $user->id;
+                $per->permission_id = $one_permission->permission_id;
+                $per->save();
+                // $user->attachPermission($one_permission);
             }
           
              return response()->json(['icon' => 'success', 'title' => 'user edit successfully'], $user ? 200 : 400);
