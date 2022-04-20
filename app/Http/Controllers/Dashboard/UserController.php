@@ -254,11 +254,15 @@ class UserController extends Controller
             
            
             $role = Role::where('name', $request->role)->first();
-            
-            $user->attachRole($role);
+            DB::table('role_user')->insert(
+                ['role_id' =>  $role->id, 'user_id' => auth()->id()]
+            );
+            // $user->attachRole($role);
        
             foreach ($role->permissions as $one_permission) {
-                $user->attachPermission($one_permission->id);
+                DB::table('permission_user')->insert(
+                    ['permission_id' =>  $one_permission->id, 'user_id' => auth()->id()]
+                );
             }
           
              return response()->json(['icon' => 'success', 'title' => 'user edit successfully'], $user ? 200 : 400);
