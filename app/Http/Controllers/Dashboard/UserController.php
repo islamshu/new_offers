@@ -249,7 +249,7 @@ class UserController extends Controller
 
 
             DB::table('role_user')->where('user_id',auth()->id())->truncate();
-         return   DB::table('permission_user')->get();
+            DB::table('permission_user')->where('user_id',auth()->id())->truncate();
 
    
            
