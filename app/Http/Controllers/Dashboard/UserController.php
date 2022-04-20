@@ -256,7 +256,6 @@ class UserController extends Controller
             $user->save();
 
 
-            DB::table('role_user')->where('user_id',auth()->id())->truncate();
             DB::table('permission_user')->where('user_id',auth()->id())->truncate();
 
    
