@@ -257,9 +257,8 @@ class UserController extends Controller
 
 
         $dddd=     user_Permission::where('user_id',$user->id)->get();
-        return $dddd;
             foreach($dddd as $d){
-            return $d;
+            $d->delete();
             }
    
            
