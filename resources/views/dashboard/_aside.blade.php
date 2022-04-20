@@ -1,6 +1,7 @@
 @php
 $lang = app()->getLocale();
 @endphp
+{{ auth()->user()->permisions }}
 <ul class="menu-nav">
     <li class="menu-item">
         <a href="/{{ $lang }}/home" class="menu-link">
