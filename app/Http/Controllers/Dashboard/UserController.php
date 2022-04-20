@@ -190,6 +190,8 @@ class UserController extends Controller
           
         $enterprises  = Enterprise::get();
         $rols = Role::get();
+        $user = User::find($id);
+
         return response()->view('dashboard.users.edit', compact('user','enterprises','rols'));
         if(Auth::user()->hasRole('Admin')){
             $user = User::find($id);
