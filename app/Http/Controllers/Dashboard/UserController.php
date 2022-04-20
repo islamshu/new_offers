@@ -216,6 +216,7 @@ class UserController extends Controller
     public function update_user(Request $request,$local, $id)
     {
         $user = User::find($id);
+        return $request->all();
         $validator = Validator($request->all(), [
             'username' => 'required|string|min:3',
             'email' => 'required|string|min:3',
