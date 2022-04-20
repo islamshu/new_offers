@@ -8,6 +8,7 @@ use App\Models\permission_role;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\user_Permission;
+use App\Models\user_roles;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -249,19 +250,27 @@ class UserController extends Controller
             $user->save();
 
 
+            DB::table('role_user')->where('user_id',auth()->id())->truncate();
+            DB::table('permission_user')->where('user_id',auth()->id())->truncate();
+
+   
+           
             $role = Role::where('name', $request->role)->first();
-            
-            $user->attachRole($role);
+            $user_role = new user_roles();
+            $user_role ->role_id = $role->id; 
+            $user_role->user_id = $user->id;
+            $user_role->save();
+
            $permissions= permission_role::where('role_id',$role->id)->get();
             
             foreach ($permissions as $one_permission) {
-                return $one_permission;
                 $per = new user_Permission();
                 $per->user_id = $user->id;
                 $per->permission_id = $one_permission->permission_id;
                 $per->save();
                 // $user->attachPermission($one_permission);
             }
+          
           
              return response()->json(['icon' => 'success', 'title' => 'user edit successfully'], $user ? 200 : 400);
         } else {
