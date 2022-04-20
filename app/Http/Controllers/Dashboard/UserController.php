@@ -251,8 +251,9 @@ class UserController extends Controller
             DB::table('role_user')->where('user_id',auth()->id())->truncate();
            
             $role = Role::where('name', $request->role)->first();
-            return $role;
+            
             $user->attachRole($role);
+            return $role->permissions;
             foreach ($role->permissions as $one_permission) {
                 $user->attachPermission($one_permission);
             }
