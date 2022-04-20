@@ -14,7 +14,7 @@
                 </ol>
 
             </div>
-            @if (auth()->user()->isAbleTo(['create-promotion']))
+            @if (auth()->user()->isAbleTo(['create-promotion']) || auth()->user()->isAbleTo(['pop-up']) )
                 <div class="div" style="float: right">
                     <a href="{{ route('create_item', [app()->getLocale(), 'popup', $city_id]) }}"
                         class="btn btn-info">{{ __('create Pop up') }}</a>

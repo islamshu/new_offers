@@ -14,7 +14,7 @@
         </div>
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Banner') }}</h2>
-            @if (auth()->user()->isAbleTo(['create-promotion']))
+            @if (auth()->user()->isAbleTo(['create-promotion']) || auth()->user()->isAbleTo(['banner']) )
 
             <div class="div" style="float: right">
                 <a href="{{ route('create_item', [app()->getLocale(), 'banner', $city_id]) }}"

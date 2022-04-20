@@ -13,7 +13,7 @@
                 </ol>
             
             </div> 
-             @if (auth()->user()->isAbleTo(['create-promotion']))
+            @if (auth()->user()->isAbleTo(['create-promotion']) || auth()->user()->isAbleTo(['main-sldier']) )
 
             <div class="div" style="float: right">
                 <a href="{{ route('create_item', [ app()->getLocale(),'slider',$city_id]) }}" class="btn btn-info">{{ __('create slider') }}</a>
