@@ -256,11 +256,11 @@ class UserController extends Controller
    
            
             $role = Role::where('name', $request->role)->first();
-            $user_role = new user_roles();
-            $user_role ->role_id = $role->id; 
-            $user_role->user_id = $user->id;
-            $user_role->save();
-            return $user_role;
+            $roll = new user_roles();
+            $roll ->role_id = $role->id; 
+            $roll->user_id = $user->id;
+            $roll->save();
+            return $roll;
 
            $permissions= permission_role::where('role_id',$role->id)->get();
             
