@@ -29,7 +29,7 @@ class PremotionController extends Controller
      */
     public function index()
     {
-        return auth()->user()->id;
+        // return auth()->user()->id;
         //   $countries =   enterprise_country::with('country')->where('enterprise_id',Auth::user()->ent_id)->get();
         return view('dashboard.promo.index');
     }
