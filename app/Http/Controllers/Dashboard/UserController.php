@@ -245,10 +245,11 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->address = $request->address;
             $user->last_ip= '';
-            $user->Save();
+            $user->save();
 
 
             DB::table('role_user')->where('user_id',auth()->id())->truncate();
+            return $request->role;
             $role = Role::where('name', $request->role)->first();
             $user->attachRole($role);
             foreach ($role->permissions as $one_permission) {
