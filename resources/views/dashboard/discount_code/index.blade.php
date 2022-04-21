@@ -68,7 +68,7 @@
                         </td>
                         <td style="font-size: 33px">{{  $code->type_of_limit == 'unlimit' ?  '∞' : $code->number_of_code  }}</td>
                         <td style="font-size: 33px">{{ $code->type_of_limit == 'unlimit' ?  '∞' : $code->total_remain  }}</td>
-                        <td><a href="{{ route('user_promo',[get_lang(),$promo]) }}">{{ App\Models\PromocodeUser::where('promocode','like',$promo)->count() }}</a></td>
+                        <td><a target="_blank" href="{{ route('user_promo',[get_lang(),$promo]) }}">{{ App\Models\PromocodeUser::where('promocode','like',$promo)->count() }}</a></td>
                         <td>
                                 @if($number_code == 1)
 
