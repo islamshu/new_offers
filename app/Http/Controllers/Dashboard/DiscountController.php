@@ -35,7 +35,7 @@ class DiscountController extends Controller
     public function user($locale,$promo)
     {
      $users =    PromocodeUser::where('promocode','like',$promo)->get();
-    return view('dashboard.discount_code.users')->with('users',$users)->with('code',$promo);
+    return ('dashboard.discount_code.users')->with('users',$users)->with('code',$promo);
     }
 
     /**
