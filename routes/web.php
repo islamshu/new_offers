@@ -301,6 +301,9 @@ Route::group([
         Route::get('export_code/{type_used}/{id}', 'Dashboard\CodeController@export_code')->name('export_code');
 
         Route::resource('discount_code', 'Dashboard\DiscountController');   
+        Route::get('discount_code_user/{code}', 'Dashboard\DiscountController@user')->name('user_promo');   
+
+        
         Route::post('update-discount/{id}', 'Dashboard\DiscountController@update_code')->name('update-code.discountcode');
         Route::get('show_promocode','Dashboard\DiscountController@showCodes')->name('showCodes');
         Route::get('show_promocode_user','Dashboard\DiscountController@showCodesUser')->name('showCodesUser');

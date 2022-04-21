@@ -32,6 +32,12 @@ class DiscountController extends Controller
         $codes = Discount::get();
         return response()->view('dashboard.discount_code.index', compact('codes'));
     }
+    public function user($locale,$promo)
+    {
+     $users =    PromocodeUser::where('promocode','like',$promo)->get();
+     return $users;
+        return response()->view('dashboard.discount_code.users', compact('users'));
+    }
 
     /**
      * Show the form for creating a new resource.
