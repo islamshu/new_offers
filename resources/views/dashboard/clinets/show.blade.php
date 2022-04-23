@@ -164,7 +164,7 @@
                         </div>
                         <hr>
                        
-            <table class="  table-row-bordered gy-5 gs-7"
+            <table class="table  table-row-bordered gy-5 gs-7"
                 id="">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
