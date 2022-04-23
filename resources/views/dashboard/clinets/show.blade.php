@@ -168,7 +168,7 @@
                 id="kt_datatable">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
-
+                        <th>{{ __('package name') }}</th>
                         <th>{{ __('payment type') }}</th>
                         <th>{{ __('started at') }}</th>
                         <th>{{ __('end at') }}</th>
@@ -178,6 +178,7 @@
                 </thead>
                 <tbody>
                     @foreach ($member->subs as $sub)
+                       <td>{{ @$sub->subscripe->name_ar }}</td>
 
                         <td>{{ @$sub->payment_type }}</td>
                         <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
