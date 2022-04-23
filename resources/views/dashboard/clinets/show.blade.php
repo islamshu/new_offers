@@ -180,7 +180,7 @@
                     @foreach ($member->subs as $sub)
 
                         <td>{{ @$sub->payment_type }}</td>
-                        <td>{{ @$sub->created_at->foramt('Y-m-d') }}</td>
+                        <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
                         <td>{{ @$sub->expire_date }}</td>
                        
                         </tr>
