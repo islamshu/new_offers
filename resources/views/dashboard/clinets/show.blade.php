@@ -164,8 +164,8 @@
                         </div>
                         <hr>
                        
-            <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
-                id="kt_datatable">
+            <table class="  table-row-bordered gy-5 gs-7"
+                id="">
                 <thead>
                     <tr class="fw-bold fs-6 text-gray-800">
                         <th>{{ __('package name') }}</th>
