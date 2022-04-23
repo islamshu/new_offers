@@ -151,6 +151,52 @@
 
             </div>
         </div>
+        <div class="row clearfix">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="  text-left p-4">
+                            <div class="circle" style="font-size: 20px;
+                                font-weight: 600;">
+                               Subscription history
+                            </div>
+
+                        </div>
+                        <hr>
+                       
+            <table class="datatable table datatable-bordered datatable-head-custom  table-row-bordered gy-5 gs-7"
+                id="kt_datatable">
+                <thead>
+                    <tr class="fw-bold fs-6 text-gray-800">
+
+                        <th>{{ __('payment type') }}</th>
+                        <th>{{ __('started at') }}</th>
+                        <th>{{ __('end at') }}</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($member->subs as $sub)
+
+                        <td>{{ @$sub->payment_type }}</td>
+                        <td>{{ @$sub->created_at }}</td>
+                        <td>{{ @$sub->expire_date }}</td>
+                       
+                        </tr>
+                    @endforeach
+
+
+                </tbody>
+
+            </table>
+                        <hr>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
