@@ -178,7 +178,12 @@
                 </thead>
                 <tbody>
                     @foreach ($member->subs as $sub)
+                        @if(get_lang() == 'ar')
                        <td>{{ @$sub->subscripe->name_ar }}</td>
+                        @else
+                        <td>{{ @$sub->subscripe->name_en }}</td>
+                        @endif
+
 
                         <td>{{ @$sub->payment_type }}</td>
                         <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
