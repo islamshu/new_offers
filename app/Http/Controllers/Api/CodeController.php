@@ -97,7 +97,7 @@ class CodeController extends BaseController
     }
     public function redeem(Request $request)
     {
-        return auth('client_api')->user()->subs_last->sub_id;
+        return auth('client_api')->user()->subs_last;
 
         $user = auth('client_api')->user();
         if ($user->status != 'active') {
