@@ -97,6 +97,8 @@ class CodeController extends BaseController
     }
     public function redeem(Request $request)
     {
+        return auth('client_api')->user()->subs_last->sub_id;
+
         $user = auth('client_api')->user();
         if ($user->status != 'active') {
             $user->type_of_subscribe == 'FREE';
@@ -153,6 +155,8 @@ class CodeController extends BaseController
                 $ofe->offer_id = $request->offer_id;
                 $ofe->vendor_id = $offer->vendor_id;
                 $ofe->client_id = auth('client_api')->id();
+                $ofe->sub_id = auth('client_api')->user()->subs_last->sub_id;
+
                 $ofe->branch_id = $request->branch_id;
                 $user->purchases_no += 1;
                 if($user->is_unlimited != 1){       
