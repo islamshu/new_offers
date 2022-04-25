@@ -192,8 +192,8 @@
                         <td>{{ @$sub->payment_type }}</td>
                         <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
                         <td>{{ @$sub->expire_date }}</td>
-                        <td>{{ @$sub->code ? @$sub->code : _ }}</td>
-                        <td>{{ @$sub->promocode ? @$sub->promocode : _ }}</td>
+                        <td>{{ @$sub->code ? @$sub->code : '_' }}</td>
+                        <td>{{ @$sub->promocode ? @$sub->promocode : '_' }}</td>
 
                         </tr>
                     @endforeach
