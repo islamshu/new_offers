@@ -174,6 +174,8 @@
                         <th>{{ __('end at') }}</th>
                         <th>{{ __('activiton code') }}</th>
                         <th>{{ __('promo code') }}</th>
+                        <th>{{ __('redeem  id') }}</th>
+
 
 
                        

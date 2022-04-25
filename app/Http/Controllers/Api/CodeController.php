@@ -155,7 +155,7 @@ class CodeController extends BaseController
                 $ofe->offer_id = $request->offer_id;
                 $ofe->vendor_id = $offer->vendor_id;
                 $ofe->client_id = auth('client_api')->id();
-                $ofe->sub_id = auth('client_api')->user()->subs_last->first()->sub_id;
+                $ofe->sub_id = auth('client_api')->user()->subs_last->first()->id;
 
                 $ofe->branch_id = $request->branch_id;
                 $user->purchases_no += 1;
