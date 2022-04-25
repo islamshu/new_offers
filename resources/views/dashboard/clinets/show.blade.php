@@ -172,6 +172,8 @@
                         <th>{{ __('payment type') }}</th>
                         <th>{{ __('started at') }}</th>
                         <th>{{ __('end at') }}</th>
+                        <th>{{ __('activiton code') }}</th>
+
                        
 
                     </tr>
@@ -188,7 +190,8 @@
                         <td>{{ @$sub->payment_type }}</td>
                         <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
                         <td>{{ @$sub->expire_date }}</td>
-                       
+                        <td>{{ @$sub->code }}</td>
+
                         </tr>
                     @endforeach
 
