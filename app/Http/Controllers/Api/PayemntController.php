@@ -167,6 +167,8 @@ class PayemntController extends BaseController
            
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
+            $payment->user_id = auth('client_api')->id();
+
             $payment->price = $code->price;
             $payment->discount=$code->price - $price;
             $payment->amount=$price;
