@@ -173,6 +173,8 @@
                         <th>{{ __('started at') }}</th>
                         <th>{{ __('end at') }}</th>
                         <th>{{ __('activiton code') }}</th>
+                        <th>{{ __('promo code') }}</th>
+
 
                        
 
@@ -191,6 +193,7 @@
                         <td>{{ @$sub->created_at->format('Y-m-d') }}</td>
                         <td>{{ @$sub->expire_date }}</td>
                         <td>{{ @$sub->code }}</td>
+                        <td>{{ @$sub->promocode }}</td>
 
                         </tr>
                     @endforeach

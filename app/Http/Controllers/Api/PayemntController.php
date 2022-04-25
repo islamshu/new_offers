@@ -330,6 +330,7 @@ class PayemntController extends BaseController
                $user->purchases_no =  $count + 1;
                $user->sub_id  = $code->id;
                $user->clinet_id  = auth('client_api')->id();
+               $user->promocode = $payment->promocode;
                $user->save();
                if($payment->promocode != null){
                    $promocode =new  PromocodeUser();
