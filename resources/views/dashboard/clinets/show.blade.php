@@ -198,7 +198,7 @@
                         <td>{{ @$sub->expire_date }}</td>
                         <td>{{ @$sub->code ? @$sub->code : '_' }}</td>
                         <td>{{ @$sub->promocode ? @$sub->promocode : '_' }}</td>
-                        <td> <a href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}"></a>{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</td>
+                        <td> <a target="_blank" href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}">{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</a></td>
                         <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
 
                         </tr>
