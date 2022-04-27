@@ -56,7 +56,7 @@ class RepotController extends Controller
     public function clients(Request $request)
     {
 
-        $query = Clinet::query();
+        $query = Clinet::query()->where('is_verify',1);
 
         $query->when($request->email, function ($q) use ($request) {
             return $q->where('email', 'like', '%' . $request->email . '%');
@@ -96,7 +96,7 @@ class RepotController extends Controller
             $request->sub_form == null && $request->sub_to == null && $request->register_form == null &&
             $request->register_to == null && $request->sub_type == null && $request->emaill == null && $request->phone == null
         ) {
-            $clients = Clinet::whereDate('created_at', Carbon::today())->get();
+            $clients = Clinet::whereDate('created_at', Carbon::today())->where('is_verify',1)->get();
 
             return view('dashboard.repots.clients', compact('clients', 'request'));
         } else {
