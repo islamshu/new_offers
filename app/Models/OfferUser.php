@@ -11,15 +11,15 @@ class OfferUser extends Model
     protected $guarded=[];
     public function offer()
     {
-        return $this->belongsTo(Offer::class, 'offer_id')->withTrashed();;
+        return $this->belongsTo(Offer::class, 'offer_id')
     }
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'vendor_id')->withTrashed();;
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
     public function branch ()
     {
-        return $this->belongsTo(Branch::class, 'branch_id')->withTrashed();;
+        return $this->belongsTo(Branch::class, 'branch_id');
     }
 
     
