@@ -156,7 +156,7 @@
                         <a target="_blank" href="https://api.whatsapp.com/send?phone={{ $item->phone }}">Send
                     </a>
                 </td>
-                    <td>{{ @$item->status }}</td>
+                    <td>{{ @$item->subs_last->first()->payment_type }}</td>
 
                     <td>{{ @$item->name }}</td>
                     <td>{{@$item->nationality }}</td>
