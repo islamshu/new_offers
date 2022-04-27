@@ -11,7 +11,7 @@ class OfferUser extends Model
     protected $guarded=[];
     public function offer()
     {
-        return $this->belongsTo(Offer::class, 'offer_id')
+        return $this->belongsTo(Offer::class, 'offer_id');
     }
     public function vendor()
     {
