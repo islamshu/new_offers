@@ -35,6 +35,7 @@
                         $lang = app()->getLocale();
                     @endphp
                     @foreach ($offers as $item)
+                    <tr>
                         @if ($lang == 'ar')
                         <td>{{ @$item->offer->name_ar }}</td>
                         <td>{{ @$item->vendor->name_ar }}</td>
