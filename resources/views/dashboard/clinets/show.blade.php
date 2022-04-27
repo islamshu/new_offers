@@ -175,6 +175,8 @@
                         <th>{{ __('activiton code') }}</th>
                         <th>{{ __('promo code') }}</th>
                         <th>{{ __('redeem  number') }}</th>
+                        <th>{{ __('paid') }}</th>
+
 
 
 
@@ -196,7 +198,8 @@
                         <td>{{ @$sub->expire_date }}</td>
                         <td>{{ @$sub->code ? @$sub->code : '_' }}</td>
                         <td>{{ @$sub->promocode ? @$sub->promocode : '_' }}</td>
-                        <td>{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</td>
+                        <td> <a href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}"></a>{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</td>
+                        <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
 
                         </tr>
                     @endforeach

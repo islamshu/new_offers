@@ -11,6 +11,7 @@ use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Traits\SendNotification;
+use App\Models\OfferUser;
 use App\Models\Subscription;
 use Carbon\Carbon;
 use Facade\FlareClient\Http\Client;
@@ -607,6 +608,11 @@ class ClinetController extends Controller
     //   dd($member);
     // dd($member);
       return view('dashboard.clinets.show')->with('member',$member);
+    }
+    public function get_reedem_for_user($locale,$user_id,$sub_id)
+    {
+        $offers = OfferUser::where('sub_id',$$sub_id)->where('client_id',$user_id)->get();
+        return $offers;
     }
 
 

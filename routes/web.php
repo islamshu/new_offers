@@ -170,6 +170,7 @@ Route::group([
         Route::get('/get_offer_ajax_not_slider', 'Dashboard\PremotionController@get_offer_ajax_not_slider')->name('get_offer_ajax_not_slider');
         Route::get('/get_branch_ajax', 'Dashboard\RepotController@get_branch_ajax')->name('get_branch_ajax');
         Route::get('/subscriprion_reports', 'Dashboard\RepotController@subscriprion_reports')->name('subscriprion_reports');
+        Route::get('/get_reedem_for_user/{user}/{sub}', 'Dashboard\ClientController@get_reedem_for_user')->name('get_reedem_for_user');
 
         Route::get('offer_status','Dashboard\OfferController@update_status')->name('offerstatus.update');
         
