@@ -9,6 +9,11 @@
                     <li><a href="/{{ get_lang() }}/home"><i class="fa fa-dashboard"></i> {{ __('Dashboard') }}</a></li>
                     <li><a href="/{{ get_lang() }}/all_client"><i class="fa fa-dashboard"></i>
                             {{ __('All Clients') }}</a></li>
+                            <li><a href="/{{ get_lang() }}/clinets/{{ $client->id }}"><i class="fa fa-dashboard"></i>
+                                {{$client->name }}</a>
+                            </li>
+                            <li class="active">{{ __('reedeem ') }} </li>
+
 
                 </ol>
 

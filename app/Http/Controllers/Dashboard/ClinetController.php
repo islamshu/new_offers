@@ -612,7 +612,8 @@ class ClinetController extends Controller
     public function get_reedem_for_user($locale,$user_id,$sub_id)
     {
         $offers = OfferUser::where('sub_id',$sub_id)->where('client_id',$user_id)->get();
-        return view('dashboard.clinets.reedeem')->with('offers',$offers);
+        $client = Clinet::find($user_id);
+        return view('dashboard.clinets.reedeem')->with('offers',$offers)->with('client',$client);
         return $offers;
     }
 
