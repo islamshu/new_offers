@@ -19,7 +19,7 @@
 
             </div>
 
-            <h2 class="mb-3">{{ __('All Copuon') }}</h2>
+            <h2 class="mb-3">{{ __('All Reedeem') }}</h2>
 
 
 
