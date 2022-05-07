@@ -53,7 +53,7 @@ class HomeController extends BaseController
     $products = Transaction::query()
     ->join('transactions', 'transactions.vendor_id', '=', 'vendors.id')
     ->selectRaw('vendors.*, SUM(transactions.vendor_id) AS total')
-    ->groupBy(['products.id']) // should group by primary key
+    ->groupBy(['vendors.id']) // should group by primary key
     ->orderByDesc('total')
     ->take(20) // 20 best-selling products
     ->get();
