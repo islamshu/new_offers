@@ -50,9 +50,11 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends BaseController
 {
   public function get_best_vendor(){
-    $tra = Transaction::orderBy(function ($sale) {
-      return $sale->vendor_id->count();
-     }, SORT_REGULAR, true)->take(1)->get();
+    $tra = Transaction::get()->map->vendor->flatten()->map->pivot->mapTogroups( function ($pivot) {
+      return [$pivot->vendor_id => $pivot->count];
+  })->map->sum()->sortDesc()->take(3)->keys()->toArray();
+
+  // $bestProducts = Product::whereIn('id', $bestProductIds)->get();
     return $tra;
   }
   public function update_vendor_offer()
