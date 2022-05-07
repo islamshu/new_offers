@@ -53,7 +53,7 @@ class HomeController extends BaseController
 
     $ids = Transaction::select('vendor_id', DB::raw('count(*) as total'))
     ->groupBy('vendor_id')
-    ->orderBy('total', 'desc')->get();
+    ->orderBy('total', 'asc')->get();
 
 $produtos = Vendor::whereIn('id', $ids)->take(20)->get();
     return $produtos;
