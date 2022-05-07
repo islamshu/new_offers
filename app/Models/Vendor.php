@@ -79,6 +79,7 @@ class Vendor extends Model
         return $this->hasMany(VendorReview::class, 'vendor_id');
     }
 
+    
 
  
  
