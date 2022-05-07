@@ -53,9 +53,12 @@ class HomeController extends BaseController
 
     $ids = Transaction::select('vendor_id', DB::raw('count(*) as total'))
     ->groupBy('vendor_id')
-    ->orderBy('total', 'asc')->get();
+    ->orderByRaw('count(*) DESC')
+    ->limit(20)
+    ->pluck('vendor_id');
+    
 
-$produtos = Vendor::whereIn('id', $ids)->take(20)->get();
+$produtos = Vendor::whereIn('id', $ids)->get();
     return $produtos;
   }
   public function update_vendor_offer()
