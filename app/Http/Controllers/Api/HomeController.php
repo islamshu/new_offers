@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends BaseController
 {
   public function get_best_vendor(){
-    $tra = Transaction::sortBy(function ($sale) {
+    $tra = Transaction::orderBy(function ($sale) {
       return $sale->vendor_id->count();
      }, SORT_REGULAR, true)->take(1)->get();
     return $tra;
