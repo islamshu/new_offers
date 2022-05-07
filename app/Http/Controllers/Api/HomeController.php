@@ -54,7 +54,7 @@ class HomeController extends BaseController
     ->groupBy('vendor_id')
     ->orderByRaw('count(*) DESC')
     ->limit(20)
-    ->pluck('produto_id');
+    ->pluck('vendor_id');
 
 $produtos = Vendor::whereIn('id', $ids)->get();
     return $produtos;
