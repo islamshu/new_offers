@@ -51,7 +51,7 @@ class HomeController extends BaseController
 {
   public function get_best_vendor(){
     $products = Transaction::query()
-    ->join('transactions', 'transactions.vendor_id', '=', 'vendors.id')
+    ->join('transactions', 'transactions.vendor_id', 'vendors.id')
     ->groupBy(['vendors.id']) // should group by primary key
     ->orderByDesc('total')
     ->take(20) // 20 best-selling products
