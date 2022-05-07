@@ -54,7 +54,7 @@ class HomeController extends BaseController
     $ids = Transaction::select('vendor_id', DB::raw('count(*) as total'))
     ->groupBy('vendor_id')
     ->orderByRaw('count(*) DESC')
-    ->limit(20)
+    ->limit(5)
     ->pluck('vendor_id');
     
 
