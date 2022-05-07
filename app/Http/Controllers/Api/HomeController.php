@@ -50,13 +50,14 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends BaseController
 {
   public function get_best_vendor(){
-    $ids = Transaction::select('vendor_id', DB::raw('count(*) as total'))
-    ->groupBy('vendor_id')
-    ->orderByRaw('count(*) DESC')
-    ->pluck('vendor_id');
-
-$produtos = Vendor::whereIn('id', $ids)->get();
-    return $produtos;
+    $products = Transaction::query()
+    ->join('transactions', 'transactions.vendor_id', '=', 'vendors.id')
+    ->selectRaw('vendors.*, SUM(transactions.vendor_id) AS total')
+    ->groupBy(['products.id']) // should group by primary key
+    ->orderByDesc('total')
+    ->take(20) // 20 best-selling products
+    ->get();
+    return $products;
   }
   public function update_vendor_offer()
   {
