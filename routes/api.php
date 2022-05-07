@@ -21,6 +21,9 @@ Route::get('country', 'Api\HomeController@country');
 Route::get('city', 'Api\HomeController@city');
 Route::post('verification-code/check', 'Api\UserController@verification_code');
 Route::get('home', 'Api\HomeController@home');
+Route::get('get_best_vendor', 'Api\HomeController@get_best_vendor');
+
+
 Route::get('privacy-policy', 'Api\PageController@privacy');
 Route::get('term-and-condition', 'Api\PageController@terms');
 Route::get('about-us', 'Api\PageController@abouts');

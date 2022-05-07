@@ -38,15 +38,21 @@ use App\Models\Popup;
 use App\Models\PopupUser;
 use App\Models\Slider;
 use App\Models\Support;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\VendorReview;
 use Carbon\Carbon;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends BaseController
 {
+  public function get_best_vendor(){
+    $tra =   Transaction::with('vendor')->select(DB::raw('COUNT(id) as cnt', 'vendor_id'))->where('enterprise_id',get_enterprose_uuid(request()->header('uuid')))->groupBy('vendor_id')->orderBy('cnt', 'DESC')->take(5)->get();
+    return $tra;
+  }
   public function update_vendor_offer()
   {
     $vendor= Vendor::whereHas('offers')->with('offers')->get();
