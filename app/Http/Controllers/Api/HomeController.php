@@ -49,18 +49,7 @@ use Illuminate\Support\Facades\Http;
 
 class HomeController extends BaseController
 {
-  public function get_best_vendor(){
-
-    $ids = Transaction::select('vendor_id', DB::raw('count(*) as total'))
-    ->groupBy('vendor_id')
-    ->orderByRaw('count(*) DESC')
-    ->limit(80)
-    ->pluck('vendor_id');
-    
-
-$produtos = Vendor::whereIn('id', $ids)->get();
-    return $produtos;
-  }
+  
   public function update_vendor_offer()
   {
     $vendor= Vendor::whereHas('offers')->with('offers')->get();
