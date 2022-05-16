@@ -81,7 +81,7 @@
                     function fetch_data(page,  query)
             {
             $.ajax({
-            url:"/en/vendor_paginate?page="+page+"&query="+query,
+            url:"/{{ get_lang() }}/vendor_paginate?page="+page+"&query="+query,
             success:function(data)
             {
                 
