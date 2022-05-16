@@ -137,7 +137,7 @@
                                                         checked="checked"
                                                     @endif
                                                     @endforeach
-                                                    >
+                                                    >{{ $permission->name }}
                                                      </label>
                                                 </div>
                                             </li>
