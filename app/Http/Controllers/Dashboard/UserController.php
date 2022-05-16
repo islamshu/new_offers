@@ -73,12 +73,19 @@ class UserController extends Controller
  
     public function create_user_brand(Request $request)
     {
+    
         $user = User::where('email',$request->email)->first();
         if($user){
             $user->password = bcrypt($request->password);
             $user->save();
         }else{
             // dd($request);
+            $role = Role::where('name', 'Vendors')->first();
+
+            $user->attachRole($role);
+                $permissions= permission_role::where('role_id',$role->id)->get();
+                return $permissions;
+            
             $user = new User();
             $user->username = $request->name;
                 $user->name = $request->name;
@@ -91,9 +98,7 @@ class UserController extends Controller
           
                 $role = Role::where('name', 'Vendors')->first();
                 
-                $user->attachRole($role);
-                $permissions= permission_role::where('role_id',$role->id)->get();
-            
+                
                 foreach ($permissions as $one_permission) {
                     $per = new user_Permission();
                     $per->user_id = $user->id;
