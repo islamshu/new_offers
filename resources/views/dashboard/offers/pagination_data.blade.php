@@ -17,7 +17,7 @@
         @foreach ($vendors as $item)
             <td><img src="{{ asset('images/brand/' . $item->image) }}" width="50" height="50"
                     alt=""></td>
-            <td>{{ $item->name_en }}</td>
+            <td>{{ $item->get_name() }}</td>
             <td>{{ $item->branches->count() }}</td>
             <td>{{ $item->offers->count() }}</td>
             <td>{{ App\Models\Offer::where('vendor_id', $item->id)->where('end_time', '>', \Carbon\Carbon::now())->where('start_time', '<', \Carbon\Carbon::now())->count() }}
