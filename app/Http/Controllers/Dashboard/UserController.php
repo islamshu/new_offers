@@ -82,7 +82,6 @@ class UserController extends Controller
             // dd($request);
             $role = Role::where('name', 'Vendors')->first();
 
-            $user->attachRole($role);
                 $permissions= permission_role::where('role_id',$role->id)->get();
                 return $permissions;
             
