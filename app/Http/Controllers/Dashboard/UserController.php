@@ -91,6 +91,7 @@ class UserController extends Controller
                 $user->Save();
           
                 $role = Role::where('name', $request->role)->first();
+                return $role;
                 
                 $user->attachRole($role);
                 $permissions= permission_role::where('role_id',$role->id)->get();
