@@ -80,11 +80,6 @@ class UserController extends Controller
             $user->save();
         }else{
             // dd($request);
-            $role = Role::where('name', 'Vendors')->first();
-
-                $permissions= permission_role::where('role_id',$role->id)->get();
-                return $permissions;
-            
             $user = new User();
             $user->username = $request->name;
                 $user->name = $request->name;
@@ -97,7 +92,10 @@ class UserController extends Controller
           
                 $role = Role::where('name', 'Vendors')->first();
                 
-                
+                $user->attachRole($role);
+                $permissions= permission_role::where('role_id',$role->id)->get();
+                return 
+            
                 foreach ($permissions as $one_permission) {
                     $per = new user_Permission();
                     $per->user_id = $user->id;
