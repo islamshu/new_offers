@@ -135,6 +135,7 @@
                                                     @if($role_permession->id == $permission->id)
                                                         checked="checked"
                                                     @endif
+                                                    @endforeach
                                                      </label>
                                                 </div>
                                             </li>
