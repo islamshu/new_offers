@@ -17,7 +17,7 @@
                     @foreach (App\Models\Role::Where('ent_id',auth()->user()->ent_id)->get() as $item)
                         
                  
-                    <option value="{{ $item }}">{{ $item }}</option>
+                    <option value="{{ $item->name }}">{{ $item->name }}</option>
                     @endforeach
                 </select>
             </div>
