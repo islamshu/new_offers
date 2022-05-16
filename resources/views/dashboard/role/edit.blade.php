@@ -131,11 +131,13 @@
                                             <li class="list-group-item">
                                                 <div class="fancy-checkbox">
                                                    <label>
+                                                    <input type="checkbox" name="permission_ids[]" value="{{$permission->id}}"
                                                     @foreach($role->permissions as $role_permession)
                                                     @if($role_permession->id == $permission->id)
                                                         checked="checked"
                                                     @endif
                                                     @endforeach
+                                                    >
                                                      </label>
                                                 </div>
                                             </li>
