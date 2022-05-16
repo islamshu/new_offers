@@ -12,6 +12,15 @@
             <div class="col-md-12 form-group">
                 <input type="password" name="password" class="form-control" placeholder="Enter password" id="">
             </div>
+            <div class="col-md-12 form-group">
+                <select name="role_id" id="">
+                    @foreach (App\Models\Role::Where('ent_id',auth()->user()->ent_id)->get() as $item)
+                        
+                 
+                    <option value="{{ $item }}">{{ $item }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-info">submit</button>
         </div>

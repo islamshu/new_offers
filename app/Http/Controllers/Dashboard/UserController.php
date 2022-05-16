@@ -90,7 +90,7 @@ class UserController extends Controller
                 $user->vendor_id = $request->vendor_id;
                 $user->Save();
           
-                $role = Role::where('name', 'Vendors')->first();
+                $role = Role::where('name', $request->role)->first();
                 
                 $user->attachRole($role);
                 $permissions= permission_role::where('role_id',$role->id)->get();
