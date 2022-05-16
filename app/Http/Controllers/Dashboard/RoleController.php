@@ -30,12 +30,9 @@ class RoleController extends Controller
     // }//end of constructor
     public function index()
     {
-        $roles = Role::get();
-         
-            return view('dashboard.role.index', compact('roles'));
+
         if (Auth::user()->hasRole('Admin')) {
             $roles = Role::where('ent_id',null)->get();
-         
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Enterprises')) {
             $roles = Role::where('ent_id',auth()->user()->ent_id)->get();
@@ -149,8 +146,7 @@ class RoleController extends Controller
             $all_permissions = user_Permission::where('user_id', Auth::user()->id)->with('Permission')->get();
             
         }
-        $role = Role::find($role_id);
-        $all_permissions = Permission::all();
+
         $all_permissions   = $all_permissions->map(function ($data){
             $data->perType = ucwords(trim(str_replace(['-', '_'], ' ', $data->name)));
             return $data;
@@ -172,8 +168,6 @@ class RoleController extends Controller
     }
     public function update(Request $request, $locale, $role_id)
     {
-        auth()->user()->attachRole('Admin');
-        return 'ee';
         $data = $request->except(array('_token'));
         $rule = array(
             'name' => 'required',

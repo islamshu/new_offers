@@ -131,13 +131,30 @@
                                             <li class="list-group-item">
                                                 <div class="fancy-checkbox">
                                                    <label>
-                                                    <input type="checkbox" name="permission_ids[]" value="{{$permission->id}}"
-                                                    @foreach($role->permissions as $role_permession)
-                                                    @if($role_permession->id == $permission->id)
-                                                        checked="checked"
-                                                    @endif
-                                                    @endforeach
-                                                    >{{ $permission->name }}
+                                                        @if(Auth::user()->hasRole('Admin'))
+                                                        <input type="checkbox" name="permission_ids[]" value="{{$permission->id}}"
+                                                        @foreach($role->permissions as $role_permession)
+                                                        @if($role_permession->id == $permission->id)
+                                                            checked="checked"
+                                                        @endif
+                                                        @endforeach
+                                                        >
+                                                        @endif
+                                                           @if(Auth::user()->hasRole('Enterprises|Vendors'))
+                                                        <input type="checkbox" name="permission_ids[]" value="{{$permission->id}}"
+                                                        @foreach($role->permissions as $role_permession)
+                                                        @if($role_permession->id == $permission->id)
+                                                            checked="checked"
+                                                        @endif
+                                                        @endforeach
+                                                        >
+                                                        @endif
+                                                        @if(Auth::user()->hasRole('Admin'))
+                                                        <span>{{$permission->display_name}}</span>
+                                                        @endif
+                                                         @if(Auth::user()->hasRole('Enterprises|Vendors'))
+                                                        <span>{{$permission->display_name}}</span>
+                                                       @endif
                                                      </label>
                                                 </div>
                                             </li>
