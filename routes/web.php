@@ -78,7 +78,7 @@ Route::group([
         Route::resource('vendor', Dashboard\brandController::class);
         Route::get('vendors/fetch_data', "Dashboard\brandController@fetch_data");
         Route::get('users_pagiante/fetch_data', "Dashboard\PortalController@fetch_data");
-        Route::get('portal', "Dashboard\PortalController@index");
+        Route::get('portall', "Dashboard\PortalController@index");
         Route::get('get_user_vendor/{id}', "Dashboard\PortalController@user_vendor")->name('get_user');
         Route::get('user_pan', "Dashboard\PortalController@panuser")->name('userpand.update');
         Route::get('set_Primary', "Dashboard\PortalController@set_Primary")->name('set_Primary.update');

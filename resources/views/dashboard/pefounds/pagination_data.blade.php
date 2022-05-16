@@ -16,7 +16,7 @@
         @foreach ($vendors as $item) 
         <td><img src="{{ asset('images/brand/'.$item->image)}}" width="50" height="50" alt=""></td>
 
-        <td>{{$item->name_en}}</td>
+        <td>{{ $item->get_name() }}</td>
         <td>{{ $item->code_permfomed->count() }}</td>
         <td>{{ $item->code_permfomed->where('status',1)->count() }}</td>
         <td>{{ $item->code_permfomed->where('status',0)->count() }}</td>
