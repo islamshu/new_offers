@@ -149,8 +149,8 @@ class RoleController extends Controller
             $all_permissions = user_Permission::where('user_id', Auth::user()->id)->with('Permission')->get();
             
         }
+        $role = Role::find($role_id);
         $all_permissions = Permission::all();
-
         $all_permissions   = $all_permissions->map(function ($data){
             $data->perType = ucwords(trim(str_replace(['-', '_'], ' ', $data->name)));
             return $data;
