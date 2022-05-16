@@ -30,10 +30,11 @@ class RoleController extends Controller
     // }//end of constructor
     public function index()
     {
+        return Auth::user()->hasRole('Admin');
 
         if (Auth::user()->hasRole('Admin')) {
             $roles = Role::where('ent_id',null)->get();
-            return $roles;
+         
             return view('dashboard.role.index', compact('roles'));
         } elseif (Auth::user()->hasRole('Enterprises')) {
             $roles = Role::where('ent_id',auth()->user()->ent_id)->get();
