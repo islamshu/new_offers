@@ -227,7 +227,7 @@ function fetch_data(page, query) {
 
 
             $.ajax({
-                url: "/en/fetch_data_markinteming_client?page=" + page + "&query=" + query + "&register_form=" +
+                url:"/{{ get_lang() }}/fetch_data_markinteming_client?page=" + page + "&query=" + query + "&register_form=" +
                 register_form + "&register_to=" + register_to + "&last_from=" + last_from +
                     "&last_to=" + last_to + "&transaction_from=" + transaction_from + "&transaction_to=" + transaction_to +
                     "&type=" + type,

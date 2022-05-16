@@ -246,7 +246,7 @@
             var regestar_from = $('#regestar_from').val();
             var regestar_to = $('#regestar_to').val();
                 $.ajax({
-                    url: "/en/get_type_client?page=" + page + "&query=" + query,
+                    url:"/{{ get_lang() }}/get_type_client?page=" + page + "&query=" + query,
                     data: {
                     'type': type,
                     'regestar_from': regestar_from,

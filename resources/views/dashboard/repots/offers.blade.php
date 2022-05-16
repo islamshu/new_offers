@@ -252,7 +252,7 @@
 
 
             $.ajax({
-                url: "/en/offer_reports_fetch_data?page=" + page + "&query=" + query + "&created_form=" +
+                url:"/{{ get_lang() }}/offer_reports_fetch_data?page=" + page + "&query=" + query + "&created_form=" +
                     created_form + "&created_to=" + created_to + "&vendor_status=" + vendor_status +
                     "&offer_status=" + offer_status + "&city_id=" + city_id + "&category_id=" + category_id +
                     "&number_date=" + number_date,

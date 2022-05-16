@@ -79,7 +79,7 @@
 
                     function fetch_data(page, query) {
                         $.ajax({
-                            url: "/en/users_pagiante/fetch_data?page=" + page + "&query=" + query,
+                            url:"/{{ get_lang() }}/users_pagiante/fetch_data?page=" + page + "&query=" + query,
                             success: function(data) {
 
                                 $('.set_date').html('');

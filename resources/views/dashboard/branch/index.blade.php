@@ -77,7 +77,7 @@ card card-docs mb-2">
 
             function fetch_data(page, query) {
                 $.ajax({
-                    url: "/en/branch_paginate?page=" + page + "&query=" + query,
+                    url:"/{{ get_lang() }}/branch_paginate?page=" + page + "&query=" + query,
                     success: function(data) {
 
                         $('.set_date').html('');

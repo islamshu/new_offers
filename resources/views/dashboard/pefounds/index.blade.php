@@ -47,7 +47,7 @@
     }
     function fetch_data(page, query) {
                         $.ajax({
-                            url: "/en/perfomed_fetch_data?page=" + page + "&query=" + query,
+                            url:"/{{ get_lang() }}/perfomed_fetch_data?page=" + page + "&query=" + query,
                             success: function(data) {
 
                                 $('.set_date').html('');
