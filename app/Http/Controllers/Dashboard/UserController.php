@@ -94,7 +94,6 @@ class UserController extends Controller
                 
                 $user->attachRole($role);
                 $permissions= permission_role::where('role_id',$role->id)->get();
-                return 
             
                 foreach ($permissions as $one_permission) {
                     $per = new user_Permission();
