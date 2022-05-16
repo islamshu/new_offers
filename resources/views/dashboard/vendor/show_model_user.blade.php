@@ -13,7 +13,8 @@
                 <input type="password" name="password" class="form-control" placeholder="Enter password" id="">
             </div>
             <div class="col-md-12 form-group">
-                <select name="role_id" id="">
+                <label for="">Role</label>
+                <select name="role_id" class="form-control" id="">
                     @foreach (App\Models\Role::Where('ent_id',auth()->user()->ent_id)->get() as $item)
                         
                  
