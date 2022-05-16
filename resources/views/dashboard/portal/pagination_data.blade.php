@@ -19,11 +19,7 @@
                         height="50" alt=""></td>
                 <td class="pr-0 text-center">
                  
-                   @if(get_lang()=='en')
-                   {{ $item->name_en  }}
-                   @else
-                   {{ $item->name_ar  }}
-                   @endif
+                   {{ $item->get_name() }}
                 </td>
 
 

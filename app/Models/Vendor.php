@@ -78,6 +78,14 @@ class Vendor extends Model
     {
         return $this->hasMany(VendorReview::class, 'vendor_id');
     }
+    public function get_name() {
+        if(get_lang() == 'ar'){
+            return $this->name_ar;
+        }else{
+            return $this->name_en;
+
+        }
+    }
 
     
 
