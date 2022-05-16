@@ -18,11 +18,7 @@
                 <td class="pr-0 text-center"><img src="{{ asset('images/brand/' . $item->image) }}" width="50"
                         height="50" alt=""></td>
                 <td class="pr-0 text-center">
-                   @if(get_lang()=='en')
-                   {{ $item->name_en  }}
-                   @else
-                   {{ $item->name_ar  }}
-                   @endif
+                   {{ $item->name_ar }}
                 </td>
 
 
