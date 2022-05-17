@@ -2,6 +2,7 @@
 @php
 $lang = app()->getLocale();
 @endphp
+
 @if (auth()->user()->isAbleTo(['statistic-dashboard']))
 
 <div class="card card-custom bg-gray-100 {{ @$class }}">
