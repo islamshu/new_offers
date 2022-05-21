@@ -231,6 +231,7 @@ class CodeController extends BaseController
               })->first();
             //   dd($dd);
             $discout = @$dd->promocode;
+            return $discout;
             // $discout = DiscountSubscription::where('code',$request->code)->first();
             if($discout != null ){
                     $sub = Subscription::find($discout->sub_id);
@@ -284,17 +285,5 @@ class CodeController extends BaseController
             }
             
         }
-
-
-
-
-
-
-
-
-
-
-
-
     
 }

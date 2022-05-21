@@ -52,7 +52,7 @@ Route::group(['middleware' => 'is_login'], function () {
     Route::group(['middleware' => 'devide'], function () {
         Route::get('client/info', 'Api\UserController@user_info');
         Route::post('store-favorite/create', 'Api\FavoritController@store_to_favorate');
-        Route::delete('store-favorite/delete', 'Api\FavoritController@AddOrRemoveStoreFavorit');
+        Route::delete('store-favorite/delete', 'Api\FavoritController@delete_from_favorate');
         Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
         Route::post('package/payment/myfatoorah/activate','Api\PayemntController@active');
 
