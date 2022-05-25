@@ -98,6 +98,7 @@ class HomeController extends BaseController
     } else {
       $city_id = 15;
     }
+
     // $country_id = Enterprise::with('categorys')->where('uuid',$uuid)->first()->counteire->first()->id;
     $enterprice = Enterprise::with('categorys')->where('uuid', $uuid)->first();
     if (!$enterprice) {
@@ -111,6 +112,7 @@ class HomeController extends BaseController
     $res['data']['recent_offers']['metadata']['color'] = '#bcbcbc';
     $res['data']['recent_offers']['data'] = [];
     $res['data']['home_sliders'] = new HomeSLiderCollection(HomeSlider::where('city_id', $city_id)->orderBy('sort', 'asc')->get());
+
     return $res;
   }
   public  function vendor_list(Request $request)

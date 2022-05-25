@@ -368,7 +368,7 @@
         <button type="button" onclick="performStore()" class="btn btn-primary mr-2">Submit</button>
     </div>
 
-    </form>
+    </form >
     </div>
     </div>
 @endsection
