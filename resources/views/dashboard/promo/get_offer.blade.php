@@ -11,7 +11,7 @@
     <div class="card card-docs mb-2">
         <div class="card-body fs-6 py-15 px-10 py-lg-15 px-lg-15 text-gray-700">
             <h2 class="mb-3">{{ __('All Offer for this slider') }}</h2>
-            @if (auth()->user()->isAbleTo(['create-promotion'] || auth()->user()->isAbleTo(['home-slider'])
+            @if (auth()->user()->isAbleTo(['create-promotion'] || auth()->user()->isAbleTo(['home-slider']))
                 <fieldset style="    border: 2px solid lightgray !important;
                         padding: 36px;
                     ">
