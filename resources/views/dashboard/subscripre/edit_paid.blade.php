@@ -95,7 +95,7 @@
                 <div class="form-group col-md-6">
                     <label>{{ __('Balance Type') }}:</label>
                     <select name="type_balance" class="form-control" id="type_balance">
-                        <option value="" selected disabled> {{ __('chose Option') }}</option>
+                        <option value=""  disabled> {{ __('chose Option') }}</option>
                         <option value="Limit" @if( $sub->type_balance == 'Limit') selectd @endif >{{ __('Limit') }}</option>
                         <option value="UnLimit" @if( $sub->type_balance == 'UnLimit') selectd @endif>{{ __('UnLimit') }}</option>
 
