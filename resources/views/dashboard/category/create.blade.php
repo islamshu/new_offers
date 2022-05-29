@@ -77,6 +77,7 @@
                 @endforeach
             </ul>
         </div>
+        
         @endif
         @if (session()->has('message'))
         <div class="alert {{session()->get('status')}} alert-dismissible fade show" role="alert">

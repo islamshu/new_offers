@@ -154,7 +154,7 @@ class SubscriptionController extends Controller
         $enterprises = Enterprise::get();
         $brands= Vendor::whereNull('enterprise_id')->get();
         $sub = Subscription::find($id);
-        if($sub->type_paid == 'paid'){
+        if($sub->type_paid == 'PREMIUM'){
             return view('dashboard.subscripre.edit_paid', compact('enterprises','brands','sub'));
         }else{
             return view('dashboard.subscripre.edit_trial', compact('enterprises','brands','sub'));
