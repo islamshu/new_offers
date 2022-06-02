@@ -632,7 +632,6 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
         if($json->Data->InvoiceValue  != floatval( $price_payment )){
-            dd($json->Data->InvoiceValue,floatval( $price_payment ));
             $pa = new Falid_payments();
             $pa->order_id = $request->order_id;
             $pa->invoice_id = $request->invoice_id;
@@ -649,6 +648,14 @@ class PayemntController extends BaseController
             return $res;
         }
         if($json->Data->InvoiceValue == 1.0){
+            $pa = new Falid_payments();
+            $pa->order_id = $request->order_id;
+            $pa->invoice_id = $request->invoice_id;
+            $pa->user_id = auth('client_api')->id();
+            $pa->amount = floatval( $price_payment );
+            $pa->myfatoorah_amount = $json->Data->InvoiceValue;
+            $pa->message ='min 1';
+            $pa->save();
             $res['status'] = $this->SendError();
             $res['status']['message'] = 'not value are there';
             return $res;
