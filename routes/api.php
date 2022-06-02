@@ -55,6 +55,7 @@ Route::group(['middleware' => 'is_login'], function () {
         Route::delete('store-favorite/delete', 'Api\FavoritController@delete_from_favorate');
         Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah');
         Route::post('package/payment/myfatoorah/activate','Api\PayemntController@active');
+        Route::post('package/payment/myfatoorah/activate2','Api\PayemntController@active2');
 
       
 
