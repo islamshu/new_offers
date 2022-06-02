@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\BaseController;
 use App\Http\Resources\PakegeTowResourses;
 use App\Models\Discount;
 use App\Models\DiscountSubscription;
+use App\Models\Falid_payments;
 use App\Models\Payment;
 use App\Models\PromocodeUser;
 use App\Models\Subscription;
@@ -596,6 +597,17 @@ class PayemntController extends BaseController
     public  function active2(Request $request)
     {
         $payment = Payment::where('order_id',$request->order_id)->where('invoice_id',$request->invoice_id)->first();
+        if(!$payment){
+            $pa = new Falid_payments();
+            $pa->order_id = $request->order_id;
+            $pa->invoice_id = $request->invoice_id;
+            $pa->user_id = auth('client_api')->id();
+            $pa->message ='no payment';
+            $pa->save();
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = 'Not Found Payment ';
+            return $res;
+        }
 
         $price_payment = $payment->amount;
         $postFields = [
@@ -620,6 +632,17 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
         if($json->Data->InvoiceValue  != floatval( $price_payment )){
+            $pa = new Falid_payments();
+            $pa->order_id = $request->order_id;
+            $pa->invoice_id = $request->invoice_id;
+            $pa->user_id = auth('client_api')->id();
+            $pa->amount = floatval( $price_payment );
+            $pa->myfatoorah_amount = $json->Data->InvoiceValue;
+            $pa->message ='not match';
+            $pa->save();
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = 'Not Found Payment ';
+            return $res;
             $res['status'] = $this->SendError();
             $res['status']['message'] = 'Values do not match';
             return $res;
