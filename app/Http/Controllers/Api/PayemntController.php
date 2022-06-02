@@ -597,6 +597,7 @@ class PayemntController extends BaseController
     public  function active2(Request $request)
     {
         $payment = Payment::where('order_id',(int)$request->order_id)->where('invoice_id',(string)$request->invoice_id)->first();
+        dd((int)$request->order_id,(string)$request->invoice_id);
         if(!$payment){
             $pa = new Falid_payments();
             $pa->order_id = $request->order_id;
@@ -641,7 +642,6 @@ class PayemntController extends BaseController
             $pa->message ='not match';
             $pa->save();
             $res['status'] = $this->SendError();
-            dd('dd');
             $res['status']['message'] = 'Not Found Payment ';
             return $res;
             $res['status'] = $this->SendError();
