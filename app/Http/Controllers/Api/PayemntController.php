@@ -596,7 +596,7 @@ class PayemntController extends BaseController
     }
     public  function active2(Request $request)
     {
-        $payment = Payment::where('order_id',(string)$request->order_id)->where('invoice_id',(int)$request->invoice_id)->first();
+        $payment = Payment::where('order_id',(int)$request->order_id)->where('invoice_id',(string)$request->invoice_id)->first();
         
         if(!$payment){
             $pa = new Falid_payments();
