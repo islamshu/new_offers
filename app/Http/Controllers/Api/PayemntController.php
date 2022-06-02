@@ -632,6 +632,7 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
         if($json->Data->InvoiceValue  != floatval( $price_payment )){
+            dd($json->Data->InvoiceValue,floatval( $price_payment ));
             $pa = new Falid_payments();
             $pa->order_id = $request->order_id;
             $pa->invoice_id = $request->invoice_id;
