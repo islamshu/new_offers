@@ -338,7 +338,7 @@ class PayemntController extends BaseController
         }
         $json = json_decode($response);
       
-        dd($json->Data);
+        dd($json->Data->InvoiceId);
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
             $user = new Subscriptions_User();
