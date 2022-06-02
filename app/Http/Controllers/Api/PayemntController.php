@@ -596,7 +596,6 @@ class PayemntController extends BaseController
     public  function active2(Request $request)
     {
         $payment = Payment::where('order_id',$request->order_id)->where('invoice_id',$request->invoice_id)->first();
-        dd($payment);
 
         $price_payment = $payment->amount;
         $postFields = [
