@@ -617,7 +617,7 @@ class PayemntController extends BaseController
             return $res;
         }
         $json = json_decode($response);
-        dd($json);
+        dd( $json->Data->InvoiceDisplayValue ,$price_payment);
 
 
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
