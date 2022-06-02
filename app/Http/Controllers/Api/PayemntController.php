@@ -598,7 +598,6 @@ class PayemntController extends BaseController
     {
         $payment = Payment::where('order_id',(string)$request->order_id)->where('invoice_id',(int)$request->invoice_id)->first();
         
-        dd((string)$request->order_id,(int)$request->invoice_id);
         if(!$payment){
             $pa = new Falid_payments();
             $pa->order_id = $request->order_id;
