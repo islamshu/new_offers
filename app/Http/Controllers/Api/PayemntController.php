@@ -641,9 +641,7 @@ class PayemntController extends BaseController
             $pa->myfatoorah_amount = $json->Data->InvoiceValue;
             $pa->message ='not match';
             $pa->save();
-            $res['status'] = $this->SendError();
-            $res['status']['message'] = 'Not Found Payment ';
-            return $res;
+          
             $res['status'] = $this->SendError();
             $res['status']['message'] = 'Values do not match';
             return $res;
