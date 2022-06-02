@@ -56,7 +56,7 @@ Route::group(['middleware' => 'is_login'], function () {
         Route::post('package/payment/myfatoorah/request','Api\PayemntController@myfatoorah2');
         Route::post('package/payment/myfatoorah/request2','Api\PayemntController@myfatoorah2');
 
-        Route::post('package/payment/myfatoorah/activate','Api\PayemntController@active');
+        Route::post('package/payment/myfatoorah/activate','Api\PayemntController@active2');
         Route::post('package/payment/myfatoorah/activate2','Api\PayemntController@active2');
 
       
