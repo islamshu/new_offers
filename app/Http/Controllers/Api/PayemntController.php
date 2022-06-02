@@ -620,9 +620,16 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
         if($json->Data->InvoiceValue  != floatval( $price_payment )){
-            dd('fd');
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = 'Values do not match';
+            return $res;
         }
-        dd('f');
+        if($json->Data->InvoiceValue == 1.0){
+            $res['status'] = $this->SendError();
+            $res['status']['message'] = 'not value are there';
+            return $res;
+        }
+      
 
 
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
