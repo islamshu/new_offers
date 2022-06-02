@@ -338,7 +338,6 @@ class PayemntController extends BaseController
         }
         $json = json_decode($response);
       
-        dd($json->Data->InvoiceId);
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
             $user = new Subscriptions_User();
@@ -384,7 +383,7 @@ class PayemntController extends BaseController
            
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
-            $payment->invoice_id = Carbon::now()->timestamp;
+            $payment->invoice_id = $json->Data->InvoiceId;
 
             $payment->user_id = auth('client_api')->id();
 
