@@ -34,6 +34,9 @@ use App\Models\Enterprise;
 use App\Models\enterprise_city;
 use App\Models\Homeslider;
 use App\Models\Offer;
+use App\Models\Clinet;
+
+
 use App\Models\Popup;
 use App\Models\PopupUser;
 use App\Models\Slider;
@@ -406,8 +409,8 @@ class HomeController extends BaseController
   }
   public function profile()
   {
-    $user = User::find(auth('client_api')->id());
-    $res['status'] = $this->sendResponse200('OK');
+    $user = Clinet::find(auth('client_api')->id());
+        $res['status'] = $this->sendResponse200('OK');
     $res['data'] = [
       'name' => $user->name,
       'email' => $user->email,
