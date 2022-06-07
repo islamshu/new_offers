@@ -627,6 +627,7 @@ class ClinetController extends Controller
   
         $subs = Subscriptions_User::where('id','!=',$id)->where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
         if($subs){
+            return $subs;
             $client->type_of_subscribe = $code->type_paid;
             $count = OfferUser::where('sub_id',$subs->id)->where('client_id',$client->id)->count();
             if ($code->type_balance == 'Limit') {
