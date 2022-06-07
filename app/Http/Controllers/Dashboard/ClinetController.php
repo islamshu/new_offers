@@ -619,7 +619,7 @@ class ClinetController extends Controller
     public function deletesub($id,$lang)
     {
         $sub = Subscriptions_User::find($id);
-        return $sub;
+        return response()->json($sub);
     }
 
 
