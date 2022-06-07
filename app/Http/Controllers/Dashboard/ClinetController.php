@@ -14,7 +14,6 @@ use App\Http\Traits\SendNotification;
 use App\Models\OfferUser;
 use App\Models\Subscription;
 use Carbon\Carbon;
-use Facade\FlareClient\Http\Client;
 
 class ClinetController extends Controller
 {
