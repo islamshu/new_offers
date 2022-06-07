@@ -619,7 +619,7 @@ class ClinetController extends Controller
     {
         $sub = Subscriptions_User::find($id);
         $client = Clinet::find($sub->clinet_id);
-        $code = Subscription::where('sub_id',$sub->sub_id)->first();
+        $code = Subscription::where('id',$sub->sub_id)->first();
         $sub->delete();
         $subs = Subscriptions_User::where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
         if($subs){
