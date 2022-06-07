@@ -620,8 +620,8 @@ class ClinetController extends Controller
         $sub = Subscriptions_User::find($id);
         $client = Clinet::find($sub->clinet_id);
         $code = Subscription::where('id',$sub->sub_id)->first();
-        $sub->delete();
-        $subs = Subscriptions_User::where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
+  
+        $subs = Subscriptions_User::where('id','!=',$id)->where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
         return $subs;
         if($subs){
             $client->type_of_subscribe = $code->type_paid;
@@ -641,7 +641,7 @@ class ClinetController extends Controller
         }else{
             $client->type_of_subscribe = 'FREE';
         }
-
+        $sub->delete();
         return redirect()->back();
     }
 
