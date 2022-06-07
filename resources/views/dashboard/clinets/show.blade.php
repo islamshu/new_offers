@@ -203,7 +203,7 @@
                         <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
                         <td>
                             <form method="post" style="display: inline">
-                                <button type="button" onclick="performdelete('{{ $item->id }}')"
+                                <button type="button" onclick="performdelete('{{ $sub->id }}')"
                                     class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
                                         class="svg-icon svg-icon-md svg-icon-primary">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
