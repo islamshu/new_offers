@@ -127,7 +127,7 @@ Route::group([
         Route::post('/vendor-cover', 'Dashboard\brandController@post_cover')->name('cover.post');
         Route::post('/show/category', 'Dashboard\brandController@showpostModal')->name('showpostModal');
         Route::post('/show/phone', 'Dashboard\RepotController@showphone')->name('showphone');
-        Route::post('/user_sub_delete/{id}', 'Dashboard\ClinetController@deletesub')->name('user_sub_delete.destroy');
+        Route::delete('/user_sub_delete/{id}', 'Dashboard\ClinetController@deletesub')->name('user_sub_delete.destroy');
 
         
         
