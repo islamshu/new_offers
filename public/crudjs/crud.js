@@ -169,7 +169,7 @@ function destroy(url) {
             console.log(response.data);
 
             showMessage(response.data);
-            location.reload(true);
+            // location.reload(true);
 
         })
         .catch(function(error) {
