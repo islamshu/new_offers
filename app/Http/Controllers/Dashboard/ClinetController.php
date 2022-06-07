@@ -619,7 +619,30 @@ class ClinetController extends Controller
     public function deletesub($lang,$id)
     {
         $sub = Subscriptions_User::find($id);
-        return response()->json($sub);
+        $client = Client::find($sub->clinet_id);
+        $code = Subscription::where('sub_id',$sub->sub_id)->first();
+        $sub->delete();
+        $subs = Subscriptions_User::where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
+        if($subs){
+            $client->type_of_subscribe = $code->type_paid;
+            $count = OfferUser::where('sub_id',$sub->id)->where('client_id',$client->id)->count();
+            if ($code->type_balance == 'Limit') {
+                $client->is_unlimited = 0;
+                $client->credit = $code->balance   ;
+                $client->remain = $code->balance - $count;
+            } elseif ($code->type_balance == 'UnLimit') {
+                $client->is_unlimited = 1;
+                $client->credit = null;
+                $client->remain = null;
+            }
+            $client->expire_date = $subs->expire_date;
+            $client->start_date = $subs->created_at;
+            $client->save();
+        }else{
+            $client->type_of_subscribe = 'FREE';
+        }
+
+        return redirect()->back();
     }
 
 
