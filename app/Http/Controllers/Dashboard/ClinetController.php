@@ -618,7 +618,7 @@ class ClinetController extends Controller
     public function deletesub($lang,$id)
     {
         $sub = Subscriptions_User::find($id);
-        return $sub;
+        return $id;
 
         $client = Clinet::find($sub->clinet_id);
         $code = Subscription::where('id',$sub->sub_id)->first();
