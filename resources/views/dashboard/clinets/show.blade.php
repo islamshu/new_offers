@@ -255,6 +255,9 @@
     <script src="{{ asset('dashboard/assets/assets/bundles/flotscripts.bundle.js') }}"></script>
     <script src="{{ asset('dashboard/assets/assets/bundles/c3.bundle.js') }}"></script>
     <script src="{{ asset('dashboard/assets/assets/bundles/knob.bundle.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
