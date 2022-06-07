@@ -623,11 +623,13 @@ class ClinetController extends Controller
 
         $client = Clinet::find($sub->clinet_id);
         $code = Subscription::where('id',$sub->sub_id)->first();
+        
   
         $subs = Subscriptions_User::where('id','!=',$id)->where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
         if($subs){
             $client->type_of_subscribe = $code->type_paid;
             $count = OfferUser::where('sub_id',$id)->where('client_id',$client->id)->count();
+            return $count;
             if ($code->type_balance == 'Limit') {
                 $client->is_unlimited = 0;
                 $client->credit = $code->balance   ;
