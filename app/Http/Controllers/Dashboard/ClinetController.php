@@ -616,7 +616,7 @@ class ClinetController extends Controller
         return view('dashboard.clinets.reedeem')->with('offers',$offers)->with('client',$client);
         return $offers;
     }
-    public function deletesub($id,$lang)
+    public function deletesub($lang,$id)
     {
         $sub = Subscriptions_User::find($id);
         return response()->json($sub);

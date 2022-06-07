@@ -202,7 +202,7 @@
                         <td> <a target="_blank" href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}">{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</a></td>
                         <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
                         <td>
-                            <form style="display: inline" action="{{ route('user_sub_delete.destroy',[$sub->id,get_lang()]) }}" method="post">
+                            <form style="display: inline" action="{{ route('user_sub_delete.destroy',[get_lang(),$sub->id]) }}" method="post">
                                 @method('delete') @csrf
                                 
                                   
