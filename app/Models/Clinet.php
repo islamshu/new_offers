@@ -36,6 +36,10 @@ class Clinet extends Authenticatable
     {
         return $this->hasMany(Subscriptions_User::class);
     }
+    public function subsTranshed()
+    {
+        return $this->hasMany(Subscriptions_User::class)->withTrashed();
+    }
     public function subs_last()
     {
         return $this->hasMany(Subscriptions_User::class)->latest();

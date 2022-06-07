@@ -186,7 +186,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($member->subs->withTrashed() as $sub)
+                    @foreach ($member->subsTranshed as $sub)
                         @if(get_lang() == 'ar')
                        <td>{{ @$sub->subscripe->name_ar }}</td>
                         @else
