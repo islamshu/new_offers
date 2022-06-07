@@ -646,6 +646,8 @@ class ClinetController extends Controller
             $client->credit = null;
             $client->remain = null;
             $client->type_of_subscribe = 'FREE';
+            $client->expire_date = null;
+            $client->start_date = null;
             $client->save();
         }
         $sub->delete();
