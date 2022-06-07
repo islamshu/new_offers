@@ -616,6 +616,11 @@ class ClinetController extends Controller
         return view('dashboard.clinets.reedeem')->with('offers',$offers)->with('client',$client);
         return $offers;
     }
+    public function deletesub($id,$lang)
+    {
+        $sub = Subscriptions_User::find($id);
+        return $sub;
+    }
 
 
     public function edit(Clinet $clinet)
