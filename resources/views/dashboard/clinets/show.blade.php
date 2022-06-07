@@ -208,7 +208,7 @@
                                 @method('delete') @csrf
                                 
                                   
-                                  <button class="mb-6 btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
+                                  <button class="btn btn-danger delete-confirm" type="submit" > <i class="material-icons">الفاء</i></button>
                                 
                             </form>
                             @else
