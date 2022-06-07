@@ -201,7 +201,9 @@
                         <td>{{ @$sub->promocode ? @$sub->promocode : '_' }}</td>
                         <td> <a target="_blank" href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}">{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</a></td>
                         <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
+                        
                         <td>
+                            @if($sub->deleted_at == null)
                             <form style="display: inline" action="{{ route('user_sub_delete.destroy',[get_lang(),$sub->id]) }}" method="post">
                                 @method('delete') @csrf
                                 
@@ -209,7 +211,11 @@
                                   <button class="mb-6 btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
                                 
                             </form>
+                            @else
+                            <button class="btn btn-warning">ملغى</button>
+                            @endif
                         </td>
+                        
 
                         </tr>
                     @endforeach
