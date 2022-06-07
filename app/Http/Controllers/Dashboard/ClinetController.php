@@ -618,11 +618,12 @@ class ClinetController extends Controller
     public function deletesub($lang,$id)
     {
         $sub = Subscriptions_User::find($id);
+        return $sub;
+
         $client = Clinet::find($sub->clinet_id);
         $code = Subscription::where('id',$sub->sub_id)->first();
   
         $subs = Subscriptions_User::where('id','!=',$id)->where('clinet_id',$sub->clinet_id)->where('expire_date','>',Carbon::now())->first();
-        return $subs;
         if($subs){
             $client->type_of_subscribe = $code->type_paid;
             $count = OfferUser::where('sub_id',$sub->id)->where('client_id',$client->id)->count();
