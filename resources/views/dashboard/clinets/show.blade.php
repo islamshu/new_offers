@@ -202,26 +202,12 @@
                         <td> <a target="_blank" href="{{ route('get_reedem_for_user',[get_lang(),$member->id,$sub->id]) }}">{{ @App\Models\OfferUser::where('sub_id',$sub->id)->where('client_id',$member->id)->count() }}</a></td>
                         <td>{{ @$sub->paid ? @$sub->paid : '_' }}</td>
                         <td>
-                            <form method="post" style="display: inline">
-                                <button type="button" onclick="performdelete('{{ $sub->id }}')"
-                                    class="btn btn-icon btn-light btn-hover-primary btn-sm"><span
-                                        class="svg-icon svg-icon-md svg-icon-primary">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                            height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path
-                                                    d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
-                                                    fill="#000000" fill-rule="nonzero" />
-                                                <path
-                                                    d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
-                                                    fill="#000000" opacity="0.3" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span> </button>
+                            <form style="display: inline" action="{{ route('user_sub_delete.destroy', $sub->id,get_lang()) }}" method="post">
+                                @method('delete') @csrf
+                                
+                                  
+                                  <button class="mb-6 btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange delete-confirm" type="submit" > <i class="material-icons">clear</i></button>
+                                
                             </form>
                         </td>
 
@@ -249,49 +235,28 @@
 
 @section('scripts')
     
-    <script src="{{ asset('dashboard/assets/assets/bundles/chartist.bundle.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/assets/bundles/mainscripts.bundle.js') }}"></script>
-
-    <script src="{{ asset('dashboard/assets/assets/bundles/flotscripts.bundle.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/assets/bundles/c3.bundle.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/assets/bundles/knob.bundle.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL_Iurzw7shb69C_H4GLxzETOgHWrzHEw"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="{{ asset('crudjs/crud.js') }}"></script>
-    <script>
-        function performdelete(id) {
-            var url = '{{ route('user_sub_delete.destroy', [':id', 'locale' => app()->getLocale()]) }}';
-            url = url.replace(':id', id);
-
-
-            confirmDestroy(url)
-        }
-
-        function updateToDatabase(idString) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script>
+         $('.delete-confirm').click(function(event) {
+              var form =  $(this).closest("form");
+              var name = $(this).data("name");
+              event.preventDefault();
+              swal({
+                  title: `هل متأكد من حذف العنصر ؟`,
+                icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  form.submit();
                 }
-            });
-
-            $.ajax({
-                url: '{{ route('update_cateory_sort', app()->getLocale()) }}',
-                method: 'POST',
-                data: {
-                    ids: idString
-                },
-                success: function() {
-                    alert('Successfully updated')
-                    //do whatever after success
-                }
-            })
-        }
-
-      
-    </script>
+              });
+          });
+          </script>
   
 @endsection
