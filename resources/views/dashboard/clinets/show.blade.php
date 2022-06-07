@@ -247,7 +247,7 @@
 @endsection
 
 
-@section('js')
+@section('scripts')
     
     <script src="{{ asset('dashboard/assets/assets/bundles/chartist.bundle.js') }}"></script>
     <script src="{{ asset('dashboard/assets/assets/bundles/mainscripts.bundle.js') }}"></script>
