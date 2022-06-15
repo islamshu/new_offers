@@ -71,7 +71,7 @@ class VendorOfferDeResourses extends JsonResource
         if (auth('client_api')->check()) {
             $trans = Transaction::where('offer_id',$data->id)->where('client_id',auth('client_api')->id())->orderBy('id','desc')->first();
             if($trans){
-                return $trans->created_at;
+                return $trans->created_at->format('Y-m-d H:i:s');;
             }else{
                 return null;
             }
