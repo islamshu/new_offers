@@ -503,6 +503,7 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
 
+        return json_decode($payment->all_request)->payment_method;
 
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             if($json->Data->InvoiceStatus == 'Paid'){
