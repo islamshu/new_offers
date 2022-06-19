@@ -503,11 +503,12 @@ class PayemntController extends BaseController
         $json = json_decode($response);
         // dd($json);
 
-        return json_decode($payment->all_request)->payment_method;
 
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             if($json->Data->InvoiceStatus == 'Paid'){
                $payment = Payment::where('order_id',$request->order_id)->first();
+               return json_decode($payment->all_request)->payment_method;
+
                $code = Subscription::find($payment->package_id);
                $price = $code->price;
                $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
