@@ -507,7 +507,6 @@ class PayemntController extends BaseController
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
             if($json->Data->InvoiceStatus == 'Paid'){
                $payment = Payment::where('order_id',$request->order_id)->first();
-               return json_decode($payment->all_request)->payment_method;
 
                $code = Subscription::find($payment->package_id);
                $price = $code->price;
