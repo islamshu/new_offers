@@ -17,6 +17,10 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function get_user_not_sub(){
+        $users = Clinet::where('type_of_subscribe','PREMIUM')->doesntHave('subs')->count();
+        dd($users);
+    }
     public function __construct()
     {
         $this->middleware('auth');

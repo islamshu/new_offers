@@ -329,7 +329,6 @@ class HomeController extends BaseController
     $res['data']['store_reviews']=  new ReviewnewCollection($views);
     return $res;
 
-
   }
   public function vendor_reviews(Request $request)
   {
