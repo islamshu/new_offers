@@ -340,47 +340,47 @@ class PayemntController extends BaseController
         $json = json_decode($response);
       
         if (isset($json->IsSuccess) && $json->IsSuccess == true) {
-            $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
-            $user = new Subscriptions_User();
-            $user->payment_type = 'visa';
-            // dd(auth('client_api')->id());
-            $client = auth('client_api')->user();
-            $client->type_of_subscribe = $code->type_paid;
+            // $count = Subscriptions_User::where('clinet_id', auth('client_api')->id())->where('sub_id', $code->id)->count();
+            // $user = new Subscriptions_User();
+            // $user->payment_type = 'visa';
+            // // dd(auth('client_api')->id());
+            // $client = auth('client_api')->user();
+            // $client->type_of_subscribe = $code->type_paid;
 
-            if ($code->type_balance == 'Limit') {
-                $client->is_unlimited = 0;
-                $client->credit = $code->balance;
-                $client->remain = $code->balance;
-            } elseif ($code->type_balance == 'UnLimit') {
-                $client->is_unlimited = 1;
-                $client->credit = null;
-                $client->remain = null;
-            }
-            $client->start_date = Carbon::now();
-            $data_type = $code->expire_date_type;
-            $data_type_number = $code->number_of_dayes;
-            if ($data_type == 'days') {
-                $client->expire_date = Carbon::now()->addDays($data_type_number);
-            } elseif ($data_type == 'months') {
-                $client->expire_date = Carbon::now()->addMonths($data_type_number);
-            } elseif ($data_type == 'years') {
-                $client->expire_date = Carbon::now()->addYears($data_type_number);
-            }
-            // $client->save();
+            // if ($code->type_balance == 'Limit') {
+            //     $client->is_unlimited = 0;
+            //     $client->credit = $code->balance;
+            //     $client->remain = $code->balance;
+            // } elseif ($code->type_balance == 'UnLimit') {
+            //     $client->is_unlimited = 1;
+            //     $client->credit = null;
+            //     $client->remain = null;
+            // }
+            // $client->start_date = Carbon::now();
+            // $data_type = $code->expire_date_type;
+            // $data_type_number = $code->number_of_dayes;
+            // if ($data_type == 'days') {
+            //     $client->expire_date = Carbon::now()->addDays($data_type_number);
+            // } elseif ($data_type == 'months') {
+            //     $client->expire_date = Carbon::now()->addMonths($data_type_number);
+            // } elseif ($data_type == 'years') {
+            //     $client->expire_date = Carbon::now()->addYears($data_type_number);
+            // }
+            // // $client->save();
 
-            if ($data_type == 'days') {
-                $user->expire_date = Carbon::now()->addDays($data_type_number);
-            } elseif ($data_type == 'months') {
-                $user->expire_date = Carbon::now()->addMonths($data_type_number);
-            } elseif ($data_type == 'years') {
-                $user->expire_date = Carbon::now()->addYears($data_type_number);
-            }
-            $user->status = 'active';
-            $user->balnce = $code->balance;
-            $user->purchases_no =  $count + 1;
-            $user->sub_id  = $code->id;
-            $user->clinet_id  = auth('client_api')->id();
-            // $user->save();
+            // if ($data_type == 'days') {
+            //     $user->expire_date = Carbon::now()->addDays($data_type_number);
+            // } elseif ($data_type == 'months') {
+            //     $user->expire_date = Carbon::now()->addMonths($data_type_number);
+            // } elseif ($data_type == 'years') {
+            //     $user->expire_date = Carbon::now()->addYears($data_type_number);
+            // }
+            // $user->status = 'active';
+            // $user->balnce = $code->balance;
+            // $user->purchases_no =  $count + 1;
+            // $user->sub_id  = $code->id;
+            // $user->clinet_id  = auth('client_api')->id();
+            // // $user->save();
            
             $payment = new Payment();
             $payment->order_id = Carbon::now()->timestamp;
