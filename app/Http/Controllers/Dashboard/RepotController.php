@@ -497,8 +497,7 @@ class RepotController extends Controller
     function subscriprion_reports(Request $request)
     {
         if ($request->date_from != null && $request->date_to != null &&  $request->date_from !=  $request->date_to) {
-            $trial = Subscriptions_User::whereBetween('created_at', [$request->date_from . '00:00:00.000000', $request->date_to .'23:59:59.000000'])->count();
-            return $request->date_from . '00:00:00.000000';
+            $trial = Subscriptions_User::whereBetween('created_at', [$request->date_from . ' 00:00:00.000000', $request->date_to .' 23:59:59.000000'])->count();
             $trial = Subscriptions_User::where('payment_type', 'trial')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $activation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $sumactivation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
