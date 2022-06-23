@@ -497,6 +497,8 @@ class RepotController extends Controller
     function subscriprion_reports(Request $request)
     {
         if ($request->date_from != null && $request->date_to != null &&  $request->date_from !=  $request->date_to) {
+            $trial = Subscriptions_User::whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+            return $trial;
             $trial = Subscriptions_User::where('payment_type', 'trial')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $activation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $sumactivation = Subscriptions_User::where('payment_type', 'activition_code')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
@@ -507,7 +509,7 @@ class RepotController extends Controller
             $mada_arabic = Subscriptions_User::where('payment_type', 'مدى')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $summada_arabic = Subscriptions_User::where('payment_type', 'مدى')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
             $applepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
-           return $applepay;
+           
             $sumapplepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
             $applepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $sumapplepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
