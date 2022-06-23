@@ -582,7 +582,7 @@ class RepotController extends Controller
     public function get_detelis($lang, $type, $from = null, $to = null)
     {  
         if ($from != null && $to != null && $from !='from' && $to != 'to' && $from != $to ) {
-            $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from, $to])->get();
+            $subs = Subscriptions_User::where('payment_type', $type)->whereBetween('created_at', [$from. ' 00:00:00.000000', $to. ' 23:59:59.000000'])->get();
             return view('dashboard.repots._subscription', compact('subs'));
         }
         if ($from != null && $to != null && $from == $to) {
