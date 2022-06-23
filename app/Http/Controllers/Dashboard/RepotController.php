@@ -507,6 +507,7 @@ class RepotController extends Controller
             $mada_arabic = Subscriptions_User::where('payment_type', 'مدى')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $summada_arabic = Subscriptions_User::where('payment_type', 'مدى')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
             $applepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
+           return $applepay;
             $sumapplepay = Subscriptions_User::where('payment_type', 'Apple Pay')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
             $applepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->count();
             $sumapplepaymada = Subscriptions_User::where('payment_type', 'Apple Pay (Mada)')->whereBetween('created_at', [$request->date_from, $request->date_to])->sum('paid');
