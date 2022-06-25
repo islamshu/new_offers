@@ -107,8 +107,11 @@
             <div class="form-group col-md-3">
                 <input type="text" name="serach" id="serach" placeholder="search" class="form-control" />
                 <input type="hidden" name="type" id="type" value="{{ $type }}" />
-
             </div>
+            <div class="form-group col-md-3">
+                number of record : 20
+            </div>
+
 
             <div class="set_date">
 
