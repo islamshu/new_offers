@@ -144,11 +144,11 @@ class ClinetController extends Controller
                     return $q->whereBetween('register_date',[$request->regestar_from . ' 00:00:00', $request->regestar_from . ' 23:59:59']);
                 }
             });
-          return  $query->count();
+            $count = $query->count();
 
         
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
 
           
         }elseif($type == 'verifyusers'){
@@ -166,8 +166,11 @@ class ClinetController extends Controller
                 }
             });
             
+            $count = $query->count();
+
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
         }elseif($type == 'unverifyuser'){
             $query = Clinet::query()->where('is_verify',0);
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -182,8 +185,11 @@ class ClinetController extends Controller
                 }
             });
           
+            $count = $query->count();
+
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
         }elseif($type == 'premiumuser'){
             $query = Clinet::query()->where('type_of_subscribe','PREMIUM')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -198,8 +204,11 @@ class ClinetController extends Controller
                 }
             });
          
+            $count = $query->count();
+
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
         }elseif($type == 'trailuser'){      
             $query = Clinet::query()->where('type_of_subscribe','TRIAL')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -214,8 +223,11 @@ class ClinetController extends Controller
                 }
             });
          
+            $count = $query->count();
+
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
         }elseif($type == 'none'){
             $query = Clinet::query()->where('type_of_subscribe','FREE')->where('is_verify',1);
             $query->when($request->regestar_from, function ($q) use ($request) {
@@ -230,8 +242,12 @@ class ClinetController extends Controller
                 }
             });
          
+            $count = $query->count();
+
+        
             $clinets = $query->orderBy('register_date','desc')->paginate(20);
-            return view('dashboard.clinets.index',compact('clinets','type','request'));        }
+            return view('dashboard.clinets.index',compact('clinets','type','request','count'));
+              }
         
 
     
