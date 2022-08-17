@@ -179,6 +179,8 @@
             </tbody>
 
         </table>
+        result num : {{ $count }}
+
 
 
     </div>
