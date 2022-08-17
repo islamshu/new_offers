@@ -157,6 +157,7 @@
 
 
             </tbody>
+            reslet : {{ $count }}
 
         </table>
 
