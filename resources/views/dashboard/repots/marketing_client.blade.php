@@ -141,6 +141,7 @@
 
             @include('dashboard.repots._markiting_admin')
         </div>
+        result num : {{ $count }}
 
 
     </div>
