@@ -141,6 +141,8 @@
 
             @include('dashboard.repots._clients_admin')
         </div>
+        result num : {{ $count }}
+
 
 
     </div>

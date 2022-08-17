@@ -158,7 +158,7 @@ class RepotController extends Controller
                 });
             } elseif ($request->transaction_to == $request->transaction_from) {
                 $q->whereHas('trans', function ($qq) use ($request) {
-                    return $qq->whereBetween('created_at', [$request->transaction_from, $request->transaction_to]);
+                    return $qq->whereBetween('created_at', [$request->transaction_from . ' 00:00:00', $request->transaction_to. ' 23:59:59']);
                 });
             } else {
                 $q->whereHas('trans', function ($qq) use ($request) {
@@ -166,10 +166,11 @@ class RepotController extends Controller
                 });
             }
         });
+        $count = $query->count();
 
 
         $clients = $query->orderBy('id','desc')->paginate(20);
-        return view('dashboard.repots.clients_admin', compact('clients', 'request'));
+        return view('dashboard.repots.clients_admin', compact('clients', 'request','count'));
     }
 
     
