@@ -117,7 +117,7 @@ class RepotController extends Controller
             } elseif ($request->register_to != null && $request->register_form == null) {
                 return $q->whereBetween('register_date', [Carbon::now(), $request->register_to]);
             } elseif ($request->register_to == $request->register_form) {
-                return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
+                return $q->whereBetween('register_date', [$request->register_form. ' 00:00:00', $request->register_to. ' 23:59:59']);
             } else {
                 return $q->whereBetween('register_date', [$request->register_form, $request->register_to]);
             }
@@ -137,7 +137,7 @@ class RepotController extends Controller
                 });
             } elseif ($request->last_to == $request->last_from) {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
-                    return $qq->whereBetween('created_at', [$request->last_from, $request->last_to]);
+                    return $qq->whereBetween('created_at', [$request->last_from . ' 00:00:00', $request->last_to. ' 23:59:59']);
                 });
             } else {
                 $q->whereHas('subs_last', function ($qq) use ($request) {
