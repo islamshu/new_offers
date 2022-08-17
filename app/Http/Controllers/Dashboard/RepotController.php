@@ -436,7 +436,8 @@ class RepotController extends Controller
         });
 
         $offers = $query->paginate(10);
-        return view('dashboard.repots.offers', compact('offers', 'request'));
+        $count = $query->count();
+        return view('dashboard.repots.offers', compact('offers', 'request','count'));
     }
     function fetch_data(Request $request)
     {

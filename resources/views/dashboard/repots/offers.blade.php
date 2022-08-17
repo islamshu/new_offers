@@ -181,6 +181,8 @@
 
                 @include('dashboard.repots._offers')
             </div>
+            result num : {{ $count }}
+
 
 
         </div>
