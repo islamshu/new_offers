@@ -157,10 +157,9 @@
 
 
             </tbody>
-            result num : {{ $count }}
 
         </table>
-
+        result num : {{ $count }}
 
     </div>
 </div>
