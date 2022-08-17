@@ -399,7 +399,7 @@ class RepotController extends Controller
             } elseif ($request->created_to != null && $request->created_form == null) {
                 return $q->whereBetween('created_at', [Carbon::now(), $request->created_form]);
             } elseif ($request->created_to == $request->created_form) {
-                return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
+                return $q->whereBetween('created_at', [$request->created_form. ' 00:00:00', $request->created_to. ' 23:59:59']);
             } else {
                 return $q->whereBetween('created_at', [$request->created_form, $request->created_to]);
             }
