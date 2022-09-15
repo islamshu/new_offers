@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Models\Subscriptions_User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class HomeController extends Controller
@@ -20,6 +21,10 @@ class HomeController extends Controller
     public function get_user_not_sub(){
         $users = Clinet::where('type_of_subscribe','PREMIUM')->doesntHave('subs')->get();
         dd($users);
+    }
+    public function end_subs(){
+        $posts = Subscriptions_User::where( DB::raw('YEAR(expire_date)'), '=', '2021' )->get();
+        dd($posts);
     }
     public function __construct()
     {
