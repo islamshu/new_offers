@@ -69,7 +69,7 @@ Route::group([
         
         Route::get('upload-brands', "Dashboard\brandController@get_import")->name('get.import');
         Route::get('dawnload-brands', "Dashboard\brandController@download")->name('download.brands');
-        Route::get('end_subs', "Dashboard\HomeController@end_subs");
+        Route::get('end_subss', "Dashboard\HomeController@end_subss");
 
         
         Route::post('import', "Dashboard\brandController@import")->name('post.import');
