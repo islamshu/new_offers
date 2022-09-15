@@ -23,8 +23,11 @@ class HomeController extends Controller
         dd($users);
     }
     public function end_subs(){
-        $posts = Subscriptions_User::where( DB::raw('YEAR(expire_date)'), '=', '2021' )->take(20)->get();
-        dd($posts);
+        $posts = Subscriptions_User::where( DB::raw('YEAR(expire_date)'), '=', '2021' )->get();
+        foreach($posts as $pos){
+            $pos->delete();
+        }
+       return 'true';
     }
     public function __construct()
     {
